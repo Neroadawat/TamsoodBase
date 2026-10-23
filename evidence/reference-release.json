@@ -1,0 +1,90 @@
+{
+  "manifest": {
+    "release_id": "327eed1abeed1e8eef8b77171d54ad65213bc96cf92608834fee11a214dc4bc7",
+    "created_at": "2026-10-22T16:54:22.221681+00:00",
+    "policy_version": "TEAM_REFERENCE_V1-327eed1abeed",
+    "policy_sha256": "a30e3e32e9bfe2ae83c63acbd1dced4eddffb7719c07066552900b7b95c529ad",
+    "schema_sha256": "5a4adcf682dbf733680ccef93b73b6d66480d9eb4fdef6e07c0ad9cd78de34c3",
+    "implementation_sha256": {
+      "build_reusable.py": "78f5101684490137b2f040f7fd248b22ecab80eb3bac31356b61668b2d3acdeb",
+      "trace_report.py": "d85089090782cf54b654229d53bebafb70759cd71769a899455bfe2b06ba1595",
+      "report_pilot.py": "04527d48fd6d250a71cf9f8d78bc3803baec05655740676a78bf21e0c1c78af6",
+      "sprc_report.py": "96380adf9dbd422fafb1972b6568f448e81d4c3cab55b0b4ce6a0e45185b50e8"
+    },
+    "usage_profile": "LOCAL_RESEARCH_REFERENCE",
+    "source_observations": 101,
+    "accepted_reference": 97,
+    "held_context": 4,
+    "normalized_lci_exchanges": 0,
+    "reextracted_pdf_records": 101,
+    "data_kinds": {
+      "ORGANIZATION_INPUT": 74,
+      "REPORTED_INTENSITY": 8,
+      "ORGANIZATION_OUTPUT": 7,
+      "CONTEXT_METRIC": 8
+    },
+    "redistribution_status": "NOT_CLEARED",
+    "source_document_hashes": [
+      "cd4f1f887a7c4b584262f1f19f0c9c22129b8b6e2c026d83c1d8efc83fdd0621",
+      "75941e3224c3baa5276c795ecb2364e1c537b879aa9e43a943fecda97ea7681b"
+    ],
+    "files": {
+      "accepted-reference.json": "99d2ee39cab27eb7f07a1c06b341848c1d804b9734d797da2ba16caadefdb61d",
+      "all-reference.json": "01f56b2dbf2d119d650c6f3baf53b9fee35863dd0370772be26e0b5482adf042",
+      "accepted-reference.csv": "c901c04dbff729342cc83735ff34dd88a4cd1fe3e6008bffdb5b2bdc5e3672cd",
+      "reference.sqlite": "bb1e3d6aec5428803f741e9ee90428cec6dda0f5a0567467e6963e70bdb0217a",
+      "load-mysql.sql": "a6c785f9f6b93a01c99a3f0ab37c8e01222d0400844037cad0550aa325a49849"
+    },
+    "limitations": [
+      "Team acceptance is for local reference-data use, not third-party approval",
+      "Annual organizational data are not product-normalized LCI exchanges",
+      "Totals and components overlap; do not sum every row",
+      "Source rights and redistribution permissions are not granted by this export"
+    ]
+  },
+  "mysql_verification": {
+    "release_id": "327eed1abeed1e8eef8b77171d54ad65213bc96cf92608834fee11a214dc4bc7",
+    "records_checked": 101,
+    "result": "passed",
+    "fields_checked": [
+      "scaled_amount",
+      "unit_code",
+      "decision",
+      "data_kind",
+      "aggregation_role",
+      "pdf_sha256",
+      "pdf_page",
+      "raw_value",
+      "policy_version"
+    ],
+    "export_manifest_sha256": "24a0540528f0d74c06a9e71d894d1a966252570b0a210d04704f912b5acec9dc",
+    "constraint_checks": {
+      "negative_amount": {
+        "result": "rejected_as_expected",
+        "mysql_error": 3819
+      },
+      "unknown_kind": {
+        "result": "rejected_as_expected",
+        "mysql_error": 3819
+      },
+      "missing_context": {
+        "result": "rejected_as_expected",
+        "mysql_error": 1452
+      },
+      "unknown_decision": {
+        "result": "rejected_as_expected",
+        "mysql_error": 3819
+      },
+      "duplicate_identity": {
+        "result": "rejected_as_expected",
+        "mysql_error": 1062
+      },
+      "missing_observation": {
+        "result": "rejected_as_expected",
+        "mysql_error": 1452
+      }
+    }
+  },
+  "actor": "AUTOMATED_TEAM_POLICY_V1",
+  "human_review_claimed": false
+}

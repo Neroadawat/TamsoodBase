@@ -1,0 +1,11 @@
+{
+  "attempted_at": "2026-10-23T10:34:38.814997+00:00",
+  "status": "RUNTIME_UNAVAILABLE",
+  "reason": "Docker Desktop Linux Engine named pipe absent; desktop start requested",
+  "loaded_verified": false,
+  "unit_suite_passed": 54,
+  "planned_records": {
+    "NSO": 273,
+    "PRODUCT_INVENTORY": 16
+  }
+}

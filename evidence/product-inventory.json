@@ -1,0 +1,17 @@
+{
+  "source_reported_inventory_count": 16,
+  "excluded_count": 8,
+  "checked_at": "2026-10-23T10:07:29.083851+00:00",
+  "doi": "10.3390/su12229415",
+  "source_url": "https://www.mdpi.com/2071-1050/12/22/9415",
+  "evidence_method": "Rendered publisher DOM table and visible article text; not an original HTTP/PDF snapshot",
+  "source_snapshot_sha256": "2bb902345cfcd5f98be8240bf7f4d5b1fba7fe229296a666f3166bae23c8cc4e",
+  "context_sha256": "e2f840a9bd3b89ea0ca503d96d1b94a046fb190ad520b909a3f768c09bebc1bd",
+  "limitations": [
+    "Publication year is not the measurement year",
+    "Do not apply allocation percentages again without confirming table calculation basis",
+    "FAME output 26.3 kg is table rounding; do not silently replace with introductory 26.27 kg",
+    "Inputs/outputs and co-products are not independent counts of full LCI datasets",
+    "Existing corporate reference release stays separate"
+  ]
+}

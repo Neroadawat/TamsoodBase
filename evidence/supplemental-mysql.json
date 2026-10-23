@@ -1,0 +1,32 @@
+{
+  "checked_at": "2026-10-23T10:36:08.619128+00:00",
+  "database": "tamsood_supplemental",
+  "result": "passed",
+  "datasets": [
+    {
+      "kind": "NSO",
+      "snapshot_id": "52d8150b4cc1923fe3a3cb1fa845d963fe008568380bf6bbfc5df716e2277be7",
+      "records_checked": 273,
+      "subtype_records": 273,
+      "full_payload_equal": true
+    },
+    {
+      "kind": "PRODUCT_INVENTORY",
+      "snapshot_id": "d95b721aded3a98be0cbeeaf9cf964841133cee788235ecba8608ffc6775a134",
+      "records_checked": 16,
+      "subtype_records": 16,
+      "full_payload_equal": true
+    }
+  ],
+  "constraint_checks": {
+    "orphan_observation": "rejected_as_expected",
+    "invalid_direction": "rejected_as_expected"
+  },
+  "acceptance_changed": false,
+  "schema_sha256": "da5b32a226f0b62c5e75abf7a4138205fb80f9213c5788e5fdf3519283004092",
+  "limitations": [
+    "Website still reads SQLite/JSON",
+    "Snapshots are versioned; counts must filter snapshot_id",
+    "Loading into MySQL does not establish full LCI eligibility or redistribution rights"
+  ]
+}

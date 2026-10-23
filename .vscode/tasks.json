@@ -1,0 +1,101 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Tamsood: Open local data explorer",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "-X",
+        "utf8",
+        "src/explorer.py"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Tamsood: Run project pipeline (offline)",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "-X",
+        "utf8",
+        "scripts/run_pipeline.py"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Tamsood: Validate tests",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Tamsood: Trace original oil row 2",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "-X",
+        "utf8",
+        "scripts/trace_dmf.py",
+        "production-oil",
+        "2"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Tamsood: Build and load full MySQL",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "-X",
+        "utf8",
+        "scripts/run_pipeline.py",
+        "--mysql"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Tamsood: Build reusable reference data",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "-X",
+        "utf8",
+        "scripts/run_reference.py",
+        "--mysql"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

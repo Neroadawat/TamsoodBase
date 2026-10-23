@@ -1,0 +1,41 @@
+{
+  "checks": [
+    {
+      "source": "THAIOIL_2024_REPORT",
+      "metric": "natural_gas",
+      "year": 2021,
+      "verification": "PDF_HASH_AND_REEXTRACTED_COLUMN_MATCH",
+      "page": 60
+    },
+    {
+      "source": "SPRC_2024_REPORT",
+      "metric": "energy_total",
+      "year": 2024,
+      "verification": "PDF_HASH_AND_REEXTRACTED_COLUMN_MATCH",
+      "page": 121
+    },
+    {
+      "source": "SPRC_2024_REPORT",
+      "metric": "fuel_intensity",
+      "year": 2023,
+      "verification": "PDF_HASH_AND_REEXTRACTED_COLUMN_MATCH",
+      "page": 121
+    },
+    {
+      "source": "SPRC_2024_REPORT",
+      "metric": "water_used_narrative",
+      "year": 2024,
+      "verification": "PDF_HASH_AND_REEXTRACTED_COLUMN_MATCH",
+      "page": 49
+    },
+    {
+      "source": "SPRC_2024_REPORT",
+      "metric": "water_withdrawn_appendix",
+      "year": 2024,
+      "verification": "PDF_HASH_AND_REEXTRACTED_COLUMN_MATCH",
+      "page": 119
+    }
+  ],
+  "sampling": "purposefully selected examples, not all records",
+  "competition_accepted": 0
+}

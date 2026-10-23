@@ -1,0 +1,29 @@
+{
+  "reviewed_at": "2026-10-23T10:40:04.336836+00:00",
+  "url": "https://data.eppo.go.th/Oil",
+  "method": "Rendered browser accessibility tree; initial static response displayed No data",
+  "status": "CANDIDATE_NOT_IMPORTED",
+  "observed_tables": [
+    "2.1-1 Production of Crude Oil",
+    "2.1-2 Production of Condensate",
+    "2.1-3 Import of Crude Oil Classified by Sources",
+    "2.1-4 Quantity and Value of Petroleum Products Import",
+    "2.1-5 Quantity and Value of Petroleum Products Export"
+  ],
+  "observed_frequencies": [
+    "Current",
+    "Monthly",
+    "Quarterly",
+    "Yearly"
+  ],
+  "sample_file_links": [
+    "https://data.eppo.go.th/v1/report/Production_of_Crude_Oil_Yearly.xlsx",
+    "https://data.eppo.go.th/v1/report/Production_of_Condensate_Yearly.xlsx"
+  ],
+  "rights_status": "NOT_REVIEWED_PER_FILE",
+  "notes": [
+    "Catalog inspected only; file values, units, time basis and reuse rights not yet checked",
+    "EPPO publications may share originating agencies with DMF/NSO; do not assume independent measurements"
+  ],
+  "follow_up": "Two separate CKAN CSV resources imported and verified; see evidence/eppo-import.json and eppo-mysql.json. XLSX catalog links remain not imported."
+}

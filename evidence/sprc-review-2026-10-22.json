@@ -1,0 +1,184 @@
+{
+  "source": "SPRC_2024_REPORT",
+  "display_name": "SPRC · รายงาน 2024",
+  "source_url": "https://investor.sprc.co.th/storage/downloads/sustainability-reports/20250307-sprc-sd2024-en.pdf",
+  "pdf_sha256": "75941e3224c3baa5276c795ecb2364e1c537b879aa9e43a943fecda97ea7681b",
+  "row_count": 53,
+  "metric_count": 14,
+  "competition_accepted": 0,
+  "issues": [
+    {
+      "issue_id": "WATER-water_used_narrative-2024",
+      "year": 2024,
+      "metrics": [
+        "water_used_narrative",
+        "water_withdrawn_appendix"
+      ],
+      "left_m3": "3044250",
+      "right_m3": "3060000.00",
+      "left_unit": "m3/year",
+      "right_unit": "m3",
+      "comparison_basis": "NUMERIC_ANNUAL_TABLE_VALUES_ONLY_NOT_EQUIVALENCE",
+      "source_pages": [
+        49,
+        119
+      ],
+      "status": "HOLD_CONTEXT_OR_REVISION_DIFFERENCE",
+      "explanation": "Different labels may represent different contexts; displayed rounding alone does not reconcile values",
+      "automatic_merge_allowed": false,
+      "preferred_source": null
+    },
+    {
+      "issue_id": "WATER-external_raw_water_narrative-2024",
+      "year": 2024,
+      "metrics": [
+        "external_raw_water_narrative",
+        "fresh_water_appendix"
+      ],
+      "left_m3": "3044250",
+      "right_m3": "3060000.00",
+      "left_unit": "m3/year",
+      "right_unit": "m3",
+      "comparison_basis": "NUMERIC_ANNUAL_TABLE_VALUES_ONLY_NOT_EQUIVALENCE",
+      "source_pages": [
+        49,
+        119
+      ],
+      "status": "HOLD_CONTEXT_OR_REVISION_DIFFERENCE",
+      "explanation": "Different labels may represent different contexts; displayed rounding alone does not reconcile values",
+      "automatic_merge_allowed": false,
+      "preferred_source": null
+    }
+  ],
+  "arithmetic_checks": [
+    {
+      "year": 2021,
+      "total_metric": "energy_total",
+      "component_metrics": [
+        "fuel_total",
+        "electricity_purchased"
+      ],
+      "residual_GJ": "0",
+      "rounding_tolerance_GJ": "1.5",
+      "result": "WITHIN_DISPLAY_ROUNDING",
+      "source_values_corrected": false
+    },
+    {
+      "year": 2021,
+      "total_metric": "fuel_total",
+      "component_metrics": [
+        "natural_gas",
+        "lpg",
+        "fuel_gas",
+        "coke"
+      ],
+      "residual_GJ": "-1",
+      "rounding_tolerance_GJ": "2.5",
+      "result": "WITHIN_DISPLAY_ROUNDING",
+      "source_values_corrected": false
+    },
+    {
+      "year": 2022,
+      "total_metric": "energy_total",
+      "component_metrics": [
+        "fuel_total",
+        "electricity_purchased"
+      ],
+      "residual_GJ": "0",
+      "rounding_tolerance_GJ": "1.5",
+      "result": "WITHIN_DISPLAY_ROUNDING",
+      "source_values_corrected": false
+    },
+    {
+      "year": 2022,
+      "total_metric": "fuel_total",
+      "component_metrics": [
+        "natural_gas",
+        "lpg",
+        "fuel_gas",
+        "coke"
+      ],
+      "residual_GJ": "0",
+      "rounding_tolerance_GJ": "2.5",
+      "result": "WITHIN_DISPLAY_ROUNDING",
+      "source_values_corrected": false
+    },
+    {
+      "year": 2023,
+      "total_metric": "energy_total",
+      "component_metrics": [
+        "fuel_total",
+        "electricity_purchased"
+      ],
+      "residual_GJ": "-1",
+      "rounding_tolerance_GJ": "1.5",
+      "result": "WITHIN_DISPLAY_ROUNDING",
+      "source_values_corrected": false
+    },
+    {
+      "year": 2023,
+      "total_metric": "fuel_total",
+      "component_metrics": [
+        "natural_gas",
+        "lpg",
+        "fuel_gas",
+        "coke"
+      ],
+      "residual_GJ": "1",
+      "rounding_tolerance_GJ": "2.5",
+      "result": "WITHIN_DISPLAY_ROUNDING",
+      "source_values_corrected": false
+    },
+    {
+      "year": 2024,
+      "total_metric": "energy_total",
+      "component_metrics": [
+        "fuel_total",
+        "electricity_purchased"
+      ],
+      "residual_GJ": "-1",
+      "rounding_tolerance_GJ": "1.5",
+      "result": "WITHIN_DISPLAY_ROUNDING",
+      "source_values_corrected": false
+    },
+    {
+      "year": 2024,
+      "total_metric": "fuel_total",
+      "component_metrics": [
+        "natural_gas",
+        "lpg",
+        "fuel_gas",
+        "coke"
+      ],
+      "residual_GJ": "1",
+      "rounding_tolerance_GJ": "2.5",
+      "result": "WITHIN_DISPLAY_ROUNDING",
+      "source_values_corrected": false
+    }
+  ],
+  "limits": [
+    "Company-report boundary includes marketing and distribution; do not assume refinery-only scope",
+    "Water labels differ between tables; unresolved differences preserved",
+    "Totals/components overlap; no summation across all metrics",
+    "Public access does not establish redistribution rights"
+  ],
+  "extraction_method": "pypdf layout and source-specific exact row matching",
+  "pypdf_version": "6.10.0",
+  "mysql_verification": {
+    "pdf_sha256": "75941e3224c3baa5276c795ecb2364e1c537b879aa9e43a943fecda97ea7681b",
+    "numeric_values_checked": 53,
+    "metadata_records_checked": 53,
+    "result": "passed",
+    "competition_accepted": 0
+  },
+  "visual_checks": [
+    {
+      "path": "build\\sprc-page49.png",
+      "sha256": "e914adaf89175db0abd87cf57c467dbeba413be1c1af496e3b6cf8bf8a8b534d"
+    },
+    {
+      "path": "build\\sprc-page121.png",
+      "sha256": "4ecd93510b0fa717a33cff9b42f39a54ed2de7f4b2b40c0ce96d36806a3622d2"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-10-22T16:11:34.070536+00:00",
+  "mysql_version": "8.1.0",
+  "run_id": "20261022T151321110294Z",
+  "source_rows_roundtrip_verified": 34905,
+  "observation_decimals_verified": 34899,
+  "all_dispositions_verified": true,
+  "imports_run": 2,
+  "idempotence_verified": true,
+  "constraint_checks": [
+    "negative_amount",
+    "invalid_production_days",
+    "unreviewed_promotion",
+    "guessed_time_basis",
+    "duplicate_primary_key",
+    "missing_context"
+  ],
+  "indexed_period_query_plan": "1\tSIMPLE\tobservation\tNULL\tref\tix_period_context\tix_period_context\t3\tconst\t102\t100.00\tUsing index",
+  "export_sql_sha256": "a0ac4930af850e3728959144f19e61a4e15999a8f6b1bfe7441498a8dd04bf93",
+  "schema_sha256": "71233c6304cf2d2e76d001194b7b0d19f8041f2709f11d00812d52d26a70fc25",
+  "competition_accepted": 0,
+  "limitations": [
+    "Source numerical accuracy not certified by storage round-trip",
+    "LCI eligibility and historical time basis pending"
+  ]
+}

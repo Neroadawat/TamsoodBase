@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-22",
+  "scope": "Local read-only explorer",
+  "unit_tests_passed": 18,
+  "http_checks": [
+    "filtered_csv_download",
+    "gas_multiplier_preserved",
+    "conflict_count_186",
+    "static_path_allowlist"
+  ],
+  "browser_checks": [
+    "search_namphong",
+    "record_provenance",
+    "quality_view",
+    "source_registry",
+    "conflict_group_members"
+  ],
+  "data_status": "PENDING",
+  "public_deployment": false,
+  "mobile_browser_tested": false
+}

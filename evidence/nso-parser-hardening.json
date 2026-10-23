@@ -1,0 +1,8 @@
+{
+  "checked_at": "2026-10-23T09:51:35.118676+00:00",
+  "change": "Reject whole data rows with missing numeric values rather than silently treating them as footer; validate paired Buddhist/Gregorian years and unique year columns",
+  "targeted_tests": "python -X utf8 -m unittest tests.test_nso -v",
+  "test_result": "3 tests passed; includes entire-row missing markers and inconsistent year mutation",
+  "offline_import": "passed: 273 observations, same per-table counts",
+  "implementation_sha256": "204c94a688b6abd9ea68f1165df54c84eb761dda1decec2746ae1156c6d20005"
+}

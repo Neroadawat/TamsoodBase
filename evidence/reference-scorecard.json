@@ -1,0 +1,86 @@
+{
+  "release_id": "327eed1abeed1e8eef8b77171d54ad65213bc96cf92608834fee11a214dc4bc7",
+  "checks": {
+    "required_context_complete": true,
+    "exact_scale_arithmetic": true,
+    "unique_observation_ids": true,
+    "release_membership": true,
+    "decision_accounting": true,
+    "source_count_accounting": true,
+    "trace_marker_complete": true
+  },
+  "passed": true,
+  "source_observations": 101,
+  "accepted_reference": 97,
+  "held_context": 4,
+  "publishers": 2,
+  "documents": 2,
+  "years": [
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "accepted_kinds": {
+    "CONTEXT_METRIC": 8,
+    "ORGANIZATION_INPUT": 74,
+    "ORGANIZATION_OUTPUT": 7,
+    "REPORTED_INTENSITY": 8
+  },
+  "coverage": [
+    {
+      "publisher": "Star Petroleum Refining Public Company Limited",
+      "year": 2021,
+      "ACCEPTED_REFERENCE": 11
+    },
+    {
+      "publisher": "Star Petroleum Refining Public Company Limited",
+      "year": 2022,
+      "ACCEPTED_REFERENCE": 14
+    },
+    {
+      "publisher": "Star Petroleum Refining Public Company Limited",
+      "year": 2023,
+      "ACCEPTED_REFERENCE": 14
+    },
+    {
+      "publisher": "Star Petroleum Refining Public Company Limited",
+      "year": 2024,
+      "ACCEPTED_REFERENCE": 10,
+      "HOLD_CONTEXT": 4
+    },
+    {
+      "publisher": "Thai Oil Public Company Limited",
+      "year": 2021,
+      "ACCEPTED_REFERENCE": 12
+    },
+    {
+      "publisher": "Thai Oil Public Company Limited",
+      "year": 2022,
+      "ACCEPTED_REFERENCE": 12
+    },
+    {
+      "publisher": "Thai Oil Public Company Limited",
+      "year": 2023,
+      "ACCEPTED_REFERENCE": 12
+    },
+    {
+      "publisher": "Thai Oil Public Company Limited",
+      "year": 2024,
+      "ACCEPTED_REFERENCE": 12
+    }
+  ],
+  "selected_series_gaps": [],
+  "missing_context": [],
+  "scale_errors": [],
+  "duplicate_ids": [],
+  "limitations": [
+    "Checks concern the selected release, not all available Thai fuel data",
+    "Trace markers are checked here; original PDF re-extraction is a separate recorded check",
+    "Arithmetic consistency is not independent verification of publisher measurements",
+    "97 accepted reference observations are not 97 independent LCI flows",
+    "No competition score, national coverage percentage or human verification is inferred"
+  ],
+  "checked_at": "2026-10-23T08:52:29.844984+00:00",
+  "input_sha256": "01f56b2dbf2d119d650c6f3baf53b9fee35863dd0370772be26e0b5482adf042"
+}

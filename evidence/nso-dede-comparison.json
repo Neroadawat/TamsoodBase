@@ -1,0 +1,25 @@
+{
+  "scope": "One selected 2024 manufacturing energy total; not all273 NSO observations",
+  "year": 2024,
+  "unit": "10^3 ton of oil equivalent",
+  "nso_value": "30350",
+  "dede_preliminary_value": "28987",
+  "difference_nso_minus_dede": "1363",
+  "status": "DIFFERENT_PUBLICATIONS_REVIEW_REQUIRED",
+  "nso_observation_id": "08df422f6c8038648f632ae293412256bfad831ae069e6fae43dc8bf8764c88c",
+  "nso_source_url": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/File_SYB/2026/13/T_13.10_2026.csv",
+  "nso_source_sha256": "abfc8301bf168ad15e61f36b3550509e79826eec31a0b0ffecedda1d72a18761",
+  "dede_source_url": "https://pei.dede.go.th/dataset/be2fe91f-18f3-4fc9-b523-1a2f2e236df5/resource/73a7ee31-4be6-4f45-a809-34f09d2e76ec/download/sit_dec_67.pdf",
+  "dede_pdf_sha256": "819934d7a616988ac7b7506ad0e5dd7477af0f05be76658d8b02661db72c9b10",
+  "dede_pdf_page": 8,
+  "dede_locator": "Footnote3: manufacturing, excluding mining134 and construction140 ktoe",
+  "dede_extracted_line": "      3/ สาขาอุตสาหกรรม ประกอบด้วย อุตสาหกรรมการผลิต 28,987 ktoe เหมืองแร่ 134 ktoe และก่อสร้าง 140 ktoe",
+  "source_relationship": "NSO republishes DEDE statistics; comparison of publications, not independent measurement",
+  "interpretation": "Difference exceeds rounding; revision and definition must be reviewed. Cause is not established.",
+  "actions": [
+    "Keep both values and their publication context",
+    "Do not replace NSO with preliminary DEDE value",
+    "Do not compare manufacturing30350 directly with broader industry29261"
+  ],
+  "original_values_changed": false
+}

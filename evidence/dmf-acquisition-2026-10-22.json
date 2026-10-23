@@ -1,0 +1,82 @@
+{
+  "run_id": "20261022T151321110294Z",
+  "acquired_at": "2026-10-22T15:13:21.111329+00:00",
+  "packages": [
+    {
+      "package": "production-oil",
+      "package_id": "d31a2911-071b-4b85-ab84-0717f0251061",
+      "resource_id": "9809b59e-5636-47d0-8447-03a5afafc21f",
+      "metadata_url": "https://catalog.dmf.go.th/api/3/action/package_show?id=production-oil",
+      "metadata_final_url": "https://catalog.dmf.go.th/api/3/action/package_show?id=production-oil",
+      "metadata_sha256": "152bfb302698e6463c3a81df9210dffc2dd53a0d049d16e9c1dcf5723e299a29",
+      "metadata_headers": {
+        "Content-Type": "application/json;charset=utf-8",
+        "Content-Length": "7429"
+      },
+      "csv_url": "https://catalog.dmf.go.th/dataset/d31a2911-071b-4b85-ab84-0717f0251061/resource/9809b59e-5636-47d0-8447-03a5afafc21f/download/production_oil.csv",
+      "csv_headers": {
+        "Content-Type": "application/vnd.ms-excel",
+        "Content-Length": "400908",
+        "Last-Modified": "Thu, 04 Jun 2026 03:54:24 GMT",
+        "ETag": "\"1780545264.889033-400908-868816246\""
+      },
+      "csv_sha256": "841a7db130208eff51a045d69b1f39cdd1547d28f0ef8688a8da4e25c7bb70d3",
+      "csv_bytes": 400908,
+      "license_id": "Open Data Common",
+      "license_url": null,
+      "resource_unit": "บาร์เรล",
+      "resource_last_modified": "2026-06-04T03:54:24.841331"
+    },
+    {
+      "package": "production-condensate",
+      "package_id": "d12c4281-6728-4542-a49f-da30d9919f4c",
+      "resource_id": "1304bcc1-22b1-4b2c-a4b5-954f40310ff6",
+      "metadata_url": "https://catalog.dmf.go.th/api/3/action/package_show?id=production-condensate",
+      "metadata_final_url": "https://catalog.dmf.go.th/api/3/action/package_show?id=production-condensate",
+      "metadata_sha256": "b7a3fdf97951f18898669aebcebc137678500fa7678f93cd2a4d41597393b1d3",
+      "metadata_headers": {
+        "Content-Type": "application/json;charset=utf-8",
+        "Content-Length": "8018"
+      },
+      "csv_url": "https://catalog.dmf.go.th/dataset/d12c4281-6728-4542-a49f-da30d9919f4c/resource/1304bcc1-22b1-4b2c-a4b5-954f40310ff6/download/production_condensate.csv",
+      "csv_headers": {
+        "Content-Type": "application/vnd.ms-excel",
+        "Content-Length": "429491",
+        "Last-Modified": "Thu, 04 Jun 2026 03:53:12 GMT",
+        "ETag": "\"1780545192.172491-429491-1033835899\""
+      },
+      "csv_sha256": "79f5ac2ab12e0e5256ef446487efb3bf1ed2fa37db4488a4b3734678ae678d1c",
+      "csv_bytes": 429491,
+      "license_id": "Open Data Common",
+      "license_url": null,
+      "resource_unit": "บาร์เรล",
+      "resource_last_modified": "2026-06-04T03:53:12.110701"
+    },
+    {
+      "package": "production-natural-gas",
+      "package_id": "ad91d31d-7e3b-48a3-b454-53c174156705",
+      "resource_id": "f86d5605-e407-461f-83d8-47f9b4bd0803",
+      "metadata_url": "https://catalog.dmf.go.th/api/3/action/package_show?id=production-natural-gas",
+      "metadata_final_url": "https://catalog.dmf.go.th/api/3/action/package_show?id=production-natural-gas",
+      "metadata_sha256": "76a8ba63704b63faac84172416d898259ef390ae799c1bc495784dd3a97ae4c8",
+      "metadata_headers": {
+        "Content-Type": "application/json;charset=utf-8",
+        "Content-Length": "7843"
+      },
+      "csv_url": "https://catalog.dmf.go.th/dataset/ad91d31d-7e3b-48a3-b454-53c174156705/resource/f86d5605-e407-461f-83d8-47f9b4bd0803/download/production_gas.csv",
+      "csv_headers": {
+        "Content-Type": "application/vnd.ms-excel",
+        "Content-Length": "481283",
+        "Last-Modified": "Thu, 04 Jun 2026 03:54:00 GMT",
+        "ETag": "\"1780545240.6128478-481283-984290635\""
+      },
+      "csv_sha256": "73a7de7ac26f192c0919d5a136d1ec945c22767e3fc661625b76f94533752378",
+      "csv_bytes": 481283,
+      "license_id": "Open Data Common",
+      "license_url": null,
+      "resource_unit": "ลูกบาศก์ฟุต",
+      "resource_last_modified": "2026-06-04T03:54:00.532970"
+    }
+  ],
+  "complete": true
+}

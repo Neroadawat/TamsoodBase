@@ -1,0 +1,23 @@
+{
+  "artifact_type": "manually_selected_web_tool_observations",
+  "source_url": "https://dmf.go.th/public/createpetroleum/data/report/menu/1114/year/2569/month/1",
+  "accessed_date": "2026-10-22",
+  "source_revision_date": "2026-02-16",
+  "period": "2026-01",
+  "source_snapshot_available": false,
+  "evidence_level": "web_tool_readable_text_only",
+  "selection": "Four rows selected for a small spot-check; not a random or comprehensive sample",
+  "units_as_displayed": {
+    "GAS": "million cubic feet per day",
+    "CONDENSATE": "barrels per day",
+    "OIL": "barrels per day"
+  },
+  "display_decimal_places": 2,
+  "rows": [
+    {"area": "ในทะเล", "block": "B12/27 G7/50", "source_group": "ไพลิน / มรกต", "GAS": "260.81", "CONDENSATE": "9714.38", "OIL": "0.00"},
+    {"area": "ในทะเล", "block": "14A-16A", "source_group": "อาทิตย์", "GAS": "395.94", "CONDENSATE": "17461.00", "OIL": "0.00"},
+    {"area": "ในทะเล", "block": "B5/27", "source_group": "จัสมิน บานเย็น", "GAS": "5.50", "CONDENSATE": "0.00", "OIL": "8528.25"},
+    {"area": "บนบก", "block": "E5", "source_group": "น้ำพอง", "GAS": "5.90", "CONDENSATE": "0.00", "OIL": "0.00"}
+  ],
+  "interpretation": "The displayed report explicitly has per-day units. Numeric agreement with selected CSV cells is evidence supporting a daily-rate interpretation for those cells, not authoritative confirmation for every historical CSV record. No monthly-volume conversion is performed."
+}

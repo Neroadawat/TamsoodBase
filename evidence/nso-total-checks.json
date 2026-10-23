@@ -1,0 +1,369 @@
+{
+  "input_sha256": "52d8150b4cc1923fe3a3cb1fa845d963fe008568380bf6bbfc5df716e2277be7",
+  "checks": [
+    {
+      "table_id": "13.10",
+      "measure": "จำนวน",
+      "year": 2022,
+      "unit": "10^3 ton of oil equivalent",
+      "total": "32176",
+      "delta": "0",
+      "tolerance": "3.0",
+      "passed": true,
+      "observation_ids": [
+        "99e4211c13b3bad238f60bbcccba3f5dfcee6f8b32d52e4f2bbfff1332d03530",
+        "58723e04c27538a72bec431c18010137742314eb5bc883edfbf265694fded5eb",
+        "1c016ad23cc2ec2b331be91b467918ad1eaed6b40de539ce59d4a383d7503df1",
+        "8b296196dfcfec87f03c7df7660419c47b5de8524a5f50887e91c76b7c419cb1",
+        "529533550a96a9fa38092484dde10fda32f34c5aec4f66c7fa05df70f124d0bb",
+        "c8e1f3455dd9e12eb87647d71dde24d8c750e598a510f2446b24af7cf483b655"
+      ]
+    },
+    {
+      "table_id": "13.10",
+      "measure": "จำนวน",
+      "year": 2023,
+      "unit": "10^3 ton of oil equivalent",
+      "total": "30600",
+      "delta": "0",
+      "tolerance": "3.0",
+      "passed": true,
+      "observation_ids": [
+        "6f4436069a5f7d6ac0f51461ffe18150c8167fe2f2672b6a3f1905a420257789",
+        "dadff5b13e45400f37e5c44ea351b1e1b0b1f2a9868f2365918bf95c1b3dd8f7",
+        "422f5d0317af1f2ae7cb13b7834763e4a36967168062f49d4774269837bb3880",
+        "5b988c1f785af0f4915f88fbb069a5af9f0a49cfbfd88ad14ede8fdea25dec75",
+        "6fe55393f36f86fdb4e067798d0bead12c61a9689b52bd3286af1caa2ad58dac",
+        "cec2019e729b291d21bbad8b8127755b17280e706fffbee2090ef8bcbb4b16ee"
+      ]
+    },
+    {
+      "table_id": "13.10",
+      "measure": "จำนวน",
+      "year": 2024,
+      "unit": "10^3 ton of oil equivalent",
+      "total": "30350",
+      "delta": "0",
+      "tolerance": "3.0",
+      "passed": true,
+      "observation_ids": [
+        "08df422f6c8038648f632ae293412256bfad831ae069e6fae43dc8bf8764c88c",
+        "72a1013b8472f5b3f9c7677d0bf8e40211c05d4ca6b010c31683802ac8eb6807",
+        "d3a38c7c027a13f1c7a11b045e317bcf38dd094b4f8dd4be271138be822b2a3b",
+        "e8062030df3a57c864b4d862ff2119f990d06851d35dfca7828191685238b566",
+        "ff27289ee03b937a2ec814038ebcdc6599f666a6780c20de57a9dcd98cf72cc6",
+        "45fbe5896873141089a0ea83bf9c290affe13186cfafba15dae4e80826ab1f38"
+      ]
+    },
+    {
+      "table_id": "13.10",
+      "measure": "ร้อยละ",
+      "year": 2022,
+      "unit": "percent",
+      "total": "100",
+      "delta": "1E-8",
+      "tolerance": "0.500000565",
+      "passed": true,
+      "observation_ids": [
+        "3a749a73adfae97238d9c32a92088cbfe9786f90ea396bdea812be282a001ccd",
+        "610e846a7a22cbce605c026e2f7e9068fa708b26be19f3402e284dd252645ba5",
+        "9837166aa2eaeb15865bff81df2210e1b0abbc39a19df3994852e2c3258b1f31",
+        "8c4ce8c7c5b8d3a7f7bcdc93697f3f28935de5905a748d73c58bb39693d83d0c",
+        "499684dfde129eeb365af3690c87339c54555a69977453421256abc050b8a495",
+        "46501be25a17423ece13c0922539111845135e6595a4f3d5511eb8a614e443e8"
+      ]
+    },
+    {
+      "table_id": "13.10",
+      "measure": "ร้อยละ",
+      "year": 2023,
+      "unit": "percent",
+      "total": "100",
+      "delta": "0E-8",
+      "tolerance": "0.500000070",
+      "passed": true,
+      "observation_ids": [
+        "9d394f805d9411049c9b33ad47fb38f14a2491bbfac2503195650812752c8855",
+        "742122c85c17f335d5af66d1db843b5e596a79b69e0d8ab836cd79dd7683bbe4",
+        "1e0a52fb69df2566fa5fb57807e65a973936de35587de2a9ab8718196d81ee1b",
+        "3fbca47c64d1c1c445fed64c6be3f54acf1ba32feca45378d5da8606b26edf10",
+        "94af149e43ee266f9336442fee7a0265cf953425d99034d26e6e41ceb0ec2659",
+        "0824a265844a2278e22d707046f7de7bc220c0c1a56c91d3093c4ba938806c2f"
+      ]
+    },
+    {
+      "table_id": "13.10",
+      "measure": "ร้อยละ",
+      "year": 2024,
+      "unit": "percent",
+      "total": "100",
+      "delta": "0E-8",
+      "tolerance": "0.500000025",
+      "passed": true,
+      "observation_ids": [
+        "493262023ec3adaaac925592ae444755c5852a502adf10f2f53abfb3f0a204d6",
+        "89f05c4d35b9b5bc65d3e954041e90b0fbbf9edadab330c12ea5a8a80ee7498e",
+        "e142c584250808de48a4cd2b7ab9032fba9fa3e57fbed2dc6a3513e8a39eaca3",
+        "78c3b3d5ea31479d9fd92d4ed681b4e738f5658bd9205329422ca2f94c93e84e",
+        "e8ba8e93e0f824cb34250671af308c349b5bc9a6e0b760b32f6d835bc5d050b1",
+        "ec5c489faa89d68c0e0ce978f2add005086a0a9a5ec6f6f291636f045af612db"
+      ]
+    },
+    {
+      "table_id": "13.6",
+      "measure": "การผลิต",
+      "year": 2022,
+      "unit": "Million litre",
+      "total": "57338",
+      "delta": "0",
+      "tolerance": "6.0",
+      "passed": true,
+      "observation_ids": [
+        "f2f4df98da4d942aa2579657fd66037cbe2e120ead885af78ca7dffdd87bc199",
+        "ba9461ff52ad069044b7caad824101463b8b9a67aa7fe302fb493fd1181bbe39",
+        "f30e64360b8dad3b6fbd3323d4e1dca889072fe5ad092d47d82ea729619ae9be",
+        "9c9947222fca8f7ab116047dcadbdbc22abf4d06c5398c98dfed56b6239ea2cd",
+        "c0239d84906f5b390731d8821dbd28ce78827c1c7db72a2d33cbf1b51729c5c5",
+        "14634d58777fb7a237b24d11641868f72ad36cb169e32b04d3c57d45695ecd55",
+        "770d87b58a31f4eca1dd93ed59e536b705b9e60ea806a6ec0695824648c2bfad",
+        "94c7e57e8c71dde4f92df816e3b8b127b5895a52f6427ccbfcfd47bb8a5f2ca0",
+        "d30f6e96966436a584ef755a76d31b1116e4c57a0c4506503372c1e55b48250e",
+        "0621f00c113b42ae53998b68b4d9f1a629d1c0029c506a21d9ba9e73e7c14608",
+        "baffa6c61ae447a9c27dee06eed5fe35f4a137b9ba32b3a7988ec8f3954ce529",
+        "54ee2f1ff6f87712e87901dfa2db04783602d2a619d8bed56c61464e6f869647"
+      ]
+    },
+    {
+      "table_id": "13.6",
+      "measure": "การผลิต",
+      "year": 2023,
+      "unit": "Million litre",
+      "total": "63228",
+      "delta": "0",
+      "tolerance": "6.0",
+      "passed": true,
+      "observation_ids": [
+        "d5ecc8a0aaed964ca8a64212f0e30c3ca47e4812039699fc8cbccff29df8a562",
+        "940e3d0ab25bad86d1e6b687886e2d68d859502489d3637eedb5b1fb2fdcba97",
+        "4dbfeb72f59100686fdebb1f8b23ace07189048b066fabc5905d8c8bd5bfb932",
+        "6c6977cb24249dae2f321eefd34c8dd699628afe5ebbbd0c03c150164d980d12",
+        "a146578c9532f3a7ef92ec05cab683517a2ec2e04174d330e23c676fb5246e4b",
+        "953cad3d087923b680b681ca6344fb7ac2f7baf5c5cac25ba3921950f097a8f1",
+        "cbdd8a27ba2c1ec44fedde986c4c09218896c07a31e8384839d1df8093afad9b",
+        "dee6feef79f2ef411aafc05fef6ce93eb7d2e68bdb0c61d8cffb8ed10fdea49b",
+        "14449b007e626aa0be3d2714abaa4032d32512ec74b0faeb519c2e1af94d7ef7",
+        "081d85698861ccb7fc8809d1b4bfc666662bb49355bc0bc3a6f4bed18ada1014",
+        "6d702bdca37342db1f8ff625a68221bde2db77c8e5a26bfad1bc50c6c816a571",
+        "47e7154ecc89e79f2e138ca57cc30046e9e023f8338248b10ee4722148cc1a26"
+      ]
+    },
+    {
+      "table_id": "13.6",
+      "measure": "การผลิต",
+      "year": 2024,
+      "unit": "Million litre",
+      "total": "65315",
+      "delta": "0",
+      "tolerance": "6.0",
+      "passed": true,
+      "observation_ids": [
+        "c18cdd2b08e9ab234bab0a7df3f33d46b994abeb47a40bf0fc52459b56887f54",
+        "66127d66f93090e1df2c8bd591ac45a7aca17a3d9d44f9eeeb4d3d45628c2431",
+        "1748fb1a6f29f02b41400a90476a224da970ce9158ff6fe63439c480718fd843",
+        "c4a249a9a8ccbadf3e1551267fa3125eb390c28983b6a335ce1a61a201a1dae3",
+        "8fb4132e89285731c32c2f014d97c618ad83e8fda9af6e51b681831571ee64bb",
+        "55b1903513b21e7a905224e07d55128b93517fbfa342596434067601f38bc526",
+        "d1a0a18c847928160d4210ed66bcbf1d5ed3f59ae116b8b6d693550e56674d2c",
+        "6f50f933ff324fe64ff8bce5e6f284e6d211e958bbbf6d8aa5d1d1dbac6f0987",
+        "e1f05134400402cf625d59e171dcd44291e6588c9ec2c5c47df31a955fa6a5e4",
+        "e237886a44aba30bfdef602f88bf383e7538d7a3db70df7ffa9d9dfce799a1b8",
+        "6087053f9b133fc48f48a89862fd839de84df7d579a8bf3aa001df1a4f3bc079",
+        "4cb26e1c5aaa60ff033af0b808166e877abfbe0114f76e350376da19ff0d6d3b"
+      ]
+    },
+    {
+      "table_id": "13.6",
+      "measure": "การใช้",
+      "year": 2022,
+      "unit": "Million litre",
+      "total": "47664",
+      "delta": "0",
+      "tolerance": "5.5",
+      "passed": true,
+      "observation_ids": [
+        "2cbf1dd1487168fc0afb8f7fecc2c00a88422b6fdbe9388e265ce55e5f1baf73",
+        "396a1770aaa71e2c8f735b17b5bd5e38fd69b02aeaf1f6c1fa151ae4fd8dc9cc",
+        "1dc76b0a12f7b75370ddc8500bf53794b7e2e7cefcb6bac42c3e19a88b74cfda",
+        "215a62dd415ac5a81146a81fe14cd45bfca3c27ec20c6bd4aab5338bb6554548",
+        "8256285f7133ca804b902b97a2e09c141dfd076d9862bfff23f74366036ab13e",
+        "f46316c041c6f4b41437c7494b09a5cc91c0f8613fe3657171aa41daf9953d9d",
+        "3910d02dec494d9c0e3cd42db40883b59fa4ad3640612dc032b7dd532f6e8bf6",
+        "ad6754bac070db4494178284086bf22d4cb29344fa0f84443c2f0edb8bb78865",
+        "90b13d0a51bbc4f752be490a2ecf3e981aa17a271b4803d4c599fa3831d2c862",
+        "85e8d153ca8698223f799f09a443c736c85bafd2b8d7a6109f7e3fac4a64b48d",
+        "612f5aa25786006a0f974be77843d80232c20ca55c132e80c24f23721d73f0d0"
+      ]
+    },
+    {
+      "table_id": "13.6",
+      "measure": "การใช้",
+      "year": 2023,
+      "unit": "Million litre",
+      "total": "50358",
+      "delta": "0",
+      "tolerance": "5.5",
+      "passed": true,
+      "observation_ids": [
+        "3ec71c119c1c178d019a6de92ae7831fc703cb20139ee1c5bb8eac23999719b2",
+        "56ac12b535a37c94266598dca17d3a7c674764e5639958576f1e1496c218e9b1",
+        "11cc65e3da8298518184077bda2e941022985bfa57700efc107c2b54d1e89b9e",
+        "f12f55b09b7f915de7b23e88e84fafaa0407db7f59e03720a80184e45aa04927",
+        "d38de951069627b92a876bc118d7cf04f20c0c65cce7617d5800e02e0b2d3231",
+        "a4abbe373202a5979c8e86c171bf5f6df2000f745d01ed074c0d480e516fd757",
+        "944596775d842e52cd2a487d93864238288f2ab6bffd93dbbd434f985341fa92",
+        "8e96709f0c9bbdbf4f79bfb71a8f576f5722ea6103f68e1f0f6cbf8d871a3459",
+        "0432e7800f654ea02f4c80639933a09de5ea47e9016efebf4f54b649d3144bb3",
+        "00c185bfc60d645af1b3f3f498f8519988ab9beee2d24092ca9e1f8425059818",
+        "055905b351a2e8fbca4f09a20d6dbd94c2c040cb92837772c3d79cb0fb7f797f"
+      ]
+    },
+    {
+      "table_id": "13.6",
+      "measure": "การใช้",
+      "year": 2024,
+      "unit": "Million litre",
+      "total": "51266",
+      "delta": "0",
+      "tolerance": "5.5",
+      "passed": true,
+      "observation_ids": [
+        "dc17a96e1b2b037e9511da7ee620f7ab0a6e0eae6fcfbb66b0d33bf01fbab4ae",
+        "bd4cdf09d14135f7b19e07d2a37a133817a2d543077b6bed7c4dc5bd04097896",
+        "8c869d4f8a284e59c738b69900550372effc30a900747b86b8cd4346b9c30e3c",
+        "6011de06872df2b00ba6cba397fe64eccbc9e408edcf8a372d1a5a557d745cda",
+        "5a4e4ed1964779d4947f9f42a4c87288bae44a99c40602585da9108a4004bf74",
+        "9de9d37ac6432d08447d0068e47a02d212bcc0f0a412e2c4cb352bb16b1fcc71",
+        "2d82b575366d4400452ec6e9ee3229bd50c8eb6f5ee6cb0ab2281f9f62cf5ce1",
+        "b59032322703c3dc3a1efa05e544212317ec7da864b33f1185755cc9309abbdb",
+        "aeedb43c982433455a415e1795758014478a2e7ada12aa35b9cebcbdac88faaf",
+        "a0cb51718f3cab5bbb8e4d172a424281715ef1b1e01100cebdcca9b45ecd916b",
+        "b876952cac889ffd27262d700fa411a508104f236280c52be7378009c2dc7698"
+      ]
+    },
+    {
+      "table_id": "13.7",
+      "measure": "ปริมาณ (ล้านลิตร)",
+      "year": 2022,
+      "unit": "Million litre",
+      "total": "4524",
+      "delta": "0",
+      "tolerance": "3.0",
+      "passed": true,
+      "observation_ids": [
+        "25fcf767e156cb9533604b4b0ae89178a1f375e2a8c7fab1f3ecdd52ddbb42bf",
+        "f700bf1da199c4d0871e15761bb92cd65ff9d6f740dbb05c107ea6767b8253b7",
+        "0014ead35584f165fc95f591b9083a0a7d3f8773c93ee9e0bfa82debad313bad",
+        "6f310184fe0fef01ff0f06033043d1648fab21641d22af1cb987905fb0fd1cbf",
+        "62c6ed25e1cbac802297a19c15735d5e3140c4bc4e64798b72ce9f2c257fce32",
+        "d95889c9d9db2d6b3345fc7da3ca504a2016d4e144c5e61f2c1cfdbcbb3301f9"
+      ]
+    },
+    {
+      "table_id": "13.7",
+      "measure": "ปริมาณ (ล้านลิตร)",
+      "year": 2023,
+      "unit": "Million litre",
+      "total": "4141",
+      "delta": "0",
+      "tolerance": "3.0",
+      "passed": true,
+      "observation_ids": [
+        "7c98a7bef08bd4ac785b59478e9cd8e9803269089fed1e2519d1c457040f6fef",
+        "d5749b8c26323d82537e2170e2a975f68eb12d096b62ad2df04b83b9e2e5b1d6",
+        "f361c9ae04460486d595b48c51faaf0c1c0a3ddfa020966f6845aeedc5223a49",
+        "d411d23f42e84d682b256403d755ea59afd9c05ce6850a606ab0e50bb4129e37",
+        "8b67d6763001ba14a8750794478bd1c0a92dcb9b867b1831e3473565ffa595df",
+        "321448974347c451da699ae34c59577ea7172a2d637730b8b83bb118fe41a9e3"
+      ]
+    },
+    {
+      "table_id": "13.7",
+      "measure": "ปริมาณ (ล้านลิตร)",
+      "year": 2024,
+      "unit": "Million litre",
+      "total": "3063",
+      "delta": "0",
+      "tolerance": "3.0",
+      "passed": true,
+      "observation_ids": [
+        "a1ac954f9f111f067672b520b9f8435834cdd59d9684bfc1966a78a50f45fe54",
+        "3297645df336005a9fbfc10ea6474ed4f030b9485f42f9ce02fb7ea08d7f3fbd",
+        "b92e9ddd688a142af884377702a8dbde3d719c72384419a084cea5827b8026c9",
+        "32c81d4c67829451964365c09f2927d2ca5d6065735f37e33e0cb26ef15dcdb3",
+        "5de9f5ce047705012e8a19d0df2388eed4d24e3861f80012ad334e3986763a6a",
+        "b3afd3d65eb79859dc28b0e7e8a3ac785e2a7d612891dd24b65d8d570f5709e2"
+      ]
+    },
+    {
+      "table_id": "13.7",
+      "measure": "มูลค่า (ล้านบาท)",
+      "year": 2022,
+      "unit": "Million Baht",
+      "total": "88940",
+      "delta": "0",
+      "tolerance": "3.0",
+      "passed": true,
+      "observation_ids": [
+        "014550bd84816f6a3ba94c296817c130ce26f9854b3883a15d8fd57e839b5d8a",
+        "3072db4b66c996e8bdcdf78b7d3cffe4684ab43e3d86f36aa3b4f0918c3825c0",
+        "e58e8fe8a804ef30c1c7888c588cfeac2dde39ecf63c8b3a1b3ce2cbb9115d28",
+        "ee2a6cb6990ac832d22c340c4bddaa0f053b5d05305659fa8cf618ca06486322",
+        "4c42b526fbb72d346100899ff01c92670012d947e924099af858e24735d51a03",
+        "5365a983e383effde6006957db58d0cda71adda6f311d90a52f9254051726e45"
+      ]
+    },
+    {
+      "table_id": "13.7",
+      "measure": "มูลค่า (ล้านบาท)",
+      "year": 2023,
+      "unit": "Million Baht",
+      "total": "64244",
+      "delta": "0",
+      "tolerance": "3.0",
+      "passed": true,
+      "observation_ids": [
+        "e485b8693a796ec51053342f35b190f073ef7c2eb52bac2f5d44b1239ae45b00",
+        "2aff4a86ef4900d554763ca466d83f0ff23949e18f4fd95b26cb9f4e947e261d",
+        "3f2236d1a85a03314a2aba43c389634b40ad0bfec1ab24e99da67f75b8d9126a",
+        "df9c9a767ccb789d47589126b56d16f5d35d7540b566968c4a80d28763fdd763",
+        "ed61aa1d598694a5cefdb75064c56ce42c4933b79d5f5ad9556584604c39a876",
+        "b2ee4439b4f491797f96c855097960acff540d8e0c4ee3f59a64604249e35949"
+      ]
+    },
+    {
+      "table_id": "13.7",
+      "measure": "มูลค่า (ล้านบาท)",
+      "year": 2024,
+      "unit": "Million Baht",
+      "total": "44117",
+      "delta": "0",
+      "tolerance": "3.0",
+      "passed": true,
+      "observation_ids": [
+        "6113a13a89afdbb2c648050311a2ce7ff66469dd4d16bda1d8bb3e3106de8259",
+        "0e030ba6bcdf00d0b6e2dd097b0299d5313f4863a56bf5e4355a58d3cf64d7bc",
+        "817a878a5bf8f11e0ee63439d00369caa4e6ca57783187e9862ae57dcdd7562d",
+        "5646cb959afbb3d39266dca92abb1bf6a0f730386a4f105b377e4bd2854413cb",
+        "ab9bdb7fbd25ccad2cffadbcc65fbd0bfe7b525e51018b3c76f4d7106e28bad2",
+        "d625ec9cec57d6d6a2f8d7d124b839bca17def6c0a587b32f6a35f425beb1ab6"
+      ]
+    }
+  ],
+  "checks_count": 18,
+  "passed_count": 18,
+  "limitations": [
+    "Internal arithmetic consistency only; not independent source accuracy",
+    "No data values corrected; rounding tolerance based on displayed decimal places",
+    "No summation across units, nested subtotals or different source boundaries"
+  ]
+}

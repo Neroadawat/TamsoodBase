@@ -1,0 +1,13 @@
+{
+  "review_date": "2026-10-22",
+  "packages": ["production-oil", "production-condensate", "production-natural-gas"],
+  "publisher_metadata_label": "Open Data Common",
+  "publisher_access_condition": "ไม่มีการจำกัดการเข้าถึงข้อมูล",
+  "publisher_isopen": false,
+  "guidance_source": "https://gdhelppage.gdcatalog.go.th/p00_03_new7.html",
+  "guidance_page_date": "2026-05-14",
+  "evidence_method": "Official guidance read through web tool; original publisher metadata retained in local raw snapshot",
+  "finding": "Official GD Catalog guidance describes G0 Open Data Common as permitting reuse, copying, distribution and adaptation. The label and access-condition fields support project reuse; the isopen flag remains a metadata inconsistency to document, not proof by itself that use is prohibited.",
+  "project_decision": "Continue local research and database development with explicit DMF attribution. Retain raw downloads locally while preparing a clear third-party data notice before any public data release.",
+  "scope_limit": "This review concerns these public CSV packages only, not lecture PDFs, all DMF website content or competition LCI eligibility. No external publication performed."
+}

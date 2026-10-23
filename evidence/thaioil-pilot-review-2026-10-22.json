@@ -1,0 +1,27 @@
+{
+  "source": "THAIOIL_2024_REPORT",
+  "source_url": "https://investor.thaioilgroup.com/storage/download/sustainability/2024/top-sustainability2024-en.pdf",
+  "pdf_sha256": "cd4f1f887a7c4b584262f1f19f0c9c22129b8b6e2c026d83c1d8efc83fdd0621",
+  "extraction_method": "pypdf layout + strict source-specific four-column matching",
+  "extractor_version": 1,
+  "pypdf_version": "6.10.0",
+  "metric_count": 12,
+  "row_count": 48,
+  "competition_accepted": 0,
+  "visual_review": "Selected rows on PDF page 60 / printed 63 compared with rendered page",
+  "limits": [
+    "Selected indicators only; not a complete inventory",
+    "Energy boundary includes five companies; do not divide by refinery-only throughput",
+    "Totals and components overlap; do not sum energy, fuel and electricity totals",
+    "Power-of-ten scaling only; no product allocation or normalization",
+    "Reuse rights and competition eligibility not confirmed"
+  ],
+  "visual_evidence_local": "build/thaioil-page60.png",
+  "visual_evidence_sha256": "28348b901d1a1b926e17cccbed2b96b9833606dd48f25568c5b49fab9ac85f9a",
+  "mysql_verification": {
+    "pdf_sha256": "cd4f1f887a7c4b584262f1f19f0c9c22129b8b6e2c026d83c1d8efc83fdd0621",
+    "numeric_values_checked": 48,
+    "result": "passed",
+    "competition_accepted": 0
+  }
+}

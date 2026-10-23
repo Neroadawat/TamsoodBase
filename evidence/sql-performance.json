@@ -1,0 +1,52 @@
+{
+  "checked_at": "2026-10-22T17:21:09.286026+00:00",
+  "server_version": "8.1.0",
+  "dmf_stored_observations": 34899,
+  "workload": "Period lookup over stored DMF observations; no amount aggregation",
+  "period": "2026-01-01",
+  "result_rows": 102,
+  "equal_results": true,
+  "result_sha256": "568f0d4ccfc2f02c2650d2a621e51f2feec4774ed5f352c19b300985f1bb474a",
+  "measurement": "EXPLAIN ANALYZE root iterator actual end time, milliseconds; Docker/client latency excluded",
+  "repetitions": 5,
+  "warmup_per_variant": 1,
+  "order": "alternating",
+  "variants": {
+    "optimizer_choice": {
+      "sql": "SELECT snapshot_id,source_line,context_id,amount FROM tamsood_research.observation WHERE period_start='2026-01-01'",
+      "server_ms": [
+        0.209,
+        0.208,
+        0.278,
+        0.18,
+        0.181
+      ],
+      "median_server_ms": 0.208,
+      "plan": "-> Index lookup on observation using ix_period_context (period_start=DATE'2026-01-01')  (cost=35.7 rows=102) (actual time=0.167..0.181 rows=102 loops=1)"
+    },
+    "period_index_ignored": {
+      "sql": "SELECT snapshot_id,source_line,context_id,amount FROM tamsood_research.observation IGNORE INDEX(ix_period_context) WHERE period_start='2026-01-01'",
+      "server_ms": [
+        13.2,
+        11.8,
+        12.0,
+        11.8,
+        12.4
+      ],
+      "median_server_ms": 12.0,
+      "plan": "-> Filter: (tamsood_research.observation.period_start = DATE'2026-01-01')  (cost=3599 rows=121) (actual time=4.67..12.4 rows=102 loops=1)\n    -> Table scan on observation  (cost=3599 rows=34295) (actual time=0.0842..10.4 rows=34899 loops=1)"
+    }
+  },
+  "reference_use_case": {
+    "release_id": "327eed1abeed1e8eef8b77171d54ad65213bc96cf92608834fee11a214dc4bc7",
+    "sql": "SELECT publisher,label,reference_year,scaled_amount,unit_code FROM tamsood_reusable.accepted_reference WHERE release_id='327eed1abeed1e8eef8b77171d54ad65213bc96cf92608834fee11a214dc4bc7' AND reference_year=2024 AND data_kind='REPORTED_INTENSITY'",
+    "result_rows": 2,
+    "plan": "-> Nested loop inner join  (cost=5.33 rows=0.013) (actual time=0.237..0.259 rows=2 loops=1)\n    -> Nested loop inner join  (cost=5 rows=0.13) (actual time=0.23..0.247 rows=2 loops=1)\n        -> Nested loop inner join  (cost=4.66 rows=0.13) (actual time=0.223..0.236 rows=2 loops=1)\n            -> Nested loop inner join  (cost=4.32 rows=0.13) (actual time=0.208..0.217 rows=2 loops=1)\n                -> Inner hash join (tamsood_reusable.m.document_id = tamsood_reusable.d.document_id)  (cost=3.98 rows=0.13) (actual time=0.2..0.205 rows=2 loops=1)\n                    -> Filter: (tamsood_reusable.m.data_kind = 'REPORTED_INTENSITY')  (cost=1.38 rows=1.3) (actual time=0.151..0.156 rows=2 loops=1)\n                        -> Table scan on m  (cost=1.38 rows=26) (actual time=0.145..0.152 rows=26 loops=1)\n                    -> Hash\n                        -> Inner hash join (tamsood_reusable.p.publisher_id = tamsood_reusable.d.publisher_id)  (cost=1.1 rows=2) (actual time=0.0355..0.0378 rows=2 loops=1)\n                            -> Table scan on p  (cost=0.175 rows=2) (actual time=0.00511..0.00628 rows=2 loops=1)\n                            -> Hash\n                                -> Covering index scan on d using publisher_id  (cost=0.45 rows=2) (actual time=0.0161..0.0188 rows=2 loops=1)\n                -> Single-row covering index lookup on c using PRIMARY (context_id=tamsood_reusable.m.context_id)  (cost=0.163 rows=1) (actual time=0.00493..0.00496 rows=1 loops=2)\n            -> Single-row index lookup on o using metric_key (metric_key=tamsood_reusable.m.metric_key, reference_year=2024)  (cost=0.163 rows=1) (actual time=0.00951..0.00954 rows=1 loops=2)\n        -> Single-row covering index lookup on ro using PRIMARY (release_id='327eed1abeed1e8eef8b77171d54ad65213bc96cf92608834fee11a214dc4bc7', observation_id=tamsood_reusable.o.observation_id)  (cost=0.163 rows=1) (actual time=0.00489..0.00494 rows=1 loops=2)\n    -> Filter: (tamsood_reusable.r.decision = 'ACCEPTED_REFERENCE')  (cost=0.129 rows=0.1) (actual time=0.00495..0.00509 rows=1 loops=2)\n        -> Single-row index lookup on r using PRIMARY (observation_id=tamsood_reusable.o.observation_id, policy_version='TEAM_REFERENCE_V1-327eed1abeed')  (cost=0.129 rows=1) (actual time=0.00465..0.00471 rows=1 loops=2)"
+  },
+  "limits": [
+    "Local warm-cache sample, not a production latency guarantee",
+    "Ignoring the period index is a controlled baseline, not a schema migration",
+    "Small reference tables may correctly use table scans",
+    "Timings do not validate source data or LCI semantics"
+  ]
+}

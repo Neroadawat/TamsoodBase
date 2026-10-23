@@ -1,0 +1,95 @@
+{
+  "run_id": "20261022T151321110294Z",
+  "packages": [
+    {
+      "package": "production-oil",
+      "title": "ปริมาณการผลิตน้ำมันดิบ",
+      "raw_rows": 11635,
+      "structural_pass": 11633,
+      "rejected": 2,
+      "unique_candidate_identities": 11588,
+      "period_min": "2003-01",
+      "period_max": "2026-03",
+      "flags": {
+        "missing_block_label": 7797,
+        "zero_amount": 4627,
+        "duplicate_identity": 45,
+        "duplicate_conflicting_amount": 22,
+        "invalid_amount": 2,
+        "unknown_area": 2,
+        "missing_source_group": 2
+      },
+      "metadata_last_year_be": "2567",
+      "metadata_unit": "บาร์เรล",
+      "metadata_multiplier": "",
+      "ckan_isopen": false,
+      "license_label": "Open Data Common",
+      "excluded_equivalent_columns": []
+    },
+    {
+      "package": "production-condensate",
+      "title": "ปริมาณการผลิตก๊าซธรรมชาติเหลว",
+      "raw_rows": 11635,
+      "structural_pass": 11633,
+      "rejected": 2,
+      "unique_candidate_identities": 11588,
+      "period_min": "2003-01",
+      "period_max": "2026-03",
+      "flags": {
+        "missing_block_label": 7797,
+        "zero_amount": 7939,
+        "duplicate_identity": 45,
+        "duplicate_conflicting_amount": 18,
+        "invalid_amount": 2,
+        "unknown_area": 2,
+        "missing_source_group": 2
+      },
+      "metadata_last_year_be": "2567",
+      "metadata_unit": "บาร์เรล",
+      "metadata_multiplier": "",
+      "ckan_isopen": false,
+      "license_label": "Open Data Common",
+      "excluded_equivalent_columns": [
+        "CONDENSATE_EQUI_OIL"
+      ]
+    },
+    {
+      "package": "production-natural-gas",
+      "title": "ปริมาณการผลิตก๊าซธรรมชาติ",
+      "raw_rows": 11635,
+      "structural_pass": 11633,
+      "rejected": 2,
+      "unique_candidate_identities": 11588,
+      "period_min": "2003-01",
+      "period_max": "2026-03",
+      "flags": {
+        "missing_block_label": 7797,
+        "zero_amount": 3957,
+        "duplicate_identity": 45,
+        "duplicate_conflicting_amount": 30,
+        "invalid_amount": 2,
+        "unknown_area": 2,
+        "missing_source_group": 2
+      },
+      "metadata_last_year_be": "2567",
+      "metadata_unit": "ลูกบาศก์ฟุต",
+      "metadata_multiplier": "ล้าน",
+      "ckan_isopen": false,
+      "license_label": "Open Data Common",
+      "excluded_equivalent_columns": [
+        "GAS_EQUI_OIL"
+      ]
+    }
+  ],
+  "competition_accepted": 0,
+  "review_gates": [
+    "unit_time_basis",
+    "license_terms",
+    "numerical_external_review",
+    "LCI_eligibility",
+    "duplicate_resolution"
+  ],
+  "raw_rows": 34905,
+  "structural_pass": 34899,
+  "rejected": 6
+}

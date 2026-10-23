@@ -1,0 +1,42 @@
+[
+  {
+    "label": "W08",
+    "original_path": "C:\\Users\\HP\\Downloads\\[TSE69(1)-CN230-W08-A2Lecture-V3(Rev3Thai)] From data to SQL.pdf",
+    "sha256": "58553045bd2b81b8e5c4bdde16b7daab3b7c8f19148cadac53fb6d282af1d3dd",
+    "stored_file": "W08.pdf",
+    "pages": 74
+  },
+  {
+    "label": "W09",
+    "original_path": "C:\\Users\\HP\\Downloads\\[TSE69(1)-CN230-W09-A2Lecture-V3] SQL Part 1 - Docker CLI Ver (1).pdf",
+    "sha256": "f58dcf0da60d93b88621e0995341047ca2532fe06db815e99043449f9f9b6305",
+    "stored_file": "W09.pdf",
+    "pages": 50
+  },
+  {
+    "label": "W09",
+    "original_path": "C:\\Users\\HP\\Downloads\\[TSE69(1)-CN230-W09-A2Lecture-V3] SQL Part 1 - Docker CLI Ver.pdf",
+    "sha256": "f58dcf0da60d93b88621e0995341047ca2532fe06db815e99043449f9f9b6305",
+    "duplicate_of": "W09.pdf"
+  },
+  {
+    "label": "W10",
+    "original_path": "C:\\Users\\HP\\Downloads\\STUDENT [TSE69(1)-CN230-W10-A2Lecture-V7.3-byMali] SQL Part 2 (1).pdf",
+    "sha256": "f43b9dad9178a3e8790aca11d3e1ae7f29f179f9d0b3564bd6310a1f7ab060e1",
+    "stored_file": "W10.pdf",
+    "pages": 54
+  },
+  {
+    "label": "W10",
+    "original_path": "C:\\Users\\HP\\Downloads\\STUDENT [TSE69(1)-CN230-W10-A2Lecture-V7.3-byMali] SQL Part 2.pdf",
+    "sha256": "f43b9dad9178a3e8790aca11d3e1ae7f29f179f9d0b3564bd6310a1f7ab060e1",
+    "duplicate_of": "W10.pdf"
+  },
+  {
+    "label": "W11",
+    "original_path": "C:\\Users\\HP\\Downloads\\03_[TSE69(1)-CN230-W11-A2Lecture-V5.3] Normalization (ฉบับนักศึกษา).pdf",
+    "sha256": "e4ca0878f1d038da304018c929901444b2ac78c64ffcd80a820f325ca37dc5c4",
+    "stored_file": "W11.pdf",
+    "pages": 61
+  }
+]

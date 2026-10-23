@@ -1,0 +1,12 @@
+{
+  "review_date_local": "2026-10-23",
+  "attempts": [
+    {"url": "https://dmf.go.th/public/createpetroleum/data/report/menu/1114/year/2551/month/3", "web_tool_result": "not accessible", "direct_urllib_result": "HTTP 403 Forbidden"},
+    {"url": "https://dmf.go.th/public/createpetroleum/data/report/menu/1114/year/2569/month/3", "web_tool_result": "not accessible", "direct_urllib_result": "not attempted"}
+  ],
+  "finding": "No new historical time-basis evidence acquired. Existing January 2026 sample cannot establish the entire CSV time series.",
+  "decision": "KEEP_UNRESOLVED_TIME_BASIS",
+  "restrictions": ["Do not infer a daily or monthly unit for every historical row", "Do not multiply DAYSOFPRODUCE to derive monthly production", "Keep all 93 conflicting groups on hold", "Do not promote DMF pending rows into accepted reference release"],
+  "retry_condition": "A usable official historical report, data dictionary or changed access state becomes available; do not repeatedly request the same forbidden URL",
+  "data_changed": false
+}

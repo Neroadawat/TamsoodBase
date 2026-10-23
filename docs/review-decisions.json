@@ -1,0 +1,56 @@
+{
+  "note": "Team scope decisions follow the user instruction to judge suitability without waiting for MTEC. No external approval is implied.",
+  "gates": [
+    {
+      "id": "official_requirements",
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/submission-checklist.md"
+      ],
+      "reason": "Provided handbook requirements inventoried; actual deadline/channel and any amended assessment policy unavailable"
+    },
+    {
+      "id": "lci_eligibility",
+      "status": "VERIFIED",
+      "evidence": [
+        "docs/team-data-policy.md"
+      ],
+      "reason": "Team defines typed reference-data suitability; external MTEC confirmation is not required"
+    },
+    {
+      "id": "source_rights",
+      "status": "PARTIAL",
+      "evidence": [
+        "evidence/dmf-rights-review-2026-10-22.json",
+        "docs/source-use-notice.md",
+        "evidence/source-use-review-2026-10-23.json"
+      ],
+      "reason": "DMF G0 reviewed; company report redistribution/reuse unresolved"
+    },
+    {
+      "id": "domain_and_units",
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/dmf-review-results.md",
+        "docs/sprc-review.md",
+        "evidence/dmf-time-basis-review-2026-10-23.json"
+      ],
+      "reason": "Historical DMF time basis and report boundaries remain unresolved"
+    },
+    {
+      "id": "canonical_model",
+      "status": "VERIFIED",
+      "evidence": [
+        "docs/reusable-model.md",
+        "sql/mysql/reusable-schema.sql"
+      ],
+      "reason": "Typed relational reference model implemented and checked; does not claim product-normalized LCI"
+    },
+    {
+      "id": "team_and_defense",
+      "status": "UNCONFIRMED",
+      "evidence": [],
+      "reason": "Real member contributions and individual defense not yet recorded"
+    }
+  ]
+}

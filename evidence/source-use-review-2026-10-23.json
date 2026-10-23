@@ -1,0 +1,10 @@
+{
+  "review_date_local": "2026-10-23",
+  "method": "Official investor homepages read as web-tool text; not raw HTML snapshots",
+  "sources": [
+    {"publisher": "Thai Oil Public Company Limited", "url": "https://investor.thaioilgroup.com/en/home", "observed": "Copyright 2024 Thai Oil Public Company Limited All rights reserved", "redistribution_status": "NOT_CLEARED"},
+    {"publisher": "Star Petroleum Refining Public Company Limited", "url": "https://investor.sprc.co.th/en/home", "observed": "Copyright 2024 Star Petroleum Refining Public Company Limited. All Rights Reserved.", "redistribution_status": "NOT_CLEARED"}
+  ],
+  "limitation": "No report-specific open licence established from these pages; this is not an exhaustive legal determination",
+  "action": "Retain local research usage profile; use source links and reproducible code for evidence; no external publication performed"
+}

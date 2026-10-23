@@ -1,0 +1,13 @@
+{
+  "result": "passed",
+  "database": "tamsood_eppo",
+  "records_checked": 5934,
+  "report_sha256": "8fca0bcc322b9e6d597ef3b6b81acba31a6f2d2211a346e26e7ec9a3d6c37db3",
+  "schema_sha256": "c36fb205f03a627b800a1ec44fee671e1427f2793d2c5387178cb643cd2531a4",
+  "constraint_checks": {
+    "invalid_month": "rejected_as_expected",
+    "unknown_snapshot": "rejected_as_expected",
+    "negative_quantity": "rejected_as_expected"
+  },
+  "acceptance_changed": false
+}

@@ -1,0 +1,4 @@
+record_id,period,area,block,field,fuel,raw_value,unit,evidence_locator
+DMF-001,2026-01,offshore,B12/27 G7/50,ไพลิน / มรกต,natural_gas,260.81,million_ft3_per_day,ไพลิน / มรกต | ก๊าซธรรมชาติ | ล้านลบ.ฟุต/วัน
+DMF-002,2026-01,offshore,14A-16A,อาทิตย์,natural_gas,395.94,million_ft3_per_day,อาทิตย์ | ก๊าซธรรมชาติ | ล้านลบ.ฟุต/วัน
+DMF-003,2026-01,onshore,E5,น้ำพอง,natural_gas,5.90,million_ft3_per_day,น้ำพอง | ก๊าซธรรมชาติ | ล้านลบ.ฟุต/วัน

@@ -1,0 +1,16 @@
+{
+  "tested_on": "2026-10-22",
+  "mysql_version": "8.1.0",
+  "method": "scripts/verify_mysql.py; isolated temporary Docker container",
+  "rows_after_two_imports": 3,
+  "exact_decimal_roundtrip": true,
+  "constraint_checks_passed": [
+    "negative_amount",
+    "missing_source_fk",
+    "promotion_blocked",
+    "duplicate"
+  ],
+  "unit_tests_passed": 4,
+  "competition_accepted": 0,
+  "limitations": "Three-row manually transcribed fixture only. Does not establish source numerical accuracy, rights, LCI eligibility or full pipeline reproducibility from original source."
+}

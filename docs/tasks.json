@@ -1,0 +1,391 @@
+{
+  "updated_at": "2026-10-23",
+  "automation_id": "tamsoodbase",
+  "status_note": "Counts are task units, not percent completion or time estimates",
+  "tasks": [
+    {
+      "id": "T01",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "สรุป domain และข้อกำหนดตั้งต้น",
+      "evidence": "docs/requirements.md",
+      "done_when": "มี requirement/business rules และแยกข้อไม่ยืนยัน",
+      "dependencies": []
+    },
+    {
+      "id": "T02",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "เก็บต้นฉบับ DMF พร้อม hash",
+      "evidence": "src/acquire_dmf.py",
+      "done_when": "สาม package มี raw/metadata/manifest ที่ตรวจ hash ได้",
+      "dependencies": []
+    },
+    {
+      "id": "T03",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "สร้าง staging และ candidate/reject",
+      "evidence": "src/process_dmf.py",
+      "done_when": "row accounting 34905=34899+6 และรันซ้ำได้",
+      "dependencies": [
+        "T02"
+      ]
+    },
+    {
+      "id": "T04",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ทบทวน duplicate และหน่วยเบื้องต้น",
+      "evidence": "docs/dmf-review-results.md",
+      "done_when": "เก็บ exact/conflict และข้อจำกัดฐานเวลา",
+      "dependencies": [
+        "T03"
+      ]
+    },
+    {
+      "id": "T05",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "โหลดข้อมูลเต็มเข้า MySQL",
+      "evidence": "docs/mysql-full.md",
+      "done_when": "Decimal/raw checks และ constraints ผ่าน",
+      "dependencies": [
+        "T03"
+      ]
+    },
+    {
+      "id": "T06",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "เพิ่มตัวอย่างรายงานสองบริษัท",
+      "evidence": "docs/sprc-review.md",
+      "done_when": "48+53 observations พร้อม numerical/metadata roundtrip",
+      "dependencies": []
+    },
+    {
+      "id": "T07",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "สร้างเว็บสำรวจและเปิดหลักฐาน",
+      "evidence": "docs/explorer.md",
+      "done_when": "ค้น/กรอง/detail/รายงาน/issue ใช้งานได้",
+      "dependencies": [
+        "T03",
+        "T06"
+      ]
+    },
+    {
+      "id": "T08",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ตรวจ tests และตัวอย่าง trace",
+      "evidence": "evidence/report-trace-checks-2026-10-22.json",
+      "done_when": "tests32 และ source re-extraction samples5",
+      "dependencies": [
+        "T05",
+        "T06"
+      ]
+    },
+    {
+      "id": "T09",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "เตรียมชุดคำถาม domain พร้อมตัวอย่าง",
+      "evidence": "docs/domain-review-packet.md",
+      "done_when": "พร้อมให้ทีมใช้ถามโดยยังไม่ได้ส่ง",
+      "dependencies": [
+        "T06"
+      ]
+    },
+    {
+      "id": "T10",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "เขียนกฎ acceptance และ final gate ฉบับร่าง",
+      "evidence": "docs/acceptance-rules.md",
+      "done_when": "แยก technical pass/eligibility/rights ชัด",
+      "dependencies": [
+        "T01"
+      ]
+    },
+    {
+      "id": "T11",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ทำ release audit และ manifest ของหลักฐาน",
+      "evidence": "docs/release-readiness.md",
+      "done_when": "ตรวจ artifacts, hash, counts, gates และรายงานผล",
+      "dependencies": [
+        "T08",
+        "T10"
+      ]
+    },
+    {
+      "id": "T12",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ทบทวนข้อกำหนดการส่งจากเอกสารที่มีโดยไม่รอคำรับรอง",
+      "evidence": "docs/submission-checklist.md",
+      "done_when": "แยกรายการส่ง/วันส่งที่ทราบจากสิ่งที่ยังไม่มีประกาศ ไม่บล็อกการใช้ข้อมูล",
+      "dependencies": []
+    },
+    {
+      "id": "T13",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ตรวจสิทธิใช้รายงานและรูปแบบ evidence ที่ส่งได้",
+      "evidence": "docs/source-use-notice.md",
+      "done_when": "ตรวจหลักฐานต่อแหล่งและจัดทำ notice/วิธีส่ง evidence แล้ว; สิทธิแจกจ่ายรายงานยัง NOT_CLEARED ไม่อ้างว่าอนุญาต",
+      "dependencies": []
+    },
+    {
+      "id": "T14",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "หาหลักฐานฐานเวลาย้อนหลัง DMF",
+      "evidence": "evidence/dmf-time-basis-review-2026-10-23.json",
+      "done_when": "ทบทวนหลักฐานแล้วคง unresolved time basis และ hold ตามเหตุผล; ไม่อ้างว่าฐานเวลาย้อนหลังยืนยันแล้ว",
+      "dependencies": [
+        "T04"
+      ]
+    },
+    {
+      "id": "T15",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "กำหนดประเภทข้อมูลและเกณฑ์รับระดับทีม",
+      "evidence": "docs/team-data-policy.md",
+      "done_when": "มีนโยบายและผล ACCEPTED_REFERENCE/HOLD_CONTEXT ตาม use case จริง",
+      "dependencies": [
+        "T09"
+      ]
+    },
+    {
+      "id": "T16",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "สร้างแบบจำลองเชิงสัมพันธ์สำหรับข้อมูลหลายแหล่ง",
+      "evidence": "docs/reusable-model.md",
+      "done_when": "schema/ERD/dictionary/mapping พร้อม typed database และ roundtrip checks",
+      "dependencies": [
+        "T06",
+        "T10",
+        "T15"
+      ]
+    },
+    {
+      "id": "T17",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ตรวจตัวเลข subset ทุกค่าพร้อมขอบเขตการตรวจ",
+      "evidence": "build/reusable/manifest.json",
+      "done_when": "สกัดซ้ำ PDF ครบ101 และแยก automated review จาก human review",
+      "dependencies": [
+        "T10",
+        "T16"
+      ]
+    },
+    {
+      "id": "T18",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "เติม process/reference-product basis เมื่อมีข้อมูลครบจริง",
+      "evidence": "docs/product-inventory.md",
+      "done_when": "พบTable4ต่อ1000MJและสร้าง16source-reported inventoryของFAME/H-FAMEพร้อมSQL/metadata; measurementperiodยังnull ไม่อ้างfull acceptedLCI",
+      "dependencies": [
+        "T16"
+      ]
+    },
+    {
+      "id": "T19",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "ทำ SQL use cases และ performance evidence ชุด final",
+      "evidence": "docs/sql-performance.md",
+      "done_when": "SQL use cases และผล EXPLAIN ANALYZE 5รอบ พร้อม equality/hash ของผลลัพธ์",
+      "dependencies": [
+        "T16"
+      ]
+    },
+    {
+      "id": "T20",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ตรวจ reproducibility ในสภาพแวดล้อมสะอาด",
+      "evidence": "evidence/reference-package-verification.json",
+      "done_when": "แพ็กเกจรัน client แบบ -I ในโฟลเดอร์ใหม่และ restore ลง MySQL ว่าง 2ครั้ง ตรวจ97ค่าและ101source records; ไม่อ้างทดสอบOSใหม่",
+      "dependencies": [
+        "T16",
+        "T19"
+      ]
+    },
+    {
+      "id": "T21",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "ทำแพ็กเกจอ้างอิงภายในพร้อม manifest และวิธีใช้",
+      "evidence": "build/reusable/reference-data-local.zip",
+      "done_when": "CSV/JSON/schema/example/hash ตรวจครบและสิทธิแนบไปกับชุด",
+      "dependencies": [
+        "T11",
+        "T16"
+      ]
+    },
+    {
+      "id": "T22",
+      "priority": "P0",
+      "status": "WAITING",
+      "title": "เก็บ contribution จริงและ version history ของทีม",
+      "evidence": "docs/",
+      "done_when": "สมาชิกระบุงานจริงและซ้อมอธิบาย ไม่มีการสร้างย้อนหลังเท็จ",
+      "dependencies": []
+    },
+    {
+      "id": "T23",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "ทำ demo script รายงาน และชุดซ้อม defense",
+      "evidence": "docs/demo-and-defense.md",
+      "done_when": "มี demo script และคำถามซ้อมรายบุคคล; การซ้อมจริงของมนุษย์ยังไม่ถูกอ้างว่าเสร็จ",
+      "dependencies": [
+        "T16",
+        "T19"
+      ]
+    },
+    {
+      "id": "T24",
+      "priority": "P0",
+      "status": "TODO",
+      "title": "ตรวจ final gate และ freeze รุ่นส่ง",
+      "evidence": "docs/acceptance-rules.md",
+      "done_when": "ตรวจความพร้อมการใช้ข้อมูลและส่งงานตามข้อกำหนดที่มี ไม่ต้องรอคำอนุมัติ MTEC",
+      "dependencies": [
+        "T12",
+        "T13",
+        "T14",
+        "T15",
+        "T17",
+        "T18",
+        "T20",
+        "T21",
+        "T22",
+        "T23"
+      ]
+    },
+    {
+      "id": "T25",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "แก้และตรวจ export/filter/pagination",
+      "evidence": "tests/test_reusable.py",
+      "done_when": "CSV ว่าง schema ครบ; pagination97ไม่ซ้ำ/ตก; literal filters และ invalid inputs ตรวจแล้ว",
+      "dependencies": [
+        "T16"
+      ]
+    },
+    {
+      "id": "T26",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "สร้าง quality/coverage scorecard จาก release จริง",
+      "evidence": "evidence/reference-scorecard.json",
+      "done_when": "ผูก hash และตรวจ context/scaling/identity/counts; ไม่คาดคะแนนแข่งขัน",
+      "dependencies": [
+        "T16"
+      ]
+    },
+    {
+      "id": "T27",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "คัดและทดลองแหล่งข้อมูลทางการใหม่ที่เพิ่มความครอบคลุมจริง",
+      "evidence": "docs/nso-source.md",
+      "done_when": "NSO5 CSV273ค่าพร้อมhash/units/notes/SQLite/เว็บและtests; ยังเป็นnational staging ไม่รวม97reference",
+      "dependencies": [
+        "T16"
+      ]
+    },
+    {
+      "id": "T28",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "ปรับ UX เว็บจาก reference ต่างประเทศและตรวจบนมือถือ",
+      "evidence": "docs/ux-design.md",
+      "done_when": "ปรับอ่าน/ค้น/เมนู/reset/empty state และตรวจ browser ขนาดปกติ/390px; ยังไม่อ้าง user study",
+      "dependencies": [
+        "T07"
+      ]
+    },
+    {
+      "id": "T29",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "ตรวจยอดรวม NSO และเพิ่มการค้นปี/รายการ",
+      "evidence": "docs/nso-source.md",
+      "done_when": "18 additive checksพร้อมDecimal tolerance; testsตรวจจับcomponentเสีย; UIกรองดีเซล2024ได้2ค่าตรงต้นฉบับ",
+      "dependencies": [
+        "T27"
+      ]
+    },
+    {
+      "id": "T30",
+      "priority": "P0",
+      "status": "IN_PROGRESS",
+      "title": "เทียบNSOกับDEDE/DOEBและทบทวนrevision",
+      "evidence": "evidence/nso-dede-comparison.json",
+      "done_when": "เทียบทุกmetricที่มีขอบเขตตรงกันและเก็บcoverage/mismatch; รอบนี้7distinctค่า:DEDE1ต่าง,DOEB6ต่างค่าดิบแต่อยู่displayrounding; อีก266ยังไม่เทียบ",
+      "dependencies": [
+        "T27"
+      ]
+    },
+    {
+      "id": "T31",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "รวม NSO และ inventory งานวิจัยเข้า MySQL แบบแยกชนิดและ snapshot",
+      "evidence": "evidence/supplemental-mysql.json",
+      "done_when": "โหลดNSO273และinventory16เข้าMySQLจริง; numeric/payload/typed fields/process basisตรงครบ; FKและdirection constraintsปฏิเสธข้อมูลผิดตามคาด ไม่เปลี่ยนacceptance",
+      "dependencies": [
+        "T18",
+        "T27"
+      ]
+    },
+    {
+      "id": "T32",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "ปรับหน้าเลือกชุดข้อมูลจาก EPPO reference",
+      "evidence": "docs/ux-design.md",
+      "done_when": "catalog4กลุ่มค้น/กรองระดับ/reset/empty state/navigationตรวจbrowserจริง desktopและmobile390px; EPPOcandidateแยกไม่อ้างimport",
+      "dependencies": [
+        "T28"
+      ]
+    },
+    {
+      "id": "T33",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ตรวจและนำเข้า EPPO refinery intake/product output ตามแผน",
+      "evidence": "docs/eppo-source.md",
+      "done_when": "CSV2ชุด5934ค่ามีhash/locator/SQLite/MySQLroundtripครบ; API/UIค้นSPRC2024และหลักฐานตรวจจริง; ไม่สร้างyieldหรือเพิ่มacceptedLCI",
+      "dependencies": [
+        "T31",
+        "T32"
+      ]
+    },
+    {
+      "id": "T34",
+      "priority": "P0",
+      "status": "TODO",
+      "title": "ทำ model documentation และ release audit กลางทุกชุดข้อมูล",
+      "evidence": "docs/shared-plan-comparison.md",
+      "done_when": "dictionary/mapping/status/unit/source vocabulary และ audit ครอบคลุมDMF/corporate/NSO/inventory/EPPO โดยรักษาsemanticsต่างกัน",
+      "dependencies": [
+        "T33"
+      ]
+    }
+  ],
+  "automation_status": "ACTIVE",
+  "automation_note": "เปิดรอบปรับปรุงต่อทุกชั่วโมงในแชตนี้ รหัส tamsoodbase ตามแผน competition-improvement-plan.md; งาน local ต้องเปิดเครื่องและแอปไว้"
+}

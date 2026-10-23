@@ -1,0 +1,56 @@
+{
+  "row_count": 5934,
+  "counts_by_dataset": {
+    "11_13": 3012,
+    "11_14": 2922
+  },
+  "actual_period": [
+    [
+      1986,
+      1
+    ],
+    [
+      2026,
+      7
+    ]
+  ],
+  "normalized_lci_exchanges": 0,
+  "accepted_reference": 0,
+  "limitations": [
+    "Company intake and national product totals cannot be joined into plant yield",
+    "BBL/DAY and Million Litres are distinct quantity/time bases; no conversion or division applied",
+    "Catalog metadata last year 2567 is stale relative to actual CSV through July2026",
+    "Reported company labels retained; no automatic historical merger/rebranding mapping",
+    "Originating agency DOEB may overlap NSO; republications are not independent measurements",
+    "2026 is partial-year; no annualized totals",
+    "Open Data Common catalog label observed; specific redistribution terms not verified"
+  ],
+  "source_manifest": {
+    "resources": {
+      "11_13": {
+        "url": "https://catalog.eppo.go.th/dataset/ee3afa01-91ba-4c8a-af79-f34f0598423a/resource/f8ce9405-81c1-498b-94b5-9b86c0ca26c1/download/dataset_11_13.csv",
+        "filename": "dataset_11_13.csv",
+        "sha256": "e3d28ce5f04dfc50d765218e19e588d4bdf415fdcc9c4d4d6026fc86e98c7943",
+        "acquired_at": "2026-10-23T10:48:34.148533+00:00",
+        "acquisition_method": "Official CKAN resource download using browser downloadMedia; direct HTTP returned403",
+        "catalog_url": "https://catalog.eppo.go.th/th/dataset/dataset_11_13",
+        "license_label": "Open Data Common",
+        "originating_agency": "Department of Energy Business",
+        "metadata_last_data_year_be": 2567
+      },
+      "11_14": {
+        "url": "https://catalog.eppo.go.th/dataset/e859cce9-1b31-4f13-bfff-151155c7f8e2/resource/63491d54-cfd8-46ea-866b-824519097944/download/dataset_11_14.csv",
+        "filename": "dataset_11_14.csv",
+        "sha256": "b70629476ebf1502719275a7eb70b08c0e01220acb27733f42e432e32cad6388",
+        "acquired_at": "2026-10-23T10:48:34.148533+00:00",
+        "acquisition_method": "Official CKAN resource download using browser downloadMedia; direct HTTP returned403",
+        "catalog_url": "https://catalog.eppo.go.th/th/dataset/dataset_11_14",
+        "license_label": "Open Data Common",
+        "originating_agency": "Department of Energy Business",
+        "metadata_last_data_year_be": 2567
+      }
+    }
+  },
+  "sqlite_roundtrip": "passed",
+  "duplicate_business_keys": 0
+}

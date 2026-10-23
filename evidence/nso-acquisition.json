@@ -1,0 +1,34 @@
+{
+  "acquisition_method": "Official website download links via browser; direct HTTP returned 418",
+  "resources": {
+    "13.5": {
+      "url": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/File_SYB/2026/13/T_13.5_2026.csv",
+      "sha256": "3db1f67f44d0a8db5975b6c63c99f771810733b8b4b8b1f9c7eb30d908066c31",
+      "acquired_at": "2026-10-23T09:24:08.788665+00:00"
+    },
+    "13.6": {
+      "url": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/File_SYB/2026/13/T_13.6_2026.csv",
+      "sha256": "ba55f71688dfb2a5c11bb1ddea6ef3065148884bc659954365a45308568bfa04",
+      "acquired_at": "2026-10-23T09:24:08.793852+00:00"
+    },
+    "13.7": {
+      "url": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/File_SYB/2026/13/T_13.7_2026.csv",
+      "sha256": "03c43bbeba80a8487d24bf030a7e2debb444e2bab00f602d9668609ee95f44c3",
+      "acquired_at": "2026-10-23T09:24:08.797863+00:00"
+    },
+    "13.8": {
+      "url": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/File_SYB/2026/13/T_13.8_2026.csv",
+      "sha256": "ab2603830fb5225b5cf37063e0565dff16183be995c14006080dcfd47c87c5f3",
+      "acquired_at": "2026-10-23T09:24:08.802855+00:00"
+    },
+    "13.10": {
+      "url": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/File_SYB/2026/13/T_13.10_2026.csv",
+      "sha256": "abfc8301bf168ad15e61f36b3550509e79826eec31a0b0ffecedda1d72a18761",
+      "acquired_at": "2026-10-23T09:24:08.806857+00:00"
+    }
+  },
+  "observations": 273,
+  "normalized_lci_exchanges": 0,
+  "accepted_reference": 0,
+  "evidence_note": "Original CSV snapshot local; parse/database verification not independent source comparison"
+}

@@ -1,0 +1,15 @@
+{
+  "source_id": "DMF-PRODUCTION-MONTHLY",
+  "publisher": "กรมเชื้อเพลิงธรรมชาติ",
+  "url": "https://dmf.go.th/public/createpetroleum/data/report/menu/1114/year/2569/month/1",
+  "accessed_date": "2026-10-22",
+  "source_revision_date": "2026-02-16",
+  "period": "2026-01",
+  "method": "AI-assisted manual transcription from web tool readable text",
+  "evidence_level": "secondary_text_only",
+  "original_snapshot_available": false,
+  "rights_status": "not_reviewed",
+  "domain_status": "pending_instructor_review",
+  "direct_acquisition": "Python urllib request returned HTTP 403; no bypass attempted",
+  "notes": "Three natural-gas values only. Not a complete month. No original HTML/PDF/XLSX snapshot has been saved. Independent numerical review is pending. Gas production includes sold gas, fuel use at production sites and necessary flaring; it is not sales volume."
+}

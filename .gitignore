@@ -1,0 +1,8 @@
+__pycache__/
+build/
+.venv/
+course-materials/*.pdf
+course-materials/*.txt
+.env
+data/raw/
+.local/
