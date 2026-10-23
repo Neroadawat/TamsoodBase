@@ -2,7 +2,7 @@
 
 สถานะนี้นับเป็นหน่วยงาน ไม่ใช่เปอร์เซ็นต์ความสมบูรณ์หรือประมาณเวลา แต่ละงานมีขนาดต่างกัน
 
-ทั้งหมด 34 งาน: DONE 30 · IN_PROGRESS 1 · TODO 2 · WAITING 1
+ทั้งหมด 34 งาน: DONE 31 · IN_PROGRESS 1 · TODO 1 · WAITING 1
 
 DONE หมายถึงผ่านเกณฑ์เฉพาะงานนั้น ไม่ได้หมายความว่า dataset ผ่าน MTEC แล้ว
 WAITING คือรอข้อมูล/การยืนยัน/การมีส่วนร่วมของมนุษย์ ทำงานอิสระส่วนอื่นต่อได้
@@ -42,7 +42,7 @@ WAITING คือรอข้อมูล/การยืนยัน/การ�
 | T31 | P0 | DONE | รวม NSO และ inventory งานวิจัยเข้า MySQL แบบแยกชนิดและ snapshot<br>โหลดNSO273และinventory16เข้าMySQLจริง; numeric/payload/typed fields/process basisตรงครบ; FKและdirection constraintsปฏิเสธข้อมูลผิดตามคาด ไม่เปลี่ยนacceptance | [evidence/supplemental-mysql.json](../evidence/supplemental-mysql.json) | T18, T27 |
 | T32 | P1 | DONE | ปรับหน้าเลือกชุดข้อมูลจาก EPPO reference<br>catalog4กลุ่มค้น/กรองระดับ/reset/empty state/navigationตรวจbrowserจริง desktopและmobile390px; EPPOcandidateแยกไม่อ้างimport | [docs/ux-design.md](../docs/ux-design.md) | T28 |
 | T33 | P0 | DONE | ตรวจและนำเข้า EPPO refinery intake/product output ตามแผน<br>CSV2ชุด5934ค่ามีhash/locator/SQLite/MySQLroundtripครบ; API/UIค้นSPRC2024และหลักฐานตรวจจริง; ไม่สร้างyieldหรือเพิ่มacceptedLCI | [docs/eppo-source.md](../docs/eppo-source.md) | T31, T32 |
-| T34 | P0 | TODO | ทำ model documentation และ release audit กลางทุกชุดข้อมูล<br>dictionary/mapping/status/unit/source vocabulary และ audit ครอบคลุมDMF/corporate/NSO/inventory/EPPO โดยรักษาsemanticsต่างกัน | [docs/shared-plan-comparison.md](../docs/shared-plan-comparison.md) | T33 |
+| T34 | P0 | DONE | ทำ model documentation และ release audit กลางทุกชุดข้อมูล<br>index/dictionary/mapping/status/unit/source vocabularyครบ5ชั้น; releaseauditเพิ่มNSO/inventory/EPPO+staleevidence checks; webassetsในpackage; tests60ผ่าน ไม่อ้างphysicalschemaรวม | [docs/dataset-model-index.md](../docs/dataset-model-index.md) | T33 |
 
 ## วิธีทำต่อในแต่ละรอบ
 

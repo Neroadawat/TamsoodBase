@@ -377,10 +377,10 @@
     {
       "id": "T34",
       "priority": "P0",
-      "status": "TODO",
+      "status": "DONE",
       "title": "ทำ model documentation และ release audit กลางทุกชุดข้อมูล",
-      "evidence": "docs/shared-plan-comparison.md",
-      "done_when": "dictionary/mapping/status/unit/source vocabulary และ audit ครอบคลุมDMF/corporate/NSO/inventory/EPPO โดยรักษาsemanticsต่างกัน",
+      "evidence": "docs/dataset-model-index.md",
+      "done_when": "index/dictionary/mapping/status/unit/source vocabularyครบ5ชั้น; releaseauditเพิ่มNSO/inventory/EPPO+staleevidence checks; webassetsในpackage; tests60ผ่าน ไม่อ้างphysicalschemaรวม",
       "dependencies": [
         "T33"
       ]

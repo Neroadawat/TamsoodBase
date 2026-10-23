@@ -2,6 +2,8 @@
 
 CN230 × MTEC Final Project: ฐานข้อมูลการผลิตเชื้อเพลิงของไทยที่มีต้นฉบับ เกณฑ์ตรวจ และเส้นทางย้อนกลับระดับแถว
 
+สมาชิกใหม่เริ่มที่ [คู่มือรับช่วงงาน](docs/TEAM_HANDOFF.md) และ [ข้อความส่งต่อให้แชตของสมาชิก](docs/CHATGPT_HANDOFF_PROMPT.md) — clone repo จะไม่ได้raw/build/Dockervolume ต้องอ่านวิธีเตรียมข้อมูลก่อน
+
 ติดตามงานคงเหลือและเกณฑ์จบที่ [Task board](docs/tasks.md) และ [ผลตรวจความพร้อม](docs/release-readiness.md) ฐานข้อมูลใช้งานได้แต่ยังไม่ผ่าน final submission gate
 
 อัปเดต 23 ตุลาคม 2569: NSO273ค่าและงานวิจัยFAME/H-FAME16ค่าโหลดและตรวจอ่านกลับใน MySQL `tamsood_supplemental` แล้ว ดู [schema/ผลตรวจ](docs/supplemental-mysql.md) ทั้งสองชุดยังแยกสถานะจาก97ACCEPTED_REFERENCE เว็บเริ่มที่หน้าเลือกชุดข้อมูลและยังอ่านSQLite/JSON; EPPOนำเข้าCSVโรงกลั่น3012และผลผลิตประเทศ2922ค่าพร้อมMySQLroundtripแล้ว ยังแยกเป็นsource statistics ดู[รายละเอียด](docs/eppo-source.md) ดู [ผลเทียบแผนกับงานจริง](docs/shared-plan-comparison.md)
@@ -116,3 +118,5 @@ lecture W08-W11 ใช้เป็นแนวทางประกอบ Final 
 ยังไม่ได้ดูวิดีโอ Launch; อ่านประกาศและ Q&A ใน Teams แล้ว
 
 AI ช่วยค้นข้อมูล เขียนระบบ และเอกสารในวันที่ 22 ตุลาคม 2569 สมาชิกทีมต้องตรวจและอธิบายผลงาน รวมถึงบันทึก contribution ตามงานที่ตนทำจริง
+
+ดัชนี schema/dictionary/mapping ทุกชั้น: [แบบจำลองข้อมูลกลาง](docs/dataset-model-index.md) — release audit ครอบคลุม NSO/inventory/EPPO เพิ่มจาก DMF/corporate แล้ว แต่ยังไม่ผ่าน final submission gate

@@ -1,0 +1,137 @@
+{
+  "technical_pass": true,
+  "submission_ready": false,
+  "layer_checks": [
+    {
+      "name": "layer_nso_identities",
+      "passed": true,
+      "detail": 273
+    },
+    {
+      "name": "layer_nso_status",
+      "passed": true,
+      "detail": "No acceptance promotion"
+    },
+    {
+      "name": "layer_nso_no_promotion",
+      "passed": true,
+      "detail": "Source statistics only"
+    },
+    {
+      "name": "layer_nso_sources",
+      "passed": true,
+      "detail": "Source bytes match saved hashes"
+    },
+    {
+      "name": "layer_nso_row_provenance",
+      "passed": true,
+      "detail": "Every row refers to audited source snapshot"
+    },
+    {
+      "name": "layer_nso_sqlite_integrity",
+      "passed": true,
+      "detail": "Integrity and foreign keys"
+    },
+    {
+      "name": "layer_nso_sqlite_payload",
+      "passed": true,
+      "detail": "All current payloads equal; historical snapshots excluded by identity"
+    },
+    {
+      "name": "layer_nso_mysql_evidence",
+      "passed": true,
+      "detail": "Stored evidence bound to current report/schema; not a live query"
+    },
+    {
+      "name": "layer_inventory_identities",
+      "passed": true,
+      "detail": 16
+    },
+    {
+      "name": "layer_inventory_status",
+      "passed": true,
+      "detail": "No acceptance promotion"
+    },
+    {
+      "name": "layer_inventory_basis",
+      "passed": true,
+      "detail": "Reported basis and missing measurement period retained"
+    },
+    {
+      "name": "layer_inventory_sources",
+      "passed": true,
+      "detail": "Source bytes match saved hashes"
+    },
+    {
+      "name": "layer_inventory_row_provenance",
+      "passed": true,
+      "detail": "Every row refers to audited source snapshot"
+    },
+    {
+      "name": "layer_inventory_sqlite_integrity",
+      "passed": true,
+      "detail": "Integrity and foreign keys"
+    },
+    {
+      "name": "layer_inventory_sqlite_payload",
+      "passed": true,
+      "detail": "All current payloads equal; historical snapshots excluded by identity"
+    },
+    {
+      "name": "layer_inventory_mysql_evidence",
+      "passed": true,
+      "detail": "Stored evidence bound to current report/schema; not a live query"
+    },
+    {
+      "name": "layer_eppo_identities",
+      "passed": true,
+      "detail": 5934
+    },
+    {
+      "name": "layer_eppo_status",
+      "passed": true,
+      "detail": "No acceptance promotion"
+    },
+    {
+      "name": "layer_eppo_unit_scope",
+      "passed": true,
+      "detail": "Rate/company versus quantity/country remain separate"
+    },
+    {
+      "name": "layer_eppo_no_promotion",
+      "passed": true,
+      "detail": "Source statistics only"
+    },
+    {
+      "name": "layer_eppo_sources",
+      "passed": true,
+      "detail": "Source bytes match saved hashes"
+    },
+    {
+      "name": "layer_eppo_row_provenance",
+      "passed": true,
+      "detail": "Every row refers to audited source snapshot"
+    },
+    {
+      "name": "layer_eppo_sqlite_integrity",
+      "passed": true,
+      "detail": "Integrity and foreign keys"
+    },
+    {
+      "name": "layer_eppo_sqlite_payload",
+      "passed": true,
+      "detail": "All current payloads equal; historical snapshots excluded by identity"
+    },
+    {
+      "name": "layer_eppo_mysql_evidence",
+      "passed": true,
+      "detail": "Stored evidence bound to current report/schema; not a live query"
+    }
+  ],
+  "tests_passed": 60,
+  "limitations": [
+    "Stored MySQL evidence checked, not live SQL",
+    "Physical schemas remain separate",
+    "Final submission gates still unresolved"
+  ]
+}

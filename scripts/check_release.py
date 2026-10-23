@@ -22,11 +22,18 @@ def selected_files(root):
     for directory in ('src','scripts','tests','docs','sql','evidence','examples','.vscode'):
         paths.extend(p for p in (root/directory).rglob('*') if p.is_file() and p.suffix in allowed
                      and not p.is_symlink() and p.resolve().is_relative_to(root.resolve()))
+    paths.extend(p for p in (root/'web').glob('*') if p.is_file() and p.suffix in {'.html','.css','.js'}
+                 and not p.is_symlink() and p.resolve().is_relative_to(root.resolve()))
     return sorted(set(p for p in paths if p.is_file() and not p.is_symlink() and p.resolve().is_relative_to(root.resolve())))
 
 
 def audit(run_tests=False,package=False):
     checks=[]
+    if __package__:
+        from .audit_dataset_layers import audit_layers
+    else:
+        from audit_dataset_layers import audit_layers
+    checks.extend(audit_layers(ROOT))
     def check(name,ok,detail): checks.append({'name':name,'passed':bool(ok),'detail':detail})
     for filename in ('README.md','docs/tasks.json','docs/acceptance-rules.md','docs/domain-review-packet.md',
                      'docs/database-design.md','docs/data-dictionary.md','sql/mysql/full-schema.sql'):
