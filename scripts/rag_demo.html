@@ -8,37 +8,96 @@
   main { max-width: 46rem; margin: 3rem auto; padding: 0 1rem; }
   form, article { background: white; padding: 1.2rem; border: 1px solid #c9ded6; border-radius: .75rem; margin: 1rem 0; }
   textarea { display: block; box-sizing: border-box; width: 100%; margin: .5rem 0; padding: .65rem; }
-  button, textarea { font: inherit; }
+  button, textarea, select { font: inherit; }
   button { cursor: pointer; color: white; background: #176653; border: 0; border-radius: .4rem; padding: .5rem .75rem; }
   button:disabled { opacity: .6; }
   a { color: #125d4d; }
   .examples { display: flex; flex-wrap: wrap; gap: .45rem; }
   .examples button { color: #16483c; background: #d9eee6; }
   article h2 { margin: 0; font-size: 1.2rem; }
+  article { overflow-wrap: anywhere; }
+  :focus-visible { outline: 3px solid #315fa3; outline-offset: 3px; }
+  .skip-link { position: absolute; left: 1rem; top: -5rem; background: white; padding: .6rem; }
+  .skip-link:focus { top: .5rem; }
+  select { max-width: 100%; }
 </style>
+<a class="skip-link" href="#question">ข้ามไปช่องคำถาม</a>
 <main>
   <h1>ถามข้อมูล TamsoodBase</h1>
-  <p>ค้นคำตอบจากการ์ดหลักฐานเกี่ยวกับเชื้อเพลิงและ LCI พร้อมลิงก์อ่านต้นทาง</p>
+  <p>ค้นข้อความจากการ์ดหลักฐาน <!-- card-count --> ใบเกี่ยวกับเชื้อเพลิงและ LCI พร้อมลิงก์อ่านต้นทาง</p>
+  <p>ผลค้นอาจเกี่ยวข้องเพียงบางส่วน โปรดตรวจชนิดเชื้อเพลิง สารที่วัด และช่วงทดสอบก่อนใช้ การ์ด E10 ช่วงสตาร์ตเย็นใช้ยืนยันค่า E20 หรือ N₂O ไม่ได้ หากคำถามสั้นหรือกำกวม ให้ระบุสิ่งที่ต้องการเพิ่ม</p>
   <p><!-- mode-notice --></p>
   <div class="examples" aria-label="ตัวอย่างคำถาม">
     <button type="button">ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร?</button>
     <button type="button">รถ E10 ตอนสตาร์ตเย็นกินน้ำมันเท่าไหร่?</button>
     <button type="button">โรงงานอ้อยผลิตไอน้ำจากอะไร?</button>
+    <button type="button">หน่วยหน้าที่ FAME คืออะไร?</button>
+    <button type="button">ทำไม Land seeding ถึงถูกพักการใช้?</button>
   </div>
   <form>
     <label for="question">คำถามของคุณ</label>
-    <textarea id="question" required maxlength="500" rows="2"></textarea>
+    <textarea id="question" required maxlength="500" rows="2" aria-describedby="question-help"></textarea>
+    <p id="question-help">กด Ctrl+Enter เพื่อค้นหา หรือใช้ปุ่มค้นหลักฐาน</p>
     <button type="submit">ค้นหลักฐาน</button>
   </form>
-  <p id="status" role="status"></p>
-  <section id="results" aria-label="หลักฐานที่พบ"></section>
+  <p id="status" role="status" aria-atomic="true" tabindex="-1"></p>
+  <p id="searched-question" hidden></p>
+  <section id="results" aria-label="หลักฐานที่พบ" aria-busy="false"></section>
+  <form id="review" hidden>
+    <p>ช่วยตรวจว่าหลักฐานตอบคำถามได้หรือไม่ ผลประเมินและคำถามจะเก็บเฉพาะในเครื่องนี้ ไม่ต้องใส่ชื่อหรือข้อมูลส่วนตัว</p>
+    <label for="verdict">ผลประเมิน</label>
+    <select id="verdict"><option value="uncertain">ยังไม่แน่ใจ</option><option value="sufficient">มีหลักฐานเพียงพอ</option><option value="insufficient">หลักฐานยังไม่พอหรือผิดขอบเขต</option></select>
+    <label for="note">สิ่งที่ควรปรับปรุง (ไม่บังคับ)</label>
+    <textarea id="note" maxlength="1000" rows="2"></textarea>
+    <button type="submit">บันทึกผลประเมินในเครื่อง</button>
+    <p id="review-status" role="status"></p>
+  </form>
 </main>
 <script>
-  const form = document.querySelector('form');
+  const form = document.querySelector('form:not(#review)');
   const question = document.querySelector('#question');
   const status = document.querySelector('#status');
   const results = document.querySelector('#results');
   const submit = form.querySelector('button');
+  const review = document.querySelector('#review');
+  const reviewStatus = document.querySelector('#review-status');
+  const verdict = document.querySelector('#verdict');
+  const note = document.querySelector('#note');
+  let searchId = null;
+  let searchRevision = 0;
+  let activeReview = null;
+  question.addEventListener('keydown', event => {
+    if (event.ctrlKey && event.key === 'Enter' && !submit.disabled) {
+      event.preventDefault(); form.requestSubmit();
+    }
+  });
+  review.addEventListener('submit', async event => {
+    event.preventDefault();
+    const button = review.querySelector('button');
+    if (!searchId || button.disabled) return;
+    const submittedSearchId = searchId;
+    const revision = searchRevision;
+    const request = {controller: new AbortController()};
+    activeReview = request;
+    const timeout = setTimeout(() => request.controller.abort(), 12000);
+    button.disabled = true;
+    verdict.disabled = true; note.readOnly = true;
+    try {
+      const response = await fetch('/review', {method:'POST', headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({search_id:submittedSearchId, verdict:verdict.value, note:note.value}),
+        signal:request.controller.signal});
+      if (!response.ok || (await response.json()).saved !== true) throw new Error('Review not confirmed');
+      if (revision !== searchRevision || searchId !== submittedSearchId) return;
+      reviewStatus.textContent = 'บันทึกแล้ว ขอบคุณที่ช่วยตรวจหลักฐาน'; searchId = null;
+    } catch {
+      if (revision !== searchRevision || searchId !== submittedSearchId) return;
+      reviewStatus.textContent = 'ยังยืนยันการบันทึกไม่ได้ กรุณาลองใหม่หรือค้นอีกครั้ง';
+      button.disabled = false; verdict.disabled = false; note.readOnly = false;
+    } finally {
+      clearTimeout(timeout);
+      if (activeReview === request) activeReview = null;
+    }
+  });
   for (const example of document.querySelectorAll('.examples button')) {
     example.addEventListener('click', () => {
       question.value = example.textContent;
@@ -48,18 +107,33 @@
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!question.value.trim() || submit.disabled) return;
+    ++searchRevision;
+    if (activeReview) { activeReview.controller.abort(); activeReview = null; }
+    const submittedQuestion = question.value.trim();
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 12000);
     submit.disabled = true;
+    question.readOnly = true;
+    for (const button of document.querySelectorAll('.examples button')) button.disabled = true;
+    results.setAttribute('aria-busy', 'true');
+    document.querySelector('#searched-question').hidden = true;
     results.replaceChildren();
+    review.hidden = true; searchId = null;
     status.textContent = 'กำลังค้นหลักฐาน…';
     try {
       const response = await fetch('/ask', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({question: question.value.trim()})
+        body: JSON.stringify({question: submittedQuestion}), signal: controller.signal
       });
       if (!response.ok) throw new Error('Search failed');
-      const {hits, summary} = await response.json();
-      status.textContent = hits.length ? 'หลักฐานที่เกี่ยวข้อง' : 'ยังไม่พบหลักฐานสำหรับคำถามนี้';
+      const {hits, summary, search_id} = await response.json();
+      const searchedQuestion = document.querySelector('#searched-question');
+      searchedQuestion.textContent = 'ผลค้นสำหรับ: ' + submittedQuestion; searchedQuestion.hidden = false;
+      searchId = search_id; review.hidden = false;
+      review.querySelector('button').disabled = false; reviewStatus.textContent = '';
+      note.value = ''; note.readOnly = false; verdict.value = 'uncertain'; verdict.disabled = false;
+      status.textContent = hits.length ? 'ข้อความที่อาจเกี่ยวข้อง — โปรดตรวจว่าตรงกับคำถามก่อนใช้' : 'ยังไม่พบหลักฐานสำหรับคำถามนี้ ลองระบุเชื้อเพลิงและสิ่งที่ต้องการทราบให้ชัดขึ้น';
       if (summary) {
         const card = document.createElement('article');
         const title = document.createElement('h2');
@@ -85,14 +159,38 @@
         title.textContent = hit.title;
         text.textContent = hit.text;
         source.href = hit.source_url;
+        source.target = '_blank'; source.rel = 'noopener noreferrer';
         source.textContent = 'ดูต้นทาง · ' + hit.locator;
         card.append(title, text, source);
+        if (hit.attribution) {
+          const credit = document.createElement('p');
+          credit.textContent = hit.attribution + ' · ' + hit.licence + ' · ' + hit.claim_type;
+          card.append(credit);
+        }
+        if (hit.lineage && hit.lineage.count) {
+          const context = document.createElement('p');
+          context.textContent = 'รายการต้นทางประกอบ ' + hit.lineage.count + ' รายการ แสดงตัวอย่างด้านล่าง แต่ละรายการมีฐานและขอบเขตของตนเอง';
+          card.append(context);
+          for (const row of hit.lineage.observations) {
+            const link = document.createElement('a');
+            link.href = '/evidence/view?id=' + encodeURIComponent(row.observation_id);
+            link.target = '_blank'; link.rel = 'noopener noreferrer';
+            link.textContent = row.process + ' · ' + row.flow + ' · ' + row.amount + ' ' + (row.unit || '(ไม่ระบุหน่วย)');
+            const line = document.createElement('p'); line.append(link); card.append(line);
+          }
+        }
         results.append(card);
       }
-    } catch {
-      status.textContent = 'ค้นหลักฐานไม่ได้ในตอนนี้ ลองใหม่อีกครั้ง';
+      status.focus();
+    } catch (error) {
+      status.textContent = error.name === 'AbortError' ? 'การค้นใช้เวลานานเกินไป กรุณาลองใหม่' : 'ค้นหลักฐานไม่ได้ในตอนนี้ ลองใหม่อีกครั้ง';
+      status.focus();
     } finally {
+      clearTimeout(timeout);
       submit.disabled = false;
+      question.readOnly = false;
+      for (const button of document.querySelectorAll('.examples button')) button.disabled = false;
+      results.setAttribute('aria-busy', 'false');
     }
   });
 </script>

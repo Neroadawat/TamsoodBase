@@ -1,0 +1,12 @@
+{
+  "checked_at_utc": "2026-11-08T18:36:08.100497+00:00",
+  "container": "tamsood-handoff-mysql-fb89454c4fd5",
+  "run_id": "20261108T113219115060Z",
+  "observations_equal": 34899,
+  "raw_payloads_equal": 34905,
+  "scope": "ISOLATED_LOCAL_NEW_SNAPSHOT_NOT_EC2_RESTORE",
+  "network": "none",
+  "published_ports": [],
+  "production_changed": false,
+  "passed": true
+}

@@ -1,4 +1,8 @@
-## แผนปัจจุบัน 30 ตุลาคม 2569
+## สถานะรับช่วงล่าสุด 9 พฤศจิกายน 2569
+
+เริ่มที่ [รายการรับช่วงปัจจุบัน](TEAMMATE_NEXT_STEPS_TH.md), `docs/tasks.json` และท้าย PROJECT_STATE.md ก่อนอ่านแผนเก่าด้านล่าง DMF/NSO/RAG/MySQL/Neo4j lab ในเครื่องใหม่ตรวจแล้ว; Corporate กู้และตรวจ 101 รายการครบทุกช่องพร้อม constraint/rollback แล้ว และ HTTP ข้อมูลจริง 144 checks ผ่าน ส่วน EPPO/DOM ต้นฉบับ หลักฐาน LCI และ human review ยังเปิด งานรับช่วงเตรียมส่งผ่าน branch `codex/teammate-runtime-handoff-2026-11-09` ให้ตรวจสถานะ commit/push จาก Git จริง รอบนี้ไม่ deploy หรือทำรายงาน/สไลด์เพิ่ม
+
+## แผนเดิม 30 ตุลาคม 2569
 
 อ่าน [แผนแก้ตามคำวิจารณ์12ข้อ](expert-review-action-plan.md) และ [ข้อค้างปัจจุบัน](remaining-work-2026-10-30.md) ก่อน ข้อความด้านล่างเป็นประวัติและเกณฑ์เดิม;Vercelเผยแพร่แล้ว/EC2MySQLมีหลักฐานแล้ว/S3ไม่ใช่รอbucket/Neo4jlabจริงผ่านแล้ว SRS0.5ยังรอทีมรับรอง อ่าน PROJECT_STATE.md สำหรับหลักฐานล่าสุด
 

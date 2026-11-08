@@ -1,6 +1,10 @@
 # ต้นแบบค้นหลักฐานด้วย Qdrant
 
-ต้นแบบใช้ FastEmbed สร้างเวกเตอร์จากการ์ดสาธารณะ 4 ใบใน `public-evidence.json` แล้วค้นด้วย cosine similarity บน Qdrant Local เก็บดัชนีใน `build/rag/qdrant` และเก็บโมเดลภาษาใน `build/rag/models` แต่ละผลมี ID ข้อความ คะแนน และตำแหน่งอ้างอิง คะแนนวัดความใกล้ของข้อความ ไม่ใช่ระดับความถูกต้องของคำตอบ
+เริ่มจาก [สถานะและคำสั่งรับช่วงปัจจุบัน 9 พฤศจิกายน](../TEAMMATE_NEXT_STEPS_TH.md) RAG มี 10 การ์ด ใช้ `serve --lineage` เปิด source-row lookup และ graph lab ได้ เพิ่ม guard เชื้อเพลิง/สาร/ช่วงทดสอบและหน้าอ่าน `/evidence/view` แล้ว แต่ยังไม่มี Gemini live หรือ human UAT
+
+ประวัติวันที่ 8 แยกตามรอบ: [ความพร้อมเริ่มต้น](../local-readiness-2026-11-08.md), [แก้ scope ของ 4 การ์ด](scope-fix-review-2026-11-08.md), [ขยายเป็น 10 การ์ด](corpus-expansion-review-2026-11-08.md) และ [แก้ warm/idle/H-FAME](../pre-handoff-review-2026-11-08.md) ผลเก่าไม่ใช่ผลของโค้ดปัจจุบัน ให้ใช้วิธีประเมินด้านล่างและบันทึกผลใหม่แยกจาก `evidence/`
+
+ต้นแบบใช้ FastEmbed สร้างเวกเตอร์จากการ์ดสาธารณะ 10 ใบใน `public-evidence.json` แล้วค้นด้วย cosine similarity บน Qdrant Local พร้อมตรวจขอบเขต เก็บดัชนีใน `build/rag/qdrant` และเก็บโมเดลภาษาใน `build/rag/models` แต่ละผลมี ID ข้อความ คะแนน และตำแหน่งอ้างอิง คะแนนวัดความใกล้ของข้อความ ไม่ใช่ระดับความถูกต้องของคำตอบ
 
 จากโฟลเดอร์โปรเจกต์ ใช้ PowerShell ดังนี้ การสร้างดัชนีครั้งแรกต้องดาวน์โหลดโมเดลและมีพื้นที่ดิสก์สำหรับ dependencies, cache และโมเดล
 
@@ -12,7 +16,27 @@ $env:PYTHONIOENCODING = 'utf-8'
 & build/rag-verified-venv/Scripts/python.exe scripts/rag_retrieve.py search "ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร"
 ```
 
-ทดสอบคำถามเรื่อง CO₂e ทั้งวงจร สตาร์ตเย็นของรถ E10 และการจัดสรรไอน้ำ โดยตรวจว่า ID ของการ์ดเป้าหมายอยู่ในผลค้นและเปิดหลักฐานได้ ก่อนนำไปต่อโมเดลตอบคำถาม ต้องเพิ่มชุดทดสอบคำถามที่ไม่มีหลักฐาน และกำหนดวิธีปฏิเสธคำตอบที่ตรวจจากการ์ดไม่ได้
+ชุดคำถาม development/regression มีทั้งในขอบเขตและไม่มีหลักฐานแล้ว แต่ยังต้องรับคำถามอิสระจากสมาชิกและอ่านบริบทจริง ไม่ใช้ cosine หรือคะแนนชุดพัฒนาเป็นการรับรองว่าคำตอบถูกทุกกรณี
+
+## ประเมินโค้ดปัจจุบันโดยเก็บผลแยกรอบ
+
+หยุด RAG ก่อน เพราะ Qdrant Local เปิดได้ทีละ process ต้องมี model cache/index ที่ตรง corpus ปัจจุบัน คำสั่งนี้สร้างโฟลเดอร์ใหม่ต่อรอบใต้ `build/` ซึ่งไม่เข้า Git และไม่เขียนทับหลักฐานประวัติใน `evidence/`:
+
+```powershell
+$ragReviewDir = Join-Path 'build/handoff/rechecks' ([guid]::NewGuid().ToString('N'))
+New-Item -ItemType Directory -Path $ragReviewDir -Force | Out-Null
+& build/rag-verified-venv/Scripts/python.exe -X utf8 -m unittest discover -s tests -p test_rag_scope.py -v
+& build/rag-verified-venv/Scripts/python.exe -X utf8 scripts/evaluate_rag.py --output "$ragReviewDir/regression.json"
+& build/rag-verified-venv/Scripts/python.exe -X utf8 scripts/evaluate_rag.py --questions docs/rag/scope-evaluation-questions.json --output "$ragReviewDir/scope.json"
+& build/rag-verified-venv/Scripts/python.exe -X utf8 scripts/evaluate_rag.py --questions docs/rag/expanded-evaluation-questions.json --output "$ragReviewDir/expanded.json"
+& build/rag-verified-venv/Scripts/python.exe -X utf8 scripts/evaluate_rag.py --questions docs/rag/pre-handoff-questions.json --output "$ragReviewDir/pre-handoff.json"
+```
+
+อ่านผลรายข้อและ hash ภายในไฟล์ หากรันไม่สำเร็จอย่าใช้ไฟล์เก่าแทน ผลเหล่านี้เป็นของโค้ด/corpus ปัจจุบัน ไม่ใช่การสร้างผล 4 การ์ดในอดีตซ้ำ ห้ามใช้ `evaluate_rag.py` โดยไม่ระบุ `--output` สำหรับการตรวจรับช่วง เพราะค่า default ยังเป็นชื่อหลักฐานเก่า
+
+## ประวัติการทดลอง 4 การ์ดรอบแรก
+
+ข้อความและตัวเลขจนถึงหัวข้อเปิดหน้าถามถัดไปเป็นผลก่อนเพิ่ม scope/lineage/10 การ์ด ไม่ใช่ข้อจำกัดของระบบปัจจุบัน
 
 `inventory-lineage.cypher` เป็นตัวอย่างอ่าน Neo4j inventory lab ด้วยพารามิเตอร์ `$observation_id` ใช้เมื่อผลค้นหรือ API ให้รหัส observation ที่ตรวจแล้ว การ์ด FAQ ในต้นแบบยังไม่มีการจับคู่กับ ID ของ graph จึงแยกการค้นสองส่วนไว้ โมเดลตอบคำถามในอนาคตควรเรียก query ที่กำหนดไว้ล่วงหน้า
 

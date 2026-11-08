@@ -1,0 +1,166 @@
+{
+  "checked_at_utc": "2026-11-08T15:04:21.754040+00:00",
+  "label": "after",
+  "results": [
+    {
+      "port": 8765,
+      "concurrency": 1,
+      "requests": 24,
+      "passed": 24,
+      "status_counts": {
+        "200": 18,
+        "400": 6
+      },
+      "p50_ms": 23.64,
+      "p95_ms": 103.51,
+      "elapsed_seconds": 0.848,
+      "requests_per_second": 28.29,
+      "server_memory_before": {
+        "Id": 10836,
+        "WorkingSet64": 29638656,
+        "PeakWorkingSet64": 82444288,
+        "CPU": 1.109375
+      },
+      "server_memory_after": {
+        "Id": 10836,
+        "WorkingSet64": 28774400,
+        "PeakWorkingSet64": 82444288,
+        "CPU": 1.140625
+      }
+    },
+    {
+      "port": 8765,
+      "concurrency": 4,
+      "requests": 24,
+      "passed": 24,
+      "status_counts": {
+        "200": 18,
+        "400": 6
+      },
+      "p50_ms": 51.77,
+      "p95_ms": 457.29,
+      "elapsed_seconds": 0.851,
+      "requests_per_second": 28.19,
+      "server_memory_before": {
+        "Id": 10836,
+        "WorkingSet64": 28774400,
+        "PeakWorkingSet64": 82444288,
+        "CPU": 1.140625
+      },
+      "server_memory_after": {
+        "Id": 10836,
+        "WorkingSet64": 31191040,
+        "PeakWorkingSet64": 82444288,
+        "CPU": 1.4375
+      }
+    },
+    {
+      "port": 8765,
+      "concurrency": 8,
+      "requests": 24,
+      "passed": 24,
+      "status_counts": {
+        "200": 18,
+        "400": 6
+      },
+      "p50_ms": 71.0,
+      "p95_ms": 1015.82,
+      "elapsed_seconds": 1.06,
+      "requests_per_second": 22.63,
+      "server_memory_before": {
+        "Id": 10836,
+        "WorkingSet64": 31191040,
+        "PeakWorkingSet64": 82444288,
+        "CPU": 1.4375
+      },
+      "server_memory_after": {
+        "Id": 10836,
+        "WorkingSet64": 32804864,
+        "PeakWorkingSet64": 82444288,
+        "CPU": 1.609375
+      }
+    },
+    {
+      "port": 8767,
+      "concurrency": 1,
+      "requests": 24,
+      "passed": 24,
+      "status_counts": {
+        "200": 24
+      },
+      "p50_ms": 44.8,
+      "p95_ms": 264.69,
+      "elapsed_seconds": 2.138,
+      "requests_per_second": 11.22,
+      "server_memory_before": {
+        "Id": 23680,
+        "WorkingSet64": 664879104,
+        "PeakWorkingSet64": 680067072,
+        "CPU": 8.28125
+      },
+      "server_memory_after": {
+        "Id": 23680,
+        "WorkingSet64": 669569024,
+        "PeakWorkingSet64": 680067072,
+        "CPU": 18.375
+      }
+    },
+    {
+      "port": 8767,
+      "concurrency": 4,
+      "requests": 24,
+      "passed": 24,
+      "status_counts": {
+        "200": 24
+      },
+      "p50_ms": 287.72,
+      "p95_ms": 402.61,
+      "elapsed_seconds": 1.857,
+      "requests_per_second": 12.92,
+      "server_memory_before": {
+        "Id": 23680,
+        "WorkingSet64": 669569024,
+        "PeakWorkingSet64": 680067072,
+        "CPU": 18.375
+      },
+      "server_memory_after": {
+        "Id": 23680,
+        "WorkingSet64": 669659136,
+        "PeakWorkingSet64": 680067072,
+        "CPU": 28.25
+      }
+    },
+    {
+      "port": 8767,
+      "concurrency": 8,
+      "requests": 24,
+      "passed": 24,
+      "status_counts": {
+        "200": 24
+      },
+      "p50_ms": 716.07,
+      "p95_ms": 802.25,
+      "elapsed_seconds": 2.203,
+      "requests_per_second": 10.89,
+      "server_memory_before": {
+        "Id": 23680,
+        "WorkingSet64": 669659136,
+        "PeakWorkingSet64": 680067072,
+        "CPU": 28.25
+      },
+      "server_memory_after": {
+        "Id": 23680,
+        "WorkingSet64": 669716480,
+        "PeakWorkingSet64": 680067072,
+        "CPU": 39.453125
+      }
+    }
+  ],
+  "scope": "BOUNDED_LOCALHOST_LOAD_NOT_PRODUCTION_CAPACITY",
+  "limits": [
+    "24 requests per concurrency level per service; warm caches and this machine only.",
+    "PeakWorkingSet64 is the server process lifetime peak, not a phase-exclusive allocation measurement.",
+    "RAG prototype processes requests serially; this checks queued requests, not parallel inference.",
+    "No valid human feedback, Gemini request or production request submitted."
+  ]
+}

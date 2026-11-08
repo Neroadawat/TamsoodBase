@@ -26,5 +26,65 @@
     "text": "ข้อมูลอ้างอิงรักษาหน่วย ปี และบริบทของแหล่งต้นฉบับ แบบจำลอง LCI เชื่อมกระบวนการและรายการเข้าออกตามฐานและขอบเขตที่กำหนด สถิติอุตสาหกรรมใช้ดูแนวโน้มและบริบท",
     "locator": "Reference inventory",
     "source_url": "https://tamsoodbase.vercel.app/#reference"
+  },
+  {
+    "id":"fame-functional-unit",
+    "title":"หน่วยหน้าที่ Functional unit FAME/H-FAME และขอบเขต Table 4",
+    "text":"บทความ Permpool และคณะกำหนดหน่วยหน้าที่เป็นการใช้เชื้อเพลิง 1000 MJ ตาราง 4 เป็นรายการเข้าออกขั้นแปรรูป FAME/H-FAME ที่ทีมเลือกนำเข้า ไม่ใช่บัญชี LCI ที่เชื่อมครบทั้งวงจรของโครงการ และฐานนี้ไม่ได้ครอบข้อมูลสถิติทุกชุด",
+    "locator":"Section 2.1, PDF page 3; Table 4, PDF page 7; team scope review",
+    "source_url":"https://doi.org/10.3390/su12229415",
+    "licence":"CC BY 4.0", "attribution":"Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายขอบเขตโดย TamsoodBase",
+    "claim_type":"ข้อเท็จจริงต้นทางและขอบเขตที่ทีมเลือกใช้",
+    "review_basis":["docs/inventory-scope-contract.md","evidence/inventory-scope-review.json"]
+  },
+  {
+    "id":"palm-upstream-basis",
+    "title":"ฐานผลิตภัณฑ์ต้นน้ำปาล์ม FFB CPO RBDPO เป็นกิโลกรัม ต่างจากฐานเชื้อเพลิง MJ",
+    "text":"ตาราง 1–3 ของ Permpool และคณะใช้ฐานผลิตภัณฑ์ 1000 kg ของแต่ละกระบวนการ FFB, CPO และ RBDPO ส่วนตาราง 4 ใช้ 1000 MJ เชื้อเพลิง จึงห้ามบวกหรือเชื่อมปริมาณข้ามตารางโดยตรง ต้องมีข้อมูลเชื่อมกระบวนการและตรวจวิธีจัดสรรก่อน",
+    "locator":"Tables 1–3, PDF pages 5–6; Table 4, PDF page 7; team upstream review",
+    "source_url":"https://doi.org/10.3390/su12229415",
+    "licence":"CC BY 4.0", "attribution":"Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายข้อจำกัดโดย TamsoodBase",
+    "claim_type":"ข้อเท็จจริงต้นทางและข้อจำกัดการเชื่อมข้อมูล",
+    "review_basis":["docs/upstream-inventory-review.md","web/upstream-inventory.json"]
+  },
+  {
+    "id":"palm-land-unit-hold",
+    "title":"Land seeding ขาดหน่วยจึงพักการใช้",
+    "text":"แถว Land seeding ของการผลิต FFB ในตาราง 1 ไม่ระบุหน่วย ทีมจึงเก็บเป็น HOLD_MISSING_UNIT ไม่เดาว่าเป็นตารางเมตรหรือเฮกตาร์ และไม่ใช้เป็นปริมาณพร้อมคำนวณจนกว่าจะมีหลักฐานหน่วย",
+    "locator":"Table 1, PDF page 5, Land seeding row; team HOLD_MISSING_UNIT review",
+    "source_url":"https://doi.org/10.3390/su12229415",
+    "licence":"CC BY 4.0", "attribution":"Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สถานะพักข้อมูลโดย TamsoodBase",
+    "claim_type":"ข้อจำกัดจากการตรวจของทีม",
+    "review_basis":["docs/upstream-inventory-review.md","evidence/upstream-inventory-review.json"]
+  },
+  {
+    "id":"palm-cpo-provider-gap",
+    "title":"โรงสกัดปาล์มขาดข้อมูลป้อนเข้า ทำไมยังเชื่อม FFB เข้ากับ CPO ไม่ได้",
+    "text":"ตาราง 2 แสดงรายการผลิต CPO แต่ไม่ระบุปริมาณ FFB ที่ป้อนเข้า ทีมจึงยังเชื่อมปริมาณผลปาล์มกับน้ำมันปาล์มดิบในโมเดลไม่ได้ ไม่คำนวณ FFB ย้อนจากผลรวมผลผลิตร่วม และไม่ถือว่าการมีชื่อกระบวนการตรงกันพิสูจน์ความเข้ากันได้",
+    "locator":"Table 2, PDF page 6; team upstream provider review",
+    "source_url":"https://doi.org/10.3390/su12229415",
+    "licence":"CC BY 4.0", "attribution":"Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; วิเคราะห์ช่องว่างโดย TamsoodBase",
+    "claim_type":"ช่องว่างของข้อมูลสำหรับโมเดลทีม",
+    "review_basis":["docs/upstream-inventory-review.md","web/upstream-inventory.json"]
+  },
+  {
+    "id":"fame-allocation-caution",
+    "title":"การจัดสรร Allocation FAME กับกลีเซอรีน glycerine และข้อควรระวังคูณซ้ำ",
+    "text":"บทความรายงานการจัดสรรภาระแบบเศรษฐกิจให้ FAME 70% และกลีเซอรีนดิบ 30% ทีมเก็บวิธีนี้เป็นข้อมูลประกอบ แต่ยังไม่ยืนยันว่าปริมาณในตารางผ่านการจัดสรรที่ขั้นใด จึงไม่คูณสัดส่วนซ้ำและไม่นำไปใช้กับโรงงานอื่นโดยอัตโนมัติ",
+    "locator":"Section 3.1.4, PDF page 7; team allocation review",
+    "source_url":"https://doi.org/10.3390/su12229415",
+    "licence":"CC BY 4.0", "attribution":"Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; ข้อจำกัดการนำไปใช้โดย TamsoodBase",
+    "claim_type":"วิธีที่บทความรายงานและข้อค้างของทีม",
+    "review_basis":["docs/product-inventory.md","evidence/inventory-allocation-review.json"]
+  },
+  {
+    "id":"fame-measurement-period",
+    "title":"ปีเผยแพร่ไม่ใช่ช่วงปีวัด Data period และ Pilot plant FAME/H-FAME ไม่ใช่ค่าเฉลี่ยประเทศ",
+    "text":"ปีเผยแพร่บทความไม่ใช่หลักฐานว่าทุกรายการถูกวัดในปีนั้น ตาราง FAME/H-FAME ที่เลือกยังไม่ระบุช่วงเวลาวัด ทีมจึงคง data_period เป็น null และไม่เรียกข้อมูลโรงงานกับข้อมูล pilot plant ว่าเป็นค่าเฉลี่ยประเทศปีปัจจุบัน",
+    "locator":"Section 2.2, PDF pages 3–4; Table 4, PDF page 7; team data-period review",
+    "source_url":"https://doi.org/10.3390/su12229415",
+    "licence":"CC BY 4.0", "attribution":"Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; แยกปีและบริบทโดย TamsoodBase",
+    "claim_type":"ข้อจำกัดจากการตรวจของทีม",
+    "review_basis":["docs/product-inventory.md","evidence/inventory-scope-review.json"]
   }
 ]

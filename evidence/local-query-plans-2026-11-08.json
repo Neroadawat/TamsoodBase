@@ -1,0 +1,89 @@
+{
+  "checked_at_utc": "2026-11-08T15:26:38.422194+00:00",
+  "scope": "LOCAL_SQLITE_QUERY_PLANS_NOT_PRODUCTION",
+  "database": "build/dmf/20261108T113219115060Z/candidates.sqlite",
+  "data_sha256_before_and_after": "f1be67906d36a4881f4e2e453b20d72ab225f767d83d20bd1ef861c3307ece6e",
+  "statements": [
+    "CREATE INDEX IF NOT EXISTS ix_candidate_recent ON candidate(year_ce DESC,month DESC,package,source_line)",
+    "CREATE INDEX IF NOT EXISTS ix_candidate_package_recent ON candidate(package,year_ce DESC,month DESC,source_line)",
+    "CREATE INDEX IF NOT EXISTS ix_candidate_identity ON candidate(package,identity_sha256,source_line)"
+  ],
+  "checks": [
+    {
+      "query": "page_all",
+      "before": {
+        "median_ms": 121.558,
+        "rows": 30,
+        "plan": [
+          "SCAN c USING INDEX sqlite_autoindex_candidate_1",
+          "SEARCH d USING INDEX sqlite_autoindex_duplicate_disposition_1 (package=? AND source_line=?)",
+          "SEARCH r USING INDEX sqlite_autoindex_resource_1 (package=?)",
+          "USE TEMP B-TREE FOR ORDER BY"
+        ]
+      },
+      "after": {
+        "median_ms": 0.269,
+        "rows": 30,
+        "plan": [
+          "SCAN c USING INDEX ix_candidate_recent",
+          "SEARCH d USING INDEX sqlite_autoindex_duplicate_disposition_1 (package=? AND source_line=?)",
+          "SEARCH r USING INDEX sqlite_autoindex_resource_1 (package=?)"
+        ]
+      },
+      "rows_identical": true
+    },
+    {
+      "query": "page_year_product",
+      "before": {
+        "median_ms": 14.143,
+        "rows": 30,
+        "plan": [
+          "SEARCH r USING INDEX sqlite_autoindex_resource_1 (package=?)",
+          "SEARCH d USING INDEX sqlite_autoindex_duplicate_disposition_1 (package=?)",
+          "SEARCH c USING INDEX sqlite_autoindex_candidate_1 (package=? AND source_line=?)",
+          "USE TEMP B-TREE FOR ORDER BY"
+        ]
+      },
+      "after": {
+        "median_ms": 0.292,
+        "rows": 30,
+        "plan": [
+          "SEARCH r USING INDEX sqlite_autoindex_resource_1 (package=?)",
+          "SEARCH c USING INDEX ix_candidate_package_recent (package=? AND year_ce=?)",
+          "SEARCH d USING INDEX sqlite_autoindex_duplicate_disposition_1 (package=? AND source_line=?)"
+        ]
+      },
+      "rows_identical": true
+    },
+    {
+      "query": "export_filtered",
+      "before": {
+        "median_ms": 8.778,
+        "rows": 375,
+        "plan": [
+          "SEARCH r USING INDEX sqlite_autoindex_resource_1 (package=?)",
+          "SEARCH c USING INDEX sqlite_autoindex_candidate_1 (package=?)",
+          "SEARCH d USING INDEX sqlite_autoindex_duplicate_disposition_1 (package=? AND source_line=?)",
+          "USE TEMP B-TREE FOR LAST 2 TERMS OF ORDER BY"
+        ]
+      },
+      "after": {
+        "median_ms": 2.212,
+        "rows": 375,
+        "plan": [
+          "SEARCH r USING INDEX sqlite_autoindex_resource_1 (package=?)",
+          "SEARCH c USING INDEX ix_candidate_package_recent (package=? AND year_ce=?)",
+          "SEARCH d USING INDEX sqlite_autoindex_duplicate_disposition_1 (package=? AND source_line=?)"
+        ]
+      },
+      "rows_identical": true
+    }
+  ],
+  "original_records_unchanged": true,
+  "applied_to_local_database": true,
+  "production_changed": false,
+  "passed": true,
+  "limits": [
+    "25 repetitions per query on a warm local copy; no universal performance claim."
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "checked_at_utc": "2026-11-08T16:12:14.654920+00:00",
+  "scope": "TARGETED_PRIMARY_SOURCE_METADATA_REVIEW_NOT_NEW_INVENTORY_OR_SYSTEMATIC_REVIEW",
+  "sources": [
+    {
+      "url": "https://explore.nrct.go.th/search_detail/result/3152",
+      "locator": "research title, author, publication year fields",
+      "finding": "Registry describes a 2017 palm-management project led by Seksan Papong. Reviewed page did not establish identity with the ARDA reference18 or expose its allocation calculation sheets.",
+      "decision": "CANDIDATE_IDENTITY_UNPROVEN"
+    },
+    {
+      "url": "https://www.jgsee.kmutt.ac.th/v3/wp-content/uploads/2019/08/JGSEE-Newsletters-vol.39-Jan-Apr-2021.pdf",
+      "locator": "PDF4: LCSAL Team Granted Research Fund from ARDA",
+      "finding": "2021 funding announcement explicitly says Phase II; a related institutional lead, not the 2017 report or table-specific calculation workbook.",
+      "decision": "RELATED_PHASE_NOT_SUBSTITUTE_FOR_TABLE_BASIS"
+    },
+    {
+      "url": "https://cdm.unfccc.int/Projects/Validation/DB/8CIS1C5D9HBBRSIRR1R0STCX9SKQZC/view.html",
+      "locator": "estimated annual reductions field and footnote",
+      "finding": "Validation listing labels annual reductions as estimates in an unvalidated PDD; this listing is not measured methane or actual issuance/monitoring proof.",
+      "decision": "EX_ANTE_METADATA_NOT_OPERATING_PERIOD_DATA"
+    },
+    {
+      "url": "https://tsmgroup.co.th/about-us/affiliated-company/energy-business/",
+      "locator": "TSM Bio Energy and TSM Bio Energy (2012) section",
+      "finding": "Operator distinguishes two entities, capacity ratings and inter-company biogas supply. Match entity, boundary and period before joining operating data; ratings are not achieved output.",
+      "decision": "ENTITY_SCOPE_CONTEXT_ONLY"
+    },
+    {
+      "url": "https://www.mdpi.com/2071-1050/12/22/9415",
+      "locator": "direct page open and publisher search listing",
+      "finding": "Direct open returned429; publisher-index text was not promoted to close allocation or add numbers.",
+      "decision": "NO_NEW_NUMERIC_IMPORT_FROM_SEARCH_SNIPPETS"
+    },
+    {
+      "url": "https://explore.nrct.go.th/search_detail/result/5471",
+      "locator": "title, researcher and publication-year fields",
+      "finding": "Gheewala-led palm value-chain/refinery project has closely matching title but registry year2018, while reference18 cites2017. This metadata does not provide the calculation workbook or establish table-specific allocation.",
+      "decision": "STRONGER_REPORT_CANDIDATE_YEAR_AND_CONTENT_IDENTITY_UNCONFIRMED"
+    },
+    {
+      "url": "https://documents1.worldbank.org/curated/en/172531468777269974/pdf/ISR0CN0P11009500627201201340813800624.pdf",
+      "locator": "ISR4004 PDF1 implementation status overview",
+      "finding": "Operational progress and delayed CER delivery are discussed; reviewed text supplies no period-matched physical emitted methane and actual ethanol-output pair. Do not use credit targets as measured methane.",
+      "decision": "NO_MATCHED_METHANE_AND_ETHANOL_PAIR_FROM_REVIEWED_REPORT"
+    }
+  ],
+  "numeric_inventory_imports": 0,
+  "source_values_changed": false,
+  "allocation_applied": false,
+  "matched_actual_methane_and_ethanol_output": null,
+  "CO2e_total": null,
+  "local_primary_pdf_hashes_claimed": false,
+  "primary_pdf_visual_reaudit": false,
+  "raw_redistributed": false,
+  "limits": [
+    "No proof that a missing report does not exist elsewhere.",
+    "No source identity accepted solely from similar titles or years.",
+    "Web text/metadata review only; redistribution rights remain unconfirmed."
+  ],
+  "followup_at_utc": "2026-11-08T16:59:55.621136+00:00"
+}

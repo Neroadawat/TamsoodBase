@@ -1,0 +1,552 @@
+{
+  "checked_at_utc": "2026-11-08T15:59:37.671197+00:00",
+  "scope": "SAME_MACHINE_LOCAL_FUNCTION_COMPARISON_NOT_PRODUCTION_CAPACITY",
+  "baseline_code_sha256": "f239868a3260356f590a59e4ca08bd0a45869ef6e0dd37cd6a2cccc347fa8b7d",
+  "current_code_sha256": "09ba19a13ea75fbd4f826c3f4e6c8d38f321a797032d3fe34d4716ed83945433",
+  "run_id": "20261108T113219115060Z",
+  "data_sha256_before_and_after": "f1be67906d36a4881f4e2e453b20d72ab225f767d83d20bd1ef861c3307ece6e",
+  "all_candidate_rows_compared": 34899,
+  "export_partitions_compared": 72,
+  "api_projection_sha256": "6700f9fd00ff2a839732097ad32250dd486886b9ff43c01563f2b3adff991471",
+  "csv_projection_sha256": "9c5a5e5903ace762f9564d684d1017345e05fcc07d73f77276b61533861b1cb9",
+  "page_cases_compared": [
+    {},
+    {
+      "page": "2"
+    },
+    {
+      "product": "production-natural-gas",
+      "year": "2026"
+    },
+    {
+      "status": "HOLD_CONFLICT"
+    },
+    {
+      "status": "EXCLUDE_EXACT_COPY"
+    },
+    {
+      "q": "' OR 1=1 --"
+    },
+    {
+      "q": "%_!"
+    }
+  ],
+  "results": [
+    {
+      "version": "before",
+      "operation": "records",
+      "profile_repetitions": 8,
+      "top_cumulative": [
+        {
+          "file": "audit_explorer_performance.py",
+          "line": 30,
+          "function": "invoke",
+          "calls": 8,
+          "own_ms": 0.095,
+          "cumulative_ms": 141.577
+        },
+        {
+          "file": "explorer-before-performance.py",
+          "line": 84,
+          "function": "records",
+          "calls": 8,
+          "own_ms": 3.691,
+          "cumulative_ms": 141.482
+        },
+        {
+          "file": "explorer-before-performance.py",
+          "line": 42,
+          "function": "with_units",
+          "calls": 240,
+          "own_ms": 3.86,
+          "cumulative_ms": 116.373
+        },
+        {
+          "file": "_abc.py",
+          "line": 621,
+          "function": "read_bytes",
+          "calls": 240,
+          "own_ms": 1.239,
+          "cumulative_ms": 73.646
+        },
+        {
+          "file": "_local.py",
+          "line": 529,
+          "function": "open",
+          "calls": 248,
+          "own_ms": 0.384,
+          "cumulative_ms": 45.591
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method _io.open>",
+          "calls": 248,
+          "own_ms": 32.561,
+          "cumulative_ms": 45.204
+        },
+        {
+          "file": "__init__.py",
+          "line": 299,
+          "function": "loads",
+          "calls": 248,
+          "own_ms": 1.437,
+          "cumulative_ms": 27.179
+        },
+        {
+          "file": "decoder.py",
+          "line": 340,
+          "function": "decode",
+          "calls": 248,
+          "own_ms": 1.38,
+          "cumulative_ms": 23.045
+        }
+      ],
+      "timings": [
+        {
+          "concurrency": 1,
+          "requests": 24,
+          "p50_ms": 22.893,
+          "p95_ms": 32.083
+        },
+        {
+          "concurrency": 8,
+          "requests": 24,
+          "p50_ms": 87.532,
+          "p95_ms": 106.537
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "operation": "export_filtered",
+      "profile_repetitions": 8,
+      "top_cumulative": [
+        {
+          "file": "audit_explorer_performance.py",
+          "line": 30,
+          "function": "invoke",
+          "calls": 8,
+          "own_ms": 2.329,
+          "cumulative_ms": 276.802
+        },
+        {
+          "file": "explorer-before-performance.py",
+          "line": 143,
+          "function": "csv_export",
+          "calls": 8,
+          "own_ms": 48.935,
+          "cumulative_ms": 203.08
+        },
+        {
+          "file": "csv.py",
+          "line": 225,
+          "function": "writerow",
+          "calls": 3008,
+          "own_ms": 4.863,
+          "cumulative_ms": 124.744
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'writerow' of '_csv.writer' objects>",
+          "calls": 3008,
+          "own_ms": 60.823,
+          "cumulative_ms": 104.721
+        },
+        {
+          "file": "explorer-before-performance.py",
+          "line": 84,
+          "function": "records",
+          "calls": 8,
+          "own_ms": 43.423,
+          "cumulative_ms": 71.393
+        },
+        {
+          "file": "csv.py",
+          "line": 223,
+          "function": "<genexpr>",
+          "calls": 60160,
+          "own_ms": 26.78,
+          "cumulative_ms": 43.898
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'get' of 'dict' objects>",
+          "calls": 57208,
+          "own_ms": 17.149,
+          "cumulative_ms": 17.149
+        },
+        {
+          "file": "csv.py",
+          "line": 217,
+          "function": "_dict_to_list",
+          "calls": 3008,
+          "own_ms": 13.669,
+          "cumulative_ms": 15.16
+        }
+      ],
+      "timings": [
+        {
+          "concurrency": 1,
+          "requests": 24,
+          "p50_ms": 12.827,
+          "p95_ms": 14.858
+        },
+        {
+          "concurrency": 8,
+          "requests": 24,
+          "p50_ms": 277.352,
+          "p95_ms": 328.772
+        }
+      ]
+    },
+    {
+      "version": "before",
+      "operation": "export_broad_rejected",
+      "profile_repetitions": 8,
+      "top_cumulative": [
+        {
+          "file": "audit_explorer_performance.py",
+          "line": 30,
+          "function": "invoke",
+          "calls": 8,
+          "own_ms": 9.738,
+          "cumulative_ms": 430.35
+        },
+        {
+          "file": "explorer-before-performance.py",
+          "line": 84,
+          "function": "records",
+          "calls": 8,
+          "own_ms": 401.39,
+          "cumulative_ms": 420.612
+        },
+        {
+          "file": "explorer-before-performance.py",
+          "line": 33,
+          "function": "database",
+          "calls": 8,
+          "own_ms": 0.232,
+          "cumulative_ms": 8.814
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'execute' of 'sqlite3.Connection' objects>",
+          "calls": 8,
+          "own_ms": 7.104,
+          "cumulative_ms": 7.104
+        },
+        {
+          "file": "_local.py",
+          "line": 539,
+          "function": "read_text",
+          "calls": 8,
+          "own_ms": 0.051,
+          "cumulative_ms": 3.596
+        },
+        {
+          "file": "_abc.py",
+          "line": 628,
+          "function": "read_text",
+          "calls": 8,
+          "own_ms": 0.057,
+          "cumulative_ms": 3.541
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method _sqlite3.connect>",
+          "calls": 8,
+          "own_ms": 2.857,
+          "cumulative_ms": 3.183
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'close' of 'sqlite3.Connection' objects>",
+          "calls": 8,
+          "own_ms": 3.129,
+          "cumulative_ms": 3.129
+        }
+      ],
+      "timings": [
+        {
+          "concurrency": 1,
+          "requests": 24,
+          "p50_ms": 56.604,
+          "p95_ms": 82.588
+        },
+        {
+          "concurrency": 8,
+          "requests": 24,
+          "p50_ms": 3156.033,
+          "p95_ms": 3406.962
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "operation": "records",
+      "profile_repetitions": 8,
+      "top_cumulative": [
+        {
+          "file": "audit_explorer_performance.py",
+          "line": 30,
+          "function": "invoke",
+          "calls": 8,
+          "own_ms": 0.151,
+          "cumulative_ms": 30.394
+        },
+        {
+          "file": "explorer.py",
+          "line": 89,
+          "function": "records",
+          "calls": 8,
+          "own_ms": 1.448,
+          "cumulative_ms": 30.243
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'execute' of 'sqlite3.Connection' objects>",
+          "calls": 16,
+          "own_ms": 13.05,
+          "cumulative_ms": 13.05
+        },
+        {
+          "file": "explorer.py",
+          "line": 33,
+          "function": "database",
+          "calls": 8,
+          "own_ms": 0.154,
+          "cumulative_ms": 7.284
+        },
+        {
+          "file": "explorer.py",
+          "line": 42,
+          "function": "with_units",
+          "calls": 240,
+          "own_ms": 0.5,
+          "cumulative_ms": 5.188
+        },
+        {
+          "file": "_local.py",
+          "line": 529,
+          "function": "open",
+          "calls": 16,
+          "own_ms": 0.037,
+          "cumulative_ms": 3.803
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method _io.open>",
+          "calls": 16,
+          "own_ms": 2.822,
+          "cumulative_ms": 3.763
+        },
+        {
+          "file": "_abc.py",
+          "line": 621,
+          "function": "read_bytes",
+          "calls": 8,
+          "own_ms": 0.067,
+          "cumulative_ms": 2.937
+        }
+      ],
+      "timings": [
+        {
+          "concurrency": 1,
+          "requests": 24,
+          "p50_ms": 3.198,
+          "p95_ms": 4.377
+        },
+        {
+          "concurrency": 8,
+          "requests": 24,
+          "p50_ms": 19.321,
+          "p95_ms": 28.29
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "operation": "export_filtered",
+      "profile_repetitions": 8,
+      "top_cumulative": [
+        {
+          "file": "audit_explorer_performance.py",
+          "line": 30,
+          "function": "invoke",
+          "calls": 8,
+          "own_ms": 1.738,
+          "cumulative_ms": 204.985
+        },
+        {
+          "file": "explorer.py",
+          "line": 151,
+          "function": "csv_export",
+          "calls": 8,
+          "own_ms": 36.66,
+          "cumulative_ms": 146.793
+        },
+        {
+          "file": "csv.py",
+          "line": 225,
+          "function": "writerow",
+          "calls": 3008,
+          "own_ms": 2.886,
+          "cumulative_ms": 88.612
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'writerow' of '_csv.writer' objects>",
+          "calls": 3008,
+          "own_ms": 43.936,
+          "cumulative_ms": 76.059
+        },
+        {
+          "file": "explorer.py",
+          "line": 89,
+          "function": "records",
+          "calls": 8,
+          "own_ms": 27.696,
+          "cumulative_ms": 56.455
+        },
+        {
+          "file": "csv.py",
+          "line": 223,
+          "function": "<genexpr>",
+          "calls": 60160,
+          "own_ms": 19.363,
+          "cumulative_ms": 32.123
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'get' of 'dict' objects>",
+          "calls": 63192,
+          "own_ms": 14.053,
+          "cumulative_ms": 14.053
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'execute' of 'sqlite3.Connection' objects>",
+          "calls": 16,
+          "own_ms": 11.433,
+          "cumulative_ms": 11.433
+        }
+      ],
+      "timings": [
+        {
+          "concurrency": 1,
+          "requests": 24,
+          "p50_ms": 13.663,
+          "p95_ms": 17.945
+        },
+        {
+          "concurrency": 8,
+          "requests": 24,
+          "p50_ms": 269.256,
+          "p95_ms": 339.932
+        }
+      ]
+    },
+    {
+      "version": "after",
+      "operation": "export_broad_rejected",
+      "profile_repetitions": 8,
+      "top_cumulative": [
+        {
+          "file": "audit_explorer_performance.py",
+          "line": 30,
+          "function": "invoke",
+          "calls": 8,
+          "own_ms": 0.102,
+          "cumulative_ms": 47.488
+        },
+        {
+          "file": "explorer.py",
+          "line": 89,
+          "function": "records",
+          "calls": 8,
+          "own_ms": 0.225,
+          "cumulative_ms": 47.386
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'execute' of 'sqlite3.Connection' objects>",
+          "calls": 8,
+          "own_ms": 38.829,
+          "cumulative_ms": 38.829
+        },
+        {
+          "file": "explorer.py",
+          "line": 33,
+          "function": "database",
+          "calls": 8,
+          "own_ms": 0.169,
+          "cumulative_ms": 6.953
+        },
+        {
+          "file": "_local.py",
+          "line": 539,
+          "function": "read_text",
+          "calls": 8,
+          "own_ms": 0.081,
+          "cumulative_ms": 3.027
+        },
+        {
+          "file": "_abc.py",
+          "line": 628,
+          "function": "read_text",
+          "calls": 8,
+          "own_ms": 0.07,
+          "cumulative_ms": 2.943
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method _sqlite3.connect>",
+          "calls": 8,
+          "own_ms": 1.919,
+          "cumulative_ms": 2.131
+        },
+        {
+          "file": "_local.py",
+          "line": 529,
+          "function": "open",
+          "calls": 8,
+          "own_ms": 0.015,
+          "cumulative_ms": 2.041
+        }
+      ],
+      "timings": [
+        {
+          "concurrency": 1,
+          "requests": 24,
+          "p50_ms": 6.012,
+          "p95_ms": 7.324
+        },
+        {
+          "concurrency": 8,
+          "requests": 24,
+          "p50_ms": 10.869,
+          "p95_ms": 12.283
+        }
+      ]
+    }
+  ],
+  "passed": true,
+  "limits": [
+    "Same process/machine and warm local data; before is measured first, not a randomized trial.",
+    "All-record parity covers API/CSV projection, not independent scientific validation.",
+    "Read the separate HTTP load evidence before claiming end-to-end improvements."
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "checked_at_utc": "2026-11-08T18:36:23.512036+00:00",
+  "nso": [
+    {
+      "table": "13.5",
+      "source_url": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/File_SYB/2026/13/T_13.5_2026.csv",
+      "expected_sha256": "3db1f67f44d0a8db5975b6c63c99f771810733b8b4b8b1f9c7eb30d908066c31",
+      "restored": true,
+      "status": "EXACT_RECORDED_BYTES",
+      "bytes": 3016
+    },
+    {
+      "table": "13.6",
+      "source_url": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/File_SYB/2026/13/T_13.6_2026.csv",
+      "expected_sha256": "ba55f71688dfb2a5c11bb1ddea6ef3065148884bc659954365a45308568bfa04",
+      "restored": true,
+      "status": "EXACT_RECORDED_BYTES",
+      "bytes": 3641
+    },
+    {
+      "table": "13.7",
+      "source_url": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/File_SYB/2026/13/T_13.7_2026.csv",
+      "expected_sha256": "03c43bbeba80a8487d24bf030a7e2debb444e2bab00f602d9668609ee95f44c3",
+      "restored": true,
+      "status": "EXACT_RECORDED_BYTES",
+      "bytes": 2803
+    },
+    {
+      "table": "13.8",
+      "source_url": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/File_SYB/2026/13/T_13.8_2026.csv",
+      "expected_sha256": "ab2603830fb5225b5cf37063e0565dff16183be995c14006080dcfd47c87c5f3",
+      "restored": true,
+      "status": "EXACT_RECORDED_BYTES",
+      "bytes": 3352
+    },
+    {
+      "table": "13.10",
+      "source_url": "https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/File_SYB/2026/13/T_13.10_2026.csv",
+      "expected_sha256": "abfc8301bf168ad15e61f36b3550509e79826eec31a0b0ffecedda1d72a18761",
+      "restored": true,
+      "status": "EXACT_RECORDED_BYTES",
+      "bytes": 2010
+    }
+  ],
+  "nso_imported": true,
+  "product_inventory": {
+    "restored": true,
+    "rows": 16,
+    "api_url": "https://tamsoodbase.vercel.app/api/product-inventory",
+    "response_sha256": "b3df774c1dd824ccf570f1f1ec345969dd29a91f27863753d4b354beed043ee5",
+    "restoration_kind": "VALIDATED_LIVE_API_COPY_NOT_ORIGINAL_DOM_REPLAY"
+  },
+  "corporate": {
+    "restored": true,
+    "status": "VERIFIED_CACHED_RELEASE",
+    "release_id": "c8b3eeb70ad0ae6e98bdd2f5476f4a9912e7ef58a9fa04ce81746b4f3c7069e2",
+    "rows": 101,
+    "accepted_reference": 97,
+    "held_context": 4,
+    "redistribution_status": "NOT_CLEARED"
+  },
+  "dmf_build": {
+    "passed": true,
+    "mode": "OFFLINE_RETAINED_SOURCE_ONLY"
+  },
+  "labs": {
+    "passed": true,
+    "stages": [
+      {
+        "stage": "build_handoff_store.py",
+        "passed": true
+      },
+      {
+        "stage": "verify_handoff_engines.py",
+        "passed": true
+      },
+      {
+        "stage": "verify_handoff_dmf_mysql.py",
+        "passed": true
+      },
+      {
+        "stage": "verify_handoff_corporate_mysql.py",
+        "passed": true
+      }
+    ],
+    "scope": "OWNER_MARKED_LOCAL_LABS_ONLY_NO_PRODUCTION"
+  },
+  "offline": true,
+  "prerequisites": {
+    "data/raw/dmf/latest.json": true,
+    "data/raw/mdpi-9415/table4-dom.json": false,
+    "data/raw/mdpi-9415/article-visible.txt": false,
+    "build/reusable/all-reference.json": true,
+    "build/eppo/report.json": false,
+    "build/nso/report.json": true,
+    "build/product-inventory/report.json": true
+  },
+  "gemini_key_present": false,
+  "gemini_called": false,
+  "dmf_pipeline_available": true,
+  "requested_steps_passed": true,
+  "full_runtime_restored": false,
+  "production_changed": false
+}

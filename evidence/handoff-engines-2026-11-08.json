@@ -1,0 +1,18 @@
+{
+  "checked_at_utc": "2026-11-08T18:36:02.505999+00:00",
+  "release": "fb89454c4fd54e173e3b0a5e47570061b91c5f6b93018dddb9639caa55ecfd15",
+  "mysql_container": "tamsood-handoff-mysql-fb89454c4fd5",
+  "neo4j_container": "tamsood-handoff-neo4j-fb89454c4fd5",
+  "mysql_rows_equal": 331,
+  "neo4j_rows_equal": 58,
+  "card_links_equal": 97,
+  "mysql_fk_rejection": true,
+  "neo4j_duplicate_rejection": true,
+  "parameterized_graph_lookup": true,
+  "mysql_network": "none",
+  "neo4j_network": "owner-marked internal network",
+  "published_ports": [],
+  "production_changed": false,
+  "scope": "OWNED_LOCAL_REVIEW_LABS_NOT_PRODUCTION_OR_FULL_LCI",
+  "passed": true
+}

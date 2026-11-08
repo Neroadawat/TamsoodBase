@@ -289,3 +289,85 @@ Checked the Pornvilai monitoring report for February–July 2018. Gross generati
 
 ## Codex teammate handoff guide — 2026-11-08
 Added `CODEX_PROJECT_GUIDE_TH.md` as a portable Thai context guide covering the project purpose, latest data statuses, LCI evidence rules, architecture, graph experiment limits, clone/runtime caveats and recommended reading order. It summarizes existing evidence and points back to source documents; it adds no data, approval, deployment or test claim. Pushed 482 source/documentation/evidence files on `codex/share-project-with-teammate`; generated `output/` and `tmp/` artifacts are excluded. Remote branch is ready for the teammate to pull.
+
+## รับช่วงเครื่องใหม่: งาน 1–2 — 8 พฤศจิกายน 2569
+
+- ตรวจจาก `67db1ad` สถานะก่อนเริ่มสะอาด; Python 3.13.3/Node 22.12.0; frontend build และ isolated allowlist ผ่าน เปิด Explorer/metadata HTTP 200 แต่ records/NSO/reference 503 เพราะไม่มี raw/build snapshot; Docker Linux engine ติดต่อไม่ได้ ไม่ restore หรือเปลี่ยน production
+- ติดตั้ง RAG environment แยกและดาวน์โหลดโมเดล สร้าง Qdrant Local จริง 4 การ์ด/384 มิติ; ค้นออฟไลน์ได้; HTTP demo 11 checks ผ่าน ตรวจข้อความ/ที่มากลับตรง corpus โดยไม่เรียก Gemini/Cloud
+- คำถามใหม่ 24 ข้อ: ในขอบเขตอันดับแรกถูกและผ่าน cutoff 11/12; ไม่มีคำตอบปฏิเสธ 7/8; กำกวม 4 ข้อแยกรายงาน พบ E20/N₂O คืน E10 ผิดขอบเขต และ Songkitti/cold start ค้นไม่พบ; เทียบ 6 cutoff แล้วยังคง 0.45 พร้อมข้อจำกัด ไม่ถือว่ารับรองคำตอบ ปรับหน้าค้นให้แสดงขอบเขต 4 การ์ดและข้อจำกัด
+- Frontend tests 12/13 ผ่าน อีกข้อขาด `build/product-inventory/report.json`; ไม่สร้างข้อมูลแทน ไม่มี browser visual check ในรอบนี้
+- รายงาน/วิธีเปิด `docs/local-readiness-2026-11-08.md`; ผลรายข้อ `evidence/rag-local-evaluation-2026-11-08.json`, `evidence/rag-local-http-2026-11-08.json`; เพิ่มคำถามและ scripts ตรวจซ้ำ
+- ขั้นต่อไป: snapshot/manifest จริงและ Docker สำหรับระบบวิจัยเต็ม; ปิด evidence sufficiency และทดสอบคำถามจากสมาชิกก่อนต่อ Gemini/กราฟหรือใช้งานจริง ไม่ปรับคะแนนเพื่อให้ชุดประเมินดูผ่าน
+
+## แก้การค้นผิดขอบเขต — 8 พฤศจิกายน 2569
+
+- เพิ่ม `scripts/rag_scope.py` และทะเบียน `docs/rag/retrieval-scope.json` ผูก corpus hash; กรองเชื้อเพลิง/สาร/ช่วงทดสอบ/คำถามปริมาณก่อนคืนผล เพิ่มคำค้นไทย–อังกฤษโดยคง raw cards/index/cutoff 0.45 เดิม HTTP/CLI ใช้เส้นทางเดียวกัน
+- คำถามเดิมในขอบเขต 12/12 (เดิม 11/12), ไม่มีคำตอบปฏิเสธ 8/8 (เดิม 7/8); คำถามเพิ่ม 26 ข้อผ่าน 8 positive+18 negative; อีก 4 ambiguous จากชุดเดิมไม่ให้คะแนน ผลเป็น development/regression ไม่ใช่ held-out หรือ human review
+- Unit checks 5 tests และ HTTP 15 checks ผ่าน รวม E20/N₂O/hot-start ไม่คืน E10 และคำถาม Songkitti/cold start ค้นได้; ข้อความต้นฉบับ/ที่มาคงเดิม หลักฐาน `evidence/rag-scoped-*-2026-11-08.json`
+- รายงาน `docs/rag/scope-fix-review-2026-11-08.md`; ไม่มี deploy/production DB/Cloud/Gemini หรือ browser visual check รอบนี้
+- ข้อค้าง: กฎครอบคลุมเฉพาะคำ/มิติที่ระบุ ไม่ใช่ general semantic verifier; คำกำกวมยังอาจคืนการ์ด ต้องรับคำถามอิสระจากสมาชิกและตรวจขอบเขตทุกครั้งที่เพิ่มการ์ด
+
+## เพิ่มการ์ดหลักฐานค้นได้ 4 → 10 — 8 พฤศจิกายน 2569
+
+- เพิ่ม 6 การ์ดจากเอกสาร Permpool et al. ที่มีอยู่: FU/ขอบเขต Table 4, ฐานต้นน้ำปาล์ม, Land seeding ขาดหน่วย, FFB→CPO gap, allocation และ measurement period; ตรวจข้อความ PDF ทางการและ CC BY 4.0 notice ซ้ำ พร้อม attribution/locator/claim type/review files ทุกใบ ไม่ใช่ผลวัดใหม่ ไม่ยืนยัน PDF hash ใหม่หรือ visual re-audit
+- ตัวตรวจ `scripts/audit_rag_corpus.py` ผ่าน ยืนยัน 4 การ์ดเดิมคงเดิม/10 IDs/ทะเบียนตรง hash/หลักฐานและสิทธิของการ์ดใหม่; รายงาน `evidence/rag-corpus-expansion-2026-11-08.json`
+- สร้าง Qdrant Local รุ่นใหม่ 10 points/384 มิติ ปรับคำหัวข้อสองภาษาและกรองหัวข้อ/คำถามขอตัวเลขของการ์ด metadata หน้าแสดงจำนวนจริงและ attribution
+- ตรวจคำถาม 76 ข้อ: 39 positive และ 33 negative ผ่าน; อีก 4 ambiguous ไม่ให้คะแนน ชุดใหม่ใช้พัฒนาต่อจาก 13/19 เป็น19/19 จึงเป็น development/regression ไม่ใช่ held-out/human review; unit6/HTTP19 ผ่าน ดู `evidence/rag-expanded-*-2026-11-08.json`
+- รายงาน/วิธีตรวจซ้ำ `docs/rag/corpus-expansion-review-2026-11-08.md`; ไม่ deploy/แก้ production/เรียก Cloud หรือ Gemini และไม่อ้าง browser visual check
+- ขั้นต่อไป: คำถามอิสระจากสมาชิกและตรวจคำ/มิติที่กฎยังไม่รู้จัก ก่อนขยายแหล่งอื่นหรือเพิ่มระบบเรียบเรียงคำตอบ; สิทธิเอกสารเก่า NOT_CLEARED คงเดิม
+
+## ทำต่อทั้ง 6 ส่วนในเครื่องรับช่วง — 8 พฤศจิกายน 2569
+
+- Docker ใช้งานได้แล้ว; กู้ NSO5CSVตรงhashเดิมและนำเข้า273, กู้ FAME/H-FAME16จากliveAPIตรวจmetadata/contract (ไม่ใช่DOMreplay), acquireDMFใหม่/pipelineผ่าน34905raw/34899observations/6reject/34671pending ไม่เพิ่มaccepted
+- ReviewSQLiteแยกรุ่นตามhash331records (42upstream+16foreground+273NSO) payloadตรงครบ; MySQLlab331พร้อมDMF34899/34905rawตรงครบ; Neo4j5.26.32lab58records/97cardlinksตรงSQL พร้อมparameterizedlookup/duplicateconstraint;ไม่มีproductionmigration/ports public ไม่แตะGinder/Caddy
+- RAG `serve --lineage` ผูก6การ์ดกับsource observationsจริง เปิดเฉพาะ58licensedarticle rows; card/source/graphHTTP9checksผ่าน คงnullunitและHOLD ไม่ใช่providerlink/fullLCI; NSOไม่เปิดผ่านpublicevidence routeนี้
+- เพิ่มแบบประเมินคำถาม/ผลค้นเก็บ`.local/rag-feedback.jsonl` ผูกรุ่นและผลที่ออกจริง;ตรวจUIผ่านIABเห็นการ์ด/ลิงก์/แบบประเมิน ไม่ส่งผลแทนคน; actualfeedbackยัง0และไม่รับรองตัวตนอัตโนมัติ
+- Geminiเพิ่มguardเลข/อัตราส่วนหน่วย/เชื้อเพลิง/สาร/ช่วงและอ้างเฉพาะการ์ดที่มี พร้อมfallbackเมื่อconnection/429/คำตอบผิด;runtime8tests/scope6/frontend13ผ่าน EPPOparser4ผ่าน/1ข้าม;ยังไม่มีliveGeminiเพราะไม่พบคีย์ในenvironmentที่ใช้
+- NSOทวน273identities/context,169เลขเทียบเดิม,18totals/18percentผ่าน;ยัง104ค้าง/4divergence ไม่มีnewexternalcomparison แยกเหตุรายรายการในevidence/nso-restored-review-2026-11-08.json
+- อ่านPDDTSMต้นทางทางเว็บได้73หน้า(ตรวจเฉพาะsectionที่เลือก);localdownloadเป็นnonPDFจึงไม่มีhashclaim คงex-ante/monitoring planแยกจากผลจริง;ยังไม่มีCH4คู่ยอดผลิตและCO2e/Lยังnull ดูevidence/tsm-pdd-review-2026-11-08.json และdocs/ethanol-tsm-wastewater.md
+- EPPO2URLยังดาวน์โหลดไม่ผ่านHTTP ไม่สร้างไฟล์แทน;corporate reference/DOMเดิมยังขาด ExplorerDMF/NSO/inventoryกลับ200 แต่reference/EPPO503;boundedexport200/broadexport400ตามขีดจำกัด5000
+- คู่มือ/ผล/ขั้นตอนซ้ำ `docs/handoff-execution-2026-11-08.md`;หลักฐานชุดevidence/handoff-*-2026-11-08.json ข้อค้างที่ต้องใช้ภายนอก:คำถาม/รีวิวสมาชิกจริง,คีย์Gemini,snapshotsที่ขาด,หลักฐานวิทยาศาสตร์เพิ่มเติม ไม่มีdeploy/push/automationใหม่
+
+## ตรวจและเตรียมส่งต่อเจ้าของงานหลัก — 8 พฤศจิกายน 2569
+
+- ชุดคำถามใหม่26ข้อพบ10false positives: warm/idle/entire cycle/N₂Oเว้นวรรค/ออกเทน/H-FAMEจับรวมFAME;แก้แยกมิติและชนิดเชื้อเพลิง คงsource/cutoffเดิม ผลใหม่8positive+18negativeผ่าน ชุดเดิม76ข้อยัง39positive+33negativeผ่าน/4ambiguousแยกไว้ ไม่ใช่human review
+- เพิ่มหน้าอ่านsourceภาษาไทยแยกแท็บ แสดงamount/basis/unit/year/HOLDตรงเดิมและJSONคู่กัน แยกฐานหลักฐานไม่พร้อมจากclient error ปฏิเสธหลายID;runtime9/scope6/HTTPintegration14/RAG19ผ่าน ตรวจIABเห็นหน้าLand seedingและnullunitจริง
+- เพิ่ม `docs/TEAMMATE_NEXT_STEPS_TH.md` และ `docs/pre-handoff-review-2026-11-08.md`;เครื่องมือแพ็กsource overlay+manifest/hashที่ `build/handoff-package/` และตรวจสำเนาbaseสะอาดด้วย `scripts/verify_teammate_bundle.py` ผลแยกในVERIFICATION.json ไม่รวมraw/build/.local/credentials
+- ข้อค้างมนุษย์/คีย์/ไฟล์และวิทยาศาสตร์เดิมยังเปิด ไม่ทดแทนด้วยข้อมูลสมมติ งานอยู่working treeจาก67db1ad ยังไม่commit/push/deploy ไม่ส่งไฟล์ให้บุคคลอื่นในรอบนี้
+
+## ตรวจวิศวกรรม local T109/T114 — 8 พฤศจิกายน 2569
+
+- RAG เพิ่ม skip link/focus/Ctrl+Enter/สถานะ/ชื่อคำถามที่ส่งจริงและ client timeout 12s; ตรวจ IAB selected keyboard flows ทั้ง RAG/Explorer/native dialog และการคืนปุ่มหลัง503/timeoutผ่าน ไม่มี human feedback หรือ screen reader/UAT จริง
+- SQLite เพิ่ม3ดัชนีตามqueryจริงและให้pipelineสร้างต่อ;วัด25ครั้งในสำเนา medianหน้ารวม121.558→0.269ms/หน้ากรอง14.143→0.292ms/export8.778→2.212ms ทุกแถว/ลำดับ/hashเดิม;pipelineออฟไลน์ผ่าน MySQL/Neo4j lab EXPLAIN ใช้PRIMARY/period index/IndexSeek ไม่แก้production
+- โหลดlocalhost5รอบ รอบละ144คำขอที่concurrency1/4/8ได้ผลตามคาดครบ;HTTPlatencyยังผันผวน โดยExplorer c8 p95รอบสุดท้าย1383.43ms เทียบก่อน597.03ms ไม่อ้างเร็วขึ้นทั้งระบบ PeakWorkingSetตลอดprocessรอบสุดท้ายExplorer~72.8MiB/RAG~647.6MiB ไม่ใช่capacityหรือmemory-leak audit
+- จำกัดembedding2threadsหลังprofile30คำถาม/10batchesและvectorsตัวอย่างตรงเดิม;regression47positive+51negativeผ่าน/4ambiguousแยก คิวserver32/readtimeout5sตั้งแต่accept โดยRAGยังserial;socketค้างไม่ครบheaderกู้ได้ Proxyจำลอง12คำขอทับซ้อน(deadline4/disconnect4/success4)ไม่cancelข้ามหรือendซ้ำ
+- runtime9/scope6/HTTPresilience1/frontend13และproxybehaviorผ่าน;live-local RAG19/lineage14/Explorer9checksผ่าน โดยreference/EPPO503ยังเป็นข้อค้าง snapshotจริง ไม่มีGemini live/key
+- หลักฐาน `docs/local-engineering-review-2026-11-08.md` และ `evidence/local-*-2026-11-08.json`;อัปเดตtaskboard/คู่มือส่งต่อ คงT109/T114 IN_PROGRESS;ชุดsourceoverlayใหม่ที่ `build/handoff-package/` ตรวจbase+hash+runtime/scope/HTTP/DMF suitesด้วย `scripts/verify_teammate_bundle.py` ผลจริงในVERIFICATION.json ไม่รวมruntime/raw/secrets
+- ขั้นต่อไป:สืบExplorerHTTPlatency/วัดstagingคงที่และproductionqueryplans/memory;ให้คนจริงตรวจscreenreader/UAT;คงscientific/provider/allocation/matchedCH4-output/NSO104+4/snapshotขาด/Gemini/permanentendpointไว้ตามคู่มือ ไม่มีcommit/push/deploy/automationใหม่
+
+## แก้คอขวด Explorer/ค้น primary เพิ่ม/สร้าง SRS PDF — 8 พฤศจิกายน 2569
+
+- พบ export กว้างเดิมสร้าง5001wide rowsก่อนปฏิเสธ และหน้ารายการอ่านmetadata30ครั้ง/หน้า เปลี่ยนเป็นboundedCOUNTก่อนดึงรายละเอียดและcachemetadataเฉพาะคำขอ คงlimit5000/filters/guardเดิม;เทียบAPIทุกfield/ลำดับ+CSVbytesครบ34899candidate rowsใน72product/yearpartitionsตรงเดิม พร้อมfingerprintทุกตารางเดิม
+- Profileฟังก์ชันc8:ปฏิเสธexport p95 3406.962→12.283ms;records106.537→28.290ms แต่filteredexport328.772→339.932msไม่อ้างทุกoperationเร็วขึ้น HTTPworkloadผสม144คำขอ/รอบ baseline+after+confirmationผ่านครบ Explorerc8 p95 2377.42→236.24/234.05ms ไม่ใช่productioncapacity/SLA;MySQLlabread-only boundedprobe3กรณีตรงexpected
+- boundary4/Explorer5/MySQLstore4/WSGI6/diagram3/frontend13testsผ่าน;HTTPExplorer9checksผ่าน โดยCorporate/EPPOยัง503ตามsnapshotขาด ดู `docs/explorer-performance-fix-2026-11-08.md` และevidence/explorer-performance-fix/local-load-performance/local-export-probe-mysql
+- พบSRS0.7.1sourceในHEADไม่ตรงrenderhashเก่าและPDFไม่มีในเครื่อง สร้างจากMarkdownเดิมไม่แก้เนื้อหา/สร้างERDจากDDL ปรับhistorytableให้พอดีหน้า;PDF27หน้าrenderครบและตรวจภาพ+headings/draftlabels/bounds/hashผ่าน source c2299cd48cad6bf7c4105be8f97a3d9f7317ee4482a13722b2b2b543a1cbd3a3;PDF647444a9ae5086e10b5328edf09a9ed84c4363860e4dbb9ab05c274d1c76c067 อยู่output/pdf/TamsoodBase-SRS-review.pdf เก็บrenderrecordเดิมแยกและอัปเดตsrs-current-review ยังรอทีมตรวจ/slidesไม่rebuild
+- ค้นprimaryเพิ่ม:NRCT3152ยังไม่พิสูจน์identityรายงานARDA2017;JGSEEข่าวทุน2021ระบุPhaseIIไม่ใช้แทนworkbookเดิม;UNFCCCหน้าvalidationเป็นex-ante;หน้าoperatorแยกTSMBioEnergy/2012และcapacityไม่ใช่operatingoutput ไม่มีnumericimportsหรือpairedCH4/ethanolจริง คงallocation/CO2e gates ดูdocs/scientific-source-check-2026-11-08.md
+- แก้taskT30ที่พิมพ์131exactเป็น141ตามevidence169=141+24+4;ปรับT55จากsnapshotSRSเก่าเป็นผลrenderปัจจุบัน;T55/T58/T97/T107/T109/T114ยังIN_PROGRESS อัปเดตguide/workplans/handoffและsourceZIP+cleanroomverifier ผลจริงที่build/handoff-package/VERIFICATION.json PDFส่งแยกจากZIP ไม่มีraw/secrets/commit/push/deploy/automationใหม่
+- ขั้นต่อไป:staging/productionvalidationและmemoryระยะยาว;source snapshots/ARDA workbook/operatinglogsที่ตรงentity+งวด;Gemini key/live;humanreview/screenreader/contribution;slidesและfinalpackageให้ตรงreleaseจริงก่อนfreeze ไม่ถือว่าทำงานต่อไม่ได้ทุกอย่างเพียงเพราะgatesภายนอกยังเปิด
+
+## สถานะรับช่วงและปรับคู่มือก่อนส่งต่อ — 9 พฤศจิกายน 2569
+
+- ผลระบบที่ตรวจแล้วก่อนปรับคู่มือ: Corporate กู้ 101 รายการ (97 ACCEPTED_REFERENCE / 4 HOLD_CONTEXT), MySQL เทียบ SQLite ครบทุกช่องใน 11 ตารางและ reference view; constraint 7 กรณีและ late rollback ผ่าน ข้อมูลชั้นทดลองเดิมไม่เปลี่ยน สิทธิยัง NOT_CLEARED และ normalized LCI exchanges = 0
+- HTTP ข้อมูลจริง 144 checks ผ่าน ครอบคลุม Corporate101/DMF34899/NSO273/foreground16/upstream42 ไม่เรียก Gemini/ส่ง feedback/แก้ production เก็บสำเนาหลักฐานเดิมพร้อม timestamp ไม่แก้ผลที่ `evidence/handoff-corporate-mysql-2026-11-09.json` และ `evidence/handoff-data-http-2026-11-09.json`
+- ตรวจ Markdown ที่เพิ่ม/แก้ 22 ไฟล์ ปรับคู่มือหลัก/แผน/จุดรับช่วงให้ใช้สถานะปัจจุบัน แยกรายงานวันที่ 8 เป็นประวัติ คำสั่งเตรียมเครื่องรวม Corporate/DMF/owned labs แล้ว และคำสั่งประเมิน RAG ระบุ output แยกรอบใต้ build ไม่ทับหลักฐานเก่า ไม่ทำรายงานหรือสไลด์ใหม่
+- ตรวจลิงก์ภายใน Markdown ทั้ง 22 ไฟล์และไวยากรณ์ PowerShell 17 code blocks ผ่าน แก้ลิงก์ ZIP runtime เก่าใน T21 ให้ชี้ตัวสร้างแทนไฟล์ที่ไม่ตาม Git; `git diff --check` ผ่าน ไม่มีการแก้โค้ดระบบในรอบปรับคู่มือนี้
+- ชุดส่งต่อวันที่ 9 เป็น ZIP หรือ Git patch อย่างใดอย่างหนึ่งบน base67db1ad ผลตรวจชุดที่ส่งต้องตรงชื่อ/hash ใน `build/handoff-package/VERIFICATION.json`; raw/build/.local/keys ไม่ตาม Git หรือ ZIP งานทั้งหมดในรอบรับช่วงยังไม่ commit/push/deploy
+- ข้อค้าง: EPPO/DOM ต้นฉบับ, NSO104+4 divergences/ฐานเวลาและหน่วย DMF, allocation/provider/background/transport-use-treatment และ CH4 คู่ยอดเอทานอลงวดเดียวกัน, Gemini live, independent human/screen-reader review และ staging/production validation ขั้นต่อไปใช้ `docs/TEAMMATE_NEXT_STEPS_TH.md` ให้ผู้รับตรวจ Git status และรันยืนยันในเครื่องตนเองก่อนรวม/เผยแพร่
+
+## ตรวจโค้ดและเตรียม commit/push ตามคำสั่งผู้ใช้ — 9 พฤศจิกายน 2569
+
+- ใช้ branch ใหม่ `codex/teammate-runtime-handoff-2026-11-09` จาก67db1ad ไม่แตะ main หรือ branch งานเดิมของเพื่อน ตรวจ remote ก่อนเริ่ม; ผล commit/push ให้ยืนยันจาก Git/remote จริง ไม่ถือข้อความยังไม่ push ในประวัติเป็นสถานะปัจจุบัน
+- พบและแก้ 2 จุด: immutable review store เดิมเทียบเฉพาะ observation จึงเพิ่มตรวจ schema/ข้อมูลทั้ง source/process/observation/card_observation ก่อนใช้ซ้ำ; MySQL ping ทาง socket อาจผ่านช่วง bootstrap แล้ว shutdown จึงเปลี่ยน readiness เป็น TCP ของ final server เพิ่ม regression tests3 และสร้าง MySQL lab ใหม่เฉพาะรอบนี้เพื่อทดสอบ โดยคง labs รุ่นเดิมไว้
+- ชุดที่เกี่ยวข้อง 118 tests: ผ่าน117/ข้าม1เพราะ EPPO snapshot ขาด; frontend build14assets/proxy concurrent faults12 ผ่าน เตรียม runtime offline พร้อม owned MySQL/Neo4j4ขั้นผ่าน และ HTTPข้อมูลจริง144/RAG19/lineage14 checks ผ่าน ไม่เรียก Gemini/ส่ง human feedback/เปลี่ยน production
+- Full repository suite ที่ลองก่อนแก้2จุด:252 tests, failures2/errors42/skipped9 ยังไม่ผ่าน สาเหตุเป็น artifacts/dependencies ที่ไม่มีในเครื่อง และ historical MySQL NSO evidence ไม่ตรง hash ของ report ที่กู้ใหม่ ไม่แก้ค่าต้นทางหรือเขียนผลเก่าให้ดูผ่าน ผลจำแนกใน `evidence/prepush-review-2026-11-09.json` ความพร้อมรอบนี้คือส่งต่อโค้ดใน branch ไม่ใช่ production หรือ full-suite certification
+- ตรวจ Python syntax/JSON และ credential patterns ของไฟล์ที่เลือก แยก raw/build/.local/output/keys ออกจาก commit; sync T21 ใน tasks.json ให้ตรง Markdown ที่แก้ลิงก์ไว้ ข้อค้างแหล่งข้อมูล/LCI/คนจริง/production เดิมยังเปิด ให้ผู้รับเริ่มที่ `docs/TEAMMATE_NEXT_STEPS_TH.md`

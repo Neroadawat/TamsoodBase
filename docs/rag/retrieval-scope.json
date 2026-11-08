@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "corpus_sha256": "9b131dba2938161841cd3b51eb192c6d97f5f90e2ede3ac580c17dffc3ae0605",
+  "note": "Conservative constraints for reviewed cards; not a general semantic verifier. No new measurements. New numeric metadata cards require an explicit matching topic.",
+  "cards": {
+    "e10-cold-start": {
+      "fuels": [
+        "e10"
+      ],
+      "species": [
+        "co2"
+      ],
+      "vehicle_stages": [
+        "cold"
+      ],
+      "quantitative": true
+    },
+    "ethanol-total-gap": {
+      "fuels": [
+        "ethanol"
+      ],
+      "species": [
+        "co2e",
+        "ch4"
+      ],
+      "vehicle_stages": [],
+      "quantitative": false
+    },
+    "bagasse-steam": {
+      "fuels": [],
+      "species": [],
+      "vehicle_stages": [],
+      "quantitative": false
+    },
+    "reference-vs-model": {
+      "fuels": [],
+      "species": [],
+      "vehicle_stages": [],
+      "quantitative": false
+    },
+    "fame-functional-unit": {
+      "fuels": [
+        "fame",
+        "h-fame"
+      ],
+      "species": [],
+      "vehicle_stages": [],
+      "quantitative": true,
+      "numeric_topics": [
+        "basis"
+      ],
+      "required_terms_any": [
+        "หน่วยหน้าที่",
+        "ฐาน",
+        "table 4",
+        "table4",
+        "ตาราง 4",
+        "ตาราง4"
+      ]
+    },
+    "palm-upstream-basis": {
+      "fuels": [
+        "fame",
+        "h-fame"
+      ],
+      "species": [],
+      "vehicle_stages": [],
+      "quantitative": true,
+      "numeric_topics": [
+        "basis"
+      ],
+      "required_terms_any": [
+        "ffb",
+        "cpo",
+        "rbdpo",
+        "ปาล์ม",
+        "ต้นน้ำ"
+      ]
+    },
+    "palm-land-unit-hold": {
+      "fuels": [],
+      "species": [],
+      "vehicle_stages": [],
+      "quantitative": false
+    },
+    "palm-cpo-provider-gap": {
+      "fuels": [],
+      "species": [],
+      "vehicle_stages": [],
+      "quantitative": false,
+      "required_terms_any": [
+        "ffb",
+        "cpo",
+        "ปาล์ม",
+        "โรงสกัด"
+      ]
+    },
+    "fame-allocation-caution": {
+      "fuels": [
+        "fame"
+      ],
+      "species": [],
+      "vehicle_stages": [],
+      "quantitative": true,
+      "numeric_topics": [
+        "allocation"
+      ],
+      "required_terms_any": [
+        "จัดสรร",
+        "ปันส่วน",
+        "กลีเซอรีน",
+        "glycerine",
+        "สัดส่วน",
+        "คูณ"
+      ]
+    },
+    "fame-measurement-period": {
+      "fuels": [
+        "fame",
+        "h-fame"
+      ],
+      "species": [],
+      "vehicle_stages": [],
+      "quantitative": false,
+      "required_terms_any": [
+        "ปี",
+        "เวลา",
+        "period",
+        "pilot",
+        "เฉลี่ย",
+        "วัด",
+        "เผยแพร่"
+      ]
+    }
+  }
+}

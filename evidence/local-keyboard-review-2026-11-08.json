@@ -1,0 +1,77 @@
+{
+  "recorded_at_utc": "2026-11-08T15:28:36.151943+00:00",
+  "checked_date": "2026-11-08",
+  "scope": "SELECTED_LOCAL_BROWSER_KEYBOARD_AND_FAILURE_FLOWS_NOT_HUMAN_UAT",
+  "method": "Codex IAB browser automation using keyboard input plus DOM/accessibility-tree observations",
+  "pages": [
+    "http://127.0.0.1:8765/",
+    "http://127.0.0.1:8767/"
+  ],
+  "fault_fixture": "tests/http_unavailable_fixture.py on loopback 8778; stopped after checks",
+  "checks": [
+    {
+      "case": "rag_skip_link",
+      "observed": "Enter on skip link focuses #question; focus-visible outline observed",
+      "passed": true
+    },
+    {
+      "case": "rag_keyboard_submit",
+      "observed": "Ctrl+Enter submits FAME functional-unit question",
+      "passed": true
+    },
+    {
+      "case": "rag_pending_state",
+      "observed": "aria-busy=true; question readOnly; submit and examples disabled while pending",
+      "passed": true
+    },
+    {
+      "case": "rag_result_focus",
+      "observed": "Success focuses #status; aria-busy=false; exact submitted question displayed",
+      "passed": true
+    },
+    {
+      "case": "rag_source_keyboard",
+      "observed": "Tab after status reaches the first source anchor with the expected DOI",
+      "passed": true
+    },
+    {
+      "case": "explorer_skip_link",
+      "observed": "Enter skip link then Tab reaches terms-open, skipping navigation",
+      "passed": true
+    },
+    {
+      "case": "explorer_route_focus",
+      "observed": "Enter on DMF navigation changes view and focuses its heading; 30 real rows loaded",
+      "passed": true
+    },
+    {
+      "case": "explorer_control_names",
+      "observed": "Visible controls in the loaded DMF view had no missing names by DOM heuristic; no viewport horizontal overflow observed",
+      "passed": true
+    },
+    {
+      "case": "explorer_dialog_focus",
+      "observed": "Enter on first row opens native dialog and focuses close-detail; Tab stays in dialog; Escape closes and returns focus to the row button",
+      "passed": true
+    },
+    {
+      "case": "rag_http503_recovery",
+      "observed": "Loopback fixture returns 503; error status focused; question editable, submit enabled and aria-busy=false",
+      "passed": true
+    },
+    {
+      "case": "rag_deadline_recovery",
+      "observed": "Loopback fixture delays 13 seconds; UI aborts at 12 seconds, shows timeout message, restores controls and hides feedback",
+      "passed": true
+    }
+  ],
+  "human_feedback_submitted": false,
+  "gemini_called": false,
+  "passed": true,
+  "limits": [
+    "Selected flows and the current viewport only; no fresh full-site axe audit.",
+    "No actual screen reader, independent human user, WCAG certification or production browser check.",
+    "Accessible-name check is a DOM heuristic, not a complete accessibility conformance assessment.",
+    "Client timeout does not prove cancellation of server-side computation."
+  ]
+}

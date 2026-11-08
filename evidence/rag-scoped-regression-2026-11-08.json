@@ -1,0 +1,773 @@
+{
+  "checked_at_utc": "2026-11-08T10:52:53.128966+00:00",
+  "scope": "LOCAL_FOUR_CARD_RETRIEVAL_NOT_ANSWER_ACCURACY",
+  "corpus_sha256": "fc29786df12cfbef04091cb3916181868e4459f31eeedf4a4aa9b30cf76f808d",
+  "questions_sha256": "fd3c6d1b61b5545dba0f8d03ad1f2b722c5696859a97a4161efdd1b4434a50ef",
+  "retrieval_scope_sha256": "e9a3ffbb06c14a1de223ad936cfe8ef3cd8d3db2d709816a4855333b25dd8028",
+  "retrieval_code_sha256": {
+    "rag_scope.py": "9ae824f1a2d7a3fa925279633eed517f12b07233a8d0365de090dbe0e5783304",
+    "rag_retrieve.py": "3e4fa7e38a01dcb64bd970f7c4bda0dd56e71e43a62bdbef547535accd592f75"
+  },
+  "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "collection": "public_evidence_7d05fcf2f1cf876be1ff",
+  "cutoff": 0.45,
+  "versions": {
+    "fastembed": "0.7.3",
+    "qdrant-client": "1.15.1",
+    "onnxruntime": "1.31.1",
+    "numpy": "2.5.4"
+  },
+  "positive_top1_pass": 12,
+  "positive_count": 12,
+  "negative_rejection_pass": 8,
+  "negative_count": 8,
+  "baseline_raw_threshold_comparison": [
+    {
+      "cutoff": 0.35,
+      "positive_top1_pass": 11,
+      "negative_rejection_pass": 3
+    },
+    {
+      "cutoff": 0.45,
+      "positive_top1_pass": 11,
+      "negative_rejection_pass": 7
+    },
+    {
+      "cutoff": 0.55,
+      "positive_top1_pass": 9,
+      "negative_rejection_pass": 7
+    },
+    {
+      "cutoff": 0.65,
+      "positive_top1_pass": 7,
+      "negative_rejection_pass": 7
+    },
+    {
+      "cutoff": 0.7,
+      "positive_top1_pass": 5,
+      "negative_rejection_pass": 8
+    },
+    {
+      "cutoff": 0.75,
+      "positive_top1_pass": 1,
+      "negative_rejection_pass": 8
+    }
+  ],
+  "source_locators_present": true,
+  "limitations": [
+    "Questions authored before running but not by independent human reviewers.",
+    "Bounded facet rules cover known fuels/species/stages only, not general semantic sufficiency.",
+    "Ambiguous questions inspected without a correctness score; no answer generation tested."
+  ],
+  "results": [
+    {
+      "question": "ตอนเครื่องยังเย็น รถที่เติมแก๊สโซฮอล์ E10 วิ่งได้กี่กิโลเมตรต่อลิตร",
+      "expected": "e10-cold-start",
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.734051
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.456713
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.279454
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.147214
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.7427,
+          "id": "e10-cold-start",
+          "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+          "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+          "locator": "Table 5, printed page 9558",
+          "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ค่าคาร์บอนไดออกไซด์ปลายท่อของ E10 ในช่วงเริ่มติดเครื่องคือเท่าไร",
+      "expected": "e10-cold-start",
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.618268
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.54161
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.319107
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.251913
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6195,
+          "id": "e10-cold-start",
+          "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+          "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+          "locator": "Table 5, printed page 9558",
+          "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "งาน Songkitti รายงานการกินน้ำมันช่วง cold start ไว้อย่างไร",
+      "expected": "e10-cold-start",
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.30168
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.292382
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.207602
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.092444
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.4584,
+          "id": "e10-cold-start",
+          "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+          "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+          "locator": "Table 5, printed page 9558",
+          "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ข้อมูลส่วนไหนยังขาดก่อนจะรวมผลกระทบเอทานอลได้ครบวงจร",
+      "expected": "ethanol-total-gap",
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.51831
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.477134
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.300916
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.198915
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5183,
+          "id": "ethanol-total-gap",
+          "title": "ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร",
+          "text": "ผลรวม CO₂e ของโมเดลทีมยังเว้นไว้ ต้องจับคู่ข้อมูลการผลิตจริงกับการจัดสรรไอน้ำและไฟฟ้า ข้อมูลการขนส่ง การปล่อยมีเทนจากน้ำเสีย และการใช้เชื้อเพลิงในรถตามขอบเขตที่เข้ากัน",
+          "locator": "Ethanol case",
+          "source_url": "https://tamsoodbase.vercel.app/#ethanol"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ทำไมผลรวมคาร์บอนเอทานอลของทีมยังเป็นค่าว่าง",
+      "expected": "ethanol-total-gap",
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.577361
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.319214
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.260732
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.110026
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5774,
+          "id": "ethanol-total-gap",
+          "title": "ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร",
+          "text": "ผลรวม CO₂e ของโมเดลทีมยังเว้นไว้ ต้องจับคู่ข้อมูลการผลิตจริงกับการจัดสรรไอน้ำและไฟฟ้า ข้อมูลการขนส่ง การปล่อยมีเทนจากน้ำเสีย และการใช้เชื้อเพลิงในรถตามขอบเขตที่เข้ากัน",
+          "locator": "Ethanol case",
+          "source_url": "https://tamsoodbase.vercel.app/#ethanol"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ก่อนสรุป CO2e เอทานอลต้องตรวจข้อมูลน้ำเสียและการขนส่งอย่างไร",
+      "expected": "ethanol-total-gap",
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.711726
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.450282
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.327893
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.310998
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.7117,
+          "id": "ethanol-total-gap",
+          "title": "ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร",
+          "text": "ผลรวม CO₂e ของโมเดลทีมยังเว้นไว้ ต้องจับคู่ข้อมูลการผลิตจริงกับการจัดสรรไอน้ำและไฟฟ้า ข้อมูลการขนส่ง การปล่อยมีเทนจากน้ำเสีย และการใช้เชื้อเพลิงในรถตามขอบเขตที่เข้ากัน",
+          "locator": "Ethanol case",
+          "source_url": "https://tamsoodbase.vercel.app/#ethanol"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ชานอ้อยถูกนำไปผลิตพลังงานชนิดใดในโรงกลั่นชีวภาพ",
+      "expected": "bagasse-steam",
+      "ranked": [
+        {
+          "id": "bagasse-steam",
+          "score": 0.749939
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.442008
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.22678
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.221751
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.7499,
+          "id": "bagasse-steam",
+          "title": "พลังงานจากชานอ้อย ไอน้ำ และไฟฟ้า",
+          "text": "กรณีโรงกลั่นชีวภาพจากอ้อยใช้ชานอ้อยเป็นพลังงานสำหรับผลิตไอน้ำและไฟฟ้า การจัดสรรภาระต้องระบุขอบเขตโรงงานน้ำตาลและโรงไฟฟ้า รวมถึงเส้นทางของพลังงานที่ใช้ภายในโรงงาน",
+          "locator": "Tables 1, 4 and 5",
+          "source_url": "https://jseejournal.com/media/177/attachment/Sugarcane%20Biorefinery%20Complex%20pp.%2095-103.pdf"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ภาระของไอน้ำและไฟฟ้าจากกากอ้อยต้องแบ่งระหว่างส่วนใดของโรงงาน",
+      "expected": "bagasse-steam",
+      "ranked": [
+        {
+          "id": "bagasse-steam",
+          "score": 0.740964
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.476954
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.31863
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.242869
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.741,
+          "id": "bagasse-steam",
+          "title": "พลังงานจากชานอ้อย ไอน้ำ และไฟฟ้า",
+          "text": "กรณีโรงกลั่นชีวภาพจากอ้อยใช้ชานอ้อยเป็นพลังงานสำหรับผลิตไอน้ำและไฟฟ้า การจัดสรรภาระต้องระบุขอบเขตโรงงานน้ำตาลและโรงไฟฟ้า รวมถึงเส้นทางของพลังงานที่ใช้ภายในโรงงาน",
+          "locator": "Tables 1, 4 and 5",
+          "source_url": "https://jseejournal.com/media/177/attachment/Sugarcane%20Biorefinery%20Complex%20pp.%2095-103.pdf"
+        },
+        {
+          "score": 0.477,
+          "id": "ethanol-total-gap",
+          "title": "ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร",
+          "text": "ผลรวม CO₂e ของโมเดลทีมยังเว้นไว้ ต้องจับคู่ข้อมูลการผลิตจริงกับการจัดสรรไอน้ำและไฟฟ้า ข้อมูลการขนส่ง การปล่อยมีเทนจากน้ำเสีย และการใช้เชื้อเพลิงในรถตามขอบเขตที่เข้ากัน",
+          "locator": "Ethanol case",
+          "source_url": "https://tamsoodbase.vercel.app/#ethanol"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "เชื้อเพลิงที่ใช้ป้อนไอน้ำในกรณีโรงงานน้ำตาลคืออะไร",
+      "expected": "bagasse-steam",
+      "ranked": [
+        {
+          "id": "bagasse-steam",
+          "score": 0.751606
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.52258
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.315711
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.178612
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.7516,
+          "id": "bagasse-steam",
+          "title": "พลังงานจากชานอ้อย ไอน้ำ และไฟฟ้า",
+          "text": "กรณีโรงกลั่นชีวภาพจากอ้อยใช้ชานอ้อยเป็นพลังงานสำหรับผลิตไอน้ำและไฟฟ้า การจัดสรรภาระต้องระบุขอบเขตโรงงานน้ำตาลและโรงไฟฟ้า รวมถึงเส้นทางของพลังงานที่ใช้ภายในโรงงาน",
+          "locator": "Tables 1, 4 and 5",
+          "source_url": "https://jseejournal.com/media/177/attachment/Sugarcane%20Biorefinery%20Complex%20pp.%2095-103.pdf"
+        },
+        {
+          "score": 0.5226,
+          "id": "ethanol-total-gap",
+          "title": "ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร",
+          "text": "ผลรวม CO₂e ของโมเดลทีมยังเว้นไว้ ต้องจับคู่ข้อมูลการผลิตจริงกับการจัดสรรไอน้ำและไฟฟ้า ข้อมูลการขนส่ง การปล่อยมีเทนจากน้ำเสีย และการใช้เชื้อเพลิงในรถตามขอบเขตที่เข้ากัน",
+          "locator": "Ethanol case",
+          "source_url": "https://tamsoodbase.vercel.app/#ethanol"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "การมีสถิติอุตสาหกรรมแปลว่ามีโมเดล LCI สมบูรณ์แล้วไหม",
+      "expected": "reference-vs-model",
+      "ranked": [
+        {
+          "id": "reference-vs-model",
+          "score": 0.671795
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.380531
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.240359
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.152826
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6718,
+          "id": "reference-vs-model",
+          "title": "ข้อมูลอ้างอิงกับแบบจำลองวัฏจักรชีวิต",
+          "text": "ข้อมูลอ้างอิงรักษาหน่วย ปี และบริบทของแหล่งต้นฉบับ แบบจำลอง LCI เชื่อมกระบวนการและรายการเข้าออกตามฐานและขอบเขตที่กำหนด สถิติอุตสาหกรรมใช้ดูแนวโน้มและบริบท",
+          "locator": "Reference inventory",
+          "source_url": "https://tamsoodbase.vercel.app/#reference"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ข้อมูลที่ใช้อ้างอิงต้องเก็บบริบทอะไร ต่างจากการเชื่อมกระบวนการอย่างไร",
+      "expected": "reference-vs-model",
+      "ranked": [
+        {
+          "id": "reference-vs-model",
+          "score": 0.541324
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.315528
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.244651
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.125227
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5413,
+          "id": "reference-vs-model",
+          "title": "ข้อมูลอ้างอิงกับแบบจำลองวัฏจักรชีวิต",
+          "text": "ข้อมูลอ้างอิงรักษาหน่วย ปี และบริบทของแหล่งต้นฉบับ แบบจำลอง LCI เชื่อมกระบวนการและรายการเข้าออกตามฐานและขอบเขตที่กำหนด สถิติอุตสาหกรรมใช้ดูแนวโน้มและบริบท",
+          "locator": "Reference inventory",
+          "source_url": "https://tamsoodbase.vercel.app/#reference"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "สถิติใช้ดูแนวโน้ม ส่วนรายการเข้าออกตามฐานศึกษาคือข้อมูลประเภทใด",
+      "expected": "reference-vs-model",
+      "ranked": [
+        {
+          "id": "reference-vs-model",
+          "score": 0.670717
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.246821
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.235733
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.112491
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6707,
+          "id": "reference-vs-model",
+          "title": "ข้อมูลอ้างอิงกับแบบจำลองวัฏจักรชีวิต",
+          "text": "ข้อมูลอ้างอิงรักษาหน่วย ปี และบริบทของแหล่งต้นฉบับ แบบจำลอง LCI เชื่อมกระบวนการและรายการเข้าออกตามฐานและขอบเขตที่กำหนด สถิติอุตสาหกรรมใช้ดูแนวโน้มและบริบท",
+          "locator": "Reference inventory",
+          "source_url": "https://tamsoodbase.vercel.app/#reference"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "วันนี้ฝนจะตกที่กรุงเทพไหม",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.330521
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.089256
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.002028
+        },
+        {
+          "id": "reference-vs-model",
+          "score": -0.043253
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "ขอสูตรทำข้าวผัดไข่",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "bagasse-steam",
+          "score": 0.196976
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.134531
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.126419
+        },
+        {
+          "id": "reference-vs-model",
+          "score": -0.045275
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "ช่วยแก้สมการ x บวก 2 เท่ากับ 5",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.190085
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.144513
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.110083
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.096276
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "ราคาดีเซลวันนี้ลิตรละเท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.435977
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.282279
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.194518
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.170604
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "โรงงาน TSM ปล่อยมีเทนจริงปี 2024 กี่กิโลกรัม",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.416283
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.357086
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.345017
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.329468
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "รถ E20 วิ่งทางไกลมีค่า N2O กี่กรัมต่อกิโลเมตร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.668543
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.436583
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.172762
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.13171
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "ขอปริมาณผลิตน้ำมันดิบรายเดือนของ DMF ปี 2025",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "reference-vs-model",
+          "score": 0.363308
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.31212
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.261657
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.172644
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "FAME ใช้เมทานอลกี่กิโลกรัมต่อตัน",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.436353
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.276616
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.141236
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.118132
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "เท่าไหร่",
+      "expected": "ambiguous",
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.284438
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.021314
+        },
+        {
+          "id": "bagasse-steam",
+          "score": -0.022031
+        },
+        {
+          "id": "reference-vs-model",
+          "score": -0.038642
+        }
+      ],
+      "returned": [],
+      "passed": null
+    },
+    {
+      "question": "ช่วยอธิบายข้อมูลนี้",
+      "expected": "ambiguous",
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.34759
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.316807
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.237217
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.209165
+        }
+      ],
+      "returned": [],
+      "passed": null
+    },
+    {
+      "question": "คาร์บอน",
+      "expected": "ambiguous",
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.559269
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.335017
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.305374
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.092677
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5593,
+          "id": "ethanol-total-gap",
+          "title": "ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร",
+          "text": "ผลรวม CO₂e ของโมเดลทีมยังเว้นไว้ ต้องจับคู่ข้อมูลการผลิตจริงกับการจัดสรรไอน้ำและไฟฟ้า ข้อมูลการขนส่ง การปล่อยมีเทนจากน้ำเสีย และการใช้เชื้อเพลิงในรถตามขอบเขตที่เข้ากัน",
+          "locator": "Ethanol case",
+          "source_url": "https://tamsoodbase.vercel.app/#ethanol"
+        }
+      ],
+      "passed": null
+    },
+    {
+      "question": "โรงงาน",
+      "expected": "ambiguous",
+      "ranked": [
+        {
+          "id": "bagasse-steam",
+          "score": 0.340604
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.246691
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.15976
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.154417
+        }
+      ],
+      "returned": [],
+      "passed": null
+    }
+  ]
+}

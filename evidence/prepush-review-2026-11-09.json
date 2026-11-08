@@ -1,0 +1,97 @@
+{
+  "checked_at_utc": "2026-11-08T18:38:48.707127+00:00",
+  "handoff_date": "2026-11-09",
+  "scope": "PRE_COMMIT_LOCAL_SOURCE_HANDOFF_NOT_PRODUCTION_OR_FULL_SOURCE_REPLAY",
+  "branch": "codex/teammate-runtime-handoff-2026-11-09",
+  "base_commit": "67db1ad73809990ecdb5c60fd004ec78cb1df477",
+  "targeted_unit": {
+    "run": 118,
+    "passed": 117,
+    "skipped": [
+      {
+        "test": "test_real_filtered_pagination_and_literal_query (test_eppo.EppoTests.test_real_filtered_pagination_and_literal_query)",
+        "reason": "Local snapshots required"
+      }
+    ],
+    "failures": 0,
+    "errors": 0
+  },
+  "full_repository_suite_initial_attempt": {
+    "run": 252,
+    "failures": 2,
+    "errors": 42,
+    "skipped": 9,
+    "passed": false,
+    "failure_categories": {
+      "FileNotFoundError": 35,
+      "ValueError": 1,
+      "ModuleNotFoundError": 6,
+      "AssertionError": 2
+    },
+    "missing_python_dependencies": [
+      "pdfplumber",
+      "pypdf"
+    ],
+    "limits": [
+      "Absent source/build artifacts include EPPO, upstream inventory, source contract, activity models and TGO source manifest.",
+      "Historical supplemental MySQL NSO evidence is bound to an earlier report hash; it was not rewritten to claim verification of restored bytes.",
+      "Targeted verification is reported separately; full suite was not made green with synthetic source data or ignored failures."
+    ]
+  },
+  "runtime": {
+    "requested_steps_passed": true,
+    "full_runtime_restored": false,
+    "lab_stages": [
+      {
+        "stage": "build_handoff_store.py",
+        "passed": true
+      },
+      {
+        "stage": "verify_handoff_engines.py",
+        "passed": true
+      },
+      {
+        "stage": "verify_handoff_dmf_mysql.py",
+        "passed": true
+      },
+      {
+        "stage": "verify_handoff_corporate_mysql.py",
+        "passed": true
+      }
+    ],
+    "review_release": "fb89454c4fd54e173e3b0a5e47570061b91c5f6b93018dddb9639caa55ecfd15"
+  },
+  "http_checks": {
+    "restored_data": 144,
+    "rag": 19,
+    "lineage": 14,
+    "passed": true
+  },
+  "corporate_mysql": {
+    "rows": 101,
+    "all_tables_equal": true,
+    "constraint_rejections": 7,
+    "late_rollback_passed": true
+  },
+  "frontend": {
+    "build_assets": 14,
+    "public_upstream_rows": 42,
+    "proxy_overlapping_requests": 12,
+    "passed": true
+  },
+  "code_sha256": {
+    "scripts/build_handoff_store.py": "54ed2bdb24710208bb6c7ce77e10f684ba2a0da9fda95b7af23ff902895960aa",
+    "scripts/verify_handoff_engines.py": "d69476bba13100cdfe932d712f458bf62f3bc48352bf25f26ee6f912b72ae4a2",
+    "scripts/verify_teammate_bundle.py": "a7377b62fd54c54a7b3ecd34fcfbb2deef2b076b7da17dcb4d3d093716711928",
+    "tests/test_handoff_store.py": "ea8641fb866d1b8365bc810641eb2d47ad352585b10194465099a2e7a3684f12"
+  },
+  "source_scan": {
+    "credential_patterns_found": [],
+    "raw_runtime_and_output_excluded": true
+  },
+  "gemini_called": false,
+  "human_feedback_submitted": false,
+  "production_changed": false,
+  "ready_for_source_handoff_commit": true,
+  "all_repository_tests_passed": false
+}

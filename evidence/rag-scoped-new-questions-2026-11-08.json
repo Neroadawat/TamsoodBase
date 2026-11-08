@@ -1,0 +1,768 @@
+{
+  "checked_at_utc": "2026-11-08T10:52:57.015619+00:00",
+  "scope": "LOCAL_FOUR_CARD_RETRIEVAL_NOT_ANSWER_ACCURACY",
+  "corpus_sha256": "fc29786df12cfbef04091cb3916181868e4459f31eeedf4a4aa9b30cf76f808d",
+  "questions_sha256": "7a025129a4ad98393d40e0d72d8e4d95ffc86d18058ce43ab5b77dd05819d2c5",
+  "retrieval_scope_sha256": "e9a3ffbb06c14a1de223ad936cfe8ef3cd8d3db2d709816a4855333b25dd8028",
+  "retrieval_code_sha256": {
+    "rag_scope.py": "9ae824f1a2d7a3fa925279633eed517f12b07233a8d0365de090dbe0e5783304",
+    "rag_retrieve.py": "3e4fa7e38a01dcb64bd970f7c4bda0dd56e71e43a62bdbef547535accd592f75"
+  },
+  "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "collection": "public_evidence_7d05fcf2f1cf876be1ff",
+  "cutoff": 0.45,
+  "versions": {
+    "fastembed": "0.7.3",
+    "qdrant-client": "1.15.1",
+    "onnxruntime": "1.31.1",
+    "numpy": "2.5.4"
+  },
+  "positive_top1_pass": 8,
+  "positive_count": 8,
+  "negative_rejection_pass": 18,
+  "negative_count": 18,
+  "baseline_raw_threshold_comparison": [
+    {
+      "cutoff": 0.35,
+      "positive_top1_pass": 6,
+      "negative_rejection_pass": 1
+    },
+    {
+      "cutoff": 0.45,
+      "positive_top1_pass": 6,
+      "negative_rejection_pass": 3
+    },
+    {
+      "cutoff": 0.55,
+      "positive_top1_pass": 5,
+      "negative_rejection_pass": 10
+    },
+    {
+      "cutoff": 0.65,
+      "positive_top1_pass": 3,
+      "negative_rejection_pass": 15
+    },
+    {
+      "cutoff": 0.7,
+      "positive_top1_pass": 2,
+      "negative_rejection_pass": 16
+    },
+    {
+      "cutoff": 0.75,
+      "positive_top1_pass": 1,
+      "negative_rejection_pass": 17
+    }
+  ],
+  "source_locators_present": true,
+  "limitations": [
+    "Questions authored before running but not by independent human reviewers.",
+    "Bounded facet rules cover known fuels/species/stages only, not general semantic sufficiency.",
+    "Ambiguous questions inspected without a correctness score; no answer generation tested."
+  ],
+  "results": [
+    {
+      "question": "E10 cold start fuel consumption กี่กมต่อลิตร",
+      "expected": "e10-cold-start",
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.719546
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.454507
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.325106
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.251157
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.7554,
+          "id": "e10-cold-start",
+          "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+          "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+          "locator": "Table 5, printed page 9558",
+          "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "Songkitti วัด CO₂ ตอน cold-start ได้เท่าไร",
+      "expected": "e10-cold-start",
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.542827
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.446952
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.165747
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.145518
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.4818,
+          "id": "e10-cold-start",
+          "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+          "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+          "locator": "Table 5, printed page 9558",
+          "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "รถ E10 ตอนเครื่องเย็นปล่อย carbon dioxide เท่าใด",
+      "expected": "e10-cold-start",
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.684615
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.55431
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.25439
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.177803
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6846,
+          "id": "e10-cold-start",
+          "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+          "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+          "locator": "Table 5, printed page 9558",
+          "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "Gasohol E10 อัตราสิ้นเปลืองตอนสตาร์ตเย็น",
+      "expected": "e10-cold-start",
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.783554
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.464696
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.34566
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.251522
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.7836,
+          "id": "e10-cold-start",
+          "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+          "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+          "locator": "Table 5, printed page 9558",
+          "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ค่า CO2 E10 ตอนเริ่มเครื่องเย็น",
+      "expected": "e10-cold-start",
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.566446
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.50645
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.227162
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.146262
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5731,
+          "id": "e10-cold-start",
+          "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+          "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+          "locator": "Table 5, printed page 9558",
+          "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ชานอ้อยเกี่ยวข้องกับ steam และ electricity อย่างไร",
+      "expected": "bagasse-steam",
+      "ranked": [
+        {
+          "id": "bagasse-steam",
+          "score": 0.601611
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.480398
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.303918
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.147662
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6641,
+          "id": "bagasse-steam",
+          "title": "พลังงานจากชานอ้อย ไอน้ำ และไฟฟ้า",
+          "text": "กรณีโรงกลั่นชีวภาพจากอ้อยใช้ชานอ้อยเป็นพลังงานสำหรับผลิตไอน้ำและไฟฟ้า การจัดสรรภาระต้องระบุขอบเขตโรงงานน้ำตาลและโรงไฟฟ้า รวมถึงเส้นทางของพลังงานที่ใช้ภายในโรงงาน",
+          "locator": "Tables 1, 4 and 5",
+          "source_url": "https://jseejournal.com/media/177/attachment/Sugarcane%20Biorefinery%20Complex%20pp.%2095-103.pdf"
+        },
+        {
+          "score": 0.487,
+          "id": "ethanol-total-gap",
+          "title": "ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร",
+          "text": "ผลรวม CO₂e ของโมเดลทีมยังเว้นไว้ ต้องจับคู่ข้อมูลการผลิตจริงกับการจัดสรรไอน้ำและไฟฟ้า ข้อมูลการขนส่ง การปล่อยมีเทนจากน้ำเสีย และการใช้เชื้อเพลิงในรถตามขอบเขตที่เข้ากัน",
+          "locator": "Ethanol case",
+          "source_url": "https://tamsoodbase.vercel.app/#ethanol"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "เหตุใดโมเดลเอทานอลยังไม่สรุปผลทั้งวัฏจักรชีวิต",
+      "expected": "ethanol-total-gap",
+      "ranked": [
+        {
+          "id": "reference-vs-model",
+          "score": 0.483781
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.448122
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.185637
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.104611
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.506,
+          "id": "ethanol-total-gap",
+          "title": "ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร",
+          "text": "ผลรวม CO₂e ของโมเดลทีมยังเว้นไว้ ต้องจับคู่ข้อมูลการผลิตจริงกับการจัดสรรไอน้ำและไฟฟ้า ข้อมูลการขนส่ง การปล่อยมีเทนจากน้ำเสีย และการใช้เชื้อเพลิงในรถตามขอบเขตที่เข้ากัน",
+          "locator": "Ethanol case",
+          "source_url": "https://tamsoodbase.vercel.app/#ethanol"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ข้อมูล reference กับ LCI ต่างกันอย่างไร",
+      "expected": "reference-vs-model",
+      "ranked": [
+        {
+          "id": "reference-vs-model",
+          "score": 0.526201
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.234298
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.090812
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.087561
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5262,
+          "id": "reference-vs-model",
+          "title": "ข้อมูลอ้างอิงกับแบบจำลองวัฏจักรชีวิต",
+          "text": "ข้อมูลอ้างอิงรักษาหน่วย ปี และบริบทของแหล่งต้นฉบับ แบบจำลอง LCI เชื่อมกระบวนการและรายการเข้าออกตามฐานและขอบเขตที่กำหนด สถิติอุตสาหกรรมใช้ดูแนวโน้มและบริบท",
+          "locator": "Reference inventory",
+          "source_url": "https://tamsoodbase.vercel.app/#reference"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "E20 cold start กินน้ำมันเท่าไหร่",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.46829
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.300868
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.161745
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.11385
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E85 ตอนเครื่องเย็นปล่อย CO2 เท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.589502
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.555856
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.32607
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.223902
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E100 มีอัตราสิ้นเปลืองเท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.584373
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.333243
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.229324
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.157808
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 ตอน cold start ปล่อย N₂O เท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.515785
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.343453
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.148017
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.111352
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 methane emission ช่วงสตาร์ตเย็น",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.543993
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.531974
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.325001
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.216989
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 CO2 และ N2O ตอนเครื่องเย็นมีค่าเท่าใด",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.523543
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.507415
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.294797
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.12573
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 hot start สิ้นเปลืองกี่กิโลเมตรต่อลิตร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.717262
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.37014
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.26898
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.210355
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 ตลอดรอบขับขี่ปล่อย CO2 กี่กรัมต่อกม",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.752625
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.625334
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.29919
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.23146
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 วิ่งทางไกลปล่อย CO2 เท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.608865
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.591039
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.286571
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.232599
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "ดีเซลตอนสตาร์ตเย็นปล่อย CO2 เท่าใด",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.660137
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.494321
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.365492
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.208498
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "B100 สิ้นเปลืองกี่กิโลเมตรต่อลิตร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.624459
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.355776
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.192466
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.181845
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 ปล่อย NOx ที่ท่อไอเสียเท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.489991
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.385284
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.256007
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.144362
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 และ E20 ตอนเครื่องเย็นต่างกันเท่าใด",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.41838
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.292863
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.193091
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.162149
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "โรงงาน TSM ปล่อย CH4 ต่อเอทานอลหนึ่งลิตรเท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.417663
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.40949
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.322725
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.263775
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "เอทานอลปี 2024 มี CO2e รวมเท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.547667
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.363986
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.32196
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.222332
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 เครื่องเย็นปล่อย CO กี่กรัมต่อกม",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.594863
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.459599
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.27137
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.158641
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "ปริมาณฝุ่น PM2.5 จาก E10 cold start",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.455051
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.299809
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.116167
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.085498
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "ขอสูตรต้มยำ",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.168186
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.151713
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.150402
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.004177
+        }
+      ],
+      "returned": [],
+      "passed": true
+    }
+  ]
+}

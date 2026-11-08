@@ -1,0 +1,1443 @@
+{
+  "checked_at_utc": "2026-11-08T15:21:56.468921+00:00",
+  "scope": "LOCAL_EVIDENCE_CARD_RETRIEVAL_NOT_ANSWER_ACCURACY",
+  "card_count": 10,
+  "embedding_threads": 2,
+  "corpus_sha256": "9b131dba2938161841cd3b51eb192c6d97f5f90e2ede3ac580c17dffc3ae0605",
+  "questions_sha256": "e0194b8f5db11c1250b0f88d31197c33168fc5836872db5c39551742c7c727bb",
+  "retrieval_scope_sha256": "cc337242e04a0d369d596487c99137e7170b330e7e28233722f7d7a54bda9bf9",
+  "retrieval_code_sha256": {
+    "rag_scope.py": "c0a3b92d2d3e1ffab679599372b5a1d8decc0b12bf17025a5081c31ab90d1101",
+    "rag_retrieve.py": "545b670824cb8b4936508912edbcb27aa632764e47a27dae12c78541230df792"
+  },
+  "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "collection": "public_evidence_299826cac729177fd62b",
+  "cutoff": 0.45,
+  "versions": {
+    "fastembed": "0.7.3",
+    "qdrant-client": "1.15.1",
+    "onnxruntime": "1.31.1",
+    "numpy": "2.5.4"
+  },
+  "positive_top1_pass": 8,
+  "positive_count": 8,
+  "negative_rejection_pass": 18,
+  "negative_count": 18,
+  "baseline_raw_threshold_comparison": [
+    {
+      "cutoff": 0.35,
+      "positive_top1_pass": 8,
+      "negative_rejection_pass": 0
+    },
+    {
+      "cutoff": 0.45,
+      "positive_top1_pass": 8,
+      "negative_rejection_pass": 3
+    },
+    {
+      "cutoff": 0.55,
+      "positive_top1_pass": 5,
+      "negative_rejection_pass": 8
+    },
+    {
+      "cutoff": 0.65,
+      "positive_top1_pass": 2,
+      "negative_rejection_pass": 16
+    },
+    {
+      "cutoff": 0.7,
+      "positive_top1_pass": 1,
+      "negative_rejection_pass": 18
+    },
+    {
+      "cutoff": 0.75,
+      "positive_top1_pass": 1,
+      "negative_rejection_pass": 18
+    }
+  ],
+  "source_locators_present": true,
+  "limitations": [
+    "Questions authored before running but not by independent human reviewers.",
+    "Bounded facet rules cover known fuels/species/stages only, not general semantic sufficiency.",
+    "Ambiguous questions inspected without a correctness score; no answer generation tested."
+  ],
+  "results": [
+    {
+      "question": "รถ E10 warm start ปล่อย CO2 เท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.679385
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.58068
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.281297
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.277192
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.215952
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.170326
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.169587
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.167352
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.161418
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.123029
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 ตอนเครื่องอุ่นกินน้ำมันเท่าไหร่",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.575515
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.373295
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.36045
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.270268
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.260469
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.258662
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.219599
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.180559
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.135983
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.120896
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 เดินเบามี CO2 กี่กรัมต่อกม",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.590985
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.54543
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.360845
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.298806
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.28666
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.261768
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.193618
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.18424
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.173819
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.12643
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 idle emission CO2",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.612659
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.559299
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.357726
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.303615
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.252932
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.224256
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.220347
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.212937
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.186491
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.166024
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 entire driving cycle CO2",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.68566
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.643894
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.304543
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.277724
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.267476
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.266783
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.192151
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.159125
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.116818
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.106269
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 N 2 O cold start emission",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.519289
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.454922
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.286493
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.238223
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.232924
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.207596
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.181909
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.15854
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.127462
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.087676
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 N2 O ตอนสตาร์ตเย็นเท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.56531
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.284068
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.247081
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.209669
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.182977
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.157684
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.153639
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.125987
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.121588
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.118693
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E๒๐ ตอนเครื่องเย็นกินน้ำมันเท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.513538
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.413617
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.404022
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.300596
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.244141
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.238606
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.237122
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.209624
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.195467
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.13878
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "แก๊สโซฮอล์ 95 cold start มี CO2 เท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.595061
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.531454
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.366071
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.284904
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.22592
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.208429
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.204545
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.190098
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.181546
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.150081
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "H-FAME จัดสรรให้กลีเซอรีนกี่เปอร์เซ็นต์",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.537868
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.502518
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.383261
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.34378
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.286026
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.265423
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.258796
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.22027
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.176078
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.099593
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "H FAME glycerine allocation เป็นเท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.630353
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.444705
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.404731
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.313105
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.26638
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.249391
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.177583
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.174751
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.173308
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.161416
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "ถ้าไม่มี E20 ให้ใช้ค่า E10 ตอบ E20 ตอนเครื่องเย็น",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.411552
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.315853
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.288689
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.257458
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.227013
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.21321
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.185982
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.165056
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.161891
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.119382
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 CO2 และ methane ช่วง cold start",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.533119
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.496331
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.245014
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.242359
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.191275
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.187948
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.179354
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.154085
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.129634
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.095359
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "B7 cold start fuel consumption",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.53167
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.423669
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.327071
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.263317
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.20404
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.194826
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.138834
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.13738
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.137219
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.118025
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "FAME เมทานอลกี่ลิตรต่อกิโลกรัม",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.442415
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.414523
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.330549
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.264449
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.253333
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.195987
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.183583
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.170808
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.12452
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.058283
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "Land seeding กี่ตารางเมตร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.581709
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.263116
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.235163
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.219993
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.202574
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.189749
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.15893
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.149392
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.09827
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.018152
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "TSM มี CH4 ที่วัดจริงกี่กิโลกรัมต่อเดือน",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.380864
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.338412
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.324956
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.319058
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.295749
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.270624
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.232737
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.138173
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.119823
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.065767
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "FAME CO2e ทั้งวงจรเป็นเท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.649562
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.389646
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.339861
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.25811
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.256671
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.245978
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.233021
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.189207
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.149141
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.123854
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E10 cold_start อัตราสิ้นเปลือง",
+      "expected": "e10-cold-start",
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.549881
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.265584
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.26045
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.250132
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.249287
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.224421
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.20889
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.191137
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.164246
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.122918
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5564,
+          "id": "e10-cold-start",
+          "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+          "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+          "locator": "Table 5, printed page 9558",
+          "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "E10 ตอนเครื่องยังเย็นมี carbon dioxide เท่าไร",
+      "expected": "e10-cold-start",
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.593471
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.524354
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.325557
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.259169
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.240617
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.19342
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.183649
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.174214
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.172567
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.156591
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5935,
+          "id": "e10-cold-start",
+          "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+          "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+          "locator": "Table 5, printed page 9558",
+          "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "H-FAME หน่วยหน้าที่คืออะไร",
+      "expected": "fame-functional-unit",
+      "ranked": [
+        {
+          "id": "fame-functional-unit",
+          "score": 0.47594
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.279084
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.221203
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.218879
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.213576
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.208532
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.192721
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.17944
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.169876
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.146562
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5412,
+          "id": "fame-functional-unit",
+          "title": "หน่วยหน้าที่ Functional unit FAME/H-FAME และขอบเขต Table 4",
+          "text": "บทความ Permpool และคณะกำหนดหน่วยหน้าที่เป็นการใช้เชื้อเพลิง 1000 MJ ตาราง 4 เป็นรายการเข้าออกขั้นแปรรูป FAME/H-FAME ที่ทีมเลือกนำเข้า ไม่ใช่บัญชี LCI ที่เชื่อมครบทั้งวงจรของโครงการ และฐานนี้ไม่ได้ครอบข้อมูลสถิติทุกชุด",
+          "locator": "Section 2.1, PDF page 3; Table 4, PDF page 7; team scope review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายขอบเขตโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและขอบเขตที่ทีมเลือกใช้",
+          "review_basis": [
+            "docs/inventory-scope-contract.md",
+            "evidence/inventory-scope-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "H FAME data period ระบุไว้ไหม",
+      "expected": "fame-measurement-period",
+      "ranked": [
+        {
+          "id": "fame-measurement-period",
+          "score": 0.606889
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.465548
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.432871
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.349713
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.327552
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.29712
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.292717
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.289599
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.289574
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.055067
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6069,
+          "id": "fame-measurement-period",
+          "title": "ปีเผยแพร่ไม่ใช่ช่วงปีวัด Data period และ Pilot plant FAME/H-FAME ไม่ใช่ค่าเฉลี่ยประเทศ",
+          "text": "ปีเผยแพร่บทความไม่ใช่หลักฐานว่าทุกรายการถูกวัดในปีนั้น ตาราง FAME/H-FAME ที่เลือกยังไม่ระบุช่วงเวลาวัด ทีมจึงคง data_period เป็น null และไม่เรียกข้อมูลโรงงานกับข้อมูล pilot plant ว่าเป็นค่าเฉลี่ยประเทศปีปัจจุบัน",
+          "locator": "Section 2.2, PDF pages 3–4; Table 4, PDF page 7; team data-period review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; แยกปีและบริบทโดย TamsoodBase",
+          "claim_type": "ข้อจำกัดจากการตรวจของทีม",
+          "review_basis": [
+            "docs/product-inventory.md",
+            "evidence/inventory-scope-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "FAME กับ glycerine ใช้ allocation อย่างไร",
+      "expected": "fame-allocation-caution",
+      "ranked": [
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.639412
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.337781
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.306944
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.274404
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.243027
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.239872
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.147121
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.139331
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.123026
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.025107
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6394,
+          "id": "fame-allocation-caution",
+          "title": "การจัดสรร Allocation FAME กับกลีเซอรีน glycerine และข้อควรระวังคูณซ้ำ",
+          "text": "บทความรายงานการจัดสรรภาระแบบเศรษฐกิจให้ FAME 70% และกลีเซอรีนดิบ 30% ทีมเก็บวิธีนี้เป็นข้อมูลประกอบ แต่ยังไม่ยืนยันว่าปริมาณในตารางผ่านการจัดสรรที่ขั้นใด จึงไม่คูณสัดส่วนซ้ำและไม่นำไปใช้กับโรงงานอื่นโดยอัตโนมัติ",
+          "locator": "Section 3.1.4, PDF page 7; team allocation review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; ข้อจำกัดการนำไปใช้โดย TamsoodBase",
+          "claim_type": "วิธีที่บทความรายงานและข้อค้างของทีม",
+          "review_basis": [
+            "docs/product-inventory.md",
+            "evidence/inventory-allocation-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "Land seeding มีหน่วยกำกับหรือไม่",
+      "expected": "palm-land-unit-hold",
+      "ranked": [
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.65543
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.305289
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.260277
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.22551
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.217675
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.195425
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.190392
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.188539
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.081679
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.007065
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6583,
+          "id": "palm-land-unit-hold",
+          "title": "Land seeding ขาดหน่วยจึงพักการใช้",
+          "text": "แถว Land seeding ของการผลิต FFB ในตาราง 1 ไม่ระบุหน่วย ทีมจึงเก็บเป็น HOLD_MISSING_UNIT ไม่เดาว่าเป็นตารางเมตรหรือเฮกตาร์ และไม่ใช้เป็นปริมาณพร้อมคำนวณจนกว่าจะมีหลักฐานหน่วย",
+          "locator": "Table 1, PDF page 5, Land seeding row; team HOLD_MISSING_UNIT review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สถานะพักข้อมูลโดย TamsoodBase",
+          "claim_type": "ข้อจำกัดจากการตรวจของทีม",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "evidence/upstream-inventory-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "FFB ไป CPO ทำไมถึงยังเชื่อมปริมาณไม่ได้",
+      "expected": "palm-cpo-provider-gap",
+      "ranked": [
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.755054
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.638262
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.4466
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.438174
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.402556
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.347448
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.267577
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.141632
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.136402
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.116126
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.7551,
+          "id": "palm-cpo-provider-gap",
+          "title": "โรงสกัดปาล์มขาดข้อมูลป้อนเข้า ทำไมยังเชื่อม FFB เข้ากับ CPO ไม่ได้",
+          "text": "ตาราง 2 แสดงรายการผลิต CPO แต่ไม่ระบุปริมาณ FFB ที่ป้อนเข้า ทีมจึงยังเชื่อมปริมาณผลปาล์มกับน้ำมันปาล์มดิบในโมเดลไม่ได้ ไม่คำนวณ FFB ย้อนจากผลรวมผลผลิตร่วม และไม่ถือว่าการมีชื่อกระบวนการตรงกันพิสูจน์ความเข้ากันได้",
+          "locator": "Table 2, PDF page 6; team upstream provider review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; วิเคราะห์ช่องว่างโดย TamsoodBase",
+          "claim_type": "ช่องว่างของข้อมูลสำหรับโมเดลทีม",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "web/upstream-inventory.json"
+          ]
+        },
+        {
+          "score": 0.6383,
+          "id": "palm-upstream-basis",
+          "title": "ฐานผลิตภัณฑ์ต้นน้ำปาล์ม FFB CPO RBDPO เป็นกิโลกรัม ต่างจากฐานเชื้อเพลิง MJ",
+          "text": "ตาราง 1–3 ของ Permpool และคณะใช้ฐานผลิตภัณฑ์ 1000 kg ของแต่ละกระบวนการ FFB, CPO และ RBDPO ส่วนตาราง 4 ใช้ 1000 MJ เชื้อเพลิง จึงห้ามบวกหรือเชื่อมปริมาณข้ามตารางโดยตรง ต้องมีข้อมูลเชื่อมกระบวนการและตรวจวิธีจัดสรรก่อน",
+          "locator": "Tables 1–3, PDF pages 5–6; Table 4, PDF page 7; team upstream review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายข้อจำกัดโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและข้อจำกัดการเชื่อมข้อมูล",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "web/upstream-inventory.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ฐานต้นน้ำปาล์มเอามาบวกกับฐาน MJ ตรงๆ ได้ไหม",
+      "expected": "palm-upstream-basis",
+      "ranked": [
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.472295
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.431036
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.335837
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.296937
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.241328
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.237952
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.199067
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.192082
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.138
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.107349
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.4723,
+          "id": "palm-upstream-basis",
+          "title": "ฐานผลิตภัณฑ์ต้นน้ำปาล์ม FFB CPO RBDPO เป็นกิโลกรัม ต่างจากฐานเชื้อเพลิง MJ",
+          "text": "ตาราง 1–3 ของ Permpool และคณะใช้ฐานผลิตภัณฑ์ 1000 kg ของแต่ละกระบวนการ FFB, CPO และ RBDPO ส่วนตาราง 4 ใช้ 1000 MJ เชื้อเพลิง จึงห้ามบวกหรือเชื่อมปริมาณข้ามตารางโดยตรง ต้องมีข้อมูลเชื่อมกระบวนการและตรวจวิธีจัดสรรก่อน",
+          "locator": "Tables 1–3, PDF pages 5–6; Table 4, PDF page 7; team upstream review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายข้อจำกัดโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและข้อจำกัดการเชื่อมข้อมูล",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "web/upstream-inventory.json"
+          ]
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

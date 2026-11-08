@@ -1,0 +1,133 @@
+{
+  "checked_at_utc": "2026-11-08T11:06:32.975173+00:00",
+  "scope": "CORPUS_EXPANSION_LOCAL_PROVENANCE_NOT_NEW_SOURCE_MEASUREMENT",
+  "baseline_commit": "67db1ad",
+  "card_count_before": 4,
+  "card_count_after": 10,
+  "corpus_sha256": "9b131dba2938161841cd3b51eb192c6d97f5f90e2ede3ac580c17dffc3ae0605",
+  "passed": true,
+  "checks": {
+    "original_four_cards_unchanged": true,
+    "ten_unique_card_ids": true,
+    "scope_ids_match": true,
+    "scope_hash_matches": true,
+    "recorded_article_rights": true,
+    "fame-functional-unit": true,
+    "palm-upstream-basis": true,
+    "palm-land-unit-hold": true,
+    "palm-cpo-provider-gap": true,
+    "fame-allocation-caution": true,
+    "fame-measurement-period": true
+  },
+  "recorded_source_pdf_sha256": "977f8ff66eed3e3833adb055778d5f9fc42acc214db342a71c53062a2b978f60",
+  "source_pdf_hash_reverified_this_round": false,
+  "primary_source_access": "Official publisher PDF text accessed via web; Section 2.1, Tables 1-4 and CC BY 4.0 notice checked. Not a full visual re-audit.",
+  "added_cards": [
+    {
+      "id": "fame-functional-unit",
+      "claim_type": "ข้อเท็จจริงต้นทางและขอบเขตที่ทีมเลือกใช้",
+      "licence": "CC BY 4.0",
+      "source_url": "https://doi.org/10.3390/su12229415",
+      "locator": "Section 2.1, PDF page 3; Table 4, PDF page 7; team scope review",
+      "review_files": [
+        {
+          "path": "docs/inventory-scope-contract.md",
+          "sha256": "055a0ea9f434c69907cba1a142d0808005072ecf509cacc2e5320665eda59340"
+        },
+        {
+          "path": "evidence/inventory-scope-review.json",
+          "sha256": "049eaa7e91f0e82da4086f28af30f01ba494bb399566e3000d63bf5d4d00bb62"
+        }
+      ]
+    },
+    {
+      "id": "palm-upstream-basis",
+      "claim_type": "ข้อเท็จจริงต้นทางและข้อจำกัดการเชื่อมข้อมูล",
+      "licence": "CC BY 4.0",
+      "source_url": "https://doi.org/10.3390/su12229415",
+      "locator": "Tables 1–3, PDF pages 5–6; Table 4, PDF page 7; team upstream review",
+      "review_files": [
+        {
+          "path": "docs/upstream-inventory-review.md",
+          "sha256": "7044d3221d343ca7f477fdc55c84969f350d756327d74ee4c15bbb5cff5dcd6c"
+        },
+        {
+          "path": "web/upstream-inventory.json",
+          "sha256": "6346835931c818ef8537520fdfb4914210f3fc199fcca8a0b700a3c923ba8e03"
+        }
+      ]
+    },
+    {
+      "id": "palm-land-unit-hold",
+      "claim_type": "ข้อจำกัดจากการตรวจของทีม",
+      "licence": "CC BY 4.0",
+      "source_url": "https://doi.org/10.3390/su12229415",
+      "locator": "Table 1, PDF page 5, Land seeding row; team HOLD_MISSING_UNIT review",
+      "review_files": [
+        {
+          "path": "docs/upstream-inventory-review.md",
+          "sha256": "7044d3221d343ca7f477fdc55c84969f350d756327d74ee4c15bbb5cff5dcd6c"
+        },
+        {
+          "path": "evidence/upstream-inventory-review.json",
+          "sha256": "813ee91f8ff486ee4290b06758ea3ca04d5b3611dc5794d55f682ca3ff0fd9f2"
+        }
+      ]
+    },
+    {
+      "id": "palm-cpo-provider-gap",
+      "claim_type": "ช่องว่างของข้อมูลสำหรับโมเดลทีม",
+      "licence": "CC BY 4.0",
+      "source_url": "https://doi.org/10.3390/su12229415",
+      "locator": "Table 2, PDF page 6; team upstream provider review",
+      "review_files": [
+        {
+          "path": "docs/upstream-inventory-review.md",
+          "sha256": "7044d3221d343ca7f477fdc55c84969f350d756327d74ee4c15bbb5cff5dcd6c"
+        },
+        {
+          "path": "web/upstream-inventory.json",
+          "sha256": "6346835931c818ef8537520fdfb4914210f3fc199fcca8a0b700a3c923ba8e03"
+        }
+      ]
+    },
+    {
+      "id": "fame-allocation-caution",
+      "claim_type": "วิธีที่บทความรายงานและข้อค้างของทีม",
+      "licence": "CC BY 4.0",
+      "source_url": "https://doi.org/10.3390/su12229415",
+      "locator": "Section 3.1.4, PDF page 7; team allocation review",
+      "review_files": [
+        {
+          "path": "docs/product-inventory.md",
+          "sha256": "197cf21c2bfa2d8a833500ece7c2a95b7f2f750e6fee438d7d6445286e1d1a81"
+        },
+        {
+          "path": "evidence/inventory-allocation-review.json",
+          "sha256": "03d4d52bbda9722703e52e3c4eec227d853c57e17bcc489ba11b302e679d581b"
+        }
+      ]
+    },
+    {
+      "id": "fame-measurement-period",
+      "claim_type": "ข้อจำกัดจากการตรวจของทีม",
+      "licence": "CC BY 4.0",
+      "source_url": "https://doi.org/10.3390/su12229415",
+      "locator": "Section 2.2, PDF pages 3–4; Table 4, PDF page 7; team data-period review",
+      "review_files": [
+        {
+          "path": "docs/product-inventory.md",
+          "sha256": "197cf21c2bfa2d8a833500ece7c2a95b7f2f750e6fee438d7d6445286e1d1a81"
+        },
+        {
+          "path": "evidence/inventory-scope-review.json",
+          "sha256": "049eaa7e91f0e82da4086f28af30f01ba494bb399566e3000d63bf5d4d00bb62"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Licence/provenance checks here apply to six new cards, not blanket clearance of historical source documents.",
+    "Summaries and team caveats are distinct from new measurements or model-ready inventory."
+  ]
+}

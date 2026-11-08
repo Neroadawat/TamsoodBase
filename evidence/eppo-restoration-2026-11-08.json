@@ -1,0 +1,18 @@
+{
+  "checked_at_utc": "2026-11-08T11:51:08.654978+00:00",
+  "checks": [
+    {
+      "dataset": "11_13",
+      "exact_recorded_bytes": false,
+      "error_type": "HTTPError"
+    },
+    {
+      "dataset": "11_14",
+      "exact_recorded_bytes": false,
+      "error_type": "HTTPError"
+    }
+  ],
+  "imported": false,
+  "production_changed": false,
+  "scope": "EXACT_SOURCE_RESTORATION_NOT_NEW_ACCEPTANCE"
+}

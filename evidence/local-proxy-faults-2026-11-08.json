@@ -1,0 +1,13 @@
+{
+  "checked_at_utc": "2026-11-08T18:36:15.449Z",
+  "scope": "LOCAL_PROXY_CONCURRENT_FAULT_SIMULATION_NOT_PRODUCTION",
+  "overlapping_requests": 12,
+  "deadline504": 4,
+  "disconnects_cancelled": 4,
+  "successful_responses": 4,
+  "late_callbacks_ignored": 8,
+  "no_cross_request_cancellation": true,
+  "no_duplicate_response_end": true,
+  "real_network_requests": 0,
+  "passed": true
+}

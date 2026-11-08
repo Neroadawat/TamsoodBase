@@ -225,8 +225,8 @@
       "priority": "P1",
       "status": "DONE",
       "title": "ทำแพ็กเกจอ้างอิงภายในพร้อม manifest และวิธีใช้",
-      "evidence": "build/reusable/reference-data-local.zip",
-      "done_when": "CSV/JSON/schema/example/hash ตรวจครบและสิทธิแนบไปกับชุด",
+      "evidence": "scripts/package_reference.py",
+      "done_when": "ผลแพ็กเดิมตรวจ CSV/JSON/schema/example/hash และแนบสิทธิแล้ว; ZIP เป็นไฟล์สร้างในเครื่องไม่ตาม Git ต้องสร้างและตรวจใหม่สำหรับ release ปัจจุบัน ไม่ใช้ผลรุ่นเก่ารับรองรุ่นใหม่",
       "dependencies": [
         "T11",
         "T16"
@@ -334,7 +334,7 @@
       "status": "IN_PROGRESS",
       "title": "เทียบNSOกับDEDE/DOEBและทบทวนrevision",
       "evidence": "evidence/cross-source-coverage.json",
-      "done_when": "169/273compared:131exact/24displayrounding/4divergence;104gapsremainexplicit;sourcevaluesunchanged",
+      "done_when": "169/273 compared:141 exact/24 display-rounding compatible/4 divergences;104 gaps remain explicit; source values unchanged; local restored-evidence recheck in evidence/nso-restored-review-2026-11-08.json",
       "dependencies": [
         "T27"
       ]
@@ -622,7 +622,7 @@
       "priority": "P0",
       "status": "IN_PROGRESS",
       "title": "Prepare continuous SRS draft for project M1 and later milestones",
-      "done_when": "SRS0.3MD+19pagePDFcurrentarchitectureand159/273coverage;renderreviewed;teamreview/finalfreeze pending",
+      "done_when": "Current SRS0.7.1 source re-rendered locally to27page review PDF with matching hashes on2026-11-08; team details/review and final release alignment remain open; see evidence/srs-handoff-render-2026-11-08.json",
       "evidence": "docs/submission/SRS.md",
       "dependencies": [
         "T54"
@@ -1089,7 +1089,7 @@
       "priority": "P0",
       "status": "IN_PROGRESS",
       "title": "Build evidence-backed FAME lifecycle across all five stages",
-      "done_when": "Compatible transport/use/treatment inventory; allocation/scaling/provider/background gates verified; no missing-as-zero or double counting; source/scenario classes explicit;Thai-only activity/provider provenance, no foreign surrogates",
+      "done_when": "Compatible transport/use/treatment inventory; allocation/scaling/provider/background gates verified; no missing-as-zero or double counting; source/scenario classes explicit;Thai-only activity/provider provenance, no foreign surrogates; targeted primary-source follow-up2026-11-08 in docs/scientific-source-check-2026-11-08.md added no numeric inventory or gate closure",
       "evidence": "evidence/lifecycle-candidate.json",
       "dependencies": [
         "T96"
@@ -1199,7 +1199,7 @@
       "priority": "P0",
       "status": "IN_PROGRESS",
       "title": "Complete ordered Thai FAME case: selection physical chain allocation transport use treatment and background",
-      "done_when": "All7phasegates closed by compatible evidence; 2026-11-05 six source-bound decisions remain blocked; see docs/fame-gate-closure-review.md, no allocation double-application or litre/MJ guess",
+      "done_when": "All7phasegates closed by compatible evidence; 2026-11-05 six source-bound decisions remain blocked; see docs/fame-gate-closure-review.md, no allocation double-application or litre/MJ guess; targeted primary-source follow-up2026-11-08 in docs/scientific-source-check-2026-11-08.md added no numeric inventory or gate closure",
       "evidence": "docs/thai-fame-completion-plan.md",
       "dependencies": [
         "T106"
@@ -1222,7 +1222,7 @@
       "priority": "P0",
       "status": "IN_PROGRESS",
       "title": "Apply all15 system-review findings with checked local/live delivery and explicit scientific external gates",
-      "done_when": "Close R01-R15 by evidence in docs/review-implementation-2026-11-05.md; technical fixes deployed/tested, scientific/provider/independent-review/stable-endpoint gates remain open",
+      "done_when": "Close R01-R15 by evidence in docs/review-implementation-2026-11-05.md; technical fixes deployed/tested, scientific/provider/independent-review/stable-endpoint gates remain open; local keyboard/load/query-plan/fault checks recorded in docs/local-engineering-review-2026-11-08.md, production latency and human accessibility gates still open; Explorer export/metadata bottlenecks fixed with34899row API+CSV parity and repeat local HTTP checks in docs/explorer-performance-fix-2026-11-08.md",
       "evidence": "docs/review-implementation-2026-11-05.md",
       "dependencies": [
         "T108"
@@ -1277,7 +1277,7 @@
       "priority": "P0",
       "status": "IN_PROGRESS",
       "title": "Apply all15 November6 expert review actions with external evidence gates",
-      "done_when": "Technical scoped work T115-T117 delivered; scientific compatibility/allocation/elementary, permanent endpoint and real human review remain explicitly open",
+      "done_when": "Technical scoped work T115-T117 delivered; scientific compatibility/allocation/elementary, permanent endpoint and real human review remain explicitly open; local keyboard/load/query-plan/fault checks recorded in docs/local-engineering-review-2026-11-08.md, production latency and human accessibility gates still open; Explorer export/metadata bottlenecks fixed with34899row API+CSV parity and repeat local HTTP checks in docs/explorer-performance-fix-2026-11-08.md",
       "evidence": "docs/review-implementation-2026-11-06.md",
       "dependencies": [
         "T113"

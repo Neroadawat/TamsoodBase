@@ -2,7 +2,17 @@
 
 เอกสารนี้เป็นจุดเริ่มต้นให้ Codex ของสมาชิกทีมเข้าใจเป้าหมาย โครงสร้าง ข้อเท็จจริง และข้อจำกัดของโปรเจกต์ก่อนลงมือทำงาน ใช้คู่กับ repository ปัจจุบันและคำสั่งล่าสุดของผู้ใช้ ไม่ใช่หลักฐานอนุมัติหรือข้อมูลแทน source files
 
-อัปเดตจากสถานะใน workspace ณ 8 พฤศจิกายน 2569
+อัปเดตจากสถานะใน workspace ณ 9 พฤศจิกายน 2569
+
+### ผลรับช่วงที่ใหม่กว่าตารางสถานะเดิม
+
+เครื่องสมาชิกกู้ DMF/NSO/Corporate และเตรียม MySQL/Neo4j lab กับ RAG lineage ได้แล้ว Corporate มี 101 รายการ (97 ACCEPTED_REFERENCE / 4 HOLD_CONTEXT) ตรวจ MySQL เทียบ SQLite ครบทุกช่อง พร้อม constraint/rollback ผ่าน; ยังเป็นข้อมูลอ้างอิงภายใน สิทธิแจกจ่าย NOT_CLEARED และไม่ใช่ normalized LCI ส่วน EPPO และ DOM ต้นฉบับ Table 4/article-visible ยังขาด
+
+ตรวจข้อมูลจริงผ่าน HTTP 144 ครั้ง ครอบคลุมค้น/กรอง/ส่งออก/ที่มา ดู `evidence/handoff-corporate-mysql-2026-11-09.json` และ `evidence/handoff-data-http-2026-11-09.json` ผลเป็นของเครื่องผู้ส่ง ไม่ใช่ผล replay ในเครื่องผู้รับหรือ production เริ่มรับช่วงจาก [รายการและคำสั่งปัจจุบัน](docs/TEAMMATE_NEXT_STEPS_TH.md) และท้าย `PROJECT_STATE.md`; รายงานวันที่ 8 พฤศจิกายนเป็นประวัติของแต่ละรอบ
+
+แก้คอขวด export/metadata ของ Explorer โดย API/CSV ครบ34,899แถวตรงเดิม;ทดสอบHTTP localดีขึ้นแต่ยังไม่ใช่production capacity สร้างPDFจากSRS0.7.1เดิมใหม่27หน้าตรงsourcehash รอทีมตรวจและไม่ได้rebuildสไลด์ ผลค้นprimary sourcesเพิ่มเติมยังไม่ปิดallocationหรือCH₄คู่ยอดผลิตจริง ดู `docs/scientific-source-check-2026-11-08.md`
+
+งานรับช่วงรอบนี้เตรียมส่งผ่าน branch `codex/teammate-runtime-handoff-2026-11-09` จากฐาน `67db1ad` ให้ตรวจ commit/remote จริงด้วย Git ก่อนรับงาน ไม่ใช้ข้อความว่า “ยังไม่ commit/push” ในประวัติรอบก่อนแทนสถานะปัจจุบัน ZIP เป็นทางเลือกสำหรับฐานเดิมและไม่รวม runtime/raw/secrets; รอบนี้ไม่ deploy หรือเปลี่ยน production
 
 ## 1. โปรเจกต์คืออะไร
 

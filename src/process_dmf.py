@@ -8,6 +8,10 @@ import sqlite3
 from collections import Counter
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
+if __package__:
+    from .explorer_indexes import apply_indexes
+else:
+    from explorer_indexes import apply_indexes
 
 ROOT = Path(__file__).resolve().parents[1]
 COLUMNS = {
@@ -164,6 +168,7 @@ def process(run_id=None):
             'excluded_equivalent_columns':list(columns[1:])})
     assert not con.execute('PRAGMA foreign_key_check').fetchall()
     assert con.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+    apply_indexes(con)
     con.commit()
     with sqlite3.connect(out/'candidates.sqlite') as target: con.backup(target)
     with (out/'candidates.csv').open('w',encoding='utf-8-sig',newline='') as f:

@@ -1,0 +1,84 @@
+{
+  "scope": "LOCAL_LAB_EXPLAIN_NOT_PRODUCTION_QUERY_PLAN",
+  "mysql_lookup": {
+    "query_block": {
+      "select_id": 1,
+      "cost_info": {
+        "query_cost": "1.00"
+      },
+      "table": {
+        "table_name": "observation",
+        "access_type": "const",
+        "possible_keys": [
+          "PRIMARY"
+        ],
+        "key": "PRIMARY",
+        "used_key_parts": [
+          "id"
+        ],
+        "key_length": "256",
+        "ref": [
+          "const"
+        ],
+        "rows_examined_per_scan": 1,
+        "rows_produced_per_join": 1,
+        "filtered": "100.00",
+        "cost_info": {
+          "read_cost": "0.00",
+          "eval_cost": "0.10",
+          "prefix_cost": "0.00",
+          "data_read_per_join": "2K"
+        },
+        "used_columns": [
+          "id",
+          "payload"
+        ]
+      }
+    }
+  },
+  "mysql_period_range": {
+    "query_block": {
+      "select_id": 1,
+      "cost_info": {
+        "query_cost": "950.66"
+      },
+      "ordering_operation": {
+        "using_filesort": false,
+        "table": {
+          "table_name": "observation",
+          "access_type": "range",
+          "possible_keys": [
+            "ix_period_context"
+          ],
+          "key": "ix_period_context",
+          "used_key_parts": [
+            "period_start"
+          ],
+          "key_length": "3",
+          "rows_examined_per_scan": 2112,
+          "rows_produced_per_join": 2112,
+          "filtered": "100.00",
+          "index_condition": "((`tamsood_research`.`observation`.`period_start` >= DATE'2024-01-01') and (`tamsood_research`.`observation`.`period_start` < DATE'2025-01-01'))",
+          "cost_info": {
+            "read_cost": "739.46",
+            "eval_cost": "211.20",
+            "prefix_cost": "950.66",
+            "data_read_per_join": "2M"
+          },
+          "used_columns": [
+            "snapshot_id",
+            "source_line",
+            "period_start",
+            "amount"
+          ]
+        }
+      }
+    }
+  },
+  "neo4j_plan": "+-------------------+\n| p.name | e.amount |\n+-------------------+\n+-------------------+\n\n+----------------------------------------------------------------+\n| Plan      | Statement   | Version | Planner | Runtime   | Time |\n+----------------------------------------------------------------+\n| \"EXPLAIN\" | \"READ_ONLY\" | \"5\"     | \"COST\"  | \"SLOTTED\" | 15   |\n+----------------------------------------------------------------+\n\n\nCypher 5\n\nPlanner COST\n\nRuntime SLOTTED\n\nRuntime version 5.26.32\n\n+----------------------+----+--------------------------------------------------------------------------+----------------+\n| Operator             | Id | Details                                                                  | Estimated Rows |\n+----------------------+----+--------------------------------------------------------------------------+----------------+\n| +ProduceResults      |  0 | `p.name`, `e.amount`                                                     |              1 |\n| |                    +----+--------------------------------------------------------------------------+----------------+\n| +Projection          |  1 | p.name AS `p.name`, e.amount AS `e.amount`                               |              1 |\n| |                    +----+--------------------------------------------------------------------------+----------------+\n| +Filter              |  2 | p:Process                                                                |              1 |\n| |                    +----+--------------------------------------------------------------------------+----------------+\n| +Expand(All)         |  3 | (e)<-[anon_0:HAS_EXCHANGE]-(p)                                           |              1 |\n| |                    +----+--------------------------------------------------------------------------+----------------+\n| +NodeUniqueIndexSeek |  4 | UNIQUE e:Exchange(observation_id) WHERE observation_id = $observation_id |              1 |\n+----------------------+----+--------------------------------------------------------------------------+----------------+\n\nTotal database accesses: ?\n\n0 rows\nready to start consuming query after 15 ms, results consumed after another 0 ms\n",
+  "primary_key_lookup": true,
+  "period_index_used": true,
+  "graph_index_seek": true,
+  "production_changed": false,
+  "passed": true
+}

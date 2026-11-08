@@ -1,0 +1,320 @@
+{
+  "checked_at_utc": "2026-11-08T18:36:48.812161+00:00",
+  "scope": "LOCAL_HTTP_NOT_BROWSER_VISUAL_OR_LLM",
+  "passed": true,
+  "checks": [
+    {
+      "case": "page_with_scope_notice",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "case": "positive",
+      "status": 200,
+      "passed": true,
+      "result": {
+        "hits": [
+          {
+            "score": 0.7427,
+            "id": "e10-cold-start",
+            "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+            "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+            "locator": "Table 5, printed page 9558",
+            "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737",
+            "lineage": {
+              "release": "fb89454c4fd54e173e3b0a5e47570061b91c5f6b93018dddb9639caa55ecfd15",
+              "count": 0,
+              "relation": "SUPPORTING_SOURCE_ROWS_NOT_A_CALCULATED_TOTAL",
+              "observations": []
+            }
+          }
+        ],
+        "summary": null,
+        "search_id": "f19swJfTk5VEDnhu0rragwXRP3wB443f"
+      }
+    },
+    {
+      "case": "unrelated",
+      "status": 200,
+      "passed": true,
+      "result": {
+        "hits": [],
+        "summary": null,
+        "search_id": "UpJVH3gV6arOAVEvrgcmVPGDTrRmigln"
+      }
+    },
+    {
+      "case": "unsupported_fuel",
+      "status": 200,
+      "passed": true,
+      "result": {
+        "hits": [],
+        "summary": null,
+        "search_id": "7Pw3xICEM17VPiDyP22hEvbk0UCkIlT_"
+      }
+    },
+    {
+      "case": "unsupported_species",
+      "status": 200,
+      "passed": true,
+      "result": {
+        "hits": [],
+        "summary": null,
+        "search_id": "XepdR09L51nHoBTUAV04QAgKmeve3Tod"
+      }
+    },
+    {
+      "case": "unsupported_stage",
+      "status": 200,
+      "passed": true,
+      "result": {
+        "hits": [],
+        "summary": null,
+        "search_id": "MqO-fVci3MiFxPveMeyFjG6mVm5bP09Y"
+      }
+    },
+    {
+      "case": "mixed_language",
+      "status": 200,
+      "passed": true,
+      "result": {
+        "hits": [
+          {
+            "score": 0.4584,
+            "id": "e10-cold-start",
+            "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+            "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+            "locator": "Table 5, printed page 9558",
+            "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737",
+            "lineage": {
+              "release": "fb89454c4fd54e173e3b0a5e47570061b91c5f6b93018dddb9639caa55ecfd15",
+              "count": 0,
+              "relation": "SUPPORTING_SOURCE_ROWS_NOT_A_CALCULATED_TOTAL",
+              "observations": []
+            }
+          }
+        ],
+        "summary": null,
+        "search_id": "4k2soc36XHWpk-DdvvT3gLnGOB7ZaCs7"
+      }
+    },
+    {
+      "case": "new_basis",
+      "status": 200,
+      "passed": true,
+      "result": {
+        "hits": [
+          {
+            "score": 0.5792,
+            "id": "fame-functional-unit",
+            "title": "หน่วยหน้าที่ Functional unit FAME/H-FAME และขอบเขต Table 4",
+            "text": "บทความ Permpool และคณะกำหนดหน่วยหน้าที่เป็นการใช้เชื้อเพลิง 1000 MJ ตาราง 4 เป็นรายการเข้าออกขั้นแปรรูป FAME/H-FAME ที่ทีมเลือกนำเข้า ไม่ใช่บัญชี LCI ที่เชื่อมครบทั้งวงจรของโครงการ และฐานนี้ไม่ได้ครอบข้อมูลสถิติทุกชุด",
+            "locator": "Section 2.1, PDF page 3; Table 4, PDF page 7; team scope review",
+            "source_url": "https://doi.org/10.3390/su12229415",
+            "licence": "CC BY 4.0",
+            "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายขอบเขตโดย TamsoodBase",
+            "claim_type": "ข้อเท็จจริงต้นทางและขอบเขตที่ทีมเลือกใช้",
+            "review_basis": [
+              "docs/inventory-scope-contract.md",
+              "evidence/inventory-scope-review.json"
+            ],
+            "lineage": {
+              "release": "fb89454c4fd54e173e3b0a5e47570061b91c5f6b93018dddb9639caa55ecfd15",
+              "count": 16,
+              "relation": "SUPPORTING_SOURCE_ROWS_NOT_A_CALCULATED_TOTAL",
+              "observations": [
+                {
+                  "observation_id": "018c6bde2b58a62e0446c958ea1d3bfa076b78439e2413ecb40420e358f38000",
+                  "process": "FAME",
+                  "flow": "Tap water",
+                  "amount": "0.40",
+                  "unit": "m3",
+                  "status": "SOURCE_REPORTED_PRODUCT_INVENTORY",
+                  "evidence_url": "/evidence?id=018c6bde2b58a62e0446c958ea1d3bfa076b78439e2413ecb40420e358f38000"
+                },
+                {
+                  "observation_id": "11656d0dfbc5cd9a50c20d1a660f229417c382e48f89ff52a592154279c45292",
+                  "process": "H-FAME",
+                  "flow": "Palladium",
+                  "amount": "0.76",
+                  "unit": "mg",
+                  "status": "SOURCE_REPORTED_PRODUCT_INVENTORY",
+                  "evidence_url": "/evidence?id=11656d0dfbc5cd9a50c20d1a660f229417c382e48f89ff52a592154279c45292"
+                },
+                {
+                  "observation_id": "2ab27d9eca7da7b6eb0abb305051300a8530bd1bf490de1d57a4f52d708348d1",
+                  "process": "FAME",
+                  "flow": "RBDPO",
+                  "amount": "24.6",
+                  "unit": "kg",
+                  "status": "SOURCE_REPORTED_PRODUCT_INVENTORY",
+                  "evidence_url": "/evidence?id=2ab27d9eca7da7b6eb0abb305051300a8530bd1bf490de1d57a4f52d708348d1"
+                }
+              ]
+            }
+          }
+        ],
+        "summary": null,
+        "search_id": "iReJexC8DMDFRQ5rld1lmEHE9x1QsEE9"
+      }
+    },
+    {
+      "case": "new_hold",
+      "status": 200,
+      "passed": true,
+      "result": {
+        "hits": [
+          {
+            "score": 0.5693,
+            "id": "palm-land-unit-hold",
+            "title": "Land seeding ขาดหน่วยจึงพักการใช้",
+            "text": "แถว Land seeding ของการผลิต FFB ในตาราง 1 ไม่ระบุหน่วย ทีมจึงเก็บเป็น HOLD_MISSING_UNIT ไม่เดาว่าเป็นตารางเมตรหรือเฮกตาร์ และไม่ใช้เป็นปริมาณพร้อมคำนวณจนกว่าจะมีหลักฐานหน่วย",
+            "locator": "Table 1, PDF page 5, Land seeding row; team HOLD_MISSING_UNIT review",
+            "source_url": "https://doi.org/10.3390/su12229415",
+            "licence": "CC BY 4.0",
+            "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สถานะพักข้อมูลโดย TamsoodBase",
+            "claim_type": "ข้อจำกัดจากการตรวจของทีม",
+            "review_basis": [
+              "docs/upstream-inventory-review.md",
+              "evidence/upstream-inventory-review.json"
+            ],
+            "lineage": {
+              "release": "fb89454c4fd54e173e3b0a5e47570061b91c5f6b93018dddb9639caa55ecfd15",
+              "count": 1,
+              "relation": "SUPPORTING_SOURCE_ROWS_NOT_A_CALCULATED_TOTAL",
+              "observations": [
+                {
+                  "observation_id": "242ec2a4a8edfe4d55b2434f2670e6467d8f53e391efe354f94699de70c14b72",
+                  "process": "FFB",
+                  "flow": "Land seeding",
+                  "amount": "0.48",
+                  "unit": null,
+                  "status": "HOLD_MISSING_UNIT",
+                  "evidence_url": "/evidence?id=242ec2a4a8edfe4d55b2434f2670e6467d8f53e391efe354f94699de70c14b72"
+                }
+              ]
+            }
+          }
+        ],
+        "summary": null,
+        "search_id": "oE2wUb5K4enYR6iG5lz05YUKslDDTdil"
+      }
+    },
+    {
+      "case": "new_allocation",
+      "status": 200,
+      "passed": true,
+      "result": {
+        "hits": [
+          {
+            "score": 0.5739,
+            "id": "fame-allocation-caution",
+            "title": "การจัดสรร Allocation FAME กับกลีเซอรีน glycerine และข้อควรระวังคูณซ้ำ",
+            "text": "บทความรายงานการจัดสรรภาระแบบเศรษฐกิจให้ FAME 70% และกลีเซอรีนดิบ 30% ทีมเก็บวิธีนี้เป็นข้อมูลประกอบ แต่ยังไม่ยืนยันว่าปริมาณในตารางผ่านการจัดสรรที่ขั้นใด จึงไม่คูณสัดส่วนซ้ำและไม่นำไปใช้กับโรงงานอื่นโดยอัตโนมัติ",
+            "locator": "Section 3.1.4, PDF page 7; team allocation review",
+            "source_url": "https://doi.org/10.3390/su12229415",
+            "licence": "CC BY 4.0",
+            "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; ข้อจำกัดการนำไปใช้โดย TamsoodBase",
+            "claim_type": "วิธีที่บทความรายงานและข้อค้างของทีม",
+            "review_basis": [
+              "docs/product-inventory.md",
+              "evidence/inventory-allocation-review.json"
+            ],
+            "lineage": {
+              "release": "fb89454c4fd54e173e3b0a5e47570061b91c5f6b93018dddb9639caa55ecfd15",
+              "count": 10,
+              "relation": "SUPPORTING_SOURCE_ROWS_NOT_A_CALCULATED_TOTAL",
+              "observations": [
+                {
+                  "observation_id": "018c6bde2b58a62e0446c958ea1d3bfa076b78439e2413ecb40420e358f38000",
+                  "process": "FAME",
+                  "flow": "Tap water",
+                  "amount": "0.40",
+                  "unit": "m3",
+                  "status": "SOURCE_REPORTED_PRODUCT_INVENTORY",
+                  "evidence_url": "/evidence?id=018c6bde2b58a62e0446c958ea1d3bfa076b78439e2413ecb40420e358f38000"
+                },
+                {
+                  "observation_id": "2ab27d9eca7da7b6eb0abb305051300a8530bd1bf490de1d57a4f52d708348d1",
+                  "process": "FAME",
+                  "flow": "RBDPO",
+                  "amount": "24.6",
+                  "unit": "kg",
+                  "status": "SOURCE_REPORTED_PRODUCT_INVENTORY",
+                  "evidence_url": "/evidence?id=2ab27d9eca7da7b6eb0abb305051300a8530bd1bf490de1d57a4f52d708348d1"
+                },
+                {
+                  "observation_id": "5386e4d6e3aa056c6027bf5938d01f6a44b57c0dbef6aa9389896ea3d1a495f6",
+                  "process": "FAME",
+                  "flow": "Methanol",
+                  "amount": "3.47",
+                  "unit": "kg",
+                  "status": "SOURCE_REPORTED_PRODUCT_INVENTORY",
+                  "evidence_url": "/evidence?id=5386e4d6e3aa056c6027bf5938d01f6a44b57c0dbef6aa9389896ea3d1a495f6"
+                }
+              ]
+            }
+          }
+        ],
+        "summary": null,
+        "search_id": "gk1QIRMbRHJEzxg1tHdS8GQnZgL7Md6X"
+      }
+    },
+    {
+      "case": "missing_physical_quantity",
+      "status": 200,
+      "passed": true,
+      "result": {
+        "hits": [],
+        "summary": null,
+        "search_id": "56ZFtwu1sLN9q1rXpOn9HGIXQCADhm1a"
+      }
+    },
+    {
+      "case": "blank",
+      "status": 400,
+      "passed": true,
+      "result": null
+    },
+    {
+      "case": "wrong_type",
+      "status": 400,
+      "passed": true,
+      "result": null
+    },
+    {
+      "case": "missing_field",
+      "status": 400,
+      "passed": true,
+      "result": null
+    },
+    {
+      "case": "oversized_question",
+      "status": 400,
+      "passed": true,
+      "result": null
+    },
+    {
+      "case": "cross_origin",
+      "status": 403,
+      "passed": true,
+      "result": null
+    },
+    {
+      "case": "wrong_content_type",
+      "status": 400,
+      "passed": true,
+      "result": null
+    },
+    {
+      "case": "malformed_json",
+      "status": 400,
+      "passed": true
+    },
+    {
+      "case": "oversized_body",
+      "status": 400,
+      "passed": true
+    }
+  ]
+}

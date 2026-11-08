@@ -1,5 +1,6 @@
 """Rebuild two EPPO source-statistic datasets offline; never infer refinery yields."""
 import csv
+import argparse
 import hashlib
 import io
 import json
@@ -67,7 +68,7 @@ def verify_roundtrip(con, rows, manifest):
         raise ValueError('SQLite integrity failed')
 
 
-def main():
+def main(evidence_output=None):
     folder=ROOT/'data/raw/eppo';manifest=json.loads((folder/'manifest.json').read_text(encoding='utf-8'))
     rows=[]
     for dataset in SPECS:
@@ -100,8 +101,12 @@ def main():
     (out/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     evidence={k:v for k,v in report.items() if k!='rows'}
     evidence.update(source_manifest=manifest,sqlite_roundtrip='passed',duplicate_business_keys=0)
-    (ROOT/'evidence/eppo-import.json').write_text(json.dumps(evidence,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    evidence_target = evidence_output or ROOT/'evidence/eppo-import.json'
+    evidence_target.write_text(json.dumps(evidence,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({k:v for k,v in evidence.items() if k not in ('source_manifest','limitations')},indent=2))
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--evidence-output',type=Path,help='Separate evidence file for a restored-snapshot run')
+    main(parser.parse_args().evidence_output)

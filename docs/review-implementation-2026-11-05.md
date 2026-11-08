@@ -1,5 +1,7 @@
 # ผลดำเนินการตามรีวิว15ข้อ - 5พฤศจิกายน2569
 
+เพิ่มเติม 8 พฤศจิกายน: ผล keyboard/load/memory/query-plan/fault checks ในเครื่องใหม่อยู่ที่ [local engineering review](local-engineering-review-2026-11-08.md) ไม่ใช่ production verification รอบใหม่; T109 ยัง IN_PROGRESS ตาม gates ด้านล่าง
+
 ## สถานะส่งมอบจริง
 
 เผยแพร่ frontend/API metadata ที่ https://tamsoodbase.vercel.app/#case-study แล้ว deployment dpl_BoUuYRBhKZS8TFU9HYZyUBauyFXi รุ่นโมเดล657aa71137bdcd70d11ed3e15b0aa1066246393c409517f757a0a10d9ddec89f ไม่ใช่productionDBmigration

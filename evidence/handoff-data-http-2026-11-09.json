@@ -1,0 +1,889 @@
+{
+  "checked_at_utc": "2026-11-08T17:40:52.269700+00:00",
+  "scope": "LOOPBACK_ALL_RESTORED_FIELDS_NOT_PRODUCTION_CAPACITY",
+  "requests_checked": 144,
+  "checks": [
+    {
+      "route": "/api/nso",
+      "http": 200,
+      "passed": true,
+      "sha256": "84f3a36bba045fa819f969b8f03f7fc3989b75704dd5f239657459ec2f37b100"
+    },
+    {
+      "route": "/api/product-inventory",
+      "http": 200,
+      "passed": true,
+      "sha256": "b3df774c1dd824ccf570f1f1ec345969dd29a91f27863753d4b354beed043ee5"
+    },
+    {
+      "route": "/upstream-inventory.json",
+      "http": 200,
+      "passed": true,
+      "sha256": "6346835931c818ef8537520fdfb4914210f3fc199fcca8a0b700a3c923ba8e03"
+    },
+    {
+      "route": "/api/model",
+      "http": 200,
+      "passed": true,
+      "sha256": "497e852887b0ff7b60a8b5aae28074e3d89e356fc72db2c35659afa3f6832824"
+    },
+    {
+      "route": "/api/reference?decision=ACCEPTED_REFERENCE&page=1",
+      "http": 200,
+      "passed": true,
+      "sha256": "87842ddb6f03ba0e5ef83086ec1fb29a1482a1dfcce7aabdedc3924379e82020"
+    },
+    {
+      "route": "/api/reference?decision=ACCEPTED_REFERENCE&page=2",
+      "http": 200,
+      "passed": true,
+      "sha256": "5a142579fa56c01f8f58e97ca6a97196ed471b5239127b375dcd479ffa5234bd"
+    },
+    {
+      "route": "/api/reference?decision=ACCEPTED_REFERENCE&page=3",
+      "http": 200,
+      "passed": true,
+      "sha256": "ecc90e5c08c106e84ad702eec870fd5e0881b7054067081d5b5d487242bc1741"
+    },
+    {
+      "route": "/api/reference?decision=ACCEPTED_REFERENCE&page=4",
+      "http": 200,
+      "passed": true,
+      "sha256": "19b9781beaed74fd7854b7e683d2ab462c5c4391ef19e596fc54a1e9f47935aa"
+    },
+    {
+      "route": "/api/reference?decision=ACCEPTED_REFERENCE&page=5",
+      "http": 200,
+      "passed": true,
+      "sha256": "0b4ec409eaf7324e31ad3d192fae66c534932fb45b8d3d672f0b9209b63baadf"
+    },
+    {
+      "route": "/api/reference?decision=all&page=1",
+      "http": 200,
+      "passed": true,
+      "sha256": "d4418984e26d30b95484560cb67ef4d5c300e9b6f3d3c27836a53e5e37472b67"
+    },
+    {
+      "route": "/api/reference?decision=all&page=2",
+      "http": 200,
+      "passed": true,
+      "sha256": "c1a0ac4a859fe2c2eabe7714da64491e4c2d667b61e64a08715837d198a01d9c"
+    },
+    {
+      "route": "/api/reference?decision=all&page=3",
+      "http": 200,
+      "passed": true,
+      "sha256": "280135316232592da8d544ca8b877e5fad6a51b96ef9a15da474e88424d40e3c"
+    },
+    {
+      "route": "/api/reference?decision=all&page=4",
+      "http": 200,
+      "passed": true,
+      "sha256": "ddb474af3040681b89a93c2f03090a6c57133f1f0b22bfbe860d395cbe5a71c2"
+    },
+    {
+      "route": "/api/reference?decision=all&page=5",
+      "http": 200,
+      "passed": true,
+      "sha256": "f5f67485cc4d888591d8e9a741f11704843a228c690e10462f4cd942bd328704"
+    },
+    {
+      "route": "/api/reference?decision=HOLD_CONTEXT&page=1",
+      "http": 200,
+      "passed": true,
+      "sha256": "71eda3cf68474533b241f7136c78279cbf9ae34dfeea5e35b0467c91c9fe1b60"
+    },
+    {
+      "route": "/api/reference?decision=HOLD_CONTEXT&page=2",
+      "http": 200,
+      "passed": true,
+      "sha256": "bb13fffd3089bb04f20a8d754977a64a9fbacd561b5c8eb7d9f24c8a76eaf140"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2021&data_kind=ORGANIZATION_INPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "ab320c097b8cf4a382e75c16d52a61d7228f28e716caecd8de5379dd601205ca"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2021&data_kind=ORGANIZATION_OUTPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "5a72c1e99166b9a4f65ea9374dab91d6b7b3ee8cc83a5a07dc316284820de4f5"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2021&data_kind=REPORTED_INTENSITY",
+      "http": 200,
+      "passed": true,
+      "sha256": "0611a0e4ecb3aee2257edcfb52f1d46e36663b8e71a45a35d32c19d2bba2de82"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2021&data_kind=CONTEXT_METRIC",
+      "http": 200,
+      "passed": true,
+      "sha256": "b78148daed121be3bdbafbd340addd5313df9b8b4c91ce0e5152d5754c9f4fbd"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2022&data_kind=ORGANIZATION_INPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "03748c136526ded877d574390959d1ae7fd6511b08e617e5d23d82ebe34ae3bc"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2022&data_kind=ORGANIZATION_OUTPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "662d482335da0edf4f0f806335fcf73680f81dbdeb65bae13dd6d9ef9e745f5d"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2022&data_kind=REPORTED_INTENSITY",
+      "http": 200,
+      "passed": true,
+      "sha256": "a4058601789081fa288c7d264e3464a1c3888cc353d58de97015d0a8fcde29b2"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2022&data_kind=CONTEXT_METRIC",
+      "http": 200,
+      "passed": true,
+      "sha256": "aa36a2f2bda5b46a89aa1643c88288cca4c48f931f9487df4b936a91c82ca68f"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2023&data_kind=ORGANIZATION_INPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "34be96959a2b8ecc3cd305ec7adcc77edc5a9eaea69568bff671bb9856086e61"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2023&data_kind=ORGANIZATION_OUTPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "8f95102417e9d5b525a9ea9d82ee33b01830f17955b508a23a911f5331cee883"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2023&data_kind=REPORTED_INTENSITY",
+      "http": 200,
+      "passed": true,
+      "sha256": "54d18f5db14207367277aec27cb471edcb52b22d87ef51f68e994f7aa97d998c"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2023&data_kind=CONTEXT_METRIC",
+      "http": 200,
+      "passed": true,
+      "sha256": "e4655509dc35102fa306d640599dc897058e0dda860cd4b96ade9a704641cb78"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2024&data_kind=ORGANIZATION_INPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "303738a77b15d078fc92f9e82db1fbfba828d70f87adbd2c50408aee35d5c064"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2024&data_kind=ORGANIZATION_OUTPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "733ea175bdfb78535a0aafb394569c247913cfb672fd5d0d10d2e3760f482913"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2024&data_kind=REPORTED_INTENSITY",
+      "http": 200,
+      "passed": true,
+      "sha256": "cbe32c8dcc218e187ef605b672045903fed977052bb7c55438282434bdb6dba7"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=THAIOIL&year=2024&data_kind=CONTEXT_METRIC",
+      "http": 200,
+      "passed": true,
+      "sha256": "ca2078be1a72ef3b823c5d70a8dbbe580768921a3111f6465ce5e6e645ed5ebe"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2021&data_kind=ORGANIZATION_INPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "aaad1bcb5021cd1a7da0c0027547f14171c66cd7f6f10e859bf97e83decc39f4"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2021&data_kind=ORGANIZATION_OUTPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "b712a7c9e929b7cad5aeb74321c4a6fc728c8b1680f12504fa94c3e02f9e3b32"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2021&data_kind=REPORTED_INTENSITY",
+      "http": 200,
+      "passed": true,
+      "sha256": "b3a21db20c716f10377abe1b51da5605ef21512f6cdf393dec23d5c4e84dc91c"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2021&data_kind=CONTEXT_METRIC",
+      "http": 200,
+      "passed": true,
+      "sha256": "b82e3a49ffa19d0f9c44f4104bf65c448dd1a1a664adc5cdc2b74ef35af86a81"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2022&data_kind=ORGANIZATION_INPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "f342498954140979213252cd8a83600da34439fa377a7bb99aa2da9e45c276bc"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2022&data_kind=ORGANIZATION_OUTPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "d32c55df37558e45d511ac15aae6fa4eb3c40e4e623ddaa7ad3c5a79587d4771"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2022&data_kind=REPORTED_INTENSITY",
+      "http": 200,
+      "passed": true,
+      "sha256": "de8966059e72d3962ad844d9c2f85da5eebe53be787ceb874840307f14bb4e02"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2022&data_kind=CONTEXT_METRIC",
+      "http": 200,
+      "passed": true,
+      "sha256": "13a8b550eb28a146c7c56b18696aa0a1cc8a1bded913081547f845c4ebd20ecd"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2023&data_kind=ORGANIZATION_INPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "97e25c86119100e4e8a2d51180e0364073f1dfe968c47cd09856757a163dd182"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2023&data_kind=ORGANIZATION_OUTPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "d5ff8a99c7a567d284b733177d4d0a8215f2f45faf896d31087ca6c30f4bc2df"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2023&data_kind=REPORTED_INTENSITY",
+      "http": 200,
+      "passed": true,
+      "sha256": "f4017dba20a1736af14b10d9524cc9db0ed62111980419cf9babc013b4257a24"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2023&data_kind=CONTEXT_METRIC",
+      "http": 200,
+      "passed": true,
+      "sha256": "a0b51004acc637503a83375d7661d705dec25a8e3cfb7711b24322f37320b20c"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2024&data_kind=ORGANIZATION_INPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "7529cf177d14e2de330a11f7ffaa163b5c1a18fe67e7462a9c2646cd3789d239"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2024&data_kind=ORGANIZATION_OUTPUT",
+      "http": 200,
+      "passed": true,
+      "sha256": "768dc54654927d0b3a7ac6938d6b23fe9f4aa521074617387c9822863b8ec72e"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2024&data_kind=REPORTED_INTENSITY",
+      "http": 200,
+      "passed": true,
+      "sha256": "9723a218cc111f7340776471d31d7aa664b9e3f5b4d334d7d3f3dc0c4ff7fb5c"
+    },
+    {
+      "route": "/api/reference?decision=all&publisher=SPRC&year=2024&data_kind=CONTEXT_METRIC",
+      "http": 200,
+      "passed": true,
+      "sha256": "193d2d248e8ee2b3465dc2a31d2dddb6fbdf0fe87f8544602a60dfdb418273bb"
+    },
+    {
+      "route": "/api/reference.json?decision=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "651df3173b2e8520010ece6cee0a1450cbe36b27157212e98f9e69d4313c96ea"
+    },
+    {
+      "route": "/api/reference.csv?decision=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "8f8566ea6ab4cd5a64c349d3149f12240ba7ec0ee861359e011732786792e601"
+    },
+    {
+      "route": "/api/reference.json",
+      "http": 200,
+      "passed": true,
+      "sha256": "823352cccae75a2c4e9d4b3e2a7dc6212685ef7da7c3f2ef233cbd59ed1ddd51"
+    },
+    {
+      "route": "/api/reference.csv",
+      "http": 200,
+      "passed": true,
+      "sha256": "edcdc0a194f97d3408ec0b2d08c4810c02073099b25f2e173cae035c0b59fe1a"
+    },
+    {
+      "route": "/api/reference.json?decision=HOLD_CONTEXT",
+      "http": 200,
+      "passed": true,
+      "sha256": "71eda3cf68474533b241f7136c78279cbf9ae34dfeea5e35b0467c91c9fe1b60"
+    },
+    {
+      "route": "/api/reference.csv?decision=HOLD_CONTEXT",
+      "http": 200,
+      "passed": true,
+      "sha256": "d9a31c8f4c20e332d33337fbab0b8315f881862dfdaf8ef82615e9da02f195c4"
+    },
+    {
+      "route": "/api/reference.json?publisher=SPRC&year=2024",
+      "http": 200,
+      "passed": true,
+      "sha256": "6c7e0c629875f41f2ae12e303a31c90fcc75147c961658e64547464ead84e60e"
+    },
+    {
+      "route": "/api/reference.csv?publisher=SPRC&year=2024",
+      "http": 200,
+      "passed": true,
+      "sha256": "f82bef574c17ed4dec4b2aa3df235565c03b5cbddf928f683b727985fb9beeb1"
+    },
+    {
+      "route": "/api/reference.json?year=1900",
+      "http": 200,
+      "passed": true,
+      "sha256": "b712a7c9e929b7cad5aeb74321c4a6fc728c8b1680f12504fa94c3e02f9e3b32"
+    },
+    {
+      "route": "/api/reference.csv?year=1900",
+      "http": 200,
+      "passed": true,
+      "sha256": "fafe8986b754f5815900fc5377c4852ffa403610287eb343bb1f4ac69bcc5a9a"
+    },
+    {
+      "route": "/api/reference?q=%25",
+      "http": 200,
+      "passed": true,
+      "sha256": "b712a7c9e929b7cad5aeb74321c4a6fc728c8b1680f12504fa94c3e02f9e3b32"
+    },
+    {
+      "route": "/api/reference?q=_",
+      "http": 200,
+      "passed": true,
+      "sha256": "100f3a20d72663ed856bc9e41e5c89836a6ea14b6226cf7e0f02ed1263f0f1c4"
+    },
+    {
+      "route": "/api/reference?q=%5C",
+      "http": 200,
+      "passed": true,
+      "sha256": "b712a7c9e929b7cad5aeb74321c4a6fc728c8b1680f12504fa94c3e02f9e3b32"
+    },
+    {
+      "route": "/api/reference?q=%27+OR+1%3D1+--",
+      "http": 200,
+      "passed": true,
+      "sha256": "b712a7c9e929b7cad5aeb74321c4a6fc728c8b1680f12504fa94c3e02f9e3b32"
+    },
+    {
+      "route": "/api/reference?page=0",
+      "http": 400,
+      "passed": true,
+      "sha256": "524609a90a3977dc3da478ee2666fcd9bb2c74089bdbd1e0773dfc787a5c6a29"
+    },
+    {
+      "route": "/api/reference?page=-1",
+      "http": 400,
+      "passed": true,
+      "sha256": "524609a90a3977dc3da478ee2666fcd9bb2c74089bdbd1e0773dfc787a5c6a29"
+    },
+    {
+      "route": "/api/reference?page=bad",
+      "http": 400,
+      "passed": true,
+      "sha256": "5ddb1c792801567edec536e5879a909bd1c76c844d8a0fcfe04b4c37628d97ad"
+    },
+    {
+      "route": "/api/reference?year=2024+OR+1%3D1",
+      "http": 400,
+      "passed": true,
+      "sha256": "f353f246795ca87f61c5e41603ae4dea7bb5cd993579172b67ac902793919cee"
+    },
+    {
+      "route": "/api/reference?publisher=unknown",
+      "http": 400,
+      "passed": true,
+      "sha256": "9261c241d9c94cecbcd240d69d71ea0e61478d10e88ca09157fc30bccc3ee1fc"
+    },
+    {
+      "route": "/api/reference?decision=MTEC_APPROVED",
+      "http": 400,
+      "passed": true,
+      "sha256": "b7a942b668a0bd4bccc217500bf56d7877b7487fb22936ff8bb428a3c03a56b9"
+    },
+    {
+      "route": "/api/reference?data_kind=INVENTED",
+      "http": 400,
+      "passed": true,
+      "sha256": "9bba8ff54cc168bac14a159a7989aa4a3d819c235af6ea4b1bdbb1b0f178b85f"
+    },
+    {
+      "route": "/api/reference?q=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "http": 400,
+      "passed": true,
+      "sha256": "c840c515ed3c457b678b1522deed3cf834067cb04dbd7a7b08af14d0244ce225"
+    },
+    {
+      "route": "/api/reports",
+      "http": 200,
+      "passed": true,
+      "sha256": "b85118de82ee0b77a17646302cf4c2217c06ada6e6e5c68ba3193be374490fd7"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2026&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "11fcd63812270cd4248630ca0e6cbdf254013bdc8c7d03a184601264338543bd"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2025&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "121b62d4db5ac5aa56a6e6ed7d2ec1f9ffcf70a92449eff8b229b26b7a7b7b88"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2024&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "e5b2e2899b9cda95fe462c7b0d8d8d14ec1cfb69037757e05b51bebd8d2e2d46"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2023&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "4bfb034b14845034625e9bcdf993b31cb86453dc70ca6a1ff038618950f02cc7"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2022&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "87875c87c7214b3d316acac098b31efecbbade70ce7863ab7c73cb121064eab7"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2021&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "ee89b54b3b3036ffc4427c702babb2ee93a31bf1ce0cd15f9c5ea1da8e825e7e"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2020&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "3a0120cedadb50eb76189b53d74bbc75cb952deb3885543300b504bb653c32ad"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2019&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "dbb653a6a45abc876351e1771ce64c52bf5ce2a7e9a1b220b608839b96ff7324"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2018&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "fb301db302d0c91e60371d7553c9f65f49a6d08e383a01da18cfe9ab2f065749"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2017&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "11cfbf9c0591336524e81ab212f10aeb7a09ae75f020841e2cc99e9f5010a993"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2016&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "b24f2431886dae034ac118b43ea11d652d377d93f059aeb21c49f5fdce63d0ab"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2015&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "9cc7c2a9821702001f5f2a2513cbd38b94a360f5502bd57a07b06df49376b741"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2014&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "7c58c89fd6c373e77e74e36ef991915622e3a0f69eaf47b660f751083ed0706d"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2013&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "edce09dfa9730438726e2e5a25185251ae7e57bb00249a5147d169eb0b7a836f"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2012&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "e6b54a5e7f243be8e157ee1e5ab7bf725bb2da61ff9c4729c9f8c3a104cb0be2"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2011&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "4de705198a8a3c04a0f850228cd213a41277f78babfd5999c4c99714f257e99f"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2010&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "6a91f46351b7a34819537935e5fe21a7dea8bda4a7dea6b9f59080c597f996c0"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2009&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "329758ae7466d1f2293d909622d52db8ba3ce67674c10eb21a05d9bffacf6345"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2008&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "c436e19fcffce640849b965ee638ba652f321ef7f6371d8edb2a508fd68d63c6"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2007&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "75aa9577151bc40eeb2c69c59e0d5e30cf301bd10fc95a24fe404198f4cda70b"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2006&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "c9e73ed4f23fe106b2cd746f1a4501af4b3f86d18d2df8555e2a26d4d71bea59"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2005&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "69d69cdfd54f92cfa5bf1b6e848fbfa4a5690c1a6b7a4fb46c63b531db0dd454"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2004&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "43fc4d79982a244ea15f177602d2b65f6de46b9a937b62ef9dfa7846d3eae3f4"
+    },
+    {
+      "route": "/api/export?product=production-condensate&year=2003&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "8e427dc4ae7259d3859fb28a11c11f1f8e270c4450c7e949399d13821ed3a34f"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2026&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "0bfab0ec3fb37d92f5d855dd7ab6b4136411b56244f89b69827cd9bd8b714de3"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2025&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "80c91982766ce2516c654e5c212165d67ef9c6994f3d8c83de59d80415e9a76f"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2024&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "99739985b1e18c488d92cf85c6efd16d5c5d8835a3554a2072ab61ae658448e5"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2023&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "1bead8c957b47a7ad3a52d202ff4cff19c9792a3adb6667002a861543692cdb6"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2022&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "7c7775cc2f3ab65dc27450f67865d257881b71adcd7a833b6b1cf3d974424711"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2021&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "fd429b2611cb6c81a170d35117f586d5f18343404769e0ce00d677d96925feb3"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2020&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "d692601abe068ba8782c53524ea65d32f1fc38f2e21cc6d497bf7aa6aa9b0528"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2019&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "717817f61ae01baa76aecd9bf2a5395b72d8dc5bc71082c443e955340232d1d0"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2018&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "991344df3c42851361cc362a8ecc0348a5c538ee416085892566ec6f3e069b3f"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2017&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "867b8e633c153e7bb1a2416960ead1042c2b2de9198f157e1a76741a59844adf"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2016&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "0b05bd684d75b0dea3b5127d8d926f30d3e77177c800e1656f02ac5c3f98b790"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2015&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "e0e40b7710118b753aa70dd4b1e6d0ef67ad96f4a5fe3567ba53498f0e62dc40"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2014&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "21df1e70d17ce7e0d5fb6f32db1cff3cdec5bff9996c676893cce9ae52fc03f8"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2013&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "16320dc248339feaa9ecf8782f8d6020c5ff368e6582a7834dd32959f49e8ebf"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2012&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "003e2f284a9db55c40e7719d1b1f4a38aaf08ef0903843c8507d7fa083aa394b"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2011&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "b8b073f6a52625f07410f11e1967c4daee46591436c4c4fa989c311668eaede7"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2010&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "c0130069b4bff191fa70814ef0e58d5a6967dc16f039546476f93daaf92dd627"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2009&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "431dfd00de5217b6d1070751ed321e6ba575ce1aa0943b19183b0be800766a04"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2008&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "8d2c09568d46e0f0bd23cb2042ccfcc540ac139098cc32da043a635c8ef5744f"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2007&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "58406b13fbf10e097114c47088a6761196bc7f80f8ecbc15f02c51d0cee07766"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2006&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "8417fd9e52aa339239feb023391eb4a7843bdc21bfdf35fee778883592648b3a"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2005&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "91c15f2b0387cd8b6be982ead7d6d5b42ed0ed521ecbbca675743ce542d9f57c"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2004&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "302821925847928639f062bbe8e8a8410de5bb880482246910274cc2b5edd654"
+    },
+    {
+      "route": "/api/export?product=production-natural-gas&year=2003&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "c9c32fa05ccd26043dcf0b0a0c3ae13f9d12483cdbf77599dbaa00453f56b2f6"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2026&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "f98348c2f300342d0d1c443fef2bef5af7b1b035e4dfb7406a893dfad03be3f4"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2025&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "aa75c4c14bdf4db685557bf5639803fc97e264c436f1e34511714f456387cb4f"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2024&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "6753c2a79c27d34d4f87f1eaae3c1d72319579ecd561ac708383357c2051d66d"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2023&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "4d1751a3e3cf87abf5ab052cba446720d47dda0bb18f8261363139fb86912e65"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2022&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "92ac0f682517bd5e3ca30cfd04767006795d0edfefdb8c9d7e2933323c10a507"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2021&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "e84cbc4d58eacb7ebfcf69c91ebbd57263dcffd1774b113c86baf68b871b8af2"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2020&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "cdd00e18d76deaff7c1f1601dd809b81e1305add289ec4f8b02bc2e75c291d3f"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2019&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "e2d747572f21877a70ad6726e765fd2def890d2b0b57784e7ed5dc106508f371"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2018&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "836dec0944e0eab3a70cfa67f1add4fd9b0b9877067b63752f26b687caa53b0d"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2017&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "1570488cbdd64d3306b047903795766e09a03ea3ce29a3e7acb6acf72c77570d"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2016&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "3b3c78bb8817eb92b87507c26af521ba8ef992db36f51cab1dfc12c646fa5c2a"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2015&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "74a93b288c64b2b02808e9d1c854eaf7a1df843f9d8853101ad3d6836c172a11"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2014&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "4f05554b9a2bd686d19b62ffa53f1d7d221cba1cb6db3682ddc607d6629be5e8"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2013&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "9d62766ab45eddc1770c8af3f5c8d37c479bea2293e9566fb95a75a53e462983"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2012&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "f88d25d2358af3793c3461e1c0e0c0804be504d98aaa77c35d0efce7255bb64f"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2011&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "6d723d4ff03a096f8d5322cfbdf55ecb0d924ea098da7e4914693fb12bb46799"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2010&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "dc0b92d8f35571b73724bae6abaa086d24c1cf024671a88bb1deba9d658f71c3"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2009&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "b0fad25fb8c513180749dd0069fece354f21c6d14a93d6d47f2842f4d7f69612"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2008&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "112d7c45b8d5b74c656be82f90c58459319f026d0ce92835ee976c52e6abd24f"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2007&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "46e3fd440c6b8b6c728c55173824d91730bff92242673dc2a609ef3831210b5f"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2006&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "9ba45f61974b343a5194fbea84121a2a4d0105287f233d249d3feea4f4e9f93e"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2005&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "7b57aa7eada302698005ec0f26f041af954f84ad3234ce4f844ef98a03c06aaf"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2004&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "aad18f24c9ab60d53f0096d5c55f797f4ce7d0a4316a4907134f31d1851eef59"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2003&status=all",
+      "http": 200,
+      "passed": true,
+      "sha256": "f987a7456618e14792c6601f6f8f2d6c46fd101e64dd750c060dcba5d03d052a"
+    },
+    {
+      "route": "/api/export",
+      "http": 400,
+      "passed": true,
+      "sha256": "1b8e16288ef1459a3ae9d7fe3dba624aac3a99c044d60a24ac2951946517db54"
+    }
+  ],
+  "corporate_rows": 101,
+  "dmf_rows": 34899,
+  "dmf_partitions": 72,
+  "nso_rows": 273,
+  "foreground_rows": 16,
+  "upstream_rows": 42,
+  "source_hashes_unchanged": {
+    "build/nso/report.json": "2c87fb6e0701403a1dc98a86ec6f9f8674926955bf2fcd9869eda76cb2d38307",
+    "build/product-inventory/report.json": "b3df774c1dd824ccf570f1f1ec345969dd29a91f27863753d4b354beed043ee5",
+    "web/upstream-inventory.json": "6346835931c818ef8537520fdfb4914210f3fc199fcca8a0b700a3c923ba8e03",
+    "web/case-study.json": "1ecf5a7840e147269e94df0c71311a1943e472b0390aebb3b8af90a0743d4774",
+    "build/reusable/all-reference.json": "eef2136fb28b5fa143d06987b122dd15dca4cb86a4d4aeebb7db058b2887ea16",
+    "build/reusable/manifest.json": "19da4535ce3d29844e612e9dca5f19021590f82037391f98da06de3490eb3afe"
+  },
+  "feedback_submitted": false,
+  "gemini_called": false,
+  "production_changed": false,
+  "passed": true
+}

@@ -1,0 +1,83 @@
+{
+  "checked_at_utc": "2026-11-08T16:50:30.682823+00:00",
+  "checks": [
+    {
+      "route": "/",
+      "http": 200,
+      "expected_http": 200,
+      "expected_behavior_passed": true,
+      "rows": null,
+      "response_sha256": "4b2cdc9be96a817b0b66dddcf1b3614b52e7a10b999c263ff248ee03c64630c7"
+    },
+    {
+      "route": "/api/records",
+      "http": 200,
+      "expected_http": 200,
+      "expected_behavior_passed": true,
+      "rows": null,
+      "response_sha256": "bc275aae5df78ff79bacd408fa8ae1bd783b13539931fbe6afa3a20ae7fc28ab"
+    },
+    {
+      "route": "/api/nso",
+      "http": 200,
+      "expected_http": 200,
+      "expected_behavior_passed": true,
+      "rows": 273,
+      "response_sha256": "84f3a36bba045fa819f969b8f03f7fc3989b75704dd5f239657459ec2f37b100"
+    },
+    {
+      "route": "/api/product-inventory",
+      "http": 200,
+      "expected_http": 200,
+      "expected_behavior_passed": true,
+      "rows": 16,
+      "response_sha256": "b3df774c1dd824ccf570f1f1ec345969dd29a91f27863753d4b354beed043ee5"
+    },
+    {
+      "route": "/api/model",
+      "http": 200,
+      "expected_http": 200,
+      "expected_behavior_passed": true,
+      "rows": null,
+      "response_sha256": "497e852887b0ff7b60a8b5aae28074e3d89e356fc72db2c35659afa3f6832824"
+    },
+    {
+      "route": "/api/reference",
+      "http": 200,
+      "expected_http": 200,
+      "expected_behavior_passed": true,
+      "rows": 97,
+      "response_sha256": "87842ddb6f03ba0e5ef83086ec1fb29a1482a1dfcce7aabdedc3924379e82020"
+    },
+    {
+      "route": "/api/eppo",
+      "http": 503,
+      "expected_http": 503,
+      "expected_behavior_passed": true,
+      "rows": null,
+      "response_sha256": "8946181725205f2bfd036f001be98c70cd9bf16848ce774b801f4bef1325c2af"
+    },
+    {
+      "route": "/api/export",
+      "http": 400,
+      "expected_http": 400,
+      "expected_behavior_passed": true,
+      "rows": null,
+      "response_sha256": "1b8e16288ef1459a3ae9d7fe3dba624aac3a99c044d60a24ac2951946517db54"
+    },
+    {
+      "route": "/api/export?product=production-oil&year=2024&status=eligible",
+      "http": 200,
+      "expected_http": 200,
+      "expected_behavior_passed": true,
+      "rows": null,
+      "response_sha256": "6753c2a79c27d34d4f87f1eaae3c1d72319579ecd561ac708383357c2051d66d"
+    }
+  ],
+  "passed": true,
+  "fully_available": false,
+  "unavailable_layers": [
+    "EPPO"
+  ],
+  "scope": "LOCAL_HTTP_RESTORED_DATA_NOT_ALL_LAYERS_OR_PRODUCTION"
+}

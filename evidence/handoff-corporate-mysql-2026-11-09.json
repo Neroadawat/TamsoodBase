@@ -1,0 +1,94 @@
+{
+  "checked_at_utc": "2026-11-08T17:37:28.755223+00:00",
+  "container": "tamsood-handoff-mysql-775d1ee70f07",
+  "schema": "handoff_corporate_c8b3eeb70ad0",
+  "release_id": "c8b3eeb70ad0ae6e98bdd2f5476f4a9912e7ef58a9fa04ce81746b4f3c7069e2",
+  "tables": {
+    "publisher": {
+      "rows": 2,
+      "columns": 2,
+      "all_fields_equal": true
+    },
+    "document": {
+      "rows": 2,
+      "columns": 7,
+      "all_fields_equal": true
+    },
+    "unit": {
+      "rows": 7,
+      "columns": 2,
+      "all_fields_equal": true
+    },
+    "context": {
+      "rows": 4,
+      "columns": 5,
+      "all_fields_equal": true
+    },
+    "metric": {
+      "rows": 26,
+      "columns": 8,
+      "all_fields_equal": true
+    },
+    "observation": {
+      "rows": 101,
+      "columns": 10,
+      "all_fields_equal": true
+    },
+    "quality_issue": {
+      "rows": 2,
+      "columns": 4,
+      "all_fields_equal": true
+    },
+    "issue_observation": {
+      "rows": 4,
+      "columns": 2,
+      "all_fields_equal": true
+    },
+    "review": {
+      "rows": 101,
+      "columns": 5,
+      "all_fields_equal": true
+    },
+    "data_release": {
+      "rows": 1,
+      "columns": 4,
+      "all_fields_equal": true
+    },
+    "release_observation": {
+      "rows": 101,
+      "columns": 2,
+      "all_fields_equal": true
+    },
+    "reference_catalog": {
+      "rows": 101,
+      "columns": 30,
+      "all_fields_equal": true
+    }
+  },
+  "observations_verified": 101,
+  "decisions": {
+    "ACCEPTED_REFERENCE": 97,
+    "HOLD_CONTEXT": 4
+  },
+  "constraint_rejections": {
+    "negative_amount": 3819,
+    "zero_scale": 3819,
+    "unknown_kind": 3819,
+    "wrong_document_context": 1452,
+    "unknown_decision": 3819,
+    "duplicate_identity": 1062,
+    "missing_observation": 1452
+  },
+  "late_error_rolled_back_prior_update": true,
+  "existing_lab_layer_hashes_unchanged": [
+    "820834a47696ace344083085456183de2fb492e7468c8e3f012fec0c7ab7e9fa",
+    "bfe64555d4ad29fdb007f4b3381e586d7234e483757e689f1d83f2f2e4e8d354",
+    "58ae11a79080c27b262dc776e0b468651ec6dcb73651e9f5f93d64fcae162402"
+  ],
+  "source_release_unchanged": true,
+  "redistribution_status": "NOT_CLEARED",
+  "normalized_lci_exchanges": 0,
+  "production_changed": false,
+  "scope": "LOCAL_OWNED_MYSQL_LAB_NOT_PRODUCTION_MIGRATION",
+  "passed": true
+}

@@ -1,0 +1,27 @@
+{
+  "source_url": "https://cdm.unfccc.int/UserManagement/FileStorage/7YKN5LO6P4A8HC3RZM0EDFST12J9UG",
+  "review_date": "2026-11-08",
+  "document": "TSM Bio Energy PDD version01, completed05/07/2009",
+  "web_primary_text_accessible": true,
+  "web_page_count": 73,
+  "local_pdf_saved": false,
+  "pdf_sha256": null,
+  "local_download_status": "RESPONSE_NOT_PDF_NO_HASH_CLAIM",
+  "rights_status": "NOT_CLEARED_FOR_REDISTRIBUTION",
+  "reviewed_sections": [
+    "A.1 title/version PDF2",
+    "A.4 technology PDF5-8",
+    "B.6.3-B.6.4 ex-ante estimates PDF39-43",
+    "B.7 monitoring plan PDF44-50"
+  ],
+  "findings": [
+    "PDD predictions and proposed monitoring are not achieved monitored methane emissions",
+    "PDD COD parameter differs from appraisal context; preserve separately, not overwrite",
+    "Annual reduction estimate cannot replace physical CH4 emission mass",
+    "Matched operating-period ethanol output and emitted CH4 remain unavailable in reviewed evidence"
+  ],
+  "matched_actual_methane_and_ethanol_output": null,
+  "CO2e_per_L": null,
+  "raw_redistributed": false,
+  "scope": "PRIMARY_PDD_TEXT_REVIEW_NOT_FULL_INVENTORY_OR_MONITORING_VERIFICATION"
+}

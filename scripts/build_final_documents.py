@@ -28,7 +28,7 @@ GREEN='#1d3c32';GOLD='#9b772c';INK='#203b32'
 
 def plain(s):
     s=re.sub(r'\[([^]]+)\]\(([^)]+)\)',r'\1',s)
-    return s.replace('**','').replace('`','')
+    return s.replace('**','').replace('`','').translate(str.maketrans({c:'-' for c in '\u2010\u2011\u2012\u2013\u2014'}))
 
 
 def render(srs_only=False, source_path=None, evidence_name='srs-current-review.json', footer_date=None):
@@ -41,6 +41,7 @@ def render(srs_only=False, source_path=None, evidence_name='srs-current-review.j
     h2=ParagraphStyle('H2',parent=h1,fontSize=16,leading=24,spaceBefore=18)
     h3=ParagraphStyle('H3',parent=h2,fontSize=12,leading=20)
     rowstyle=ParagraphStyle('Row',parent=body,fontSize=9.4,leading=15,leftIndent=10,borderColor=colors.HexColor('#d7e1d9'),borderWidth=.4,borderPadding=7,spaceAfter=10)
+    history_style=ParagraphStyle('History',parent=rowstyle,fontSize=9,leading=13.5,borderPadding=4,spaceAfter=5)
     story=[];table_header=None;in_code=False
     source_path=source_path or ROOT/'docs/submission/SRS.md'
     source_bytes=source_path.read_bytes()
@@ -58,7 +59,7 @@ def render(srs_only=False, source_path=None, evidence_name='srs-current-review.j
             if all(re.fullmatch(r'[-: ]+',x) for x in fields):continue
             if table_header is None:table_header=fields;continue
             entry='<br/>'.join('<b>'+html.escape(k)+':</b> '+html.escape(v) for k,v in zip(table_header,fields))
-            story.append(Paragraph(entry,rowstyle));continue
+            story.append(Paragraph(entry,history_style if table_header[0]=='รุ่น' else rowstyle));continue
         level=len(line)-len(line.lstrip('#'))
         if level:
             content=plain(line[level:].strip())

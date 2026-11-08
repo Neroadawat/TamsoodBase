@@ -1,0 +1,1723 @@
+{
+  "checked_at_utc": "2026-11-08T11:05:38.554474+00:00",
+  "scope": "LOCAL_EVIDENCE_CARD_RETRIEVAL_NOT_ANSWER_ACCURACY",
+  "card_count": 10,
+  "corpus_sha256": "9b131dba2938161841cd3b51eb192c6d97f5f90e2ede3ac580c17dffc3ae0605",
+  "questions_sha256": "fc52f4db44f2d6a0e272d63ad567a248504d2c1625d432cda9b00980b15bfbef",
+  "retrieval_scope_sha256": "2a89ac0189847e0c529ea54ff5bb8811b486f840a2b5b406372f1872079d7b3b",
+  "retrieval_code_sha256": {
+    "rag_scope.py": "05d2624a60e68624ed44eefb72e2bda83dd812ae483c1d30cabcd935b3e0f427",
+    "rag_retrieve.py": "2af2be6024a6e07f8fd3a50e7b1c48df1bee8f1cbe6b6bf73c47fff1b30bd4c9"
+  },
+  "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "collection": "public_evidence_299826cac729177fd62b",
+  "cutoff": 0.45,
+  "versions": {
+    "fastembed": "0.7.3",
+    "qdrant-client": "1.15.1",
+    "onnxruntime": "1.31.1",
+    "numpy": "2.5.4"
+  },
+  "positive_top1_pass": 19,
+  "positive_count": 19,
+  "negative_rejection_pass": 7,
+  "negative_count": 7,
+  "baseline_raw_threshold_comparison": [
+    {
+      "cutoff": 0.35,
+      "positive_top1_pass": 18,
+      "negative_rejection_pass": 1
+    },
+    {
+      "cutoff": 0.45,
+      "positive_top1_pass": 18,
+      "negative_rejection_pass": 3
+    },
+    {
+      "cutoff": 0.55,
+      "positive_top1_pass": 13,
+      "negative_rejection_pass": 4
+    },
+    {
+      "cutoff": 0.65,
+      "positive_top1_pass": 4,
+      "negative_rejection_pass": 5
+    },
+    {
+      "cutoff": 0.7,
+      "positive_top1_pass": 2,
+      "negative_rejection_pass": 5
+    },
+    {
+      "cutoff": 0.75,
+      "positive_top1_pass": 1,
+      "negative_rejection_pass": 7
+    }
+  ],
+  "source_locators_present": true,
+  "limitations": [
+    "Questions authored before running but not by independent human reviewers.",
+    "Bounded facet rules cover known fuels/species/stages only, not general semantic sufficiency.",
+    "Ambiguous questions inspected without a correctness score; no answer generation tested."
+  ],
+  "results": [
+    {
+      "question": "หน่วยหน้าที่ของ FAME คืออะไร",
+      "expected": "fame-functional-unit",
+      "ranked": [
+        {
+          "id": "fame-functional-unit",
+          "score": 0.579225
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.322232
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.311026
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.302616
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.284555
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.253193
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.242132
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.228773
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.149728
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.124206
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5792,
+          "id": "fame-functional-unit",
+          "title": "หน่วยหน้าที่ Functional unit FAME/H-FAME และขอบเขต Table 4",
+          "text": "บทความ Permpool และคณะกำหนดหน่วยหน้าที่เป็นการใช้เชื้อเพลิง 1000 MJ ตาราง 4 เป็นรายการเข้าออกขั้นแปรรูป FAME/H-FAME ที่ทีมเลือกนำเข้า ไม่ใช่บัญชี LCI ที่เชื่อมครบทั้งวงจรของโครงการ และฐานนี้ไม่ได้ครอบข้อมูลสถิติทุกชุด",
+          "locator": "Section 2.1, PDF page 3; Table 4, PDF page 7; team scope review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายขอบเขตโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและขอบเขตที่ทีมเลือกใช้",
+          "review_basis": [
+            "docs/inventory-scope-contract.md",
+            "evidence/inventory-scope-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "FAME ใช้ฐานเชื้อเพลิงกี่ MJ",
+      "expected": "fame-functional-unit",
+      "ranked": [
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.640656
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.608343
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.506966
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.502159
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.429719
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.370489
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.301525
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.293631
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.238804
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.223194
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.507,
+          "id": "fame-functional-unit",
+          "title": "หน่วยหน้าที่ Functional unit FAME/H-FAME และขอบเขต Table 4",
+          "text": "บทความ Permpool และคณะกำหนดหน่วยหน้าที่เป็นการใช้เชื้อเพลิง 1000 MJ ตาราง 4 เป็นรายการเข้าออกขั้นแปรรูป FAME/H-FAME ที่ทีมเลือกนำเข้า ไม่ใช่บัญชี LCI ที่เชื่อมครบทั้งวงจรของโครงการ และฐานนี้ไม่ได้ครอบข้อมูลสถิติทุกชุด",
+          "locator": "Section 2.1, PDF page 3; Table 4, PDF page 7; team scope review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายขอบเขตโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและขอบเขตที่ทีมเลือกใช้",
+          "review_basis": [
+            "docs/inventory-scope-contract.md",
+            "evidence/inventory-scope-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "functional unit ของ FAME คืออะไร",
+      "expected": "fame-functional-unit",
+      "ranked": [
+        {
+          "id": "fame-functional-unit",
+          "score": 0.459945
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.337587
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.31059
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.232674
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.214012
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.202542
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.199764
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.144937
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.139317
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.094592
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.4599,
+          "id": "fame-functional-unit",
+          "title": "หน่วยหน้าที่ Functional unit FAME/H-FAME และขอบเขต Table 4",
+          "text": "บทความ Permpool และคณะกำหนดหน่วยหน้าที่เป็นการใช้เชื้อเพลิง 1000 MJ ตาราง 4 เป็นรายการเข้าออกขั้นแปรรูป FAME/H-FAME ที่ทีมเลือกนำเข้า ไม่ใช่บัญชี LCI ที่เชื่อมครบทั้งวงจรของโครงการ และฐานนี้ไม่ได้ครอบข้อมูลสถิติทุกชุด",
+          "locator": "Section 2.1, PDF page 3; Table 4, PDF page 7; team scope review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายขอบเขตโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและขอบเขตที่ทีมเลือกใช้",
+          "review_basis": [
+            "docs/inventory-scope-contract.md",
+            "evidence/inventory-scope-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ทำไม Table 4 ไม่ใช่ LCI เต็มวงจรของทีม",
+      "expected": "fame-functional-unit",
+      "ranked": [
+        {
+          "id": "fame-functional-unit",
+          "score": 0.533949
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.35198
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.326655
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.302909
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.293208
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.247327
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.223891
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.219313
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.052242
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.031727
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5339,
+          "id": "fame-functional-unit",
+          "title": "หน่วยหน้าที่ Functional unit FAME/H-FAME และขอบเขต Table 4",
+          "text": "บทความ Permpool และคณะกำหนดหน่วยหน้าที่เป็นการใช้เชื้อเพลิง 1000 MJ ตาราง 4 เป็นรายการเข้าออกขั้นแปรรูป FAME/H-FAME ที่ทีมเลือกนำเข้า ไม่ใช่บัญชี LCI ที่เชื่อมครบทั้งวงจรของโครงการ และฐานนี้ไม่ได้ครอบข้อมูลสถิติทุกชุด",
+          "locator": "Section 2.1, PDF page 3; Table 4, PDF page 7; team scope review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายขอบเขตโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและขอบเขตที่ทีมเลือกใช้",
+          "review_basis": [
+            "docs/inventory-scope-contract.md",
+            "evidence/inventory-scope-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ฐาน FFB CPO RBDPO ต่างจากตารางเชื้อเพลิงอย่างไร",
+      "expected": "palm-upstream-basis",
+      "ranked": [
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.823131
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.683697
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.529652
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.47648
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.364951
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.356402
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.350399
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.321032
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.302668
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.214019
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.8231,
+          "id": "palm-upstream-basis",
+          "title": "ฐานผลิตภัณฑ์ต้นน้ำปาล์ม FFB CPO RBDPO เป็นกิโลกรัม ต่างจากฐานเชื้อเพลิง MJ",
+          "text": "ตาราง 1–3 ของ Permpool และคณะใช้ฐานผลิตภัณฑ์ 1000 kg ของแต่ละกระบวนการ FFB, CPO และ RBDPO ส่วนตาราง 4 ใช้ 1000 MJ เชื้อเพลิง จึงห้ามบวกหรือเชื่อมปริมาณข้ามตารางโดยตรง ต้องมีข้อมูลเชื่อมกระบวนการและตรวจวิธีจัดสรรก่อน",
+          "locator": "Tables 1–3, PDF pages 5–6; Table 4, PDF page 7; team upstream review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายข้อจำกัดโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและข้อจำกัดการเชื่อมข้อมูล",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "web/upstream-inventory.json"
+          ]
+        },
+        {
+          "score": 0.6837,
+          "id": "palm-cpo-provider-gap",
+          "title": "โรงสกัดปาล์มขาดข้อมูลป้อนเข้า ทำไมยังเชื่อม FFB เข้ากับ CPO ไม่ได้",
+          "text": "ตาราง 2 แสดงรายการผลิต CPO แต่ไม่ระบุปริมาณ FFB ที่ป้อนเข้า ทีมจึงยังเชื่อมปริมาณผลปาล์มกับน้ำมันปาล์มดิบในโมเดลไม่ได้ ไม่คำนวณ FFB ย้อนจากผลรวมผลผลิตร่วม และไม่ถือว่าการมีชื่อกระบวนการตรงกันพิสูจน์ความเข้ากันได้",
+          "locator": "Table 2, PDF page 6; team upstream provider review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; วิเคราะห์ช่องว่างโดย TamsoodBase",
+          "claim_type": "ช่องว่างของข้อมูลสำหรับโมเดลทีม",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "web/upstream-inventory.json"
+          ]
+        },
+        {
+          "score": 0.5297,
+          "id": "fame-functional-unit",
+          "title": "หน่วยหน้าที่ Functional unit FAME/H-FAME และขอบเขต Table 4",
+          "text": "บทความ Permpool และคณะกำหนดหน่วยหน้าที่เป็นการใช้เชื้อเพลิง 1000 MJ ตาราง 4 เป็นรายการเข้าออกขั้นแปรรูป FAME/H-FAME ที่ทีมเลือกนำเข้า ไม่ใช่บัญชี LCI ที่เชื่อมครบทั้งวงจรของโครงการ และฐานนี้ไม่ได้ครอบข้อมูลสถิติทุกชุด",
+          "locator": "Section 2.1, PDF page 3; Table 4, PDF page 7; team scope review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายขอบเขตโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและขอบเขตที่ทีมเลือกใช้",
+          "review_basis": [
+            "docs/inventory-scope-contract.md",
+            "evidence/inventory-scope-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ตารางต้นน้ำปาล์มใช้ฐานผลิตภัณฑ์กี่กิโลกรัม",
+      "expected": "palm-upstream-basis",
+      "ranked": [
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.516967
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.412036
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.344374
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.314034
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.285013
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.284038
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.279415
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.270266
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.266705
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.172745
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.517,
+          "id": "palm-upstream-basis",
+          "title": "ฐานผลิตภัณฑ์ต้นน้ำปาล์ม FFB CPO RBDPO เป็นกิโลกรัม ต่างจากฐานเชื้อเพลิง MJ",
+          "text": "ตาราง 1–3 ของ Permpool และคณะใช้ฐานผลิตภัณฑ์ 1000 kg ของแต่ละกระบวนการ FFB, CPO และ RBDPO ส่วนตาราง 4 ใช้ 1000 MJ เชื้อเพลิง จึงห้ามบวกหรือเชื่อมปริมาณข้ามตารางโดยตรง ต้องมีข้อมูลเชื่อมกระบวนการและตรวจวิธีจัดสรรก่อน",
+          "locator": "Tables 1–3, PDF pages 5–6; Table 4, PDF page 7; team upstream review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายข้อจำกัดโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและข้อจำกัดการเชื่อมข้อมูล",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "web/upstream-inventory.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "บวกข้อมูลฐาน kg จากต้นน้ำกับ MJ เชื้อเพลิงตรงๆ ได้ไหม",
+      "expected": "palm-upstream-basis",
+      "ranked": [
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.620612
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.530561
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.484385
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.429304
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.409696
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.357992
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.328271
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.313379
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.264434
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.234428
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6206,
+          "id": "palm-upstream-basis",
+          "title": "ฐานผลิตภัณฑ์ต้นน้ำปาล์ม FFB CPO RBDPO เป็นกิโลกรัม ต่างจากฐานเชื้อเพลิง MJ",
+          "text": "ตาราง 1–3 ของ Permpool และคณะใช้ฐานผลิตภัณฑ์ 1000 kg ของแต่ละกระบวนการ FFB, CPO และ RBDPO ส่วนตาราง 4 ใช้ 1000 MJ เชื้อเพลิง จึงห้ามบวกหรือเชื่อมปริมาณข้ามตารางโดยตรง ต้องมีข้อมูลเชื่อมกระบวนการและตรวจวิธีจัดสรรก่อน",
+          "locator": "Tables 1–3, PDF pages 5–6; Table 4, PDF page 7; team upstream review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายข้อจำกัดโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและข้อจำกัดการเชื่อมข้อมูล",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "web/upstream-inventory.json"
+          ]
+        },
+        {
+          "score": 0.5678,
+          "id": "ethanol-total-gap",
+          "title": "ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร",
+          "text": "ผลรวม CO₂e ของโมเดลทีมยังเว้นไว้ ต้องจับคู่ข้อมูลการผลิตจริงกับการจัดสรรไอน้ำและไฟฟ้า ข้อมูลการขนส่ง การปล่อยมีเทนจากน้ำเสีย และการใช้เชื้อเพลิงในรถตามขอบเขตที่เข้ากัน",
+          "locator": "Ethanol case",
+          "source_url": "https://tamsoodbase.vercel.app/#ethanol"
+        },
+        {
+          "score": 0.4983,
+          "id": "e10-cold-start",
+          "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+          "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+          "locator": "Table 5, printed page 9558",
+          "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ทำไม Land seeding ถึงถูกพักการใช้",
+      "expected": "palm-land-unit-hold",
+      "ranked": [
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.569296
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.324384
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.254564
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.246743
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.215818
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.170137
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.14883
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.095119
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.075881
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.016378
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5693,
+          "id": "palm-land-unit-hold",
+          "title": "Land seeding ขาดหน่วยจึงพักการใช้",
+          "text": "แถว Land seeding ของการผลิต FFB ในตาราง 1 ไม่ระบุหน่วย ทีมจึงเก็บเป็น HOLD_MISSING_UNIT ไม่เดาว่าเป็นตารางเมตรหรือเฮกตาร์ และไม่ใช้เป็นปริมาณพร้อมคำนวณจนกว่าจะมีหลักฐานหน่วย",
+          "locator": "Table 1, PDF page 5, Land seeding row; team HOLD_MISSING_UNIT review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สถานะพักข้อมูลโดย TamsoodBase",
+          "claim_type": "ข้อจำกัดจากการตรวจของทีม",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "evidence/upstream-inventory-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "Land seeding ใช้หน่วยเฮกตาร์หรือเปล่า",
+      "expected": "palm-land-unit-hold",
+      "ranked": [
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.548153
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.312567
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.220889
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.159603
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.158077
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.134444
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.096858
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.0725
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.07134
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.029333
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5552,
+          "id": "palm-land-unit-hold",
+          "title": "Land seeding ขาดหน่วยจึงพักการใช้",
+          "text": "แถว Land seeding ของการผลิต FFB ในตาราง 1 ไม่ระบุหน่วย ทีมจึงเก็บเป็น HOLD_MISSING_UNIT ไม่เดาว่าเป็นตารางเมตรหรือเฮกตาร์ และไม่ใช้เป็นปริมาณพร้อมคำนวณจนกว่าจะมีหลักฐานหน่วย",
+          "locator": "Table 1, PDF page 5, Land seeding row; team HOLD_MISSING_UNIT review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สถานะพักข้อมูลโดย TamsoodBase",
+          "claim_type": "ข้อจำกัดจากการตรวจของทีม",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "evidence/upstream-inventory-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "HOLD_MISSING_UNIT ของการปลูกปาล์มหมายความว่าอย่างไร",
+      "expected": "palm-land-unit-hold",
+      "ranked": [
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.55932
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.395825
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.290087
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.273456
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.262986
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.255941
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.194614
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.112476
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.030797
+        },
+        {
+          "id": "reference-vs-model",
+          "score": -0.001602
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6009,
+          "id": "palm-land-unit-hold",
+          "title": "Land seeding ขาดหน่วยจึงพักการใช้",
+          "text": "แถว Land seeding ของการผลิต FFB ในตาราง 1 ไม่ระบุหน่วย ทีมจึงเก็บเป็น HOLD_MISSING_UNIT ไม่เดาว่าเป็นตารางเมตรหรือเฮกตาร์ และไม่ใช้เป็นปริมาณพร้อมคำนวณจนกว่าจะมีหลักฐานหน่วย",
+          "locator": "Table 1, PDF page 5, Land seeding row; team HOLD_MISSING_UNIT review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สถานะพักข้อมูลโดย TamsoodBase",
+          "claim_type": "ข้อจำกัดจากการตรวจของทีม",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "evidence/upstream-inventory-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ทำไมยังเชื่อม FFB เข้ากับ CPO ไม่ได้",
+      "expected": "palm-cpo-provider-gap",
+      "ranked": [
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.732142
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.541395
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.370404
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.273235
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.2661
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.25233
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.198759
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.102086
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.047029
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.024892
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.7321,
+          "id": "palm-cpo-provider-gap",
+          "title": "โรงสกัดปาล์มขาดข้อมูลป้อนเข้า ทำไมยังเชื่อม FFB เข้ากับ CPO ไม่ได้",
+          "text": "ตาราง 2 แสดงรายการผลิต CPO แต่ไม่ระบุปริมาณ FFB ที่ป้อนเข้า ทีมจึงยังเชื่อมปริมาณผลปาล์มกับน้ำมันปาล์มดิบในโมเดลไม่ได้ ไม่คำนวณ FFB ย้อนจากผลรวมผลผลิตร่วม และไม่ถือว่าการมีชื่อกระบวนการตรงกันพิสูจน์ความเข้ากันได้",
+          "locator": "Table 2, PDF page 6; team upstream provider review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; วิเคราะห์ช่องว่างโดย TamsoodBase",
+          "claim_type": "ช่องว่างของข้อมูลสำหรับโมเดลทีม",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "web/upstream-inventory.json"
+          ]
+        },
+        {
+          "score": 0.5414,
+          "id": "palm-upstream-basis",
+          "title": "ฐานผลิตภัณฑ์ต้นน้ำปาล์ม FFB CPO RBDPO เป็นกิโลกรัม ต่างจากฐานเชื้อเพลิง MJ",
+          "text": "ตาราง 1–3 ของ Permpool และคณะใช้ฐานผลิตภัณฑ์ 1000 kg ของแต่ละกระบวนการ FFB, CPO และ RBDPO ส่วนตาราง 4 ใช้ 1000 MJ เชื้อเพลิง จึงห้ามบวกหรือเชื่อมปริมาณข้ามตารางโดยตรง ต้องมีข้อมูลเชื่อมกระบวนการและตรวจวิธีจัดสรรก่อน",
+          "locator": "Tables 1–3, PDF pages 5–6; Table 4, PDF page 7; team upstream review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายข้อจำกัดโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและข้อจำกัดการเชื่อมข้อมูล",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "web/upstream-inventory.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ตารางโรงสกัดปาล์มขาดข้อมูลป้อนเข้าอะไร",
+      "expected": "palm-cpo-provider-gap",
+      "ranked": [
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.616494
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.503588
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.489687
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.475169
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.47213
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.411693
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.343226
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.206492
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.197114
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.170307
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6165,
+          "id": "palm-cpo-provider-gap",
+          "title": "โรงสกัดปาล์มขาดข้อมูลป้อนเข้า ทำไมยังเชื่อม FFB เข้ากับ CPO ไม่ได้",
+          "text": "ตาราง 2 แสดงรายการผลิต CPO แต่ไม่ระบุปริมาณ FFB ที่ป้อนเข้า ทีมจึงยังเชื่อมปริมาณผลปาล์มกับน้ำมันปาล์มดิบในโมเดลไม่ได้ ไม่คำนวณ FFB ย้อนจากผลรวมผลผลิตร่วม และไม่ถือว่าการมีชื่อกระบวนการตรงกันพิสูจน์ความเข้ากันได้",
+          "locator": "Table 2, PDF page 6; team upstream provider review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; วิเคราะห์ช่องว่างโดย TamsoodBase",
+          "claim_type": "ช่องว่างของข้อมูลสำหรับโมเดลทีม",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "web/upstream-inventory.json"
+          ]
+        },
+        {
+          "score": 0.4752,
+          "id": "palm-upstream-basis",
+          "title": "ฐานผลิตภัณฑ์ต้นน้ำปาล์ม FFB CPO RBDPO เป็นกิโลกรัม ต่างจากฐานเชื้อเพลิง MJ",
+          "text": "ตาราง 1–3 ของ Permpool และคณะใช้ฐานผลิตภัณฑ์ 1000 kg ของแต่ละกระบวนการ FFB, CPO และ RBDPO ส่วนตาราง 4 ใช้ 1000 MJ เชื้อเพลิง จึงห้ามบวกหรือเชื่อมปริมาณข้ามตารางโดยตรง ต้องมีข้อมูลเชื่อมกระบวนการและตรวจวิธีจัดสรรก่อน",
+          "locator": "Tables 1–3, PDF pages 5–6; Table 4, PDF page 7; team upstream review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายข้อจำกัดโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและข้อจำกัดการเชื่อมข้อมูล",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "web/upstream-inventory.json"
+          ]
+        },
+        {
+          "score": 0.4721,
+          "id": "palm-land-unit-hold",
+          "title": "Land seeding ขาดหน่วยจึงพักการใช้",
+          "text": "แถว Land seeding ของการผลิต FFB ในตาราง 1 ไม่ระบุหน่วย ทีมจึงเก็บเป็น HOLD_MISSING_UNIT ไม่เดาว่าเป็นตารางเมตรหรือเฮกตาร์ และไม่ใช้เป็นปริมาณพร้อมคำนวณจนกว่าจะมีหลักฐานหน่วย",
+          "locator": "Table 1, PDF page 5, Land seeding row; team HOLD_MISSING_UNIT review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สถานะพักข้อมูลโดย TamsoodBase",
+          "claim_type": "ข้อจำกัดจากการตรวจของทีม",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "evidence/upstream-inventory-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "คำนวณ FFB ย้อนจากผลผลิตร่วม CPO ได้ไหม",
+      "expected": "palm-cpo-provider-gap",
+      "ranked": [
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.699555
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.668947
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.479167
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.436356
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.42353
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.389014
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.329326
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.320864
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.253766
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.177238
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6996,
+          "id": "palm-cpo-provider-gap",
+          "title": "โรงสกัดปาล์มขาดข้อมูลป้อนเข้า ทำไมยังเชื่อม FFB เข้ากับ CPO ไม่ได้",
+          "text": "ตาราง 2 แสดงรายการผลิต CPO แต่ไม่ระบุปริมาณ FFB ที่ป้อนเข้า ทีมจึงยังเชื่อมปริมาณผลปาล์มกับน้ำมันปาล์มดิบในโมเดลไม่ได้ ไม่คำนวณ FFB ย้อนจากผลรวมผลผลิตร่วม และไม่ถือว่าการมีชื่อกระบวนการตรงกันพิสูจน์ความเข้ากันได้",
+          "locator": "Table 2, PDF page 6; team upstream provider review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; วิเคราะห์ช่องว่างโดย TamsoodBase",
+          "claim_type": "ช่องว่างของข้อมูลสำหรับโมเดลทีม",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "web/upstream-inventory.json"
+          ]
+        },
+        {
+          "score": 0.6689,
+          "id": "palm-upstream-basis",
+          "title": "ฐานผลิตภัณฑ์ต้นน้ำปาล์ม FFB CPO RBDPO เป็นกิโลกรัม ต่างจากฐานเชื้อเพลิง MJ",
+          "text": "ตาราง 1–3 ของ Permpool และคณะใช้ฐานผลิตภัณฑ์ 1000 kg ของแต่ละกระบวนการ FFB, CPO และ RBDPO ส่วนตาราง 4 ใช้ 1000 MJ เชื้อเพลิง จึงห้ามบวกหรือเชื่อมปริมาณข้ามตารางโดยตรง ต้องมีข้อมูลเชื่อมกระบวนการและตรวจวิธีจัดสรรก่อน",
+          "locator": "Tables 1–3, PDF pages 5–6; Table 4, PDF page 7; team upstream review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; สรุปและอธิบายข้อจำกัดโดย TamsoodBase",
+          "claim_type": "ข้อเท็จจริงต้นทางและข้อจำกัดการเชื่อมข้อมูล",
+          "review_basis": [
+            "docs/upstream-inventory-review.md",
+            "web/upstream-inventory.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "สัดส่วนจัดสรร FAME กับกลีเซอรีนเป็นเท่าไร",
+      "expected": "fame-allocation-caution",
+      "ranked": [
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.573877
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.345374
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.320673
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.2897
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.287864
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.277163
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.268731
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.244798
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.150078
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.147763
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5739,
+          "id": "fame-allocation-caution",
+          "title": "การจัดสรร Allocation FAME กับกลีเซอรีน glycerine และข้อควรระวังคูณซ้ำ",
+          "text": "บทความรายงานการจัดสรรภาระแบบเศรษฐกิจให้ FAME 70% และกลีเซอรีนดิบ 30% ทีมเก็บวิธีนี้เป็นข้อมูลประกอบ แต่ยังไม่ยืนยันว่าปริมาณในตารางผ่านการจัดสรรที่ขั้นใด จึงไม่คูณสัดส่วนซ้ำและไม่นำไปใช้กับโรงงานอื่นโดยอัตโนมัติ",
+          "locator": "Section 3.1.4, PDF page 7; team allocation review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; ข้อจำกัดการนำไปใช้โดย TamsoodBase",
+          "claim_type": "วิธีที่บทความรายงานและข้อค้างของทีม",
+          "review_basis": [
+            "docs/product-inventory.md",
+            "evidence/inventory-allocation-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ทำไมไม่คูณ allocation FAME ซ้ำ",
+      "expected": "fame-allocation-caution",
+      "ranked": [
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.573467
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.367362
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.345543
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.338056
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.267216
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.240165
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.226103
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.147216
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.088485
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.041678
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.5735,
+          "id": "fame-allocation-caution",
+          "title": "การจัดสรร Allocation FAME กับกลีเซอรีน glycerine และข้อควรระวังคูณซ้ำ",
+          "text": "บทความรายงานการจัดสรรภาระแบบเศรษฐกิจให้ FAME 70% และกลีเซอรีนดิบ 30% ทีมเก็บวิธีนี้เป็นข้อมูลประกอบ แต่ยังไม่ยืนยันว่าปริมาณในตารางผ่านการจัดสรรที่ขั้นใด จึงไม่คูณสัดส่วนซ้ำและไม่นำไปใช้กับโรงงานอื่นโดยอัตโนมัติ",
+          "locator": "Section 3.1.4, PDF page 7; team allocation review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; ข้อจำกัดการนำไปใช้โดย TamsoodBase",
+          "claim_type": "วิธีที่บทความรายงานและข้อค้างของทีม",
+          "review_basis": [
+            "docs/product-inventory.md",
+            "evidence/inventory-allocation-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "FAME glycerine allocation ต้องระวังอะไร",
+      "expected": "fame-allocation-caution",
+      "ranked": [
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.670979
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.362697
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.302087
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.281862
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.220678
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.195044
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.152242
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.142535
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.136446
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.044734
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.671,
+          "id": "fame-allocation-caution",
+          "title": "การจัดสรร Allocation FAME กับกลีเซอรีน glycerine และข้อควรระวังคูณซ้ำ",
+          "text": "บทความรายงานการจัดสรรภาระแบบเศรษฐกิจให้ FAME 70% และกลีเซอรีนดิบ 30% ทีมเก็บวิธีนี้เป็นข้อมูลประกอบ แต่ยังไม่ยืนยันว่าปริมาณในตารางผ่านการจัดสรรที่ขั้นใด จึงไม่คูณสัดส่วนซ้ำและไม่นำไปใช้กับโรงงานอื่นโดยอัตโนมัติ",
+          "locator": "Section 3.1.4, PDF page 7; team allocation review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; ข้อจำกัดการนำไปใช้โดย TamsoodBase",
+          "claim_type": "วิธีที่บทความรายงานและข้อค้างของทีม",
+          "review_basis": [
+            "docs/product-inventory.md",
+            "evidence/inventory-allocation-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ปีเผยแพร่ FAME ใช้แทนปีที่วัดได้ไหม",
+      "expected": "fame-measurement-period",
+      "ranked": [
+        {
+          "id": "fame-measurement-period",
+          "score": 0.640297
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.359445
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.348102
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.231288
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.193961
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.190338
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.179375
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.176664
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.170167
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.004567
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6403,
+          "id": "fame-measurement-period",
+          "title": "ปีเผยแพร่ไม่ใช่ช่วงปีวัด Data period และ Pilot plant FAME/H-FAME ไม่ใช่ค่าเฉลี่ยประเทศ",
+          "text": "ปีเผยแพร่บทความไม่ใช่หลักฐานว่าทุกรายการถูกวัดในปีนั้น ตาราง FAME/H-FAME ที่เลือกยังไม่ระบุช่วงเวลาวัด ทีมจึงคง data_period เป็น null และไม่เรียกข้อมูลโรงงานกับข้อมูล pilot plant ว่าเป็นค่าเฉลี่ยประเทศปีปัจจุบัน",
+          "locator": "Section 2.2, PDF pages 3–4; Table 4, PDF page 7; team data-period review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; แยกปีและบริบทโดย TamsoodBase",
+          "claim_type": "ข้อจำกัดจากการตรวจของทีม",
+          "review_basis": [
+            "docs/product-inventory.md",
+            "evidence/inventory-scope-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "ทำไม data_period ของ H-FAME เป็น null",
+      "expected": "fame-measurement-period",
+      "ranked": [
+        {
+          "id": "fame-measurement-period",
+          "score": 0.61239
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.376035
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.317827
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.31055
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.303054
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.259301
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.255623
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.226499
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.20625
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.096679
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.6239,
+          "id": "fame-measurement-period",
+          "title": "ปีเผยแพร่ไม่ใช่ช่วงปีวัด Data period และ Pilot plant FAME/H-FAME ไม่ใช่ค่าเฉลี่ยประเทศ",
+          "text": "ปีเผยแพร่บทความไม่ใช่หลักฐานว่าทุกรายการถูกวัดในปีนั้น ตาราง FAME/H-FAME ที่เลือกยังไม่ระบุช่วงเวลาวัด ทีมจึงคง data_period เป็น null และไม่เรียกข้อมูลโรงงานกับข้อมูล pilot plant ว่าเป็นค่าเฉลี่ยประเทศปีปัจจุบัน",
+          "locator": "Section 2.2, PDF pages 3–4; Table 4, PDF page 7; team data-period review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; แยกปีและบริบทโดย TamsoodBase",
+          "claim_type": "ข้อจำกัดจากการตรวจของทีม",
+          "review_basis": [
+            "docs/product-inventory.md",
+            "evidence/inventory-scope-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "pilot plant FAME เป็นค่าเฉลี่ยประเทศหรือไม่",
+      "expected": "fame-measurement-period",
+      "ranked": [
+        {
+          "id": "fame-measurement-period",
+          "score": 0.497626
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.420559
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.378372
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.338325
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.316076
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.280862
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.273065
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.244282
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.227534
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.162077
+        }
+      ],
+      "returned": [
+        {
+          "score": 0.4976,
+          "id": "fame-measurement-period",
+          "title": "ปีเผยแพร่ไม่ใช่ช่วงปีวัด Data period และ Pilot plant FAME/H-FAME ไม่ใช่ค่าเฉลี่ยประเทศ",
+          "text": "ปีเผยแพร่บทความไม่ใช่หลักฐานว่าทุกรายการถูกวัดในปีนั้น ตาราง FAME/H-FAME ที่เลือกยังไม่ระบุช่วงเวลาวัด ทีมจึงคง data_period เป็น null และไม่เรียกข้อมูลโรงงานกับข้อมูล pilot plant ว่าเป็นค่าเฉลี่ยประเทศปีปัจจุบัน",
+          "locator": "Section 2.2, PDF pages 3–4; Table 4, PDF page 7; team data-period review",
+          "source_url": "https://doi.org/10.3390/su12229415",
+          "licence": "CC BY 4.0",
+          "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12, 9415; แยกปีและบริบทโดย TamsoodBase",
+          "claim_type": "ข้อจำกัดจากการตรวจของทีม",
+          "review_basis": [
+            "docs/product-inventory.md",
+            "evidence/inventory-scope-review.json"
+          ]
+        }
+      ],
+      "passed": true
+    },
+    {
+      "question": "FFB ที่ป้อนเข้า CPO มีปริมาณกี่กิโลกรัม",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.714074
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.566704
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.397518
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.362378
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.285939
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.27879
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.248933
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.192017
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.160705
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.103126
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "Land seeding มีพื้นที่กี่เฮกตาร์",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.559418
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.236873
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.21431
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.211469
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.148919
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.139745
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.115601
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.110948
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.068273
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.032436
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "FAME ใช้เมทานอลกี่กิโลกรัมต่อตัน",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "e10-cold-start",
+          "score": 0.436353
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.388019
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.328205
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.281089
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.276616
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.250478
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.160724
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.141236
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.118132
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.052418
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "E20 หน่วยหน้าที่เป็นกี่ MJ",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "fame-functional-unit",
+          "score": 0.487519
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.425884
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.419224
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.369665
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.286092
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.273645
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.270937
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.244946
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.226436
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.150398
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "CO2e รวม FAME ทั้งวงจรเท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.701792
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.407214
+        },
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.338408
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.281833
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.27701
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.273621
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.216186
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.212753
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.156084
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.118782
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "โรงงาน TSM จัดสรรไอน้ำเป็นสัดส่วนเท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.443383
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.422379
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.412387
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.397644
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.316707
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.301594
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.292565
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.251265
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.24574
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.22633
+        }
+      ],
+      "returned": [],
+      "passed": true
+    },
+    {
+      "question": "ราคาปาล์มน้ำมันวันนี้เท่าไร",
+      "expected": null,
+      "ranked": [
+        {
+          "id": "palm-upstream-basis",
+          "score": 0.312755
+        },
+        {
+          "id": "e10-cold-start",
+          "score": 0.311093
+        },
+        {
+          "id": "palm-cpo-provider-gap",
+          "score": 0.231417
+        },
+        {
+          "id": "ethanol-total-gap",
+          "score": 0.196299
+        },
+        {
+          "id": "fame-allocation-caution",
+          "score": 0.188505
+        },
+        {
+          "id": "fame-measurement-period",
+          "score": 0.184466
+        },
+        {
+          "id": "fame-functional-unit",
+          "score": 0.115335
+        },
+        {
+          "id": "bagasse-steam",
+          "score": 0.082848
+        },
+        {
+          "id": "palm-land-unit-hold",
+          "score": 0.061855
+        },
+        {
+          "id": "reference-vs-model",
+          "score": 0.06164
+        }
+      ],
+      "returned": [],
+      "passed": true
+    }
+  ]
+}

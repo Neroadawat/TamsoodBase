@@ -1,0 +1,69 @@
+{
+  "checked_at_utc": "2026-11-08T18:36:48.324190+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "case": "palm-land-unit-hold",
+      "passed": true,
+      "observation_id": "242ec2a4a8edfe4d55b2434f2670e6467d8f53e391efe354f94699de70c14b72",
+      "lineage_count": 1
+    },
+    {
+      "case": "readable_source_view",
+      "passed": true
+    },
+    {
+      "case": "invalid_review_rejected",
+      "passed": true
+    },
+    {
+      "case": "fame-functional-unit",
+      "passed": true,
+      "observation_id": "018c6bde2b58a62e0446c958ea1d3bfa076b78439e2413ecb40420e358f38000",
+      "lineage_count": 16
+    },
+    {
+      "case": "readable_source_view",
+      "passed": true
+    },
+    {
+      "case": "invalid_review_rejected",
+      "passed": true
+    },
+    {
+      "case": "/evidence:404",
+      "passed": true
+    },
+    {
+      "case": "/evidence:404",
+      "passed": true
+    },
+    {
+      "case": "/evidence:400",
+      "passed": true
+    },
+    {
+      "case": "/graph:400",
+      "passed": true
+    },
+    {
+      "case": "/evidence/view:404",
+      "passed": true
+    },
+    {
+      "case": "/evidence/view:400",
+      "passed": true
+    },
+    {
+      "case": "/evidence:400",
+      "passed": true
+    },
+    {
+      "case": "unissued_review_rejected",
+      "passed": true
+    }
+  ],
+  "human_feedback_submitted": false,
+  "llm_called": false,
+  "scope": "LOCAL_HTTP_REAL_SQLITE_AND_NEO4J_NOT_PRODUCTION"
+}

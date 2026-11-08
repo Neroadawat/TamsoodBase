@@ -1,0 +1,21 @@
+{
+  "scope": "LOCAL_EMBEDDING_THREAD_COMPARISON_NOT_GENERAL_BENCHMARK",
+  "cases": [
+    {
+      "threads": "default",
+      "batches": 10,
+      "questions_per_batch": 3,
+      "elapsed_ms": 14123.088,
+      "cpu_ms": 42890.625
+    },
+    {
+      "threads": "2",
+      "batches": 10,
+      "questions_per_batch": 3,
+      "elapsed_ms": 1336.432,
+      "cpu_ms": 140.625
+    }
+  ],
+  "max_vector_component_difference": 0.0,
+  "equivalent_within_1e_minus_5": true
+}

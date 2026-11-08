@@ -18,6 +18,10 @@ def node_path():
 
 
 class FrontendTests(unittest.TestCase):
+    def test_rag_review_does_not_overwrite_later_search(self):
+        result=subprocess.run([self.node,str(ROOT/'tests/rag-ui-behavior.cjs')],capture_output=True,text=True,encoding='utf-8',timeout=20)
+        self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+
     def test_discovery_lossless_routes_comparison_and_concurrent_status(self):
         result=subprocess.run([self.node,str(ROOT/'tests/discovery-contract.cjs')],capture_output=True,text=True,encoding='utf-8',timeout=20)
         self.assertEqual(result.returncode,0,result.stdout+result.stderr)

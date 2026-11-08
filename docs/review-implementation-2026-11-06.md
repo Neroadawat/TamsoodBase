@@ -34,6 +34,10 @@ Full suite226 testsผ่านไม่มีskip;หลังแก้ aria ro
 ## วิทยาศาสตร์: ตรวจเพิ่มอย่างมีขอบเขต
 ค้นThai FAME allocation/useสองqueries พบ DOI10.1016/j.spc.2025.04.023และDEDE agricultural B100ที่เคยอยู่candidateแล้ว ไม่เพิ่มแหล่งซ้ำ/ไม่promote snippet. DOIทางการredirectเปิดไม่ได้;GDcatalogระบุโครงการ2559และCCNonCommercial(any) ไม่ใช่หลักฐานmatched2020หรือสิทธิแจกจ่ายใหม่. ไม่มี numeric imports/allocation/provider factor ใหม่. ยึดevidence/fame-gate-closure-review.jsonเป็นรายการหลักฐานที่ต้องมี.
 
+## ตรวจวิศวกรรม local เพิ่ม 8 พฤศจิกายน
+
+ดู [local engineering review](local-engineering-review-2026-11-08.md) สำหรับ keyboard flow, bounded load/หน่วยความจำ, SQL plans และ fault recovery รอบล่าสุด ไม่ใช่การทดสอบ production รอบใหม่หรือ human UAT; T114 ยัง IN_PROGRESS
+
 ## ข้อค้างที่ปิดเองไม่ได้
 
 1. Table-specific gross/allocated basis; matched Thai use/transport/background/waste; elementary mapping/CF/independent balance.

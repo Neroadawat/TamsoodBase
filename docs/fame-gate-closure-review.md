@@ -1,5 +1,7 @@
 # ปิดข้อค้างก่อนรวม CO₂e — ผลตรวจ 5 พฤศจิกายน 2569
 
+ค้น primary sources เพิ่ม 8 พฤศจิกายน: [ผลตรวจตัวตน ARDA/Phase II และข้อมูลเดินระบบ](scientific-source-check-2026-11-08.md) ยังไม่มี workbook/operating pair ที่พอปิด gate ไม่เปลี่ยนการตัดสินด้านล่าง
+
 ผู้ใช้ให้ดำเนินเรื่อง allocation/compatibility/ขนส่ง/use/ของเสียต่อจากงาน UX รอบนี้ตรวจข้อความต้นฉบับที่รองรับการตัดสิน 7 ตำแหน่งด้วย pypdf และ pdfplumber เก็บ source hash/หน้า/ข้อความที่ตรวจเป็น hash ใน evidence/fame-gate-closure-review.json ไม่ใช้เพียงชื่อบทความหรือ snippet และไม่อ้างว่าได้ visual review ใหม่
 
 ## สิ่งที่ยืนยันเพิ่ม

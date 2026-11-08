@@ -1,0 +1,27 @@
+{
+  "scope": "READ_ONLY_LOCAL_MYSQL_PROBE_QUERY_SHAPE_NOT_PRODUCTION_API_PARITY",
+  "engine": "mysql:8.1",
+  "checks": [
+    {
+      "case": "all",
+      "bounded_count": 5001,
+      "expected_bounded_count": 5001,
+      "passed": true
+    },
+    {
+      "case": "year2024",
+      "bounded_count": 1125,
+      "expected_bounded_count": 1125,
+      "passed": true
+    },
+    {
+      "case": "no_rows",
+      "bounded_count": 0,
+      "expected_bounded_count": 0,
+      "passed": true
+    }
+  ],
+  "owner_verified": true,
+  "production_changed": false,
+  "passed": true
+}

@@ -4,14 +4,17 @@ import argparse
 import hashlib
 import json
 import os
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, parse_qs
 
 from fastembed import TextEmbedding
 from qdrant_client import QdrantClient, models
 
-from rag_gemini import summarize
+from rag_gemini import summarize, valid_model, MODEL as GEMINI_MODEL
+from rag_scope import compatible, constraints, load_scope, normalized_question
+from rag_review import ReviewInbox
+from rag_http import LocalEvidenceServer
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,22 +23,33 @@ DATA = ROOT / "docs/rag/public-evidence.json"
 STORE = ROOT / "build/rag"
 # Initial cutoff for the four-card FAQ; calibrate against a larger evaluation set.
 MIN_SCORE = 0.45
+EMBEDDING_THREADS = 2
 
 
 def retrieve(client, encoder, collection, cards, question):
-    vector = next(encoder.embed([question]))
-    matches = client.query_points(
-        collection, query=vector.tolist(), limit=3, with_payload=False,
-        score_threshold=MIN_SCORE,
-    )
-    return [{"score": round(point.score, 4), **cards[point.id]} for point in matches.points]
+    scope, wanted = load_scope(cards), constraints(question)
+    variants = list(dict.fromkeys((question, normalized_question(question))))
+    candidates = {}
+    for vector in encoder.embed(variants):
+        matches = client.query_points(
+            collection, query=vector.tolist(), limit=len(cards), with_payload=False,
+            score_threshold=MIN_SCORE,
+        )
+        for point in matches.points:
+            card = cards[point.id]
+            if compatible(scope[card['id']], wanted):
+                candidates[point.id] = max(candidates.get(point.id, -1), point.score)
+    ordered = sorted(candidates, key=lambda index: (-candidates[index], index))[:3]
+    return [{"score": round(candidates[index], 4), **cards[index]} for index in ordered]
 
 
-def serve(client, encoder, collection, cards, port, gemini_key=None):
+def serve(client, encoder, collection, cards, port, gemini_key=None, lineage=None, gemini_model=GEMINI_MODEL):
+    review = ReviewInbox(hashlib.sha256(DATA.read_bytes()).hexdigest())
     notice = ("โหมด Gemini จะส่งคำถามและข้อความจากการ์ดสาธารณะที่ค้นเจอไปยัง Google "
               "กรุณาอย่าใส่ข้อมูลส่วนตัวหรือข้อมูลภายใน" if gemini_key else
               "โหมดค้นในเครื่องใช้การ์ดหลักฐานโดยตรง")
     page = (Path(__file__).with_name("rag_demo.html")).read_text(encoding="utf-8")
+    page = page.replace('<!-- card-count -->', str(len(cards)))
     page = page.replace("<!-- mode-notice -->", notice).encode("utf-8")
 
     class Handler(BaseHTTPRequestHandler):
@@ -48,13 +62,37 @@ def serve(client, encoder, collection, cards, port, gemini_key=None):
             self.wfile.write(content)
 
         def do_GET(self):
+            parsed = urlsplit(self.path)
+            if parsed.path in ('/evidence', '/evidence/view', '/graph'):
+                if lineage is None:
+                    self.send_error(503, 'Local lineage not enabled'); return
+                try:
+                    ids = parse_qs(parsed.query).get('id', [])
+                    if len(ids) != 1: raise ValueError('Exactly one observation ID required')
+                    oid = ids[0]
+                    payload = lineage.observation(oid)
+                    if parsed.path == '/evidence/view':
+                        from rag_evidence_page import render_observation
+                        self.send_content(200, 'text/html; charset=utf-8', render_observation(
+                            payload, graph_available=(ROOT / 'build/handoff/engines.json').exists()))
+                        return
+                    if parsed.path == '/graph':
+                        from verify_handoff_engines import graph_observation
+                        engine = json.loads((ROOT / 'build/handoff/engines.json').read_bytes())
+                        if engine['release'] != lineage.manifest['release']: raise ValueError('Graph release changed')
+                        payload = {'release': engine['release'], 'rows': graph_observation(engine['neo4j_container'], oid)}
+                    self.send_content(200, 'application/json; charset=utf-8', json.dumps(payload, ensure_ascii=False).encode())
+                except ValueError: self.send_error(400)
+                except LookupError: self.send_error(404)
+                except Exception: self.send_error(503, 'Local lineage unavailable')
+                return
             if self.path == "/":
                 self.send_content(200, "text/html; charset=utf-8", page)
             else:
                 self.send_error(404)
 
         def do_POST(self):
-            if self.path != "/ask":
+            if self.path not in ("/ask", "/review"):
                 self.send_error(404)
                 return
             if self.headers.get("Origin") != f"http://127.0.0.1:{port}":
@@ -65,22 +103,32 @@ def serve(client, encoder, collection, cards, port, gemini_key=None):
                 if not 1 <= length <= 8192 or self.headers.get_content_type() != "application/json":
                     raise ValueError
                 self.connection.settimeout(5)
-                question = json.loads(self.rfile.read(length))["question"].strip()
+                payload = json.loads(self.rfile.read(length))
+                if self.path == '/review':
+                    saved = review.record(payload['search_id'], payload['verdict'], payload.get('note', ''))
+                    self.send_content(200, 'application/json; charset=utf-8', json.dumps(saved).encode()); return
+                question = payload["question"].strip()
                 if not 1 <= len(question) <= 500:
                     raise ValueError
             except (ValueError, TypeError, KeyError, AttributeError, TimeoutError):
                 self.send_error(400)
                 return
+            except OSError:
+                self.send_error(503, 'Local review storage unavailable')
+                return
             try:
                 hits = retrieve(client, encoder, collection, cards, question)
+                if lineage is not None:
+                    for hit in hits: hit['lineage'] = lineage.card(hit['id'])
             except Exception:
                 self.send_error(503, "Evidence search unavailable")
                 return
-            result = {"hits": hits, "summary": summarize(question, hits, gemini_key)}
+            result = {"hits": hits, "summary": summarize(question, hits, gemini_key,model=gemini_model),
+                      "search_id": review.issue(question, hits)}
             self.send_content(200, "application/json; charset=utf-8",
                               json.dumps(result, ensure_ascii=False).encode("utf-8"))
 
-    with HTTPServer(("127.0.0.1", port), Handler) as server:
+    with LocalEvidenceServer(("127.0.0.1", port), Handler) as server:
         print(f"http://127.0.0.1:{port}/", flush=True)
         server.serve_forever()
 
@@ -95,14 +143,20 @@ def main():
     web = commands.add_parser("serve")
     web.add_argument("--port", type=int, default=8767)
     web.add_argument("--gemini", action="store_true", help="Send questions and matched public cards to Gemini.")
+    web.add_argument('--gemini-model',help='Gemini model ID available to this account; requires --gemini.')
+    web.add_argument('--lineage', action='store_true', help='Link reviewed local source rows and the isolated graph lab.')
     args = parser.parse_args()
     if args.command == "search" and not 1 <= len(args.question.strip()) <= 500:
         parser.error("Question must have 1–500 characters.")
     gemini_key = None
     if args.command == "serve" and args.gemini:
+        if args.gemini_model and not valid_model(args.gemini_model):
+            parser.error('Use a Gemini model ID, without a URL or path.')
         gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
         if not gemini_key:
             parser.error("Set GEMINI_API_KEY in the server environment.")
+    elif args.command == 'serve' and args.gemini_model:
+        parser.error('--gemini-model requires --gemini.')
 
     corpus = DATA.read_bytes()
     cards = json.loads(corpus)
@@ -128,7 +182,8 @@ def main():
             parser.error("Run index for the current corpus first.")
 
         encoder = TextEmbedding(
-            MODEL, cache_dir=str(STORE / "models"), local_files_only=args.command != "index"
+            MODEL, cache_dir=str(STORE / "models"), local_files_only=args.command != "index",
+            threads=EMBEDDING_THREADS,
         )
         if args.command == "index":
             vectors = list(encoder.embed([f"{card['title']}\n{card['text']}" for card in cards]))
@@ -145,7 +200,11 @@ def main():
             result = {"collection": collection, "points": client.count(collection, exact=True).count,
                       "model": MODEL, "dimensions": len(vectors[0])}
         elif args.command == "serve":
-            serve(client, encoder, collection, cards, args.port, gemini_key)
+            lineage = None
+            if args.lineage:
+                from rag_lineage import Lineage
+                lineage = Lineage()
+            serve(client, encoder, collection, cards, args.port, gemini_key, lineage,args.gemini_model or GEMINI_MODEL)
             return
         else:
             result = retrieve(client, encoder, collection, cards, args.question.strip())

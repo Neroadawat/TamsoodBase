@@ -15,6 +15,17 @@ else:
     from reusable_api import catalog as reference_catalog, export_csv as reference_csv
 
 ROOT=Path(__file__).resolve().parents[1]
+
+
+class ExplorerServer(ThreadingHTTPServer):
+    request_queue_size = 32
+
+    def get_request(self):
+        connection,address=super().get_request()
+        connection.settimeout(5)
+        return connection,address
+
+
 LABELS={'production-oil':'น้ำมันดิบ','production-condensate':'คอนเดนเสท','production-natural-gas':'ก๊าซธรรมชาติ'}
 STATUSES={'SINGLETON','EXACT_REPRESENTATIVE','EXCLUDE_EXACT_COPY','HOLD_CONFLICT'}
 
@@ -28,8 +39,13 @@ def database():
     return run,con
 
 
-def with_units(row,run):
-    meta=mysql_store.artifact('dmf_metadata')[row['package']] if mysql_store.enabled() else json.loads((ROOT/'data/raw/dmf'/run/(row['package']+'.metadata.json')).read_bytes())['result']
+def with_units(row,run,metadata_cache=None):
+    # Cache only within this request: a subsequent request must see a new snapshot.
+    cache={} if metadata_cache is None else metadata_cache
+    package=row['package']
+    if package not in cache:
+        cache[package]=mysql_store.artifact('dmf_metadata')[package] if mysql_store.enabled() else json.loads((ROOT/'data/raw/dmf'/run/(package+'.metadata.json')).read_bytes())['result']
+    meta=cache[package]
     row['metadata_multiplier']=meta.get('unit_of_multiplier','')
     row['unit_label']=(row['metadata_multiplier'] or '')+(row.get('metadata_unit') or '')
     row['unit_time_basis']='UNCONFIRMED'
@@ -75,22 +91,25 @@ def records(params,export=False):
     run,con=database()
     try:
         if export:
+            # Reject oversized exports before materializing thousands of wide Python rows.
+            # LIMIT bounds the probe, including joins and the same visibility filters.
+            count=con.execute('SELECT COUNT(*) FROM (SELECT 1'+FROM+where+' LIMIT ?) AS export_probe',values+[MAX_EXPORT_ROWS+1]).fetchone()[0]
+            if count>MAX_EXPORT_ROWS:
+                raise ValueError('Export exceeds 5000 rows. Narrow the filters and retry.')
             result=[dict(r) for r in con.execute('SELECT '+FIELDS+FROM+where+' ORDER BY c.package,c.year_ce DESC,c.month DESC,c.source_line LIMIT ?',values+[MAX_EXPORT_ROWS+1])]
             if len(result)>MAX_EXPORT_ROWS:
                 raise ValueError('Export exceeds 5000 rows. Narrow the filters and retry.')
             # Metadata is shared by package, so read it only once per package.
-            enriched={}
+            metadata_cache={}
             for row in result:
-                if row['package'] not in enriched:
-                    sample=with_units(dict(row),run)
-                    enriched[row['package']]={k:sample[k] for k in ('metadata_multiplier','unit_label','unit_time_basis','snapshot_run_id')}
-                row.update(enriched[row['package']])
+                with_units(row,run,metadata_cache)
             return result
         total=con.execute('SELECT COUNT(*)'+FROM+where,values).fetchone()[0]
         page=int(params.get('page','1'))
         if not 1<=page<=100000: raise ValueError('Invalid page')
         rows=con.execute('SELECT '+FIELDS+FROM+where+' ORDER BY c.year_ce DESC,c.month DESC,c.package,c.source_line LIMIT 30 OFFSET ?',values+[(page-1)*30]).fetchall()
-        return {'run_id':run,'total':total,'page':page,'page_size':30,'export_max_rows':MAX_EXPORT_ROWS,'rows':[with_units(dict(r),run) for r in rows]}
+        metadata_cache={}
+        return {'run_id':run,'total':total,'page':page,'page_size':30,'export_max_rows':MAX_EXPORT_ROWS,'rows':[with_units(dict(r),run,metadata_cache) for r in rows]}
     finally: con.close()
 
 
@@ -233,7 +252,7 @@ class Handler(BaseHTTPRequestHandler):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--port',type=int,default=8765);args=parser.parse_args()
-    server=ThreadingHTTPServer(('127.0.0.1',args.port),Handler)
+    server=ExplorerServer(('127.0.0.1',args.port),Handler)
     print(f'TamsoodBase explorer: http://127.0.0.1:{server.server_port}',flush=True)
     try: server.serve_forever()
     except KeyboardInterrupt: pass

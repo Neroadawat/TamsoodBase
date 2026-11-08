@@ -1,0 +1,93 @@
+{
+  "checked_at_utc": "2026-11-08T10:35:27.185760+00:00",
+  "scope": "LOCAL_HTTP_NOT_BROWSER_VISUAL_OR_LLM",
+  "passed": true,
+  "checks": [
+    {
+      "case": "page_with_scope_notice",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "case": "positive",
+      "status": 200,
+      "passed": true,
+      "result": {
+        "hits": [
+          {
+            "score": 0.7341,
+            "id": "e10-cold-start",
+            "title": "ผลวัดรถ E10 ช่วงสตาร์ตเย็น",
+            "text": "Songkitti และคณะรายงานการทดสอบ Gasohol E10 ใน Bangkok Driving Cycle ช่วงสตาร์ตเย็น วัดอัตราสิ้นเปลืองได้ 2.36 กม./ลิตร และ CO₂ ที่ท่อไอเสีย 934.990 กรัม/กม. ขอบเขตคือช่วงสตาร์ตเย็นของรถทดสอบ",
+            "locator": "Table 5, printed page 9558",
+            "source_url": "https://doi.org/10.15282/ijame.19.1.2022.18.0737"
+          },
+          {
+            "score": 0.4567,
+            "id": "ethanol-total-gap",
+            "title": "ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร",
+            "text": "ผลรวม CO₂e ของโมเดลทีมยังเว้นไว้ ต้องจับคู่ข้อมูลการผลิตจริงกับการจัดสรรไอน้ำและไฟฟ้า ข้อมูลการขนส่ง การปล่อยมีเทนจากน้ำเสีย และการใช้เชื้อเพลิงในรถตามขอบเขตที่เข้ากัน",
+            "locator": "Ethanol case",
+            "source_url": "https://tamsoodbase.vercel.app/#ethanol"
+          }
+        ],
+        "summary": null
+      }
+    },
+    {
+      "case": "unrelated",
+      "status": 200,
+      "passed": true,
+      "result": {
+        "hits": [],
+        "summary": null
+      }
+    },
+    {
+      "case": "blank",
+      "status": 400,
+      "passed": true,
+      "result": null
+    },
+    {
+      "case": "wrong_type",
+      "status": 400,
+      "passed": true,
+      "result": null
+    },
+    {
+      "case": "missing_field",
+      "status": 400,
+      "passed": true,
+      "result": null
+    },
+    {
+      "case": "oversized_question",
+      "status": 400,
+      "passed": true,
+      "result": null
+    },
+    {
+      "case": "cross_origin",
+      "status": 403,
+      "passed": true,
+      "result": null
+    },
+    {
+      "case": "wrong_content_type",
+      "status": 400,
+      "passed": true,
+      "result": null
+    },
+    {
+      "case": "malformed_json",
+      "status": 400,
+      "passed": true
+    },
+    {
+      "case": "oversized_body",
+      "status": 400,
+      "passed": true
+    }
+  ]
+}

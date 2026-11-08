@@ -1,0 +1,30 @@
+{
+  "checked_at_utc": "2026-11-08T18:35:03.548681+00:00",
+  "release": "fb89454c4fd54e173e3b0a5e47570061b91c5f6b93018dddb9639caa55ecfd15",
+  "database": "build/handoff/releases/fb89454c4fd54e173e3b0a5e47570061b91c5f6b93018dddb9639caa55ecfd15/review.sqlite",
+  "input_sha256": {
+    "web/upstream-inventory.json": "6346835931c818ef8537520fdfb4914210f3fc199fcca8a0b700a3c923ba8e03",
+    "build/product-inventory/report.json": "b3df774c1dd824ccf570f1f1ec345969dd29a91f27863753d4b354beed043ee5",
+    "build/nso/report.json": "2c87fb6e0701403a1dc98a86ec6f9f8674926955bf2fcd9869eda76cb2d38307",
+    "docs/rag/public-evidence.json": "9b131dba2938161841cd3b51eb192c6d97f5f90e2ede3ac580c17dffc3ae0605",
+    "builder_code": "54ed2bdb24710208bb6c7ce77e10f684ba2a0da9fda95b7af23ff902895960aa"
+  },
+  "corpus_sha256": "9b131dba2938161841cd3b51eb192c6d97f5f90e2ede3ac580c17dffc3ae0605",
+  "database_sha256": "4c13925b4fe4fbfe196dbe4f0fd255e10796906a64fedd949ebd906933a4f35f",
+  "counts": {
+    "source": 7,
+    "process": 5,
+    "observation": 331,
+    "card_observation": 97
+  },
+  "by_layer": {
+    "foreground": 16,
+    "nso": 273,
+    "upstream": 42
+  },
+  "public_inventory_observations": 58,
+  "full_payload_roundtrip": 331,
+  "integrity_check": true,
+  "scope": "LOCAL_REVIEW_RESTORATION_NOT_PRODUCTION_OR_FULL_LCI",
+  "production_changed": false
+}
