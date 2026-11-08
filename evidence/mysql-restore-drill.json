@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "backup": {
+    "bucket": "tamsoodbase-team-fuel-2026-a7k9",
+    "key": "tamsoodbase/backups/mysql/mysql-20261028T073422Z.sql.gz",
+    "sha256": "7f50545b8eb12446b96d7504bd591d2432381b1f05e1a07068dab025a59c7819",
+    "bytes": 5452333,
+    "encryption": "AES256"
+  },
+  "retrieved_from_s3": true,
+  "compressed_sha256_verified": true,
+  "isolated_restore": {
+    "passed": true,
+    "container": "tamsoodbase-mysql-restore",
+    "network": "tamsoodbase-mysql-restore-private",
+    "internal_network": true,
+    "volume": "tamsoodbase-mysql-restore-data",
+    "persistent": true,
+    "ports_published": false,
+    "dataset_release": "9f6475ffbbe1ccbfcdb724d764bbc70d01c0190ee9155268909b9fcf92c705ea",
+    "seed_sha256": "1e67c3b293a3121708d1a231e5958eb575ab4b80b7a5e6cf711e8f6523ef3028",
+    "counts": {
+      "dmf": 34899,
+      "raw": 34905,
+      "reference": 101,
+      "supplemental": 289,
+      "eppo": 5934
+    },
+    "reader_grants": "SELECT only on five TamsoodBase schemas",
+    "memory_limit_bytes": 536870912,
+    "production_api_switched": false
+  },
+  "logical_fingerprint": {
+    "schemas": [
+      "tamsood_research",
+      "tamsood_reusable",
+      "tamsood_supplemental",
+      "tamsood_eppo",
+      "tamsood_api"
+    ],
+    "ordered_logical_rows_sha256": "e0087e96cb3a1070acb253ee49d1db61c7cd8e4b197aab4c771ebeba06b646e1",
+    "bytes": 56887016,
+    "method": "mysqldump canonical data-only, PK order, one INSERT per row"
+  },
+  "all_five_schemas_match_live": true,
+  "api_parity": {
+    "passed": true,
+    "routes": 27,
+    "differences": []
+  },
+  "production_data_changed": false
+}

@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-10-24T17:47:30.762458+00:00",
+  "engine": "SQLite",
+  "sqlite_version": "3.45.3",
+  "source_sha256": "863cf8f740c70e8ad49ac518063667b759c4c5001a240d0434f79fde88f6d8b4",
+  "scope": "Disposable copy only; altered lab values are not project observations",
+  "checks": {
+    "constraint_failure_rolls_back_entire_transaction": true,
+    "other_connection_cannot_read_uncommitted_change": true,
+    "concurrent_writer_is_blocked": true,
+    "commit_visible_to_other_connection": true,
+    "commit_survives_connection_reopen": true,
+    "source_database_bytes_unchanged": true
+  },
+  "passed": true,
+  "limitations": [
+    "No MySQL isolation experiment",
+    "Reopening is not a simulated power failure",
+    "Single SQLite writer serialization is not production load testing"
+  ],
+  "implementation_sha256": "21c3c6ecba8b48dca6d08f7fe605116305775ecc7f792d82dea454e0bedf42ce"
+}

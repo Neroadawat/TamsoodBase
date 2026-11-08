@@ -1,0 +1,317 @@
+{
+  "version": 1,
+  "inventory_sha256": "d95b721aded3a98be0cbeeaf9cf964841133cee788235ecba8608ffc6775a134",
+  "registry_sha256": "56e851fa358604df5cf260a4a32b6c4898c5ea82efae6f35c234be467cfc1606",
+  "source_snapshot_sha256": "2bb902345cfcd5f98be8240bf7f4d5b1fba7fe229296a666f3166bae23c8cc4e",
+  "profiles": [
+    {
+      "process": "FAME",
+      "reference_basis": {
+        "amount": "1000",
+        "unit": "MJ fuel"
+      },
+      "reference_product": {
+        "flow": "FAME",
+        "amount": "26.3",
+        "unit": "kg"
+      },
+      "dataset_boundary": "Foreground biofuel conversion inventory reported in Table 4; not the entire well-to-wheel system",
+      "data_period": null,
+      "allocation_status": "SOURCE_METHOD_REPORTED_TABLE_ALLOCATION_BASIS_NOT_RESOLVED",
+      "full_lifecycle_inventory": false,
+      "exchanges": 10,
+      "study_functional_unit": {
+        "function": "Use of fuel",
+        "amount": "1000",
+        "unit": "MJ fuel",
+        "use_context": "Biofuel in pick-up trucks",
+        "source_section": "2.1 Goal and Scope"
+      },
+      "readiness": {
+        "source_locator_present": true,
+        "reference_basis_consistent": true,
+        "reference_product_identified": true,
+        "source_local_flow_mapping_complete": true,
+        "measurement_period_known": false,
+        "provider_links_complete": false,
+        "allocation_application_resolved": false,
+        "elementary_flow_coverage_reviewed": false,
+        "independent_expert_reviewed": false,
+        "model_ready": false,
+        "status": "SOURCE_REPORTED_FOREGROUND_REVIEWED_NOT_MODEL_READY"
+      }
+    },
+    {
+      "process": "H-FAME",
+      "reference_basis": {
+        "amount": "1000",
+        "unit": "MJ fuel"
+      },
+      "reference_product": {
+        "flow": "H-FAME",
+        "amount": "25.5",
+        "unit": "kg"
+      },
+      "dataset_boundary": "Foreground biofuel conversion inventory reported in Table 4; not the entire well-to-wheel system",
+      "data_period": null,
+      "allocation_status": "SOURCE_METHOD_REPORTED_TABLE_ALLOCATION_BASIS_NOT_RESOLVED",
+      "full_lifecycle_inventory": false,
+      "exchanges": 6,
+      "study_functional_unit": {
+        "function": "Use of fuel",
+        "amount": "1000",
+        "unit": "MJ fuel",
+        "use_context": "Biofuel in pick-up trucks",
+        "source_section": "2.1 Goal and Scope"
+      },
+      "readiness": {
+        "source_locator_present": true,
+        "reference_basis_consistent": true,
+        "reference_product_identified": true,
+        "source_local_flow_mapping_complete": true,
+        "measurement_period_known": false,
+        "provider_links_complete": false,
+        "allocation_application_resolved": false,
+        "elementary_flow_coverage_reviewed": false,
+        "independent_expert_reviewed": false,
+        "model_ready": false,
+        "status": "SOURCE_REPORTED_FOREGROUND_REVIEWED_NOT_MODEL_READY"
+      }
+    }
+  ],
+  "mapped_exchanges": [
+    {
+      "observation_id": "2ab27d9eca7da7b6eb0abb305051300a8530bd1bf490de1d57a4f52d708348d1",
+      "flow_id": "MDPI9415-FLOW-01",
+      "classification": "MATERIAL",
+      "quantity_dimension": "mass",
+      "source_label": "RBDPO",
+      "source_unit": "kg",
+      "source_row": 3,
+      "source_column": 3,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "a7b02f30be05cb0e6ae1af09113318c4c00be1a0841c94187255f68e66efc79d",
+      "flow_id": "MDPI9415-FLOW-13",
+      "classification": "PRODUCT",
+      "quantity_dimension": "mass",
+      "source_label": "FAME",
+      "source_unit": "kg",
+      "source_row": 4,
+      "source_column": 4,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "5386e4d6e3aa056c6027bf5938d01f6a44b57c0dbef6aa9389896ea3d1a495f6",
+      "flow_id": "MDPI9415-FLOW-02",
+      "classification": "MATERIAL",
+      "quantity_dimension": "mass",
+      "source_label": "Methanol",
+      "source_unit": "kg",
+      "source_row": 6,
+      "source_column": 3,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "8549ffd5a3bb883504db59f0d16087fdf2e93a484824f70f4b06be0836f7bd8c",
+      "flow_id": "MDPI9415-FLOW-03",
+      "classification": "UTILITY",
+      "quantity_dimension": "mass",
+      "source_label": "Steam",
+      "source_unit": "kg",
+      "source_row": 7,
+      "source_column": 3,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "6fb9053ed7b0c8ba9f12c8b95b9037261d5d179e880dc4a7a834388df73bad06",
+      "flow_id": "MDPI9415-FLOW-04",
+      "classification": "UTILITY",
+      "quantity_dimension": "energy",
+      "source_label": "Electricity (grid)",
+      "source_unit": "kWh",
+      "source_row": 8,
+      "source_column": 3,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "ef33034e8dad9286f64e560df9cb1314a3198986750b7e17f6f105427de3a205",
+      "flow_id": "MDPI9415-FLOW-05",
+      "classification": "MATERIAL",
+      "quantity_dimension": "mass",
+      "source_label": "Phosphoric acid",
+      "source_unit": "kg",
+      "source_row": 9,
+      "source_column": 3,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "be544f3884379843a8a85929210cdb53e889d9b9e9ceb9a57e3aa7b6803ac4ae",
+      "flow_id": "MDPI9415-FLOW-06",
+      "classification": "MATERIAL",
+      "quantity_dimension": "mass",
+      "source_label": "Potassium hydroxide",
+      "source_unit": "kg",
+      "source_row": 10,
+      "source_column": 3,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "018c6bde2b58a62e0446c958ea1d3bfa076b78439e2413ecb40420e358f38000",
+      "flow_id": "MDPI9415-FLOW-07",
+      "classification": "UTILITY",
+      "quantity_dimension": "volume",
+      "source_label": "Tap water",
+      "source_unit": "m3",
+      "source_row": 11,
+      "source_column": 3,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "777b860f8873bb7948de8db5cf5b9aea4ebee594a667bd86259dd22ea18cf345",
+      "flow_id": "MDPI9415-FLOW-08",
+      "classification": "UTILITY",
+      "quantity_dimension": "volume",
+      "source_label": "Cooling water",
+      "source_unit": "m3",
+      "source_row": 12,
+      "source_column": 3,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "11656d0dfbc5cd9a50c20d1a660f229417c382e48f89ff52a592154279c45292",
+      "flow_id": "MDPI9415-FLOW-09",
+      "classification": "MATERIAL",
+      "quantity_dimension": "mass",
+      "source_label": "Palladium",
+      "source_unit": "mg",
+      "source_row": 14,
+      "source_column": 4,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "e313d821e45feb2b0401303b1c207fc2ef07bb4d58dc3c322459729508f5d6cd",
+      "flow_id": "MDPI9415-FLOW-10",
+      "classification": "MATERIAL",
+      "quantity_dimension": "mass",
+      "source_label": "Activated carbon",
+      "source_unit": "mg",
+      "source_row": 15,
+      "source_column": 4,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "2df0cc8c4b9154b0d4a2553637d85c87c545e0a0811c6a3f2e427a6d55153792",
+      "flow_id": "MDPI9415-FLOW-11",
+      "classification": "MATERIAL",
+      "quantity_dimension": "mass",
+      "source_label": "Hydrogen",
+      "source_unit": "kg",
+      "source_row": 16,
+      "source_column": 4,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "47213d26b6ab840df291be4a6895b92a33b377dc632607458951e60746016dc6",
+      "flow_id": "MDPI9415-FLOW-12",
+      "classification": "UTILITY",
+      "quantity_dimension": "energy",
+      "source_label": "Electricity (CHP Biomass)",
+      "source_unit": "kWh",
+      "source_row": 17,
+      "source_column": 4,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "969a61db8270e82150ac419f47b60e081fe838eefbd7286063343b3ebaa594e7",
+      "flow_id": "MDPI9415-FLOW-13",
+      "classification": "PRODUCT",
+      "quantity_dimension": "mass",
+      "source_label": "FAME",
+      "source_unit": "kg",
+      "source_row": 20,
+      "source_column": 3,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "af89116176841ecfbca6150447f0b3b1b742929a81493ba0214598ac45f08287",
+      "flow_id": "MDPI9415-FLOW-14",
+      "classification": "PRODUCT",
+      "quantity_dimension": "mass",
+      "source_label": "H-FAME",
+      "source_unit": "kg",
+      "source_row": 21,
+      "source_column": 4,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    },
+    {
+      "observation_id": "d4e56db8006b057ee77f62aff70cfb4e89f8900d5a9574758a8fd0aeccc7af43",
+      "flow_id": "MDPI9415-FLOW-15",
+      "classification": "CO_PRODUCT",
+      "quantity_dimension": "mass",
+      "source_label": "Crude glycerine",
+      "source_unit": "kg",
+      "source_row": 24,
+      "source_column": 3,
+      "mapping_status": "SOURCE_LOCAL_EXACT_NOT_GLOBAL_ONTOLOGY",
+      "provider_status": "NOT_LINKED",
+      "source_value_changed": false
+    }
+  ],
+  "provider_candidates": [
+    {
+      "consumer_observation_id": "a7b02f30be05cb0e6ae1af09113318c4c00be1a0841c94187255f68e66efc79d",
+      "provider_observation_id": "969a61db8270e82150ac419f47b60e081fe838eefbd7286063343b3ebaa594e7",
+      "status": "CANDIDATE_NOT_APPLIED",
+      "evidence": "Same article, product label FAME and mass unit kg",
+      "blocked_by": [
+        "Allocation application not resolved",
+        "Measurement period unspecified",
+        "Compatibility of source process models not reviewed"
+      ],
+      "scaling_applied": false
+    }
+  ],
+  "counts": {
+    "source_exchanges": 16,
+    "mapped_exchanges": 16,
+    "source_local_flows": 15,
+    "provider_candidates": 1,
+    "applied_provider_links": 0,
+    "model_ready_processes": 0
+  },
+  "source_values_changed": false,
+  "production_migrated": false,
+  "scope": "Local review artifact, not a new set of accepted LCI observations or a whole-lifecycle model"
+}

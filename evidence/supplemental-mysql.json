@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-23T10:36:08.619128+00:00",
+  "checked_at": "2026-10-27T11:33:14.484399+00:00",
   "database": "tamsood_supplemental",
   "result": "passed",
   "datasets": [
@@ -23,10 +23,12 @@
     "invalid_direction": "rejected_as_expected"
   },
   "acceptance_changed": false,
-  "schema_sha256": "da5b32a226f0b62c5e75abf7a4138205fb80f9213c5788e5fdf3519283004092",
+  "schema_sha256": "aafb50e30f59f03bd900c10d6fb87495854d89f6ef958a920c3ebe1e1989ef9b",
   "limitations": [
     "Website still reads SQLite/JSON",
     "Snapshots are versioned; counts must filter snapshot_id",
     "Loading into MySQL does not establish full LCI eligibility or redistribution rights"
-  ]
+  ],
+  "verification_scope": "Fresh isolated temporary MySQL database; existing workspace not migrated",
+  "persistent_workspace_migrated": false
 }

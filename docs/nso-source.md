@@ -42,3 +42,34 @@ tests/test_nso.py ตรวจหน่วยตามเชิงอรรถ,n
 รัน python -X utf8 scripts/review_nso.py ได้ evidence/nso-total-checks.json ตรวจ18กลุ่มของตาราง13.6/13.7/13.10 ทุกกลุ่มอยู่ใน tolerance จากครึ่งหลักสุดท้ายของตัวเลขแต่ละค่า ไม่แก้ตัวเลข ไม่รวม13.5ที่มีsubtotalซ้อน หรือ13.8ที่มีต่างมิติ ไม่อ้างว่าเป็น independent verification
 
 เพิ่มตัวกรองปี/คำค้นและreset ในเมนูสถิติแห่งชาติ ตรวจbrowserค้นดีเซล2024ได้2ค่า: ผลิต27664และใช้25120 ล้านลิตร แยกตามmeasureพร้อมหลักฐาน ภาพอยู่ build/explorer/nso-filtered.png
+
+## ทบทวน local comparison เพิ่ม 23 ตุลาคม 2569
+
+เพิ่มexactlabelน้ำมันดีเซลกำมะถันสูง2022–2024จากDOEB XLSเดิม3ค่า หน่วยvolumeตรงกัน แต่storedvaluesไม่เท่ากัน (รวมDOEB9ค่าอยู่displayroundingทั้งหมด ไม่ใช่exactmatch) coverageสร้างจากNSOidentityและตรวจreporthashด้วยscripts/cross_source_coverage.py: เทียบรวมDEDE10/273 อีก263ยังไม่เทียบ independentmeasurementsverifiedยัง0 ไม่แก้sourcevalueและไม่เปลี่ยนacceptance ปี2025ไม่มีDOEBในsnapshotนี้ ส่วนdieselชนิดอื่นไม่รวมโดยอนุมานclassification
+
+
+## พบรายงาน DEDE revised ที่ตรง NSO — 24 ตุลาคม 2569
+
+หน้า https://www.dede.go.th/articles?id=452&menu_id=1 ระบุannual2024เป็นrevised และลิงก์Excelชื่อ25May2026 ตารางsheet `ktoe` แถวMANUFACTURING คอลัมน์GRAND TOTAL cellDT52ระบุ30350 ตรงNSO13.10ปี2024ทุกหลักที่แสดง ต่าง0 ใช้ scripts/compare_nso_dede_revised.py ตรวจhash/ปี/หน่วย/ชื่อแถว/คอลัมน์ก่อนเทียบ
+
+หลักฐาน evidence/nso-dede-revised-comparison.json รายงานเบื้องต้น28987และส่วนต่าง1363ยังคงอยู่ในหลักฐานเดิม ไม่แก้ตัวเลขย้อนหลัง ไม่สรุปว่าNSOผิด หรือระบุสาเหตุcalculationchangesที่ต้นทางไม่ได้อธิบาย การพบrevisedที่ตรงกันไม่ได้พิสูจน์ว่าทุกmetricตรง และไม่เพิ่มindependentmeasurementsverified/acceptedLCI การเทียบนี้ใช้NSOidentityเดิมจึงcoverageยัง10/273 อีก263ยังไม่เทียบ
+
+snapshotExcel/manifestอยู่data/raw/dede/revised-2024ไม่ตามGit; ต้องมีopenpyxlในenvironmentที่รันscript (เครื่องเดิมใช้bundledPython) อัปเดตเว็บแล้วให้แสดงrevised30350ตรงกับNSOและpreliminary28987แยกกัน พร้อมลิงก์ต้นฉบับ ตรวจbrowserจริงและAPIidentity/arithmetic; evidence/nso-revised-ui.json
+
+## ขยาย comparison จาก workbook เดิม — 24 ตุลาคม 2569 เวลา 11:27 UTC
+
+ตรวจ read-only เฉพาะ manufacturing ปี2024ใน workbook DEDE revised ที่เก็บไว้แล้ว ไม่ดาวน์โหลด URL เดิมซ้ำ พบ quantity subtotal ที่เทียบเพิ่มได้5ค่า ทุกค่าตรง NSO13.10ตามจำนวนเต็มที่แสดง:
+
+| NSO label | ค่า (ktoe) | DEDE sheet / cell |
+|---|---:|---|
+| ถ่านหิน | 6970 | ktoe / W52 |
+| น้ำมันสำเร็จรูป | 3186 | ktoe / BO52 |
+| ก๊าซธรรมชาติ | 6631 | ktoe / AG52 |
+| ไฟฟ้า | 7163 | ktoe / BR52 |
+| พลังงานหมุนเวียน | 6400 | ktoe / DC52 |
+
+ใช้ `scripts/compare_nso_dede_components.py` ตรวจsourcehash,year,unit,MANUFACTURING row,แต่ละcolumnheaderและcachednumericก่อนเทียบ ผลรวม5subtotalตรงgrandtotal30350 เก็บlocatorของทั้งNSO/DEDEใน `evidence/nso-dede-components.json` เปอร์เซ็นต์และปีอื่นไม่นับเป็นcomparisonเพิ่ม
+
+Coverageล่าสุด `evidence/cross-source-coverage.json`: **15/273 distinct NSO observations;อีก258ยังไม่เทียบ** ประกอบด้วยDEDErevised6ค่า (totalเดิม1+subtotalใหม่5) และDOEB9ค่าที่อยู่displayrounding ไม่เพิ่มsourceobservations,acceptedLCIหรือindependentmeasurementsverified(ยัง0) ไม่แก้ตัวเลขหรือสิทธิเดิม
+
+Regressionใหม่3testsตรวจwrongheader/year/unit/cacheและกรณีค่าต่างโดยไม่แก้source;ชุดทดสอบรวมล่าสุด84testsผ่าน และreleaseaudit technical_pass=true โดยsubmission_readyยังfalse

@@ -1,0 +1,93 @@
+{
+  "date": "2026-11-05",
+  "deployment_id": "dpl_AGT7vMdWaEpSmzejavDBGJK3EpCw",
+  "rollback_deployment_id": "dpl_Dyqy1gp5WcA8X1iXfm4YQcjTF6VW",
+  "live_asset_hashes_match_build": true,
+  "browser": {
+    "passed": true,
+    "font": {
+      "loaded": true,
+      "body": "\"Noto Sans Thai\", \"Segoe UI\", sans-serif"
+    },
+    "samples": [
+      {
+        "selector": ".story-chapter>p:not(.story-kicker)",
+        "color": "rgb(59, 83, 67)",
+        "size": "18px",
+        "contrast": 7.861684577630683
+      },
+      {
+        "selector": ".story-kicker",
+        "color": "rgb(62, 96, 69)",
+        "size": "14px",
+        "contrast": 6.642619953604706
+      },
+      {
+        "selector": ".story-chapter small",
+        "color": "rgb(115, 80, 28)",
+        "size": "14px",
+        "contrast": 6.804964430811367
+      },
+      {
+        "selector": ".story-data-map small",
+        "color": "rgb(77, 97, 82)",
+        "size": "13px",
+        "contrast": 6.2556132449766775
+      }
+    ],
+    "widths": [
+      {
+        "width": 390,
+        "scroll": 390,
+        "caption": "มีในเว็บ: สถิติการใช้เชื้อเพลิงระดับประเทศ",
+        "chapterTop": 519.875,
+        "sceneBottom": 421.4375
+      },
+      {
+        "width": 320,
+        "scroll": 320,
+        "caption": "มีในเว็บ: สถิติการใช้เชื้อเพลิงระดับประเทศ",
+        "chapterTop": 519.296875,
+        "sceneBottom": 416.890625
+      }
+    ],
+    "limitation": "Sampled text contrast, not a full accessibility certification"
+  },
+  "live_story_browser": {
+    "passed": true,
+    "desktop_stage": "2",
+    "mobile_stage": "3",
+    "widths": {
+      "client": 390,
+      "scroll": 390
+    },
+    "reduced_motion_stage": "4",
+    "link": "case-study",
+    "errors": []
+  },
+  "targeted_frontend_tests": 13,
+  "additional_node_suites": [
+    "motion",
+    "fuel-story"
+  ],
+  "font": {
+    "family": "Noto Sans Thai",
+    "source": "https://github.com/google/fonts/tree/main/ofl/notosansthai",
+    "licence": "OFL1.1 full text included in public CSS",
+    "woff2_bytes": 108160,
+    "source_ttf_sha256": "5a1c559bb539583c8a1fd99d1c5b9491e5e14478c9cd2bd0970d5c3096cc9ef8"
+  },
+  "features": [
+    "larger darker Thai text",
+    "five data-category links",
+    "active scene coverage label",
+    "scroll-linked truck and progress"
+  ],
+  "screenshots": [
+    "output/story-readability/data-map.png",
+    "output/story-readability/mobile.png"
+  ],
+  "backend_or_data_changed": false,
+  "cleanroom_passed": true,
+  "limitation": "Sampled contrast only, not full WCAG certification"
+}

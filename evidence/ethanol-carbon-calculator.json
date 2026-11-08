@@ -1,0 +1,147 @@
+{
+  "reviewed_at": "2026-11-06",
+  "result_type": "HISTORICAL_METHOD_APPROXIMATE_POND_ONLY_SCENARIO",
+  "reference_basis": {
+    "scope": "PARTIAL_STUDY_FOREGROUND_MATERIAL_BASIS",
+    "assumption_id": "MOE2008_FIG1_FUEL_ECONOMY_LINEAR_BASIS_V1",
+    "assumptions": [
+      "E10 interpreted as0.10ethanol+0.90gasoline volume;no blend-volume contraction adjustment",
+      "Study99.5percent ethanol output volume used as its fuel-blending feed;no pureethanol/density correction",
+      "Figure1batch linear scaling;not an independently measured supply chain"
+    ],
+    "distance_km": "13.46",
+    "gasoline_equivalent_litres": "1",
+    "E10_litres": "1.011269722013523666416228399699474079639",
+    "ethanol_blending_feed_litres": "0.1011269722013523666416228399699474079639",
+    "gasoline_blending_feed_litres": "0.9101427498121712997746055597295266716751",
+    "physical_batch_scale_per_tonne_cane": "0.009943655083712130446570584067841436377965",
+    "physical_flows": [
+      {
+        "name": "cane_stalk",
+        "amount": "9.943655083712130446570584067841436377965",
+        "unit": "kg",
+        "basis_role": "physical_input_before_allocation"
+      },
+      {
+        "name": "molasses",
+        "amount": "0.4494532097837882961849903998664329242840",
+        "unit": "kg",
+        "basis_role": "intermediate_not_additional_final_product"
+      },
+      {
+        "name": "sugar",
+        "amount": "1.030162666672576714264712509428372808757",
+        "unit": "kg",
+        "basis_role": "co_product"
+      },
+      {
+        "name": "bagasse",
+        "amount": "2.456082805676896220302934264756834785357",
+        "unit": "kg",
+        "basis_role": "internal_energy_material_not_avoided_credit"
+      },
+      {
+        "name": "cane_trash",
+        "amount": "1.988731016742426089314116813568287275593",
+        "unit": "kg",
+        "basis_role": "residue"
+      },
+      {
+        "name": "stillage",
+        "amount": "1.061982362940455531693738378445465405167",
+        "unit": "L",
+        "basis_role": "wastewater_not_elementary_discharge"
+      }
+    ],
+    "economic_allocation": {
+      "sugar": "0.896",
+      "molasses": "0.104",
+      "applied_to_physical_flows": false,
+      "applies_to": "eligible upstream burdens only;not yet supplied"
+    },
+    "mass_balance_closed": false,
+    "elementary_emissions_complete": false,
+    "all_background_inputs_thai_verified": false,
+    "CO2e_total": null,
+    "full_lifecycle_lci": false,
+    "existing_model_changed": false
+  },
+  "inputs": {
+    "stillage_L_per_tonne_cane": "106.8",
+    "BOD_g_per_L": "40",
+    "BOD_is_approximate": true,
+    "pond_fraction": "0.88",
+    "default_CH4_kg_per_kgBOD": "0.22",
+    "default_factor_is_Thai_measurement": false
+  },
+  "calculation_steps": {
+    "total_BOD_kg_per_tonne_cane": "4.272",
+    "pond_BOD_kg_per_tonne_cane": "3.75936",
+    "estimated_CH4_kg_per_tonne_cane": "0.8270592",
+    "estimated_CH4_kg_per_reference_trip": "0.008223991418610887637436310002681684097611"
+  },
+  "source_replay_check": {
+    "calculated_gCO2e_per_Lethanol": "1870.438702064896755162241887905604719764",
+    "reported_gCO2e_per_Lethanol": "1870",
+    "absolute_difference": "0.438702064896755162241887905604719764",
+    "tolerance_gCO2e_per_Lethanol": "0.5",
+    "matches_integer_display_rounding": true,
+    "locator": "COMPETE Table7/PDF20/printed16;pondCH4 row;visual transcription",
+    "independent_validation": false,
+    "interpretation": "Same research-line source-method replay,not independent emission measurement"
+  },
+  "characterized_component": {
+    "amount_kgCO2e": "0.189151802628050415661035130061678734245053",
+    "gas_mass_kg": "0.008223991418610887637436310002681684097611",
+    "gas_id": "CH4_biogenic",
+    "GWP100": "23",
+    "method_id": "IPCC2001_GWP100_AS_REPORTED_COMPETE_TABLE7",
+    "basis_id": "MOE2008_E10_TRAVEL13.46km",
+    "coverage_ids": [
+      "MOE2008_POND_CH4_ONLY"
+    ],
+    "source": {
+      "source_url": "https://doi.org/10.1007/s11367-008-0011-2",
+      "source_sha256": "fa0c483a9c27fcff84a21668795bf5a6c4ea7f5bc8d52e62b06168b19be51dba",
+      "locator": "Derived fromFigure1/PDF2(stillage106.8L,BODapproximately40gL),Table1/PDF3(88percentpond),Table3/PDF5(default0.22kgCH4/kgBOD);not direct measured gas"
+    },
+    "factor_source": {
+      "source_url": "https://www.compete-bioafrica.net/international/Annex4-2-5-COMPETE-032448-2ndReport-D4.1-Thailand-Final.pdf",
+      "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+      "locator": "Table7 footnote/PDF20/printed16;visual checked"
+    },
+    "full_lifecycle_result": false,
+    "CO2e_total": null
+  },
+  "partial_result": {
+    "partial_kgCO2e": "0.189151802628050415661035130061678734245053",
+    "method_id": "IPCC2001_GWP100_AS_REPORTED_COMPETE_TABLE7",
+    "basis_id": "MOE2008_E10_TRAVEL13.46km",
+    "coverage_ids": [
+      "MOE2008_POND_CH4_ONLY"
+    ],
+    "coverage_note": "Caller must review physical scope overlap;different IDs alone do not prove independence",
+    "full_lifecycle_result": false,
+    "CO2e_total": null
+  },
+  "assumptions": [
+    "Figure1stillagevolumeandBODapprox apply to samebasecase",
+    "Source defaultapplied toBODdivertedtopond without additional removalfraction;source-methodscreening only",
+    "Noadditionalfermentation/combustion/fugitive/soil emissions included",
+    "HistoricIPCC2001GWP100 reproduces reportmethod;notcurrentTGOcertificationmethod",
+    "Noavoidedelectricitycredit or capturedgasnetbenefit;notaddedtoaggregatebiodieselEF"
+  ],
+  "missing_components": [
+    "farminputsandsoilgases",
+    "millenergyandnetallocation",
+    "ethanolprocessenergy/chemicals",
+    "capturedgasleakageandcombustion",
+    "alltransportlegs",
+    "gasolineproductionandvehicleuse"
+  ],
+  "full_lifecycle_lci": false,
+  "CO2e_total": null,
+  "strict_all_inputs_Thai_verified": false,
+  "redistribution_status": "NOT_CLEARED",
+  "production_changed": false
+}

@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-05",
+  "scope": "LOCAL_EXPERT_REVIEW_ENGINEERING_NOT_PRODUCTION_DEPLOYMENT",
+  "model_release_id": "15d05706b4c41966eaa50314e60e4cc09e2a061832704c902121df9b967e7a84",
+  "full_suite": {
+    "tests": 208,
+    "passed": true,
+    "log": "tmp/expert-review-tests.log"
+  },
+  "post_source_link_checks": {
+    "tests": 14,
+    "passed": true,
+    "log": "tmp/expert-review-followup.log"
+  },
+  "release_consistency_passed": true,
+  "browser": {
+    "target": "http://127.0.0.1:8777/#case-study",
+    "checked": [
+      "mill1_to_mill6_choice",
+      "CPO_process_selection",
+      "exact_value_27.0600",
+      "process_source_link",
+      "2020_quantity_source_links",
+      "desktop_visual",
+      "390x844_mobile_visual"
+    ],
+    "screenshots": [
+      "output/review-2026-11-05/case-desktop.png",
+      "output/review-2026-11-05/case-mobile.png"
+    ],
+    "limitation": "Native accessibility/manual agent check; not a user study or automated browser suite"
+  },
+  "distribution": {
+    "source_package": "build/vercel-upload",
+    "source_files": 12,
+    "restricted_inventory_included": false,
+    "deployed_this_round": false,
+    "production_database_migration": false
+  },
+  "scientific_gates_open": [
+    "cross_vintage_compatibility",
+    "allocation_basis",
+    "transport",
+    "use",
+    "waste_emissions",
+    "Thai_background_providers",
+    "independent_mass_energy_balance"
+  ],
+  "full_lifecycle_inventory": false,
+  "CO2e_total": null
+}

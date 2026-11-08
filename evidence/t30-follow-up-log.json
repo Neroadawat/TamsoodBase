@@ -1,0 +1,44 @@
+{
+  "reviews": [
+    {
+      "trigger": "2026-10-23T20:31:14.162Z",
+      "scope": "Bounded search for final/revised2024 manufacturing total",
+      "queries": [
+        "site.dede.go.th \"2567\" \"30,350\"",
+        "site.dede.go.th \"2567\" \"28,987\" อุตสาหกรรม"
+      ],
+      "official_result": "https://www.dede.go.th/uploads/SIT_DEC_67_612ef77999.pdf?updated_at=2025-04-08T06%3A40%3A39.618Z",
+      "finding": "Search text repeats existing preliminary manufacturing28987 and industry29261; no evidence explaining NSO30350",
+      "downloaded": false,
+      "source_values_changed": false,
+      "repeat_policy": "Do not repeat these queries or fetch this mirror just to recount the same total; require a new final/revised publication or definition evidence",
+      "next_required": "A final/revised2024 manufacturing-energy table or revision/definition note; do not infer cause from mirror publication"
+    },
+    {
+      "trigger": "2026-10-24T05:50:27.337Z",
+      "scope": "New annual/revised-publication search, not repeated preliminary mirror",
+      "queries": [
+        "site.dede.go.th \"Thailand Energy Balance\" \"2024\"",
+        "site.pei.dede.go.th \"ดุลยภาพพลังงาน\" \"2567\""
+      ],
+      "official_result": "https://www.dede.go.th/articles?id=452&menu_id=1",
+      "finding": "Official page labels2024 annual balance revised; downloaded workbook manufacturing grandtotal30350 matchesNSO",
+      "evidence": "evidence/nso-dede-revised-comparison.json",
+      "unique_nso_comparison_count_unchanged": true,
+      "source_values_changed": false
+    },
+    {
+      "trigger": "2026-10-24T11:25:03.491Z",
+      "scope": "Bounded read-only expansion within existing revised2024 workbook: five manufacturing fuel subtotals",
+      "downloaded": false,
+      "repeated_url_fetch": false,
+      "evidence": "evidence/nso-dede-components.json",
+      "finding": "Coal6970/petroleum3186/naturalgas6631/electricity7163/renewable6400 match NSO2024 quantities; five previously uncounted NSO identities; no percentages counted",
+      "compared_unique_after": 15,
+      "not_compared_after": 258,
+      "source_values_changed": false,
+      "independent_measurements_verified": 0,
+      "next_required": "Only expand with explicit year/unit/sector/fuel mapping; do not repeat these five cells to increase coverage"
+    }
+  ]
+}

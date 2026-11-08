@@ -1,0 +1,26 @@
+{
+  "reviewed_at": "2026-11-06",
+  "companion_article_doi": "10.1016/j.enpol.2008.01.008",
+  "institutional_access": "USER_REPORTED_TU_NOT_SUBSCRIBED",
+  "purchase_attempted": false,
+  "open_alternative": {
+    "url": "https://www.compete-bioafrica.net/international/Annex4-2-5-COMPETE-032448-2ndReport-D4.1-Thailand-Final.pdf",
+    "title": "COMPETE Annex4-2-5 Report on Best Practices & Failures - Thailand",
+    "responsible_partner": "JGSEE,KMUTT,Thailand",
+    "publication_date": "March2009",
+    "sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+    "bytes": 742013,
+    "pages": 61,
+    "selected_visual_page": 20,
+    "locator": "Table7/PDF20/printed16",
+    "table_kind": "CHARACTERIZED_GHG_RESULTS_NOT_ELEMENTARY_LCI",
+    "unit": "gCO2eq/Lethanol",
+    "method": "GWP100 IPCC2001:CO2=1,CH4=23,N2O=296",
+    "numeric_imported": false,
+    "rights_status": "NOT_CLEARED",
+    "all_pages_reviewed": false
+  },
+  "decision": "Keep open report as same-research-group contextual source;Table7 here is not Table7 of EnergyPolicyarticle. No inverse conversion of mixedCO2eq stage totals to gas masses;no inference of rawLCI from monetizedexternalcostTable13.",
+  "full_lifecycle_lci": false,
+  "production_changed": false
+}

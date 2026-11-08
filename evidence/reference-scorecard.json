@@ -1,5 +1,5 @@
 {
-  "release_id": "327eed1abeed1e8eef8b77171d54ad65213bc96cf92608834fee11a214dc4bc7",
+  "release_id": "33d2127d8a1b76333cc8195d92dc83b6a740e6910ec42867bc56be25cc2750ec",
   "checks": {
     "required_context_complete": true,
     "exact_scale_arithmetic": true,
@@ -81,6 +81,6 @@
     "97 accepted reference observations are not 97 independent LCI flows",
     "No competition score, national coverage percentage or human verification is inferred"
   ],
-  "checked_at": "2026-10-23T08:52:29.844984+00:00",
-  "input_sha256": "01f56b2dbf2d119d650c6f3baf53b9fee35863dd0370772be26e0b5482adf042"
+  "checked_at": "2026-10-23T19:09:06.562250+00:00",
+  "input_sha256": "4cb95d618ce8607b88289967ce399c3c0f3aa7851238c440bfc5d2e5e3612010"
 }

@@ -1,0 +1,35 @@
+{
+  "source_sha256": "977f8ff66eed3e3833adb055778d5f9fc42acc214db342a71c53062a2b978f60",
+  "reviews": [
+    {
+      "process": "CPO",
+      "method": "ECONOMIC",
+      "reported_shares_percent": {
+        "CPO": "92",
+        "Dry kernel": "6",
+        "Shell": "2"
+      },
+      "pdf_page": 5,
+      "source_url": "https://mdpi-res.com/d_attachment/sustainability/sustainability-12-09415/article_deploy/sustainability-12-09415-v3.pdf#page=5",
+      "shares_sum_verified": true,
+      "applied_to_project_amounts": false,
+      "tabulated_inventory_allocation_basis": "UNRESOLVED"
+    },
+    {
+      "process": "FAME",
+      "method": "ECONOMIC",
+      "reported_shares_percent": {
+        "FAME": "70",
+        "Crude glycerine": "30"
+      },
+      "pdf_page": 7,
+      "source_url": "https://mdpi-res.com/d_attachment/sustainability/sustainability-12-09415/article_deploy/sustainability-12-09415-v3.pdf#page=7",
+      "shares_sum_verified": true,
+      "applied_to_project_amounts": false,
+      "tabulated_inventory_allocation_basis": "UNRESOLVED"
+    }
+  ],
+  "model_ready": false,
+  "source_values_changed": false,
+  "further_reference": "ARDA2017 reference18 calculation sheets not acquired"
+}

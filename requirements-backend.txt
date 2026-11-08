@@ -1,0 +1,3 @@
+gunicorn==26.2.0
+boto3==1.43.118
+PyMySQL[rsa]==1.2.3

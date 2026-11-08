@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "request": "/api/eppo?dataset=11_13&year=&page=1",
+  "total": 3012,
+  "expected_from_source_report": 3012,
+  "source_values_changed": false,
+  "regression": "HTTP parser previously dropped emptyyear anddefaulted2024;nowpreservesexplicitall-yearsfilter"
+}

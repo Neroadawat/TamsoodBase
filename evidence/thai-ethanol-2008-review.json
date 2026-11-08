@@ -1,0 +1,81 @@
+{
+  "reviewed_at": "2026-11-06",
+  "documents": [
+    {
+      "id": "thai-cassava-ethanol-2008",
+      "pages": 8,
+      "sha256": "fc6c6439d5255efd92632be392160d4ac74db6590397cf5a548cf2f3a5a67762",
+      "bytes": 685577,
+      "redistribution_status": "NOT_CLEARED"
+    },
+    {
+      "id": "thai-molasses-ethanol-2008",
+      "pages": 11,
+      "sha256": "fa0c483a9c27fcff84a21668795bf5a6c4ea7f5bc8d52e62b06168b19be51dba",
+      "bytes": 557359,
+      "redistribution_status": "NOT_CLEARED"
+    }
+  ],
+  "selected_transport_rows": [
+    {
+      "material_route": "Cassava chips from cassava processing plants to CE plants",
+      "mode": "Diesel truck",
+      "capacity_tonnes_as_printed": "15–20",
+      "average_distance_km": "100",
+      "role": "SOURCE_STUDY_ASSUMPTION_NOT_CURRENT_ROUTE_MEASUREMENT",
+      "locator": "Table3/PDF4/printed150",
+      "source_sha256": "fc6c6439d5255efd92632be392160d4ac74db6590397cf5a548cf2f3a5a67762"
+    },
+    {
+      "material_route": "Ethanol from factories to oil refineries",
+      "mode": "Diesel truck",
+      "capacity_tonnes_as_printed": "10–12",
+      "average_distance_km": "150",
+      "role": "SOURCE_STUDY_ASSUMPTION_NOT_CURRENT_ROUTE_MEASUREMENT",
+      "locator": "Table3/PDF4/printed150",
+      "source_sha256": "fc6c6439d5255efd92632be392160d4ac74db6590397cf5a548cf2f3a5a67762"
+    },
+    {
+      "material_route": "Gasohol from oil refineries to gas stations",
+      "mode": "Diesel truck",
+      "capacity_tonnes_as_printed": "10–12",
+      "average_distance_km": "180",
+      "role": "SOURCE_STUDY_ASSUMPTION_NOT_CURRENT_ROUTE_MEASUREMENT",
+      "locator": "Table3/PDF4/printed150",
+      "source_sha256": "fc6c6439d5255efd92632be392160d4ac74db6590397cf5a548cf2f3a5a67762"
+    }
+  ],
+  "transport_all_selected_fields_checked_two_parsers_and_visual": true,
+  "molasses_scope_visual_page": 3,
+  "molasses_waste_and_allocation_text_checked_two_parsers": true,
+  "molasses_base_case": {
+    "spent_wash_biogas_recovery_percent": "12",
+    "spent_wash_to_pond_percent": "88",
+    "coverage": "reportedstudybasecase",
+    "locator": "Table1/PDF3/printed303"
+  },
+  "molasses_allocation": {
+    "type": "ECONOMIC",
+    "sugar_percent": "89.6",
+    "molasses_percent": "10.4",
+    "locator": "Section2.2/PDF3/printed303",
+    "apply_to_existing_B100_model": false
+  },
+  "quality_issue": {
+    "source": "cassava",
+    "locator": "Table4/PDF4/printed150",
+    "field": "acidification",
+    "reported_CG": "3.00",
+    "reported_E10_b": "3.07",
+    "reported_percent_change": "-6.8",
+    "recalculated_from_displayed_values": "2.333333333333333333333333300",
+    "status": "SOURCE_TABLE_SIGN_VALUE_INCONSISTENCY_VISUALLY_CONFIRMED",
+    "action": "Preserve values;exclude this impact row from comparative demo until resolved;never silently correct."
+  },
+  "all_published_inventory_cells_verified": false,
+  "complete_elementary_inventory_available": false,
+  "all_background_inputs_thai": false,
+  "public_numeric_release": false,
+  "existing_model_changed": false,
+  "CO2e_total": null
+}

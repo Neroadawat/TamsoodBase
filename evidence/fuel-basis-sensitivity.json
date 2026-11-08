@@ -1,0 +1,81 @@
+{
+  "scope": "THAI_REPORTED_FACTOR_FUEL_BASIS_SENSITIVITY_NOT_COMPARATIVE_CFP",
+  "assumption": {
+    "scope": "CONDITIONAL_FUEL_PROPERTY_SCENARIO_NOT_MODEL_FUEL_REPLACEMENT",
+    "assumption_id": "TEAM_METHOD_2026_11_06_LHV_MJ_KG_INTERPRETATION",
+    "energy_MJ": "1000",
+    "mass_kg": "25.06893958385560290799699172724993732765",
+    "volume_litres": "29.05566775676074468642078805647948785643",
+    "density_kg_per_litre": "0.86279",
+    "LHV_interpretation": "MJ/kg assumed; original header Mj preserved",
+    "CO2e_total": null,
+    "emission_factor_eligible": false,
+    "existing_model_changed": false
+  },
+  "factor_id": "TGO-CFP-307-April2026",
+  "cases": [
+    {
+      "id": "REPORTED_2020_TABLE4_FUEL_MASS",
+      "activity_mass_kg": "26.3",
+      "screening": {
+        "activity_amount": "26.3",
+        "activity_unit": "kg",
+        "factor_id": "TGO-CFP-307-April2026",
+        "factor_value": "1.0372",
+        "factor_version": "Update_April2026",
+        "method": "IPCC 2013 GWP 100a V1.03",
+        "result": "27.27836",
+        "result_unit": "kgCO2e",
+        "result_type": "SCOPED_FACTOR_SCREENING",
+        "full_lifecycle_result": false,
+        "direct_CO2_kg": null,
+        "source_url": "https://thaicarbonlabel.tgo.or.th/index.php?lang=TH&mod=Y0hKdlpIVmpkSE5mWlcxcGMzTnBiMjQ9",
+        "source_sha256": "58a5f2cc45396724cb4dcf4f26548cd321c9f549a355ff9123703c99cb1caf06",
+        "source_locator": "CFP table row 307",
+        "thai_representative_factor_reported": true,
+        "strict_all_inputs_thai_verified": false,
+        "limitation": "Characterized factor result only; boundary and overlap review required before summation. Not a full LCI, direct CO2 measurement or certified CFP."
+      }
+    },
+    {
+      "id": "CONDITIONAL_2021_FUEL_PROPERTY_BASIS",
+      "activity_mass_kg": "25.06893958385560290799699172724993732765",
+      "screening": {
+        "activity_amount": "25.06893958385560290799699172724993732765",
+        "activity_unit": "kg",
+        "factor_id": "TGO-CFP-307-April2026",
+        "factor_value": "1.0372",
+        "factor_version": "Update_April2026",
+        "method": "IPCC 2013 GWP 100a V1.03",
+        "result": "26.001504136375031336174479819503634996238580",
+        "result_unit": "kgCO2e",
+        "result_type": "SCOPED_FACTOR_SCREENING",
+        "full_lifecycle_result": false,
+        "direct_CO2_kg": null,
+        "source_url": "https://thaicarbonlabel.tgo.or.th/index.php?lang=TH&mod=Y0hKdlpIVmpkSE5mWlcxcGMzTnBiMjQ9",
+        "source_sha256": "58a5f2cc45396724cb4dcf4f26548cd321c9f549a355ff9123703c99cb1caf06",
+        "source_locator": "CFP table row 307",
+        "thai_representative_factor_reported": true,
+        "strict_all_inputs_thai_verified": false,
+        "limitation": "Characterized factor result only; boundary and overlap review required before summation. Not a full LCI, direct CO2 measurement or certified CFP."
+      }
+    }
+  ],
+  "difference_kgCO2e": "-1.276855863624968663825520180496365003761420",
+  "difference_percent": "-4.6808380841992284867034535085553713777566539923954372623574144486692015209125475",
+  "interpretation": "Difference arises from alternative fuel-property/basis assumptions; NOT demonstrated carbon saving or measured engine improvement",
+  "factor_system_boundary": "NOT_CONFIRMED_FOR_FULL_LIFECYCLE_SUM",
+  "stage_allocation": "NOT_ASSIGNED_NO_BOUNDARY_GUESS",
+  "combined_with_foreground": false,
+  "tailpipe_CO2_kg": null,
+  "full_lifecycle_CO2e_total": null,
+  "full_lifecycle_inventory": false,
+  "strict_all_inputs_thai_verified": false,
+  "rights_status": "INTERNAL_REVIEW_NOT_CLEARED_FOR_REDISTRIBUTION",
+  "existing_model_changed": false,
+  "source_inputs": {
+    "properties_pdf_sha256": "48a24204f83b02415115ff28a4e727c0b4b17ec8ce1a889ee84848c908973496",
+    "factor_source_sha256": "58a5f2cc45396724cb4dcf4f26548cd321c9f549a355ff9123703c99cb1caf06",
+    "factor_review_file_sha256": "828d5272b7a8a3694039a5eb39998fd4f3a5e0182956e462a055a6e914609f35"
+  }
+}

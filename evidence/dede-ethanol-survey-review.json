@@ -1,0 +1,469 @@
+{
+  "reviewed_at": "2026-11-06",
+  "source_url": "https://pei.dede.go.th/dataset/bioethanol1",
+  "sha256": "72052b365f32681579fb24341d1d0d94578708c6b16228a60e1f647294c9e944",
+  "scope": "SURVEY_AND_REFERENCE_RANGES_NOT_SINGLE_MATCHED_PLANT",
+  "measurement_year": null,
+  "reference_output_L_per_day": "150000",
+  "quantity_cells_reviewed": 26,
+  "numeric_range_cells": 24,
+  "source_dash_cells": 2,
+  "observations": [
+    {
+      "route": "cassava_chips",
+      "flow": "feedstock",
+      "unit": "t/day",
+      "range": [
+        "350",
+        "370"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.002333333333333333333333333333333333333333",
+        "0.002466666666666666666666666666666666666667"
+      ],
+      "normalized_unit": "t/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/cassava_chips/feedstock"
+    },
+    {
+      "route": "molasses",
+      "flow": "feedstock",
+      "unit": "t/day",
+      "range": [
+        "540",
+        "550"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.0036",
+        "0.003666666666666666666666666666666666666667"
+      ],
+      "normalized_unit": "t/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/molasses/feedstock"
+    },
+    {
+      "route": "cassava_chips",
+      "flow": "water",
+      "unit": "m3/day",
+      "range": [
+        "1200",
+        "1500"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.008",
+        "0.01"
+      ],
+      "normalized_unit": "m3/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/cassava_chips/water"
+    },
+    {
+      "route": "molasses",
+      "flow": "water",
+      "unit": "m3/day",
+      "range": [
+        "1000",
+        "1300"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.006666666666666666666666666666666666666667",
+        "0.008666666666666666666666666666666666666667"
+      ],
+      "normalized_unit": "m3/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/molasses/water"
+    },
+    {
+      "route": "cassava_chips",
+      "flow": "yeast",
+      "unit": "kg/day",
+      "range": [
+        "20",
+        "80"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.0001333333333333333333333333333333333333333",
+        "0.0005333333333333333333333333333333333333333"
+      ],
+      "normalized_unit": "kg/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/cassava_chips/yeast"
+    },
+    {
+      "route": "molasses",
+      "flow": "yeast",
+      "unit": "kg/day",
+      "range": [
+        "20",
+        "80"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.0001333333333333333333333333333333333333333",
+        "0.0005333333333333333333333333333333333333333"
+      ],
+      "normalized_unit": "kg/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/molasses/yeast"
+    },
+    {
+      "route": "cassava_chips",
+      "flow": "enzyme",
+      "unit": "kg/day",
+      "range": [
+        "20",
+        "800"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.0001333333333333333333333333333333333333333",
+        "0.005333333333333333333333333333333333333333"
+      ],
+      "normalized_unit": "kg/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/cassava_chips/enzyme"
+    },
+    {
+      "route": "molasses",
+      "flow": "enzyme",
+      "unit": "kg/day",
+      "range": null,
+      "missing_marker": "SOURCE_DASH_NOT_ZERO",
+      "per_L_ethanol_range": null,
+      "normalized_unit": "kg/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/molasses/enzyme"
+    },
+    {
+      "route": "cassava_chips",
+      "flow": "other_chemicals",
+      "unit": "kg/day",
+      "range": [
+        "1000",
+        "5000"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.006666666666666666666666666666666666666667",
+        "0.03333333333333333333333333333333333333333"
+      ],
+      "normalized_unit": "kg/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/cassava_chips/other_chemicals"
+    },
+    {
+      "route": "molasses",
+      "flow": "other_chemicals",
+      "unit": "kg/day",
+      "range": [
+        "1000",
+        "5000"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.006666666666666666666666666666666666666667",
+        "0.03333333333333333333333333333333333333333"
+      ],
+      "normalized_unit": "kg/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/molasses/other_chemicals"
+    },
+    {
+      "route": "cassava_chips",
+      "flow": "electricity",
+      "unit": "kWh/day",
+      "range": [
+        "25000",
+        "47000"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.1666666666666666666666666666666666666667",
+        "0.3133333333333333333333333333333333333333"
+      ],
+      "normalized_unit": "kWh/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/cassava_chips/electricity"
+    },
+    {
+      "route": "molasses",
+      "flow": "electricity",
+      "unit": "kWh/day",
+      "range": [
+        "22000",
+        "44000"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.1466666666666666666666666666666666666667",
+        "0.2933333333333333333333333333333333333333"
+      ],
+      "normalized_unit": "kWh/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/molasses/electricity"
+    },
+    {
+      "route": "cassava_chips",
+      "flow": "steam",
+      "unit": "t/day",
+      "range": [
+        "300",
+        "500"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.002",
+        "0.003333333333333333333333333333333333333333"
+      ],
+      "normalized_unit": "t/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/cassava_chips/steam"
+    },
+    {
+      "route": "molasses",
+      "flow": "steam",
+      "unit": "t/day",
+      "range": [
+        "200",
+        "400"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.001333333333333333333333333333333333333333",
+        "0.002666666666666666666666666666666666666667"
+      ],
+      "normalized_unit": "t/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/molasses/steam"
+    },
+    {
+      "route": "cassava_chips",
+      "flow": "ethanol",
+      "unit": "L/day",
+      "range": [
+        "150000",
+        "150000"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "1",
+        "1"
+      ],
+      "normalized_unit": "L/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/cassava_chips/ethanol"
+    },
+    {
+      "route": "molasses",
+      "flow": "ethanol",
+      "unit": "L/day",
+      "range": [
+        "150000",
+        "150000"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "1",
+        "1"
+      ],
+      "normalized_unit": "L/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/molasses/ethanol"
+    },
+    {
+      "route": "cassava_chips",
+      "flow": "CO2_product_or_output_not_confirmed_air",
+      "unit": "t/day",
+      "range": [
+        "100",
+        "120"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.0006666666666666666666666666666666666666667",
+        "0.0008"
+      ],
+      "normalized_unit": "t/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/cassava_chips/CO2_product_or_output_not_confirmed_air"
+    },
+    {
+      "route": "molasses",
+      "flow": "CO2_product_or_output_not_confirmed_air",
+      "unit": "t/day",
+      "range": [
+        "100",
+        "120"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.0006666666666666666666666666666666666666667",
+        "0.0008"
+      ],
+      "normalized_unit": "t/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/molasses/CO2_product_or_output_not_confirmed_air"
+    },
+    {
+      "route": "cassava_chips",
+      "flow": "fusel_oil",
+      "unit": "L/day",
+      "range": [
+        "300",
+        "600"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.002",
+        "0.004"
+      ],
+      "normalized_unit": "L/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/cassava_chips/fusel_oil"
+    },
+    {
+      "route": "molasses",
+      "flow": "fusel_oil",
+      "unit": "L/day",
+      "range": [
+        "300",
+        "600"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.002",
+        "0.004"
+      ],
+      "normalized_unit": "L/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/molasses/fusel_oil"
+    },
+    {
+      "route": "cassava_chips",
+      "flow": "spent_wash_parent",
+      "unit": "m3/day",
+      "range": [
+        "1400",
+        "1600"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.009333333333333333333333333333333333333333",
+        "0.01066666666666666666666666666666666666667"
+      ],
+      "normalized_unit": "m3/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/cassava_chips/spent_wash_parent"
+    },
+    {
+      "route": "molasses",
+      "flow": "spent_wash_parent",
+      "unit": "m3/day",
+      "range": [
+        "1000",
+        "1300"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.006666666666666666666666666666666666666667",
+        "0.008666666666666666666666666666666666666667"
+      ],
+      "normalized_unit": "m3/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/molasses/spent_wash_parent"
+    },
+    {
+      "route": "cassava_chips",
+      "flow": "wet_sludge_child",
+      "unit": "t/day",
+      "range": [
+        "100",
+        "200"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.0006666666666666666666666666666666666666667",
+        "0.001333333333333333333333333333333333333333"
+      ],
+      "normalized_unit": "t/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/cassava_chips/wet_sludge_child"
+    },
+    {
+      "route": "molasses",
+      "flow": "wet_sludge_child",
+      "unit": "t/day",
+      "range": null,
+      "missing_marker": "SOURCE_DASH_NOT_ZERO",
+      "per_L_ethanol_range": null,
+      "normalized_unit": "t/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/molasses/wet_sludge_child"
+    },
+    {
+      "route": "cassava_chips",
+      "flow": "wastewater_child",
+      "unit": "m3/day",
+      "range": [
+        "1200",
+        "1400"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.008",
+        "0.009333333333333333333333333333333333333333"
+      ],
+      "normalized_unit": "m3/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/cassava_chips/wastewater_child"
+    },
+    {
+      "route": "molasses",
+      "flow": "wastewater_child",
+      "unit": "m3/day",
+      "range": [
+        "1000",
+        "1300"
+      ],
+      "missing_marker": null,
+      "per_L_ethanol_range": [
+        "0.006666666666666666666666666666666666666667",
+        "0.008666666666666666666666666666666666666667"
+      ],
+      "normalized_unit": "m3/L_ethanol",
+      "verification": "TWO_PARSER_NUMBERS_PLUS_VISUAL_ROW_UNIT_MAPPING",
+      "locator": "Table2/PDF11/printed10/molasses/wastewater_child"
+    }
+  ],
+  "quality_context": {
+    "cassava_spent_wash": {
+      "TS": "5-7%",
+      "COD": "40000-60000 mg/L",
+      "BOD": "15000-35000 mg/L"
+    },
+    "molasses_spent_wash": {
+      "TS": "15%",
+      "COD": "100000-150000 mg/L",
+      "BOD": "40000-70000 mg/L"
+    },
+    "wastewater_COD_BOD_unit": "ppm; do not silently substitute mg/L"
+  },
+  "guards": [
+    "Ranges are not paired measurements or statistical confidence intervals",
+    "Per-litre is source-scale division, not validated linear extrapolation",
+    "Parent spent wash and child sludge/wastewater must not be summed",
+    "CO2 output is not proven emission to air or fossil carbon",
+    "No methane inferred from BOD without treatment/removal/capture/leakage evidence",
+    "No allocation, steam energy conversion, or foreign background filling",
+    "Not same plant/case as 2008 or SIIT2025"
+  ],
+  "rights_status": "NOT_CLEARED",
+  "full_lifecycle_lci": false,
+  "CO2e_total": null,
+  "production_changed": false
+}

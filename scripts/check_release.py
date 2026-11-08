@@ -17,12 +17,12 @@ def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def selected_files(root):
     # An explicit allowlist prevents .local, raw PDFs, .env and generated DBs leaking.
-    allowed={'.py','.md','.json','.sql','.csv'}
-    paths=[root/'README.md',root/'.gitignore',root/'requirements-report.txt']
-    for directory in ('src','scripts','tests','docs','sql','evidence','examples','.vscode'):
+    allowed={'.py','.md','.json','.sql','.csv','.cjs','.mjs'}
+    paths=[root/'README.md',root/'.gitignore',root/'.gitattributes',root/'.dockerignore',root/'.vercelignore',root/'vercel.json',root/'requirements-report.txt',root/'requirements-backend.txt',root/'deploy/Dockerfile',root/'deploy/backend.env.example']
+    for directory in ('src','scripts','tests','docs','sql','evidence','examples','.vscode','deploy'):
         paths.extend(p for p in (root/directory).rglob('*') if p.is_file() and p.suffix in allowed
                      and not p.is_symlink() and p.resolve().is_relative_to(root.resolve()))
-    paths.extend(p for p in (root/'web').glob('*') if p.is_file() and p.suffix in {'.html','.css','.js'}
+    paths.extend(p for p in (root/'web').glob('*') if p.is_file() and p.suffix in {'.html','.css','.js','.svg'}
                  and not p.is_symlink() and p.resolve().is_relative_to(root.resolve()))
     return sorted(set(p for p in paths if p.is_file() and not p.is_symlink() and p.resolve().is_relative_to(root.resolve())))
 
@@ -31,8 +31,10 @@ def audit(run_tests=False,package=False):
     checks=[]
     if __package__:
         from .audit_dataset_layers import audit_layers
+        from .task_board import render_text
     else:
         from audit_dataset_layers import audit_layers
+        from task_board import render_text
     checks.extend(audit_layers(ROOT))
     def check(name,ok,detail): checks.append({'name':name,'passed':bool(ok),'detail':detail})
     for filename in ('README.md','docs/tasks.json','docs/acceptance-rules.md','docs/domain-review-packet.md',
@@ -61,6 +63,8 @@ def audit(run_tests=False,package=False):
             check('report_mysql_evidence:'+publisher,verification['pdf_sha256']==r['pdf_sha256'] and verification.get('report_json_sha256')==digest(folder/'report.json') and verification['numeric_values_checked']==len(r['rows']) and verification.get('metadata_records_checked')==len(r['rows']) and verification['result']=='passed','Stored verification tied to report hash; not a live MySQL query')
         except (OSError,ValueError,KeyError) as error: check('report_available:'+publisher,False,str(error))
     tasks=json.loads((ROOT/'docs/tasks.json').read_text(encoding='utf-8'))['tasks'];ids={task['id'] for task in tasks}
+    task_data=json.loads((ROOT/'docs/tasks.json').read_text(encoding='utf-8'))
+    check('task_board_sync',(ROOT/'docs/tasks.md').read_text(encoding='utf-8')==render_text(task_data),'Markdown board must match structured tasks.json; regenerate with scripts/task_board.py')
     try:
         folder=ROOT/'build/reusable';manifest=json.loads((folder/'manifest.json').read_text(encoding='utf-8'))
         check('reference_policy_hash',digest(ROOT/'docs/team-data-policy.md')==manifest['policy_sha256'],'Team-defined use case, no external approval required')

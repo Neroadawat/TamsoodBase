@@ -1,0 +1,126 @@
+{
+  "reviewed_at": "2026-11-06",
+  "domain": "Thai fuels",
+  "search_scope": [
+    "palmB100",
+    "cassava/molassesethanol",
+    "UCO",
+    "gasolineCNG/LPG",
+    "WTWvehiclefuels"
+  ],
+  "exhaustive_internet_claim": false,
+  "cases": [
+    {
+      "id": "TH_CASSAVA_2008",
+      "title": "เอทานอลมันสำปะหลังไทย / E10",
+      "url": "https://link.springer.com/article/10.1065/lca2007.06.343",
+      "status": "USER_FULLTEXT_ACQUIRED_SELECTED_SCOPE_REVIEWED",
+      "basis": "1 gasoline-equivalent litre",
+      "limitations": "FullPDF now acquired;selectedfields checked;notcompleteelementaryinventory/backgroundnotallThai;seeethanolreview"
+    },
+    {
+      "id": "TH_MOLASSES_2008",
+      "title": "เอทานอลกากน้ำตาลไทย / E10",
+      "url": "https://link.springer.com/article/10.1007/s11367-008-0011-2",
+      "status": "USER_FULLTEXT_ACQUIRED_SELECTED_SCOPE_REVIEWED",
+      "basis": "1 litre gasoline equivalent consumed by passenger car",
+      "limitations": "FullPDF now acquired;selectedfields checked;notcompleteelementaryinventory/backgroundnotallThai;seeethanolreview"
+    },
+    {
+      "id": "TH_WTW_2025",
+      "title": "เส้นทางเชื้อเพลิงรถยนต์ไทย",
+      "url": "https://www.iieta.org/journals/ijsdp/paper/10.18280/ijsdp.200306",
+      "status": "OPEN_METHOD_DEMO_NOT_COMPLETE_LCI",
+      "basis": "gCO2eq/km",
+      "limitations": "Full PDF11pages;CCBY4.0;method references and results not downloadable complete elementary inventory;imported electricity excluded in source"
+    },
+    {
+      "id": "TH_UCO_2022",
+      "title": "จัดการน้ำมันทอดใช้แล้วในบริบทไทย",
+      "url": "https://doi.org/10.1016/j.jenvman.2022.114810",
+      "status": "INVENTORY_TABLES_AVAILABLE_BOUNDARY_INCOMPLETE",
+      "basis": "1000kg collected UCO",
+      "limitations": "PDF33pages;upstream generation/collection/transport excluded;foreign literature+ecoinvent;notThai-only background;repositoryCCBYNCND;public redistribution not cleared"
+    },
+    {
+      "id": "TH_CASSAVA_PULP_2021",
+      "title": "เอทานอลกากมันสำปะหลังไทย",
+      "url": "https://doi.org/10.1016/j.jclepro.2020.124741",
+      "status": "PROMISING_PRODUCTION_AND_USE_STUDY_ACCESS_PENDING",
+      "basis": "Fulltext basis not verified",
+      "limitations": "Publisher403;do not import numerical abstracts asLCI"
+    },
+    {
+      "id": "TH_AVF_2012",
+      "title": "เชื้อเพลิงทางเลือกไทย WTW",
+      "url": "https://www.scientific.net/AMR.524-527.2538",
+      "status": "WTW_MODEL_CANDIDATE_INVENTORY_UNAVAILABLE",
+      "basis": "Fulltext basis not verified",
+      "limitations": "Publisher abstract;Thailand adaptedTsinghuaCA3EM;not allThai underlyingparameters verified"
+    },
+    {
+      "id": "TH_CNG_2014",
+      "title": "CNGไทย รถขนส่งเทียบท่อ",
+      "url": "https://ilcaj.org/EcoBalance2014/program/files/EcoBalance2014_abstract.pdf",
+      "status": "ABSTRACT_ONLY_BOUNDARY_CONFLICT",
+      "basis": "Fulltext basis not verified",
+      "limitations": "WTW introduction but WTT methods;ThaiLCI+ecoinvent background;not complete machine readable inventory"
+    },
+    {
+      "id": "TH_FAME_2013_EXISTING",
+      "title": "ไบโอดีเซลปาล์มไทย2013",
+      "url": "https://doi.org/10.1007/978-3-642-34519-7_2",
+      "status": "EXISTING_FULL_CHAIN_CANDIDATE_BASIS_CONFLICT",
+      "basis": "1MJ prose vs1000MJ figure unresolved",
+      "limitations": "Already reviewed;do not repeat extraction;selected use/waste data internal only"
+    },
+    {
+      "id": "TH_FAME_2020_EXISTING",
+      "title": "ไบโอดีเซลไทย2020",
+      "url": "https://doi.org/10.3390/su12229415",
+      "status": "EXISTING_PRODUCTION_INVENTORY_NOT_FULL_LIFECYCLE",
+      "basis": "1000MJ production route",
+      "limitations": "Existing52foreground observations;do not promote tofull bypaper title"
+    },
+    {
+      "id": "TH_INDUSTRIAL_2008",
+      "title": "โรงงานไบโอดีเซลไทย5แห่ง",
+      "url": "https://digital.car.chula.ac.th/chulaetd/18075/",
+      "status": "PRODUCTION_WASTE_ONLY_NOT_FULL_CHAIN",
+      "basis": "1m3 biodiesel abstract basis",
+      "limitations": "Institutional abstract;not transport/use complete;CCBYNCND stated"
+    }
+  ],
+  "raw_documents": [
+    {
+      "id": "thai-uco-2022",
+      "bytes": 717007,
+      "sha256": "715ee2ec33e7ccdca6706668c60b448eb0d7039ae2e24b814100e4564d098ce0",
+      "pages": 33,
+      "scope_page": 5,
+      "scope_two_parsers_checked": true,
+      "scope_visual_checked": true,
+      "all_inventory_cells_verified": false
+    },
+    {
+      "id": "thai-wtw-2025",
+      "bytes": 2011979,
+      "sha256": "e153daa0cfa0626758f662b1b7ba504b6907a6e2f4e939168812569c93718416",
+      "pages": 11,
+      "scope_page": 5,
+      "scope_two_parsers_checked": true,
+      "scope_visual_checked": true,
+      "all_inventory_cells_verified": false
+    }
+  ],
+  "complete_downloadable_Thai_only_LCI_verified": false,
+  "recommended_public_reference_demo": "TH_WTW_2025",
+  "recommended_fullchain_inventory_acquisition": [
+    "TH_CASSAVA_2008",
+    "TH_MOLASSES_2008"
+  ],
+  "numeric_inventory_rows_imported": 0,
+  "production_changed": false,
+  "recommended_fullchain_study_demo": "TH_MOLASSES_2008",
+  "followup_evidence": "evidence/thai-ethanol-2008-review.json"
+}

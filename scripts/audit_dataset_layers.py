@@ -40,8 +40,27 @@ def audit_layers(root=ROOT):
             check(name+'_row_provenance',all(r.get('source_sha256',r.get('source_snapshot_sha256')) in hashes for r in rows),'Every row refers to audited source snapshot')
             with closing(sqlite3.connect((root/db_path).resolve().as_uri()+'?mode=ro',uri=True)) as con:
                 check(name+'_sqlite_integrity',con.execute('PRAGMA integrity_check').fetchone()[0]=='ok' and not con.execute('PRAGMA foreign_key_check').fetchall(),'Integrity and foreign keys')
-                actual={oid:json.loads(payload) for oid,payload in con.execute('SELECT observation_id,payload FROM '+table) if oid in expected}
-                check(name+'_sqlite_payload',actual==expected,'All current payloads equal; historical snapshots excluded by identity')
+                # NSO/inventory are current materializations. EPPO retains old snapshots,
+                # so select by current snapshot, never by the IDs we expect to find.
+                where=''; parameters=()
+                if name=='eppo':
+                    snapshots=sorted(hashes)
+                    where=' WHERE snapshot_id IN ('+','.join('?' for _ in snapshots)+')'
+                    parameters=tuple(snapshots)
+                actual={oid:json.loads(payload) for oid,payload in con.execute('SELECT observation_id,payload FROM '+table+where,parameters)}
+                check(name+'_sqlite_payload',actual==expected,'Exact current row set and payloads; only historical EPPO snapshots excluded')
+                fields = {
+                    'nso': [('table_id','table_id'),('reference_year','reference_year'),('measure','measure'),('label','label'),('amount','amount'),('unit','unit')],
+                    'eppo': [('snapshot_id','source_sha256'),('reference_year','reference_year'),('month','month'),('subject','subject'),('amount','amount'),('unit','unit')],
+                    'inventory': [('process_id','process'),('direction','direction'),('flow','flow'),('amount','amount'),('unit','unit'),('role','role')],
+                }[name]
+                typed = {r[0]:tuple(r[1:]) for r in con.execute('SELECT observation_id,'+','.join(column for column,_ in fields)+' FROM '+table+where,parameters)}
+                expected_typed = {oid:tuple(row[key] for _,key in fields) for oid,row in expected.items()}
+                check(name+'_sqlite_typed',typed==expected_typed,'Searchable typed columns equal current source report, separately from JSON payload')
+                if name=='inventory':
+                    processes={r[0]:tuple(r[1:]) for r in con.execute('SELECT process_id,reference_amount,reference_unit,geography,technology_level FROM process')}
+                    expected_processes={r['process']:(r['reference_amount'],r['reference_unit'],r['geography'],r['technology_level']) for r in rows}
+                    check(name+'_sqlite_process_basis',processes==expected_processes,'Process basis and geography are checked outside payload')
             if name in ('nso','inventory'):
                 sql=json.loads((root/'evidence/supplemental-mysql.json').read_text(encoding='utf-8'))
                 kind='NSO' if name=='nso' else 'PRODUCT_INVENTORY'

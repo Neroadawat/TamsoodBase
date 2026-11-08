@@ -1,0 +1,61 @@
+[
+  {
+    "path": "healthz",
+    "status": 200,
+    "content_type": "application/json",
+    "sha256": "0cf423a1c4feaebccbf7f4d90868ce09334d72eea135b9d5a11144adaf777ea7",
+    "keys": [
+      "status",
+      "service"
+    ]
+  },
+  {
+    "path": "readyz",
+    "status": 200,
+    "content_type": "application/json",
+    "sha256": "6d160fff74b6c0c19b7d52a992b4d2d277977f90b48f3f546e0a9d36f973008b",
+    "keys": [
+      "ready"
+    ]
+  },
+  {
+    "path": "api/product-inventory",
+    "status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "sha256": "b3df774c1dd824ccf570f1f1ec345969dd29a91f27863753d4b354beed043ee5",
+    "keys": [
+      "doi",
+      "checked_at",
+      "source_url",
+      "limitations",
+      "excluded_rows",
+      "context_sha256",
+      "excluded_count",
+      "evidence_method",
+      "source_snapshot_sha256",
+      "source_reported_inventory_count"
+    ],
+    "rows_returned": 16
+  },
+  {
+    "path": "api/reference.json",
+    "status": 200,
+    "content_type": "application/json; charset=utf-8",
+    "sha256": "36582d8709f4026a301bd4cbcee6246c6f758e4385867820070275ba58e12421",
+    "keys": [
+      "manifest",
+      "total",
+      "page",
+      "page_size",
+      "fields",
+      "rows"
+    ],
+    "rows_returned": 97
+  },
+  {
+    "path": "case-study.json",
+    "status": 404,
+    "content_type": "text/plain; charset=utf-8",
+    "sha256": "fee2f20225a9b88077f1328c365f194baef20706967018cf4827c491ab25632b"
+  }
+]

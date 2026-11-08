@@ -1,0 +1,179 @@
+{
+  "date": "2026-11-03",
+  "policy": "THAI_ONLY_NO_FOREIGN_SURROGATE",
+  "status": "ACQUISITION_NOT_COMPLETE",
+  "items": [
+    {
+      "id": "THAI_FAME_2020",
+      "role": "foreground",
+      "source": "https://doi.org/10.3390/su12229415",
+      "available_observations_for_FAME_route": 52,
+      "status": "SOURCE_VERIFIED_MODEL_LINKS_PENDING",
+      "all_background_inputs_thai_verified": false,
+      "admitted_to_full_model": false,
+      "reason": "Study uses background databases; Thai study context alone does not establish every provider origin"
+    },
+    {
+      "id": "THAI_FAME_2013",
+      "role": "alternative_foreground_use_treatment",
+      "source": "https://doi.org/10.1007/978-3-642-34519-7_2",
+      "status": "BASIS_CONFLICT_REVIEW_REQUIRED",
+      "admitted_to_full_model": false,
+      "reason": "1MJ prose versus1000MJ figure; allocation differs; redistribution not cleared"
+    },
+    {
+      "id": "THAI_LCI_BACKGROUND",
+      "role": "electricity_water_transport_treatment",
+      "source": "https://thainationallci.nstda.or.th/",
+      "status": "PAUSED_SIGNUP_COUNTRY_PROVINCE_EMPTY_API500_USER_CHOSE_ALTERNATIVES",
+      "admitted_to_full_model": false,
+      "reason": "Live services search found Thai16t10wheelB5tkm2009 provider with Documentation/PDF andXLSX/CSV names;signin handoff;nofilesdownloadedorrightsreviewed;genericbody notconfirmed tanker"
+    },
+    {
+      "id": "TGO_CFP_307",
+      "role": "scoped_characterized_factor",
+      "source": "evidence/thai-carbon-factor-review.json",
+      "status": "SEVEN_CELLS_VERIFIED_SCOPED_SCREENING_ONLY",
+      "admitted_to_full_model": false,
+      "reason": "CharacterizedCO2e factor is not fullLCI; boundary/underlyingprovenance unresolved"
+    },
+    {
+      "id": "TGO_CFO_IPCC_DEFAULT",
+      "role": "possible_combustion_factor",
+      "status": "NOT_ADMITTED_THAI_ONLY",
+      "admitted_to_full_model": false,
+      "reason": "Thai publisher but IPCC default activity factor; engine/context not verified"
+    },
+    {
+      "id": "ECOINVENT_USLCI_MEXICO",
+      "role": "foreign_alternatives",
+      "status": "EXCLUDED_BY_USER_POLICY",
+      "admitted_to_full_model": false,
+      "reason": "No foreign surrogate authorized"
+    },
+    {
+      "id": "NSTDA_WTW_2021",
+      "role": "reported_carbon_benchmark_only",
+      "source": "https://waa.inter.nstda.or.th/stks/pub/2022/20220110-life-cycle-energy-carbon-footprint.pdf",
+      "status": "LOCAL_HASH_TWO_EXTRACTORS_VISUAL_VERIFIED_BENCHMARK_ONLY",
+      "admitted_to_full_model": false,
+      "reason": "Three reported characterized values verified; not full elementary inventory or all-input Thai provenance",
+      "locator": "PDF45 printed37 footnote11",
+      "reported_values_kgCO2eq_per_litre": {
+        "FAME_WTT": "1.7096",
+        "B100_TTW": "0.1550",
+        "FAME_WTW": "1.8646"
+      },
+      "sum_arithmetic_verified": true,
+      "evidence": "evidence/thai-pome-benchmark-review.json"
+    },
+    {
+      "id": "THAI_POME_KRABI_2011",
+      "role": "quantitative_treatment_candidate",
+      "source": "https://so04.tci-thaijo.org/index.php/JSEE/article/view/9839",
+      "status": "FOUR_OPERATING_POINTS_AND_TWO_RATIOS_VERIFIED",
+      "admitted_to_full_model": false,
+      "reason": "Actual Thai site; wastewater-to-FAME link/fugitiveCH4/netexport/auxiliaryinputs unresolved",
+      "evidence": "evidence/thai-pome-benchmark-review.json"
+    },
+    {
+      "id": "THAI_GSP_2007",
+      "role": "core_natural_gas_separation",
+      "source": "https://digital.car.chula.ac.th/chulaetd/37899/",
+      "status": "SCANNED_FULLTEXT_TABLES_VISUALLY_TRANSCRIBED_42CELLS",
+      "admitted_to_full_model": false,
+      "reason": "3GSP gate-to-gate,1kgproduct/massallocated;41numeric1dash;capacitysourceconflict;noextraction/transmission/use links yet",
+      "evidence": "evidence/thai-gsp-review.json"
+    },
+    {
+      "id": "TGO_CORE_FUEL_FACTORS",
+      "role": "core_domain_characterized_reference",
+      "status": "16ROWS_SOURCE_BOUND_NOT_APPLIED",
+      "admitted_to_full_model": false,
+      "evidence": "evidence/domain-factor-review.json",
+      "reason": "3explicitimportmixholds/allupstreamThaioriginunresolved;characterizedEFnotLCI"
+    },
+    {
+      "id": "THAI_TRANSPORT_2025",
+      "role": "potential_transport_inventory_and_Thai_characterization",
+      "source": "https://doi.org/10.1016/j.spc.2025.04.023",
+      "status": "AUTHOR_REPOSITORY_METADATA_VERIFIED_PDF_403_SUPPLEMENT_PENDING",
+      "admitted_to_full_model": false,
+      "reason": "New2025ThaiTransportstudy;title/authors/DOI/licensemetadataobtained,notactualexchangefiles;noimportorbackgroundlicenseclaim"
+    },
+    {
+      "id": "THAI_CPO_MILLS_2019",
+      "role": "alternative_Thai_CPO_foreground_with_wastewater_basis",
+      "source": "https://www.jseejournal.com/media/219/attachment/Life%20cycle%20assessment%20pp.%2065-73.pdf",
+      "status": "ACTUAL_PDF_TABLE_S2_ALL90CELLS_TWO_EXTRACTORS_VISUAL_VERIFIED",
+      "admitted_to_full_model": false,
+      "reason": "SixThaiMills/1000kgCPO;FFBratiosandtreatedwaterbasisavailable;modelcompatibility/allocation/backgroundpending;notnationalaverage;rawNOT_CLEARED"
+    },
+    {
+      "id": "THAI_PNU_B100_PROPERTIES_2021",
+      "role": "specific_test_fuel_properties_and_use_context",
+      "source": "https://li01.tci-thaijo.org/index.php/pnujr/article/view/251608",
+      "status": "9_PROPERTY_CELLS_VERIFIED_CONDITIONAL_SCENARIO_ONLY",
+      "source_sha256": "48a24204f83b02415115ff28a4e727c0b4b17ec8ce1a889ee84848c908973496",
+      "admitted_to_full_model": false,
+      "rights_status": "NOT_CLEARED",
+      "evidence": "evidence/thai-b100-properties-2021.json",
+      "reason": "LHVdenominatoromitted;explicitMJ/kgscenarioallowedbutnotbaselineconversion;gasconcentrationnotmassinventory"
+    },
+    {
+      "id": "THAI_LAMTHAP_MONITORING_2013",
+      "role": "palm_mill_wastewater_treatment_candidate",
+      "source": "https://cdm.unfccc.int/Projects/DB/TUEV-SUED1218475905.14/view",
+      "status": "HOLD_RAW_AND_REVISED_VERSION_VERIFICATION",
+      "admitted_to_full_model": false,
+      "rights_status": "NOT_CLEARED",
+      "evidence": "evidence/thai-lamthap-candidate-review.json",
+      "reason": "V01text and V4Jan15listed;rawdownloadsHTMLnotPDF;unit/arithmetic/version/denominatoropen;CERnotphysicalflow"
+    },
+    {
+      "id": "THAI_LAMTHAP_RSPO_2015",
+      "role": "denominator_scope_review",
+      "source": "https://rspo.org/wp-content/uploads/Univanich_Lamthap_Mill_RSPO_audit_report_final_report_22_07.pdf",
+      "status": "HOLD_RAW_SCOPE_PERIOD_AND_ARITHMETIC",
+      "admitted_to_full_model": false,
+      "rights_status": "NOT_CLEARED",
+      "evidence": "evidence/thai-lamthap-denominator-review.json",
+      "reason": "2014certifiedsubsetcalculatedCPOcannotdenominate2013wholemillwastewater;raw403/visualunavailable;waterarithmeticunresolved"
+    },
+    {
+      "id": "TH_CASSAVA_2008",
+      "role": "fullchain_study_demo_selected_subset",
+      "source": "https://doi.org/10.1065/lca2007.06.343",
+      "status": "FULLTEXT_ACQUIRED_SELECTED_FIELDS_VERIFIED_NOT_FULL_LCI",
+      "source_sha256": "fc6c6439d5255efd92632be392160d4ac74db6590397cf5a548cf2f3a5a67762",
+      "admitted_to_full_model": false,
+      "rights_status": "NOT_CLEARED",
+      "all_background_inputs_thai_verified": false,
+      "evidence": "evidence/thai-ethanol-2008-review.json"
+    },
+    {
+      "id": "TH_MOLASSES_2008",
+      "role": "fullchain_study_demo_selected_subset",
+      "source": "https://doi.org/10.1007/s11367-008-0011-2",
+      "status": "FULLTEXT_ACQUIRED_SELECTED_FIELDS_VERIFIED_NOT_FULL_LCI",
+      "source_sha256": "fa0c483a9c27fcff84a21668795bf5a6c4ea7f5bc8d52e62b06168b19be51dba",
+      "admitted_to_full_model": false,
+      "rights_status": "NOT_CLEARED",
+      "all_background_inputs_thai_verified": false,
+      "evidence": "evidence/thai-ethanol-2008-review.json"
+    },
+    {
+      "id": "THAI_ETHANOL_SIIT_2025",
+      "role": "alternative_acquisition_inventory_candidate",
+      "source": "https://ph02.tci-thaijo.org/index.php/SciTechAsia/article/view/261544",
+      "status": "18QUANTITIES_SELECTED_CHECKED_6CONTEXT_QUALITY_ISSUES_HOLD",
+      "admitted_to_full_model": false,
+      "source_sha256": "4a3d9dc62e670069302bf27ab85caa93fb604258db1c8f40bb73e71a6d49addd",
+      "rights_status": "NOT_CLEARED",
+      "all_background_inputs_thai_verified": false,
+      "evidence": "evidence/thai-ethanol-siit-2025-review.json"
+    }
+  ],
+  "domain": "Petroleum, Natural Gas & Fuels",
+  "last_research_update": "2026-11-06"
+}

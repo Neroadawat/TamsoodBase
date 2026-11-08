@@ -1,0 +1,44 @@
+{
+  "checked_at": "2026-10-27T11:11:07.422287+00:00",
+  "engine": "MySQL/InnoDB",
+  "scope": "Synthetic isolated lab only; no existing containers/databases or EC2 modified",
+  "observed": {
+    "version": "8.1.0",
+    "default_isolation": "REPEATABLE-READ",
+    "amount_after_statement_error": "11.000",
+    "sql_error_codes": [
+      "3819",
+      "1205"
+    ]
+  },
+  "checks": {
+    "statement_error_does_not_undo_prior_statement": true,
+    "explicit_rollback_restores_whole_batch": true,
+    "check_constraint_kept_valid_value": true,
+    "read_committed_prevents_dirty_read": true,
+    "read_committed_sees_new_commit_on_second_read": true,
+    "repeatable_read_consistent_snapshot_value": true,
+    "repeatable_read_consistent_snapshot_range": true,
+    "new_transaction_sees_committed_rows": true,
+    "locked_row_not_overwritten": true,
+    "commit_survives_new_client_session": true,
+    "actual_schema_accepts_output_coproduct": true,
+    "actual_schema_rejects_input_coproduct": true,
+    "actual_schema_rejects_output_input_role": true,
+    "actual_schema_fixture_transaction_rolled_back": true,
+    "expected_check_error_observed": true,
+    "expected_lock_timeout_observed": true,
+    "no_unexpected_sql_errors": true
+  },
+  "passed": true,
+  "temporary_container_removed": true,
+  "limitations": [
+    "No power-loss/crash/restart durability test",
+    "Repeatable-read checks use plain consistent SELECT, not all locking-read semantics",
+    "No SERIALIZABLE or READ UNCOMMITTED experiment",
+    "No production importer/load benchmark"
+  ],
+  "implementation_sha256": "59461b3420e9552a6e641254f2eae9e8720008acf4c9eae9456064a2189799ca",
+  "supplemental_schema_sha256": "aafb50e30f59f03bd900c10d6fb87495854d89f6ef958a920c3ebe1e1989ef9b",
+  "existing_database_migrated": false
+}

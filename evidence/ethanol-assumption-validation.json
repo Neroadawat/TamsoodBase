@@ -1,0 +1,78 @@
+{
+  "review_date": "2026-11-07",
+  "cmu": {
+    "url": "https://archive.lib.cmu.ac.th/full/T/2013/enen40513rk_ch4.pdf",
+    "sha256": "7f1e37ee2c04fde60d02b9f5c2e519a94ad89b393d5da65ec36e7b11f41fa3c8",
+    "pdf_pages": [
+      10,
+      11
+    ],
+    "redistribution_status": "NOT_CLEARED"
+  },
+  "tsri": {
+    "url": "https://elibrary.tsri.or.th/fullP/MRG5480207/MRG5480207_full.pdf",
+    "sha256": "34a81f9bbfb44b9484b960c054e001dfb9598f94d17707671b59f259f2587511",
+    "pdf_pages": [
+      26
+    ],
+    "redistribution_status": "NOT_CLEARED"
+  },
+  "energy_benchmark": [
+    {
+      "flow": "electricity",
+      "unit": "kWh/L",
+      "cmu_reported": "0.3095",
+      "dede_range": [
+        "0.1466666666666666666666666667",
+        "0.2933333333333333333333333333"
+      ],
+      "within_dede_range": false
+    },
+    {
+      "flow": "steam",
+      "unit": "kg/L",
+      "cmu_reported": "2.9",
+      "dede_range": [
+        "1.333333333333333333333333333",
+        "2.666666666666666666666666667"
+      ],
+      "within_dede_range": false
+    }
+  ],
+  "transport_sensitivity": [
+    {
+      "truck_nominal_L": 16000,
+      "diesel_L_per_km": "0.57",
+      "round_trip_km": [
+        150,
+        500
+      ],
+      "diesel_L_per_L_ethanol": [
+        "0.00534375",
+        "0.0178125"
+      ],
+      "assumption": "full nominal delivered volume and same reported fuel rate over round trip"
+    },
+    {
+      "truck_nominal_L": 32000,
+      "diesel_L_per_km": "0.73",
+      "round_trip_km": [
+        150,
+        500
+      ],
+      "diesel_L_per_L_ethanol": [
+        "0.003421875",
+        "0.01140625"
+      ],
+      "assumption": "full nominal delivered volume and same reported fuel rate over round trip"
+    }
+  ],
+  "cmu_700km_status": "GUIDELINE_ASSUMPTION_ROUND_TRIP",
+  "molasses_pipe_candidate": {
+    "kWh_per_tkm": "1.87",
+    "status": "SECONDARY_REPORTED_DISTANCE_UNVERIFIED"
+  },
+  "same_plant_identity_confirmed": false,
+  "transport_range_status": "INTERVIEW_BASED_ESTIMATE_NOT_TRIP_LOG",
+  "CO2e_total": null
+}

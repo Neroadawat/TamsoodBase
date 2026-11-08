@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-10-28T13:28:15.918420+00:00",
+  "deployment_id": "dpl_FZytDstFb6KTKAHPBJkNy2Uyno2C",
+  "production_url": "https://tamsoodbase.vercel.app",
+  "static_asset_sha256": {
+    "index.html": "a3de5059f39ef8bd990a44bbec4c80523ed094572262feb5af7cbbab83d9f802",
+    "app.js": "8b468b09f7646052839d9641c241cfc176d7f013af09f46c2ea95e1eb1f9e2e4",
+    "style.css": "845f4b1957ff85295e1f196db6c3ded66ccc342a2dc6f4aa79a840c4e6100212"
+  },
+  "tests_passed": 128,
+  "browser_visual_verified": false,
+  "browser_limitation": "CUA and node_repl both failed to initialize kernel assets; no visual inspection claimed",
+  "features": [
+    "NSO/EPPO/DMF publication page + original CSV links",
+    "NSO source-column preview preserves zero and empty fields",
+    "5-step demo navigation",
+    "presentation focus toggle",
+    "diesel2024 example filter"
+  ],
+  "backend_data_changed": false,
+  "rights_changed": false,
+  "raw_redistributed": false,
+  "production_api_parity_passed": true,
+  "production_api_routes_checked": 27,
+  "anonymous_export_checked": true
+}

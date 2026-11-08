@@ -1,0 +1,11 @@
+const assert=require('node:assert/strict'),fs=require('node:fs');
+const {formatActivity,validate}=require('../web/case-study.js');
+const model=JSON.parse(fs.readFileSync(require('node:path').join(__dirname,'../web/case-study.json'),'utf8'));
+assert.equal(validate(model),model);
+assert.equal(formatActivity('187.52580'),'≈ 188 kg');
+assert.equal(formatActivity('27.0600'),'≈ 27.1 kg');
+for(const value of ['',' ','NaN','Infinity','-1','1e3',null])assert.throws(()=>formatActivity(value));
+for(const patch of [{full_lifecycle_inventory:true},{CO2e_total:0},{private_inventory_included:true},{rows:[]}])assert.throws(()=>validate({...model,...patch}));
+assert.throws(()=>validate({...model,public_activity_kg:{...model.public_activity_kg,FFB:'187.5258'}}));
+assert.throws(()=>validate({...model,components:model.components.map((c,i)=>i?c:{...c,source_url:'javascript:alert(1)'})}));
+console.log('PASS: case metadata scope/rights gates and honest display precision');

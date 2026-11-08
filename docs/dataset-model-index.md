@@ -1,5 +1,7 @@
 # ดัชนีแบบจำลองและ mapping กลาง
 
+ผลตรวจ Normal Form ล่าสุดและ candidate ที่แก้ metric/document redundancy: [normalization-audit.md](normalization-audit.md) — ยังไม่ย้ายฐาน API/EC2 และไม่รับรองทั้งระบบเป็น 5NF
+
 ปรับ23ตุลาคม2569 เอกสารนี้เป็นสัญญาความหมายร่วมและดัชนีschemaจริง ไม่อ้างว่ารวมทุกชุดเป็นphysicalschemaเดียวแล้ว
 
 | ชั้น | Database / schema | หน่วยข้อมูลและสถานะ | Dictionary / mapping |
@@ -46,4 +48,4 @@ Unitmasterยังแยกตามmodel ไม่มีglobalunitFKครบ�
 
 ## ข้อค้างจริง
 
-Cross-sourceNSOยังเทียบ7/273และมีDEDEdifference; historicalDMFtimebasisยังไม่ชัด; สมาชิกยังต้องมีcontribution/defenseจริง; deadline/channelและข้อกำหนดส่งล่าสุดต้องมีหลักฐานก่อนfinalfreeze การผ่านtechnicalauditไม่ใช่submissionreadyหรือMTECapproval
+Cross-sourceNSOล่าสุดเทียบ15/273 อีก258ยังไม่เทียบ;DEDErevised2024totalและ5subtotalตรง โดยคงpreliminaryที่ต่างแยกไว้ ไม่ถือเป็นindependentmeasurements;historicalDMFtimebasisยังไม่ชัด;สมาชิกยังต้องมีcontribution/defenseจริง;deadline/channelและข้อกำหนดส่งล่าสุดต้องมีหลักฐานก่อนfinalfreeze การผ่านtechnicalauditไม่ใช่submissionreadyหรือMTECapproval

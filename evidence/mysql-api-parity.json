@@ -1,0 +1,144 @@
+{
+  "passed": true,
+  "routes": 27,
+  "differences": [],
+  "scope": "LOCAL_MYSQL_WITH_BUILD_DATA_EVIDENCE_FILES_HIDDEN",
+  "baseline": {
+    "/readyz": {
+      "status": "200 OK",
+      "sha256": "b342fc286d0216cc212e0d7ba234894e2e7283ddf14f959adf0fe7fd5924308a",
+      "bytes": 14
+    },
+    "/api/summary": {
+      "status": "200 OK",
+      "sha256": "c5c8aa469b94dec9b150f373c06f13441d2fbc569bf5564ed63e81524b88099b",
+      "bytes": 57066
+    },
+    "/api/source-crosswalk": {
+      "status": "200 OK",
+      "sha256": "9156b7e910607b6720bd467013f919dcab704a0a5220c1f089c33ad98c6fb15c",
+      "bytes": 5104
+    },
+    "/api/reports": {
+      "status": "200 OK",
+      "sha256": "1d3fcb270eafc3738d7a613bedef0cdf4fd4ff4b806f0ef5e441d7a247e370c1",
+      "bytes": 104105
+    },
+    "/api/report-pilot": {
+      "status": "200 OK",
+      "sha256": "266e583785c1776045da7a7c7a8787b9cd1f2fc8894c6647fd5a2c53abdf0289",
+      "bytes": 43383
+    },
+    "/api/nso": {
+      "status": "200 OK",
+      "sha256": "0f96fcf97dccb0ed3360aa2c9d0d4c1118da5179311537e7e2813f7f6729718f",
+      "bytes": 433169
+    },
+    "/api/product-inventory": {
+      "status": "200 OK",
+      "sha256": "04aab5c7d3699f58794367e0f643ff9bc4bca8b698137df95cb8af810d358892",
+      "bytes": 28915
+    },
+    "/api/nso-comparison": {
+      "status": "200 OK",
+      "sha256": "722cc2b678f280d35412c75e63441ba8974bcddf752128d577fd67e79e236cb1",
+      "bytes": 2796
+    },
+    "/api/records": {
+      "status": "200 OK",
+      "sha256": "9a7036433f313035a272ad2b4f68f0c1f037fbe0ce961768abc79b66b298354b",
+      "bytes": 22359
+    },
+    "/api/records?status=all&page=2": {
+      "status": "200 OK",
+      "sha256": "e8ff720469206ff1d8bf0d2f033126f78590e0312b8d36540742762c8615b393",
+      "bytes": 23354
+    },
+    "/api/records?q=%25": {
+      "status": "200 OK",
+      "sha256": "0bc86d9f026dfabe39e532d546c8bfde5362a5183b435fcbcd04ee1499628b1b",
+      "bytes": 79
+    },
+    "/api/records?q=_": {
+      "status": "200 OK",
+      "sha256": "640894167277cd34d2fef7b4a10854b121c6287b6094f6a86cfd1d774ee7107c",
+      "bytes": 22320
+    },
+    "/api/records?q=!": {
+      "status": "200 OK",
+      "sha256": "0bc86d9f026dfabe39e532d546c8bfde5362a5183b435fcbcd04ee1499628b1b",
+      "bytes": 79
+    },
+    "/api/record?package=production-oil&line=2": {
+      "status": "200 OK",
+      "sha256": "f6809f7f312f90dcc5fb2ea28649b4065622cdea2dba01c756f341abcfe08726",
+      "bytes": 1486
+    },
+    "/api/reference": {
+      "status": "200 OK",
+      "sha256": "f4f9cd502546f731b4c83914e1e220d8b5587a31b8fe1450c904a5db4b1de148",
+      "bytes": 48326
+    },
+    "/api/reference?page=2": {
+      "status": "200 OK",
+      "sha256": "c0e4f93aa21203477bcca5c83f89ba9b82afce7c9172b1f523f22099e161fc1e",
+      "bytes": 48464
+    },
+    "/api/reference?decision=all": {
+      "status": "200 OK",
+      "sha256": "81b1802f26c85f57e9af9baf2eb54d7e35bfa77d30deb989da636d23342dcd4b",
+      "bytes": 48384
+    },
+    "/api/reference.json?decision=all": {
+      "status": "200 OK",
+      "sha256": "8a0d78f425b6bde973ab7ef7230d0de5639ce616497540705f628183d2156ea8",
+      "bytes": 156236
+    },
+    "/api/reference.csv?decision=all": {
+      "status": "200 OK",
+      "sha256": "de00217f9fece6e57c2c6e36e16c6cb8f9b23e3908c4f697555c115855447175",
+      "bytes": 92546
+    },
+    "/api/reference?decision=HOLD_CONTEXT": {
+      "status": "200 OK",
+      "sha256": "744fe1852fa9e407c2da6de15a64ab2e5c2bb77eabdf2ac2020524f4ca52aff5",
+      "bytes": 8875
+    },
+    "/api/reference?q=%25": {
+      "status": "200 OK",
+      "sha256": "fbd25e019a61affca226cf3214fc6728dc64a871bb6980a333fa2d0371b2d11d",
+      "bytes": 2550
+    },
+    "/api/eppo": {
+      "status": "200 OK",
+      "sha256": "9a2089c35eb9bbfcd497e1921d178f57595a78eb56b59ebd53298548fd545ad4",
+      "bytes": 48065
+    },
+    "/api/eppo?dataset=11_13&year=&page=2": {
+      "status": "200 OK",
+      "sha256": "196e28e8e50b23703b038c18cef784677dbd5c457beef00d648aca98328b2372",
+      "bytes": 47863
+    },
+    "/api/eppo?dataset=11_14&year=": {
+      "status": "200 OK",
+      "sha256": "043ad29e405e4e2acfa6b61b043029528bbd0c3e05e0b67c6d202d5ef22d0123",
+      "bytes": 47914
+    },
+    "/api/eppo?dataset=11_13&year=2024&q=SPRC": {
+      "status": "200 OK",
+      "sha256": "0441b4b425418ff32c08e8f3564297597864e67aa13c360b42bc2c307cc8b55c",
+      "bytes": 14829
+    },
+    "/api/eppo?dataset=invalid": {
+      "status": "400 Bad Request",
+      "sha256": "dd5c81a492496c546cf1fd10f9acb20e7f5b1d00b0c87dd9710e30d7f4394302",
+      "bytes": 32
+    },
+    "/api/reference?year=bad": {
+      "status": "400 Bad Request",
+      "sha256": "34526e5136491af9c377b24bbdd6cefd18155db6c14ad432a836d7442b83c020",
+      "bytes": 24
+    }
+  },
+  "dataset_release": "9f6475ffbbe1ccbfcdb724d764bbc70d01c0190ee9155268909b9fcf92c705ea"
+}

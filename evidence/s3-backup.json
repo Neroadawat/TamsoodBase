@@ -1,0 +1,16 @@
+{
+  "result": "passed",
+  "action": "created",
+  "bucket": "tamsoodbase-team-fuel-2026-a7k9",
+  "region": "ap-southeast-2",
+  "object_key": "tamsoodbase/backups/cdc51c36b5356c41/ed04d0345c5f6546ba63bb0fa93aa39794712a8b92880a7ccc8da8d9ac3efb7a.tar.gz",
+  "sha256": "ed04d0345c5f6546ba63bb0fa93aa39794712a8b92880a7ccc8da8d9ac3efb7a",
+  "bytes": 4353650,
+  "verified_members": 38,
+  "encryption": "AES256",
+  "credential_method": "iam-role",
+  "restore_scope": "Downloaded archive and every member hash verified in memory; no live DB replacement",
+  "mysql_backed_up": false,
+  "raw_csv_pdf_or_credentials_included": false,
+  "public_route_changed": false
+}

@@ -1,0 +1,163 @@
+{
+  "date": "2026-11-06",
+  "scope": "ALL15_REVIEW_ACTIONS_WITH_EXPLICIT_EXTERNAL_GATES",
+  "deployment_id": "dpl_Wz7EhN4xyjaj2aUsuFp56wjyhLeB",
+  "rollback_deployment_id": "dpl_AGT7vMdWaEpSmzejavDBGJK3EpCw",
+  "intermediate_deployment": "dpl_HKq5bZVu4s2wJWVvjHLYuaRETnxZ",
+  "production_url": "https://tamsoodbase.vercel.app",
+  "full_suite": {
+    "passed": 226,
+    "skipped": 0,
+    "scope": "after engineering changes; final ARIA role followed by15 targeted tests"
+  },
+  "final_targeted_tests_passed": 15,
+  "browser": {
+    "origin": "https://tamsoodbase.vercel.app/",
+    "passed": true,
+    "navigation": {
+      "top": 162.796875,
+      "focus": "H2",
+      "y": 0
+    },
+    "sharedFiltersReloadRows": 2,
+    "comparisonRejectsDifferentMeasure": true,
+    "historyRestoresFiltersAndPosition": true,
+    "keyboardDetailsToggle": true,
+    "mobile": {
+      "width": 390,
+      "scroll": 390,
+      "summaryOpen": false
+    },
+    "smallViewport": "320x600 no overflow",
+    "pageErrors": []
+  },
+  "axe": [
+    {
+      "view": "catalog",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "view": "nso",
+      "violations": [],
+      "incomplete": 2
+    },
+    {
+      "view": "case-study",
+      "violations": [],
+      "incomplete": 1
+    }
+  ],
+  "asset_hashes": {
+    "index.html": true,
+    "style.css": true,
+    "api.js": true,
+    "app.js": true,
+    "favicon.svg": true,
+    "upstream-inventory.json": true,
+    "case-study.js": true,
+    "case-study.json": true,
+    "discovery.js": true,
+    "story.js": true,
+    "theme.css": true,
+    "noto-sans-thai-06310198b08f.woff2": true,
+    "FONT-LICENSE.txt": true,
+    "config.js": true
+  },
+  "transport": {
+    "scope": "ALL_NSO_FIELDS_LOSSLESS_TRANSPORT_REPLAY",
+    "rows": 273,
+    "contexts": 5,
+    "before_bytes": 433169,
+    "after_bytes": 146019,
+    "all_row_fields_equal": true,
+    "source_values_changed": false,
+    "public_caching_enabled": false
+  },
+  "decimal_projection": {
+    "scope": "LOCAL_NUMERIC_QUERY_PROJECTION_NOT_PRODUCTION",
+    "model_release_id": "657aa71137bdcd70d11ed3e15b0aa1066246393c409517f757a0a10d9ddec89f",
+    "rows": 460,
+    "status_counts": {
+      "ELIGIBLE": 453,
+      "EXCLUDED_UNIT_OR_PRECISION": 7
+    },
+    "sql_decimal": "DECIMAL(65,30)",
+    "rounding_applied": false,
+    "source_database_unchanged": true,
+    "production_changed": false,
+    "mysql_engine": "8.4.13",
+    "mysql_rows_checked": 460,
+    "mysql_exact_decimal_roundtrip": true,
+    "mysql_numeric_order": true,
+    "mysql_invalid_null_rejected": true,
+    "shared_database_touched": false
+  },
+  "fresh_restore": {
+    "date": "2026-11-06",
+    "passed": true,
+    "scope": "FRESH_S3_LOGICAL_BACKUP_RESTORED_TO_OWNED_LOCAL_ENGINE",
+    "schemas": 5,
+    "backup_sha256": "e2bc7009baed29ac4cab6b3b7b5e41b8e90a2e7fca200fe0316f4385f33fa4ee",
+    "backup_bytes": 5452333,
+    "all_ordered_logical_rows_sha256": "e0087e96cb3a1070acb253ee49d1db61c7cd8e4b197aab4c771ebeba06b646e1",
+    "logical_bytes": 56887016,
+    "live_and_restored_all_rows_equal": true,
+    "production_db_or_api_changed": false,
+    "ginder_caddy_or_security_groups_changed": false,
+    "private_raw_not_published": true,
+    "api_parity_rerun": false,
+    "limitation": "Logical data restore, not whole-EC2 disaster recovery or load testing"
+  },
+  "readiness": {
+    "scope": "PUBLIC_HEALTH_AND_RECORDED_BACKUP_FRESHNESS_NOT_NEW_RESTORE",
+    "checked_at_utc": "2026-11-05T19:28:05.195401+00:00",
+    "http_checks": [
+      {
+        "path": "/api/readyz",
+        "http": 200,
+        "passed": true
+      },
+      {
+        "path": "/api/release",
+        "http": 200,
+        "passed": true
+      }
+    ],
+    "http_healthy": true,
+    "recorded_backup_age_hours": 0.1,
+    "daily_backup_target_met": true,
+    "backup_status": "RECORDED_WITHIN_TARGET",
+    "new_s3_read_or_restore_performed": false,
+    "backend_endpoint": "QUICK_TUNNEL_TEMPORARY_LAST_CONFIGURED_STATE",
+    "stable_endpoint_verified": false,
+    "production_mutated": false,
+    "automation_created": false,
+    "operationally_complete": false
+  },
+  "cleanroom_source_files": 17,
+  "cleanroom_assets": 14,
+  "backend_api_image_changed": false,
+  "source_values_changed": false,
+  "scientific_total": null,
+  "full_lifecycle_inventory": false,
+  "review_matrix": "docs/review-implementation-2026-11-06.md",
+  "open_gates": [
+    "allocation/table basis and compatible Thai use/transport/waste/background plus elementary mapping/CF/balance",
+    "permanent backend endpoint",
+    "independent human review/UAT/manual accessibility",
+    "production workflow/auth/grants/migration acceptance"
+  ],
+  "limitations": [
+    "Not a full WCAG certification",
+    "Local workflow candidate is not a deployed multiuser authentication service",
+    "Fresh logical restore is not whole-machine disaster recovery or load testing",
+    "No new scientific source numbers imported"
+  ],
+  "disk_incident": {
+    "report_first_write_failed": true,
+    "report_recreated_nonempty": true,
+    "only_own_verified_restore_archive_copy_removed": true,
+    "remaining_low_disk_requires_owner_attention": true
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "scope": "THAI_B100_PROPERTY_REVIEW_NOT_EMISSION_INVENTORY",
+  "source_url": "https://li01.tci-thaijo.org/index.php/pnujr/article/view/251608",
+  "source_sha256": "48a24204f83b02415115ff28a4e727c0b4b17ec8ce1a889ee84848c908973496",
+  "publication_year": 2021,
+  "measurement_period": "NOT_ESTABLISHED",
+  "pdf_page": 9,
+  "printed_page": 284,
+  "fuel_volume_percent": "100",
+  "verification": "9selectedcells pdfplumber+pypdf+visualpage9",
+  "rights_status": "PUBLIC_ARTICLE_REUSE_TERMS_NOT_ESTABLISHED",
+  "redistribution_status": "NOT_CLEARED",
+  "context": "Specific PNU palm biodiesel; Nissan IDI van 2663cc, Thai chassis test, not national fleet",
+  "issues": [
+    "LHV header only Mj; denominator requires explicit scenario assumption",
+    "Density temperature unspecified",
+    "CO2 vol% / NOx ppm not kg/MJ without exhaust flow; CH4/N2O not established",
+    "No fossil/biogenic carbon partition established"
+  ],
+  "new_normalized_lci_exchanges": 0,
+  "existing_model_changed": false,
+  "conditional_scenario": {
+    "scope": "CONDITIONAL_FUEL_PROPERTY_SCENARIO_NOT_MODEL_FUEL_REPLACEMENT",
+    "assumption_id": "TEAM_METHOD_2026_11_06_LHV_MJ_KG_INTERPRETATION",
+    "energy_MJ": "1000",
+    "mass_kg": "25.06893958385560290799699172724993732765",
+    "volume_litres": "29.05566775676074468642078805647948785643",
+    "density_kg_per_litre": "0.86279",
+    "LHV_interpretation": "MJ/kg assumed; original header Mj preserved",
+    "CO2e_total": null,
+    "emission_factor_eligible": false,
+    "existing_model_changed": false,
+    "source_sha256": "48a24204f83b02415115ff28a4e727c0b4b17ec8ce1a889ee84848c908973496",
+    "pdf_page": 9,
+    "publication_year": 2021,
+    "measurement_period": "NOT_ESTABLISHED",
+    "actor": "AUTOMATED_TEAM_METHOD_REVIEW_V1_AI_ASSISTED",
+    "national_representative": false,
+    "rights_status": "NOT_CLEARED"
+  }
+}

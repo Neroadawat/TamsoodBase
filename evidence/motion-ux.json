@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-05",
+  "deployment_id": "dpl_9LjuP2FBh37D8r4FsR7geUTQmvf7",
+  "rollback_deployment_id": "dpl_8EhVpAddLmxTd9P2sehEKPe2gyFR",
+  "asset_hashes": {
+    "index.html": true,
+    "app.js": true,
+    "style.css": true
+  },
+  "targeted_frontend_tests": 13,
+  "motion_test": "cancel previous animation; reduced motion; absent API guards passed",
+  "cleanroom_passed": true,
+  "browser_visual_check": "NOT_COMPLETED: browser.user unavailable",
+  "model_release_unchanged": true,
+  "data_or_backend_changed": false,
+  "scope": "finite page reveal, filter-summary stagger, press feedback, hover emoji; no continuous loops or number tween"
+}

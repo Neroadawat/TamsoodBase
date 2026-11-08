@@ -1,0 +1,164 @@
+{
+  "result": "passed",
+  "checks": [
+    {
+      "name": "layer_nso_identities",
+      "passed": true,
+      "detail": 273
+    },
+    {
+      "name": "layer_nso_status",
+      "passed": true,
+      "detail": "No acceptance promotion"
+    },
+    {
+      "name": "layer_nso_no_promotion",
+      "passed": true,
+      "detail": "Source statistics only"
+    },
+    {
+      "name": "layer_nso_sources",
+      "passed": true,
+      "detail": "Source bytes match saved hashes"
+    },
+    {
+      "name": "layer_nso_row_provenance",
+      "passed": true,
+      "detail": "Every row refers to audited source snapshot"
+    },
+    {
+      "name": "layer_nso_sqlite_integrity",
+      "passed": true,
+      "detail": "Integrity and foreign keys"
+    },
+    {
+      "name": "layer_nso_sqlite_payload",
+      "passed": true,
+      "detail": "Exact current row set and payloads; only historical EPPO snapshots excluded"
+    },
+    {
+      "name": "layer_nso_sqlite_typed",
+      "passed": true,
+      "detail": "Searchable typed columns equal current source report, separately from JSON payload"
+    },
+    {
+      "name": "layer_nso_mysql_evidence",
+      "passed": true,
+      "detail": "Stored evidence bound to current report/schema; not a live query"
+    },
+    {
+      "name": "layer_inventory_identities",
+      "passed": true,
+      "detail": 16
+    },
+    {
+      "name": "layer_inventory_status",
+      "passed": true,
+      "detail": "No acceptance promotion"
+    },
+    {
+      "name": "layer_inventory_basis",
+      "passed": true,
+      "detail": "Reported basis and missing measurement period retained"
+    },
+    {
+      "name": "layer_inventory_sources",
+      "passed": true,
+      "detail": "Source bytes match saved hashes"
+    },
+    {
+      "name": "layer_inventory_row_provenance",
+      "passed": true,
+      "detail": "Every row refers to audited source snapshot"
+    },
+    {
+      "name": "layer_inventory_sqlite_integrity",
+      "passed": true,
+      "detail": "Integrity and foreign keys"
+    },
+    {
+      "name": "layer_inventory_sqlite_payload",
+      "passed": true,
+      "detail": "Exact current row set and payloads; only historical EPPO snapshots excluded"
+    },
+    {
+      "name": "layer_inventory_sqlite_typed",
+      "passed": true,
+      "detail": "Searchable typed columns equal current source report, separately from JSON payload"
+    },
+    {
+      "name": "layer_inventory_sqlite_process_basis",
+      "passed": true,
+      "detail": "Process basis and geography are checked outside payload"
+    },
+    {
+      "name": "layer_inventory_mysql_evidence",
+      "passed": true,
+      "detail": "Stored evidence bound to current report/schema; not a live query"
+    },
+    {
+      "name": "layer_eppo_identities",
+      "passed": true,
+      "detail": 5934
+    },
+    {
+      "name": "layer_eppo_status",
+      "passed": true,
+      "detail": "No acceptance promotion"
+    },
+    {
+      "name": "layer_eppo_unit_scope",
+      "passed": true,
+      "detail": "Rate/company versus quantity/country remain separate"
+    },
+    {
+      "name": "layer_eppo_no_promotion",
+      "passed": true,
+      "detail": "Source statistics only"
+    },
+    {
+      "name": "layer_eppo_sources",
+      "passed": true,
+      "detail": "Source bytes match saved hashes"
+    },
+    {
+      "name": "layer_eppo_row_provenance",
+      "passed": true,
+      "detail": "Every row refers to audited source snapshot"
+    },
+    {
+      "name": "layer_eppo_sqlite_integrity",
+      "passed": true,
+      "detail": "Integrity and foreign keys"
+    },
+    {
+      "name": "layer_eppo_sqlite_payload",
+      "passed": true,
+      "detail": "Exact current row set and payloads; only historical EPPO snapshots excluded"
+    },
+    {
+      "name": "layer_eppo_sqlite_typed",
+      "passed": true,
+      "detail": "Searchable typed columns equal current source report, separately from JSON payload"
+    },
+    {
+      "name": "layer_eppo_mysql_evidence",
+      "passed": true,
+      "detail": "Stored evidence bound to current report/schema; not a live query"
+    }
+  ],
+  "eppo_full_typed_and_snapshot_roundtrip": 5934,
+  "mode": "read-only; no download, re-extraction or database writes",
+  "tests": {
+    "run": 90,
+    "failures": 0,
+    "skipped": 0
+  },
+  "pipeline_replay": "evidence/pipeline-audit.json",
+  "implementation_sha256": {
+    "scripts/audit_dataset_layers.py": "c56e16820cfa605dad4ad60147b21a43e92a7eaf40ea7b5650ecc0ce387871cc",
+    "scripts/import_eppo.py": "9c1e9e6da87543a147ab494ef8447e29c1725c544464bc15061778030d779b6b",
+    "tests/test_dataset_layers.py": "861959663cae502844aa466a85c07c9fe0cd6f71e60bad9e2f572e06e31d1045",
+    "tests/test_eppo.py": "f673e27bdb37ba014778cbec13903d41f275f0bacad9ec6dc47a9d41101391b6"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "checked_at": "2026-10-27T11:47:27.422365+00:00",
+  "result": "passed",
+  "release_id": "00c68ca585cf0220",
+  "image": "tamsoodbase-api:local-00c68ca585cf0220",
+  "archive_sha256": "7411a3e1581bb0eacf089780ab88e8a4190ad77cc3f5065a3af62ea93b885f9e",
+  "archive_allowlist_and_hashes": true,
+  "runtime": {
+    "user": "10001:10001",
+    "read_only": true,
+    "network": "none",
+    "published_ports": [],
+    "memory_bytes": 402653184
+  },
+  "routes": {
+    "/": 200,
+    "/app.js": 200,
+    "/api.js": 200,
+    "/config.js": 200,
+    "/favicon.svg": 200,
+    "/style.css": 200,
+    "/healthz": 200,
+    "/readyz": 200,
+    "/api/summary": 200,
+    "/api/source-crosswalk": 200,
+    "/api/reports": 200,
+    "/api/reference": 200,
+    "/api/nso": 200,
+    "/api/product-inventory": 200,
+    "/api/eppo?dataset=11_13&year=2024&q=SPRC": 200,
+    "/api/nso-comparison": 200,
+    "/api/records": 200
+  },
+  "counts": {
+    "/api/reference": 97,
+    "/api/nso": 273,
+    "/api/product-inventory": 16,
+    "/api/eppo?dataset=11_13&year=2024&q=SPRC": 12
+  },
+  "remote_ec2_changed": false,
+  "temporary_container_removed": true
+}

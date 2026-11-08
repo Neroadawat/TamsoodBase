@@ -1,0 +1,41 @@
+{
+  "checked_date_local": "2026-10-26",
+  "bucket": "tamsoodbase-team-fuel-2026-a7k9",
+  "ec2_region": "ap-southeast-2",
+  "instance_role_name": "TamsoodBaseEc2Role",
+  "container_owner": "TamsoodBase",
+  "container_release": "f2596ce38f984279",
+  "credential_method_inside_container": "iam-role",
+  "list_prefix": "tamsoodbase/health/",
+  "list_objects_v2": "passed",
+  "put_object": "passed",
+  "get_object": "passed",
+  "roundtrip_equal": true,
+  "server_side_encryption": "AES256",
+  "test_object_key": "tamsoodbase/health/backend-check-4fdd27f70faa4eff9ca0a34658deb938.txt",
+  "bytes": 79,
+  "sha256": "c4e014d8b94dd7077d150fc3a1628223de78fe21706e09667e6c6751eefdf034",
+  "test_object_retained": true,
+  "runtime_configuration_changed": false,
+  "iam_changed_by_assistant": false,
+  "public_access_changed": false,
+  "result": "PASSED_CONTAINER_INSTANCE_ROLE_S3_ROUNDTRIP",
+  "previous_attempt": {
+    "result": "BLOCKED_S3_PERMISSIONS",
+    "list_objects_v2": {
+      "status": 403,
+      "code": "AccessDenied"
+    },
+    "put_object": {
+      "status": 403,
+      "code": "AccessDenied",
+      "requested_encryption": "AES256"
+    }
+  },
+  "reported_owner_fix": "Removed trailing spaces in both bucket resource ARNs; user confirmed saved",
+  "limitations": [
+    "Persistent runtime configuration and service release were not changed",
+    "Bucket public-access settings not read by this scoped role",
+    "No database/raw synchronization configured; only benign test marker uploaded"
+  ]
+}

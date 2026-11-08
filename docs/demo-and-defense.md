@@ -41,6 +41,23 @@ SQL ตัวอย่างอยู่ sql/mysql/reusable-queries.sql; benchma
 | AI ช่วยอะไร? | ช่วยค้น วิเคราะห์ ออกแบบ เขียนโค้ดและเอกสาร สมาชิกต้องตรวจสิ่งที่ใช้และอธิบายงานจริงของตน ห้ามอ้างว่าตรวจเองถ้ายังไม่ได้ตรวจ |
 | สมาชิกแต่ละคนทำอะไร? | ตอบจาก contribution log จริงเท่านั้น ยังไม่เติมชื่อหรือย้อนหลังผลงานให้ใคร |
 
-## ก่อนนำเสนอจริง
+## ลำดับหลักฐานตามคู่มือหน้า16 (8 ขั้น)
+
+เวลา6–8นาทีด้านบนเป็นข้อเสนอซ้อม ไม่ใช่เวลาบังคับจากอาจารย์ ใช้ลำดับนี้ตรวจว่าไม่ข้ามส่วนBUILD/DESIGN:
+
+1. อธิบายdomainและแหล่งที่ทีมรับผิดชอบ พร้อมแยกreference/statistics/product inventory
+2. เปิดsource-registry.csv และsource evidenceที่มีสิทธิเปิดในเครื่อง
+3. ชี้acquisition manifest, batch/source hashและคำสั่งreplay อธิบายว่าAPI/CSVมาก่อนbrowser automation
+4. แสดงraw→staging→mapping→validation→accepted/rejected/hold พร้อมเหตุผลหนึ่งรายการ ไม่เรียกDMFpendingว่าaccepted
+5. เปิดdataset-model-index.md แล้วเลือกschemaที่ใช้กับตัวอย่าง อธิบายidentity/cardinality/constraintsและเหตุผลที่ไม่ยุบทุกscope
+6. รันSELECTจากsql/mysql/reusable-queries.sqlในฐานlocalที่ตรวจownerแล้ว ระบุreleaseที่query ไม่ใช้การเปิดหน้าเว็บแทนการสาธิตSQL; อ่านไฟล์queryก่อนรันทั้งไฟล์
+7. เลือกreferenceหนึ่งรายการและholdหนึ่งรายการ ย้อนถึงหน้า/ตาราง/ปี/หน่วย/hashของต้นทาง หากเน็ตไม่ได้ให้ใช้สำเนาlocalที่อนุญาต
+8. สรุปcoverage/limitations/next steps รวม15/273cross-sourcecomparison,สิทธิ,DMFtimebasis และสถานะdeployจริง
+
+ใช้ [ตารางเทียบคู่มือ](handbook-alignment.md) และ [Raw/JSON/Relational/Graph](data-model-selection.md) ซ้อมคำถามCLO5 สมาชิกแต่ละคนต้องทำและตอบเอง ไม่ถือว่าการมีscriptเท่ากับผ่านindividual defense
+
+### ตรวจความพร้อมของสมาชิก
+
+เชื่อมกับsyllabus: [syllabus-project-map.md](syllabus-project-map.md) รวมW01–W15 หากถูกถามACID ให้เปิดevidence/transaction-audit.jsonและอธิบายrollback/isolation/writerlockจากสำเนาSQLiteแยก ไม่รันUPDATEกับฐานใช้งานเพื่อเดโม และไม่อ้างผลนี้เป็นMySQL experiment
 
 ตรวจว่า browser/API/SQLite/MySQL ใช้ release_id เดียวกัน ไฟล์ export เปิดได้และ hash ตรง มีสำเนา raw local สำหรับ trace เมื่อเน็ตใช้ไม่ได้ สมาชิกต้องซ้อมอธิบายทั้งตัวอย่างที่รับและตัวอย่างที่พัก การซ้อมจริงและการตอบรายบุคคลต้องทำโดยสมาชิก ไม่สามารถนับจากการมีเอกสารนี้เพียงอย่างเดียว

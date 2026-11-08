@@ -1,0 +1,67 @@
+{
+  "result": "passed",
+  "release": "dea667bbd79dc1d9",
+  "previous_release": "00c68ca585cf0220",
+  "image": "tamsoodbase-api:dea667bbd79dc1d9",
+  "archive_sha256": "ee3917ee00771942e1b529f7982f341dee9bb24e1fd27bc1b4f03c7594ec8c95",
+  "staging_routes": {
+    "/": 200,
+    "/app.js": 200,
+    "/api.js": 200,
+    "/config.js": 200,
+    "/favicon.svg": 200,
+    "/style.css": 200,
+    "/healthz": 200,
+    "/readyz": 200,
+    "/api/summary": 200,
+    "/api/source-crosswalk": 200,
+    "/api/reports": 200,
+    "/api/reference": 200,
+    "/api/nso": 200,
+    "/api/product-inventory": 200,
+    "/api/eppo?dataset=11_13&year=2024&q=SPRC": 200,
+    "/api/nso-comparison": 200,
+    "/api/records": 200
+  },
+  "active_routes": {
+    "/": 200,
+    "/app.js": 200,
+    "/api.js": 200,
+    "/config.js": 200,
+    "/favicon.svg": 200,
+    "/style.css": 200,
+    "/healthz": 200,
+    "/readyz": 200,
+    "/api/summary": 200,
+    "/api/source-crosswalk": 200,
+    "/api/reports": 200,
+    "/api/reference": 200,
+    "/api/nso": 200,
+    "/api/product-inventory": 200,
+    "/api/eppo?dataset=11_13&year=2024&q=SPRC": 200,
+    "/api/nso-comparison": 200,
+    "/api/records": 200
+  },
+  "s3": {
+    "credential_method": "iam-role",
+    "configuration": {
+      "bucket": "tamsoodbase-team-fuel-2026-a7k9",
+      "prefix": "tamsoodbase",
+      "region": "ap-southeast-2"
+    },
+    "marker_bytes": 79,
+    "encryption": "AES256"
+  },
+  "rollback_container": "tamsoodbase-rollback-00c68ca585cf0220",
+  "rollback_environment": "/home/ubuntu/tamsoodbase/backend.env.before-dea667bbd79dc1d9",
+  "bind": "127.0.0.1:8765",
+  "unrelated_containers_unchanged": true,
+  "public_route_changed": false,
+  "iam_changed": false,
+  "data_backend": "mysql",
+  "mysql_parity": {
+    "passed": true,
+    "routes": 27,
+    "differences": []
+  }
+}

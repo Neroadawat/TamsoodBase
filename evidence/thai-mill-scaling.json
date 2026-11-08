@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-04",
+  "tests": {
+    "command": "python -m unittest tests.test_mill_inventory_scaling tests.test_thai_mill_2019 tests.test_lifecycle_model",
+    "passed": 15,
+    "new_tests": 3
+  },
+  "quantity_audit": "All6mills x15fields checked at1000kg and1.25kg;source payloads unchanged;15unique rows perplant",
+  "demonstration": {
+    "mill": "Mill 1",
+    "CPO_kg": "500",
+    "input_type": "DEMONSTRATION_SCENARIO_NOT_MEASURED_PRODUCTION",
+    "artifact": "build/thai-mill-2019-scaling/mill-1.json",
+    "artifact_sha256": "aafd4d45dcb2b0b3c4b9ee10997dda240ab1dfc7095e386ff1a71744a491472d"
+  },
+  "production_changed": false,
+  "full_lifecycle_inventory": false,
+  "source_search": [
+    {
+      "doi": "10.3775/jie.98.119",
+      "status": "PUBLISHER_FULLTEXT_SCREENED_NOT_IMPORTED",
+      "reason": "ThaiEFBcase but IDEA2 transport/generation andIPCCdefaultdecay;notThai-onlymeasuredemissions;source density/CO2e inconsistencies;noquantitativeimport"
+    },
+    {
+      "source_url": "https://edepot.wur.nl/400393",
+      "status": "INCOMPLETE_DOWNLOAD_NOT_USABLE",
+      "reason": "Pythonissuertrustfailed;WindowscurlTLSworkedbut25stimeout;resumerangesunsupported;partialnotaccepted"
+    },
+    {
+      "doi": "10.1504/IJGW.2009.029213",
+      "status": "PUBLISHER403_NO_FULLTEXT",
+      "numerical_import": false
+    }
+  ]
+}

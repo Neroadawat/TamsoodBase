@@ -1,0 +1,89 @@
+{
+  "counts": {
+    "observations": 58,
+    "processes": 5,
+    "source_local_label_unit_keys": 51,
+    "missing_unit_holds": 1,
+    "applied_provider_links": 0
+  },
+  "input_sha256": {
+    "build\\upstream-inventory\\report.json": "53136d2ead6e0aa5909803243e4efecbe66f8551eddf27257336769777f444ec",
+    "build\\product-inventory\\report.json": "d95b721aded3a98be0cbeeaf9cf964841133cee788235ecba8608ffc6775a134"
+  },
+  "all_58_source_payloads_roundtrip_equal": true,
+  "profiles": [
+    {
+      "process": "FFB",
+      "source_rows": 19,
+      "reference_basis": [
+        "1000",
+        "kg"
+      ],
+      "reference_product_observation_id": "be989351351e00e2da67112b9f8a6a40b0e66e82e2f46ee9a18251196135c39c",
+      "held_rows": 1,
+      "model_ready": false,
+      "allocation_application_resolved": false,
+      "measurement_period_known": false
+    },
+    {
+      "process": "CPO",
+      "source_rows": 12,
+      "reference_basis": [
+        "1000",
+        "kg"
+      ],
+      "reference_product_observation_id": "eec7f116043d77efbab13b1e7e794ec423a696f75fef1f5261c0a2be26899e62",
+      "held_rows": 0,
+      "model_ready": false,
+      "allocation_application_resolved": false,
+      "measurement_period_known": false
+    },
+    {
+      "process": "RBDPO",
+      "source_rows": 11,
+      "reference_basis": [
+        "1000",
+        "kg"
+      ],
+      "reference_product_observation_id": "3f3847d19404e2908a600dd74ff9140140f91982330433e2335fc3d9b1c643d2",
+      "held_rows": 0,
+      "model_ready": false,
+      "allocation_application_resolved": false,
+      "measurement_period_known": false
+    },
+    {
+      "process": "FAME",
+      "source_rows": 10,
+      "reference_basis": [
+        "1000",
+        "MJ fuel"
+      ],
+      "reference_product_observation_id": "969a61db8270e82150ac419f47b60e081fe838eefbd7286063343b3ebaa594e7",
+      "held_rows": 0,
+      "model_ready": false,
+      "allocation_application_resolved": false,
+      "measurement_period_known": false
+    },
+    {
+      "process": "H-FAME",
+      "source_rows": 6,
+      "reference_basis": [
+        "1000",
+        "MJ fuel"
+      ],
+      "reference_product_observation_id": "af89116176841ecfbca6150447f0b3b1b742929a81493ba0214598ac45f08287",
+      "held_rows": 0,
+      "model_ready": false,
+      "allocation_application_resolved": false,
+      "measurement_period_known": false
+    }
+  ],
+  "scope": "COMBINED_SOURCE_REVIEW_NOT_LINKED_LCI",
+  "production_migrated": false,
+  "full_lifecycle_inventory": false,
+  "validation": {
+    "unit_tests_passed": 148,
+    "failed": 0,
+    "source_rows_compared": 58
+  }
+}

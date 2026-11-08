@@ -1,0 +1,18 @@
+{
+  "review_date": "2026-11-07",
+  "source_url": "https://www.thaiscience.info/Article%20for%20ThaiScience/Article/4/10025959.pdf",
+  "locator": "Abstract, PDF p. 1",
+  "scale": "LABORATORY",
+  "feed_origin": "Thai molasses-based bioethanol plant",
+  "operating_days": 300,
+  "influent_COD_max_mg_L": 15000,
+  "COD_removal_pct_of_original_influent": {
+    "pretreatment": "54.9",
+    "posttreatment": "18.7",
+    "combined_derived": "73.6"
+  },
+  "methane_conversion_pct_up_to": 97,
+  "methane_capture_efficiency_pct": null,
+  "TSM_methane_emitted_kg_per_L": null,
+  "use": "TECHNOLOGY_BENCHMARK_ONLY"
+}

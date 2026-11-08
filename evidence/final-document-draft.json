@@ -1,0 +1,26 @@
+{
+  "draft": true,
+  "team_review_pending": true,
+  "submitted": false,
+  "artifacts": [
+    {
+      "path": "output/pdf/TamsoodBase-SRS-review.pdf",
+      "pages": 19,
+      "sha256": "9d25f7bb3efc31aa4b5fd4e2ca5f8da7983431db3ae290315419b4147c0fca48",
+      "rendered_pages": 19
+    },
+    {
+      "path": "output/pdf/TamsoodBase-final-slides-review.pdf",
+      "pages": 10,
+      "sha256": "8636b1982c3acf0dfce8cd525cfa7c6146ae08a88877f48c3b8a50b2b1a65aa8",
+      "rendered_pages": 10
+    }
+  ],
+  "presentation": {
+    "path": "output/presentations/TamsoodBase-final-review.pptx",
+    "sha256": "52252dfe69cf44cd0f9abae885cb1dd3f331defa1d5f0cb78af79d65048ffb10",
+    "slides": 10,
+    "editable_text_verified": true,
+    "native_powerpoint_render_verified": false
+  }
+}

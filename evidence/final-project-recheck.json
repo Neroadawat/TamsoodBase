@@ -1,0 +1,105 @@
+{
+  "checked_date_local": "2026-10-27",
+  "scope": "12 project pages and 2 linked scripts; external examples and M deliverables excluded",
+  "sources": [
+    {
+      "path": "index.html",
+      "sha256": "eaa07873dfb1c6de892e18698b2299b5207244a1935323f8b338322dc694e81e",
+      "bytes": 19158
+    },
+    {
+      "path": "timeline.html",
+      "sha256": "615abd717de6a4243f8b3564bf920f0b9b1ceb10ac6cdf83dc1d13000e138bb5",
+      "bytes": 11439
+    },
+    {
+      "path": "mission.html",
+      "sha256": "3d199b21a0ff4f87bfd502d6cb9cda63a5a3cd2906a9bdd6aac38e3bef38b1f8",
+      "bytes": 16317
+    },
+    {
+      "path": "final-process.html",
+      "sha256": "5608bacc0a355cf05963a9c9e6c404914f8bdb6fe41b558174053fc7256e0195",
+      "bytes": 15114
+    },
+    {
+      "path": "prepare.html",
+      "sha256": "1a00d3ea8e33045a8f1a95c110c724eafc75d0a762243a596d86903356461c6d",
+      "bytes": 14979
+    },
+    {
+      "path": "knowledge.html",
+      "sha256": "415e9115ddeb6c819aad5ba5297371e3332174f89dc9dbc1c81c727f21d09a78",
+      "bytes": 8006
+    },
+    {
+      "path": "knowledge-lci.html",
+      "sha256": "f6b0cf07de286f7662724556542d05a048864dbc3425659580097027a7c310ac",
+      "bytes": 23741
+    },
+    {
+      "path": "knowledge-srs.html",
+      "sha256": "bf7a2caf40ceea5ef23d694b2d787ade6c384dc691d1b6a6e3678d5086b86658",
+      "bytes": 15122
+    },
+    {
+      "path": "knowledge-memo.html",
+      "sha256": "03dd34cc2367df43001ab1f18e4b2bba71de9641e2d832ad60ab36575f4ca55c",
+      "bytes": 12775
+    },
+    {
+      "path": "knowledge-erd.html",
+      "sha256": "71bcf0f5e8e93dba9450e7abacf01a37a4ca7b68af3fed7a6f076869576d704b",
+      "bytes": 20860
+    },
+    {
+      "path": "knowledge-neo4j.html",
+      "sha256": "9cc645c89828494893905195fb2bc19c360b7a0866d241d0ab43cfa5ba6c7610",
+      "bytes": 15692
+    },
+    {
+      "path": "knowledge-txn-index.html",
+      "sha256": "d231052921375d39ef2d283f1e8855e04eecfdefbddd4dced4e69531832694bc",
+      "bytes": 13286
+    },
+    {
+      "path": "assets_rubric-live.js",
+      "sha256": "b85a2e7007db297626f4dd8ba7430685dd637b9362ae72cac2db93f126fb5706",
+      "bytes": 10197
+    },
+    {
+      "path": "assets_site.js",
+      "sha256": "b08c9e21d7ae38f25134b68d629e834a20caeb70743235e8478fa68d99bb7467",
+      "bytes": 1881
+    }
+  ],
+  "tests": {
+    "unittest_passed": 102,
+    "skipped": 0
+  },
+  "browser": {
+    "fame_rows": 10,
+    "hfame_rows": 6,
+    "fame_output_rows": 2,
+    "hfame_output_rows": 1,
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "document_client_width": 375,
+    "document_scroll_width": 375,
+    "screenshots": [
+      "build/inventory-process-desktop.jpg",
+      "build/inventory-process-mobile.jpg"
+    ]
+  },
+  "local_backend_release": "50d950acd1b6880d",
+  "ec2_release_unchanged": "cdc51c36b5356c41",
+  "report": "docs/final-project-recheck-2026-10-27.md",
+  "docker": {
+    "result": "passed",
+    "routes": 16,
+    "release_id": "50d950acd1b6880d",
+    "evidence": "evidence/backend-image-audit.json"
+  }
+}

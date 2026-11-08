@@ -1,0 +1,386 @@
+{
+  "review_date": "2026-11-07",
+  "input_review": {
+    "review_id": "ethanol-inputs-v1",
+    "approval_scope": "INTERNAL_SOURCE_REVIEW",
+    "sha256": {
+      "evidence/dede-molasses-balance.json": "633c66a7c26ae0377d62eb857d5d6f36c13a938acb0a63a9bd151c87457f287b",
+      "evidence/dede-ethanol-survey-review.json": "c28e7908d2f19c228880be85f905e8077b3d9c4767fe9d6501d4e37a380ac20c",
+      "build/transport-sensitivity/report.json": "b578e594336a0dfccc7dee4389552430021297360216b84850f32b8bba946a11"
+    }
+  },
+  "code_sha256": {
+    "scripts/build_ethanol_proxy_scenario.py": "763f0970f57238331169236c33e15e25b53e593df5b62b85d61fba2e5d30aa08",
+    "src/ethanol_proxy_scenario.py": "7d6dd29150efb2c2d16cb7f8a3412f3fd7426861c3cf97a2335c626beff24e6e",
+    "src/transport_scenario.py": "9c369fb3cd2d591e0f377387e350e95d35206ba3e44801bd9bc4f915aca341c4",
+    "src/thai_carbon.py": "3a542c65b3cbc8e8bad0c50fc08ac34c9e7c56ecaca425a6d15dec7da5363932"
+  },
+  "scope": "EXPLICIT_THAI_SECONDARY_DATA_SCENARIO",
+  "method_support": "evidence/ethanol-proxy-method-support.json",
+  "mass_source": {
+    "source_url": "https://pei.dede.go.th/dataset/bioethanol1",
+    "sha256": "72052b365f32681579fb24341d1d0d94578708c6b16228a60e1f647294c9e944",
+    "locator": "Figure6/PDF12/printed11"
+  },
+  "energy_source": {
+    "source_url": "https://pei.dede.go.th/dataset/bioethanol1",
+    "sha256": "72052b365f32681579fb24341d1d0d94578708c6b16228a60e1f647294c9e944",
+    "locator": "Table2/PDF11/printed10/molasses"
+  },
+  "factor": {
+    "id": "TGO-CFP-232-April2026",
+    "name": "รถกระบะบรรทุก 10 ล้อ วิ่งปกติ 75% Loading",
+    "description": "น้ำหนักบรรทุกสูงสุด 16 ตัน; ใช้น้ำมันดีเซล B5 เป็นเชื้อเพลิง; LCIA method IPCC 2013 GWP 100a V1.03",
+    "activity_unit": "tkm",
+    "value": "0.0546",
+    "source_reference": "Thai National LCI Database, TIIS-MTEC-NSTDA (with TGO electricity 2022-2024)",
+    "version": "Update_April2026",
+    "result_unit": "kgCO2e",
+    "geography": "TH",
+    "provenance_class": "THAI_NATIONAL_LCI_REPORTED",
+    "underlying_all_inputs_thai_audited": false,
+    "method": "IPCC 2013 GWP 100a V1.03",
+    "source_url": "https://thaicarbonlabel.tgo.or.th/index.php?lang=TH&mod=Y0hKdlpIVmpkSE5mWlcxcGMzTnBiMjQ9",
+    "source_sha256": "58a5f2cc45396724cb4dcf4f26548cd321c9f549a355ff9123703c99cb1caf06",
+    "locator": "CFP table row 232",
+    "rights_status": "NOT_CLEARED_FOR_REDISTRIBUTION"
+  },
+  "scenarios": [
+    {
+      "reference_output_L_ethanol": "1",
+      "assumption_id": "TEAM_PROXY_DEDE_MOLASSES_ENERGY_AND_HYPOTHETICAL_EACH_LEG_10KM",
+      "energy": {
+        "electricity": {
+          "amount_range": [
+            "0.146666666666666666666666666666666666666666666666666666666667",
+            "0.293333333333333333333333333333333333333333333333333333333333"
+          ],
+          "unit": "kWh",
+          "source_locator": "Table2/PDF11/printed10/molasses/electricity",
+          "role": "THAI_SECONDARY_SURVEY_PROXY_NOT_MEASURED_CASE",
+          "range_not_probability_distribution": true
+        },
+        "steam": {
+          "amount_range": [
+            "0.00133333333333333333333333333333333333333333333333333333333333",
+            "0.00266666666666666666666666666666666666666666666666666666666667"
+          ],
+          "unit": "t",
+          "source_locator": "Table2/PDF11/printed10/molasses/steam",
+          "role": "THAI_SECONDARY_SURVEY_PROXY_NOT_MEASURED_CASE",
+          "range_not_probability_distribution": true
+        }
+      },
+      "freight": [
+        {
+          "leg": "ethanol_to_blending",
+          "source_locator": "Figure6/PDF12/printed11/fuel_ethanol",
+          "scope": "HYPOTHETICAL_FREIGHT_FACTOR_SCREENING",
+          "assumption_id": "TEAM_PROXY_DEDE_MOLASSES_ENERGY_AND_HYPOTHETICAL_EACH_LEG_10KM",
+          "mass_kg": "0.789",
+          "distance_km": "10",
+          "tkm": "0.007890",
+          "loading_policy": "Already represented in selected EF; do not divide by loading a second time",
+          "screening": {
+            "activity_amount": "0.007890",
+            "activity_unit": "tkm",
+            "factor_id": "TGO-CFP-232-April2026",
+            "factor_value": "0.0546",
+            "factor_version": "Update_April2026",
+            "method": "IPCC 2013 GWP 100a V1.03",
+            "result": "0.0004307940",
+            "result_unit": "kgCO2e",
+            "result_type": "SCOPED_FACTOR_SCREENING",
+            "full_lifecycle_result": false,
+            "direct_CO2_kg": null,
+            "source_url": "https://thaicarbonlabel.tgo.or.th/index.php?lang=TH&mod=Y0hKdlpIVmpkSE5mWlcxcGMzTnBiMjQ9",
+            "source_sha256": "58a5f2cc45396724cb4dcf4f26548cd321c9f549a355ff9123703c99cb1caf06",
+            "source_locator": "CFP table row 232",
+            "thai_representative_factor_reported": true,
+            "strict_all_inputs_thai_verified": false,
+            "limitation": "Characterized factor result only; boundary and overlap review required before summation. Not a full LCI, direct CO2 measurement or certified CFP."
+          },
+          "empty_return_added": false,
+          "return_convention_verified": false,
+          "full_transport_inventory": false,
+          "combined_with_biodiesel_factor": false,
+          "existing_model_changed": false
+        },
+        {
+          "leg": "molasses_to_plant",
+          "source_locator": "Figure6/PDF12/printed11/molasses",
+          "scope": "HYPOTHETICAL_FREIGHT_FACTOR_SCREENING",
+          "assumption_id": "TEAM_PROXY_DEDE_MOLASSES_ENERGY_AND_HYPOTHETICAL_EACH_LEG_10KM",
+          "mass_kg": "3.54966666666666666666666666666666666666666666666666666666667",
+          "distance_km": "10",
+          "tkm": "0.03549666666666666666666666666666666666666666666666666666666670",
+          "loading_policy": "Already represented in selected EF; do not divide by loading a second time",
+          "screening": {
+            "activity_amount": "0.03549666666666666666666666666666666666666666666666666666666670",
+            "activity_unit": "tkm",
+            "factor_id": "TGO-CFP-232-April2026",
+            "factor_value": "0.0546",
+            "factor_version": "Update_April2026",
+            "method": "IPCC 2013 GWP 100a V1.03",
+            "result": "0.001938118000000000000000000000000000000000000000000000000000001820",
+            "result_unit": "kgCO2e",
+            "result_type": "SCOPED_FACTOR_SCREENING",
+            "full_lifecycle_result": false,
+            "direct_CO2_kg": null,
+            "source_url": "https://thaicarbonlabel.tgo.or.th/index.php?lang=TH&mod=Y0hKdlpIVmpkSE5mWlcxcGMzTnBiMjQ9",
+            "source_sha256": "58a5f2cc45396724cb4dcf4f26548cd321c9f549a355ff9123703c99cb1caf06",
+            "source_locator": "CFP table row 232",
+            "thai_representative_factor_reported": true,
+            "strict_all_inputs_thai_verified": false,
+            "limitation": "Characterized factor result only; boundary and overlap review required before summation. Not a full LCI, direct CO2 measurement or certified CFP."
+          },
+          "empty_return_added": false,
+          "return_convention_verified": false,
+          "full_transport_inventory": false,
+          "combined_with_biodiesel_factor": false,
+          "existing_model_changed": false
+        }
+      ],
+      "route_distance_status": "HYPOTHETICAL_EACH_LEG_NOT_SOURCE_MEASURED",
+      "freight_legs_additive": false,
+      "overlap_and_empty_return_review": "UNRESOLVED_NO_SUM",
+      "steam_GHG": null,
+      "electricity_GHG": null,
+      "vehicle_use_GHG": null,
+      "waste_GHG": null,
+      "full_lifecycle_lci": false,
+      "CO2e_total": null,
+      "measured_same_plant": false
+    },
+    {
+      "reference_output_L_ethanol": "1",
+      "assumption_id": "TEAM_PROXY_DEDE_MOLASSES_ENERGY_AND_HYPOTHETICAL_EACH_LEG_50KM",
+      "energy": {
+        "electricity": {
+          "amount_range": [
+            "0.146666666666666666666666666666666666666666666666666666666667",
+            "0.293333333333333333333333333333333333333333333333333333333333"
+          ],
+          "unit": "kWh",
+          "source_locator": "Table2/PDF11/printed10/molasses/electricity",
+          "role": "THAI_SECONDARY_SURVEY_PROXY_NOT_MEASURED_CASE",
+          "range_not_probability_distribution": true
+        },
+        "steam": {
+          "amount_range": [
+            "0.00133333333333333333333333333333333333333333333333333333333333",
+            "0.00266666666666666666666666666666666666666666666666666666666667"
+          ],
+          "unit": "t",
+          "source_locator": "Table2/PDF11/printed10/molasses/steam",
+          "role": "THAI_SECONDARY_SURVEY_PROXY_NOT_MEASURED_CASE",
+          "range_not_probability_distribution": true
+        }
+      },
+      "freight": [
+        {
+          "leg": "ethanol_to_blending",
+          "source_locator": "Figure6/PDF12/printed11/fuel_ethanol",
+          "scope": "HYPOTHETICAL_FREIGHT_FACTOR_SCREENING",
+          "assumption_id": "TEAM_PROXY_DEDE_MOLASSES_ENERGY_AND_HYPOTHETICAL_EACH_LEG_50KM",
+          "mass_kg": "0.789",
+          "distance_km": "50",
+          "tkm": "0.039450",
+          "loading_policy": "Already represented in selected EF; do not divide by loading a second time",
+          "screening": {
+            "activity_amount": "0.039450",
+            "activity_unit": "tkm",
+            "factor_id": "TGO-CFP-232-April2026",
+            "factor_value": "0.0546",
+            "factor_version": "Update_April2026",
+            "method": "IPCC 2013 GWP 100a V1.03",
+            "result": "0.0021539700",
+            "result_unit": "kgCO2e",
+            "result_type": "SCOPED_FACTOR_SCREENING",
+            "full_lifecycle_result": false,
+            "direct_CO2_kg": null,
+            "source_url": "https://thaicarbonlabel.tgo.or.th/index.php?lang=TH&mod=Y0hKdlpIVmpkSE5mWlcxcGMzTnBiMjQ9",
+            "source_sha256": "58a5f2cc45396724cb4dcf4f26548cd321c9f549a355ff9123703c99cb1caf06",
+            "source_locator": "CFP table row 232",
+            "thai_representative_factor_reported": true,
+            "strict_all_inputs_thai_verified": false,
+            "limitation": "Characterized factor result only; boundary and overlap review required before summation. Not a full LCI, direct CO2 measurement or certified CFP."
+          },
+          "empty_return_added": false,
+          "return_convention_verified": false,
+          "full_transport_inventory": false,
+          "combined_with_biodiesel_factor": false,
+          "existing_model_changed": false
+        },
+        {
+          "leg": "molasses_to_plant",
+          "source_locator": "Figure6/PDF12/printed11/molasses",
+          "scope": "HYPOTHETICAL_FREIGHT_FACTOR_SCREENING",
+          "assumption_id": "TEAM_PROXY_DEDE_MOLASSES_ENERGY_AND_HYPOTHETICAL_EACH_LEG_50KM",
+          "mass_kg": "3.54966666666666666666666666666666666666666666666666666666667",
+          "distance_km": "50",
+          "tkm": "0.17748333333333333333333333333333333333333333333333333333333350",
+          "loading_policy": "Already represented in selected EF; do not divide by loading a second time",
+          "screening": {
+            "activity_amount": "0.17748333333333333333333333333333333333333333333333333333333350",
+            "activity_unit": "tkm",
+            "factor_id": "TGO-CFP-232-April2026",
+            "factor_value": "0.0546",
+            "factor_version": "Update_April2026",
+            "method": "IPCC 2013 GWP 100a V1.03",
+            "result": "0.009690590000000000000000000000000000000000000000000000000000009100",
+            "result_unit": "kgCO2e",
+            "result_type": "SCOPED_FACTOR_SCREENING",
+            "full_lifecycle_result": false,
+            "direct_CO2_kg": null,
+            "source_url": "https://thaicarbonlabel.tgo.or.th/index.php?lang=TH&mod=Y0hKdlpIVmpkSE5mWlcxcGMzTnBiMjQ9",
+            "source_sha256": "58a5f2cc45396724cb4dcf4f26548cd321c9f549a355ff9123703c99cb1caf06",
+            "source_locator": "CFP table row 232",
+            "thai_representative_factor_reported": true,
+            "strict_all_inputs_thai_verified": false,
+            "limitation": "Characterized factor result only; boundary and overlap review required before summation. Not a full LCI, direct CO2 measurement or certified CFP."
+          },
+          "empty_return_added": false,
+          "return_convention_verified": false,
+          "full_transport_inventory": false,
+          "combined_with_biodiesel_factor": false,
+          "existing_model_changed": false
+        }
+      ],
+      "route_distance_status": "HYPOTHETICAL_EACH_LEG_NOT_SOURCE_MEASURED",
+      "freight_legs_additive": false,
+      "overlap_and_empty_return_review": "UNRESOLVED_NO_SUM",
+      "steam_GHG": null,
+      "electricity_GHG": null,
+      "vehicle_use_GHG": null,
+      "waste_GHG": null,
+      "full_lifecycle_lci": false,
+      "CO2e_total": null,
+      "measured_same_plant": false
+    },
+    {
+      "reference_output_L_ethanol": "1",
+      "assumption_id": "TEAM_PROXY_DEDE_MOLASSES_ENERGY_AND_HYPOTHETICAL_EACH_LEG_100KM",
+      "energy": {
+        "electricity": {
+          "amount_range": [
+            "0.146666666666666666666666666666666666666666666666666666666667",
+            "0.293333333333333333333333333333333333333333333333333333333333"
+          ],
+          "unit": "kWh",
+          "source_locator": "Table2/PDF11/printed10/molasses/electricity",
+          "role": "THAI_SECONDARY_SURVEY_PROXY_NOT_MEASURED_CASE",
+          "range_not_probability_distribution": true
+        },
+        "steam": {
+          "amount_range": [
+            "0.00133333333333333333333333333333333333333333333333333333333333",
+            "0.00266666666666666666666666666666666666666666666666666666666667"
+          ],
+          "unit": "t",
+          "source_locator": "Table2/PDF11/printed10/molasses/steam",
+          "role": "THAI_SECONDARY_SURVEY_PROXY_NOT_MEASURED_CASE",
+          "range_not_probability_distribution": true
+        }
+      },
+      "freight": [
+        {
+          "leg": "ethanol_to_blending",
+          "source_locator": "Figure6/PDF12/printed11/fuel_ethanol",
+          "scope": "HYPOTHETICAL_FREIGHT_FACTOR_SCREENING",
+          "assumption_id": "TEAM_PROXY_DEDE_MOLASSES_ENERGY_AND_HYPOTHETICAL_EACH_LEG_100KM",
+          "mass_kg": "0.789",
+          "distance_km": "100",
+          "tkm": "0.078900",
+          "loading_policy": "Already represented in selected EF; do not divide by loading a second time",
+          "screening": {
+            "activity_amount": "0.078900",
+            "activity_unit": "tkm",
+            "factor_id": "TGO-CFP-232-April2026",
+            "factor_value": "0.0546",
+            "factor_version": "Update_April2026",
+            "method": "IPCC 2013 GWP 100a V1.03",
+            "result": "0.0043079400",
+            "result_unit": "kgCO2e",
+            "result_type": "SCOPED_FACTOR_SCREENING",
+            "full_lifecycle_result": false,
+            "direct_CO2_kg": null,
+            "source_url": "https://thaicarbonlabel.tgo.or.th/index.php?lang=TH&mod=Y0hKdlpIVmpkSE5mWlcxcGMzTnBiMjQ9",
+            "source_sha256": "58a5f2cc45396724cb4dcf4f26548cd321c9f549a355ff9123703c99cb1caf06",
+            "source_locator": "CFP table row 232",
+            "thai_representative_factor_reported": true,
+            "strict_all_inputs_thai_verified": false,
+            "limitation": "Characterized factor result only; boundary and overlap review required before summation. Not a full LCI, direct CO2 measurement or certified CFP."
+          },
+          "empty_return_added": false,
+          "return_convention_verified": false,
+          "full_transport_inventory": false,
+          "combined_with_biodiesel_factor": false,
+          "existing_model_changed": false
+        },
+        {
+          "leg": "molasses_to_plant",
+          "source_locator": "Figure6/PDF12/printed11/molasses",
+          "scope": "HYPOTHETICAL_FREIGHT_FACTOR_SCREENING",
+          "assumption_id": "TEAM_PROXY_DEDE_MOLASSES_ENERGY_AND_HYPOTHETICAL_EACH_LEG_100KM",
+          "mass_kg": "3.54966666666666666666666666666666666666666666666666666666667",
+          "distance_km": "100",
+          "tkm": "0.35496666666666666666666666666666666666666666666666666666666700",
+          "loading_policy": "Already represented in selected EF; do not divide by loading a second time",
+          "screening": {
+            "activity_amount": "0.35496666666666666666666666666666666666666666666666666666666700",
+            "activity_unit": "tkm",
+            "factor_id": "TGO-CFP-232-April2026",
+            "factor_value": "0.0546",
+            "factor_version": "Update_April2026",
+            "method": "IPCC 2013 GWP 100a V1.03",
+            "result": "0.019381180000000000000000000000000000000000000000000000000000018200",
+            "result_unit": "kgCO2e",
+            "result_type": "SCOPED_FACTOR_SCREENING",
+            "full_lifecycle_result": false,
+            "direct_CO2_kg": null,
+            "source_url": "https://thaicarbonlabel.tgo.or.th/index.php?lang=TH&mod=Y0hKdlpIVmpkSE5mWlcxcGMzTnBiMjQ9",
+            "source_sha256": "58a5f2cc45396724cb4dcf4f26548cd321c9f549a355ff9123703c99cb1caf06",
+            "source_locator": "CFP table row 232",
+            "thai_representative_factor_reported": true,
+            "strict_all_inputs_thai_verified": false,
+            "limitation": "Characterized factor result only; boundary and overlap review required before summation. Not a full LCI, direct CO2 measurement or certified CFP."
+          },
+          "empty_return_added": false,
+          "return_convention_verified": false,
+          "full_transport_inventory": false,
+          "combined_with_biodiesel_factor": false,
+          "existing_model_changed": false
+        }
+      ],
+      "route_distance_status": "HYPOTHETICAL_EACH_LEG_NOT_SOURCE_MEASURED",
+      "freight_legs_additive": false,
+      "overlap_and_empty_return_review": "UNRESOLVED_NO_SUM",
+      "steam_GHG": null,
+      "electricity_GHG": null,
+      "vehicle_use_GHG": null,
+      "waste_GHG": null,
+      "full_lifecycle_lci": false,
+      "CO2e_total": null,
+      "measured_same_plant": false
+    }
+  ],
+  "data_quality": {
+    "geography": "Thai survey/Thai reported truck factor;allfactorbackgroundThai notverified",
+    "time": "DEDEmeasurementyearunknown;EFversionApril2026;notcurrentThaiaverage",
+    "technology": "molassesforeground plus surveyproxy;truck10wheel16tB5/75percentload;notobservedshipment",
+    "completeness": "energyquantitiesandtwofreightlegs only;noGHGfullsum",
+    "reliability": "sourceverifiedphysicalfigure/survey;scenariochoicesnotindependentmeasurements"
+  },
+  "limitations": [
+    "perLethanolnotperkmvehicle",
+    "noallocation appliedtoallburdens",
+    "steamquantitynotsteamenergy",
+    "rangeendpointsnotpairedplants",
+    "emptyreturnandfactorboundaryunverified",
+    "noCH4/N2O/fossilbiogenicusebridge",
+    "noautomaticbaselineorproductionreplacement"
+  ],
+  "production_changed": false,
+  "CO2e_total": null
+}

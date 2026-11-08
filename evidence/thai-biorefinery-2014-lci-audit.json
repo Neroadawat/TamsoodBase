@@ -1,0 +1,129 @@
+{
+  "review_date": "2026-11-08",
+  "source": {
+    "title": "Sugarcane Biorefinery Complex in Thailand and a Proposed Method to Cope with Apportioning Its Environmental Burdens to Co-products",
+    "authors": [
+      "Kritana Prueksakorn",
+      "Shabbir H. Gheewala",
+      "Masayuki Sagisaka",
+      "Yuki Kudoh"
+    ],
+    "journal": "Journal of Sustainable Energy & Environment",
+    "volume": 5,
+    "publication_year": 2014,
+    "pages": "95-103",
+    "source_url": "https://jseejournal.com/media/177/attachment/Sugarcane%20Biorefinery%20Complex%20pp.%2095-103.pdf",
+    "local_path": "data/raw/thai-biorefinery-2014/source.pdf",
+    "sha256": "7c6ae50432f80e98ed1ad7585e9a7fae3a6379ed948872763ff5cb98db199747",
+    "acquisition": "USER_PROVIDED_DOWNLOAD",
+    "rights_status": "NOT_CLEARED",
+    "rights_note": "Copyright notice is present in the PDF; do not redistribute the source file or extracted table pending rights review."
+  },
+  "study_scope": {
+    "functional_flow": "LCI flows for production derived from 1 tonne of sugarcane",
+    "geography": "One real site in northeast Thailand; site identity is not stated in this review",
+    "measurement_period": null,
+    "reported_context": "Milling normally occurs December-March; the season used for the collected data is not dated",
+    "boundary_stages": [
+      "sugarcane cultivation",
+      "sugar refining",
+      "molasses-based ethanol production",
+      "bagasse-based power production",
+      "fertilizer production",
+      "intermediate transportation"
+    ],
+    "boundary_class": "THAI_INTEGRATED_PRODUCTION_TO_FACTORY_GATE_REFERENCE",
+    "vehicle_fuel_use_included": false,
+    "full_fuel_lifecycle": false,
+    "locator": "Section 3.1 / PDF page 2 / printed page 97; Table 1 / PDF page 4 / printed page 98"
+  },
+  "selected_reported_flows": [
+    {"stage":"sugar mill","flow":"molasses output","amount":"42.1","unit":"kg","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"sugar mill","flow":"filter cake output","amount":"45.3","unit":"kg","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"sugar mill","flow":"bagasse output","amount":"340.0","unit":"kg","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"power plant","flow":"bagasse input","amount":"340.0","unit":"kg","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"power plant","flow":"net electricity output","amount":"107.4","unit":"kWh","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"power plant","flow":"steam output","amount":"617.3","unit":"kg","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"sugar mill","flow":"electricity input from power plant","amount":"31.8","unit":"kWh","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"sugar mill","flow":"steam input from power plant","amount":"582.3","unit":"kg","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"ethanol factory","flow":"molasses input","amount":"42.1","unit":"kg","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"ethanol factory","flow":"electricity input from power plant","amount":"0.9","unit":"kWh","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"ethanol factory","flow":"steam input from power plant","amount":"28.2","unit":"kg","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"ethanol factory","flow":"ethanol output","amount":"11.3","unit":"L","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"fertilizer factory","flow":"filter cake input","amount":"45.3","unit":"kg","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"fertilizer factory","flow":"electricity input from power plant","amount":"0.2","unit":"kWh","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"overall system","flow":"electricity sold to PEA","amount":"73.5","unit":"kWh","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"overall system","flow":"pipeline transportation electricity","amount":"1.0","unit":"kWh","locator":"Table 1 / PDF page 4 / printed page 98"},
+    {"stage":"overall system","flow":"waste steam","amount":"6.8","unit":"kg","locator":"Table 1 / PDF page 4 / printed page 98"}
+  ],
+  "reported_balance_rechecks": [
+    {"name":"bagasse transfer","equation":"340.0 kg sugar-mill output = 340.0 kg power-plant input","result":"EXACT_AT_REPORTED_PRECISION"},
+    {"name":"molasses transfer","equation":"42.1 kg sugar-mill output = 42.1 kg ethanol-factory input","result":"EXACT_AT_REPORTED_PRECISION"},
+    {"name":"filter-cake transfer","equation":"45.3 kg sugar-mill output = 45.3 kg fertilizer-factory input","result":"EXACT_AT_REPORTED_PRECISION"},
+    {"name":"steam distribution","equation":"617.3 kg generated = 582.3 kg to sugar mill + 28.2 kg to ethanol factory + 6.8 kg waste steam","result":"EXACT_AT_REPORTED_PRECISION"},
+    {"name":"net electricity distribution","equation":"107.4 kWh net output = 31.8 kWh sugar mill + 0.9 kWh ethanol factory + 0.2 kWh fertilizer factory + 73.5 kWh sold + 1.0 kWh pipeline transportation","result":"EXACT_AT_REPORTED_PRECISION"}
+  ],
+  "derived_process_intensities": [
+    {"name":"molasses input per ethanol output","numerator":"42.1 kg","denominator":"11.3 L ethanol","derived_value":"3.725664","unit":"kg/L","formula":"42.1 / 11.3","reported_by_source":false,"allocation_applied":false},
+    {"name":"electricity input per ethanol output","numerator":"0.9 kWh","denominator":"11.3 L ethanol","derived_value":"0.079646","unit":"kWh/L","formula":"0.9 / 11.3","reported_by_source":false,"allocation_applied":false},
+    {"name":"steam input per ethanol output","numerator":"28.2 kg","denominator":"11.3 L ethanol","derived_value":"2.495575","unit":"kg/L","formula":"28.2 / 11.3","reported_by_source":false,"allocation_applied":false}
+  ],
+  "methane_method_reference": {
+    "reported_item":"CH4 from anaerobic pond",
+    "factor":"5.52",
+    "unit":"kg CO2eq/kg BOD stillage",
+    "locator":"Table 2 / PDF page 5 / printed page 99",
+    "source_remark":"CH4 and N2O emissions only; CO2 not included",
+    "study_gwp_horizon_years":100,
+    "factor_type":"SOURCE_REPORTED_CHARACTERIZED_GHG_FACTOR_PER_BOD",
+    "is_measured_ch4_mass":false,
+    "can_be_used_as_kg_ch4":false,
+    "underlying_reference_42_independently_reviewed":false,
+    "use_for_tsm_or_dede":false,
+    "reason":"No matched TSM/DEDE BOD load, same-period methane release, capture/slip, or compatible treatment-boundary record is established. This factor is not a methane mass emission factor."
+  },
+  "cross_publication_methane_trace": {
+    "cited_2008_source_url":"https://doi.org/10.1007/s11367-008-0011-2",
+    "cited_2008_local_path":"data/raw/thai-molasses-ethanol-2008/source.pdf",
+    "cited_2008_sha256":"fa0c483a9c27fcff84a21668795bf5a6c4ea7f5bc8d52e62b06168b19be51dba",
+    "cited_reference_locator":"JSEE 2014 reference [42] / PDF page 8 / printed page 103",
+    "methane_parameter_locator":"2008 paper Table 3 / PDF page 5 / printed page 305",
+    "reported_parameter":"0.22 kg CH4/kg BOD",
+    "parameter_role":"DEFAULT_ESTIMATION_PARAMETER_FOR_ANAEROBIC_POND_STABILIZATION",
+    "method_references_as_printed":["Nguyen et al. 2007","AGO 2003","IPCC 2000"],
+    "observed_site_measurement":false,
+    "comparison_to_2014_factor":{
+      "2014_reported_factor":"5.52 kg CO2eq/kg BOD stillage",
+      "status":"NOT_RECONCILED",
+      "reason":"A source-verified GWP characterization factor and gas-by-gas derivation were not found in the reviewed pages; the 2014 table explicitly includes CH4 and N2O and excludes CO2. Do not derive or assign the combined factor from the CH4 parameter alone."
+    },
+    "project_tsm_use":"NOT_APPLICABLE_WITHOUT_MATCHED_TSM_BOD_AND_PERIOD_DATA"
+  },
+  "reported_wastewater_quality_flag": {
+    "source_row":"Ethanol-factory wastewater reports BOD 7.8E-10 kg and volume 1.5E-2 L",
+    "locator":"Table 1 / PDF page 4 / printed page 98",
+    "derived_screening_concentration_mg_per_L":"0.052",
+    "formula":"7.8E-10 kg * 1,000,000 mg/kg / 1.5E-2 L",
+    "status":"HOLD_SOURCE_MAGNITUDE_REVIEW",
+    "interpretation":"Value is transcribed as printed and visually checked. The unusually low implied concentration is a review flag, not evidence that the source is wrong; do not correct, substitute, or use it in the project methane model without independent clarification."
+  },
+  "allocation_and_boundary_notes": {
+    "allocation_methods_reported":"economic, energy, and exergy allocation; Scheme-a and sequential Scheme-b",
+    "table_4_5_arithmetic_review":"Existing 33-cell allocation arithmetic review remains in docs/ethanol-whole-cycle-reference.md; no new allocation factor applied to TSM/DEDE",
+    "allocation_needed_for_product_lci":true,
+    "double_counting_warning":"Electricity/steam generated by the power plant are internal coproduct flows before external sale; choose one study boundary and avoid counting internal transfers as both delivered inputs and additional final outputs.",
+    "resulting_standalone_project_co2e_total":null,
+    "production_dataset_changed":false,
+    "public_release_changed":false
+  },
+  "verification": {
+    "local_sha256_matches_manifest":true,
+    "pdf_text_extraction_checked":true,
+    "table_1_visual_review":"PASS_SELECTED_FLOWS",
+    "table_2_visual_review":"PASS_METHANE_FACTOR_AND_REMARK",
+    "reported_flow_balance_checks":5,
+    "rights_status":"NOT_CLEARED",
+    "reviewer":"AUTOMATED_TEAM_POLICY_V1",
+    "independent_human_review":false
+  }
+}

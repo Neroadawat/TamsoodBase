@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const source=fs.readFileSync(path.join(__dirname,'../web/app.js'),'utf8');
+const start=source.indexOf('// Friendly statistics:');
+const tail=source.slice(start);const end=tail.indexOf("})(typeof window==='undefined'?globalThis:window);")+"})(typeof window==='undefined'?globalThis:window);".length;
+const context={module:{exports:{}}};vm.runInNewContext(tail.slice(0,end),context);const {fuelCue,summaryFacts}=context.module.exports;
+assert.equal(fuelCue('ก๊าซธรรมชาติ').emoji,'🔥');assert.equal(fuelCue('แก๊สโซฮอล์').emoji,'⛽');assert.equal(fuelCue('น้ำมันดีเซล').emoji,'⛽');assert.equal(fuelCue('Electricity purchased').emoji,'⚡');assert.equal(fuelCue('biodiesel').emoji,'🌿');assert.equal(fuelCue('ยอดรวมไม่ระบุเชื้อเพลิง'),null);
+const rows=[{period:'2024-01',unit:'BBL/DAY'},{period:'2025-02',unit:'Million Litres'}],before=JSON.stringify(rows),facts=summaryFacts(rows);
+assert.equal(facts.count,2);assert.equal(facts.period,'2024–2025');assert.equal(facts.units,'2 หน่วย');assert.equal(facts.mixedUnits,true);assert.equal(JSON.stringify(rows),before);
+assert.equal(summaryFacts([]).period,'—');assert.equal(summaryFacts([{period:'2024',unit:'kg'}]).period,'2024');
+assert.equal(summaryFacts([{period:'2024',unit:'kg'}]).units,'kg');
+const html=fs.readFileSync(path.join(__dirname,'../web/index.html'),'utf8');
+assert.equal((html.match(/data-stat-table=/g)||[]).length,5);assert.equal((html.match(/data-stat-eppo=/g)||[]).length,2);
+assert.ok(html.includes('aria-label="เลือกเรื่องสถิติพลังงาน"'));assert.ok(source.includes("icon.setAttribute('aria-hidden','true')"));
+console.log('Friendly stats: category semantics, gasohol exception, actual row/year/unit summaries, no source mutation, labelled choices passed');

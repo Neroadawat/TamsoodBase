@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-10-30T04:44:54.599749+00:00",
+  "deployment_id": "dpl_5metZ1Rnpd7NgAn5SFjaspKtyjpG",
+  "production_url": "https://tamsoodbase.vercel.app/#inventory",
+  "public_snapshot_sha256": "1ada4a1ee95a9f7e4580a1f8136a585eeb156060edba298131c03438ea244f6b",
+  "published_rows": 42,
+  "held_missing_unit": 1,
+  "all_live_fields_match_reviewed_snapshot": true,
+  "unit_tests_passed": 143,
+  "browser_verified": true,
+  "browser_checks": [
+    "Local before deploy: conversion/upstream switch",
+    "Local held Land seeding detail and source links",
+    "Local390px responsive layout no horizontal page overflow; table scrolls",
+    "Production FFB19/CPO12/RBDPO11; directionfilterOUTPUT1",
+    "Production PDF locator Table3/page6/row11 correct"
+  ],
+  "backend_api_and_mysql_changed": false,
+  "raw_pdf_published": false,
+  "rights": "CC BY4.0 article-derived facts with attribution; other data rights unchanged",
+  "full_lifecycle_inventory": false
+}

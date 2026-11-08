@@ -1,0 +1,78 @@
+{
+  "scope": "PUBLIC_FRONTEND_ONLY_NOT_FULL_RESEARCH_PIPELINE",
+  "source_files": 17,
+  "asset_hashes_checked": 14,
+  "passed": true,
+  "no_raw_or_private_inputs": true,
+  "backend_database_rebuilt": false,
+  "source_manifest": [
+    {
+      "path": "vercel.json",
+      "sha256": "d279dc63280701fc5490813a23d009e92107bbf74e5b24ed13c6339c6386222e"
+    },
+    {
+      "path": "api/[route].js",
+      "sha256": "a9ee246058d54dbe2b8f7269c94b7e87bd7d5c31dc3bb1f4393528878563eadf"
+    },
+    {
+      "path": "scripts/build_frontend.mjs",
+      "sha256": "675f33196bfe30cd7e06683eb09e18b55c9f7aa67433d22237594512d08e73fc"
+    },
+    {
+      "path": "web/index.html",
+      "sha256": "374646190fe9ad66d4a412fb8b09be049c3a9c7daf1d40c9a4bfd435bc7fdf9c"
+    },
+    {
+      "path": "web/style.css",
+      "sha256": "debac65201d7fd73920a533a404c38d2b6fac147847b4984f3ac918f0257df8e"
+    },
+    {
+      "path": "web/api.js",
+      "sha256": "266553c58db908e68aaa9a5a2c067ca74079180087e155866bbe89d162118f3c"
+    },
+    {
+      "path": "web/app.js",
+      "sha256": "d0a7b0743ab9cf36c4ce6e272fe2ac82a63281b7f8d2fdaac7868edb9f5268eb"
+    },
+    {
+      "path": "web/config.js",
+      "sha256": "06df3121341d6ac6459fb1b856b9cdc230f1d68b7294690dbac015c5359dabee"
+    },
+    {
+      "path": "web/favicon.svg",
+      "sha256": "295e597b8234902164b24047ffd9d4de10a013c8410248234a2f4aa37699ed99"
+    },
+    {
+      "path": "web/upstream-inventory.json",
+      "sha256": "f9b165b9a2dabb0e5220ddfa6c182157ecd85803c4193543cbca74aafbdb7e1e"
+    },
+    {
+      "path": "web/case-study.js",
+      "sha256": "57419df4e2ee6bd715a1fc6d5448d1c310e97c71763bdf1a7ccbf5bf5c5b059d"
+    },
+    {
+      "path": "web/case-study.json",
+      "sha256": "e7338e940b25d2a16dae61e95e013b8138b4c2bc184441615811a68f2ec2de3d"
+    },
+    {
+      "path": "web/discovery.js",
+      "sha256": "9b9b48241ba6268715c328e3ac5515262181709f0828488b03290e68ebbeab2e"
+    },
+    {
+      "path": "web/story.js",
+      "sha256": "10d162a130a8b3d3dc8ad8fb6de1cc229c264881ef8046a71550a42a195fd4ce"
+    },
+    {
+      "path": "web/theme.css",
+      "sha256": "fcd9affebfb7aebf91b49c46e796e922e3886d80deb3e24c1ba1257fc7ee6d16"
+    },
+    {
+      "path": "web/noto-sans-thai-06310198b08f.woff2",
+      "sha256": "06310198b08f216567c72bb2032b7b9a979c492d4f6a07d6273e40dc92bd5d5a"
+    },
+    {
+      "path": "web/FONT-LICENSE.txt",
+      "sha256": "2f5f4974f683c73b06bd0dbad93890b4feff28193ebb9f72924105ea6b27cd4d"
+    }
+  ]
+}

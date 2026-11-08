@@ -5,9 +5,11 @@
       "id": "official_requirements",
       "status": "PARTIAL",
       "evidence": [
-        "docs/submission-checklist.md"
+        "docs/submission-checklist.md",
+        "docs/course-project-review-2026-10-27.md",
+        "evidence/course-project-review.json"
       ],
-      "reason": "Provided handbook requirements inventoried; actual deadline/channel and any amended assessment policy unavailable"
+      "reason": "Authenticated project site reviewed27Oct: milestones/SRS/PDF/memo/video/slides found; timeline marked Draft and Teams/Form channel conflict remain; M4/closing times not confirmed"
     },
     {
       "id": "lci_eligibility",
@@ -51,6 +53,12 @@
       "status": "UNCONFIRMED",
       "evidence": [],
       "reason": "Real member contributions and individual defense not yet recorded"
+    },
+    {
+      "id": "consent_forms",
+      "status": "UNCONFIRMED",
+      "evidence": [],
+      "reason": "Project website requires every member consent; actual team consent submission evidence not provided"
     }
   ]
 }

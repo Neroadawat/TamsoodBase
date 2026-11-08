@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "contract_id": "21a8e652a26ab09f72606aa870cf1950edbf3a0feed61a12be682ccacc0eba00",
+  "counts": {
+    "corporate": 101,
+    "nso": 273,
+    "inventory": 16,
+    "eppo": 5934,
+    "dmf": 34899
+  },
+  "sources": 13,
+  "public_redistribution_cleared": false,
+  "source_ids_registered": true,
+  "duplicate_observation_keys": 0,
+  "existing_release_changed": false,
+  "csv_jsonl_full_payloads_equal": 41223,
+  "source_observations_promoted": 0
+}

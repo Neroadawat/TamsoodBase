@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-03",
+  "recommendation": "Thai foreground + Thai National LCI background + compatible Thai use-phase inventory; explicit process linking",
+  "foreground_baseline": "2020 retained; 2013 separate candidate until basis resolved",
+  "national_database_portal_verified": true,
+  "national_dataset_files_obtained": false,
+  "ecoinvent_licence_obtained": false,
+  "openLCA_candidate_import_tested": false,
+  "new_observations_imported": 0,
+  "full_lifecycle_inventory": false,
+  "production_changed": false,
+  "report": "docs/lci-research-decision-2026-11-03.md"
+}

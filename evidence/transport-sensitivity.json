@@ -1,0 +1,33 @@
+{
+  "scope": "THAI_TRUCK_FACTOR_SCREENING_NOT_FULL_ROUTE",
+  "source_sha256": "58a5f2cc45396724cb4dcf4f26548cd321c9f549a355ff9123703c99cb1caf06",
+  "source_rows_reviewed": [
+    230,
+    231,
+    232,
+    233
+  ],
+  "factors_tkm_used": [
+    231,
+    232,
+    233
+  ],
+  "km_row230_not_used_as_tkm": true,
+  "source_row_cells_preserved": true,
+  "scenario_count": 9,
+  "distances_km": [
+    "10",
+    "50",
+    "100"
+  ],
+  "distance_status": "HYPOTHETICAL_NOT_OBSERVED",
+  "loading_sensitivity_percent": [
+    50,
+    75,
+    100
+  ],
+  "empty_return_convention": "UNKNOWN_NOT_ADDED",
+  "not_combined_with_existing_factors": true,
+  "production_changed": false,
+  "strict_all_inputs_thai_verified": false
+}

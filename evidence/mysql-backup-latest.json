@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "type": "CONSISTENT_MYSQL_LOGICAL_DUMP",
+  "created_at": "20261105T192449Z",
+  "schemas": 5,
+  "s3": {
+    "bucket": "tamsoodbase-team-fuel-2026-a7k9",
+    "key": "tamsoodbase/backups/mysql/mysql-20261105T192449Z.sql.gz",
+    "sha256": "e2bc7009baed29ac4cab6b3b7b5e41b8e90a2e7fca200fe0316f4385f33fa4ee",
+    "bytes": 5452333,
+    "encryption": "AES256"
+  },
+  "restore_tested": true,
+  "restore_evidence": "evidence/mysql-restore-2026-11-06.json"
+}

@@ -1,0 +1,9 @@
+{
+  "result": "rollback_preflight_passed",
+  "apply": false,
+  "current": "00c68ca585cf0220",
+  "previous": "c2d8db16b10a2fad",
+  "preserved_new_container": "tamsoodbase-retired-00c68ca585cf0220",
+  "s3_configuration": "Restores previous runtime environment; S3 settings may revert",
+  "public_route_changed": false
+}

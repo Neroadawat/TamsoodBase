@@ -1,0 +1,138 @@
+{
+  "scope": "PUBLIC_CASE_STUDY_METADATA_NO_RESTRICTED_INVENTORY",
+  "schema_version": 1,
+  "model_release_id": "657aa71137bdcd70d11ed3e15b0aa1066246393c409517f757a0a10d9ddec89f",
+  "review_date": "2026-11-05",
+  "functional_unit": "การใช้เชื้อเพลิง 1,000 MJ",
+  "calculated_scope": "กิจกรรมการผลิตเท่านั้น ยังไม่ครบช่วงการใช้และปลายทาง",
+  "full_lifecycle_inventory": false,
+  "CO2e_total": null,
+  "private_inventory_included": false,
+  "calculation_type": "กรณีทดลองเชื่อมข้อมูลต่างปี ไม่ใช่ผลวัดของห่วงโซ่จริง",
+  "selection_note": "โรงสกัด 1 เป็นตัวอย่างเริ่มต้นตามลำดับต้นฉบับ ไม่ใช่ค่าเฉลี่ยประเทศหรือกรณีคาร์บอนต่ำที่สุด",
+  "cases": [
+    {
+      "id": "THAI_FAME_ACTIVITY_MILL1",
+      "label": "โรงสกัด 1 · กรณีทดลอง",
+      "mill": "Mill 1",
+      "baseline": true
+    },
+    {
+      "id": "THAI_FAME_ACTIVITY_MILL2",
+      "label": "โรงสกัด 2 · กรณีทดลอง",
+      "mill": "Mill 2",
+      "baseline": false
+    },
+    {
+      "id": "THAI_FAME_ACTIVITY_MILL3",
+      "label": "โรงสกัด 3 · กรณีทดลอง",
+      "mill": "Mill 3",
+      "baseline": false
+    },
+    {
+      "id": "THAI_FAME_ACTIVITY_MILL4",
+      "label": "โรงสกัด 4 · กรณีทดลอง",
+      "mill": "Mill 4",
+      "baseline": false
+    },
+    {
+      "id": "THAI_FAME_ACTIVITY_MILL5",
+      "label": "โรงสกัด 5 · กรณีทดลอง",
+      "mill": "Mill 5",
+      "baseline": false
+    },
+    {
+      "id": "THAI_FAME_ACTIVITY_MILL6",
+      "label": "โรงสกัด 6 · กรณีทดลอง",
+      "mill": "Mill 6",
+      "baseline": false
+    }
+  ],
+  "components": [
+    {
+      "id": "FFB",
+      "label": "เพาะปลูกปาล์ม",
+      "status": "ยังขาดหน่วยบางรายการและการปล่อยจากแปลง",
+      "basis": "ผลปาล์มสด 1,000 kg",
+      "source_year": "2020",
+      "rights": "CC BY 4.0",
+      "source_url": "https://www.mdpi.com/2071-1050/12/22/9415#sustainability-12-09415-t001"
+    },
+    {
+      "id": "CPO",
+      "label": "สกัดน้ำมันปาล์มดิบ",
+      "status": "ข้อมูลโรงงานไทย 6 กรณี · ความเข้ากันยังรอตรวจ",
+      "basis": "น้ำมันปาล์มดิบ 1,000 kg",
+      "source_year": "2019",
+      "rights": "สิทธิแจกจ่ายยังไม่ยืนยัน · ไม่แนบข้อมูลรายแถว",
+      "source_url": "https://www.jseejournal.com/media/219/attachment/Life%20cycle%20assessment%20pp.%2065-73.pdf#page=11"
+    },
+    {
+      "id": "RBDPO",
+      "label": "กลั่นน้ำมันปาล์ม",
+      "status": "คำนวณกิจกรรมได้ · ยังไม่แบ่งภาระสิ่งแวดล้อม",
+      "basis": "น้ำมันปาล์มกลั่น 1,000 kg",
+      "source_year": "2020",
+      "rights": "CC BY 4.0",
+      "source_url": "https://www.mdpi.com/2071-1050/12/22/9415#sustainability-12-09415-t003"
+    },
+    {
+      "id": "FAME",
+      "label": "ผลิตไบโอดีเซล B100",
+      "status": "มีข้อมูลขั้นผลิต · ยังไม่รวมการใช้เชื้อเพลิง",
+      "basis": "เชื้อเพลิง 1,000 MJ",
+      "source_year": "2020",
+      "rights": "CC BY 4.0",
+      "source_url": "https://www.mdpi.com/2071-1050/12/22/9415#sustainability-12-09415-t004"
+    }
+  ],
+  "open_decisions": [
+    {
+      "id": "compatibility",
+      "label": "ความเข้ากันของแหล่งข้อมูล",
+      "reason": "ต่างปีและต่างกลุ่มโรงงาน ยังไม่ยืนยันว่าเป็นห่วงโซ่อุปทานจริงเดียวกัน",
+      "state": "OPEN"
+    },
+    {
+      "id": "allocation",
+      "label": "การแบ่งภาระให้ผลผลิตร่วม",
+      "reason": "ยังไม่ทราบว่าค่าในตารางผ่าน allocation แล้วหรือไม่ จึงไม่คูณซ้ำ",
+      "state": "OPEN"
+    },
+    {
+      "id": "transport",
+      "label": "ขนส่งและจำหน่าย",
+      "reason": "มีระยะประมาณของขาผลปาล์มบางส่วน แต่รถ เที่ยวกลับ และขาอื่นยังไม่ครบ",
+      "state": "OPEN"
+    },
+    {
+      "id": "use",
+      "label": "การใช้เชื้อเพลิง",
+      "reason": "ข้อมูลมลพิษต่อ litre ยังไม่เชื่อมกับฐานพลังงานและเชื้อเพลิงรุ่นนี้",
+      "state": "OPEN"
+    },
+    {
+      "id": "waste",
+      "label": "ของเสียและน้ำเสีย",
+      "reason": "น้ำเสียที่บำบัดแล้วไม่ใช่น้ำเสียดิบ และปริมาณก๊าซที่ผลิตไม่ใช่การรั่ว",
+      "state": "OPEN"
+    },
+    {
+      "id": "background",
+      "label": "ไฟฟ้า สารเคมี และเชื้อเพลิงเบื้องหลัง",
+      "reason": "ยังขาดรายการปล่อยและข้อมูลผู้ผลิตที่เข้ากันพร้อมสิทธิใช้",
+      "state": "OPEN"
+    }
+  ],
+  "public_activity_kg": {
+    "RBDPO": "24.6",
+    "CPO": "27.0600"
+  },
+  "activity_source": "Table 3–4 ปี2020 · CC BY 4.0 · เป็นปริมาณกิจกรรม ไม่ใช่ CO₂e",
+  "verification": {
+    "result_rows_replayed": 330,
+    "meaning": "ทวนสูตรปรับฐานและ foreign key ภายในแล้ว ไม่ใช่การรับรองสมดุลมวล/พลังงานครบระบบหรือการวัดใหม่"
+  },
+  "disclosure": "รายละเอียดปริมาณจากโรงสกัดปี2019ยังเก็บในฐานวิจัยภายใน สิทธิแจกจ่ายยังไม่ยืนยัน จึงเผยแพร่เฉพาะบริบทและลิงก์ต้นฉบับ",
+  "metadata_snapshot_id": "3be752345430f6338f946800f6f706728187980f57247e461b977131624923f9"
+}

@@ -1,0 +1,9 @@
+{
+  "review_id": "ethanol-inputs-v1",
+  "approval_scope": "INTERNAL_SOURCE_REVIEW",
+  "sha256": {
+    "evidence/dede-molasses-balance.json": "633c66a7c26ae0377d62eb857d5d6f36c13a938acb0a63a9bd151c87457f287b",
+    "evidence/dede-ethanol-survey-review.json": "c28e7908d2f19c228880be85f905e8077b3d9c4767fe9d6501d4e37a380ac20c",
+    "build/transport-sensitivity/report.json": "b578e594336a0dfccc7dee4389552430021297360216b84850f32b8bba946a11"
+  }
+}

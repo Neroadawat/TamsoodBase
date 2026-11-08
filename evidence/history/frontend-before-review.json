@@ -1,0 +1,42 @@
+{
+  "deployment_id": "dpl_EfA4ngG9mh1uqX9UBDd1rt8i3R4W",
+  "production_url": "https://tamsoodbase.vercel.app",
+  "public_snapshot_id": "f1ec4ba4577615acbfd8760eae8c9833935284a638980af92dffada9a322d7b5",
+  "public_rows": 42,
+  "api_parity_routes": 27,
+  "unit_tests_passed": 163,
+  "local_browser_CPO_export_rows": 12,
+  "production_browser_FFB_export_rows": 19,
+  "export_all_fields_profiles_version_match": true,
+  "source_values_changed": false,
+  "browser_modal_raw_and_stored_amount_visible": true,
+  "browser_escape_close_passed": true,
+  "mobile_viewport": 390,
+  "mobile_page_width": 375,
+  "screenshot": "build/ux-verification/guided-discovery-live.png",
+  "proxy_export_max_bytes": 33554432,
+  "proxy_buffer_max_bytes": 4194304,
+  "proxy_HEAD_no_body_test_passed": true,
+  "production_EC2_changed": false,
+  "full_lifecycle_inventory": false,
+  "conversion_local_export": {
+    "process": "FAME",
+    "rows": 10,
+    "all_source_fields_match": true
+  },
+  "conversion_production_export": {
+    "process": "H-FAME",
+    "rows": 6,
+    "all_source_fields_match": true,
+    "numeric_footnote_preserved": true
+  },
+  "conversion_mobile": {
+    "viewport": 390,
+    "page": 375,
+    "table_scroll_width": 697
+  },
+  "conversion_quality_screenshot": "build/ux-verification/conversion-quality-live.png",
+  "conversion_modal_raw_and_stored_quantity_verified": true,
+  "api_parity_scope": "27 routes checked on this deployment",
+  "guided_discovery_evidence": "evidence/guided-discovery-ux.json"
+}

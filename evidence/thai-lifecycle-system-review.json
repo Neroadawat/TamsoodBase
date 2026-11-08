@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-03",
+  "full_unit_tests": 173,
+  "failed_tests": 0,
+  "release_consistency_checks": 25,
+  "release_consistency_passed": true,
+  "factor_source_cells_verified": 7,
+  "fame_source_payloads_preserved": 52,
+  "fixed": [
+    "selected_row_not_fully_bound_to_HTML",
+    "lifecycle_unknown_or_omitted_source_references",
+    "ambiguous_Thai_factor_vs_all_inputs_provenance",
+    "Decimal_context_silent_rounding_for_large_plain_inputs"
+  ],
+  "full_lifecycle_inventory": false,
+  "production_modified": false,
+  "live_API_check": "PASSED",
+  "live_API_parity_routes": 27,
+  "live_static_password_leak_detected": false
+}

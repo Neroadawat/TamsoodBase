@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-04",
+  "scope": "LOCAL_CANDIDATE_READINESS_AND_BOUNDED_PRIMARY_SOURCE_SEARCH",
+  "changes": [
+    "required parameter removal cannot clear readiness",
+    "duplicate parameter rejected",
+    "source HOLD/missing unit block readiness",
+    "source URL and either PDF/HTML SHA256 required",
+    "verified gate needs evidence reference"
+  ],
+  "validation": {
+    "command": "python -m unittest tests.test_lifecycle_model tests.test_thai_carbon",
+    "tests": 14,
+    "passed": 14,
+    "candidate_build": "PASS",
+    "source_payloads_retained": 52,
+    "readiness": {
+      "model_ready": false,
+      "unresolved_gates": [
+        "allocation_basis",
+        "reference_flow_scaling",
+        "provider_compatibility",
+        "background_coverage",
+        "elementary_flow_mapping",
+        "no_double_counting"
+      ],
+      "readiness_blockers": [
+        {
+          "kind": "SOURCE_UNIT_MISSING",
+          "id": "242ec2a4a8edfe4d55b2434f2670e6467d8f53e391efe354f94699de70c14b72"
+        },
+        {
+          "kind": "SOURCE_UNRESOLVED",
+          "id": "242ec2a4a8edfe4d55b2434f2670e6467d8f53e391efe354f94699de70c14b72"
+        }
+      ],
+      "scenario_assumptions_present": false,
+      "missing_stages": [
+        "DISTRIBUTION",
+        "USE",
+        "END_OF_LIFE"
+      ]
+    }
+  },
+  "research": [
+    {
+      "doi": "10.1016/j.apenergy.2009.05.013",
+      "status": "WEB_FULLTEXT_PARSED_VISUAL_AND_LOCAL_PDF_UNAVAILABLE",
+      "reason": "TLS certificate expired on repository; screenshot cache miss; HTTP redirects to same HTTPS; no verification bypass",
+      "numerical_import": false
+    },
+    {
+      "url": "https://kukr.lib.ku.ac.th/kukr_es/BKN/search_detail/dowload_digital_file/203067/58789",
+      "status": "PRIMARY_FULLTEXT_SCOPE_REVIEWED",
+      "reason": "Production-chain study; excludes use from stated scope; foreign background noted in section2.2; not complete Thai-only LCI",
+      "numerical_import": false
+    },
+    {
+      "doi": "10.1016/j.spc.2025.04.023",
+      "status": "NEW_PRIMARY_TRANSPORT_CANDIDATE_METADATA_VERIFIED_FULLTEXT_PENDING",
+      "repository": "https://researchers.mq.edu.au/en/publications/spatially-differentiated-life-cycle-assessment-of-thailands-trans/",
+      "reason": "Author repository links OA publisher PDF but direct PDF returned403; article/supplement contents not yet locally verified",
+      "numerical_import": false
+    },
+    {
+      "url": "https://www.thaiscience.info/Article%20for%20ThaiScience/Article/3/10003119.pdf",
+      "status": "DOWNLOAD_NOT_PDF",
+      "numerical_import": false
+    }
+  ],
+  "production_changed": false,
+  "full_lifecycle_inventory": false,
+  "limits": "Necessary readiness checks only; does not independently certify scientific completeness or licensing"
+}

@@ -1,0 +1,21 @@
+{
+  "source_advice": "https://chatgpt.com/share/6adb4039-c29c-83ec-9019-b8fd61c40f37",
+  "text_policy": "LF via .gitattributes; binary preserved",
+  "normalized_tracked_files": 53,
+  "raw_snapshots_modified": false,
+  "release_id": "33d2127d8a1b76333cc8195d92dc83b6a740e6910ec42867bc56be25cc2750ec",
+  "accepted_reference": 97,
+  "held_context": 4,
+  "mysql_clean_restore": {
+    "result": "passed",
+    "imports": 2,
+    "accepted_records_checked": 97,
+    "all_records": 101,
+    "temporary_database_removed": true
+  },
+  "git_text_binary_regression": "passed",
+  "tests_passed": 62,
+  "technical_pass": true,
+  "submission_ready": false,
+  "limitation": "Verified on original Windows environment and temporary Git fixture; no claim of successful setup on another machine"
+}

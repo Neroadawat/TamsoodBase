@@ -1,0 +1,100 @@
+{
+  "review_date": "2026-11-06",
+  "source_url": "https://ph01.tci-thaijo.org/index.php/aer/article/view/76815",
+  "doi": "10.35762/AER.2017.39.1.7",
+  "sha256": "e4f87bc8518b8cc748099c705b157f8b497d1101a95cb9f640f27cb10059ecfd",
+  "publication_year": 2017,
+  "measurement_year": null,
+  "selected_numeric_cells": 12,
+  "observations": [
+    {
+      "fuel": "gasohol91",
+      "vehicle": "LDG passenger car 2000cc EUROIII(2005 standard)",
+      "speed_km_h": "0-20",
+      "mean_CO2_g_per_km": "204.6",
+      "reported_plus_minus_g_per_km": "43.5",
+      "basis": "Bangkok driving cycle;chassis dynamometer;hot soak;5vehicles per fuel(Table1)",
+      "locator": "PDF6/printed70/Sec2.1/gasohol91/0-20",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_CONTEXT",
+      "example_10km_CO2_kg": "2.046",
+      "example_10km_scope": "hypothetical10km within this test condition;not lifecycle CO2e;no national fleet inference"
+    },
+    {
+      "fuel": "gasohol91",
+      "vehicle": "LDG passenger car 2000cc EUROIII(2005 standard)",
+      "speed_km_h": "20-40",
+      "mean_CO2_g_per_km": "183.7",
+      "reported_plus_minus_g_per_km": "43.1",
+      "basis": "Bangkok driving cycle;chassis dynamometer;hot soak;5vehicles per fuel(Table1)",
+      "locator": "PDF6/printed70/Sec2.1/gasohol91/20-40",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_CONTEXT",
+      "example_10km_CO2_kg": "1.837",
+      "example_10km_scope": "hypothetical10km within this test condition;not lifecycle CO2e;no national fleet inference"
+    },
+    {
+      "fuel": "gasohol91",
+      "vehicle": "LDG passenger car 2000cc EUROIII(2005 standard)",
+      "speed_km_h": "40-80",
+      "mean_CO2_g_per_km": "174.2",
+      "reported_plus_minus_g_per_km": "37.1",
+      "basis": "Bangkok driving cycle;chassis dynamometer;hot soak;5vehicles per fuel(Table1)",
+      "locator": "PDF6/printed70/Sec2.1/gasohol91/40-80",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_CONTEXT",
+      "example_10km_CO2_kg": "1.742",
+      "example_10km_scope": "hypothetical10km within this test condition;not lifecycle CO2e;no national fleet inference"
+    },
+    {
+      "fuel": "gasoholE20",
+      "vehicle": "LDG passenger car 2000cc EUROIII(2005 standard)",
+      "speed_km_h": "0-20",
+      "mean_CO2_g_per_km": "162.4",
+      "reported_plus_minus_g_per_km": "28.2",
+      "basis": "Bangkok driving cycle;chassis dynamometer;hot soak;5vehicles per fuel(Table1)",
+      "locator": "PDF6/printed70/Sec2.1/gasoholE20/0-20",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_CONTEXT",
+      "example_10km_CO2_kg": "1.624",
+      "example_10km_scope": "hypothetical10km within this test condition;not lifecycle CO2e;no national fleet inference"
+    },
+    {
+      "fuel": "gasoholE20",
+      "vehicle": "LDG passenger car 2000cc EUROIII(2005 standard)",
+      "speed_km_h": "20-40",
+      "mean_CO2_g_per_km": "141.8",
+      "reported_plus_minus_g_per_km": "23.6",
+      "basis": "Bangkok driving cycle;chassis dynamometer;hot soak;5vehicles per fuel(Table1)",
+      "locator": "PDF6/printed70/Sec2.1/gasoholE20/20-40",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_CONTEXT",
+      "example_10km_CO2_kg": "1.418",
+      "example_10km_scope": "hypothetical10km within this test condition;not lifecycle CO2e;no national fleet inference"
+    },
+    {
+      "fuel": "gasoholE20",
+      "vehicle": "LDG passenger car 2000cc EUROIII(2005 standard)",
+      "speed_km_h": "40-80",
+      "mean_CO2_g_per_km": "135.1",
+      "reported_plus_minus_g_per_km": "20.9",
+      "basis": "Bangkok driving cycle;chassis dynamometer;hot soak;5vehicles per fuel(Table1)",
+      "locator": "PDF6/printed70/Sec2.1/gasoholE20/40-80",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_CONTEXT",
+      "example_10km_CO2_kg": "1.351",
+      "example_10km_scope": "hypothetical10km within this test condition;not lifecycle CO2e;no national fleet inference"
+    }
+  ],
+  "gas": "CO2_total_tailpipe",
+  "fossil_biogenic_split": null,
+  "CH4": null,
+  "N2O": null,
+  "actual_ethanol_supplier": null,
+  "join_to_DEDE_or_2008": "NOT_VERIFIED_NO_AUTOMATIC_JOIN",
+  "remaining_use_gaps": [
+    "fuel consumption L/km for same sample",
+    "CO2 fossil/biogenic fraction",
+    "CH4 and N2O",
+    "evaporation emissions",
+    "fuel batch upstream supplier and year"
+  ],
+  "full_lifecycle_lci": false,
+  "CO2e_total": null,
+  "production_changed": false,
+  "redistribution_status": "NOT_CLEARED"
+}

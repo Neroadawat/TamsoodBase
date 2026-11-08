@@ -1,5 +1,8 @@
 # TamsoodBase — Thailand Petroleum, Natural Gas & Fuels
 
+คู่มือ frontend และ Vercel: [docs/FRONTEND_DEPLOY_TH.md](docs/FRONTEND_DEPLOY_TH.md) · build เฉพาะหน้าเว็บ ไม่รวมฐานข้อมูลหรือ credentials
+
+
 CN230 × MTEC Final Project: ฐานข้อมูลการผลิตเชื้อเพลิงของไทยที่มีต้นฉบับ เกณฑ์ตรวจ และเส้นทางย้อนกลับระดับแถว
 
 สมาชิกใหม่เริ่มที่ [คู่มือรับช่วงงาน](docs/TEAM_HANDOFF.md) และ [ข้อความส่งต่อให้แชตของสมาชิก](docs/CHATGPT_HANDOFF_PROMPT.md) — clone repo จะไม่ได้raw/build/Dockervolume ต้องอ่านวิธีเตรียมข้อมูลก่อน
@@ -120,3 +123,5 @@ lecture W08-W11 ใช้เป็นแนวทางประกอบ Final 
 AI ช่วยค้นข้อมูล เขียนระบบ และเอกสารในวันที่ 22 ตุลาคม 2569 สมาชิกทีมต้องตรวจและอธิบายผลงาน รวมถึงบันทึก contribution ตามงานที่ตนทำจริง
 
 ดัชนี schema/dictionary/mapping ทุกชั้น: [แบบจำลองข้อมูลกลาง](docs/dataset-model-index.md) — release audit ครอบคลุม NSO/inventory/EPPO เพิ่มจาก DMF/corporate แล้ว แต่ยังไม่ผ่าน final submission gate
+
+Backend private บน EC2: [วิธีทดสอบและดูแล](docs/ec2-backend.md) — รันผ่านGunicorn/Docker ตรวจ13routesแล้ว; S3ยังรอbucket/roleและยังไม่ได้เปิดpublicrouting

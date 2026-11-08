@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "counts": {
+    "corporate": 101,
+    "nso": 273,
+    "inventory": 16,
+    "eppo": 5934,
+    "dmf": 34899
+  },
+  "observations": 41223,
+  "sources": 13,
+  "failures": [],
+  "pdf_records_reextracted_in_current_audit": 101,
+  "pipeline_audit_sha256": "5b2603ddcf11030da5176e29e8d2dbec72ed08ef4f8a6413a35f9d4b5d6d92da",
+  "contract_id": "21a8e652a26ab09f72606aa870cf1950edbf3a0feed61a12be682ccacc0eba00",
+  "ledger_sha256": "ad3fd279fabca24ea7cf90f36e3921ded5e1c6daa9b5d7340796dd615fcc53b3",
+  "scope": "Saved snapshots, direct CSV/DOM locator checks plus current PDF re-extraction; not live-site freshness or independent scientific verification",
+  "limitations": [
+    "DMF historical time basis unresolved",
+    "Corporate4HOLD and redistribution restrictions unchanged",
+    "NSO independent cross-source comparison remains15/273",
+    "DOM evidence is rendered table capture, not original HTTP/PDF bytes"
+  ]
+}

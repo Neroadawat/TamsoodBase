@@ -6,8 +6,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 
 
-def render():
-    data=json.loads((ROOT/'docs/tasks.json').read_text(encoding='utf-8'))
+def render_text(data):
     tasks=data['tasks'];counts=Counter(t['status'] for t in tasks)
     lines=['# Task board — TamsoodBase','',
       'สถานะนี้นับเป็นหน่วยงาน ไม่ใช่เปอร์เซ็นต์ความสมบูรณ์หรือประมาณเวลา แต่ละงานมีขนาดต่างกัน',
@@ -24,7 +23,13 @@ def render():
        'อย่ากำหนดชื่อสมาชิกหรือ contribution แทนมนุษย์ อย่าส่งคำถาม/เอกสารออกไปเอง และอย่าประกาศว่าได้รับอนุมัติโดยไม่มีต้นฉบับคำตอบ',
        '', data.get('automation_note', 'ไม่มีรอบทำงานอัตโนมัติที่ยืนยันไว้'),
        'แจ้งเฉพาะความคืบหน้าสำคัญ งานเสร็จ ปัญหา หรือสิ่งที่ต้องให้ผู้ใช้ตัดสินใจ หากไม่มีอะไรเปลี่ยนให้ไม่รายงานซ้ำ','']
-    (ROOT/'docs/tasks.md').write_text('\n'.join(lines),encoding='utf-8')
+    return '\n'.join(lines)
+
+
+def render():
+    data=json.loads((ROOT/'docs/tasks.json').read_text(encoding='utf-8'))
+    (ROOT/'docs/tasks.md').write_text(render_text(data),encoding='utf-8',newline='\n')
+    counts=Counter(t['status'] for t in data['tasks'])
     print(dict(counts))
 
 

@@ -1,0 +1,73 @@
+{
+  "source_report_sha256": {
+    "upstream": "53136d2ead6e0aa5909803243e4efecbe66f8551eddf27257336769777f444ec",
+    "conversion": "d95b721aded3a98be0cbeeaf9cf964841133cee788235ecba8608ffc6775a134"
+  },
+  "provider_candidates": [
+    {
+      "provider_process": "CPO",
+      "consumer_process": "RBDPO",
+      "provider_observation_id": "eec7f116043d77efbab13b1e7e794ec423a696f75fef1f5261c0a2be26899e62",
+      "consumer_observation_id": "c83bf4ca1ce58dcf04f4f77d2ac5781d5c3c49b6f196773f593fd08714be2152",
+      "flow": "CPO",
+      "provider_output": "1000",
+      "consumer_input": "1100",
+      "unit": "kg",
+      "doi": "10.3390/su12229415",
+      "status": "CANDIDATE_NOT_APPLIED",
+      "hold_reasons": [
+        "Allocation application unresolved",
+        "Measurement periods unavailable",
+        "Link compatibility needs domain review"
+      ],
+      "scaling_applied": false
+    },
+    {
+      "provider_process": "RBDPO",
+      "consumer_process": "FAME",
+      "provider_observation_id": "3f3847d19404e2908a600dd74ff9140140f91982330433e2335fc3d9b1c643d2",
+      "consumer_observation_id": "2ab27d9eca7da7b6eb0abb305051300a8530bd1bf490de1d57a4f52d708348d1",
+      "flow": "RBDPO",
+      "provider_output": "1000",
+      "consumer_input": "24.6",
+      "unit": "kg",
+      "doi": "10.3390/su12229415",
+      "status": "CANDIDATE_NOT_APPLIED",
+      "hold_reasons": [
+        "Allocation application unresolved",
+        "Measurement periods unavailable",
+        "Link compatibility needs domain review"
+      ],
+      "scaling_applied": false
+    },
+    {
+      "provider_process": "FAME",
+      "consumer_process": "H-FAME",
+      "provider_observation_id": "969a61db8270e82150ac419f47b60e081fe838eefbd7286063343b3ebaa594e7",
+      "consumer_observation_id": "a7b02f30be05cb0e6ae1af09113318c4c00be1a0841c94187255f68e66efc79d",
+      "flow": "FAME",
+      "provider_output": "26.3",
+      "consumer_input": "25.5",
+      "unit": "kg",
+      "doi": "10.3390/su12229415",
+      "status": "CANDIDATE_NOT_APPLIED",
+      "hold_reasons": [
+        "Allocation application unresolved",
+        "Measurement periods unavailable",
+        "Link compatibility needs domain review"
+      ],
+      "scaling_applied": false
+    }
+  ],
+  "missing_links": [
+    {
+      "provider_process": "FFB",
+      "consumer_process": "CPO",
+      "reason": "No FFB input amount in Table2; do not infer from output totals"
+    }
+  ],
+  "applied_links": 0,
+  "allocation_applied": false,
+  "full_lifecycle_inventory": false,
+  "production_updated": false
+}

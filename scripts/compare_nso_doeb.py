@@ -6,6 +6,20 @@ from decimal import Decimal
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
+APPROVED_LABELS=('น้ำมันเบนซิน ออกเทน 91','น้ำมันเตา','น้ำมันดีเซลกำมะถันสูง',
+ 'น้ำมันดีเซลหมุนเร็ว บี 7','น้ำมันดีเซลหมุนเร็ว บี 7 (ชนิดพิเศษ)',
+ 'น้ำมันดีเซลหมุนเร็ว บี 7 (ชนิดพิเศษ) ยูโร 5','น้ำมันดีเซลหมุนเร็ว บี 20',
+ 'น้ำมันดีเซลพื้นฐาน (10 PPM)','น้ำมันดีเซลพื้นฐาน (50 PPM)')
+
+def normalized_label(value):return ''.join(str(value).split()).casefold()
+
+
+def matching_rows(row,sheet):
+    if row['table_id']!='13.8' or row['unit']!='Thousand litre' or row['label'] not in APPROVED_LABELS:
+        return []
+    matches=[i for i in range(1,sheet.nrows) if sheet.cell_value(i,0)==row['reference_year']+543 and normalized_label(sheet.cell_value(i,1))==normalized_label(row['label'])]
+    if len(matches)>1:raise ValueError('Ambiguous DOEB match')
+    return matches
 
 
 def main():
@@ -19,8 +33,7 @@ def main():
     if sheet.cell_value(0,0)!='ปีพุทธศักราช' or 'ล้านลิตร' not in sheet.cell_value(0,2):raise ValueError('Header changed')
     nso=json.loads((ROOT/'build/nso/report.json').read_text(encoding='utf-8'))['rows'];checks=[]
     for row in nso:
-        if row['table_id']!='13.8' or row['unit']!='Thousand litre' or row['label'] not in ('น้ำมันเบนซิน ออกเทน 91','น้ำมันเตา'):continue
-        matches=[i for i in range(1,sheet.nrows) if sheet.cell_value(i,0)==row['reference_year']+543 and sheet.cell_value(i,1).strip()==row['label']]
+        matches=matching_rows(row,sheet)
         if not matches:continue
         if len(matches)!=1:raise ValueError('Ambiguous DOEB match')
         i=matches[0];cell=sheet.cell(i,2);stored=str(cell.value);amount=Decimal(stored)*1000
@@ -32,12 +45,14 @@ def main():
             unit='Thousand litre',difference_nso_minus_doeb=str(delta),exact_stored_value_match=delta==0,
             within_doeb_display_rounding=abs(delta)<=Decimal('50'),display_tolerance_thousand_litre='50',
             display_format=fmt,doeb_sheet='sale_y',doeb_row=i+1,doeb_column='C',
+            doeb_label=sheet.cell_value(i,1),label_matching_rule='Approved fuel names; whitespace removal and casefold only; no synonym mapping',
+            review_status='DISPLAY_ROUNDING_AGREEMENT' if abs(delta)<=Decimal('50') else 'SOURCE_DIVERGENCE_REVIEW_REQUIRED',
             nso_url=row['source_url'],nso_sha256=row['source_sha256'],doeb_url=meta['url'],doeb_sha256=digest))
     result=dict(comparisons=checks,count=len(checks),exact_matches=sum(c['exact_stored_value_match'] for c in checks),
                 within_display_rounding=sum(c['within_doeb_display_rounding'] for c in checks),
                 limitations=['Stored Excel floats retained as text; multiplying1000 only converts million to thousand litres',
                 '0.0 Excel formatting implies half-step50thousand-litres tolerance; this is display agreement, not exact source validation',
-                'Exact Thai labels only; no automatic diesel reclassification or volume/mass join',
+                'Approved Thai labels with whitespace/case normalization only; no automatic diesel reclassification or volume/mass join',
                 'NSO republishes DOEB; not independent measurement verification','Unmatched years/series remain unverified'])
     (ROOT/'evidence/nso-doeb-comparison.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({k:v for k,v in result.items() if k!='comparisons'},ensure_ascii=False,indent=2))

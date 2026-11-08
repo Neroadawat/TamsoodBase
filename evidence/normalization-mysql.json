@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-24T10:22:49.241528+00:00",
+  "result": "passed",
+  "database": "tamsood_nf_c4a3f824c950",
+  "candidate_only": true,
+  "production_migrated": false,
+  "remote_ec2_changed": false,
+  "source_sha256": "7e88a5e685bd85633ae0f8840b6be08a989859472b96bc3801060d6c7db08e59",
+  "source_unchanged": true,
+  "reference_catalog_rows": 101,
+  "accepted_reference_rows": 97,
+  "catalog_all_fields_equal": true,
+  "metric_document_id_removed": true,
+  "constraint_checks": {
+    "missing_context": "rejected_as_expected",
+    "invalid_kind": "rejected_as_expected",
+    "negative_amount": "rejected_as_expected",
+    "invalid_decision": "rejected_as_expected"
+  },
+  "sqlite_lossless_reconstruction": true,
+  "schema_sha256": "2c6fc30d9784c5e340b82cc275f4a617c5e6b5dc6d3f515a4ed871d48cfbb9a1",
+  "loader_sha256": "ead45219b5fb20125b01dc1a72ba4f0c392b0e5aa04724c6947204208e58ff80",
+  "normalization_scope": "context/document dependency removed; no whole-schema 5NF claim"
+}

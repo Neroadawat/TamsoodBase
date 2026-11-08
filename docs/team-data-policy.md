@@ -41,3 +41,6 @@ HOLD_CONTEXT หมายถึงคงข้อมูลไว้เพื่�
 บันทึก actor เป็น AUTOMATED_TEAM_POLICY_V1 และระบุว่า AI-assisted ไม่สร้างชื่อผู้ตรวจที่เป็นสมาชิกขึ้นเอง ตรวจเลขจากการสกัดซ้ำทุก observation ใน subset, ตรวจ Decimal/metadata หลังเข้า MySQL และบันทึกเหตุ hold รายแถว
 
 ผู้ใช้เปลี่ยนขอบเขตนโยบายได้ผ่าน version ใหม่ โดยคง snapshot/rule version เก่าไว้เพื่อให้ reproduce ผลเดิมได้
+
+## Research-led team decisions — reaffirmed 6 November 2026
+ผู้ใช้ให้ทีมค้นและตัดสินความเหมาะสมเอง ไม่ใช้MTECapprovalเป็นblocker. สมมติฐานที่มีเหตุผลทำเป็นscenarioได้เมื่อระบุsource/เหตุผล/บริบท/ผู้ตัดสินอัตโนมัติ/limitations และไม่เขียนทับbaselineหรือเรียกassumptionเป็นmeasurement. สิทธิแจกจ่าย/ข้อมูลที่ไม่มีจริง/independenthumanreviewยังอ้างขึ้นเองไม่ได้. ดูdocs/research-decisions-2026-11-06.md.

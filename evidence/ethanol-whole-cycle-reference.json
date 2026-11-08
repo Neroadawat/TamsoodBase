@@ -1,0 +1,33 @@
+{
+  "review_date": "2026-11-07",
+  "source_url": "https://doi.org/10.1007/s11367-008-0011-2",
+  "source_sha256": "fa0c483a9c27fcff84a21668795bf5a6c4ea7f5bc8d52e62b06168b19be51dba",
+  "table_locator": "Table 5 / PDF page 6 / printed 306 / GWP",
+  "functional_unit_locator": "Section 2.1 / PDF page 2",
+  "functional_unit": "Trip equivalent to 1 L of conventional gasoline in the source vehicle, 13.46 km",
+  "scope": "REPORTED_HISTORICAL_LIFE_CYCLE_GWP",
+  "verification": "Source text and visual table mapping",
+  "rows": [
+    {
+      "case": "CG",
+      "reported_kgCO2e_per_FU": "2.99",
+      "reported_change_vs_CG_pct": null,
+      "derived_gCO2e_per_km": "222.1"
+    },
+    {
+      "case": "E10-a",
+      "reported_kgCO2e_per_FU": "3.07",
+      "reported_change_vs_CG_pct": "2.8",
+      "derived_gCO2e_per_km": "228.1"
+    },
+    {
+      "case": "E10-a(nb)",
+      "reported_kgCO2e_per_FU": "3.07",
+      "reported_change_vs_CG_pct": "2.7",
+      "derived_gCO2e_per_km": "228.1"
+    }
+  ],
+  "standalone_project_inventory_CO2e_total": null,
+  "independent_gas_mass_recalculation": false,
+  "redistribution_status": "NOT_CLEARED"
+}

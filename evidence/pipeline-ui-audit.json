@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-10-24T10:23:41.259331+00:00",
+  "url": "http://127.0.0.1:8765/",
+  "browser": "In-app browser",
+  "result": "passed",
+  "reference_release": "33d2127d8a1b76333cc8195d92dc83b6a740e6910ec42867bc56be25cc2750ec",
+  "checks": {
+    "accepted_count": 97,
+    "held_filter_count": 4,
+    "held_evidence_pdf_page": 49,
+    "held_evidence_unit": "m3/year",
+    "oversized_query_characters": 161,
+    "oversized_query_error": "คำค้นยาวเกินไป กรุณาใช้ไม่เกิน 160 ตัวอักษร",
+    "failed_search_rows_empty": true,
+    "failed_search_csv_href": null,
+    "failed_search_next_enabled": false
+  },
+  "screenshot": "build/pipeline-ui.png",
+  "screenshot_sha256": "9dff66e7947b285d149b3609f4153707a48abab9a656d0f53a2ffdd9e5a45ddd",
+  "web_sha256": "7bf7803abd3202b3a34e82a0468f58a81625571895bcbc2f9a410a5d5e48b4df",
+  "mobile_retested": false,
+  "limitations": [
+    "Selected desktop flows verified; async request ordering separately tested using deterministic fake DOM",
+    "No human usability study or EC2 update claimed"
+  ]
+}

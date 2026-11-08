@@ -1,0 +1,10 @@
+{
+  "scope": "ISOLATED_MEMORY_ONLY_NO_PRODUCTION_CHANGE",
+  "probes": {
+    "missing_json_amount_accepted": false,
+    "empty_release_accepted": false,
+    "wrong_process_source_membership_accepted": false,
+    "changed_process_factor_with_stale_transfer_edges_accepted": false,
+    "stale_transfer_reproduction": "Only memory copy: CPO factor/results doubled; transfer edge fields unchanged; original file untouched"
+  }
+}

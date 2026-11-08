@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-31",
+  "deployment_id": "dpl_EfA4ngG9mh1uqX9UBDd1rt8i3R4W",
+  "production_url": "https://tamsoodbase.vercel.app/",
+  "terms": 29,
+  "choice_views": [
+    "catalog",
+    "DMF",
+    "reference",
+    "EPPO",
+    "NSO"
+  ],
+  "typing_retained": true,
+  "unit_tests_passed": 163,
+  "api_parity_routes": 27,
+  "assets": {
+    "index.html": {
+      "matches_build": true,
+      "sha256": "19eb60d40ba1cd154e114e21536cdfb4ea51355f92835a000feba59cb9b022c2"
+    },
+    "app.js": {
+      "matches_build": true,
+      "sha256": "21a37e3f176dea780d848a13ae247b0ea93e9625b318381cacf013bdd0a08b69"
+    },
+    "style.css": {
+      "matches_build": true,
+      "sha256": "5dc88c9e01193467161f93299639968a6a7ed49358476050c5287c69ce2206c7"
+    },
+    "upstream-inventory.json": {
+      "matches_build": true,
+      "sha256": "f9b165b9a2dabb0e5220ddfa6c182157ecd85803c4193543cbca74aafbdb7e1e"
+    }
+  },
+  "production_browser": {
+    "Thai_acronym_NSO": true,
+    "catalog_FAME_one_card": true,
+    "NSO_diesel_2024_rows": 2,
+    "NSO_production": 27664,
+    "NSO_use": 25120,
+    "NSO_unit": "Million litre"
+  },
+  "local_browser": {
+    "reference_natural_gas_rows": 4,
+    "EPPO_diesel_rows": 12,
+    "DMF_Nam_Phong_rows": 834,
+    "mobile_viewport": 390,
+    "mobile_page_width": 375,
+    "glossary_Escape": true
+  },
+  "screenshot": "build/ux-verification/guided-discovery-live.png",
+  "source_values_changed": false,
+  "EC2_changed": false,
+  "illustration_is_conceptual_not_linked_model": true
+}

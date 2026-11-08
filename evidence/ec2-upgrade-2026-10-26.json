@@ -1,0 +1,59 @@
+{
+  "result": "passed",
+  "release": "cdc51c36b5356c41",
+  "previous_release": "f2596ce38f984279",
+  "image": "tamsoodbase-api:cdc51c36b5356c41",
+  "archive_sha256": "ed04d0345c5f6546ba63bb0fa93aa39794712a8b92880a7ccc8da8d9ac3efb7a",
+  "staging_routes": {
+    "/": 200,
+    "/app.js": 200,
+    "/api.js": 200,
+    "/config.js": 200,
+    "/favicon.svg": 200,
+    "/style.css": 200,
+    "/healthz": 200,
+    "/readyz": 200,
+    "/api/summary": 200,
+    "/api/reports": 200,
+    "/api/reference": 200,
+    "/api/nso": 200,
+    "/api/product-inventory": 200,
+    "/api/eppo?dataset=11_13&year=2024&q=SPRC": 200,
+    "/api/nso-comparison": 200,
+    "/api/records": 200
+  },
+  "active_routes": {
+    "/": 200,
+    "/app.js": 200,
+    "/api.js": 200,
+    "/config.js": 200,
+    "/favicon.svg": 200,
+    "/style.css": 200,
+    "/healthz": 200,
+    "/readyz": 200,
+    "/api/summary": 200,
+    "/api/reports": 200,
+    "/api/reference": 200,
+    "/api/nso": 200,
+    "/api/product-inventory": 200,
+    "/api/eppo?dataset=11_13&year=2024&q=SPRC": 200,
+    "/api/nso-comparison": 200,
+    "/api/records": 200
+  },
+  "s3": {
+    "credential_method": "iam-role",
+    "configuration": {
+      "bucket": "tamsoodbase-team-fuel-2026-a7k9",
+      "prefix": "tamsoodbase",
+      "region": "ap-southeast-2"
+    },
+    "marker_bytes": 79,
+    "encryption": "AES256"
+  },
+  "rollback_container": "tamsoodbase-rollback-f2596ce38f984279",
+  "rollback_environment": "/home/ubuntu/tamsoodbase/backend.env.before-cdc51c36b5356c41",
+  "bind": "127.0.0.1:8765",
+  "unrelated_containers_unchanged": true,
+  "public_route_changed": false,
+  "iam_changed": false
+}

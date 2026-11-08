@@ -1,0 +1,25 @@
+{
+  "scope": "OWNED_MYSQL_TEMPORARY_SCHEMA_NOT_PRODUCTION_MIGRATION",
+  "negative_checks": {
+    "source_update": true,
+    "source_delete": true,
+    "sealed_version_change": true,
+    "membership_delete": true,
+    "parse_update": true,
+    "process_mismatch": true,
+    "typed_payload_mismatch": true,
+    "reference_product_mismatch": true
+  },
+  "engine_version": "8.4.13",
+  "source_rows": 58,
+  "full_payload_roundtrip": true,
+  "typed_join_roundtrip": true,
+  "failed_batch_connection_close_rollback": true,
+  "null_unit_holds": 1,
+  "sealed_versions": 5,
+  "production_migrated": false,
+  "temporary_schema_removed": true,
+  "running_container_ids_unchanged": true,
+  "active_api_ready_after": true,
+  "schema_sha256": "64d1d5459dd38d6bb29ba840aabe5691e57172d24a31c05a42d22f9c2391dc37"
+}

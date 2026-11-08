@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-10-23",
-  "automation_id": "tamsoodbase",
+  "updated_at": "2026-11-08",
+  "automation_id": "tamsoodbase-srs",
   "status_note": "Counts are task units, not percent completion or time estimates",
   "tasks": [
     {
@@ -333,8 +333,8 @@
       "priority": "P0",
       "status": "IN_PROGRESS",
       "title": "เทียบNSOกับDEDE/DOEBและทบทวนrevision",
-      "evidence": "evidence/nso-dede-comparison.json",
-      "done_when": "เทียบทุกmetricที่มีขอบเขตตรงกันและเก็บcoverage/mismatch; รอบนี้7distinctค่า:DEDE1ต่าง,DOEB6ต่างค่าดิบแต่อยู่displayrounding; อีก266ยังไม่เทียบ",
+      "evidence": "evidence/cross-source-coverage.json",
+      "done_when": "169/273compared:131exact/24displayrounding/4divergence;104gapsremainexplicit;sourcevaluesunchanged",
       "dependencies": [
         "T27"
       ]
@@ -384,8 +384,1181 @@
       "dependencies": [
         "T33"
       ]
+    },
+    {
+      "id": "T35",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ทำ hash และ text line endings ให้ส่งต่อข้ามเครื่องได้",
+      "evidence": "docs/advice-review-portability.md",
+      "done_when": ".gitattributesLF/binary+temporaryGitregression; rebuildreference/MySQL/cleanrestore2ครั้งผ่าน; tests62และreleaseauditผ่าน ไม่อ้างตรวจเครื่องเพื่อนแล้ว",
+      "dependencies": [
+        "T34"
+      ]
+    },
+    {
+      "id": "T36",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "แสดงผล DEDE revised บนเว็บโดยคงรายงานเบื้องต้น",
+      "evidence": "evidence/nso-revised-ui.json",
+      "done_when": "APIตรวจidentity/year/unit/arithmeticของrevised; browserเห็น30350ตรงและ28987เดิมพร้อมลิงก์; testsเฉพาะส่วน6ผ่าน+JSsyntax ไม่เพิ่มcoverageหรือacceptance",
+      "dependencies": [
+        "T30"
+      ]
+    },
+    {
+      "id": "T37",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ติดตั้ง private backend แยกบริการบน EC2 ที่ผู้ใช้ให้",
+      "evidence": "docs/ec2-backend.md",
+      "done_when": "GunicornDockerloopback8765healthy;13routes+SSHtunnelตรวจจริง; tests69ผ่าน;S3moduleเตรียมแล้วแต่รอbucket/role;ไม่แก้บริการGinder ไม่เปิดpublic",
+      "dependencies": [
+        "T36"
+      ]
+    },
+    {
+      "id": "T38",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ตรวจ normalization และสร้าง candidate ลด metric/document redundancy",
+      "done_when": "lossless metric/catalog101/accepted97ตรงทุกfield;FK/negative tests;ไม่อ้าง5NFและยังไม่migrateproduction",
+      "evidence": "docs/normalization-audit.md",
+      "dependencies": [
+        "T16",
+        "T34"
+      ]
+    },
+    {
+      "id": "T39",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ตรวจ pipeline ตั้งแต่ raw ถึง API และอุดช่องว่างตัวตรวจ",
+      "done_when": "DMF34905แถวสร้างซ้ำตรง;NSO273/EPPO5934/inventory16ตรง;PDF101/liveMySQLผ่าน;แก้typed/readiness/staleUI;Docker13routes;tests81และtaskboardผ่าน",
+      "evidence": "docs/pipeline-audit.md",
+      "dependencies": [
+        "T38",
+        "T37"
+      ]
+    },
+    {
+      "id": "T40",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ตรวจ normalized candidate ใน MySQL แยกจาก production",
+      "done_when": "catalog101/accepted97ทุกfieldตรงSQLite;4negativechecksถูกปฏิเสธ;ไม่แทนฐานเดิม/EC2และไม่อ้าง5NF",
+      "evidence": "evidence/normalization-mysql.json",
+      "dependencies": [
+        "T38"
+      ]
+    },
+    {
+      "id": "T41",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "ปรับเว็บและเตรียม frontend deploy แยก API",
+      "done_when": "เมนูมือถือ/hash/lazyload;build6assetsไม่รวมdata;cross-origin97/export/errorตรวจจริง;88testsและDocker16routesผ่าน;ยังไม่publishหรือสลับEC2",
+      "evidence": "evidence/frontend-deployment.json",
+      "dependencies": [
+        "T39"
+      ]
+    },
+    {
+      "id": "T42",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Close current-row audit and EPPO transaction verification gaps",
+      "done_when": "Extra current rows and corrupt typed/source metadata detected; verification before commit; 90 tests and full offline pipeline replay pass without changing live data",
+      "evidence": "evidence/system-integrity-followup.json",
+      "dependencies": [
+        "T39"
+      ]
+    },
+    {
+      "id": "T43",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Map photographed handbook to actual deliverables and close documentation gaps",
+      "done_when": "Pages3-20 traced to actual evidence; CLO5 model selection and eight-step demo documented; stale frontend handoff corrected; human/rights/deployment gaps remain explicit",
+      "evidence": "docs/handbook-alignment.md",
+      "dependencies": [
+        "T41",
+        "T42"
+      ]
+    },
+    {
+      "id": "T44",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Apply syllabus topics and add isolated transaction evidence",
+      "done_when": "W01-W15/CLO mapped to actual artifacts; SQLite rollback/isolation/writer-lock/commit/reopen checks pass on disposable copy; original database hash unchanged; no claim of Neo4j/MongoDB or MySQL transaction execution",
+      "evidence": "docs/syllabus-project-map.md",
+      "dependencies": [
+        "T42",
+        "T43"
+      ]
+    },
+    {
+      "id": "T45",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Fix lazy-view retry and duplicate rendering",
+      "done_when": "Failed loads retry on navigation; pending deduplicated/success cached; browser503-to200 recovered; regression tests passed",
+      "evidence": "evidence/frontend-retry.json",
+      "dependencies": [
+        "T41"
+      ]
+    },
+    {
+      "id": "T46",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Rebuild and verify current deployment artifacts",
+      "done_when": "Static allowlist rebuilt; backend0441f968c64f7c61 passed16routes in isolated local container; remote unchanged",
+      "evidence": "evidence/backend-image-audit.json",
+      "dependencies": [
+        "T45"
+      ]
+    },
+    {
+      "id": "T47",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Compare local document and graph projections against relational queries",
+      "done_when": "97existingrecords retained with rights;8publisher/yearqueries equal; no new observations or Neo4j/MongoDB engine claim",
+      "evidence": "evidence/model-comparison.json",
+      "dependencies": [
+        "T44"
+      ]
+    },
+    {
+      "id": "T48",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Prepare practical final walkthrough and recovery checklist",
+      "done_when": "Accepted/hold/reject/source/SQL/model/limitations/human rehearsal steps explicit; no fabricated rehearsal results",
+      "evidence": "docs/final-walkthrough.md",
+      "dependencies": [
+        "T43",
+        "T44",
+        "T47"
+      ]
+    },
+    {
+      "id": "T49",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Improve catalog scanning, level filtering and reading layout",
+      "done_when": "Level pills/counts and card/list preference work; storage-blocked regression; browser desktop/mobile no overflow; reference97;94tests and rebuilt deployment artifacts",
+      "evidence": "evidence/catalog-ux.json",
+      "dependencies": [
+        "T45",
+        "T46"
+      ]
+    },
+    {
+      "id": "T50",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Prepare actual submission evidence pack with pipeline and DDL-derived ER diagrams",
+      "done_when": "Four actual MySQL ERDs cover27tables/allFKs; pipeline; editable Mermaid/SVG/PNG; indexed UNDERSTAND-DESIGN-BUILD-DEFEND docs; archive CRC/hash verified; no raw/DB/credentials; human final fields remain blank",
+      "evidence": "docs/submission/README.md",
+      "dependencies": [
+        "T43",
+        "T44",
+        "T48",
+        "T49"
+      ]
+    },
+    {
+      "id": "T51",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Connect private S3 using EC2 instance role",
+      "done_when": "Container iam-role scoped list/put/get passed with AES256 and exact79-byte roundtrip after owner ARN-space fix; no static credentials or service changes; persistent runtime configuration remains separate",
+      "evidence": "evidence/s3-connectivity.json",
+      "dependencies": [
+        "T36"
+      ]
+    },
+    {
+      "id": "T52",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Upgrade private EC2 backend and persist S3 configuration",
+      "done_when": "Owner/hash-verified image; stage16 and active16 routes pass; S3 role/config marker verified; previous container/env retained; unrelated containers unchanged; public routing unchanged",
+      "evidence": "evidence/ec2-upgrade.json",
+      "dependencies": [
+        "T46",
+        "T51"
+      ]
+    },
+    {
+      "id": "T53",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Verify private S3 runtime backup and rollback preflight",
+      "done_when": "Runtimearchive38members uploadedSSE-S3; downloadedsha/memberhashesmatch; anonymousHEAD403; rollbackdryrunpasses; no MySQL/raw/credentials backup and no actual rollback",
+      "evidence": "evidence/s3-backup.json",
+      "dependencies": [
+        "T52"
+      ]
+    },
+    {
+      "id": "T54",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Review authenticated official project pages and reconcile submission requirements",
+      "done_when": "Eight official pages reviewed; milestone dates flagged Draft/conflicts; SRS/PDF/memo/consent/MP4/slides requirements mapped; source hashes recorded without credentials or raw website redistribution",
+      "evidence": "docs/course-project-review-2026-10-27.md",
+      "dependencies": [
+        "T43",
+        "T50"
+      ]
+    },
+    {
+      "id": "T55",
+      "priority": "P0",
+      "status": "IN_PROGRESS",
+      "title": "Prepare continuous SRS draft for project M1 and later milestones",
+      "done_when": "SRS0.3MD+19pagePDFcurrentarchitectureand159/273coverage;renderreviewed;teamreview/finalfreeze pending",
+      "evidence": "docs/submission/SRS.md",
+      "dependencies": [
+        "T54"
+      ]
+    },
+    {
+      "id": "T56",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Detailed final-project technical alignment and real inventory graph projection",
+      "done_when": "All12project pages reviewed;25-point technical gap matrix and priority plan;actual16inventoryexchanges projected without fabricated flow/upstream identity;4SQL/JSON/graphqueries equal;101tests pass;Mdeliverables untouched",
+      "evidence": "docs/final-project-system-review.md",
+      "dependencies": [
+        "T54",
+        "T47"
+      ]
+    },
+    {
+      "id": "T57",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Recheck official project links and improve process inventory context UX",
+      "done_when": "12pages+2scripts reviewed;process/direction filters and source-derived basis/year/roles;desktop/mobile browser verified;102tests pass;Mdeliverables untouched;EC2 unchanged",
+      "evidence": "evidence/final-project-recheck.json",
+      "dependencies": [
+        "T56",
+        "T49"
+      ]
+    },
+    {
+      "id": "T58",
+      "priority": "P0",
+      "status": "IN_PROGRESS",
+      "title": "Complete final deliverables and end-to-end release review",
+      "done_when": "SRS/PDF/ERD/pipeline/traceability/export/slides/video plan checked against actual release;human memo/consent/contributions remain explicit;no automatic submission",
+      "evidence": "docs/submission/FINAL_DELIVERY_PLAN.md",
+      "dependencies": [
+        "T55",
+        "T57"
+      ]
+    },
+    {
+      "id": "T59",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Review course transaction/index details and run isolated MySQL isolation lab",
+      "done_when": "13realInnoDBchecks passed;explicitrollback/statementerror/RCvsRR/rowlock/reconnect documented;index evidence limitations mapped;temporarycontainerremoved;existingDB/EC2unchanged",
+      "evidence": "docs/transaction-index-review.md",
+      "dependencies": [
+        "T58"
+      ]
+    },
+    {
+      "id": "T60",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Compare instructor schema and enforce inventory direction-role consistency in new DDL",
+      "done_when": "Comparison documents strengths and actual LCI gaps;newDDLconstraint rejects contradictorydirection/role;17MySQLlabchecks and6affectedtests pass;noexistingDBmigration",
+      "evidence": "docs/schema-example-comparison.md",
+      "dependencies": [
+        "T59"
+      ]
+    },
+    {
+      "id": "T61",
+      "priority": "P0",
+      "status": "IN_PROGRESS",
+      "title": "Close twelve final acceptance workstreams and improve task-first website UX",
+      "done_when": "TrackF01–F12infinal-gap-plan;initialtaskentryimplemented/browserinventorylinkpassed;remainingworkstreamsnotclaimedcomplete",
+      "evidence": "docs/final-gap-plan.md",
+      "dependencies": [
+        "T60"
+      ]
+    },
+    {
+      "id": "T62",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Build source-ID crosswalk and internal exports across five layers",
+      "done_when": "13snapshots/41223derivedobservations;registeredIDs;originalpayloadpreserved;APIandCSV/JSONL;noacceptancechange",
+      "evidence": "evidence/source-contract.json",
+      "dependencies": [
+        "T61"
+      ]
+    },
+    {
+      "id": "T63",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Verify source-local Flow/Unit candidate and current DDL in isolated MySQL",
+      "done_when": "candidate16payload+typedroundtrip/4queries/3negativechecks;NSO273+inventory16freshMySQLroundtrip;noexistingmigration",
+      "evidence": "evidence/inventory-candidate.json",
+      "dependencies": [
+        "T60"
+      ]
+    },
+    {
+      "id": "T64",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Create review SRS PDF and ten-slide editable presentation",
+      "done_when": "SRS16pages/slides10pagesrendered;PPTXnotes;teamreviewpending;nosignaturesorcontributionsinvented",
+      "evidence": "evidence/final-document-draft.json",
+      "dependencies": [
+        "T55"
+      ]
+    },
+    {
+      "id": "T65",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Upgrade private EC2 with source contract and verify S3 backup",
+      "done_when": "c2d8db16b10a2fadstage/active17routes;S3backup39members;rollbackpreflight;Ginderunchanged;publicrouteunchanged",
+      "evidence": "evidence/ec2-upgrade.json",
+      "dependencies": [
+        "T62"
+      ]
+    },
+    {
+      "id": "T66",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Resolve local Neo4j engine startup before claiming Cypher experiment",
+      "done_when": "Neo4j5.26.32 actual engine:16payloads/39nodes/68edges;4CypherqueriesmatchSQL;UNIQUErejectsduplicate;isolatedinternalnetworkcleaned;productionunchanged",
+      "evidence": "docs/neo4j-engine-experiment.md",
+      "dependencies": [
+        "T63"
+      ]
+    },
+    {
+      "id": "T67",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Audit every source locator and normalization; fix EPPO empty-year HTTP filtering",
+      "done_when": "41223directcell/provenancechecks pass;PDF101reextracted;7SQLiteintegrity/FK/sourcehash checks;corporatenormalizationlossless101/97;emptyyearreturns3012;105tests pass",
+      "evidence": "docs/source-normalization-audit-2026-10-27.md",
+      "dependencies": [
+        "T62",
+        "T63"
+      ]
+    },
+    {
+      "id": "T68",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Migrate private EC2 API to typed MySQL runtime with read-only grants and rollback",
+      "done_when": "EC2 MySQL8.4 private volume; typed counts verified;27 API parity;17 staging/active routes;S3 IAM preserved;109tests;oldSQLite rollback retained",
+      "evidence": "docs/mysql-runtime-migration.md",
+      "dependencies": [
+        "T67"
+      ]
+    },
+    {
+      "id": "T69",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Restore actual S3 MySQL backup into isolated DB and verify logical/API parity",
+      "done_when": "S3 checksum matches;five restored schemas logical fingerprint equals live;27 API cases pass without source files;production unchanged",
+      "evidence": "evidence/mysql-restore-drill.json",
+      "dependencies": [
+        "T68"
+      ]
+    },
+    {
+      "id": "T70",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Temporary HTTPS preview with password protection on every route",
+      "done_when": "External unauth/wrong credentials401;authenticated200;no Caddy/SG/MySQL public port change;private credential file;114tests",
+      "evidence": "docs/HTTPS_TEST_TH.md",
+      "dependencies": [
+        "T68"
+      ]
+    },
+    {
+      "id": "T71",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Deploy stable Vercel frontend with authenticated same-origin API proxy",
+      "done_when": "tamsoodbase.vercel.app live;27 production API parity cases;unauth401;private source-only upload;no Git push;backend tunnel limitation documented",
+      "evidence": "docs/VERCEL_LIVE_TH.md",
+      "dependencies": [
+        "T70"
+      ]
+    },
+    {
+      "id": "T72",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Remove browser login on explicit user request; keep upstream credentials server-only",
+      "done_when": "Vercel reads without browser Authorization;server env credential never bundled;export streams without login redirect;upstream/private DB unchanged;rights status not reclassified",
+      "evidence": "docs/VERCEL_LIVE_TH.md",
+      "dependencies": [
+        "T71"
+      ]
+    },
+    {
+      "id": "T73",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Compare twelve new historical NSO quantities to DEDE PDF",
+      "done_when": "12newcells match;PDFvisual/context/Decimal/total checks;coverage27/273;rawprivate;sourceunchanged",
+      "evidence": "docs/cross-source-progress-2026-10-28.md",
+      "dependencies": [
+        "T30"
+      ]
+    },
+    {
+      "id": "T74",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Review all NSO identities, add100DEDE and18DOEB comparisons, flag4 source divergences",
+      "done_when": "273rowreviewledger;145compared;128explicitgaps;no incorrect acceptance of4divergences;121tests;originalNSOhashunchanged",
+      "evidence": "docs/source-review-2026-10-28.md",
+      "dependencies": [
+        "T73"
+      ]
+    },
+    {
+      "id": "T75",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Refresh detailed SRS0.2 and rendered review PDF to actual deployed architecture",
+      "done_when": "19pages rendered and visually reviewed;stale runtime/Neo4j/restore/coverage statements corrected;source/API/usecase acceptance expanded;no team approval fabricated;slides unchanged",
+      "evidence": "evidence/srs-current-review.json",
+      "dependencies": [
+        "T55",
+        "T74"
+      ]
+    },
+    {
+      "id": "T76",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Compare2024primarysupply14cells with context and precision guards",
+      "done_when": "13exact/1roundingcompatible;coverage159/273;114remain;124tests;SRS0.3PDF19pagesupdated;no source corrections or production change",
+      "evidence": "docs/primary-supply-2024-review.md",
+      "dependencies": [
+        "T74"
+      ]
+    },
+    {
+      "id": "T77",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Audit remaining annual2024imports and derived percentages without guessing publisher anomalies",
+      "done_when": "10newexactcomparisons;23publisher-yearholds/2dashholds;18derivedchecks;coverage169/273;127tests;SRS0.4PDF19pages;sourcevaluesunchanged",
+      "evidence": "docs/source-completion-review.md",
+      "dependencies": [
+        "T76"
+      ]
+    },
+    {
+      "id": "T78",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Align final presentation with SRS0.4 and deployed MySQL/Vercel state",
+      "done_when": "10slidePDF rendered/visually reviewed;editablePPTX textchecked;obsolete15/273 and no-publicHTTPS removed;Neo4j/QuickTunnel limitations explicit;no nativePowerPointvisualclaim",
+      "evidence": "evidence/final-document-draft.json",
+      "dependencies": [
+        "T77"
+      ]
+    },
+    {
+      "id": "T79",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Improve demo navigation and distinguish publication websites from extraction CSV evidence",
+      "done_when": "NSO/EPPO/DMF website+CSV links;NSOlocatorpreview;5stepdemo/focus/example;128tests;livefrontendhashmatch;browservisualunavailableexplicit",
+      "evidence": "evidence/demo-evidence-ux.json",
+      "dependencies": [
+        "T78"
+      ]
+    },
+    {
+      "id": "T80",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Replace rejected demo-heavy UX with a simple topic-first catalog",
+      "done_when": "5cards/NSOfirst;duplicateentry/demooverlayremoved;DMFmetricsscoped;rowpreviewcollapsed;128tests/liveassetparity/NSO273;visualnotclaimed",
+      "evidence": "evidence/catalog-simplification.json",
+      "dependencies": [
+        "T79"
+      ]
+    },
+    {
+      "id": "T81",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Validate per-process reference basis and distinguish study FU from imported foreground boundary",
+      "done_when": "16saved/liveexchangesverified;processbasis/source/year/boundaryguards;133tests;studyFU1000MJsourceconfirmed;frontenddeployed;backendcodepreparednotmigrated;nofullLCIclaim",
+      "evidence": "evidence/inventory-scope-review.json",
+      "dependencies": [
+        "T80"
+      ]
+    },
+    {
+      "id": "T82",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Build source-local flow registry and explicit model-readiness profiles for FAME/H-FAME",
+      "done_when": "16exchanges/15flows/2profiles;1providerCANDIDATEonly;0appliedlinks;136tests;upstreamTables1-3candidatewithaccesslimitdocumented;noobservationcountinflation",
+      "evidence": "evidence/inventory-model-review.json",
+      "dependencies": [
+        "T81"
+      ]
+    },
+    {
+      "id": "T83",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Acquire official publisher PDF and verify upstreamTables1-3 in isolated candidate database",
+      "done_when": "42cells/41unitpresent/1HOLD;2extractors+visual;SQLite42roundtrip+FKnegativechecks;3providercandidates0applied;140tests;productionunchanged",
+      "evidence": "docs/upstream-inventory-review.md",
+      "dependencies": [
+        "T82"
+      ]
+    },
+    {
+      "id": "T84",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Publish reviewed CC BY upstream snapshot with isolated candidate UI and pre/post-deploy browser checks",
+      "done_when": "42livefieldsidentical/1hold;143tests;27APIparity;browserlocal390px+production3processes/filter/detail;attribution/noRawPDF/noPrivateData;0appliedproviderlinks",
+      "evidence": "evidence/upstream-web-release.json",
+      "dependencies": [
+        "T83"
+      ]
+    },
+    {
+      "id": "T85",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Verify reported allocation shares and publish process readiness with tested reviewJSON export",
+      "done_when": "CPO92/6/2andFAME70/30sourcecheckednotapplied;3readinessprofiles;146tests;browserCPO12local/FFB18productionJSONroundtrip;all42livefields/profilesmatch;original16unchanged",
+      "evidence": "docs/allocation-and-review-export.md",
+      "dependencies": [
+        "T84"
+      ]
+    },
+    {
+      "id": "T86",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Unify lossless five-process source review and reconcile remaining primary/secondary gates",
+      "done_when": "58fullpayloadroundtrip/51exactlabelunitkeys/5profiles/1HOLD;148tests;noallocation/providerapplication/productionmigration;remaininggatesexplicit",
+      "evidence": "docs/remaining-work-2026-10-30.md",
+      "dependencies": [
+        "T85"
+      ]
+    },
+    {
+      "id": "T87",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Audit release candidate source/build/document consistency and track all twelve expert critique gates",
+      "done_when": "22localchecks;staleasset/context/stalePDFnegativecases;recordeddeploymentnotliveattestation;154tests;noProductionChange",
+      "evidence": "docs/expert-review-action-plan.md",
+      "dependencies": [
+        "T86"
+      ]
+    },
+    {
+      "id": "T88",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Create five-process boundary coverage and separate source/context/model quality statuses",
+      "done_when": "58observationIDs/1HOLDpreserved;provideridentityandnoapplyguards;5profiles/modelreadyfalse/scoreNULL;154tests;localartifactnotfullLCI",
+      "evidence": "evidence/boundary-coverage.json",
+      "dependencies": [
+        "T87"
+      ]
+    },
+    {
+      "id": "T89",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Publish source/context/model/rights quality profiles with snapshot-bound exports and clear evidence details",
+      "done_when": "42rowsunchanged/1HOLD;155tests;localCPO12+productionFFB19browserdownloadallfields/version;mobile/Escape/modalverified;API27routes;SRS0.6PDFstalenessreportednotconcealed",
+      "evidence": "docs/quality-contract-web-review.md",
+      "dependencies": [
+        "T88"
+      ]
+    },
+    {
+      "id": "T90",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Bound Vercel streaming exports and correct HEAD/error handling without widening access",
+      "done_when": "32MiBexport/4MiBbuffer/HEADnobody/idempotenterrors;negativebehaviorchecks;production27routespassed;noEC2/SGchange",
+      "evidence": "evidence/current-frontend-release.json",
+      "dependencies": [
+        "T89"
+      ]
+    },
+    {
+      "id": "T91",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Synchronize SRS0.6 PDF from frozen source after detecting stale0.5 render without overwriting Markdown",
+      "done_when": "21pagesrendered/contactsheet+referencepagechecked;sourcehashguardbeforepromote;oldPDFretained;release24checkspass;teamreviewpending",
+      "evidence": "evidence/srs-current-review.json",
+      "dependencies": [
+        "T89"
+      ]
+    },
+    {
+      "id": "T92",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Review newly found official NRCT palm policy brief for allocation/feedstock evidence without importing incompatible yields",
+      "done_when": "20pagePDFhashretainedprivate/page9visual;policybriefnotcalculationreport;yielddifferentcontextnotused;0newobservations/allocationgateopen",
+      "evidence": "evidence/nrct-policy-review.json",
+      "dependencies": [
+        "T88"
+      ]
+    },
+    {
+      "id": "T93",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Implement immutable versioned five-process inventory review with numeric parsing audit and rollback guards",
+      "done_when": "58sourcepayloadroundtrip/5sealedversions/58parseaudits;typedpayload/process/versionmutation rejected;raw0.08a preserved;161tests;localcandidate only/MySQLmigrationnotclaimed",
+      "evidence": "docs/versioned-inventory-design.md",
+      "dependencies": [
+        "T92"
+      ]
+    },
+    {
+      "id": "T94",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Complete conversion quality and filtered review exports and check back against all twelve critiques",
+      "done_when": "FAME10local/H-FAME6production nativeJSONallfieldsmatch;raw/stored/footnoteUI;mobile390page375;live4assetsmatch;25releasechecks;12critiquegatesreportedhonestly",
+      "evidence": "docs/expert-review-checkback.md",
+      "dependencies": [
+        "T93"
+      ]
+    },
+    {
+      "id": "T95",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Verify versioned review schema in owned MySQL8.4 temporary schema with exact source parity and negative guards",
+      "done_when": "58payload/typedjoins/5sealed/1HOLD;8expectedERROR1644cases;lateFK1452rollback59to58;tempownedDBremoved/containerIDsunchanged/APIready;notproductionmigration",
+      "evidence": "evidence/versioned-mysql.json",
+      "dependencies": [
+        "T94"
+      ]
+    },
+    {
+      "id": "T96",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Add plain-language glossary, source-backed filter choices and explanatory illustrations after MySQL verification",
+      "done_when": "29terms/5choiceviews/typingretained;163tests/27liveAPIroutes/4assetmatches;browserThaiacronym/catalog/NSOdiesel;mobile390page375;noobservationchanges",
+      "evidence": "evidence/guided-discovery-ux.json",
+      "dependencies": [
+        "T95"
+      ]
+    },
+    {
+      "id": "T97",
+      "priority": "P0",
+      "status": "IN_PROGRESS",
+      "title": "Build evidence-backed FAME lifecycle across all five stages",
+      "done_when": "Compatible transport/use/treatment inventory; allocation/scaling/provider/background gates verified; no missing-as-zero or double counting; source/scenario classes explicit;Thai-only activity/provider provenance, no foreign surrogates",
+      "evidence": "evidence/lifecycle-candidate.json",
+      "dependencies": [
+        "T96"
+      ]
+    },
+    {
+      "id": "T98",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Verify Thai biodiesel TGO factor and implement scoped CO2e screening arithmetic",
+      "done_when": "Actualrow307/hash/version/ThaiNationalLCIorigin;decimalmath+unit/provenanceguards;3newtests+4lifecyclepass;notfullLCI/CFP/actualmeasurement",
+      "evidence": "docs/thai-only-carbon-method.md",
+      "dependencies": [
+        "T97"
+      ]
+    },
+    {
+      "id": "T99",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Audit Thai lifecycle/source factor contracts before further development",
+      "done_when": "173tests/25releasechecks/27liveAPIparity;7factorcellsboundtoHTML;unknown/omittedstageIDsblocked;strictThaioriginuncertaintyvisible;decimalroundingguard",
+      "evidence": "evidence/thai-lifecycle-system-review.json",
+      "dependencies": [
+        "T98"
+      ]
+    },
+    {
+      "id": "T100",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Review Thai use-phase emissions and qualitative treatment scenarios as separate 2013 candidate",
+      "done_when": "4gasamountunit/litre+4treatmentrelationships verified2extractors/hash;fossilsubsetnotadded;3newtests;rights/measurementyear/PMsize/gasmissing/linkgatesexplicit",
+      "evidence": "docs/thai-use-treatment-review.md",
+      "dependencies": [
+        "T99"
+      ]
+    },
+    {
+      "id": "T101",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Verify Thai full-scale POME treatment candidate and close WTW benchmark snapshot/visual gap",
+      "done_when": "LocalPDFhash+2extractors+visual/Table2all20cells+2generationratios;3benchmarkvalues/sum;3tests;noCH4generation-as-emission/netcredit/fullLCIclaim",
+      "evidence": "docs/thai-pome-benchmark-review.md",
+      "dependencies": [
+        "T100"
+      ]
+    },
+    {
+      "id": "T102",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Align source acquisition to Petroleum Natural Gas and Fuels with source-bound factor review",
+      "done_when": "16retainedfactorrows/hash/version/processfamily;3importmixhold;LPGidentity/CO2productrole/unitguards;3tests;newGSP/refinerysourcescreened",
+      "evidence": "docs/domain-source-review-2026-11-04.md",
+      "dependencies": [
+        "T101"
+      ]
+    },
+    {
+      "id": "T103",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Acquire Thai GSP full scanned thesis chapters and review gas-separation inventory",
+      "done_when": "PublicDOIredirect/downloadfileshash;manualvisual42cells/3tablesrawunits;1dashhold/CO2precision/capacityconflicts;3newtests/9relatedpass;noOCR/fullLCIclaim",
+      "evidence": "docs/thai-gsp-source-review.md",
+      "dependencies": [
+        "T102"
+      ]
+    },
+    {
+      "id": "T104",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Close lifecycle false-readiness loopholes and record bounded Thai transport source review",
+      "done_when": "14targetedtests/candidate52preserved;requireddecisions/HOLD/unit/hash/gateevidenceguards;sourcefailuresandnew2025candidateexplicit;notfullLCI",
+      "evidence": "docs/lifecycle-readiness-review-2026-11-04.md",
+      "dependencies": [
+        "T103"
+      ]
+    },
+    {
+      "id": "T105",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Acquire open Thai six-mill CPO foreground alternative after signup blocker",
+      "done_when": "Publisher13pagePDFhash/visualTableS2/all90cells2extractors/6plantsandbasis/JSONroundtrip/3newtests6relatedpass;foreignbackgroundandsystemexpansionseparate;no2020merge",
+      "evidence": "docs/thai-mill-alternative-2019.md",
+      "dependencies": [
+        "T104"
+      ]
+    },
+    {
+      "id": "T106",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Review six-mill quantity basis and implement auditable single-mill activity scaling",
+      "done_when": "All6mills15rowsreference/fractionalscaleconservation,sourcepayloadretention,basis/hashguards,noCO2e/credit;3newtests15relatedpass;newsourcefailuresrecorded",
+      "evidence": "docs/thai-mill-scaling.md",
+      "dependencies": [
+        "T105"
+      ]
+    },
+    {
+      "id": "T107",
+      "priority": "P0",
+      "status": "IN_PROGRESS",
+      "title": "Complete ordered Thai FAME case: selection physical chain allocation transport use treatment and background",
+      "done_when": "All7phasegates closed by compatible evidence; 2026-11-05 six source-bound decisions remain blocked; see docs/fame-gate-closure-review.md, no allocation double-application or litre/MJ guess",
+      "evidence": "docs/thai-fame-completion-plan.md",
+      "dependencies": [
+        "T106"
+      ]
+    },
+    {
+      "id": "T108",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Implement expert-review engineering: immutable activity model store and rights-aware B100 case UX",
+      "done_when": "Sealed6runs/330results/130sources;source membership FK and rollback;public projection excludes restricted inventory;208tests plus14post-link checks;desktop/mobile browser;12file source package,not deployed;scientific T107 stays open",
+      "evidence": "docs/expert-review-implementation-2026-11-05.md",
+      "dependencies": [
+        "T106"
+      ],
+      "review_followup": "2026-11-05 system review identified 4 remaining local-validator/schema boundary defects; see docs/system-expert-review-2026-11-05.md R02-R05. Scoped implementation completion does not close these findings."
+    },
+    {
+      "id": "T109",
+      "priority": "P0",
+      "status": "IN_PROGRESS",
+      "title": "Apply all15 system-review findings with checked local/live delivery and explicit scientific external gates",
+      "done_when": "Close R01-R15 by evidence in docs/review-implementation-2026-11-05.md; technical fixes deployed/tested, scientific/provider/independent-review/stable-endpoint gates remain open",
+      "evidence": "docs/review-implementation-2026-11-05.md",
+      "dependencies": [
+        "T108"
+      ]
+    },
+    {
+      "id": "T110",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Make fuel statistics approachable with labelled emoji topics and honest filter summaries",
+      "done_when": "13 targeted tests, desktop/mobile browser checks, cleanroom32release checks and live asset hashes pass; no source quantities changed",
+      "evidence": "evidence/friendly-statistics-ux.json",
+      "dependencies": [
+        "T109"
+      ]
+    },
+    {
+      "id": "T111",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Add finite motion and action feedback with reduced-motion guards",
+      "done_when": "13 frontend tests + motion guard tests, cleanroom and live asset hashes passed; browser visual QA unavailable explicitly recorded",
+      "evidence": "evidence/motion-ux.json",
+      "dependencies": [
+        "T110"
+      ]
+    },
+    {
+      "id": "T112",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Build illustrated scroll-driven fuel story with linked evidence sections",
+      "done_when": "Five original SVG scenes, natural scroll and numbered navigation, mobile no-overflow/reduced-motion/live browser passed; 13frontend tests plus2behavior suites; explicit conceptual boundary",
+      "evidence": "evidence/fuel-story-ux.json",
+      "dependencies": [
+        "T110"
+      ]
+    },
+    {
+      "id": "T113",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Improve Thai typography, data-map clarity and scroll-linked scene motion",
+      "done_when": "Licensed Thai font loaded;4text contrast samples>6:1;320/390nooverlap/overflow;local/live browser,13tests+2node suites,cleanroom and live hashes pass",
+      "evidence": "evidence/story-readability-ux.json",
+      "dependencies": [
+        "T112"
+      ]
+    },
+    {
+      "id": "T114",
+      "priority": "P0",
+      "status": "IN_PROGRESS",
+      "title": "Apply all15 November6 expert review actions with external evidence gates",
+      "done_when": "Technical scoped work T115-T117 delivered; scientific compatibility/allocation/elementary, permanent endpoint and real human review remain explicitly open",
+      "evidence": "docs/review-implementation-2026-11-06.md",
+      "dependencies": [
+        "T113"
+      ]
+    },
+    {
+      "id": "T115",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Deliver route focus, shareable NSO filters, guarded comparison, mobile hierarchy and lossless API transport",
+      "done_when": "226 full tests+15 final targeted, local/live browser, automated3page a11y,273rowallfield hydration,17file/14assetcleanroom and live hashes passed",
+      "evidence": "evidence/review-implementation-2026-11-06.json",
+      "dependencies": [
+        "T113"
+      ]
+    },
+    {
+      "id": "T116",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Implement isolated decimal SQL query projection and local release workflow contract",
+      "done_when": "460rows MySQL8.4.13 exact roundtrip/order/negative3819;453eligible7excluded;workflow roles/stale revision/audit/rights/scientific rejection tests;no production migration",
+      "evidence": "docs/review-workflow-and-decimal-projection.md",
+      "dependencies": [
+        "T109"
+      ]
+    },
+    {
+      "id": "T117",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Refresh private5schema S3 backup, owned local restore drill and read-only operational readiness command",
+      "done_when": "Owner verified;AES256/backuphash,complete ordered logical rows56,887,016bytes restored/live equal;freshnessCLI reports stable endpoint open;no service or other project changed",
+      "evidence": "evidence/mysql-restore-2026-11-06.json",
+      "dependencies": [
+        "T109"
+      ]
+    },
+    {
+      "id": "T118",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Research Thai B100 fuel properties and implement explicitly conditional1000MJ fuel-basis scenario",
+      "done_when": "NewPNU2021PDF9selectedcells twoextractors+visual/hash;conditionalLHVdenominatorassumption3tests;baseline/fullLCI unchanged and rightsprivate;noMTECapprovalwait",
+      "evidence": "docs/research-decisions-2026-11-06.md",
+      "dependencies": [
+        "T114"
+      ]
+    },
+    {
+      "id": "T119",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Run explicit Thai fuel-basis and truck-distance/loading sensitivity without changing baseline",
+      "done_when": "2fuelbasis screens+9hypotheticalfreight combinations,4reviewedsource rows preserved,km/tkm and stationary/road guards;7tests;noautosum/fullLCIclaim orproductionchange",
+      "evidence": "docs/fuel-and-transport-sensitivity-2026-11-06.md",
+      "dependencies": [
+        "T118"
+      ]
+    },
+    {
+      "id": "T120",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Screen new Thai Lamthap wastewater monitoring candidate and quarantine unverified values",
+      "done_when": "Scoped screening complete;issuance history identifies laterV4Jan15 and calculation/verificationdocs;rawHTMLnotPDF and6issues held;no numeric inventory promotion. RevisedPDF/fielddiff remain open.",
+      "evidence": "docs/thai-lamthap-candidate-review.md",
+      "dependencies": [
+        "T119"
+      ]
+    },
+    {
+      "id": "T121",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Check Thai Lamthap RSPO denominator scope and preserve unresolved source arithmetic",
+      "done_when": "Located2015audit/2014data;identified certifiedsubset versus wholemill and crossyear mismatch;reproducible Decimaldiagnostic retains source ratios and blocks normalization;raw403/visualmissing explicit;noinventoryimport",
+      "evidence": "evidence/thai-lamthap-denominator-review.json",
+      "dependencies": [
+        "T120"
+      ]
+    },
+    {
+      "id": "T122",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Search Thai full-chain fuel examples and select demonstration versus inventory candidates",
+      "done_when": "10case screening;2newactualPDF/hash/scope2parsers+visual;Thaiethanolprimarypublisherfullchains located,accesspending;nofalsecompleteLCI/noimport",
+      "evidence": "docs/thai-fullchain-example-search.md",
+      "dependencies": [
+        "T121"
+      ]
+    },
+    {
+      "id": "T123",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Review user-provided Thai2008ethanol fulltexts and prepare evidence-based fullchain study demo",
+      "done_when": "2PDFhash/pageverified;scopefiguresvisual;3transportrowsallfield2parsers+visual;molasseswaste/allocationverified;sourceacidificationissuepreserved;demooutline/noLCIoverclaim/noimport",
+      "evidence": "docs/thai-ethanol-2008-demo.md",
+      "dependencies": [
+        "T122"
+      ]
+    },
+    {
+      "id": "T124",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Audit both ethanol books end-to-end and implement tested same-study partial foreground basis",
+      "done_when": "Bothbooks gapmapped;Figure1visual;equal-distanceE10/cane/co-products scaling3tests;allocationnotphysicalcut;12stagegaps/nullCO2preserved;identifiedcompanionTable7LCI/fulltextpending",
+      "evidence": "docs/ethanol-demo-completion.md",
+      "dependencies": [
+        "T123"
+      ]
+    },
+    {
+      "id": "T125",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Build guarded gas-to-CO2e calculator and replay source pond component with explicit partial scope",
+      "done_when": "7targetedtests;kg/gBODconversion/historyGWP provenance;1870.44gCO2e/Lreplays1870sourceinteger within0.5;noGWPdouble/mixedbasis/duplicatecoverage;wholeCFPnull/no productionchange",
+      "evidence": "docs/ethanol-carbon-calculator.md",
+      "dependencies": [
+        "T124"
+      ]
+    },
+    {
+      "id": "T126",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Complete available historical stage-contribution transcription and hierarchy/rounding audit",
+      "done_when": "34selectedcellsvisual/raster-onlylabeled;allsubgroupsmatch;parent+creditdisplayroundingpasses;percent2006issueheld;privateCSV;3newtests;nocrossboundaryjoin/fullLCIclaim",
+      "evidence": "docs/ethanol-reported-stage-review.md",
+      "dependencies": [
+        "T125"
+      ]
+    },
+    {
+      "id": "T127",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Research Thai upstream LCI alternative and audit actual SIIT2025 quantitative inventory",
+      "done_when": "15pagePDF/hashactual;all18Table8quantities2parsers+visual;6scope/factor/allocationissuesheld;alternatecaseclearlyseparate/no2008join/noproductionimport",
+      "evidence": "docs/thai-ethanol-siit-2025-review.md",
+      "dependencies": [
+        "T126"
+      ]
+    },
+    {
+      "id": "T128",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Acquire official Thai ethanol waste/use reports and audit full selected survey quantity columns",
+      "done_when": "TwoactualPDFs/hashmanifests;26Table2quantitycells2parsers+visual;24ranges/2dash;DecimalperLbasis;parentchild/CO2notair/unknownyearguards;usephaseencodingheld;no2008join/productionchange",
+      "evidence": "docs/dede-ethanol-survey-review.md",
+      "dependencies": [
+        "T127"
+      ]
+    },
+    {
+      "id": "T129",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Select verifiable Thai ethanol foreground and audit every Figure6 flow and mass boundary",
+      "done_when": "11arrows2parsers+visualunits/routes;5Decimalbalanceswithinprintedrounding;internalrecycleexcluded;new2022actualPDF/scopeheld;noairCO2/fullchain/independentmeasurementclaim",
+      "evidence": "docs/verified-thai-ethanol-example.md",
+      "dependencies": [
+        "T128"
+      ]
+    },
+    {
+      "id": "T130",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Find missing use-phase evidence and verify Thai measured gasohol/E20 tailpipe subset",
+      "done_when": "Actual10pPDFhash;12selectednumericcells2parsers+visual;6conditions/units/samplecontext;10kmDecimalexamples;missingpartscompatibilitymatrix;noautomaticplantjoin/fossilCO2/fullGHGclaim",
+      "evidence": "docs/ethanol-missing-parts-review.md",
+      "dependencies": [
+        "T129"
+      ]
+    },
+    {
+      "id": "T131",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Support secondary-data scenario bridges with primary methodological evidence and correct overly strict same-plant gate",
+      "done_when": "GHGProduct8.3.6/7/10actualwebPDF;2IPCCactualPDFhashes;5bridge decisions/requiredinputs;Thai-onlydataretained;nomethodasplantproof/defaultforeignEF/fulltotalclaim",
+      "evidence": "docs/ethanol-proxy-method-support.md",
+      "dependencies": [
+        "T130"
+      ]
+    },
+    {
+      "id": "T132",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Implement explicit Thai ethanol secondary energy and two-leg freight scenarios with tested unit guards",
+      "done_when": "3distancecases/2legs/1Lbasis;sourcehashchecked;Decimalenergyinterval;4targetedtests;no75percentdoubledivision/noautomaticGHGsum;DQIandunknownsdocumented",
+      "evidence": "docs/ethanol-proxy-scenario.md",
+      "dependencies": [
+        "T131"
+      ]
+    },
+    {
+      "id": "T133",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Benchmark ethanol energy and transport assumptions against Thai study evidence",
+      "done_when": "Two downloaded PDFs with hashes and page checks, energy range comparison and interview-based round-trip diesel sensitivity with assumptions",
+      "evidence": "docs/ethanol-assumption-validation.md",
+      "dependencies": [
+        "T132"
+      ]
+    },
+    {
+      "id": "T134",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Document operating Thai ethanol wastewater benchmark and distinguish appraisal from results",
+      "done_when": "Two World Bank reports checked and normalized vinasse quantities tied to the appraisal period; actual power and missing methane inputs recorded separately",
+      "evidence": "docs/ethanol-tsm-wastewater.md",
+      "dependencies": [
+        "T133"
+      ]
+    },
+    {
+      "id": "T135",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Trace TSM waste haul, steam supply and monitoring evidence",
+      "done_when": "Evidence-backed haul activity estimate and explicit matched-period data requirements with CDM estimate kept separate",
+      "evidence": "docs/ethanol-tsm-wastewater.md",
+      "dependencies": [
+        "T134"
+      ]
+    },
+    {
+      "id": "T136",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Verify Thai vinasse treatment experiment as a separate technology benchmark",
+      "done_when": "Record laboratory conditions and derive cumulative COD removal on shared influent basis; methane conversion and capture remain separate",
+      "evidence": "docs/ethanol-tsm-wastewater.md",
+      "dependencies": [
+        "T135"
+      ]
+    },
+    {
+      "id": "T137",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Bind ethanol calculations to pinned observations and ship local metadata and API safeguards",
+      "done_when": "Mass and energy lineage regressions pass; local case deep links and bounded export verified",
+      "evidence": "docs/review-implementation-2026-11-07.md",
+      "dependencies": [
+        "T136"
+      ]
+    },
+    {
+      "id": "T138",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Verify isolated ethanol replay, internal release registry and proxy cancellation",
+      "done_when": "Byte-identical replay, four immutable case drafts, cleanroom asset verification and deadline/disconnect checks",
+      "evidence": "docs/review-implementation-2026-11-07.md",
+      "dependencies": [
+        "T137"
+      ]
+    },
+    {
+      "id": "T139",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Audit the integrated Thai sugarcane-to-ethanol reference flows and methane factor without joining it to TSM",
+      "done_when": "Hash and visual/Table1-2 locators verified; 5 reported internal balances reconcile; per-liter process ratios are labeled derived; BOD magnitude is held; 2008 default CH4/BOD factor is traced but not called measured or applied to TSM; 2014 combined factor remains unreconciled; rights and production boundary stay explicit",
+      "evidence": "docs/ethanol-whole-cycle-reference.md",
+      "dependencies": [
+        "T138"
+      ]
     }
   ],
-  "automation_status": "ACTIVE",
-  "automation_note": "เปิดรอบปรับปรุงต่อทุกชั่วโมงในแชตนี้ รหัส tamsoodbase ตามแผน competition-improvement-plan.md; งาน local ต้องเปิดเครื่องและแอปไว้"
+  "automation_status": "DELETED",
+  "automation_note": "หยุดและลบheartbeatรายชั่วโมงหลังหลายรอบไม่มีงานอิสระใหม่;งานยังไม่complete ข้อค้าง104comparisons/หลักฐานทีม/finalreviewคงเดิม รอหลักฐานหรือคำสั่งใหม่ ไม่วนตรวจชุดเดิม"
 }

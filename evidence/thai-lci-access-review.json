@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-04",
+  "method": "LIVE_BROWSER_VISIBLE_UI",
+  "portal": "https://thainationallci.nstda.or.th/our-services",
+  "dataset_title": "รถกระบะบรรทุก 10 ล้อ Fill Load 16 ตัน วิ่งแบบปกติ 100% Loading 2009",
+  "working_group": "WG5 Infrastructure & Transportation",
+  "reference_unit": "tkm",
+  "geography": "Thailand",
+  "reported_fuel": "B5",
+  "data_collection_period_BE": "2549-2551",
+  "published_update_year": 2009,
+  "LCA_type": "Attributional LCA",
+  "files_visible": [
+    "Documentation_truck.pdf",
+    "Operation_truck_pick_up_type_10_wheels_biodiesel_fuel_B5_max_pay_load_16t_100_loading_normal_driving.XLSX",
+    "Operation_truck_pick_up_type_10_wheels_biodiesel_fuel_B5_max_pay_load_16t_100_loading_normal_driving.CSV"
+  ],
+  "file_downloaded": false,
+  "rights_status": "NOT_REVIEWED",
+  "access_status": "SIGNIN_UI_OPEN_USER_OFFERED_TO_LOGIN",
+  "suitability": "Potential road freight provider; generic pickup-type body not confirmed tanker; B5 not B100; no application to FAME yet",
+  "scientific_review_pending": [
+    "all exchange values and units",
+    "documentation/system boundary",
+    "loading and empty return assumptions",
+    "fuel upstream origin",
+    "compatibility with selected route and period",
+    "use and redistribution terms"
+  ],
+  "other_source": {
+    "doi": "10.1016/j.spc.2025.04.023",
+    "browser_status": "ARE_YOU_A_ROBOT_HUMAN_HANDOFF",
+    "requested_files": [
+      "Supplementary material PDF",
+      "Supplementary tables spreadsheet"
+    ],
+    "source_inventory_tables": "Publisher indexed text points to Tables S1-S220; files not obtained"
+  },
+  "production_changed": false,
+  "new_numerical_inventory_imports": 0,
+  "signup_diagnostic": {
+    "method": "LIVE_BROWSER_ORIGINAL_AND_SEPARATE_FRESH_TAB",
+    "country_options": "PLACEHOLDER_ONLY",
+    "province_options": "PLACEHOLDER_ONLY",
+    "select_disabled": false,
+    "fresh_tab_api_errors": [
+      500,
+      500
+    ],
+    "exact_failing_endpoint": "NOT_CAPTURED",
+    "conclusion": "Likely site backend/reference-data loading failure; exact endpoint/root cause not established",
+    "original_user_form_reloaded": false,
+    "registration_submitted": false,
+    "contact_page": "https://thainationallci.nstda.or.th/contact-us",
+    "files_still_not_downloaded": true
+  }
+}

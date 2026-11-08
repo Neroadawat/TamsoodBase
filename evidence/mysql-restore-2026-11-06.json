@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-06",
+  "passed": true,
+  "scope": "FRESH_S3_LOGICAL_BACKUP_RESTORED_TO_OWNED_LOCAL_ENGINE",
+  "schemas": 5,
+  "backup_sha256": "e2bc7009baed29ac4cab6b3b7b5e41b8e90a2e7fca200fe0316f4385f33fa4ee",
+  "backup_bytes": 5452333,
+  "all_ordered_logical_rows_sha256": "e0087e96cb3a1070acb253ee49d1db61c7cd8e4b197aab4c771ebeba06b646e1",
+  "logical_bytes": 56887016,
+  "live_and_restored_all_rows_equal": true,
+  "production_db_or_api_changed": false,
+  "ginder_caddy_or_security_groups_changed": false,
+  "private_raw_not_published": true,
+  "api_parity_rerun": false,
+  "limitation": "Logical data restore, not whole-EC2 disaster recovery or load testing"
+}

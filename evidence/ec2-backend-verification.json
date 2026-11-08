@@ -1,0 +1,91 @@
+{
+  "result": "passed",
+  "checks": [
+    {
+      "path": "/healthz",
+      "status": 200,
+      "bytes": 43
+    },
+    {
+      "path": "/readyz",
+      "status": 200,
+      "bytes": 15
+    },
+    {
+      "path": "/api/summary",
+      "status": 200,
+      "bytes": 60457
+    },
+    {
+      "path": "/api/records?product=production-oil&page=1",
+      "status": 200,
+      "bytes": 22918
+    },
+    {
+      "path": "/api/record?package=production-oil&line=2",
+      "status": 200,
+      "bytes": 1563
+    },
+    {
+      "path": "/api/reference",
+      "status": 200,
+      "bytes": 50469,
+      "accepted_reference": 97
+    },
+    {
+      "path": "/api/reference.csv",
+      "status": 200,
+      "bytes": 88660
+    },
+    {
+      "path": "/api/reports",
+      "status": 200,
+      "bytes": 109608
+    },
+    {
+      "path": "/api/nso",
+      "status": 200,
+      "bytes": 448586,
+      "rows": 273
+    },
+    {
+      "path": "/api/product-inventory",
+      "status": 200,
+      "bytes": 30426,
+      "rows": 16
+    },
+    {
+      "path": "/api/eppo?dataset=11_13&year=2024&q=SPRC",
+      "status": 200,
+      "bytes": 15580,
+      "filtered_rows": 12
+    },
+    {
+      "path": "/api/nso-comparison",
+      "status": 200,
+      "bytes": 2880
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 25970
+    }
+  ],
+  "running": true,
+  "health": "healthy",
+  "port_bindings": {
+    "8000/tcp": [
+      {
+        "HostIp": "127.0.0.1",
+        "HostPort": "8765"
+      }
+    ]
+  },
+  "readonly": true,
+  "user": "10001:10001",
+  "memory_limit": 402653184,
+  "release": "f2596ce38f984279",
+  "s3_connected": false,
+  "public_route_configured": false,
+  "mysql_migrated": false
+}

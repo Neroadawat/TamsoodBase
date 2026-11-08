@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-27",
+  "source_cards": 13,
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "client_width": 375,
+    "scroll_width": 375
+  },
+  "screenshot": "build/source-crosswalk-desktop.jpg",
+  "tests_passed": 104,
+  "docker_routes": 17,
+  "private_ec2_release": "c2d8db16b10a2fad",
+  "public_deployed": false,
+  "pdf_visual_review": "16 SRS pages and10 slide pages rendered;contact sheets and sample full pages inspected;team content review pending",
+  "pptx_validation": "Editable deck with10slides andnotes;PDF companion visually reviewed;nativePowerPointrendernotperformed"
+}

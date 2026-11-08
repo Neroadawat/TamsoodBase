@@ -1,0 +1,81 @@
+{
+  "reviewed_at": "2026-11-06",
+  "decision": "ALLOW_EXPLICIT_THAI_SECONDARY_DATA_SCENARIO_WITH_DQI_NOT_SAME_PLANT_MEASUREMENT_CLAIM",
+  "supersedes": "sameplantasanabsolutepreconditionforscenario;automaticjoiningstillforbidden",
+  "evidence": [
+    {
+      "source_url": "https://ghgprotocol.org/sites/default/files/standards/Product-Life-Cycle-Accounting-Reporting-Standard-EReader_041613_0.pdf",
+      "locator": "Sec8.3.6/PDF55/printed54;Sec8.3.7/Table8.1/PDF55-56;Sec8.3.10/PDF59-60",
+      "verified_by": "PUBLISHER_WEB_PDF_TEXT",
+      "local_download": "HTTP403_NO_LOCAL_HASH",
+      "supports": "secondaryprocessproxyanddocumentedgapestimateswithtimegeographytechnologycompletenessreliabilityassessment",
+      "does_not_support": "allcandidatevaluesarecompatibleorindependentlymeasured"
+    },
+    {
+      "source_url": "https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/2_Volume2/V2_3_Ch3_Mobile_Combustion.pdf",
+      "locator": "PDF17/printed3.17",
+      "sha256": "b0b7d96d5ac90ecf359cdb74e932448cfba041c6cec0e1dc24f2def444508c30",
+      "supports": "separatefossilandbiogeniccarbon;biofuelCH4N2Oandvehicletechnologyimportant",
+      "application_limit": "nationalinventorymethodnotautomaticproductLCAcertification"
+    },
+    {
+      "source_url": "https://www.ipcc-nggip.iges.or.jp/public/2006gl/pdf/5_Volume5/V5_6_Ch6_Wastewater.pdf",
+      "locator": "PDF20-21/printed6.20-6.21/Eq6.4-6.6",
+      "sha256": "20b27f4a6a1a9d142e8d6078f80ba9507436add3c5e84262f222e36920e863fe",
+      "supports": "CH4=sum((TOW-S)*EF-R);EF=Bo*MCF;CODbasis;recoverysubtraction",
+      "foreign_default_factors_adopted": false
+    }
+  ],
+  "scenario_bridge_decisions": [
+    {
+      "component": "DEDEplantmass",
+      "status": "SOURCE_VERIFIED_FOREGROUND",
+      "evidence": "evidence/dede-molasses-balance.json"
+    },
+    {
+      "component": "DEDEsurveyenergy",
+      "status": "ELIGIBLE_SECONDARY_RANGE_SCENARIO_NOT_SAMEPLANT_FACT",
+      "requires": [
+        "explicitproxyid",
+        "unknownmeasurementyear",
+        "rangeuncertainty",
+        "boilerfuelandsteamstatebeforeGHG"
+      ]
+    },
+    {
+      "component": "Thai2017gasoholuse",
+      "status": "ELIGIBLE_STANDALONE_USE_SCENARIO_NOT_YET_PERL_BRIDGED",
+      "requires": [
+        "L_per_km_matchedvehicleorfueleconomyassumption",
+        "gasohol91blendfractionverified",
+        "fossilbiogeniccarbonbasis",
+        "CH4N2O"
+      ]
+    },
+    {
+      "component": "transport",
+      "status": "THAI_FACTOR_AVAILABLE_DISTANCE_ASSUMPTION_REQUIRED",
+      "requires": [
+        "documentedscenariolegdistance",
+        "load",
+        "emptyreturn",
+        "nooverlapupstreamburden"
+      ]
+    },
+    {
+      "component": "waste",
+      "status": "METHOD_SUPPORTED_INPUTS_INCOMPLETE",
+      "requires": [
+        "CODbasisnotBODsubstitution",
+        "treatmentrouteandfraction",
+        "sludgeremovalCOD",
+        "recoveredCH4",
+        "leakageandcombustionscope"
+      ]
+    }
+  ],
+  "Thai_only_rule": "Thaiactivity/factorconstraintretained;internationalmethodreferencesarenotimportedforeignactivitydata",
+  "CO2e_total": null,
+  "full_lifecycle_lci": false,
+  "production_changed": false
+}

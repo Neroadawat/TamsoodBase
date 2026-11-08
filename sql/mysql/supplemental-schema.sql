@@ -43,5 +43,9 @@ CREATE TABLE IF NOT EXISTS inventory_exchange (
  FOREIGN KEY(snapshot_id,process_id) REFERENCES process(snapshot_id,process_id),
  CHECK(direction IN ('INPUT','OUTPUT')),
  CHECK(role IN ('INPUT','OUTPUT','REFERENCE_PRODUCT','CO_PRODUCT')),
+ CONSTRAINT ck_exchange_direction_role CHECK(
+  (direction='INPUT' AND role='INPUT') OR
+  (direction='OUTPUT' AND role IN ('OUTPUT','REFERENCE_PRODUCT','CO_PRODUCT'))
+ ),
  CHECK(source_row>0 AND source_column>0)
 ) ENGINE=InnoDB;

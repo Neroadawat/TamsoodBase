@@ -1,0 +1,89 @@
+{
+  "checked_date_local": "2026-10-27",
+  "authentication": "User-authorized HTTP Basic over HTTPS; credentials not stored",
+  "sources": [
+    {
+      "url": "https://akkhara.engr.tu.ac.th/cn230/project/final-process.html",
+      "sha256": "5608bacc0a355cf05963a9c9e6c404914f8bdb6fe41b558174053fc7256e0195",
+      "bytes": 15114,
+      "status": 200
+    },
+    {
+      "url": "https://akkhara.engr.tu.ac.th/cn230/project/knowledge-erd.html",
+      "sha256": "71bcf0f5e8e93dba9450e7abacf01a37a4ca7b68af3fed7a6f076869576d704b",
+      "bytes": 20860,
+      "status": 200
+    },
+    {
+      "url": "https://akkhara.engr.tu.ac.th/cn230/project/knowledge-lci.html",
+      "sha256": "f6b0cf07de286f7662724556542d05a048864dbc3425659580097027a7c310ac",
+      "bytes": 23741,
+      "status": 200
+    },
+    {
+      "url": "https://akkhara.engr.tu.ac.th/cn230/project/knowledge-memo.html",
+      "sha256": "03dd34cc2367df43001ab1f18e4b2bba71de9641e2d832ad60ab36575f4ca55c",
+      "bytes": 12775,
+      "status": 200
+    },
+    {
+      "url": "https://akkhara.engr.tu.ac.th/cn230/project/knowledge-neo4j.html",
+      "sha256": "9cc645c89828494893905195fb2bc19c360b7a0866d241d0ab43cfa5ba6c7610",
+      "bytes": 15692,
+      "status": 200
+    },
+    {
+      "url": "https://akkhara.engr.tu.ac.th/cn230/project/knowledge-srs.html",
+      "sha256": "bf7a2caf40ceea5ef23d694b2d787ade6c384dc691d1b6a6e3678d5086b86658",
+      "bytes": 15122,
+      "status": 200
+    },
+    {
+      "url": "https://akkhara.engr.tu.ac.th/cn230/project/knowledge-txn-index.html",
+      "sha256": "d231052921375d39ef2d283f1e8855e04eecfdefbddd4dced4e69531832694bc",
+      "bytes": 13286,
+      "status": 200
+    },
+    {
+      "url": "https://akkhara.engr.tu.ac.th/cn230/project/knowledge.html",
+      "sha256": "415e9115ddeb6c819aad5ba5297371e3332174f89dc9dbc1c81c727f21d09a78",
+      "bytes": 8006,
+      "status": 200
+    },
+    {
+      "url": "https://akkhara.engr.tu.ac.th/cn230/project/mission.html",
+      "sha256": "3d199b21a0ff4f87bfd502d6cb9cda63a5a3cd2906a9bdd6aac38e3bef38b1f8",
+      "bytes": 16317,
+      "status": 200
+    },
+    {
+      "url": "https://akkhara.engr.tu.ac.th/cn230/project/",
+      "sha256": "eaa07873dfb1c6de892e18698b2299b5207244a1935323f8b338322dc694e81e",
+      "bytes": 19158,
+      "status": 200
+    },
+    {
+      "url": "https://akkhara.engr.tu.ac.th/cn230/project/prepare.html",
+      "sha256": "1a00d3ea8e33045a8f1a95c110c724eafc75d0a762243a596d86903356461c6d",
+      "bytes": 14979,
+      "status": 200
+    },
+    {
+      "url": "https://akkhara.engr.tu.ac.th/cn230/project/timeline.html",
+      "sha256": "615abd717de6a4243f8b3564bf920f0b9b1ceb10ac6cdf83dc1d13000e138bb5",
+      "bytes": 11439,
+      "status": 200
+    }
+  ],
+  "raw_site_content_in_bundle": false,
+  "review": "docs/course-project-review-2026-10-27.md",
+  "unresolved": [
+    "Timeline Draft vs index confirmation",
+    "Closing times and M4 deadline",
+    "Teams vs Google Form main submission channel",
+    "Team section and actual consent/memo evidence"
+  ],
+  "status": "REVIEWED_WITH_CONFLICTS",
+  "technical_review": "docs/final-project-system-review.md",
+  "milestone_deliverable_authoring": "Deferred by explicit user instruction"
+}

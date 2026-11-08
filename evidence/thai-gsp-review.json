@@ -1,0 +1,43 @@
+{
+  "domain": "Petroleum, Natural Gas & Fuels",
+  "scope": "SCANNED_GSP_GATE_TO_GATE_REVIEW",
+  "source_hashes": {
+    "ch3": "883771f0dfdf54422eec4b9fe0380291659086d45fb01acb30ebcf5f275d9679",
+    "ch4": "71bb22d7f36bdeea32e29d7be92b5796ae09293c4c99aee096c460f2a4407e7d",
+    "back": "c04189619399c73c44d8989a27c1706a80ed92920776ab53ead9000136b9c251"
+  },
+  "transcription_sha256": "df53053205c6bb1cace4c3aab1b9db6b751fca9be12e31a6c5ff5cfadc75ba3f",
+  "review_method": "MANUAL_VISUAL_NOT_OCR_OR_INDEPENDENT_DOUBLE_REVIEW",
+  "source_issues": [
+    "GSP3 CO2 detailed6.26E+04 versus summary6.3E+04 kept separately",
+    "GSP3 EGAT dash is not automatically zero",
+    "Chapter3 GSP1 capacity390 versus Chapter4 capacity350 requires review",
+    "No OCR or independent double-extractor verification claimed"
+  ],
+  "comparison": {
+    "GSP3_CO2_detailed_mg": "62600",
+    "GSP3_CO2_summary_mg": "63000",
+    "summary_match": "DISPLAY_PRECISION_DIFFERENCE_RETAINED",
+    "GSP1_capacity_ch3": "390",
+    "GSP1_capacity_ch4": "350",
+    "capacity_unit": "MMSCFD",
+    "capacity_status": "UNRESOLVED_SOURCE_CONFLICT"
+  },
+  "missing_for_full_lifecycle": [
+    "extraction",
+    "transmission",
+    "distribution",
+    "fuel_use",
+    "complete_waste_treatment",
+    "provider_origin",
+    "single_reference_product_mapping"
+  ],
+  "counts": {
+    "source_cells": 42,
+    "numeric_cells": 41,
+    "held_dashes": 1
+  },
+  "production_changed": false,
+  "full_lifecycle_inventory": false,
+  "roundtrip_all_fields_equal": true
+}

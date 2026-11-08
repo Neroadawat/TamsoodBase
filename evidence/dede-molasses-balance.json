@@ -1,0 +1,198 @@
+{
+  "review_date": "2026-11-06",
+  "source_url": "https://pei.dede.go.th/dataset/bioethanol1",
+  "sha256": "72052b365f32681579fb24341d1d0d94578708c6b16228a60e1f647294c9e944",
+  "source_figure": "Figure6/PDF12/printed11",
+  "reference_output": "150000L/day fuel ethanol;118.35t/day",
+  "source_model_conditions": {
+    "molasses_total_sugar": "48%",
+    "molasses_TS": "80%",
+    "molasses_Brix": "80",
+    "mixed_TS": "25.00%",
+    "fermented_alcohol": "8.22%w/w",
+    "distilled_alcohol": "95%",
+    "thick_slop_TS": "14.93%",
+    "fermentation_efficiency": "92%",
+    "distillation_efficiency": "98.5%"
+  },
+  "observations": [
+    {
+      "flow": "molasses",
+      "from": "external",
+      "to": "mixing",
+      "amount": "532.45",
+      "unit": "t/day",
+      "kg_per_L_ethanol": "3.549666666666666666666666666666666666667",
+      "role": "BOUNDARY_FLOW",
+      "locator": "Figure6/PDF12/printed11/molasses",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_ALL_ARROWS_UNITS"
+    },
+    {
+      "flow": "water",
+      "from": "external",
+      "to": "mixing",
+      "amount": "987.64",
+      "unit": "t/day",
+      "kg_per_L_ethanol": "6.584266666666666666666666666666666666667",
+      "role": "BOUNDARY_FLOW",
+      "locator": "Figure6/PDF12/printed11/water",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_ALL_ARROWS_UNITS"
+    },
+    {
+      "flow": "mixed_feed",
+      "from": "mixing",
+      "to": "fermentation",
+      "amount": "1703.85",
+      "unit": "t/day",
+      "kg_per_L_ethanol": "11.359",
+      "role": "INTERNAL_INTERMEDIATE",
+      "locator": "Figure6/PDF12/printed11/mixed_feed",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_ALL_ARROWS_UNITS"
+    },
+    {
+      "flow": "CO2_output_destination_unknown",
+      "from": "fermentation",
+      "to": "external",
+      "amount": "114.98",
+      "unit": "t/day",
+      "kg_per_L_ethanol": "0.7665333333333333333333333333333333333333",
+      "role": "BOUNDARY_FLOW",
+      "locator": "Figure6/PDF12/printed11/CO2_output_destination_unknown",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_ALL_ARROWS_UNITS"
+    },
+    {
+      "flow": "fermented_liquid",
+      "from": "fermentation",
+      "to": "distillation",
+      "amount": "1588.87",
+      "unit": "t/day",
+      "kg_per_L_ethanol": "10.59246666666666666666666666666666666667",
+      "role": "INTERNAL_INTERMEDIATE",
+      "locator": "Figure6/PDF12/printed11/fermented_liquid",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_ALL_ARROWS_UNITS"
+    },
+    {
+      "flow": "fusel_oil",
+      "from": "distillation",
+      "to": "external",
+      "amount": "0.60",
+      "unit": "t/day",
+      "kg_per_L_ethanol": "0.004",
+      "role": "BOUNDARY_FLOW",
+      "locator": "Figure6/PDF12/printed11/fusel_oil",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_ALL_ARROWS_UNITS"
+    },
+    {
+      "flow": "thick_slop",
+      "from": "distillation",
+      "to": "external",
+      "amount": "1286.17",
+      "unit": "t/day",
+      "kg_per_L_ethanol": "8.574466666666666666666666666666666666667",
+      "role": "BOUNDARY_FLOW",
+      "locator": "Figure6/PDF12/printed11/thick_slop",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_ALL_ARROWS_UNITS"
+    },
+    {
+      "flow": "recycle_distillation",
+      "from": "distillation",
+      "to": "mixing",
+      "amount": "177.53",
+      "unit": "t/day",
+      "kg_per_L_ethanol": "1.183533333333333333333333333333333333333",
+      "role": "INTERNAL_RECYCLE",
+      "locator": "Figure6/PDF12/printed11/recycle_distillation",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_ALL_ARROWS_UNITS"
+    },
+    {
+      "flow": "alcohol_95pct",
+      "from": "distillation",
+      "to": "dehydration",
+      "amount": "124.58",
+      "unit": "t/day",
+      "kg_per_L_ethanol": "0.8305333333333333333333333333333333333333",
+      "role": "INTERNAL_INTERMEDIATE",
+      "locator": "Figure6/PDF12/printed11/alcohol_95pct",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_ALL_ARROWS_UNITS"
+    },
+    {
+      "flow": "recycle_dehydration",
+      "from": "dehydration",
+      "to": "mixing",
+      "amount": "6.23",
+      "unit": "t/day",
+      "kg_per_L_ethanol": "0.04153333333333333333333333333333333333333",
+      "role": "INTERNAL_RECYCLE",
+      "locator": "Figure6/PDF12/printed11/recycle_dehydration",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_ALL_ARROWS_UNITS"
+    },
+    {
+      "flow": "fuel_ethanol",
+      "from": "dehydration",
+      "to": "external",
+      "amount": "118.35",
+      "unit": "t/day",
+      "kg_per_L_ethanol": "0.789",
+      "role": "BOUNDARY_FLOW",
+      "locator": "Figure6/PDF12/printed11/fuel_ethanol",
+      "verification": "TWO_PARSER_NUMERIC_PLUS_VISUAL_ALL_ARROWS_UNITS"
+    }
+  ],
+  "balances": [
+    {
+      "stage": "mixing",
+      "input_t_per_day": "1703.85",
+      "output_t_per_day": "1703.85",
+      "residual_input_minus_output": "0.00",
+      "rounding_bound_t_per_day": "0.025",
+      "result": "WITHIN_PRINTED_ROUNDING"
+    },
+    {
+      "stage": "fermentation",
+      "input_t_per_day": "1703.85",
+      "output_t_per_day": "1703.85",
+      "residual_input_minus_output": "0.00",
+      "rounding_bound_t_per_day": "0.015",
+      "result": "WITHIN_PRINTED_ROUNDING"
+    },
+    {
+      "stage": "distillation",
+      "input_t_per_day": "1588.87",
+      "output_t_per_day": "1588.88",
+      "residual_input_minus_output": "-0.01",
+      "rounding_bound_t_per_day": "0.025",
+      "result": "WITHIN_PRINTED_ROUNDING"
+    },
+    {
+      "stage": "dehydration",
+      "input_t_per_day": "124.58",
+      "output_t_per_day": "124.58",
+      "residual_input_minus_output": "0.00",
+      "rounding_bound_t_per_day": "0.015",
+      "result": "WITHIN_PRINTED_ROUNDING"
+    },
+    {
+      "stage": "whole_factory",
+      "input_t_per_day": "1520.09",
+      "output_t_per_day": "1520.10",
+      "residual_input_minus_output": "-0.01",
+      "rounding_bound_t_per_day": "0.030",
+      "result": "WITHIN_PRINTED_ROUNDING"
+    }
+  ],
+  "verified_claim": "SOURCE_FIGURE_TRANSCRIPTION_AND_PRINTED_MASS_CLOSURE",
+  "not_verified": [
+    "plant identity and measurement year",
+    "independent field measurements",
+    "complete energy/chemical inventory",
+    "CO2 atmospheric release or biogenic/fossil classification",
+    "allocation",
+    "transport and vehicle use",
+    "waste treatment fate",
+    "cradle-to-grave inventory"
+  ],
+  "status": "VERIFIED_SOURCE_FOREGROUND_EXAMPLE_NOT_FULL_LCI",
+  "redistribution_status": "NOT_CLEARED",
+  "CO2e_total": null,
+  "production_changed": false
+}

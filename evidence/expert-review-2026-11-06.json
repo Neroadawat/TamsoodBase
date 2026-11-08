@@ -1,0 +1,145 @@
+{
+  "date": "2026-11-06",
+  "scope": "READ_ONLY_EXPERT_REVIEW_NOT_NEW_FULL_SOURCE_OR_LOAD_AUDIT",
+  "browser": {
+    "date": "2026-11-06",
+    "home": {
+      "scrollHeight": 5555,
+      "viewport": 1000,
+      "cssBytes": [
+        {
+          "transfer": 125312,
+          "decoded": 198609
+        }
+      ],
+      "smallTexts": [
+        {
+          "text": "FUEL DATA, MADE CLEAR",
+          "size": "11px"
+        },
+        {
+          "text": "5 หัวข้อ · เลือกได้โดยไม่ต้องพิมพ์",
+          "size": "11px"
+        }
+      ]
+    },
+    "afterLink": {
+      "hash": "#case-study",
+      "y": 222,
+      "titleTop": -59.203125,
+      "focus": "BODY"
+    },
+    "filtered": {
+      "url": "https://tamsoodbase.vercel.app/#nso",
+      "query": "ดีเซล",
+      "rows": 2,
+      "columns": [
+        "⛽ดีเซลหมุนเร็วการผลิต",
+        "2024",
+        "27664Million litre",
+        "ดูที่มา"
+      ]
+    },
+    "reload": {
+      "query": "",
+      "rows": 69
+    },
+    "errors": []
+  },
+  "api": [
+    {
+      "path": "/api/model",
+      "status": 200,
+      "seconds": 0.64,
+      "bytes": 6333,
+      "keys": [
+        "scope",
+        "schema_version",
+        "model_release_id",
+        "review_date",
+        "functional_unit",
+        "calculated_scope",
+        "full_lifecycle_inventory",
+        "CO2e_total",
+        "private_inventory_included",
+        "calculation_type"
+      ],
+      "full": false,
+      "CO2e": null,
+      "release": "657aa71137bdcd70d11ed3e15b0aa1066246393c409517f757a0a10d9ddec89f"
+    },
+    {
+      "path": "/api/release",
+      "status": 200,
+      "seconds": 0.73,
+      "bytes": 233,
+      "keys": [
+        "scope",
+        "model_release_id",
+        "metadata_snapshot_id"
+      ]
+    },
+    {
+      "path": "/api/readyz",
+      "status": 200,
+      "seconds": 1.31,
+      "bytes": 15,
+      "keys": [
+        "ready"
+      ]
+    },
+    {
+      "path": "/api/nso",
+      "status": 200,
+      "seconds": 2.09,
+      "bytes": 448586,
+      "keys": [
+        "scope",
+        "title",
+        "warnings",
+        "row_count",
+        "counts_by_table",
+        "source_manifest",
+        "accepted_reference",
+        "normalized_lci_exchanges",
+        "rows"
+      ]
+    },
+    {
+      "path": "/api/reference",
+      "status": 200,
+      "seconds": 1.39,
+      "bytes": 22306,
+      "keys": [
+        "total",
+        "page",
+        "page_size",
+        "distribution_profile",
+        "quantities_withheld",
+        "manifest",
+        "fields",
+        "rows"
+      ],
+      "total": 97,
+      "profile": "PUBLIC_REFERENCE_METADATA_V1",
+      "withheld": true
+    },
+    {
+      "path": "/api/reference.csv",
+      "status": 403,
+      "seconds": 0.44,
+      "bytes": 118,
+      "keys": [
+        "error"
+      ]
+    }
+  ],
+  "production_changed": false,
+  "tests_rerun": false,
+  "historical_tests": "219 full-suite on previous engineering release;13 targeted frontend tests on visual release, not rerun here",
+  "screenshots": [
+    "output/expert-review-2026-11-06/home.png",
+    "output/expert-review-2026-11-06/story-to-case.png",
+    "output/expert-review-2026-11-06/nso-mobile.png"
+  ]
+}

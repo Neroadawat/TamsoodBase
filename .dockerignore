@@ -1,0 +1,15 @@
+.git
+.local
+.env
+.env.*
+.venv
+**/__pycache__
+**/*.pem
+**/*.key
+**/*.pdf
+**/*.csv
+**/*.xlsx
+**/*.xls
+**/*.zip
+**/*.tar.gz
+course-materials

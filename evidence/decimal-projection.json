@@ -1,0 +1,19 @@
+{
+  "scope": "LOCAL_NUMERIC_QUERY_PROJECTION_NOT_PRODUCTION",
+  "model_release_id": "657aa71137bdcd70d11ed3e15b0aa1066246393c409517f757a0a10d9ddec89f",
+  "rows": 460,
+  "status_counts": {
+    "ELIGIBLE": 453,
+    "EXCLUDED_UNIT_OR_PRECISION": 7
+  },
+  "sql_decimal": "DECIMAL(65,30)",
+  "rounding_applied": false,
+  "source_database_unchanged": true,
+  "production_changed": false,
+  "mysql_engine": "8.4.13",
+  "mysql_rows_checked": 460,
+  "mysql_exact_decimal_roundtrip": true,
+  "mysql_numeric_order": true,
+  "mysql_invalid_null_rejected": true,
+  "shared_database_touched": false
+}

@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-24T10:27:26.217475+00:00",
+  "result": "passed",
+  "mode": "SELECT_ONLY_READ_ONLY_TRANSACTIONS",
+  "container": "tamsoodbase-mysql",
+  "dmf_raw_records": 34905,
+  "dmf_observations": 34899,
+  "dmf_context_package_mismatches": 0,
+  "reference_records": 101,
+  "reference_catalog_fields_checked": 30,
+  "datasets": {
+    "NSO": 273,
+    "PRODUCT_INVENTORY": 16,
+    "EPPO": 5934
+  },
+  "acceptance_changed": false,
+  "schemas_changed": false,
+  "remote_ec2_checked": false,
+  "supplemental_subtype_fields_checked": true,
+  "inventory_process_basis_checked": true,
+  "dmf_context_and_rejected_reasons_checked": true,
+  "limitation": "Selected current snapshots only; no independent publisher measurement, rights or remote EC2 certification",
+  "implementation_sha256": "3f1365f5a7d7d341b9356140cb04bce671b002a54f0517b7ef469a4e73545612"
+}

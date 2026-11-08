@@ -24,3 +24,7 @@ class DmfValidationTests(unittest.TestCase):
 
     def test_unknown_area(self):
         self.assertIn('unknown_area',validate(self.row(BLOCK_TYPE='unknown'),'OIL'))
+
+    def test_unsupported_year_is_not_a_valid_period(self):
+        for year in ('543', '2442', '2644'):
+            self.assertIn('invalid_period_or_days', validate(self.row(YEAR=year), 'OIL'))

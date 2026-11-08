@@ -10,6 +10,11 @@ KINDS={'ORGANIZATION_INPUT','ORGANIZATION_OUTPUT','REPORTED_INTENSITY','CONTEXT_
 
 
 def catalog(params,export=False):
+    if __package__:
+        from . import mysql_store
+    else:
+        import mysql_store
+    if mysql_store.enabled():return mysql_store.reference_catalog(params,export)
     folder=ROOT/'build/reusable';manifest=json.loads((folder/'manifest.json').read_text(encoding='utf-8'))
     clauses=['release_id=?'];values=[manifest['release_id']]
     for field,allowed in [('data_kind',KINDS),('decision',{'ACCEPTED_REFERENCE','HOLD_CONTEXT','all'})]:

@@ -51,6 +51,22 @@ def parse(body, dataset, source):
     return result
 
 
+def verify_roundtrip(con, rows, manifest):
+    """Check all typed columns, payloads and source metadata before commit."""
+    for dataset in SPECS:
+        source=manifest['resources'][dataset]
+        snapshot=source['sha256']
+        stored_source=con.execute('SELECT dataset_id,url,payload FROM source_snapshot WHERE snapshot_id=?',(snapshot,)).fetchone()
+        if stored_source is None or (stored_source[0],stored_source[1],json.loads(stored_source[2])) != (dataset,source['url'],source):
+            raise ValueError('SQLite source snapshot mismatch')
+        stored={r[0]:(*r[1:7],json.loads(r[7])) for r in con.execute('SELECT observation_id,snapshot_id,reference_year,month,subject,amount,unit,payload FROM observation WHERE snapshot_id=?',(snapshot,))}
+        expected={r['observation_id']:(r['source_sha256'],r['reference_year'],r['month'],r['subject'],r['amount'],r['unit'],r) for r in rows if r['dataset_id']==dataset}
+        if stored!=expected:
+            raise ValueError('SQLite roundtrip mismatch')
+    if con.execute('PRAGMA integrity_check').fetchone()[0]!='ok' or con.execute('PRAGMA foreign_key_check').fetchall():
+        raise ValueError('SQLite integrity failed')
+
+
 def main():
     folder=ROOT/'data/raw/eppo';manifest=json.loads((folder/'manifest.json').read_text(encoding='utf-8'))
     rows=[]
@@ -61,19 +77,16 @@ def main():
     con=sqlite3.connect(out/'eppo.sqlite');con.execute('PRAGMA foreign_keys=ON')
     con.executescript('''CREATE TABLE IF NOT EXISTS source_snapshot(snapshot_id TEXT PRIMARY KEY,dataset_id TEXT NOT NULL,url TEXT NOT NULL,payload TEXT NOT NULL);
     CREATE TABLE IF NOT EXISTS observation(observation_id TEXT PRIMARY KEY,snapshot_id TEXT NOT NULL REFERENCES source_snapshot(snapshot_id),reference_year INTEGER NOT NULL,month INTEGER NOT NULL CHECK(month BETWEEN 1 AND 12),subject TEXT NOT NULL,amount TEXT NOT NULL,unit TEXT NOT NULL,payload TEXT NOT NULL,UNIQUE(snapshot_id,reference_year,month,subject));''')
-    with con:
-        for src in manifest['resources'].values():
-            con.execute('INSERT OR IGNORE INTO source_snapshot VALUES (?,?,?,?)',(src['sha256'],next(r['dataset_id'] for r in rows if r['source_sha256']==src['sha256']),src['url'],json.dumps(src,ensure_ascii=False)))
-        for r in rows:
-            values=(r['observation_id'],r['source_sha256'],r['reference_year'],r['month'],r['subject'],r['amount'],r['unit'],json.dumps(r,ensure_ascii=False))
-            con.execute('INSERT OR IGNORE INTO observation VALUES (?,?,?,?,?,?,?,?)',values)
-    for dataset in SPECS:
-        digest=manifest['resources'][dataset]['sha256']
-        stored={r[0]:(r[1],r[2],json.loads(r[3])) for r in con.execute('SELECT observation_id,amount,unit,payload FROM observation WHERE snapshot_id=?',(digest,))}
-        expected={r['observation_id']:(r['amount'],r['unit'],r) for r in rows if r['dataset_id']==dataset}
-        if stored!=expected:raise ValueError('SQLite roundtrip mismatch')
-    if con.execute('PRAGMA integrity_check').fetchone()[0]!='ok':raise ValueError('SQLite integrity failed')
-    con.close()
+    try:
+        with con:
+            for src in manifest['resources'].values():
+                con.execute('INSERT OR IGNORE INTO source_snapshot VALUES (?,?,?,?)',(src['sha256'],next(r['dataset_id'] for r in rows if r['source_sha256']==src['sha256']),src['url'],json.dumps(src,ensure_ascii=False)))
+            for r in rows:
+                values=(r['observation_id'],r['source_sha256'],r['reference_year'],r['month'],r['subject'],r['amount'],r['unit'],json.dumps(r,ensure_ascii=False))
+                con.execute('INSERT OR IGNORE INTO observation VALUES (?,?,?,?,?,?,?,?)',values)
+            verify_roundtrip(con, rows, manifest)
+    finally:
+        con.close()
     report=dict(rows=rows,row_count=len(rows),counts_by_dataset=dict(Counter(r['dataset_id'] for r in rows)),
         actual_period=[min((r['reference_year'],r['month']) for r in rows),max((r['reference_year'],r['month']) for r in rows)],
         normalized_lci_exchanges=0,accepted_reference=0,

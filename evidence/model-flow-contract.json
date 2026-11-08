@@ -1,0 +1,21 @@
+{
+  "scope": "INTERNAL_SOURCE_FLOW_CONTRACT_NOT_ELEMENTARY_INVENTORY",
+  "model_release_id": "657aa71137bdcd70d11ed3e15b0aa1066246393c409517f757a0a10d9ddec89f",
+  "observations": 130,
+  "eligible_elementary_observations": 0,
+  "CF_method": null,
+  "CF_version": null,
+  "time_horizon": null,
+  "CO2e_total": null,
+  "full_lifecycle_inventory": false,
+  "uncertainty": {
+    "measurement_distribution": null,
+    "scenario_variation_is_confidence_interval": false,
+    "display_precision_is_measurement_uncertainty": false
+  },
+  "independent_balance": {
+    "performed": false,
+    "reason": "Transfer checks are constructed arithmetic; mass/energy/carbon system closure lacks moisture, composition and emissions."
+  },
+  "contract_sha256": "778362b144462b3e3105699236931aef6792dc92a8c747d2988a54a04c489f65"
+}

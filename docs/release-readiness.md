@@ -1,5 +1,7 @@
 # ตรวจความพร้อมและแพ็กเกจภายใน
 
+ผลตรวจตั้งแต่ต้นทางถึง API ล่าสุด: [pipeline-audit.md](pipeline-audit.md) รวม isolated replay, PDF re-extraction, typed SQLite checks และ live local MySQL แบบ read-only แยกจากหลักฐาน stored verification ใน release audit
+
 ```powershell
 python -X utf8 scripts/check_release.py --tests
 python -X utf8 scripts/task_board.py

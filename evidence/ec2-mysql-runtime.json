@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "container": "tamsoodbase-mysql-runtime",
+  "network": "tamsoodbase-mysql-runtime-private",
+  "internal_network": true,
+  "volume": "tamsoodbase-mysql-runtime-data",
+  "persistent": true,
+  "ports_published": false,
+  "dataset_release": "9f6475ffbbe1ccbfcdb724d764bbc70d01c0190ee9155268909b9fcf92c705ea",
+  "seed_sha256": "9830e680f5db9a775b73ee3960bd821fb2992d6db7e330db59de5a2b05b8e2ce",
+  "counts": {
+    "dmf": 34899,
+    "raw": 34905,
+    "reference": 101,
+    "supplemental": 289,
+    "eppo": 5934
+  },
+  "reader_grants": "SELECT only on five TamsoodBase schemas",
+  "memory_limit_bytes": 536870912,
+  "production_api_switched": false
+}

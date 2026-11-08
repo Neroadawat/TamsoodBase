@@ -22,10 +22,41 @@ def sha(body):
     return hashlib.sha256(body).hexdigest()
 
 
+def validate_snapshot(raw, run_id):
+    """Check the complete source set before creating or changing build artifacts."""
+    manifest = json.loads((raw/'manifest.json').read_text(encoding='utf-8'))
+    if manifest.get('complete') is not True or manifest.get('run_id') != run_id:
+        raise ValueError('Incomplete acquisition or mismatched run ID')
+    entries = manifest.get('packages', [])
+    names = [entry.get('package') for entry in entries]
+    if len(names) != len(COLUMNS) or set(names) != set(COLUMNS):
+        raise ValueError('Snapshot must contain each expected DMF package exactly once')
+    for entry in entries:
+        name = entry['package']
+        body = (raw/(name+'.csv')).read_bytes()
+        metadata_body = (raw/(name+'.metadata.json')).read_bytes()
+        if sha(body) != entry['csv_sha256'] or sha(metadata_body) != entry['metadata_sha256']:
+            raise ValueError('Snapshot checksum mismatch: '+name)
+        if len(body) != entry['csv_bytes']:
+            raise ValueError('Snapshot byte count mismatch: '+name)
+        metadata = json.loads(metadata_body)
+        if metadata.get('success') is not True or metadata['result']['id'] != entry['package_id']:
+            raise ValueError('Snapshot metadata identity mismatch: '+name)
+        resources = [r for r in metadata['result']['resources'] if r['id'] == entry['resource_id']]
+        if len(resources) != 1 or resources[0].get('format', '').upper() != 'CSV':
+            raise ValueError('Snapshot resource identity mismatch: '+name)
+        reader = csv.DictReader(io.StringIO(body.decode('cp874'), newline=''))
+        if reader.fieldnames != BASE + list(COLUMNS[name]) + ['DAYSOFPRODUCE']:
+            raise ValueError('Source schema changed: '+name)
+    return manifest
+
+
 def validate(row, amount_column):
     errors = []
     try:
         year, month = int(row['YEAR'])-543, int(row['MONTH'])
+        if not 1900 <= year <= 2100:
+            raise ValueError('Year outside supported Gregorian range')
         last_day = calendar.monthrange(year, month)[1]
         days = Decimal(row['DAYSOFPRODUCE'])
         if not days.is_finite() or days != days.to_integral_value() or not 0 <= days <= last_day:
@@ -51,9 +82,7 @@ def process(run_id=None):
     if Path(run_id).name != run_id or run_id in ('.', '..'):
         raise ValueError('Invalid run ID')
     raw = ROOT/'data/raw/dmf'/run_id
-    manifest = json.loads((raw/'manifest.json').read_text(encoding='utf-8'))
-    if not manifest.get('complete'):
-        raise ValueError('Incomplete acquisition')
+    manifest = validate_snapshot(raw, run_id)
     out = ROOT/'build/dmf'/run_id
     out.mkdir(parents=True, exist_ok=True)
     con = sqlite3.connect(':memory:')

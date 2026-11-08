@@ -1,0 +1,55 @@
+{
+  "study": "THAI_PALM_BIODIESEL_2013_ALTERNATIVE",
+  "treatment_scenarios": [
+    {
+      "id": "BASE",
+      "EFB": "dumped in plantation",
+      "POME": "open ponds with CH4 leakage"
+    },
+    {
+      "id": "S1",
+      "EFB": "dumped in plantation",
+      "POME": "biogas recovery"
+    },
+    {
+      "id": "S2",
+      "EFB": "co-composting with POME",
+      "POME": "open ponds"
+    },
+    {
+      "id": "S3",
+      "EFB": "co-composting with POME",
+      "POME": "biogas recovery"
+    }
+  ],
+  "treatment_locator": {
+    "table": "2.1",
+    "pdf_page": 47,
+    "printed_page": 35
+  },
+  "reported_fossil_CO2_subset": {
+    "amount": "0.15",
+    "unit": "kg CO2/litre biodiesel",
+    "add_to_total_CO2": false,
+    "meaning": "Reported fossil subset estimate; not an additional emission flow"
+  },
+  "review": {
+    "two_extractors_agree": true,
+    "visual_pages_previously_reviewed": [
+      47,
+      48
+    ],
+    "treatment_quantities_available": false,
+    "CH4_N2O_use_inventory_available": false,
+    "PM_size_fraction_known": false,
+    "fuel_LHV_density_compatible_with_2020_verified": false,
+    "source_all_inputs_thai_verified": false,
+    "source_representativeness": "historical secondary Thai case, not current national average"
+  },
+  "source_sha256": "d1e4f9a22d5b54d5422b2ac20e928b23d2adfe01e8730d55af44f758e36ef982",
+  "full_lifecycle_inventory": false,
+  "merged_into_2020": false,
+  "production_changed": false,
+  "rights_status": "NOT_CLEARED",
+  "use_observations_reviewed": 4
+}

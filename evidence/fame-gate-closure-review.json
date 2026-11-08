@@ -1,0 +1,121 @@
+{
+  "date": "2026-11-05",
+  "scope": "SOURCE_BOUND_GATE_DECISIONS_NOT_COMPLETE_LCI",
+  "source_evidence": {
+    "allocation_method": {
+      "source_file": "data/raw/mdpi-9415/pdf-v3/source.pdf",
+      "sha256": "977f8ff66eed3e3833adb055778d5f9fc42acc214db342a71c53062a2b978f60",
+      "pdf_page": 4,
+      "passage_sha256": "759d0471531ec7a46d9aa8e8b2d1d569d3f4aa41330de654d1b7dc9347ea30df",
+      "verification": "MATCHED_IN_TWO_TEXT_EXTRACTORS_NOT_NEW_VISUAL_REVIEW"
+    },
+    "fame_allocation": {
+      "source_file": "data/raw/mdpi-9415/pdf-v3/source.pdf",
+      "sha256": "977f8ff66eed3e3833adb055778d5f9fc42acc214db342a71c53062a2b978f60",
+      "pdf_page": 7,
+      "passage_sha256": "4bc33c4d4ad9101e008e99a033cb58fb59c86d0386a091bbab13847be2bbf3f0",
+      "verification": "MATCHED_IN_TWO_TEXT_EXTRACTORS_NOT_NEW_VISUAL_REVIEW"
+    },
+    "fuel_mass_prose": {
+      "source_file": "data/raw/mdpi-9415/pdf-v3/source.pdf",
+      "sha256": "977f8ff66eed3e3833adb055778d5f9fc42acc214db342a71c53062a2b978f60",
+      "pdf_page": 2,
+      "passage_sha256": "90574a4473d5237935abfadd8747bba1b9b1aa51893c1e91b15061ed594ba2f2",
+      "verification": "MATCHED_IN_TWO_TEXT_EXTRACTORS_NOT_NEW_VISUAL_REVIEW"
+    },
+    "fuel_mass_table": {
+      "source_file": "data/raw/mdpi-9415/pdf-v3/source.pdf",
+      "sha256": "977f8ff66eed3e3833adb055778d5f9fc42acc214db342a71c53062a2b978f60",
+      "pdf_page": 7,
+      "passage_sha256": "e1efc19476db216a1cfb5fadbf2ff4c20e21f7d16d2a99cfa77137bd8129c0c5",
+      "verification": "MATCHED_IN_TWO_TEXT_EXTRACTORS_NOT_NEW_VISUAL_REVIEW"
+    },
+    "background": {
+      "source_file": "data/raw/mdpi-9415/pdf-v3/source.pdf",
+      "sha256": "977f8ff66eed3e3833adb055778d5f9fc42acc214db342a71c53062a2b978f60",
+      "pdf_page": 4,
+      "passage_sha256": "3f25ec73541aa79a7c408eb6c2eb96c4bbbd173e3406e2a912bcc9e561f4bfd7",
+      "verification": "MATCHED_IN_TWO_TEXT_EXTRACTORS_NOT_NEW_VISUAL_REVIEW"
+    },
+    "new_report_scope": {
+      "source_file": "data/raw/compete-thailand-report/source.pdf",
+      "sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+      "pdf_page": 11,
+      "passage_sha256": "5db0c3be81c3dd642074d671d2cb1bef5ea23524ef707d27e9715fb3d34fdc70",
+      "verification": "MATCHED_IN_TWO_TEXT_EXTRACTORS_NOT_NEW_VISUAL_REVIEW"
+    },
+    "new_report_use_exclusion": {
+      "source_file": "data/raw/compete-thailand-report/source.pdf",
+      "sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+      "pdf_page": 13,
+      "passage_sha256": "7f5bdbac8cf23b0bf6cc512b7efa6a2c8a2c0b4b7f3b5b32bd5a9401b4e9f0ae",
+      "verification": "MATCHED_IN_TWO_TEXT_EXTRACTORS_NOT_NEW_VISUAL_REVIEW"
+    }
+  },
+  "decisions": [
+    {
+      "id": "allocation",
+      "status": "BLOCKED_TABLE_BASIS_UNKNOWN",
+      "method_confirmed": "ECONOMIC",
+      "source_reported_factor": {
+        "FAME": "0.70",
+        "glycerine": "0.30"
+      },
+      "factor_applied": false,
+      "reason": "Method/factors are explicit; gross-versus-already-allocated table status is not established. Do not apply factors twice or transfer them to 2019 mills.",
+      "required_evidence": "Calculation workbook or explicit table-specific gross/allocated basis, with co-product and upstream burden treatment."
+    },
+    {
+      "id": "compatibility",
+      "status": "NOT_ACCEPTED_FOR_BURDEN_LINKING",
+      "activity_scenario_allowed": true,
+      "reason": "2019/2020 are publication years, not a proven common measurement period or actual supply chain.",
+      "required_evidence": "Per-link product specification, technology, operating period, geography, allocation and representativeness decisions; hypothetical linkage must stay labelled."
+    },
+    {
+      "id": "transport",
+      "status": "BLOCKED_PROVIDER_AND_LEGS_MISSING",
+      "factor_applied": false,
+      "reason": "Estimated 5km FFB leg is not a vehicle/load/return/diesel inventory and may overlap existing diesel inputs.",
+      "required_evidence": "All scoped legs, load/empty return convention, compatible Thai vehicle inventory and no-double-count boundary."
+    },
+    {
+      "id": "use",
+      "status": "BLOCKED_LITRE_ENERGY_AND_GAS_BASIS",
+      "factor_applied": false,
+      "reason": "2013 litre-based pickup emissions have no verified compatible density/LHV bridge; CH4/N2O and biogenic/fossil accounting incomplete.",
+      "required_evidence": "Matched B100 fuel properties and engine/use inventory; gas identity, compartments, fossil/biogenic carbon and measurement period."
+    },
+    {
+      "id": "waste",
+      "status": "BLOCKED_TREATMENT_BOUNDARY",
+      "factor_applied": false,
+      "reason": "Treated POME cannot be sent to a second raw-POME treatment; methane generation is not measured leakage.",
+      "required_evidence": "Raw/treated stream connectivity, treatment already included, actual discharge/leakage/flare and energy-credit boundaries."
+    },
+    {
+      "id": "background",
+      "status": "BLOCKED_THAI_PROVIDER_EXCHANGES",
+      "factor_applied": false,
+      "reason": "Published study uses ecoinvent; its result is not proof of a Thai-only recreated supply chain.",
+      "required_evidence": "Compatible Thai electricity/chemicals/fuel process exchanges and usage rights, distinct from aggregate carbon factors."
+    }
+  ],
+  "fuel_mass_precision_check": {
+    "prose_kg": "26.27",
+    "table_kg": "26.3",
+    "table_minus_prose_kg": "0.03",
+    "interpretation": "CONSISTENT_WITH_ONE_DECIMAL_DISPLAY_ROUNDING_NOT_A_LITRE_CONVERSION",
+    "source_value_rewritten": false
+  },
+  "new_source_screen": {
+    "source": "COMPETE Thailand report, section3.1, PDF11–13",
+    "status": "PRODUCTION_CONTEXT_ONLY_NOT_GAP_CLOSING",
+    "rights_status": "NOT_CLEARED",
+    "numeric_rows_imported": 0,
+    "reason": "Three-stage production scope and explicitly deferred combustion; ranges and mixed basis not copied into 2020 scenarios."
+  },
+  "full_lifecycle_inventory": false,
+  "CO2e_total": null,
+  "new_burden_links_applied": 0
+}

@@ -1,0 +1,32 @@
+{
+  "study": "THAI_PALM_BIOREFINERY_2019",
+  "scope": "ALTERNATIVE_MILL_FOREGROUND_CANDIDATE",
+  "source_sha256": "788b1bb9fa58cb7be13a165aab270713883ceca37d9e60cea65a3373e0c71fa5",
+  "review": {
+    "numeric_cells": 90,
+    "two_extractors_all_cells_equal": true,
+    "all_flow_labels_units_equal": true,
+    "visual_page": 11,
+    "visual_review": "AI_ASSISTED_SINGLE_REVIEW_NOT_INDEPENDENT_DOUBLE_REVIEW"
+  },
+  "FFB_per_CPO_by_mill": {
+    "Mill 1": "6.93",
+    "Mill 2": "6.29",
+    "Mill 3": "5.95",
+    "Mill 4": "5.94",
+    "Mill 5": "6.1",
+    "Mill 6": "5.65"
+  },
+  "compatibility": {
+    "linked_to_2020": false,
+    "averaged_across_plants": false,
+    "paper_background_includes_foreign_databases_and_defaults": true,
+    "inventory_emissions_not_in_table_S2": true,
+    "treated_POME_is_not_untreated_input_or_elementary_emission": true,
+    "internal_energy_not_additional_external_provider": true,
+    "source_specific_allocation_and_provider_links_pending": true
+  },
+  "full_lifecycle_inventory": false,
+  "production_changed": false,
+  "all_fields_roundtrip_equal": true
+}

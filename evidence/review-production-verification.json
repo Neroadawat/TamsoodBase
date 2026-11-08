@@ -1,0 +1,65 @@
+{
+  "deployment_id": "dpl_BoUuYRBhKZS8TFU9HYZyUBauyFXi",
+  "production_url": "https://tamsoodbase.vercel.app",
+  "checks": [
+    {
+      "path": "api/model",
+      "status": 200,
+      "passed": true,
+      "all_fields_match_local": true
+    },
+    {
+      "path": "api/release",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "case-study.json",
+      "status": 200,
+      "passed": true,
+      "all_fields_match_local": true
+    },
+    {
+      "path": "api/reference.json",
+      "status": 200,
+      "passed": true,
+      "rows": 97,
+      "metadata_only": true,
+      "raw_values_absent": true
+    },
+    {
+      "path": "api/reference.csv",
+      "status": 403,
+      "passed": true
+    },
+    {
+      "path": "api/reports",
+      "status": 403,
+      "passed": true
+    },
+    {
+      "path": "api/report-pilot",
+      "status": 403,
+      "passed": true
+    },
+    {
+      "path": "healthz",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "readyz",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "path": "app.js",
+      "status": 200,
+      "passed": true,
+      "matches_build": true
+    }
+  ],
+  "passed": true,
+  "production_EC2_changed": false,
+  "rollback_deployment_id": "dpl_EfA4ngG9mh1uqX9UBDd1rt8i3R4W"
+}

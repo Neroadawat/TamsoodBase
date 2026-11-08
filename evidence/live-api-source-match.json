@@ -1,0 +1,18 @@
+{
+  "corporate": {
+    "rows": 101,
+    "sha256": "dbcd046a699c1ea855c7221f1ebc74e44cb0bdec634bfedfe55d95421e14343e"
+  },
+  "nso": {
+    "rows": 273,
+    "sha256": "9d85a321eea80c0bfd2a3a9d2e5ae3b09f62b167395448c68d202eb88d341b67"
+  },
+  "inventory": {
+    "rows": 16,
+    "sha256": "a3a402f0fe5ba1887dd8ec227359591c51652820564e103722298211c9b75fa1"
+  },
+  "eppo_empty_year_total": 3012,
+  "passed": true,
+  "release": "00c68ca585cf0220",
+  "scope": "Live privateEC2API corporate101/NSO273/inventory16 fullpayloadhash equal local source-audited artifacts;EPPO emptyyearactualtotal3012"
+}

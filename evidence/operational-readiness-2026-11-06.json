@@ -1,0 +1,26 @@
+{
+  "scope": "PUBLIC_HEALTH_AND_RECORDED_BACKUP_FRESHNESS_NOT_NEW_RESTORE",
+  "checked_at_utc": "2026-11-05T19:28:05.195401+00:00",
+  "http_checks": [
+    {
+      "path": "/api/readyz",
+      "http": 200,
+      "passed": true
+    },
+    {
+      "path": "/api/release",
+      "http": 200,
+      "passed": true
+    }
+  ],
+  "http_healthy": true,
+  "recorded_backup_age_hours": 0.1,
+  "daily_backup_target_met": true,
+  "backup_status": "RECORDED_WITHIN_TARGET",
+  "new_s3_read_or_restore_performed": false,
+  "backend_endpoint": "QUICK_TUNNEL_TEMPORARY_LAST_CONFIGURED_STATE",
+  "stable_endpoint_verified": false,
+  "production_mutated": false,
+  "automation_created": false,
+  "operationally_complete": false
+}

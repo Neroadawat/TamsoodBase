@@ -1,0 +1,12 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const source=fs.readFileSync('web/story.js','utf8');let observer,options;const chapters=Array.from({length:5},(_,i)=>({dataset:{storyStep:String(i)},querySelector:()=>({textContent:'stage'+i}),scrollIntoView:o=>{chapters[i].scrolled=o},focus:()=>{}}));
+const buttons=chapters.map((_,i)=>({dataset:{storyGo:String(i)},setAttribute(k,v){this[k]=v},addEventListener(k,fn){this[k]=fn}}));const stage={dataset:{}},counter={},caption={},start={addEventListener(k,fn){this[k]=fn}},story={scrollIntoView:o=>{story.scrolled=o}};
+let reduced=false;const doc={querySelector:s=>({'.story-visual':stage,'#story-counter':counter,'#story-caption':caption,'#story-start':start,'#fuel-story':story}[s]),querySelectorAll:s=>s==='[data-story-step]'?chapters:s==='[data-story-go]'?buttons:[]};
+const root={document:doc,matchMedia:()=>({matches:reduced}),IntersectionObserver:class{constructor(fn,o){observer=fn;options=o}observe(){}}};root.globalThis=root;
+vm.runInNewContext(source.slice(source.indexOf('// Scroll-driven fuel story.')),root);
+buttons[2].click();assert.equal(stage.dataset.stage,'2');assert.equal(caption.textContent,'stage2');assert.equal(counter.textContent,'03 / 05');assert.equal(buttons[2]['aria-pressed'],'true');assert.equal(chapters[2].scrolled.behavior,'smooth');
+reduced=true;buttons[4].click();assert.equal(chapters[4].scrolled.behavior,'instant');
+observer([{isIntersecting:true,intersectionRatio:.5,target:chapters[1]}]);assert.equal(stage.dataset.stage,'1');
+start.click();assert.equal(story.scrolled.behavior,'instant');
+const html=fs.readFileSync('web/index.html','utf8');assert.equal((html.match(/data-story-step=/g)||[]).length,5);assert.equal((html.match(/data-scene=/g)||[]).length,5);assert.ok(html.includes('ไม่ใช่ชุดกระบวนการที่เชื่อมคำนวณแล้ว'));
+console.log('Story: scroll activation, click/keyboard-native buttons, reduced-motion, caption and 5 scenes passed');

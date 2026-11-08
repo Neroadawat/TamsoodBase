@@ -1,0 +1,40 @@
+{
+  "checked_at": "2026-10-28T09:06:36.854908+00:00",
+  "passed": true,
+  "engine": "Neo4j Community",
+  "version_output": "version\n\"5.26.32\"",
+  "source_sha256": "d95b721aded3a98be0cbeeaf9cf964841133cee788235ecba8608ffc6775a134",
+  "observations": 16,
+  "nodes": 39,
+  "relationships": 68,
+  "checks": [
+    {
+      "process": "FAME",
+      "direction": "INPUT",
+      "records": 8,
+      "equal_to_sqlite": true
+    },
+    {
+      "process": "FAME",
+      "direction": "OUTPUT",
+      "records": 2,
+      "equal_to_sqlite": true
+    },
+    {
+      "process": "H-FAME",
+      "direction": "INPUT",
+      "records": 5,
+      "equal_to_sqlite": true
+    },
+    {
+      "process": "H-FAME",
+      "direction": "OUTPUT",
+      "records": 1,
+      "equal_to_sqlite": true
+    }
+  ],
+  "full_original_payload_matches": 16,
+  "unique_entity_id_enforced": true,
+  "scope": "Network-isolated disposable container; source-local flow identity; no upstream links or inferred compartments; decimal amounts stored as strings; no performance claim; production unchanged",
+  "temporary_container_removed": true
+}

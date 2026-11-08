@@ -1,0 +1,47 @@
+{
+  "review_date": "2026-11-07",
+  "reviewer": "Codex",
+  "authorization": "User authorized Codex self-review",
+  "review_type": "SELF_REVIEW",
+  "independent_assurance": false,
+  "scope": "INTERNAL_RESEARCH_USE",
+  "cases": [
+    {
+      "case": "dede",
+      "release_id": "ethanol-dede-07310af271950809b9f9bde787b53b2c23a01517d8eb9a2102a379d87aacbbc5",
+      "basis": "evidence/ethanol-proxy-scenario.json",
+      "decision": "APPROVED_INTERNAL_USE",
+      "reason": "Approved for internal use as a source-verified mass-balance example and a reproducible scenario with survey proxies.",
+      "publication_workflow_state": "DRAFT",
+      "redistribution_status": "NOT_CLEARED"
+    },
+    {
+      "case": "cmu",
+      "release_id": "ethanol-cmu-5ce2da222a53f61f9ee651f8dbb9eb7f4ac18dbb3cfcdc0c64bea96a5df59379",
+      "basis": "evidence/ethanol-assumption-validation.json",
+      "decision": "APPROVED_INTERNAL_USE",
+      "reason": "Approved for internal comparison of reported energy intensity and transport assumptions.",
+      "publication_workflow_state": "DRAFT",
+      "redistribution_status": "NOT_CLEARED"
+    },
+    {
+      "case": "tsm",
+      "release_id": "ethanol-tsm-fdf8cc2c0bf03dc355391a7f78655394c3d6e42c15f4887491de25171c3cb501",
+      "basis": "evidence/ethanol-tsm-wastewater.json",
+      "decision": "APPROVED_INTERNAL_USE",
+      "reason": "Approved for internal technology benchmarking, with appraisal quantities and operating results separated.",
+      "publication_workflow_state": "DRAFT",
+      "redistribution_status": "NOT_CLEARED"
+    },
+    {
+      "case": "uasb",
+      "release_id": "ethanol-uasb-3cda36f2cde33c76b55745fd9bcd5e541e4a36fa60e8c95a776f9e97334f326c",
+      "basis": "evidence/ethanol-uasb-lab-benchmark.json",
+      "decision": "APPROVED_INTERNAL_USE",
+      "reason": "Approved for internal laboratory benchmarking on original influent COD basis.",
+      "publication_workflow_state": "DRAFT",
+      "redistribution_status": "NOT_CLEARED"
+    }
+  ],
+  "whole_lifecycle_CO2e": null
+}

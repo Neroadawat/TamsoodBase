@@ -1,0 +1,18 @@
+{
+  "result": "passed",
+  "behavior_checks": [
+    "failed lazy loads are retryable",
+    "success stays cached",
+    "pending loads deduplicated",
+    "parallel partial failure allows retry",
+    "report options and inventory rows replaced before retry render"
+  ],
+  "browser_check": "Temporary local handler returned /api/reports 503 then 200 after navigating away/back; recovered 2 source options and 12 ThaiOil2024 rows",
+  "screenshot": "build/frontend-retry-proof.jpg",
+  "implementation_sha256": {
+    "web/app.js": "a08f2a5e97a7fe0de5643587751724ea247d5ea63fc78660874443beb75b9282",
+    "tests/web-lazy-behavior.cjs": "073b14a28d534b038eb7e05c9120a017dfd50514fce272e42f3a0b1b3cca1820",
+    "tests/test_frontend.py": "8a634a7287cc2265336620dbabd749afa98e14860dc55aeb6fa38904a4c69baa"
+  },
+  "remote_ec2_changed": false
+}

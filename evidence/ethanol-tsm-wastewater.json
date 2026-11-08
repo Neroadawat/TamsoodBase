@@ -1,0 +1,51 @@
+{
+  "project": "P110095",
+  "review_date": "2026-11-07",
+  "verification": "World Bank public PDF text; local download failed certificate validation",
+  "appraisal": {
+    "url": "https://documents1.worldbank.org/curated/en/471401468132606495/pdf/484350PID0TH0b1astewater0Box338909B.pdf",
+    "locator": "Section 3 Preliminary Description",
+    "ethanol_m3_day": 100,
+    "vinasse_m3_day": 1100,
+    "concentrated_m3_day": 600,
+    "COD_high_mg_L": 250000,
+    "raw_vinasse_L_per_L_ethanol": "11",
+    "concentrated_vinasse_L_per_L_ethanol": "6",
+    "annual_power_target_GWh": 18
+  },
+  "implementation": {
+    "url": "https://documents1.worldbank.org/curated/en/499241468132604710/pdf/ISR-CN-P110095-12-27-2013-1388172822820.pdf",
+    "locator": "Page 1 Implementation Status Overview",
+    "archive_date": "2013-12-27",
+    "grid_replacement_approx_kWh_month": 150000,
+    "reported_operational": true
+  },
+  "matched_period_ethanol_output": null,
+  "methane_recovered": null,
+  "methane_emitted": null,
+  "CO2e_per_L": null,
+  "reuse": "THAI_TECHNOLOGY_BENCHMARK",
+  "followup": {
+    "assessment_url": "https://documents1.worldbank.org/curated/en/571961468120847214/pdf/483590PAD0P1100950Box353763B001PUBLIC1.pdf",
+    "route_locator": "Annex 2, VI, paragraph 18, printed page 25",
+    "one_way_approx_km": 60,
+    "steam_supply": "neighboring sugar mill boiler, per due diligence audit",
+    "conditional_concentrated_vinasse_m3_km_per_L_ethanol": "0.360",
+    "conditional_basis": "600 m3/day concentrate transported about 60 km, with 100000 L/day ethanol from project description",
+    "transport_fuel_per_L": null,
+    "cdm_validation_url": "https://cdm.unfccc.int/Projects/Validation/DB/8CIS1C5D9HBBRSIRR1R0STCX9SKQZC/view.html",
+    "cdm_ex_ante_reduction_tCO2e_year": 146023,
+    "pdd_download_status": "web timeout",
+    "public_matched_monitoring_series_found": false,
+    "required_period_fields": [
+      "period start/end",
+      "ethanol output L",
+      "wastewater volume m3 and sample location",
+      "influent and effluent COD kg/m3",
+      "CH4 recovered kg",
+      "CH4 emitted or measurement/model for leakage, dissolved methane and destruction slip",
+      "transport diesel L or loaded mass/vehicle/distance/empty return",
+      "electricity imported and exported kWh"
+    ]
+  }
+}

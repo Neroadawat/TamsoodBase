@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-05",
+  "deployment_id": "dpl_Dyqy1gp5WcA8X1iXfm4YQcjTF6VW",
+  "rollback_deployment_id": "dpl_9LjuP2FBh37D8r4FsR7geUTQmvf7",
+  "production_url": "https://tamsoodbase.vercel.app",
+  "asset_hash_checks": {
+    "index.html": true,
+    "app.js": true,
+    "style.css": true
+  },
+  "targeted_frontend_tests": 13,
+  "additional_behavior_suites": [
+    "motion-behavior.cjs",
+    "fuel-story-behavior.cjs"
+  ],
+  "browser": {
+    "passed": true,
+    "desktop_stage": "2",
+    "mobile_stage": "3",
+    "widths": {
+      "client": 390,
+      "scroll": 390
+    },
+    "reduced_motion_stage": "4",
+    "link": "case-study",
+    "errors": []
+  },
+  "natural_scroll_activation": true,
+  "local_and_live_browser_checked": true,
+  "screenshots": [
+    "output/fuel-story/live-desktop.png",
+    "output/fuel-story/live-mobile.png"
+  ],
+  "references": [
+    "https://pudding.cool/process/how-to-make-dope-shit-part-3/",
+    "https://alidep.github.io/scrollama/"
+  ],
+  "implementation": "Original inline SVG five conceptual scenes with native sticky/IntersectionObserver; Playwright installed locally for headless Chrome verification; no CDN or new shipped dependency",
+  "scientific_scope": "Conceptual petroleum journey only; B100 separately linked; not a calculated linked inventory or CO2e result",
+  "backend_and_source_values_changed": false,
+  "cleanroom_passed": true
+}

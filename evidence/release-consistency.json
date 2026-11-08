@@ -1,0 +1,294 @@
+{
+  "scope": "LOCAL_RELEASE_CANDIDATE_CONSISTENCY_NOT_LIVE_RUNTIME_ATTESTATION",
+  "candidate_id": "4c6eef50f4fcfc9ce4bbbb16b81380f303fa4ae30df890d1ab5a929b9cdff1f8",
+  "files": [
+    {
+      "path": "docs/submission/SRS.md",
+      "sha256": "267196b358d94aafc30794e636fb5cdbb8c07838a4f732cbad74c0250c990134"
+    },
+    {
+      "path": "web/upstream-inventory.json",
+      "sha256": "f9b165b9a2dabb0e5220ddfa6c182157ecd85803c4193543cbca74aafbdb7e1e"
+    },
+    {
+      "path": "build/upstream-inventory/report.json",
+      "sha256": "53136d2ead6e0aa5909803243e4efecbe66f8551eddf27257336769777f444ec"
+    },
+    {
+      "path": "build/product-inventory/report.json",
+      "sha256": "d95b721aded3a98be0cbeeaf9cf964841133cee788235ecba8608ffc6775a134"
+    },
+    {
+      "path": "evidence/ec2-upgrade.json",
+      "sha256": "c7baace466b570514f4e656af877626facb20066e3cbbc61ed1d98a5fe5172e8"
+    },
+    {
+      "path": "evidence/current-frontend-release.json",
+      "sha256": "444b8e8767cf2807bd56cb5dd35eef759f7be7596d29796cb4826b1b318c39db"
+    },
+    {
+      "path": "api/[route].js",
+      "sha256": "e9f51322e15b9fe710b085288c2863c2c5d1f5b933e1e85acac0347a5f124f82"
+    },
+    {
+      "path": "sql/mysql/api-schema.sql",
+      "sha256": "55893e93cc561ec551ce0d03af099ded7f7c960033eb82c28ed7703bae764123"
+    },
+    {
+      "path": "sql/mysql/supplemental-schema.sql",
+      "sha256": "aafb50e30f59f03bd900c10d6fb87495854d89f6ef958a920c3ebe1e1989ef9b"
+    },
+    {
+      "path": "docs/inventory-flow-registry.json",
+      "sha256": "56e851fa358604df5cf260a4a32b6c4898c5ea82efae6f35c234be467cfc1606"
+    },
+    {
+      "path": "evidence/versioned-inventory.json",
+      "sha256": "a3440b20828485a6fe11ca2c81efd79a4795f9718ae73f2096d30992bf3f1dbf"
+    },
+    {
+      "path": "evidence/activity-model-store.json",
+      "sha256": "ec35ac92e05e0b4eb08443665e85d43236bd9c32fa2ca4f1458acae1d90589ce"
+    },
+    {
+      "path": "web/case-study.json",
+      "sha256": "e7338e940b25d2a16dae61e95e013b8138b4c2bc184441615811a68f2ec2de3d"
+    },
+    {
+      "path": "build/thai-fame-activity-chain/scenarios.json",
+      "sha256": "da9f6c5dba4c2a53be16bb095111296e8e0dc8139039e1b6306b4353160c85b1"
+    },
+    {
+      "path": "scripts/build_case_study_metadata.py",
+      "sha256": "35d856f63afa1d22da89c9cf36903ee326b299c33f3fc948026991070a5f5a70"
+    }
+  ],
+  "checks": [
+    {
+      "check": "upstream_matches_reviewed_evidence",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "retained_pdf_hash",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "retained_table4_hash",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "public_projection_all_fields",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_private_data_excluded",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_asset_allowlist",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "packaged_proxy_matches_source",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:index.html",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_source_matches_build:index.html",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:style.css",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_source_matches_build:style.css",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:api.js",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_source_matches_build:api.js",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:app.js",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_source_matches_build:app.js",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:favicon.svg",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_source_matches_build:favicon.svg",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:upstream-inventory.json",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_source_matches_build:upstream-inventory.json",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:case-study.js",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_source_matches_build:case-study.js",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:case-study.json",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_source_matches_build:case-study.json",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:discovery.js",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_source_matches_build:discovery.js",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:story.js",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_source_matches_build:story.js",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:theme.css",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_source_matches_build:theme.css",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:noto-sans-thai-06310198b08f.woff2",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_source_matches_build:noto-sans-thai-06310198b08f.woff2",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:FONT-LICENSE.txt",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_source_matches_build:FONT-LICENSE.txt",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "frontend_build_hash:config.js",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "srs_markdown_matches_rendered_source",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "srs_pdf_matches_evidence",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "srs_all_pages_rendered",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "versioned_review_artifact_hash",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "activity_model_store_hash",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "activity_model_input_hash",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "public_case_metadata_all_fields",
+      "passed": true,
+      "severity": "ERROR"
+    },
+    {
+      "check": "recorded_frontend_snapshot_version",
+      "passed": true,
+      "severity": "ERROR"
+    }
+  ],
+  "passed": true,
+  "recorded_deployments": {
+    "backend_release": "dea667bbd79dc1d9",
+    "frontend_deployment_id": "dpl_Wz7EhN4xyjaj2aUsuFp56wjyhLeB",
+    "live_rechecked_this_run": false
+  },
+  "dataset_counts": {
+    "upstream_observations": 42,
+    "conversion_observations": 16
+  },
+  "limitations": [
+    "Not a signed final release",
+    "No scientific completeness certification",
+    "No production migration or deployment performed",
+    "Team review and source/model gaps remain open"
+  ]
+}

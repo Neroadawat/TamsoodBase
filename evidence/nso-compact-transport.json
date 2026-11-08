@@ -1,0 +1,10 @@
+{
+  "scope": "ALL_NSO_FIELDS_LOSSLESS_TRANSPORT_REPLAY",
+  "rows": 273,
+  "contexts": 5,
+  "before_bytes": 433169,
+  "after_bytes": 146019,
+  "all_row_fields_equal": true,
+  "source_values_changed": false,
+  "public_caching_enabled": false
+}

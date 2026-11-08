@@ -1,8 +1,14 @@
 __pycache__/
 build/
+output/final-review/
 .venv/
 course-materials/*.pdf
 course-materials/*.txt
 .env
 data/raw/
 .local/
+*.pem
+*.key
+
+.vercel
+.env*

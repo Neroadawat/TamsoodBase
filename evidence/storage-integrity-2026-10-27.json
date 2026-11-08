@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "databases": [
+    {
+      "path": "build/reusable/reference.sqlite",
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "table_counts": {
+        "publisher": 2,
+        "document": 2,
+        "unit": 7,
+        "context": 4,
+        "metric": 26,
+        "observation": 101,
+        "quality_issue": 2,
+        "issue_observation": 4,
+        "review": 101,
+        "data_release": 1,
+        "release_observation": 101
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "build/nso/nso.sqlite",
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "table_counts": {
+        "observation": 273
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "build/product-inventory/inventory.sqlite",
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "table_counts": {
+        "process": 2,
+        "exchange": 16
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "build/eppo/eppo.sqlite",
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "table_counts": {
+        "source_snapshot": 2,
+        "observation": 5934
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "build/normalization/reference-candidate.sqlite",
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "table_counts": {
+        "publisher": 2,
+        "document": 2,
+        "unit": 7,
+        "context": 4,
+        "metric": 26,
+        "observation": 101,
+        "quality_issue": 2,
+        "issue_observation": 4,
+        "review": 101,
+        "data_release": 1,
+        "release_observation": 101
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "build/inventory-candidate/candidate.sqlite",
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "table_counts": {
+        "source": 1,
+        "unit": 4,
+        "process": 2,
+        "flow": 15,
+        "exchange": 16
+      },
+      "bytes_unchanged": true
+    },
+    {
+      "path": "build/dmf/20261022T151321110294Z/candidates.sqlite",
+      "integrity": "ok",
+      "foreign_key_violations": 0,
+      "table_counts": {
+        "resource": 3,
+        "staging": 34905,
+        "candidate": 34899,
+        "rejected": 6,
+        "duplicate_disposition": 34899
+      },
+      "bytes_unchanged": true
+    }
+  ],
+  "normal_form_claim": "No whole-schema4NF/5NF certification;FDdecompositionandcandidatejoinchecksseparate"
+}

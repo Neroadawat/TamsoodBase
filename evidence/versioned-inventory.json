@@ -1,0 +1,22 @@
+{
+  "scope": "LOCAL_VERSIONED_REVIEW_SCHEMA_NOT_PRODUCTION_MIGRATION",
+  "release_id": "d35788b1f8008932ede94ebe98b724834f48564c470b9e52db763d88a5b4814f",
+  "process_versions": {
+    "FFB": "66ccfedddfbc82455f5ebeda9671be7983411c1a303f82efecf02782a5256d47",
+    "CPO": "463ddc2b00b011596f71717f88f74f3a1f9803a2d1911f91a9e15fbf4af6f7ad",
+    "RBDPO": "880908be4021292898560d897b29bf513b9bb9662338b7d6940eac760d60039c",
+    "FAME": "c9d21f6210dbf903f96bceaa0c4a24d5654594fd6fa923b7f320d123b944017c",
+    "H-FAME": "55661ac960968a734e91b52c7792c392d9147f0c74dd721228d63a81a5393e92"
+  },
+  "source_rows": 58,
+  "roundtrip_all_fields": true,
+  "numeric_parse_audit_rows": 58,
+  "allocation_applied": false,
+  "unit_conversion_applied": false,
+  "dataset_versions_sealed": true,
+  "parser_contract": "REVIEW_PARSE_V2_TABLE4_FOOTNOTE_A",
+  "full_lifecycle_inventory": false,
+  "candidate_path": "build/versioned-inventory/d35788b1f8008932ede94ebe98b724834f48564c470b9e52db763d88a5b4814f/candidate.sqlite",
+  "candidate_sha256": "ba767d485ac80f4fe13051d4c70513ba715592c2dfe14aae63d4f3928c874435",
+  "normal_form_claim": "Dependencies documented per relation; no whole-schema 5NF certification"
+}

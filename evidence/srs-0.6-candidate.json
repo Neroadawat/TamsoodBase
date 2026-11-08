@@ -1,0 +1,10 @@
+{
+  "artifact": "output\\pdf\\srs-0.6-candidate\\TamsoodBase-SRS-review.pdf",
+  "pages": 21,
+  "rendered_pages": 21,
+  "sha256": "0f523413561d024890b3976ebcfae5bb4907a3e20123d6420d71fdfc5ac62cef",
+  "source_sha256": "4501f6de5dbb22207cf19b032c3a8a0f4742fe4b81fd6fc41ed6b8d7381b27d7",
+  "status": "DRAFT_TEAM_REVIEW_PENDING",
+  "slides_rebuilt": false,
+  "source_path": "build\\srs-0.6-snapshot\\SRS.md"
+}

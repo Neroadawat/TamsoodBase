@@ -1,0 +1,19 @@
+{
+  "id": "TGO-CFP-307-April2026",
+  "name": "ไบโอดีเซล, ค่าเฉลี่ยประเทศไทย",
+  "description": "จากโรงงานผลิตไบโอดีเซล ทั้งที่มีและไม่มีกระบวนการกลั่นบริสุทธิ์น้ำมันปาล์มดิบ หรือมีการผลิตปาล์มโอเลอิน หรือผลิตภัณฑ์อื่นๆ ร่วมด้วย; LCIA method IPCC 2013 GWP 100a V1.03",
+  "activity_unit": "kg",
+  "value": "1.0372",
+  "result_unit": "kgCO2e",
+  "geography": "TH",
+  "provenance_class": "THAI_NATIONAL_LCI_REPORTED",
+  "underlying_all_inputs_thai_audited": false,
+  "method": "IPCC 2013 GWP 100a V1.03",
+  "version": "Update_April2026",
+  "source_url": "https://thaicarbonlabel.tgo.or.th/index.php?lang=TH&mod=Y0hKdlpIVmpkSE5mWlcxcGMzTnBiMjQ9",
+  "source_sha256": "58a5f2cc45396724cb4dcf4f26548cd321c9f549a355ff9123703c99cb1caf06",
+  "locator": "CFP table row 307",
+  "rights_status": "NOT_CLEARED_FOR_REDISTRIBUTION",
+  "boundary_status": "NOT_CONFIRMED_FOR_FULL_LIFECYCLE_SUM",
+  "automatically_combined_with_foreground": false
+}

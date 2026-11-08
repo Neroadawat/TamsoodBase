@@ -1,0 +1,15 @@
+{
+  "source_sha256": "7e88a5e685bd85633ae0f8840b6be08a989859472b96bc3801060d6c7db08e59",
+  "source_unchanged": true,
+  "candidate": "build\\normalization\\reference-candidate.sqlite",
+  "context_document_conflicts": 0,
+  "metric_lossless_reconstruction": true,
+  "catalog_all_columns_equal": true,
+  "foreign_key_check": "PASS",
+  "counts": {
+    "reference_catalog": 101,
+    "accepted_reference": 97
+  },
+  "scope": "metric decomposition only; no whole-schema 5NF certification",
+  "production_migrated": false
+}

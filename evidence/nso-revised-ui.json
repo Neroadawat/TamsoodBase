@@ -1,0 +1,13 @@
+{
+  "result": "passed",
+  "api": "nso_comparison merges optional revised evidence after context/arithmetic validation",
+  "browser_text": "NSO30350 / DEDE revised30350ktoe; preliminary28987 retained; only one total, not all273",
+  "target": "http://127.0.0.1:8766/",
+  "live_server_restarted": "http://127.0.0.1:8765/",
+  "screenshot": "build/explorer/nso-revised-comparison.png",
+  "targeted_tests_passed": 6,
+  "javascript_syntax": "passed",
+  "source_values_changed": false,
+  "coverage_changed": false,
+  "cloud_deployed": false
+}

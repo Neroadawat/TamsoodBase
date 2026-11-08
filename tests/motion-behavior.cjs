@@ -1,0 +1,11 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const text=fs.readFileSync('web/app.js','utf8');
+const start=text.indexOf('// Finite motion responds');
+const end=text.indexOf("})(typeof window==='undefined'?globalThis:window);",start)+"})(typeof window==='undefined'?globalThis:window);".length;
+let reduced=false,cancelled=0,played=0;
+const context={module:{exports:{}},matchMedia:()=>({matches:reduced})};vm.runInNewContext(text.slice(start,end),context);
+const element={getAnimations:()=>[{cancel:()=>cancelled++}],animate:()=>played++};
+assert.equal(context.module.exports.motionPlay(element,[],{}),true);assert.equal(played,1);assert.equal(cancelled,1);
+reduced=true;assert.equal(context.module.exports.motionPlay(element,[],{}),false);assert.equal(played,1);
+assert.equal(context.module.exports.motionPlay({},[],{}),false);
+console.log('Motion: replay cancellation, reduced motion and missing API guards passed');

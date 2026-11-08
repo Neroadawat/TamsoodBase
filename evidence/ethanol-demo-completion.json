@@ -1,0 +1,197 @@
+{
+  "reviewed_at": "2026-11-06",
+  "sources": [
+    {
+      "id": "thai-molasses-ethanol-2008",
+      "sha256": "fa0c483a9c27fcff84a21668795bf5a6c4ea7f5bc8d52e62b06168b19be51dba",
+      "pages_read_for_gap_audit": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "source_url": "https://doi.org/10.1007/s11367-008-0011-2",
+      "redistribution_status": "NOT_CLEARED"
+    },
+    {
+      "id": "thai-cassava-ethanol-2008",
+      "sha256": "fc6c6439d5255efd92632be392160d4ac74db6590397cf5a548cf2f3a5a67762",
+      "pages_read_for_gap_audit": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "source_url": "https://doi.org/10.1065/lca2007.06.343",
+      "redistribution_status": "NOT_CLEARED"
+    }
+  ],
+  "same_study_partial_example": {
+    "scope": "PARTIAL_STUDY_FOREGROUND_MATERIAL_BASIS",
+    "assumption_id": "MOE2008_FIG1_FUEL_ECONOMY_LINEAR_BASIS_V1",
+    "assumptions": [
+      "E10 interpreted as0.10ethanol+0.90gasoline volume;no blend-volume contraction adjustment",
+      "Study99.5percent ethanol output volume used as its fuel-blending feed;no pureethanol/density correction",
+      "Figure1batch linear scaling;not an independently measured supply chain"
+    ],
+    "distance_km": "13.46",
+    "gasoline_equivalent_litres": "1",
+    "E10_litres": "1.011269722013523666416228399699474079639",
+    "ethanol_blending_feed_litres": "0.1011269722013523666416228399699474079639",
+    "gasoline_blending_feed_litres": "0.9101427498121712997746055597295266716751",
+    "physical_batch_scale_per_tonne_cane": "0.009943655083712130446570584067841436377965",
+    "physical_flows": [
+      {
+        "name": "cane_stalk",
+        "amount": "9.943655083712130446570584067841436377965",
+        "unit": "kg",
+        "basis_role": "physical_input_before_allocation"
+      },
+      {
+        "name": "molasses",
+        "amount": "0.4494532097837882961849903998664329242840",
+        "unit": "kg",
+        "basis_role": "intermediate_not_additional_final_product"
+      },
+      {
+        "name": "sugar",
+        "amount": "1.030162666672576714264712509428372808757",
+        "unit": "kg",
+        "basis_role": "co_product"
+      },
+      {
+        "name": "bagasse",
+        "amount": "2.456082805676896220302934264756834785357",
+        "unit": "kg",
+        "basis_role": "internal_energy_material_not_avoided_credit"
+      },
+      {
+        "name": "cane_trash",
+        "amount": "1.988731016742426089314116813568287275593",
+        "unit": "kg",
+        "basis_role": "residue"
+      },
+      {
+        "name": "stillage",
+        "amount": "1.061982362940455531693738378445465405167",
+        "unit": "L",
+        "basis_role": "wastewater_not_elementary_discharge"
+      }
+    ],
+    "economic_allocation": {
+      "sugar": "0.896",
+      "molasses": "0.104",
+      "applied_to_physical_flows": false,
+      "applies_to": "eligible upstream burdens only;not yet supplied"
+    },
+    "mass_balance_closed": false,
+    "elementary_emissions_complete": false,
+    "all_background_inputs_thai_verified": false,
+    "CO2e_total": null,
+    "full_lifecycle_lci": false,
+    "existing_model_changed": false,
+    "source_url": "https://doi.org/10.1007/s11367-008-0011-2",
+    "source_sha256": "fa0c483a9c27fcff84a21668795bf5a6c4ea7f5bc8d52e62b06168b19be51dba",
+    "locators": {
+      "physical_batch_flows": "Figure1/PDF2/printed302; basis1tonnecane",
+      "fuel_economy": "Section2.1/PDF2/printed302",
+      "economic_allocation": "Section2.2/PDF3/printed303"
+    },
+    "verification": {
+      "physical_figure_values": "VISUAL_TRANSCRIPTION_RASTER_FIGURE_NOT_TWO_TEXT_EXTRACTORS",
+      "fuel_economy": "PYPDF_TEXT_AND_RENDERED_PAGE",
+      "economic_allocation": "TWO_EXTRACTORS_AND_RENDERED_PAGE_PREVIOUS_REVIEW",
+      "scientific_independent_reviewer": false
+    }
+  },
+  "book_by_book_gap_audit": {
+    "molasses": [
+      {
+        "stage": "cultivation",
+        "available": "cane/trash batch basis,economicallocation andcontextualN/P2O5/K2Oratesperha inSection3.4",
+        "missing": "allinputamounts linked byverifiedyield to sameFU;herbicide/diesel/water andelementarysoilairflows"
+      },
+      {
+        "stage": "sugar_milling",
+        "available": "sugar/molasses/bagasse quantities",
+        "missing": "actualsteam/electricity/auxiliaryfuel amounts and exactnetcredit;incomplete massbalance"
+      },
+      {
+        "stage": "ethanol_conversion",
+        "available": "ethanol/stillage yield and partialenergyparameters",
+        "missing": "completecoal/ricehusk/electricity/chemical/water inputs and fermentationCO2 mass"
+      },
+      {
+        "stage": "waste",
+        "available": "12/88split/BODapprox40gL/defaultCH4parameter",
+        "missing": "fulltreatment/sludgeleakage/nutrient fate;defaultEFnotThaisiteCH4measurement"
+      },
+      {
+        "stage": "transport_distribution",
+        "available": "described in scope and collectionprocedure",
+        "missing": "alllegdistances/payload/loads/fuel consumption per referenceflow"
+      },
+      {
+        "stage": "vehicle_use",
+        "available": "E10/CGfuel economy and blenddefinition",
+        "missing": "completeperFUelementarymassCO2CH4N2Oetc;Table5isLCIA notphysicalLCI"
+      },
+      {
+        "stage": "background",
+        "available": "source modelreferences",
+        "missing": "reproducibleThai-onlyproviderinventory/versions/LCIexports"
+      }
+    ],
+    "cassava": [
+      {
+        "stage": "cultivation_conversion",
+        "available": "process flow and energy scenarios",
+        "missing": "numericrawinput/outputtable for allprocesses;Figure1mostlylabels"
+      },
+      {
+        "stage": "transport",
+        "available": "3routecapacities/distancesverified",
+        "missing": "referenceflowmass/actualfuel/returnroute for reproducibleemissions"
+      },
+      {
+        "stage": "waste",
+        "available": "stillage/biogas/drysludgepaths",
+        "missing": "settledportionquantification/fateexplicitlynotincluded due lackofinformation Section1.2/PDF2"
+      },
+      {
+        "stage": "vehicle_use",
+        "available": "CG/E10ThaiPTTreference;E85modelestimate",
+        "missing": "completeperFUgasinventory;E85notThaiobservedfleettest inTable2"
+      },
+      {
+        "stage": "background_quality",
+        "available": "GREET/IPCC/DMUNERIreferences",
+        "missing": "Thai-onlybackgroundreplay;acidificationTable4held due numeric inconsistency"
+      }
+    ]
+  },
+  "recommended_next_source": {
+    "title": "Fuel ethanol from cane molasses in Thailand: Environmental and cost performance",
+    "doi": "10.1016/j.enpol.2008.01.008",
+    "url": "https://www.sciencedirect.com/science/article/abs/pii/S0301421508000049",
+    "reason": "Publisher explicitly identifies Table7 asLCIresults forE10a/b/c/CG;mustverifyactualtable,basis andcompatibilitybeforeusing",
+    "status": "USER_TU_NOT_SUBSCRIBED_OPEN_AUTHOR_REPORT_FOUND_BUT_NOT_GAS_LCI",
+    "possible_output": "reportedaggregateairinventory notnecessarilyunitprocesscompleteLCI"
+  },
+  "full_lifecycle_lci": false,
+  "CO2e_total": null,
+  "production_changed": false,
+  "numeric_publication": false,
+  "open_access_followup": "evidence/ethanol-open-access-followup.json"
+}

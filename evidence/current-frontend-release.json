@@ -1,0 +1,41 @@
+{
+  "deployment_id": "dpl_CYLwYSyHEyp5p5hEbXHCyBfHAUkP",
+  "production_url": "https://tamsoodbase.vercel.app",
+  "public_snapshot_id": "f1ec4ba4577615acbfd8760eae8c9833935284a638980af92dffada9a322d7b5",
+  "public_rows": 42,
+  "model_release_id": "657aa71137bdcd70d11ed3e15b0aa1066246393c409517f757a0a10d9ddec89f",
+  "unit_tests_passed": null,
+  "checked_http_routes": 6,
+  "production_EC2_changed": false,
+  "full_lifecycle_inventory": false,
+  "raw_2019_inventory_public": false,
+  "distribution_profile": "PUBLIC_REFERENCE_METADATA_V1",
+  "rollback_deployment_id": "dpl_Wz7EhN4xyjaj2aUsuFp56wjyhLeB",
+  "historical_evidence": "evidence/history/frontend-before-ethanol-2026-11-07.json",
+  "visual_refresh_evidence": "evidence/friendly-statistics-ux.json",
+  "latest_targeted_frontend_tests_passed": 15,
+  "motion_evidence": "evidence/motion-ux.json",
+  "story_evidence": "evidence/fuel-story-ux.json",
+  "readability_evidence": "evidence/story-readability-ux.json",
+  "review_implementation_evidence": "evidence/review-implementation-2026-11-06.json",
+  "release_date": "2026-11-07",
+  "ethanol_live_verification": {
+    "staged_ready": true,
+    "asset_hashes": {
+      "index.html": "374646190fe9ad66d4a412fb8b09be049c3a9c7daf1d40c9a4bfd435bc7fdf9c",
+      "app.js": "d0a7b0743ab9cf36c4ce6e272fe2ac82a63281b7f8d2fdaac7868edb9f5268eb"
+    },
+    "http_status": {
+      "/readyz": 200,
+      "/healthz": 200,
+      "/api/model": 200,
+      "/api/reference.csv": 403
+    },
+    "chrome_viewports": [
+      390,
+      1440
+    ],
+    "direct_and_switch": true,
+    "private_numeric_bagasse_included": false
+  }
+}

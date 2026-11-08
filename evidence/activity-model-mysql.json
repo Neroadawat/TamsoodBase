@@ -1,0 +1,18 @@
+{
+  "scope": "OWNED_TEMPORARY_MYSQL_SCHEMA_NOT_API_MIGRATION",
+  "engine_version": "8.4.13",
+  "source_payloads_checked": 130,
+  "result_rows_all_cells_checked": 330,
+  "negative_checks": {
+    "missing_json_amount": true,
+    "process_mismatch": true,
+    "immutable_source": true,
+    "immutable_result": true,
+    "late_insert": true
+  },
+  "production_API_ready_after": true,
+  "production_tables_changed": false,
+  "model_release_id": "657aa71137bdcd70d11ed3e15b0aa1066246393c409517f757a0a10d9ddec89f",
+  "schema_sha256": "81f6fc2f5cd20a2e5576655352e89dace88fbb5998bffc155b0e5129ad4594c9",
+  "passed": true
+}

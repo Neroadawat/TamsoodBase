@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="th">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ถามข้อมูล | TamsoodBase</title>
+<style>
+  body { font: 1.1rem/1.65 system-ui, sans-serif; color: #142e29; background: #f2f7f5; margin: 0; }
+  main { max-width: 46rem; margin: 3rem auto; padding: 0 1rem; }
+  form, article { background: white; padding: 1.2rem; border: 1px solid #c9ded6; border-radius: .75rem; margin: 1rem 0; }
+  textarea { display: block; box-sizing: border-box; width: 100%; margin: .5rem 0; padding: .65rem; }
+  button, textarea { font: inherit; }
+  button { cursor: pointer; color: white; background: #176653; border: 0; border-radius: .4rem; padding: .5rem .75rem; }
+  button:disabled { opacity: .6; }
+  a { color: #125d4d; }
+  .examples { display: flex; flex-wrap: wrap; gap: .45rem; }
+  .examples button { color: #16483c; background: #d9eee6; }
+  article h2 { margin: 0; font-size: 1.2rem; }
+</style>
+<main>
+  <h1>ถามข้อมูล TamsoodBase</h1>
+  <p>ค้นคำตอบจากการ์ดหลักฐานเกี่ยวกับเชื้อเพลิงและ LCI พร้อมลิงก์อ่านต้นทาง</p>
+  <p><!-- mode-notice --></p>
+  <div class="examples" aria-label="ตัวอย่างคำถาม">
+    <button type="button">ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร?</button>
+    <button type="button">รถ E10 ตอนสตาร์ตเย็นกินน้ำมันเท่าไหร่?</button>
+    <button type="button">โรงงานอ้อยผลิตไอน้ำจากอะไร?</button>
+  </div>
+  <form>
+    <label for="question">คำถามของคุณ</label>
+    <textarea id="question" required maxlength="500" rows="2"></textarea>
+    <button type="submit">ค้นหลักฐาน</button>
+  </form>
+  <p id="status" role="status"></p>
+  <section id="results" aria-label="หลักฐานที่พบ"></section>
+</main>
+<script>
+  const form = document.querySelector('form');
+  const question = document.querySelector('#question');
+  const status = document.querySelector('#status');
+  const results = document.querySelector('#results');
+  const submit = form.querySelector('button');
+  for (const example of document.querySelectorAll('.examples button')) {
+    example.addEventListener('click', () => {
+      question.value = example.textContent;
+      question.focus();
+    });
+  }
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!question.value.trim() || submit.disabled) return;
+    submit.disabled = true;
+    results.replaceChildren();
+    status.textContent = 'กำลังค้นหลักฐาน…';
+    try {
+      const response = await fetch('/ask', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({question: question.value.trim()})
+      });
+      if (!response.ok) throw new Error('Search failed');
+      const {hits, summary} = await response.json();
+      status.textContent = hits.length ? 'หลักฐานที่เกี่ยวข้อง' : 'ยังไม่พบหลักฐานสำหรับคำถามนี้';
+      if (summary) {
+        const card = document.createElement('article');
+        const title = document.createElement('h2');
+        const text = document.createElement('p');
+        title.textContent = 'คำตอบเรียบเรียงโดย Gemini';
+        text.textContent = summary.text;
+        card.append(title, text);
+        for (const hit of hits.filter(hit => summary.source_ids.includes(hit.id))) {
+          const link = document.createElement('a');
+          link.href = hit.source_url;
+          link.textContent = hit.title + ' · ' + hit.locator;
+          const row = document.createElement('div');
+          row.append(link);
+          card.append(row);
+        }
+        results.append(card);
+      }
+      for (const hit of hits) {
+        const card = document.createElement('article');
+        const title = document.createElement('h2');
+        const text = document.createElement('p');
+        const source = document.createElement('a');
+        title.textContent = hit.title;
+        text.textContent = hit.text;
+        source.href = hit.source_url;
+        source.textContent = 'ดูต้นทาง · ' + hit.locator;
+        card.append(title, text, source);
+        results.append(card);
+      }
+    } catch {
+      status.textContent = 'ค้นหลักฐานไม่ได้ในตอนนี้ ลองใหม่อีกครั้ง';
+    } finally {
+      submit.disabled = false;
+    }
+  });
+</script>

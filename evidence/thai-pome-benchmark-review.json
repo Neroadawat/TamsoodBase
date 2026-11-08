@@ -1,0 +1,93 @@
+{
+  "treatment": {
+    "site": "Asian Palm Oil Co., Ltd., Krabi, Thailand",
+    "publication_year": 2011,
+    "source_url": "https://www.jseejournal.com/media/101/attachment/Full%20Scale%20Anaerobic_pp.%20133-136.pdf",
+    "source_sha256": "d098d861864f874c0d0e7609d03ec151b34b13558dc5aeca95290b4bb40b35a9",
+    "pdf_page": 3,
+    "printed_page": 135,
+    "table": "2",
+    "columns": [
+      "HRT_days",
+      "OLR_kgCOD_per_m3_day",
+      "COD_removal_percent",
+      "BOD5_removal_percent",
+      "CH4_in_biogas_percent"
+    ],
+    "operating_points": [
+      [
+        "14",
+        "2.43",
+        "70",
+        "95",
+        "70.03"
+      ],
+      [
+        "10",
+        "5.09",
+        "68",
+        "95",
+        "69.29"
+      ],
+      [
+        "7",
+        "6.50",
+        "65",
+        "96",
+        "66.83"
+      ],
+      [
+        "6.5",
+        "8.70",
+        "65",
+        "93",
+        "66.41"
+      ]
+    ],
+    "biogas_generation": {
+      "amount": "20",
+      "unit": "m3 biogas/m3 wastewater"
+    },
+    "electricity_per_biogas": {
+      "amount": "2.5",
+      "unit": "kWh/m3 biogas"
+    },
+    "derived_gross_electricity_per_wastewater": {
+      "amount": "50.0",
+      "unit": "kWh/m3 wastewater",
+      "derivation": "20 * 2.5",
+      "status": "ARITHMETIC_SCREENING_NOT_NET_EXPORT_OR_CREDIT"
+    },
+    "fugitive_CH4_emission": null,
+    "CH4_volume_conditions": null,
+    "net_electricity_export_per_m3": null,
+    "wastewater_per_FAME_reference_unit": null,
+    "auxiliary_energy_and_reagents_complete": false,
+    "foreign_default_baseline_parameters_applied": false,
+    "linked_to_FAME": false,
+    "rights_status": "NOT_CLEARED"
+  },
+  "benchmark": {
+    "source_url": "https://waa.inter.nstda.or.th/stks/pub/2022/20220110-life-cycle-energy-carbon-footprint.pdf",
+    "source_sha256": "aaea9607dbb1e6418e6796afeca645f71be0ba314f50705b731808162c07a086",
+    "pdf_page": 45,
+    "printed_page": 37,
+    "footnote": "11",
+    "fuel": "B100 FAME",
+    "unit": "kgCO2eq/litre",
+    "WTT": "1.7096",
+    "TTW": "0.1550",
+    "WTW": "1.8646",
+    "sum_verified": true,
+    "kind": "REPORTED_CHARACTERIZED_RESULT_NOT_ELEMENTARY_LCI",
+    "all_inputs_Thai_origin_verified": false,
+    "applied_as_factor": false,
+    "rights_status": "NOT_CLEARED"
+  },
+  "validation": {
+    "two_extractors_agree": true,
+    "visual_pages_reviewed": true
+  },
+  "production_changed": false,
+  "full_lifecycle_inventory": false
+}

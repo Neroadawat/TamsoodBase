@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "source_sha256": "c390580ab59d1f3f58af2a607f26c75def1dd4cf79027b538a83938690fbc0a6",
+  "implementation_sha256": "e0c486de11f0aa1b93bac0b434a6569fd2714ba9dba06ea633441777a2439e1f",
+  "release_id": "33d2127d8a1b76333cc8195d92dc83b6a740e6910ec42867bc56be25cc2750ec",
+  "observations": 97,
+  "nodes": 101,
+  "edges": 99,
+  "checks": [
+    {
+      "publisher": "Star Petroleum Refining Public Company Limited",
+      "year": 2021,
+      "records": 11,
+      "equal": true
+    },
+    {
+      "publisher": "Star Petroleum Refining Public Company Limited",
+      "year": 2022,
+      "records": 14,
+      "equal": true
+    },
+    {
+      "publisher": "Star Petroleum Refining Public Company Limited",
+      "year": 2023,
+      "records": 14,
+      "equal": true
+    },
+    {
+      "publisher": "Star Petroleum Refining Public Company Limited",
+      "year": 2024,
+      "records": 10,
+      "equal": true
+    },
+    {
+      "publisher": "Thai Oil Public Company Limited",
+      "year": 2021,
+      "records": 12,
+      "equal": true
+    },
+    {
+      "publisher": "Thai Oil Public Company Limited",
+      "year": 2022,
+      "records": 12,
+      "equal": true
+    },
+    {
+      "publisher": "Thai Oil Public Company Limited",
+      "year": 2023,
+      "records": 12,
+      "equal": true
+    },
+    {
+      "publisher": "Thai Oil Public Company Limited",
+      "year": 2024,
+      "records": 12,
+      "equal": true
+    }
+  ],
+  "rights_preserved_in_each_observation": true,
+  "scope": "Local JSON document and Python graph traversal compared with SQLite; no MongoDB/Neo4j engine or performance claim; no new observations; no public redistribution",
+  "product_inventory": {
+    "source_sha256": "d95b721aded3a98be0cbeeaf9cf964841133cee788235ecba8608ffc6775a134",
+    "observations": 16,
+    "processes": 2,
+    "checks": [
+      {
+        "process": "FAME",
+        "direction": "INPUT",
+        "records": 8,
+        "equal": true
+      },
+      {
+        "process": "FAME",
+        "direction": "OUTPUT",
+        "records": 2,
+        "equal": true
+      },
+      {
+        "process": "H-FAME",
+        "direction": "INPUT",
+        "records": 5,
+        "equal": true
+      },
+      {
+        "process": "H-FAME",
+        "direction": "OUTPUT",
+        "records": 1,
+        "equal": true
+      }
+    ],
+    "nodes": 39,
+    "edges": 68,
+    "full_row_properties_preserved": true,
+    "flow_identity": "Source-local label and unit; no inferred elementary/product classification or upstream links"
+  }
+}

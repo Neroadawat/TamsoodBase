@@ -1,0 +1,152 @@
+{
+  "reviewed_at": "2026-11-06",
+  "candidate_id": "TH-LAMTHAP-2013",
+  "project_registry_id": "2076",
+  "location": "Krabi, Thailand",
+  "period": [
+    "2013-01-01",
+    "2013-12-31"
+  ],
+  "registry_url": "https://cdm.unfccc.int/Projects/DB/TUEV-SUED1218475905.14/view",
+  "monitoring_document_url": "https://cdm.unfccc.int/UserManagement/FileStorage/02MGH4OW7TB9I8P6QSRDKCAULFEVX3",
+  "participant_url": "https://www.myclimate.org/en/get-active/climate-protection-projects/detail-climate-protection-projects/thailand-biogas-7140-7170/",
+  "status": "HOLD_SOURCE_VERIFICATION",
+  "redistribution_status": "NOT_CLEARED",
+  "representation": "WEB_READER_TEXT_NOT_RAW_PDF",
+  "pdf_sha256": null,
+  "raw_pdf_download_verified": false,
+  "dual_parser_verified": false,
+  "visual_verified": false,
+  "download_result": "HTTP200 text/html challenge,212 bytes; not a PDF. Subsequent web reader unavailable. No challenge bypass attempted.",
+  "reported_candidates_not_imported": [
+    {
+      "field": "wastewater_in",
+      "value": "124686",
+      "unit": "m3",
+      "pdf_page": 9
+    },
+    {
+      "field": "wastewater_out",
+      "value": "122131",
+      "unit": "m3",
+      "pdf_page": 10
+    },
+    {
+      "field": "recycle",
+      "value": "5482",
+      "unit": "m3",
+      "pdf_page": 10
+    },
+    {
+      "field": "COD_in",
+      "value": "70.68",
+      "unit": "kgCOD/m3",
+      "pdf_page": 11
+    },
+    {
+      "field": "COD_out",
+      "value": "9.77",
+      "unit": "kgCOD/m3",
+      "pdf_page": 12
+    },
+    {
+      "field": "flare_biogas",
+      "value": "910036",
+      "unit": "Nm3",
+      "pdf_page": 14
+    },
+    {
+      "field": "methane_fraction",
+      "value": "56.54",
+      "unit": "percent",
+      "pdf_page": 18
+    }
+  ],
+  "issues": [
+    {
+      "id": "LAM-01",
+      "kind": "UNVERIFIED_SUMMARY_ARITHMETIC",
+      "reported_baseline_tCO2e": "38041",
+      "reported_project_tCO2e": "8652",
+      "reported_leakage_tCO2e": "0",
+      "reported_reduction_tCO2e": "21131",
+      "arithmetic_reduction_tCO2e": "29389",
+      "unexplained_difference_tCO2e": "8258",
+      "action": "Check original page and document version; may be text extraction or source issue. Never overwrite reported values.",
+      "status": "OPEN_PENDING_REVISED_DOCUMENT_RECONCILIATION"
+    },
+    {
+      "id": "LAM-02",
+      "kind": "UNIT_CONFLICT",
+      "detail": "Electricity parameter reports MWh with value7279537 while narrative describes kWh measurement/conversion; no inferred conversion accepted."
+    },
+    {
+      "id": "LAM-03",
+      "kind": "METHOD_COMPATIBILITY",
+      "detail": "Historic methane GWP21 is not interchangeable with current factor methods. CER reductions are not physical elementary flows."
+    },
+    {
+      "id": "LAM-04",
+      "kind": "DENOMINATOR_AND_SITE",
+      "detail": "No matched CPO output or linkage to2019mill/2020FAME/PNU2021fuel. No perkgCPO or per1000MJ conversion."
+    },
+    {
+      "id": "LAM-05",
+      "kind": "FLOW_SEMANTICS",
+      "detail": "Pipeline loss0% does not prove total methane leakage0. Generated/recovered/flared/leaked methane must remain distinct. Annual average concentration times annual flow is not an exact integrated load without averaging evidence."
+    },
+    {
+      "id": "LAM-06",
+      "kind": "REVISION_PRECEDENCE",
+      "detail": "Version01 May2014 and additional V4Jan2015 exist for same2013period; cannot assume all older field values survived revision. Registry CER40326 differs from old21131; neither is product emission inventory."
+    }
+  ],
+  "decision": "Useful Thai wastewater technology candidate; no numeric inventory import until raw document and all selected locators verified.",
+  "production_changed": false,
+  "baseline_changed": false,
+  "full_lifecycle_lci": false,
+  "total_co2e": null,
+  "revision_review": {
+    "checked_at": "2026-11-06",
+    "issuance_history_url": "https://cdm.unfccc.int/Projects/DB/TUEV-SUED1218475905.14/iProcess/SIRIM1402397031.65/view",
+    "registry_state": "Issued",
+    "issued_on": "2015-05-22",
+    "registry_reported_CERs": "40326",
+    "old_document": {
+      "version": "01",
+      "completion_date_as_printed": "1/5/2014",
+      "reported_reduction_tCO2e": "21131",
+      "evidence_level": "WEB_READER_TEXT_ONLY"
+    },
+    "new_documents": [
+      {
+        "label": "UNV MR Lamthap FormV.4 Jan15",
+        "role": "REVISED_MONITORING_CANDIDATE",
+        "url": "https://cdm.unfccc.int/UserManagement/FileStorage/G8WQDU57NPK4JSFCA6MV92BIZE3OHL",
+        "registry_size_KB": 562,
+        "download_status": "HTTP200_HTML_NOT_PDF",
+        "response_bytes": 850,
+        "pdf_sha256": null
+      },
+      {
+        "label": "Verification report",
+        "role": "VERIFICATION_CANDIDATE",
+        "url": "https://cdm.unfccc.int/UserManagement/FileStorage/G9ZR6MNO8VC5HI0JUWXFA1TSBQY3KE",
+        "registry_size_KB": 965,
+        "download_status": "HTTP200_HTML_NOT_PDF",
+        "response_bytes": 844,
+        "pdf_sha256": null
+      },
+      {
+        "label": "UNV Lamthap ER V4 (Jan 2013 - Dec 2013)11Feb15",
+        "role": "CALCULATION_CANDIDATE",
+        "url": "https://cdm.unfccc.int/UserManagement/FileStorage/VW3P9IKBGFU4H72MRXY6AD18O0STLZ",
+        "registry_size_KB": 3962,
+        "download_status": "WEB_READER_CACHE_MISS",
+        "pdf_sha256": null
+      }
+    ],
+    "conclusion": "Registry lists a later revised monitoring document and calculation; actual content/revision changes not yet verified. Do not describe older text discrepancy as proven source error or substitute CER40326 for physical inventory.",
+    "new_numeric_inventory_rows_admitted": 0
+  }
+}

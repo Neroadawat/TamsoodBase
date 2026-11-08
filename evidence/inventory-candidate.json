@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "source_sha256": "d95b721aded3a98be0cbeeaf9cf964841133cee788235ecba8608ffc6775a134",
+  "tables": {
+    "source": 1,
+    "unit": 4,
+    "process": 2,
+    "flow": 15,
+    "exchange": 16
+  },
+  "full_payload_roundtrip": 16,
+  "typed_join_roundtrip": 16,
+  "query_checks": [
+    {
+      "process": "FAME",
+      "direction": "INPUT",
+      "records": 8,
+      "equal": true
+    },
+    {
+      "process": "FAME",
+      "direction": "OUTPUT",
+      "records": 2,
+      "equal": true
+    },
+    {
+      "process": "H-FAME",
+      "direction": "INPUT",
+      "records": 5,
+      "equal": true
+    },
+    {
+      "process": "H-FAME",
+      "direction": "OUTPUT",
+      "records": 1,
+      "equal": true
+    }
+  ],
+  "negative_checks": {
+    "role_direction": true,
+    "unit_fk": true,
+    "process_fk": true
+  },
+  "flow_type_compartment": "NULL when not established; no inferred classification",
+  "production_migrated": false,
+  "scope": "Source-local Flow + Unit candidate only; text decimal amounts preserved; no global ontology, conversion engine or 5NF claim"
+}

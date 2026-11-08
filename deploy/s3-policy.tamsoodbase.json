@@ -1,0 +1,27 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": "arn:aws:s3:::tamsoodbase-team-fuel-2026-a7k9",
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": [
+            "tamsoodbase/*"
+          ]
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": "arn:aws:s3:::tamsoodbase-team-fuel-2026-a7k9/tamsoodbase/*"
+    }
+  ]
+}

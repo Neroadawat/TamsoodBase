@@ -1,0 +1,46 @@
+{
+  "result": "passed",
+  "archive": "build/submission-evidence/tamsood-evidence-review.zip",
+  "archive_sha256": "4e2af784c59fefe17aea4365a3b74ff42f95318513d53229c58608fd358cb70c",
+  "files": 164,
+  "schema_tables": {
+    "corporate": 11,
+    "dmf": 9,
+    "supplemental": 5,
+    "eppo": 2
+  },
+  "foreign_keys": {
+    "corporate": 12,
+    "dmf": 10,
+    "supplemental": 5,
+    "eppo": 1
+  },
+  "ddl_hash_bound": true,
+  "manifest_hashes_and_crc_verified": true,
+  "raw_database_credentials_lecture_included": false,
+  "diagram_visual_review": [
+    "corporate",
+    "dmf",
+    "supplemental",
+    "eppo",
+    "pipeline"
+  ],
+  "tests": {
+    "passed": 104,
+    "skipped": 0
+  },
+  "final_submission": false,
+  "remote_changed": false,
+  "limitations": [
+    "Human contribution, signatures, peer review and actual rehearsal must be real",
+    "Deadline and amended assignment requirements not certified",
+    "Data/database delivery must be reviewed separately against rights",
+    "Review diagrams represent current MySQL DDL, not normalized candidate migration"
+  ],
+  "updated_date_local": "2026-10-27",
+  "runtime_update_evidence": [
+    "evidence/ec2-upgrade.json",
+    "evidence/s3-backup-latest.json",
+    "evidence/ec2-rollback-preflight-latest.json"
+  ]
+}

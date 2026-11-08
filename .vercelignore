@@ -1,0 +1,26 @@
+# Upload only the static frontend and its dependency-free builder.
+/*
+!/vercel.json
+!/web/
+/web/*
+!/web/index.html
+!/web/style.css
+!/web/app.js
+!/web/api.js
+!/web/config.js
+!/web/favicon.svg
+!/web/upstream-inventory.json
+!/web/case-study.js
+!/web/case-study.json
+!/scripts/
+/scripts/*
+!/scripts/build_frontend.mjs
+!/api/
+/api/*
+!/api/[[]route].js
+
+!/web/discovery.js
+!/web/story.js
+!/web/theme.css
+!/web/noto-sans-thai-06310198b08f.woff2
+!/web/FONT-LICENSE.txt

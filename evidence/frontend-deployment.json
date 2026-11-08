@@ -1,0 +1,104 @@
+{
+  "checked_at": "2026-10-24T16:53:06.152170+00:00",
+  "result": "passed",
+  "frontend_build_mode": "same-origin",
+  "public_deployment_performed": false,
+  "remote_ec2_changed": false,
+  "contains_source_data": false,
+  "assets": [
+    {
+      "path": "index.html",
+      "sha256": "6588359cba26ecf031c5e20d60b3f34481c57cbde8c50449d6acd8fd0e65f026",
+      "bytes": 28406
+    },
+    {
+      "path": "style.css",
+      "sha256": "87c8b2f6a45637d988ec134a5d72268e63ffed644db3156bf5a4136e669d0392",
+      "bytes": 17892
+    },
+    {
+      "path": "api.js",
+      "sha256": "ac90154fca6719ee3e781a35348c0f9e4da542846c33592fb8ffe2c2065870b9",
+      "bytes": 3019
+    },
+    {
+      "path": "app.js",
+      "sha256": "787d3b3a3fa0490236a637d569d9a8d4a8307a2d92cd08131b10b8c1fe477783",
+      "bytes": 37983
+    },
+    {
+      "path": "favicon.svg",
+      "sha256": "295e597b8234902164b24047ffd9d4de10a013c8410248234a2f4aa37699ed99",
+      "bytes": 174
+    },
+    {
+      "path": "config.js",
+      "sha256": "e24d5d285e463fb381fcaa1483d51ce51b502de57c963190aa433f2edb4bc73b",
+      "bytes": 43
+    }
+  ],
+  "frontend_archive": "build/frontend-static.zip",
+  "frontend_archive_sha256": "f066176c09960ecaf483b387cded35b9dc0a5218fbb1521b030f48bd89126eb7",
+  "ui_checks": {
+    "catalog_datasets": 5,
+    "reference_count": 97,
+    "nso_selected_table_rows": 69,
+    "nso_total_rows": 273,
+    "inventory_rows": 16,
+    "thaioil_total_rows": 48,
+    "thaioil_2024_rows": 12,
+    "dmf_pending_rows": 34671,
+    "eppo_sprc_2024_rows": 12,
+    "mobile_viewport": {
+      "width": 390,
+      "height": 844,
+      "content_width": 375,
+      "scroll_width": 375
+    },
+    "mobile_menu_closes": true,
+    "hash_reload_restores_reference": true,
+    "desktop_sidebar_width_equals_scroll_width": true,
+    "initial_catalog_dataset_requests": 0,
+    "initial_catalog_health_requests": 1
+  },
+  "separate_origin_browser_test": {
+    "frontend": "http://127.0.0.1:8770",
+    "api": "http://127.0.0.1:8766",
+    "reference_count": 97,
+    "export_points_to_api": true,
+    "api_stopped_shows_error": true,
+    "failed_search_rows_empty": true,
+    "failed_search_export_href": null,
+    "test_servers_stopped": true
+  },
+  "tests": {
+    "command": "python -X utf8 -m unittest discover -s tests",
+    "run": 88,
+    "skipped": 0,
+    "result": "passed"
+  },
+  "screenshots": [
+    {
+      "path": "build/frontend-ux-desktop.jpg",
+      "sha256": "88e7c35e0b7ecd909dd2dda874293c7f3089e106d3da979480c2a30e95beac49"
+    },
+    {
+      "path": "build/frontend-ux-mobile.jpg",
+      "sha256": "3fbd181db40a42f58bc349458e7d3410600c526b94a71399ea108db0e5de37bd"
+    }
+  ],
+  "source_sha256": {
+    "web/app.js": "787d3b3a3fa0490236a637d569d9a8d4a8307a2d92cd08131b10b8c1fe477783",
+    "web/api.js": "ac90154fca6719ee3e781a35348c0f9e4da542846c33592fb8ffe2c2065870b9",
+    "web/style.css": "87c8b2f6a45637d988ec134a5d72268e63ffed644db3156bf5a4136e669d0392",
+    "web/index.html": "6588359cba26ecf031c5e20d60b3f34481c57cbde8c50449d6acd8fd0e65f026",
+    "scripts/build_frontend.mjs": "c20c383be0b07110d6e1e3c0433ef7f888846168ac1d27cdbf1d4e18906f3e8c",
+    "vercel.json": "de5906ca4b24094407b32ebccbdd3b1ae9d7322bd615af380bb0b160c5bda97f",
+    ".vercelignore": "1745c8be692e89e93d47a66c17aa3fd9125ace530de6557d6615ef49c0a5000b"
+  },
+  "limitations": [
+    "Vercel provider deployment has not been performed; build and cross-origin behavior tested locally",
+    "Requires reachable HTTPS backend and appropriate access control before external hosting can serve internal data",
+    "No human usability study, WCAG certification or independent source measurement validation claimed"
+  ]
+}

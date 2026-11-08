@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-05",
+  "passed": true,
+  "deployment_id": "dpl_8EhVpAddLmxTd9P2sehEKPe2gyFR",
+  "rollback_deployment_id": "dpl_BoUuYRBhKZS8TFU9HYZyUBauyFXi",
+  "production_url": "https://tamsoodbase.vercel.app",
+  "asset_hash_checks": {
+    "index.html": true,
+    "app.js": true,
+    "style.css": true
+  },
+  "targeted_tests_passed": 13,
+  "release_consistency_checks": 32,
+  "cleanroom_passed": true,
+  "source_values_changed": false,
+  "backend_changed": false,
+  "browser_checks": [
+    "local desktop NSO diesel2024:2rows,27664/25120 preserved",
+    "NSO imports:12rows,2units not summed",
+    "EPPO product shortcut:40 current-page rows Million Litres",
+    "mobile390x844:document375px/scroll375px no page overflow",
+    "live NSO diesel example and catalog rendered"
+  ],
+  "screenshots": [
+    "output/friendly-statistics/live-nso.png",
+    "output/friendly-statistics/live-home.png"
+  ],
+  "references": [
+    "https://service-manual.ons.gov.uk/design-system/foundations/icons",
+    "https://service-manual.ons.gov.uk/data-visualisation/colours/using-colours-in-charts",
+    "https://ourworldindata.org/energy-mix"
+  ],
+  "limitations": [
+    "Not a human usability study or full accessibility certification",
+    "Summary counts records, never fuel totals; EPPO summary covers current page"
+  ]
+}

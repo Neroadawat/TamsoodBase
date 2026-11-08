@@ -1,0 +1,37 @@
+{
+  "result": "passed",
+  "scope": "Local catalog UX; no public deployment or EC2 changes",
+  "checks": {
+    "level_pills_and_query_counts": true,
+    "organization_filter_one_dataset": true,
+    "product_filter_one_dataset": true,
+    "reference_navigation_97": true,
+    "list_layout_survives_reload": true,
+    "storage_blocked_behavior_test": true,
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "mobile_client_width": 375,
+    "mobile_scroll_width": 375
+  },
+  "tests": {
+    "passed": 94,
+    "skipped": 0
+  },
+  "screenshots": [
+    "build/catalog-ux-desktop.jpg",
+    "build/catalog-ux-mobile.jpg"
+  ],
+  "implementation_sha256": {
+    "web/index.html": "8e441a0c68ed087446284f1dec6c8fc492f534200021ec539ee757f5e64502f8",
+    "web/style.css": "0e6128c94d270ee59336a462719c2ac29d569dc37e34192e254ef69b724455c6",
+    "web/app.js": "79bccec8cd10d6b5ec49f0640e06e9b05a1d730b407313d143389a492fed9d0b",
+    "tests/catalog-ux-behavior.cjs": "3a4f0d2f25a9359c17f2dd4e0afc0b170e7ad6eb5728bcab5b19e8bd35cc0ee0"
+  },
+  "limitations": [
+    "No human usability study",
+    "No complete WCAG certification",
+    "No framework migration needed for these controls"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-28T13:56:46.455602+00:00",
+  "deployment_id": "dpl_9Qd5GhZtJ85fmuGidkUdLasfB5yj",
+  "live_asset_hashes": {
+    "index.html": "9b25ff12191ceeb2f796711e91dabf6f2e773e05d495a2933ef6f7e1a584bc53",
+    "app.js": "cd9497ea79ee2c5e8ac5e4919fd9ab82ccff73bd7afa72639e28fcabd54d28da",
+    "style.css": "7b77a60fb4d1fd1f5ea73d26e2150ba5067faa7494d155045f928df3d33e0696"
+  },
+  "tests_passed": 128,
+  "nso_api_rows": 273,
+  "browser_visual_verified": false,
+  "changes": [
+    "Removed rejected demo guide/focus mode",
+    "Five topic cards; NSO first",
+    "Removed duplicate entry routes",
+    "DMF metrics shown only in DMF/quality views",
+    "Publication links retained; CSV row collapsed",
+    "Grid default avoids old persisted list layout"
+  ],
+  "backend_data_changed": false
+}

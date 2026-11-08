@@ -1,0 +1,505 @@
+{
+  "reviewed_at": "2026-11-06",
+  "source_url": "https://www.compete-bioafrica.net/international/Annex4-2-5-COMPETE-032448-2ndReport-D4.1-Thailand-Final.pdf",
+  "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+  "scope": "SOURCE_REPORTED_HISTORIC_PRODUCTION_GHG_NOT_FULL_LCI",
+  "method": "GWP100_IPCC2001",
+  "source_includes_labour": true,
+  "cases": [
+    {
+      "allocation_year_label": "2005",
+      "observations": [
+        {
+          "id": "farm",
+          "ancestor_ids": [],
+          "value": "260.2",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/farm/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "fertilizer_herbicide",
+          "ancestor_ids": [
+            "farm"
+          ],
+          "value": "66.8",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/fertilizer_herbicide/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "farm_diesel",
+          "ancestor_ids": [
+            "farm"
+          ],
+          "value": "21.3",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/farm_diesel/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "labour",
+          "ancestor_ids": [
+            "farm"
+          ],
+          "value": "38.2",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/labour/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "farm_transport",
+          "ancestor_ids": [
+            "farm"
+          ],
+          "value": "39.0",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/farm_transport/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "soil_N2O",
+          "ancestor_ids": [
+            "farm"
+          ],
+          "value": "69.4",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/soil_N2O/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "trash_burning",
+          "ancestor_ids": [
+            "farm"
+          ],
+          "value": "25.5",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/trash_burning/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "milling",
+          "ancestor_ids": [],
+          "value": "5.8",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/milling/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "milling_biomass",
+          "ancestor_ids": [
+            "milling"
+          ],
+          "value": "3.7",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/milling_biomass/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "milling_transport",
+          "ancestor_ids": [
+            "milling"
+          ],
+          "value": "2.1",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/milling_transport/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "grid_credit",
+          "ancestor_ids": [],
+          "value": "-71.8",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/grid_credit/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "conversion",
+          "ancestor_ids": [],
+          "value": "3119.4",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/conversion/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "coal",
+          "ancestor_ids": [
+            "conversion"
+          ],
+          "value": "1150.1",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/coal/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "rice_husk",
+          "ancestor_ids": [
+            "conversion"
+          ],
+          "value": "2.1",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/rice_husk/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "biogas",
+          "ancestor_ids": [
+            "conversion"
+          ],
+          "value": "0.3",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/biogas/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "pond_CH4",
+          "ancestor_ids": [
+            "conversion"
+          ],
+          "value": "1870",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/pond_CH4/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "conversion_transport",
+          "ancestor_ids": [
+            "conversion"
+          ],
+          "value": "96.9",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/conversion_transport/2005",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        }
+      ],
+      "stage_sum_audit": {
+        "sum_from_displayed_components": "3313.6",
+        "reported_total": "3313.5",
+        "difference": "0.1",
+        "display_rounding_allowance": "0.25",
+        "within_display_rounding": true,
+        "reported_value_overwritten": false
+      },
+      "subgroup_audit": {
+        "farm": {
+          "sum_from_displayed_components": "260.2",
+          "reported_total": "260.2",
+          "difference": "0.0",
+          "display_rounding_allowance": "0.35",
+          "within_display_rounding": true,
+          "reported_value_overwritten": false
+        },
+        "milling": {
+          "sum_from_displayed_components": "5.8",
+          "reported_total": "5.8",
+          "difference": "0.0",
+          "display_rounding_allowance": "0.15",
+          "within_display_rounding": true,
+          "reported_value_overwritten": false
+        },
+        "conversion": {
+          "sum_from_displayed_components": "3119.4",
+          "reported_total": "3119.4",
+          "difference": "0.0",
+          "display_rounding_allowance": "0.30",
+          "within_display_rounding": true,
+          "reported_value_overwritten": false
+        }
+      },
+      "reported_total_gCO2eq_per_Lethanol": "3313.5",
+      "reported_gross_avoided_gCO2eq_per_Lethanol": "-2638.9",
+      "reported_net_increase": "674.6",
+      "reported_percent_increase": "25.6",
+      "recalculated_percent_from_displayed_values": "25.56368183712910682481336920686649740422",
+      "percent_matches_1decimal_display": true,
+      "used_as_our_whole_product_total": false
+    },
+    {
+      "allocation_year_label": "2006",
+      "observations": [
+        {
+          "id": "farm",
+          "ancestor_ids": [],
+          "value": "454.6",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/farm/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "fertilizer_herbicide",
+          "ancestor_ids": [
+            "farm"
+          ],
+          "value": "116.7",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/fertilizer_herbicide/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "farm_diesel",
+          "ancestor_ids": [
+            "farm"
+          ],
+          "value": "37.3",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/farm_diesel/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "labour",
+          "ancestor_ids": [
+            "farm"
+          ],
+          "value": "66.7",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/labour/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "farm_transport",
+          "ancestor_ids": [
+            "farm"
+          ],
+          "value": "68.2",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/farm_transport/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "soil_N2O",
+          "ancestor_ids": [
+            "farm"
+          ],
+          "value": "121.2",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/soil_N2O/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "trash_burning",
+          "ancestor_ids": [
+            "farm"
+          ],
+          "value": "44.5",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/trash_burning/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "milling",
+          "ancestor_ids": [],
+          "value": "10.2",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/milling/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "milling_biomass",
+          "ancestor_ids": [
+            "milling"
+          ],
+          "value": "6.6",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/milling_biomass/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "milling_transport",
+          "ancestor_ids": [
+            "milling"
+          ],
+          "value": "3.6",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/milling_transport/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "grid_credit",
+          "ancestor_ids": [],
+          "value": "-125.4",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/grid_credit/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "conversion",
+          "ancestor_ids": [],
+          "value": "3119.4",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/conversion/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "coal",
+          "ancestor_ids": [
+            "conversion"
+          ],
+          "value": "1150.1",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/coal/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "rice_husk",
+          "ancestor_ids": [
+            "conversion"
+          ],
+          "value": "2.1",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/rice_husk/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "biogas",
+          "ancestor_ids": [
+            "conversion"
+          ],
+          "value": "0.3",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/biogas/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "pond_CH4",
+          "ancestor_ids": [
+            "conversion"
+          ],
+          "value": "1870",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/pond_CH4/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        },
+        {
+          "id": "conversion_transport",
+          "ancestor_ids": [
+            "conversion"
+          ],
+          "value": "96.9",
+          "unit": "gCO2eq/Lethanol",
+          "kind": "REPORTED_CHARACTERIZED_CONTRIBUTION_NOT_GAS_MASS",
+          "source_sha256": "eb487f2fb400f1112e5ea54fcdff35b9ea180148d9a03509c91c8169a9a831c2",
+          "locator": "Table7/PDF20/printed16/conversion_transport/2006",
+          "verification": "VISUAL_RASTER_TRANSCRIPTION_ONLY"
+        }
+      ],
+      "stage_sum_audit": {
+        "sum_from_displayed_components": "3458.8",
+        "reported_total": "3458.7",
+        "difference": "0.1",
+        "display_rounding_allowance": "0.25",
+        "within_display_rounding": true,
+        "reported_value_overwritten": false
+      },
+      "subgroup_audit": {
+        "farm": {
+          "sum_from_displayed_components": "454.6",
+          "reported_total": "454.6",
+          "difference": "0.0",
+          "display_rounding_allowance": "0.35",
+          "within_display_rounding": true,
+          "reported_value_overwritten": false
+        },
+        "milling": {
+          "sum_from_displayed_components": "10.2",
+          "reported_total": "10.2",
+          "difference": "0.0",
+          "display_rounding_allowance": "0.15",
+          "within_display_rounding": true,
+          "reported_value_overwritten": false
+        },
+        "conversion": {
+          "sum_from_displayed_components": "3119.4",
+          "reported_total": "3119.4",
+          "difference": "0.0",
+          "display_rounding_allowance": "0.30",
+          "within_display_rounding": true,
+          "reported_value_overwritten": false
+        }
+      },
+      "reported_total_gCO2eq_per_Lethanol": "3458.7",
+      "reported_gross_avoided_gCO2eq_per_Lethanol": "-2638.9",
+      "reported_net_increase": "819.8",
+      "reported_percent_increase": "31.3",
+      "recalculated_percent_from_displayed_values": "31.06597445905490924248740005305240820039",
+      "percent_matches_1decimal_display": false,
+      "used_as_our_whole_product_total": false
+    }
+  ],
+  "percent2006_issue": "Table31.3versuscalculated~31.1/sourceprose31.1;preservednotcorrected",
+  "energy_table_review": {
+    "locator": "Tables5-6/PDF18/printed14",
+    "visual_checked": true,
+    "all_numeric_cells_imported": false,
+    "reason": "Primaryenergy accountingincludesrecoveredenergy/credits;MJcannotbe treatedasdirectfuelquantitywithoutfuelbasis/providerdata"
+  },
+  "redistribution_status": "NOT_CLEARED",
+  "full_lifecycle_lci": false,
+  "CO2e_total": null,
+  "production_changed": false
+}

@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "url": "https://anthropology-caring-nose-treatment.trycloudflare.com",
+  "kind": "TEMPORARY_AUTHENTICATED_HTTPS_TEST",
+  "checks": {
+    "/": {
+      "unauthenticated": 401,
+      "authenticated": 200
+    },
+    "/healthz": {
+      "unauthenticated": 401
+    },
+    "/api/reference.csv": {
+      "unauthenticated": 401
+    },
+    "/api/records": {
+      "unauthenticated": 401
+    },
+    "/readyz": {
+      "authenticated": 200
+    },
+    "/api/reference": {
+      "authenticated": 200
+    },
+    "/api/nso": {
+      "authenticated": 200
+    },
+    "/api/product-inventory": {
+      "authenticated": 200
+    }
+  },
+  "incorrect_password_status": 401,
+  "tls_certificate_verified": true,
+  "security_group_changed": false,
+  "caddy_changed": false,
+  "unrelated_containers_unchanged": true,
+  "origin": "127.0.0.1:18766",
+  "database_public": false,
+  "production_frontend_published": false,
+  "limitation": "Quick Tunnel URL may change on restart; testing only, no uptime guarantee",
+  "external_client_authenticated_status": 200,
+  "external_client_reference_total": 97
+}

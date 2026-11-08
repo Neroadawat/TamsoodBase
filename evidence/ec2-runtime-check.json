@@ -1,0 +1,24 @@
+{
+  "checked_date_local": "2026-10-26",
+  "rollback_preflight": {
+    "result": "rollback_preflight_passed",
+    "applied": false,
+    "current": "cdc51c36b5356c41",
+    "previous": "f2596ce38f984279"
+  },
+  "runtime": {
+    "running": true,
+    "health": "healthy",
+    "user": "10001:10001",
+    "read_only": true,
+    "bind": "127.0.0.1:8765"
+  },
+  "env_file_mode": "0600",
+  "anonymous_backup_head_status": 403,
+  "staging_container_removed": true,
+  "public_route_changed": false,
+  "limitations": [
+    "Anonymous denial checks this backup object; bucket public-access settings were not read",
+    "Rollback apply and fresh-machine disaster recovery not executed"
+  ]
+}

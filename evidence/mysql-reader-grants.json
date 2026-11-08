@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "scope": "EC2_ACTIVE_API",
+  "select_only_grants": true,
+  "write_denied": true,
+  "error_code": 1142
+}

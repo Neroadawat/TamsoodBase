@@ -1,0 +1,24 @@
+{
+  "scope": "REVIEW_IMPLEMENTATION_WITH_OPEN_SCIENTIFIC_GATES",
+  "date": "2026-11-05",
+  "tests_passed": 219,
+  "model_release_id": "657aa71137bdcd70d11ed3e15b0aa1066246393c409517f757a0a10d9ddec89f",
+  "mysql_candidate_verified": true,
+  "mysql_production_migration": false,
+  "deployment_id": "dpl_BoUuYRBhKZS8TFU9HYZyUBauyFXi",
+  "live_checks_passed": true,
+  "srs_version": "0.7.1",
+  "srs_pages": 28,
+  "scientific_complete": false,
+  "open_gates": [
+    "allocation_table_basis",
+    "mixed_vintage_compatibility",
+    "Thai_transport_use_treatment_background",
+    "elementary_mapping_and_CF",
+    "independent_scientific_review",
+    "human_user_acceptance",
+    "stable_backend_endpoint",
+    "full_research_cleanroom_and_openLCA_import"
+  ],
+  "review_matrix": "docs/review-implementation-2026-11-05.md"
+}

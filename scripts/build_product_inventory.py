@@ -3,11 +3,14 @@ import hashlib
 import json
 import re
 import sqlite3
+import sys
 from datetime import datetime,timezone
 from decimal import Decimal
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
+from src.inventory_scope import validate_process_context,study_scope
 URL='https://www.mdpi.com/2071-1050/12/22/9415'
 DOI='10.3390/su12229415'
 
@@ -53,6 +56,7 @@ def extract(evidence,context,digest):
                 is_national_average=False,is_full_lci_dataset=False,is_newly_allocated=False)
             (result if product!='BHD' else excluded).append(record)
     if not result:raise ValueError('No product inventory records')
+    validate_process_context(result)
     return result,excluded
 
 
@@ -74,7 +78,7 @@ def main():
     if con.execute('PRAGMA integrity_check').fetchone()[0]!='ok':raise ValueError('Database integrity failed')
     actual={r[0]:json.loads(r[1]) for r in con.execute('SELECT observation_id,payload FROM exchange')};con.close()
     if actual!={r['observation_id']:r for r in rows}:raise ValueError('Database roundtrip failed')
-    report=dict(rows=rows,excluded_rows=excluded,source_reported_inventory_count=len(rows),excluded_count=len(excluded),
+    report=dict(rows=rows,excluded_rows=excluded,scope=study_scope(rows,context),source_reported_inventory_count=len(rows),excluded_count=len(excluded),
                 checked_at=datetime.now(timezone.utc).isoformat(),doi=DOI,source_url=URL,
                 evidence_method='Rendered publisher DOM table and visible article text; not an original HTTP/PDF snapshot',
                 source_snapshot_sha256=digest,context_sha256=hashlib.sha256((raw/'article-visible.txt').read_bytes()).hexdigest(),

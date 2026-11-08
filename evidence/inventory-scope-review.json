@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "source_doi": "10.3390/su12229415",
+  "article_context_sha256": "e2f840a9bd3b89ea0ca503d96d1b94a046fb190ad520b909a3f768c09bebc1bd",
+  "study_functional_unit": {
+    "function": "Use of fuel",
+    "amount": "1000",
+    "unit": "MJ fuel",
+    "use_context": "Biofuel in pick-up trucks",
+    "source_section": "2.1 Goal and Scope"
+  },
+  "study_boundary": "Oil palm cultivation and harvesting through biofuel use, as described by the article",
+  "imported_boundary": "Selected Table 4 foreground biofuel conversion exchanges only",
+  "coverage_status": "PARTIAL_FOREGROUND_INVENTORY",
+  "not_imported_as_linked_unit_processes": [
+    "Oil palm cultivation and harvesting",
+    "Palm oil milling and refining",
+    "Transport chain",
+    "Background electricity and chemical production",
+    "Fuel distribution and vehicle use"
+  ],
+  "open_issues": [
+    "Measurement period not specified in selected table",
+    "Confirm allocation already applied before any further allocation",
+    "Background process datasets and elementary flow mapping are incomplete"
+  ],
+  "processes": [
+    {
+      "process": "FAME",
+      "reference_basis": {
+        "amount": "1000",
+        "unit": "MJ fuel"
+      },
+      "reference_product": {
+        "flow": "FAME",
+        "amount": "26.3",
+        "unit": "kg"
+      },
+      "dataset_boundary": "Foreground biofuel conversion inventory reported in Table 4; not the entire well-to-wheel system",
+      "data_period": null,
+      "allocation_status": "SOURCE_METHOD_REPORTED_TABLE_ALLOCATION_BASIS_NOT_RESOLVED",
+      "full_lifecycle_inventory": false,
+      "exchanges": 10
+    },
+    {
+      "process": "H-FAME",
+      "reference_basis": {
+        "amount": "1000",
+        "unit": "MJ fuel"
+      },
+      "reference_product": {
+        "flow": "H-FAME",
+        "amount": "25.5",
+        "unit": "kg"
+      },
+      "dataset_boundary": "Foreground biofuel conversion inventory reported in Table 4; not the entire well-to-wheel system",
+      "data_period": null,
+      "allocation_status": "SOURCE_METHOD_REPORTED_TABLE_ALLOCATION_BASIS_NOT_RESOLVED",
+      "full_lifecycle_inventory": false,
+      "exchanges": 6
+    }
+  ],
+  "source_values_changed": false,
+  "full_lifecycle_inventory": false,
+  "inventory_report_sha256": "d95b721aded3a98be0cbeeaf9cf964841133cee788235ecba8608ffc6775a134",
+  "verified_exchanges": 16,
+  "report_modified": false,
+  "production_backend_updated": false,
+  "live_api_checked": true,
+  "live_rows_match_saved_report": true,
+  "verified_live_exchanges": 16,
+  "unit_tests_passed": 133,
+  "checked_at": "2026-10-30T04:12:46.400449+00:00",
+  "frontend_deployment_id": "dpl_A5ss1LP5Cyvx99eQS5gPmbcAe47c",
+  "production_asset_sha256": {
+    "index.html": "6ec8bd2a0cb9dc0d8c7d24dc8bf4217877decf91723064c62ffa18801631cfdb",
+    "app.js": "d1651b17e529ed23e2f1d6b71c7b1eb8b80382b0bca6c003c1b13c92b5f40f14",
+    "style.css": "d8aa3bb6db3d941ea1bc6d8cd4ceaad78f0ef3b8486f1ba7bf50b8e6dab80ee1"
+  },
+  "browser_visual_verified": false,
+  "backend_contract_code_deployed": false
+}

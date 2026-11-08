@@ -38,3 +38,30 @@ class EppoTests(unittest.TestCase):
         self.assertEqual(eppo_records(dict(q="' OR 1=1 --"))['total'],0)
         for params in [dict(page='0'),dict(dataset='unknown'),dict(year='NaN')]:
             with self.assertRaises(ValueError):eppo_records(params)
+
+    def test_roundtrip_detects_typed_metadata_and_extra_rows(self):
+        import json
+        import sqlite3
+        from scripts.import_eppo import verify_roundtrip
+        con=sqlite3.connect(':memory:')
+        self.addCleanup(con.close)
+        con.executescript('CREATE TABLE source_snapshot(snapshot_id TEXT,dataset_id TEXT,url TEXT,payload TEXT); CREATE TABLE observation(observation_id TEXT,snapshot_id TEXT,reference_year INTEGER,month INTEGER,subject TEXT,amount TEXT,unit TEXT,payload TEXT);')
+        rows=[];manifest={'resources':{}}
+        for dataset,subject,unit in [('11_13','Company','BBL/DAY'),('11_14','Product','Million Litres')]:
+            body=f'Year,Month,{subject},Quantity,UNIT\n2024,January,TEST,1,{unit}\n'.encode()
+            source=self.source(body);manifest['resources'][dataset]=source
+            row=parse(body,dataset,source)[0];rows.append(row)
+            con.execute('INSERT INTO source_snapshot VALUES (?,?,?,?)',(source['sha256'],dataset,source['url'],json.dumps(source)))
+            con.execute('INSERT INTO observation VALUES (?,?,?,?,?,?,?,?)',(row['observation_id'],row['source_sha256'],2024,1,'TEST','1',unit,json.dumps(row)))
+        con.commit()
+        verify_roundtrip(con,rows,manifest)
+        for column,value in [('reference_year',2025),('month',2),('subject','WRONG'),('amount','2'),('unit','WRONG')]:
+            with self.subTest(column=column):
+                con.execute('UPDATE observation SET '+column+'=?',(value,))
+                with self.assertRaisesRegex(ValueError,'roundtrip'):verify_roundtrip(con,rows,manifest)
+                con.rollback()
+        con.execute("UPDATE source_snapshot SET url='https://wrong.example'")
+        with self.assertRaisesRegex(ValueError,'snapshot'):verify_roundtrip(con,rows,manifest)
+        con.rollback()
+        con.execute("INSERT INTO observation SELECT 'extra',snapshot_id,reference_year,month,subject,amount,unit,payload FROM observation LIMIT 1")
+        with self.assertRaisesRegex(ValueError,'roundtrip'):verify_roundtrip(con,rows,manifest)

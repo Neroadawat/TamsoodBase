@@ -1,0 +1,14 @@
+{
+  "domain": "Petroleum, Natural Gas & Fuels",
+  "source_factor_rows": 16,
+  "explicit_imported_mix_holds": [
+    33,
+    34,
+    35
+  ],
+  "source_sha256": "58a5f2cc45396724cb4dcf4f26548cd321c9f549a355ff9123703c99cb1caf06",
+  "all_source_cells_retained": true,
+  "model_applied": false,
+  "production_changed": false,
+  "full_lifecycle_inventory": false
+}

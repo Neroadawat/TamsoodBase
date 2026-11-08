@@ -1,0 +1,29 @@
+{
+  "report_sha256": "07310af271950809b9f9bde787b53b2c23a01517d8eb9a2102a379d87aacbbc5",
+  "files_copied": 10,
+  "byte_identical": true,
+  "internal_registry": [
+    {
+      "case": "dede",
+      "release_id": "ethanol-dede-07310af271950809b9f9bde787b53b2c23a01517d8eb9a2102a379d87aacbbc5",
+      "state": "DRAFT"
+    },
+    {
+      "case": "cmu",
+      "release_id": "ethanol-cmu-5ce2da222a53f61f9ee651f8dbb9eb7f4ac18dbb3cfcdc0c64bea96a5df59379",
+      "state": "DRAFT"
+    },
+    {
+      "case": "tsm",
+      "release_id": "ethanol-tsm-fdf8cc2c0bf03dc355391a7f78655394c3d6e42c15f4887491de25171c3cb501",
+      "state": "DRAFT"
+    },
+    {
+      "case": "uasb",
+      "release_id": "ethanol-uasb-3cda36f2cde33c76b55745fd9bcd5e541e4a36fa60e8c95a776f9e97334f326c",
+      "state": "DRAFT"
+    }
+  ],
+  "scope": "ISOLATED_REPLAY_WITH_PINNED_LOCAL_INPUTS",
+  "human_approval_recorded": false
+}

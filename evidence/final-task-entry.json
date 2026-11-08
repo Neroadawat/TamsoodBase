@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-27",
+  "remaining_workstreams": 12,
+  "assistant_actionable": 8,
+  "deployment_joint": 1,
+  "team_evidence_required": 3,
+  "ux_change": "task-first entry links with context before reuse",
+  "automated_checks": {
+    "frontend_and_requests": 7,
+    "node_syntax": "passed"
+  },
+  "browser_check": "inventory shortcut opened correct view and rendered FAME10 of16",
+  "screenshot": "build/final-task-entry.jpg",
+  "mobile_new_layout_verified": false,
+  "deployed": false,
+  "references": [
+    "https://dataeuropa.gitlab.io/data-provider-manual/how-to-search/search-for-datasets/",
+    "https://ec.europa.eu/eurostat/web/user-guides/data-browser/introduction-navigation-data/dataset-information"
+  ]
+}

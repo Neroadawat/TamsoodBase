@@ -1,0 +1,16 @@
+{
+  "review_only": true,
+  "submitted": false,
+  "documents": {
+    "path": "output/final-review/TamsoodBase-documents-review.zip",
+    "sha256": "f331e3b6e71daf0e861aae314b67cf88e7283d963f53e5604cc3a1acdf279a3e",
+    "files": 10,
+    "bytes": 1458050
+  },
+  "internal_data": {
+    "path": "output/final-review/TamsoodBase-internal-data-review.zip",
+    "sha256": "9166f05537d0f77f74abd95110e9fcced752d003e176c26fe85d647c3dd3caab",
+    "files": 4,
+    "bytes": 5639850
+  }
+}
