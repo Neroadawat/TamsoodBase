@@ -21,6 +21,9 @@ const REQUIRED_GATES = [
 const previewRateBuckets = new Map();
 const PREVIEW_RATE_WINDOW_MS = 60_000;
 const PREVIEW_RATE_LIMIT = 12;
+const PREVIEW_RATE_BUCKET_LIMIT = 2048;
+const PREVIEW_RATE_SWEEP_INTERVAL_MS = 10_000;
+let previewRateLastSweepAt = 0;
 const SCOPE_ANCHORS = [
   'e10', 'e-10', 'ethanol', 'เอทานอล', 'co2e', 'co₂e', 'co2', 'คาร์บอนไดออกไซด์',
   'tsm', 'thai sugar', 'fame', 'h-fame', 'ฮีดรอฟาเม', 'palm', 'ปาล์ม', 'ffb', 'cpo', 'rbdpo',
@@ -45,8 +48,8 @@ function parseHttpsOrigin(value) {
 }
 
 function isReleaseReady(env = process.env) {
-  const preview = env.VERCEL_ENV === 'preview' && env.TAMSOOD_RAG_PREVIEW_ENABLED === 'true';
-  if (preview) {
+  if (env.VERCEL_ENV === 'preview') {
+    if (env.TAMSOOD_RAG_PREVIEW_ENABLED !== 'true') return false;
     return env.TAMSOOD_GEMINI_DATA_PROCESSING_ACCEPTED === 'true'
       && Boolean((env.GEMINI_API_KEY || '').trim())
       && Boolean(parseHttpsOrigin(`https://${env.VERCEL_URL || ''}`))
@@ -56,6 +59,7 @@ function isReleaseReady(env = process.env) {
         && row.licence_url === 'https://creativecommons.org/licenses/by/4.0/'
         && row.attribution && row.source_url === 'https://doi.org/10.3390/su12229415');
   }
+  if (env.VERCEL_ENV !== 'production') return false;
   const gateRefs = [
     'TAMSOOD_RAG_RIGHTS_CLEARANCE_REF',
     'TAMSOOD_RAG_RATE_LIMIT_POLICY_ID',
@@ -98,9 +102,18 @@ function readBody(req) {
 function previewRateAllowed(req, now = Date.now()) {
   const forwarded = req.headers['x-forwarded-for'];
   const address = typeof forwarded === 'string' ? forwarded.split(',')[0].trim() : '';
-  if (!address) return false;
+  if (!address || address.length > 64) return false;
   const previous = previewRateBuckets.get(address);
   if (!previous || now - previous.startedAt >= PREVIEW_RATE_WINDOW_MS) {
+    if (!previous && previewRateBuckets.size >= PREVIEW_RATE_BUCKET_LIMIT) {
+      if (now - previewRateLastSweepAt >= PREVIEW_RATE_SWEEP_INTERVAL_MS) {
+        previewRateLastSweepAt = now;
+        for (const [key, bucket] of previewRateBuckets) {
+          if (now - bucket.startedAt >= PREVIEW_RATE_WINDOW_MS) previewRateBuckets.delete(key);
+        }
+      }
+      if (previewRateBuckets.size >= PREVIEW_RATE_BUCKET_LIMIT) return false;
+    }
     previewRateBuckets.set(address, { startedAt: now, count: 1 });
     return true;
   }
@@ -137,6 +150,31 @@ function evidenceRows() {
     licence_url: card.licence_url,
     kind: 'licensed-narrative',
   }));
+}
+
+function isCorpusOverviewQuestion(value) {
+  const question = normalize(value);
+  const compact = question.replace(/\s+/gu, '');
+  return [
+    'ทำอะไรได้บ้าง', 'ทำอะไรได้', 'ช่วยอะไรได้บ้าง', 'ช่วยอะไรได้', 'ทำอะไรบ้าง',
+    'ถามอะไรได้บ้าง', 'ความสามารถ', 'มีข้อมูลอะไรบ้าง', 'มีข้อมูลอะไร', 'มีข้อมูลไรบ้าง',
+    'มีข้อมูลไร', 'ข้อมูลอะไรบ้าง', 'ข้อมูลอะไรในระบบ', 'มีอะไรในระบบ', 'มีเอกสารอะไร',
+    'มีเนื้อหาอะไร', 'ชุดข้อมูลอะไร',
+  ].some(phrase => compact.includes(normalize(phrase).replace(/\s+/gu, '')))
+    || ['what can you do', 'what data do you have', 'what information do you have', 'what do you know']
+      .some(phrase => question.includes(phrase));
+}
+
+function corpusOverview() {
+  const hits = evidenceRows();
+  return {
+    summary: {
+      text: 'ตอนนี้แชต Preview ค้นได้จากบทความ Permpool, Ghani และ Gheewala (2020) เพียง 1 บทความ ซึ่งสรุปไว้ 6 ประเด็น: หน่วยหน้าที่ 1,000 MJ ของ FAME/H-FAME, ฐานผลิตภัณฑ์ต้นน้ำ FFB/CPO/RBDPO ที่ 1,000 kg, แถว Land seeding ที่พักไว้เพราะไม่มีหน่วย, ช่องว่างข้อมูล FFB input ของโรงสกัด CPO, ข้อควรระวังเรื่อง allocation FAME/กลีเซอรีน และช่วงปีที่วัดข้อมูลซึ่งยังไม่ระบุ\n\nฉันช่วยสรุปหรืออธิบายประเด็นเหล่านี้ เปรียบเทียบฐานข้อมูล และชี้ข้อจำกัดพร้อมตำแหน่งอ้างอิงได้ ชุด Preview นี้ยังไม่ใช่คลังข้อมูลทั้งหมดของโครงการ และไม่มีสถิติ NSO หรือข้อมูล TSM/เอทานอลในชุดค้นนี้ หากถามนอกขอบเขต ฉันควรแจ้งว่ายังไม่มีหลักฐาน แทนการเดาคำตอบ',
+      source_ids: hits.map(hit => hit.id),
+      kind: 'corpus-overview',
+    },
+    hits,
+  };
 }
 
 function retrieve(question, limit = MAX_EVIDENCE) {
@@ -264,6 +302,13 @@ async function handler(req, res) {
     return fail(res, error.message === 'too_large' ? 413 : 400, 'Invalid question');
   }
 
+  if (isCorpusOverviewQuestion(payload.question.trim())) {
+    const overview = corpusOverview();
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    return res.end(JSON.stringify(overview));
+  }
+
   const hits = retrieve(payload.question.trim());
   if (!hits.length) {
     res.statusCode = 200;
@@ -282,4 +327,4 @@ async function handler(req, res) {
 
 module.exports = handler;
 module.exports.config = { api: { bodyParser: false } };
-module.exports._internals = { isReleaseReady, terms, evidenceRows, retrieve, parseGeminiAnswer, callGemini, previewRateAllowed };
+module.exports._internals = { isReleaseReady, terms, evidenceRows, retrieve, parseGeminiAnswer, callGemini, previewRateAllowed, isCorpusOverviewQuestion, corpusOverview };

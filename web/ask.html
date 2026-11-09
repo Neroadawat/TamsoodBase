@@ -110,6 +110,17 @@
     document.querySelector('#mode-notice').textContent = previewMode
       ? 'Preview พร้อมทดสอบ · ใช้เฉพาะเอกสารที่ระบุด้านล่าง'
       : 'เปิดค้นได้ · คำถามไม่ถูกเก็บข้ามครั้ง';
+    if (previewMode) {
+      const previewExamples = [
+        'แชตนี้มีข้อมูลเรื่องอะไรบ้าง?',
+        'หน่วยหน้าที่ของ FAME/H-FAME คืออะไร?',
+        'ทำไมยังเชื่อม FFB กับ CPO ไม่ได้?',
+        'ทำไมแถว Land seeding ถึงพักไว้?',
+      ];
+      document.querySelectorAll('.examples button').forEach((button, index) => {
+        if (previewExamples[index]) button.textContent = previewExamples[index];
+      });
+    }
   } else {
     status.textContent = 'ยังส่งคำถามไม่ได้จนกว่าจะเปิดบริการบนเว็บไซต์';
     for (const example of document.querySelectorAll('.examples button')) example.disabled = true;
