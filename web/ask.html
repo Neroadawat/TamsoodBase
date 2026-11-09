@@ -67,7 +67,7 @@
             <label for="question">คำถามของคุณ</label>
             <textarea id="question" required maxlength="500" rows="2" disabled aria-describedby="question-help question-count" placeholder="ระบบค้นหายังไม่เปิดให้บริการ"></textarea>
             <div class="composer-tools"><span class="key-hint" id="question-help">กด <kbd>Ctrl</kbd> + <kbd>Enter</kbd> เพื่อส่ง · <kbd>Shift</kbd> + <kbd>Enter</kbd> ขึ้นบรรทัดใหม่</span><span class="character-count" id="question-count" aria-live="off">0 / 500</span></div>
-            <label class="consent-row"><input id="gemini-consent" type="checkbox" disabled><span>ฉันยินยอมให้ส่งคำถามที่กดค้นและข้อความหลักฐานที่พบไปยัง Google Gemini เพื่อสร้างคำตอบ (มีการขอความยินยอมใหม่ทุกครั้ง) และจะไม่ใส่ข้อมูลส่วนบุคคลหรือข้อมูลลับ</span></label>
+            <label class="consent-row"><input id="gemini-consent" type="checkbox" disabled><span>คำถามเฉพาะเนื้อหาจะส่งคำถามและข้อความหลักฐานที่พบไปยัง Google Gemini เพื่อสร้างคำตอบ ส่วนคำถามเกี่ยวกับรายการและขอบเขตคลังจะตอบจากรายการในระบบโดยไม่ส่งไป Gemini การกดค้นถือว่ายินยอมตามกรณีข้างต้น (ขอความยินยอมใหม่ทุกครั้ง) กรุณาไม่ใส่ข้อมูลส่วนบุคคลหรือข้อมูลลับ</span></label>
             <div class="composer-footer"><span class="composer-hint">แต่ละคำถามค้นแยกกัน · ไม่เกิน 500 ตัวอักษร</span><button class="send-button" type="submit" disabled><span>ค้นหลักฐาน</span><span aria-hidden="true">↗</span></button></div>
           </form>
           <p id="status" role="status" aria-live="polite"></p>
