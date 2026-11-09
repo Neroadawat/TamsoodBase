@@ -12,6 +12,7 @@ assert.equal(functionalUnit[0].licence, 'CC BY 4.0');
 assert.deepEqual(retrieve('วิธีปลูกกล้วยไม้ในกระถาง'), [], 'out-of-scope query should abstain');
 assert.equal(isCorpusOverviewQuestion('แชตนี้ทำอะไรได้บ้าง'), true);
 assert.equal(isCorpusOverviewQuestion('ในระบบมีข้อมูลอะไรบ้าง'), true);
+assert.equal(isCorpusOverviewQuestion('แชตนี้มีข้อมูลเรื่องอะไรบ้าง?'), true);
 assert.equal(isCorpusOverviewQuestion('ถามเรื่องหน่วยหน้าที่ 1000 MJ'), false,
   'specific evidence questions must continue through retrieval and Gemini');
 const overview = corpusOverview();
