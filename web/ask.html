@@ -41,12 +41,14 @@
     @media(max-width:850px){.intro{grid-template-columns:1fr;gap:18px;padding-top:42px}.side-note{max-width:620px}.workspace{grid-template-columns:1fr}.rail{grid-template-columns:repeat(2,minmax(0,1fr))}.rail-card:last-child{grid-column:1/-1}.conversation{min-height:0}}
     @media(max-width:560px){body{font-size:15px}.shell{padding:12px 14px 36px}.masthead{align-items:flex-start}.privacy-tag{font-size:10px;padding:6px 9px}.brand small{font-size:9px}.intro{padding:35px 0 20px;gap:14px}h1{font-size:36px}.intro-copy{font-size:15px}.workspace{gap:14px}.conversation{border-radius:3px 17px 3px 17px}.conversation-head{padding:13px 14px}.thread{padding:14px;gap:14px}.composer-wrap{padding:0 14px 14px}.question-bubble{max-width:95%}.answer-card{padding:15px}.answer-meta{align-items:flex-start;flex-direction:column}.rail{grid-template-columns:1fr}.rail-card:last-child{grid-column:auto}.composer-hint{max-width:180px}.send-button{min-width:104px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    .composer-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:7px 0 10px;color:#657168;font-size:11px}.character-count{font-variant-numeric:tabular-nums;white-space:nowrap}.key-hint kbd{padding:2px 5px;border:1px solid #cec9bc;border-bottom-width:2px;border-radius:4px;background:#fffdf7;color:#415248;font:inherit}.composer textarea{min-height:58px;max-height:180px;resize:vertical}
+    @media(max-width:560px){.composer-tools{align-items:flex-start;flex-direction:column;gap:4px}}
   </style>
 </head>
 <body>
   <div class="shell">
     <header class="masthead">
-      <a class="brand" href="/" aria-label="TamsoodBase หน้าหลัก"><span class="brand-mark" aria-hidden="true">T</span><span>TamsoodBase<small>FUEL DATA FIELD DESK</small></span></a>
+      <a class="brand" href="/" aria-label="กลับหน้าแรก TamsoodBase"><span class="brand-mark" aria-hidden="true">T</span><span>TamsoodBase<small>← กลับหน้าหลัก</small></span></a>
       <span class="privacy-tag"><span class="privacy-dot" aria-hidden="true"></span><span id="privacy-status">กำลังเตรียมเปิดบนเว็บไซต์</span></span>
     </header>
     <section class="intro" aria-labelledby="page-title">
@@ -57,13 +59,14 @@
     <div class="workspace">
       <section class="conversation" id="results" aria-labelledby="conversation-title">
         <header class="conversation-head"><div><h2 id="conversation-title">บทสนทนาบนหน้าจอนี้</h2><p>คำถามก่อนหน้าเก็บไว้ให้คุณย้อนดูในแท็บนี้เท่านั้น</p></div><button class="quiet-button" id="clear-thread" type="button">ล้างหน้าจอ</button></header>
-        <div class="thread" id="thread" aria-live="polite" aria-relevant="additions text">
+        <div class="thread" id="thread" role="log" aria-label="ประวัติการสนทนา" aria-live="polite" aria-relevant="additions" aria-atomic="false">
           <div class="welcome" id="welcome"><p class="welcome-kicker">เริ่มตรงนี้ได้เลย</p><h3>อยากรู้เรื่องไหนของเชื้อเพลิง?</h3><p>ลองเลือกคำถามด้านข้าง หรือพิมพ์คำถามเองก็ได้ คำตอบจะแยกให้เห็นว่ารู้อะไรจากเอกสาร และยังขาดอะไรอยู่</p></div>
         </div>
         <div class="composer-wrap">
           <form class="composer" id="ask-form">
             <label for="question">คำถามของคุณ</label>
-            <textarea id="question" required maxlength="500" rows="2" disabled placeholder="ระบบค้นหายังไม่เปิดให้บริการ"></textarea>
+            <textarea id="question" required maxlength="500" rows="2" disabled aria-describedby="question-help question-count" placeholder="ระบบค้นหายังไม่เปิดให้บริการ"></textarea>
+            <div class="composer-tools"><span class="key-hint" id="question-help">กด <kbd>Ctrl</kbd> + <kbd>Enter</kbd> เพื่อส่ง · <kbd>Shift</kbd> + <kbd>Enter</kbd> ขึ้นบรรทัดใหม่</span><span class="character-count" id="question-count" aria-live="off">0 / 500</span></div>
             <label class="consent-row"><input id="gemini-consent" type="checkbox" disabled><span>ฉันยินยอมให้ส่งคำถามที่กดค้นและข้อความหลักฐานที่พบไปยัง Google Gemini เพื่อสร้างคำตอบ (มีการขอความยินยอมใหม่ทุกครั้ง) และจะไม่ใส่ข้อมูลส่วนบุคคลหรือข้อมูลลับ</span></label>
             <div class="composer-footer"><span class="composer-hint">แต่ละคำถามค้นแยกกัน · ไม่เกิน 500 ตัวอักษร</span><button class="send-button" type="submit" disabled><span>ค้นหลักฐาน</span><span aria-hidden="true">↗</span></button></div>
           </form>
@@ -93,6 +96,7 @@
   const consent = document.querySelector('#gemini-consent');
   const clearButton = document.querySelector('#clear-thread');
   const releaseBanner = document.querySelector('#release-banner');
+  const characterCount = document.querySelector('#question-count');
   const publicRagEnabled = window.TAMSOOD_CONFIG?.publicRagEnabled === true;
   const previewMode = window.TAMSOOD_CONFIG?.ragMode === 'limited-preview';
   clearButton.disabled = true;
@@ -115,7 +119,18 @@
     submit.disabled = !publicRagEnabled || !consent.checked || !question.value.trim();
   }
   consent.addEventListener('change', syncSubmitState);
-  question.addEventListener('input', syncSubmitState);
+  question.addEventListener('input', () => {
+    characterCount.textContent = `${question.value.length} / 500`;
+    question.style.height = 'auto';
+    question.style.height = `${Math.min(question.scrollHeight, 180)}px`;
+    syncSubmitState();
+  });
+  question.addEventListener('keydown', event => {
+    if (event.key === 'Enter' && event.ctrlKey && !event.shiftKey && !event.isComposing) {
+      event.preventDefault();
+      if (!submit.disabled) form.requestSubmit();
+    }
+  });
 
   function appendText(parent, tag, className, value) {
     const node = document.createElement(tag);
@@ -243,6 +258,8 @@
     if (!asked || !consent.checked || submit.disabled) return;
     submit.disabled = true;
     question.disabled = true;
+    submit.setAttribute('aria-busy', 'true');
+    submit.querySelector('span').textContent = 'กำลังค้น…';
     status.classList.remove('error');
     status.textContent = 'กำลังค้นเอกสารที่เกี่ยวข้อง…';
     const loading = document.createElement('div');
@@ -274,6 +291,8 @@
       submit.disabled = false;
       question.disabled = false;
       consent.checked = false;
+      submit.removeAttribute('aria-busy');
+      submit.querySelector('span').textContent = 'ค้นหลักฐาน';
       syncSubmitState();
       question.focus();
     }
