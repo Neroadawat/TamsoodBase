@@ -18,9 +18,13 @@
 !/api/
 /api/*
 !/api/[[]route].js
+!/api/rag/
+!/api/rag/ask.js
 
 !/web/discovery.js
 !/web/story.js
 !/web/theme.css
+!/web/design-refresh.css
+!/web/ask.html
 !/web/noto-sans-thai-06310198b08f.woff2
 !/web/FONT-LICENSE.txt
