@@ -3,7 +3,6 @@
   "framework": null,
   "buildCommand": "node scripts/build_frontend.mjs",
   "outputDirectory": "build/frontend",
-  "public": false,
   "functions": {
     "api/rag/ask.js": {
       "includeFiles": "docs/rag/{public-release-manifest,vercel-preview-corpus}.json",
