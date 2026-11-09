@@ -62,7 +62,7 @@ for(const name of assets){
  if((await lstat(source)).isSymbolicLink())throw Error('Symlink assets are not allowed');
  await copyFile(source,path.join(output,name));
 }
-await writeFile(path.join(output,'config.js'),'window.TAMSOOD_CONFIG = '+JSON.stringify({apiBaseUrl,publicRagEnabled:ragUiEnabled})+';\n');
+await writeFile(path.join(output,'config.js'),'window.TAMSOOD_CONFIG = '+JSON.stringify({apiBaseUrl,publicRagEnabled:ragUiEnabled,ragMode:previewRagEnabled?'limited-preview':publicRagEnabled?'public':'closed'})+';\n');
 const files=[];
 for(const name of [...assets,'config.js']){
  const body=await readFile(path.join(output,name));
