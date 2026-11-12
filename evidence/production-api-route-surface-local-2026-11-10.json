@@ -1,0 +1,46 @@
+{
+  "review_date": "2026-11-10",
+  "checked_at_utc": "2026-11-10T06:59:39.613714+00:00",
+  "review_type": "LOCAL_VERCEL_API_ROUTE_SURFACE_CHECK",
+  "route_inventory": [
+    {
+      "route_pattern": "/api/[route]",
+      "source": "api/[route].js",
+      "local_guard": "Explicit route allowlist; all 15 known dataset/login routes return 403 before upstream; unknown paths return 404."
+    },
+    {
+      "route_pattern": "/api/rag/ask",
+      "source": "api/rag/ask.js",
+      "local_guard": "Production requires global release manifest approval and flags; current manifest status is HOLD_RIGHTS_REVIEW with release, rights and external-LLM flags false."
+    }
+  ],
+  "production_rag_test": {
+    "command": "node tests/rag-vercel-api.cjs",
+    "result": "passed",
+    "assertions": [
+      "With VERCEL_ENV=production and all environment-flag placeholders set, the current rights-held manifest still returns 503.",
+      "The held request is rejected before body read and before Gemini fetch."
+    ]
+  },
+  "proxy_route_test": {
+    "command": "node tests/vercel-proxy-behavior.cjs",
+    "result": "existing prior evidence passed",
+    "evidence": "evidence/production-anonymous-api-mitigation-local-2026-11-10.json",
+    "not_rerun_this_review": true
+  },
+  "sha256": {
+    "api/[route].js": "2decbcd69ea0e7b2fb12b745468ee785f5db48408558c1b42da2a228002de522",
+    "api/rag/ask.js": "456c4261894cef39067a46954a31c9e34d5d532e308a3c0596c36f58331acb26",
+    "tests/vercel-proxy-behavior.cjs": "66f6e813d17b9f48a4603a634336872edafa1e70ad52c39d4dd9e9fa3da0478a",
+    "tests/rag-vercel-api.cjs": "d42ebe91a00d1ca58c8f524ae4bb86bce871cb38f0a618f49dd0e8434b2c58d6",
+    "docs/rag/public-release-manifest.json": "bc1783ea54ed57da0cd18962ed84bc0a715553a600b0b43cdbc2b735c8c82be0"
+  },
+  "production_api_probed": false,
+  "production_changed": false,
+  "decision": "Local code inventory finds two Vercel API source patterns; the RAG-specific function is separately fail-closed by the current manifest. The previously observed dataset exposure through Production catch-all routes remains unresolved until an authorized deployment and post-deploy probe.",
+  "limitations": [
+    "Local test and manifest do not prove what version is deployed to Vercel.",
+    "No Production URL/API was accessed in this review.",
+    "The catch-all local block still requires authorized deployment and anonymous post-deploy checks for all known routes."
+  ]
+}

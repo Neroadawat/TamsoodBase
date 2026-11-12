@@ -1,0 +1,31 @@
+{
+  "checked_at_utc": "2026-11-11T22:46:17.549115+00:00",
+  "scope": "Static review and focused regression for EC2 RAG upgrade memory thresholds; no host access or deployment",
+  "finding": {
+    "issue": "Upgrade pre-update and post-start guards compared MemAvailable KiB against 320000 while stating 320 MiB; 320 MiB is 327680 KiB.",
+    "guards_updated": [
+      "pre-update check",
+      "readiness wait loop",
+      "Docker health wait loop"
+    ],
+    "change": "All three runtime floor comparisons now use 327680 KiB and the pre-update and health failure messages display the exact threshold.",
+    "initial_install_policy": "Unchanged: 720 MiB (737280 KiB) preflight and 320 MiB (327680 KiB) staging safety floor."
+  },
+  "verification": {
+    "python_command": "python -m unittest tests.test_rag_memory_gates -v",
+    "python_tests_passed": 2,
+    "bash_syntax_command": "C:\\Program Files\\Git\\bin\\bash.exe -n deploy/upgrade_rag_ec2.sh",
+    "bash_syntax": "passed",
+    "git_diff_check": "passed (only line-ending notices for the existing task JSON working tree copy)"
+  },
+  "hashes": {
+    "upgrade_script_sha256": "a854f05c3de118121a8bfcc90675804b91b8f92637ce55ea8521d3560acac1a9",
+    "test_sha256": "1eece6381cfb08b9720c9c6abf9984c9fe6096496adeb75127824859e65d09f8"
+  },
+  "limits": {
+    "EC2_memory_measured": false,
+    "EC2_touched": false,
+    "Production_changed": false,
+    "API_or_Ginder_touched": false
+  }
+}

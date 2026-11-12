@@ -14,7 +14,7 @@
     .shell{max-width:1160px;margin:auto;padding:22px clamp(16px,4vw,54px) 64px}
     .masthead{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:8px 0 18px;border-bottom:1px solid #bdb9ad}
     .brand{display:flex;align-items:center;gap:12px;color:var(--pine);font-weight:800;letter-spacing:-.03em}.brand-mark{display:grid;place-items:center;width:42px;height:42px;background:var(--pine);color:#f4dfbf;border-radius:3px 14px 3px 14px;font-size:22px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.16em;font-weight:600}
-    .privacy-tag{display:flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid #bbc9bd;border-radius:99px;background:#e4e9df;color:#315644;font-size:12px;font-weight:700}.privacy-dot{width:8px;height:8px;border-radius:50%;background:#357454;box-shadow:0 0 0 3px #35745420}
+    .privacy-tag{display:flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid #bbc9bd;border-radius:99px;background:#e4e9df;color:#315644;font-size:12px;font-weight:700}.privacy-dot{width:8px;height:8px;border-radius:50%;background:#357454;box-shadow:0 0 0 3px #35745420}.privacy-tag--closed{border-color:#d8b88c;background:#f3eadb;color:#805333}.privacy-tag--closed .privacy-dot{background:var(--rust);box-shadow:0 0 0 3px #b95c3620}
     .intro{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:32px;align-items:end;padding:58px 0 28px}
     .eyebrow{margin:0 0 9px;color:var(--rust);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
     h1{max-width:760px;margin:0;color:var(--pine);font-size:clamp(34px,5vw,58px);line-height:1.19;letter-spacing:-.045em}
@@ -49,7 +49,7 @@
   <div class="shell">
     <header class="masthead">
       <a class="brand" href="/" aria-label="กลับหน้าแรก TamsoodBase"><span class="brand-mark" aria-hidden="true">T</span><span>TamsoodBase<small>← กลับหน้าหลัก</small></span></a>
-      <span class="privacy-tag"><span class="privacy-dot" aria-hidden="true"></span><span id="privacy-status">กำลังเตรียมเปิดบนเว็บไซต์</span></span>
+      <span class="privacy-tag privacy-tag--closed"><span class="privacy-dot" aria-hidden="true"></span><span id="privacy-status">ยังปิดการถามผ่านเว็บไซต์</span></span>
     </header>
     <section class="intro" aria-labelledby="page-title">
       <div><p class="eyebrow">ถามจากเอกสาร · ดูที่มาได้</p><h1 id="page-title">เริ่มจากคำถาม<br>แล้วตามไปดูหลักฐาน</h1><p class="intro-copy">พิมพ์แบบที่พูดตามปกติได้ ระบบจะค้นเอกสารในชุดที่คัดไว้ แล้วแสดงคำตอบพร้อมลิงก์และตำแหน่งอ้างอิงเมื่อมีหลักฐานรองรับ</p></div>
@@ -80,7 +80,7 @@
           <button type="button">รถ E10 ตอนสตาร์ตเย็นกินน้ำมันเท่าไหร่?</button>
           <button type="button">โรงงานอ้อยผลิตไอน้ำจากอะไร?</button>
         </div></section>
-        <section class="rail-card"><h2>รู้ไว้ก่อนอ่านคำตอบ</h2><p>คำถามแต่ละครั้งค้นแยกกัน ระบบไม่ได้จำเนื้อหาคำถามก่อนหน้าไว้ใช้ตอบคำถามถัดไป</p><ul class="privacy-list"><li>เปิดดูเอกสารต้นทางและตำแหน่งอ้างอิงได้</li><li>ตัวเลขอาจเป็นคนละปีหรือคนละขอบเขต จึงไม่ควรรวมกันทันที</li><li>คำตอบเป็นตัวช่วยค้น ต้องตรวจเทียบกับหลักฐานก่อนนำไปใช้</li></ul><p><strong>การประมวลผลเมื่อเปิดบริการ:</strong> คำถามและข้อความหลักฐานที่ค้นพบจะส่งจากเซิร์ฟเวอร์ไปยัง Google Gemini เพื่อเรียบเรียงคำตอบ หากใช้โควตาฟรี Google ระบุว่าอาจใช้ prompt และคำตอบเพื่อพัฒนาบริการ และผู้ตรวจอาจอ่านได้ กรุณาอย่าส่งข้อมูลส่วนบุคคล ข้อมูลลับ หรือข้อมูลอ่อนไหว ดู <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">เงื่อนไข Gemini API</a></p></section>
+        <section class="rail-card"><h2>รู้ไว้ก่อนอ่านคำตอบ</h2><p>คำถามแต่ละครั้งค้นแยกกัน ระบบไม่ได้จำเนื้อหาคำถามก่อนหน้าไว้ใช้ตอบคำถามถัดไป</p><ul class="privacy-list"><li>เปิดดูเอกสารต้นทางและตำแหน่งอ้างอิงได้</li><li>ตัวเลขอาจเป็นคนละปีหรือคนละขอบเขต จึงไม่ควรรวมกันทันที</li><li>คำตอบเป็นตัวช่วยค้น ต้องตรวจเทียบกับหลักฐานก่อนนำไปใช้</li></ul><p><strong>การประมวลผลเมื่อเปิดบริการ:</strong> เมื่อยินยอม คำถามและข้อความหลักฐานที่ค้นพบจะส่งจากเซิร์ฟเวอร์ไปยัง Google Gemini เพื่อเรียบเรียงคำตอบ การจัดการข้อมูลขึ้นกับสถานะ Billing ของ Google Cloud Project ที่ผูกกับ API key ซึ่งทีมยังไม่ได้ตรวจยืนยัน หากโปรเจกต์ไม่มี Billing ที่ใช้งานอยู่ Google อาจใช้คำถามและคำตอบเพื่อพัฒนาบริการ และผู้ตรวจที่ได้รับอนุญาตอาจอ่านหรือใส่คำอธิบายประกอบได้ หากมี Billing ที่ใช้งานอยู่ Google ระบุว่าจะไม่ใช้คำถามและคำตอบเพื่อปรับปรุงผลิตภัณฑ์ และจะจัดการตามข้อตกลงประมวลผลข้อมูล; การนี้ไม่ใช่การรับรองว่าไม่มีการตรวจเพื่อป้องกันการใช้งานผิดนโยบาย เอกสารนโยบายตรวจการใช้งานระบุว่า Google เก็บคำถาม บริบท และคำตอบไว้ 55 วันเพื่อจุดประสงค์ดังกล่าว และเจ้าหน้าที่ที่ได้รับอนุญาตอาจตรวจเนื้อหาที่ระบบแจ้งเตือน กรุณาอย่าส่งข้อมูลส่วนบุคคล ข้อมูลลับ หรือข้อมูลอ่อนไหว ดู <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">เงื่อนไข Gemini API</a> และ <a href="https://ai.google.dev/gemini-api/docs/billing" target="_blank" rel="noopener noreferrer">เงื่อนไข Billing</a> และ <a href="https://ai.google.dev/gemini-api/docs/usage-policies" target="_blank" rel="noopener noreferrer">นโยบายการใช้งานและการเก็บข้อมูล</a></p></section>
         <section class="rail-card"><h2>เมื่อคำตอบยังไม่พอ</h2><p>ลองถามให้เจาะจงขึ้น เช่น ระบุเชื้อเพลิง ช่วงเวลา หรือหน่วยที่ต้องการ หรือเปิดต้นทางเพื่อตรวจบริบทด้วยตัวเอง</p></section>
       </aside>
     </div>
@@ -96,6 +96,7 @@
   const consent = document.querySelector('#gemini-consent');
   const clearButton = document.querySelector('#clear-thread');
   const releaseBanner = document.querySelector('#release-banner');
+  const privacyTag = document.querySelector('.privacy-tag');
   const characterCount = document.querySelector('#question-count');
   const publicRagEnabled = window.TAMSOOD_CONFIG?.publicRagEnabled === true;
   const previewMode = window.TAMSOOD_CONFIG?.ragMode === 'limited-preview';
@@ -103,6 +104,7 @@
 
   if (publicRagEnabled) {
     releaseBanner.hidden = true;
+    privacyTag.classList.remove('privacy-tag--closed');
     document.querySelector('#privacy-status').textContent = previewMode ? 'RAG Preview · ชุดข้อมูลจำกัด' : 'ค้นหลักฐานพร้อมใช้';
     question.disabled = false;
     consent.disabled = false;
@@ -211,6 +213,12 @@
     let answerText;
     if (payload.summary?.text && cited.length) {
       answerText = payload.summary.text;
+    } else if (payload.summary?.kind === 'numeric-query-unavailable' && payload.summary?.text) {
+      answer.classList.add('no-answer');
+      answerText = payload.summary.text;
+    } else if (payload.summary?.kind === 'grounding-abstention' && payload.summary?.text) {
+      answer.classList.add('no-answer');
+      answerText = payload.summary.text;
     } else if (hits.length) {
       answer.classList.add('no-answer');
       answerText = 'พบเอกสารที่เกี่ยวข้อง แต่ยังไม่มีคำตอบที่สรุปพร้อมแหล่งอ้างอิงได้ ลองเปิดเอกสารด้านล่างหรือลองถามให้เจาะจงขึ้น';
@@ -286,7 +294,7 @@
       const response = await fetch('/api/rag/ask', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({question: asked})
+        body: JSON.stringify({question: asked, geminiConsent: consent.checked})
       });
       if (!response.ok) throw new Error('Search failed');
       const payload = await response.json();

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-08",
-  "automation_id": "tamsoodbase-srs",
+  "updated_at": "2026-11-12",
+  "automation_id": "tamsoodbase-hourly-project-review",
   "status_note": "Counts are task units, not percent completion or time estimates",
   "tasks": [
     {
@@ -256,10 +256,10 @@
     {
       "id": "T24",
       "priority": "P0",
-      "status": "TODO",
+      "status": "IN_PROGRESS",
       "title": "ตรวจ final gate และ freeze รุ่นส่ง",
-      "evidence": "docs/acceptance-rules.md",
-      "done_when": "ตรวจความพร้อมการใช้ข้อมูลและส่งงานตามข้อกำหนดที่มี ไม่ต้องรอคำอนุมัติ MTEC",
+      "evidence": "evidence/current-release-readiness-2026-11-12-0634.json",
+      "done_when": "Current workspace audit 2026-11-11T23:36:29Z: technical 68/68 and reference release ready; submission not ready, 5 gates open, manifest 797 files. Freeze only after external/human gates have evidence.",
       "dependencies": [
         "T12",
         "T13",
@@ -331,10 +331,10 @@
     {
       "id": "T30",
       "priority": "P0",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "title": "เทียบNSOกับDEDE/DOEBและทบทวนrevision",
       "evidence": "evidence/cross-source-coverage.json",
-      "done_when": "169/273 compared:141 exact/24 display-rounding compatible/4 divergences;104 gaps remain explicit; source values unchanged; local restored-evidence recheck in evidence/nso-restored-review-2026-11-08.json",
+      "done_when": "273/273 original source cells reviewed; 169/273 cross-publication comparisons accounted for (141 exact publication matches, 24 display-rounding agreements, 4 divergences); 104 non-comparisons classified with reasons; 18 derived ratios labeled consistency-only; source values unchanged; independent measurements verified: 0",
       "dependencies": [
         "T27"
       ]
@@ -620,10 +620,10 @@
     {
       "id": "T55",
       "priority": "P0",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "title": "Prepare continuous SRS draft for project M1 and later milestones",
-      "done_when": "Current SRS0.7.1 source re-rendered locally to27page review PDF with matching hashes on2026-11-08; team details/review and final release alignment remain open; see evidence/srs-handoff-render-2026-11-08.json",
-      "evidence": "docs/submission/SRS.md",
+      "done_when": "SRS draft prepared: docs/submission/SRS.md v0.7.1 and 27-page review PDF rendered from the current source hash and visually checked on 2026-11-09; separate M2 course SRS has chapters 1–8 and 38-page A4 Word/PDF visual review recorded on 2026-11-08; current project architecture and 169/273 comparison state distinguished; team review/sign-off/contribution/final freeze remain separate human gates",
+      "evidence": "evidence/srs-current-review.json",
       "dependencies": [
         "T54"
       ]
@@ -655,10 +655,10 @@
     {
       "id": "T58",
       "priority": "P0",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "title": "Complete final deliverables and end-to-end release review",
-      "done_when": "SRS/PDF/ERD/pipeline/traceability/export/slides/video plan checked against actual release;human memo/consent/contributions remain explicit;no automatic submission",
-      "evidence": "docs/submission/FINAL_DELIVERY_PLAN.md",
+      "done_when": "SRS/PDF/ERD/pipeline/traceability/export/slides/video plan checked against actual release; tests rerun; remaining MySQL/human/source-rights gates explicit; no automatic submission or final approval claimed",
+      "evidence": "docs/submission/RELEASE_REVIEW_2026-11-09.md",
       "dependencies": [
         "T55",
         "T57"
@@ -689,10 +689,10 @@
     {
       "id": "T61",
       "priority": "P0",
-      "status": "IN_PROGRESS",
-      "title": "Close twelve final acceptance workstreams and improve task-first website UX",
-      "done_when": "TrackF01–F12infinal-gap-plan;initialtaskentryimplemented/browserinventorylinkpassed;remainingworkstreamsnotclaimedcomplete",
-      "evidence": "docs/final-gap-plan.md",
+      "status": "DONE",
+      "title": "Track twelve final acceptance workstreams and implement task-first website entry",
+      "done_when": "F01–F12 are tracked in docs/final-gap-plan.md; task-first entry and inventory shortcut have recorded browser evidence; unresolved acceptance workstreams remain open and are not claimed complete",
+      "evidence": "docs/final-gap-plan.md; evidence/final-task-entry.json",
       "dependencies": [
         "T60"
       ]
@@ -1089,7 +1089,7 @@
       "priority": "P0",
       "status": "IN_PROGRESS",
       "title": "Build evidence-backed FAME lifecycle across all five stages",
-      "done_when": "Compatible transport/use/treatment inventory; allocation/scaling/provider/background gates verified; no missing-as-zero or double counting; source/scenario classes explicit;Thai-only activity/provider provenance, no foreign surrogates; targeted primary-source follow-up2026-11-08 in docs/scientific-source-check-2026-11-08.md added no numeric inventory or gate closure",
+      "done_when": "Compatible transport/use/treatment inventory; allocation/scaling/provider/background gates verified; no missing-as-zero or double counting; source/scenario classes explicit;Thai-only activity/provider provenance, no foreign surrogates; targeted screens2026-11-08/09 in docs/scientific-source-check-2026-11-08.md and docs/scientific-source-check-2026-11-09.md added no numeric inventory or gate closure; 12 Nov 2026 bounded POME methane screen in docs/scientific-source-check-2026-11-12-pome-screen.md found a primary Indonesia study only; rejected for Thai-case scope and no import/gate closure (evidence/scientific-source-check-2026-11-12-pome-screen.json)",
       "evidence": "evidence/lifecycle-candidate.json",
       "dependencies": [
         "T96"
@@ -1199,7 +1199,7 @@
       "priority": "P0",
       "status": "IN_PROGRESS",
       "title": "Complete ordered Thai FAME case: selection physical chain allocation transport use treatment and background",
-      "done_when": "All7phasegates closed by compatible evidence; 2026-11-05 six source-bound decisions remain blocked; see docs/fame-gate-closure-review.md, no allocation double-application or litre/MJ guess; targeted primary-source follow-up2026-11-08 in docs/scientific-source-check-2026-11-08.md added no numeric inventory or gate closure",
+      "done_when": "All7phasegates closed by compatible evidence; 2026-11-05 six source-bound decisions remain blocked; see docs/fame-gate-closure-review.md, no allocation double-application or litre/MJ guess; targeted follow-ups2026-11-08/09 in source-check files added no numeric inventory or gate closure; 10 Nov 2026 targeted Saswattecha 2015 source screen recorded in docs/scientific-source-check-2026-11-10.md: regional 2012 non-CO2 CPO estimate/explicit mass allocation is HOLD_CONTEXT, not matched CH4+actual-output; visual audit/license absent; no import or gate closure; 10 Nov 2026 use-phase search traced the 2013 chapter to Pleanjai 2008 dissertation but found no official full text; secondary per-litre values remain HOLD_CONTEXT and do not close the 1000 MJ FU gate. See docs/scientific-source-check-2026-11-10-pleanjai-use.md; no import or gate closure. 12 Nov 2026 screened Putro 2022 primary POME study; Indonesia facility and transferable Thai matched inventory not established, so rejected for team calculation; allocation and all lifecycle gates remain open. See docs/scientific-source-check-2026-11-12-pome-screen.md.",
       "evidence": "docs/thai-fame-completion-plan.md",
       "dependencies": [
         "T106"
@@ -1220,9 +1220,9 @@
     {
       "id": "T109",
       "priority": "P0",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "title": "Apply all15 system-review findings with checked local/live delivery and explicit scientific external gates",
-      "done_when": "Close R01-R15 by evidence in docs/review-implementation-2026-11-05.md; technical fixes deployed/tested, scientific/provider/independent-review/stable-endpoint gates remain open; local keyboard/load/query-plan/fault checks recorded in docs/local-engineering-review-2026-11-08.md, production latency and human accessibility gates still open; Explorer export/metadata bottlenecks fixed with34899row API+CSV parity and repeat local HTTP checks in docs/explorer-performance-fix-2026-11-08.md",
+      "done_when": "R01-R15 have evidence-backed technical responses and checked local/live delivery; technical fixes are deployed/tested; scientific/provider/independent-review/stable-endpoint gates are explicitly recorded as open and are not presented as resolved",
       "evidence": "docs/review-implementation-2026-11-05.md",
       "dependencies": [
         "T108"
@@ -1275,9 +1275,9 @@
     {
       "id": "T114",
       "priority": "P0",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "title": "Apply all15 November6 expert review actions with external evidence gates",
-      "done_when": "Technical scoped work T115-T117 delivered; scientific compatibility/allocation/elementary, permanent endpoint and real human review remain explicitly open; local keyboard/load/query-plan/fault checks recorded in docs/local-engineering-review-2026-11-08.md, production latency and human accessibility gates still open; Explorer export/metadata bottlenecks fixed with34899row API+CSV parity and repeat local HTTP checks in docs/explorer-performance-fix-2026-11-08.md",
+      "done_when": "Technical scoped work T115-T117 delivered with local/live evidence; scientific compatibility/allocation/elementary, permanent endpoint and real human review are explicitly tracked as open residual gates",
       "evidence": "docs/review-implementation-2026-11-06.md",
       "dependencies": [
         "T113"
@@ -1557,8 +1557,673 @@
       "dependencies": [
         "T138"
       ]
+    },
+    {
+      "id": "T140",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Screen new official TSM wastewater and biogas disclosures for methane and co-treatment boundary evidence",
+      "done_when": "Two previously unreviewed official pages recorded; treatment-train linkage to ethanol site remains unconfirmed; 28 tCO2/tCH4 claim is held as method-unspecified corporate statement; no numeric inventory accepted; matched-period data request and rights status recorded",
+      "evidence": "docs/ethanol-tsm-wastewater.md",
+      "dependencies": [
+        "T139"
+      ]
+    },
+    {
+      "id": "T141",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Review the official UNFCCC TSM wastewater PDD as a historical design and monitoring reference",
+      "done_when": "The official 2009 PDD is linked to the TSE ethanol site; design data and planned monitoring are distinguished from observed inventory; conflicts in annual biogas/wastewater/electricity and the printed leakage equation are checked and recorded without correcting the source; project avoidance is not presented as product LCI; actual matched-period methane/output/CO2e remain null; redistribution rights and no-publication decision are explicit",
+      "evidence": "evidence/ethanol-tsm-unfccc-pdd-review.json",
+      "dependencies": [
+        "T140"
+      ]
+    },
+    {
+      "id": "T142",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Improve statistical RAG with hybrid retrieval, structured facts and scoped abstention",
+      "done_when": "Thai trigram BM25+dense RRF; statistical answers preserve value/unit/period/basis/status/source; actual-value queries do not substitute design/capacity values; incompatible CO2e comparisons abstain; answer panel shows only cited facts and parent evidence; 15-case targeted eval has hybrid Recall@3 1.0, MRR not below dense, OOD abstention 1.0, exact fact IDs 10/10; local Qdrant rebuilt and loopback HTTP returned exact methane-null source/unit; research mapping and eval hashes recorded; no Gemini call/deploy",
+      "evidence": "evidence/rag-hybrid-eval.json",
+      "dependencies": []
+    },
+    {
+      "id": "T143",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Rewrite RAG answers in clear Thai and remove duplicate technical evidence cards",
+      "done_when": "Reviewed Thai copy is separate from source facts; numbers remain unchanged and readable; statistical replies explain status and necessary terms in plain Thai; installed capacity is not confused with an old design value; comparison refusal is understandable; a Thai CO2e-method question returns a direct beginner-friendly answer with GHG Protocol and IPCC citations rather than unrelated project-avoidance statistics; method/OOD regression tests pass; UI renders source links and locators; current evaluation has 18 cases; live Gemini not claimed",
+      "evidence": "evidence/rag-hybrid-eval.json",
+      "dependencies": [
+        "T142"
+      ]
+    },
+    {
+      "id": "T144",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Package, isolate, verify and privately deploy the resource-bounded RAG service on EC2",
+      "evidence": "evidence/rag-ec2-deploy.json",
+      "done_when": "Allowlisted manifest/hash and constrained image checks pass; EC2 owner/API/Ginder/resource preflight recorded; private internal-network deployment passes owner/health checks; SSH-forwarded UI/API checks verify method citations, exact facts, OOD abstention and CORS rejection; prior release retained and automatic rollback exercised; API/Ginder unchanged; no public route or cleared-rights claim",
+      "dependencies": [
+        "T143"
+      ]
+    },
+    {
+      "id": "T145",
+      "priority": "P1",
+      "status": "IN_PROGRESS",
+      "title": "Resume RAG data catalog, rights-aware retrieval, numeric query guard and safe web integration",
+      "done_when": "Schema/source catalog generated from current registry; searchable provenance index with unknown metadata preserved; no PENDING/NOT_CLEARED source reaches public output; narrative and numeric paths separated; numeric abstention explains the limitation in plain Thai without backend jargon and never calls Gemini; authenticated fixed-query backend exists before numeric serving; Vercel integration and mobile/live acceptance have evidence; Production remains closed until rights/privacy/abuse/capacity gates pass; local candidate 9c767ef49301347b package/build/image smoke verified 12 Nov after fixing omitted retrieval-scope.json; see evidence/rag-ec2-candidate-build-2026-11-12.json and evidence/rag-image-verification-9c767ef49301347b-20261111T223742Z.json; not deployed and RAG-to-database search still unverified; Preview route regression now proves 12 requests/window then HTTP 429 + Retry-After: 60 without Gemini; see evidence/rag-preview-route-rate-limit-test-2026-11-12.json. This is instance-local defense only; T151 WAF/budget gate remains WAITING.",
+      "evidence": "evidence/rag-readiness-review-2026-11-10.json",
+      "dependencies": [
+        "T144"
+      ]
+    },
+    {
+      "id": "T146",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Build rights-filtered RAG source catalog and provenance index",
+      "done_when": "Five database layers mapped to schemas/tables; all registry IDs classified or fail; private JSON catalog and private SQLite FTS5 snapshot index preserve source/record IDs, status, rights, year/unit/scope/period/locator and per-layer acquired/accessed/validation timestamps without inferring missing fields; file mtime is not treated as freshness proof; every database-index record is release_allowed=0 and external_llm_allowed=0; search defaults to released-only and requires explicit internal mode for private review; public output is empty until manifest and registry rights are cleared; targeted and full tests pass",
+      "evidence": "docs/rag/README.md",
+      "dependencies": [
+        "T145"
+      ]
+    },
+    {
+      "id": "T147",
+      "priority": "P0",
+      "status": "TODO",
+      "title": "Implement authenticated read-only fixed-query API for RAG numeric questions",
+      "done_when": "Named query IDs only; validated parameters; source-specific rights/status predicates; read-only DB principal; authenticated HTTPS route via Vercel server proxy; reject arbitrary SQL; tests prove unapproved data never leaves and no query can mutate DB",
+      "evidence": "docs/rag/PUBLIC_WEB_READINESS.md",
+      "dependencies": [
+        "T145"
+      ]
+    },
+    {
+      "id": "T148",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Reconcile DMF CKAN export freshness with the official monthly-report publication path",
+      "done_when": "Fetched March and September official HTML+Excel into isolated candidate; exact March period grouped correctly, March CKAN and publisher report cover 34 area/source-group records with 170 numeric fields within displayed 0.01 precision and production-day values matching; two oil/gas block labels differ by hyphen and are explicitly held unnormalized; September export preserves 33 detail rows, units, revision date and worksheet locators; only March+September candidates are catalogued, rights NOT_CLEARED, no DB/MySQL/index data import, no public/Gemini output; index rebuilt with 22 sources/41,017 documents and released/external counts zero.",
+      "evidence": "evidence/dmf-monthly-candidate-2026-11-10.json",
+      "dependencies": [
+        "T02",
+        "T145"
+      ]
+    },
+    {
+      "id": "T149",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Close anonymous access to dataset API responses pending rights clearance",
+      "done_when": "Authorized Production hotfix is live; anonymous requests to all known dataset/login API routes return 403 with no rows; health and safe release metadata remain available; local route tests and post-deploy probes pass. User-authenticated data access stays disabled until rights clearance and identity design are approved.",
+      "evidence": "evidence/production-dataset-api-hotfix-2026-11-10.json",
+      "dependencies": []
+    },
+    {
+      "id": "T150",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Prevent precision collisions in RAG numeric grounding checks",
+      "done_when": "Numeric tokens are compared as canonical digit strings, not floating-point; tests reject a large-integer precision collision and retain Thai-digit/grouped/decimal equivalence; evidence records lexical-only limitations and no live/deploy claim",
+      "evidence": "evidence/rag-numeric-token-precision-2026-11-10.json",
+      "dependencies": [
+        "T145"
+      ]
+    },
+    {
+      "id": "T151",
+      "priority": "P0",
+      "status": "WAITING",
+      "title": "Verify and configure the Vercel WAF rate limit for the RAG endpoint",
+      "done_when": "Project owner confirms plan and billing, chooses an affordable threshold, configures an exact POST /api/rag/ask rule, then records non-production 429/normal-use checks, firewall analytics and rollback owner; no rule or budget is assumed",
+      "evidence": "docs/rag/VERCEL_RATE_LIMITER_RUNBOOK.md",
+      "dependencies": [
+        "T145"
+      ]
+    },
+    {
+      "id": "T152",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Verify RAG EC2 upgrade rollback health and service baselines",
+      "done_when": "Automatic rollback checks prior RAG Docker health and /readyz, verifies API image/readiness and Ginder state, emits an explicit critical owner-review warning on recovery failure; mocked healthy/failure cases and shell syntax pass without touching EC2.",
+      "evidence": "evidence/rag-rollback-verification-hardening-2026-11-10.json",
+      "dependencies": [
+        "T144"
+      ]
+    },
+    {
+      "id": "T153",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Clarify Gemini privacy notice for billing-linked data handling",
+      "done_when": "Thai notice distinguishes unpaid versus active-billing Gemini API treatment, states project billing status is unverified, links official terms, avoids a zero-review promise, and a focused copy test passes; no prompt or project data sent to Google",
+      "evidence": "evidence/rag-gemini-terms-review-2026-11-10.json",
+      "dependencies": [
+        "T145"
+      ]
+    },
+    {
+      "id": "T154",
+      "priority": "P0",
+      "status": "WAITING",
+      "title": "Confirm Gemini API deployment eligibility for audience age and regions",
+      "done_when": "Owner documents intended user ages and regions and confirms they meet current Gemini API terms before any RAG launch; no audience or eligibility is assumed",
+      "evidence": "evidence/rag-gemini-terms-review-2026-11-10.json",
+      "dependencies": [
+        "T145"
+      ]
+    },
+    {
+      "id": "T155",
+      "priority": "P0",
+      "status": "DONE",
+      "title": "Gate Gemini release on owner-confirmed audience eligibility",
+      "done_when": "Preview and Production runtime, public catalog output, and public RAG frontend build require explicit age/region eligibility confirmation; default stays false; tests prove absence blocks; gate is documented as owner attestation rather than age or geolocation enforcement",
+      "evidence": "evidence/rag-provider-eligibility-gate-2026-11-10.json",
+      "dependencies": [
+        "T154"
+      ]
+    },
+    {
+      "id": "T156",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Synchronize system SRS and submission plan with current RAG architecture and release gates",
+      "done_when": "SRS 0.7.2 matches verified code/evidence; 29-page PDF rendered and visually reviewed; preview/production, privacy and owner-gate limits stated; previous PDF preserved; team review remains pending",
+      "evidence": "evidence/srs-current-review.json",
+      "dependencies": [
+        "T153",
+        "T155"
+      ]
+    },
+    {
+      "id": "T157",
+      "priority": "P2",
+      "status": "DONE",
+      "title": "Make the chatbot closed-state badge agree with the disabled website service",
+      "done_when": "Closed RAG state is visibly labeled as unavailable; badge color and release banner agree; enabled configuration clears closed styling; targeted frontend suite passes; no production change",
+      "evidence": "evidence/rag-closed-state-ui-2026-11-10.json",
+      "dependencies": [
+        "T145"
+      ]
+    },
+    {
+      "id": "T158",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Prevent citation metadata numbers from falsely grounding RAG numeric claims",
+      "done_when": "Only cited evidence text may ground numeric answer tokens; regression rejects numbers present only in title/locator/DOI/licence; existing numeric precision/localization cases pass; no live Gemini or deployment",
+      "evidence": "evidence/rag-numeric-locator-guard-2026-11-10.json",
+      "dependencies": [
+        "T150"
+      ]
+    },
+    {
+      "id": "T159",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Reject numeric answers that reuse a value with an incompatible measurement unit",
+      "done_when": "For supported unit patterns, cited text must contain the same numeric token and canonical unit/denominator; regression rejects annual project total when rewritten as product intensity and accepts formatting variation; no unit conversion or semantic-equivalence claim",
+      "evidence": "evidence/rag-numeric-unit-grounding-2026-11-10.json",
+      "dependencies": [
+        "T158"
+      ]
+    },
+    {
+      "id": "T160",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Normalize common Thai and English unit spellings in numeric answer checks",
+      "done_when": "Supported Thai/English forms map to canonical unit-plus-denominator claims; regression covers per/year, tonne, kg, and litre; mismatched units remain rejected; limitations explicitly exclude conversion and semantic validation",
+      "evidence": "evidence/rag-numeric-unit-locale-2026-11-10.json",
+      "dependencies": [
+        "T159"
+      ]
+    },
+    {
+      "id": "T161",
+      "priority": "P2",
+      "status": "DONE",
+      "title": "Synchronize review slide version label with SRS 0.7.2",
+      "done_when": "Preserve original deck; update only the review deck label, regenerate the 10-page PDF, verify slide count/layout/import and compare all slide text; document limits and hashes",
+      "evidence": "evidence/final-slides-2026-11-10.json",
+      "dependencies": [
+        "T156"
+      ]
+    },
+    {
+      "id": "T162",
+      "priority": "P2",
+      "status": "DONE",
+      "title": "Match EC2 RAG installer RAM preflight to the documented 720 MiB floor",
+      "done_when": "Compare /proc/meminfo KiB against exact 737280 KiB; keep runbook consistent; bash syntax and focused guard regression pass; no EC2 action",
+      "evidence": "evidence/rag-ec2-memory-gate-review-2026-11-10.json",
+      "dependencies": [
+        "T161"
+      ]
+    },
+    {
+      "id": "T163",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Align EC2 RAG upgrade runtime memory guards with the exact 320 MiB floor",
+      "done_when": "Pre-update, readiness-wait and health-wait guards compare MemAvailable in KiB against 327680; focused static regressions and shell syntax pass; initial-install 720 MiB preflight remains unchanged; no EC2 action",
+      "evidence": "evidence/rag-upgrade-memory-floor-review-2026-11-12.json",
+      "dependencies": [
+        "T152",
+        "T162"
+      ]
+    },
+    {
+      "id": "T164",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Correct final-review slide claims about public website data access",
+      "done_when": "Slide 9 distinguishes the live public frontend from dataset APIs returning 403 and the unimplemented authenticated user path; new 10-slide PPTX/PDF preserve other slide visuals; claims trace to post-deploy evidence; team approval/submission not claimed",
+      "evidence": "evidence/final-slides-2026-11-12.json",
+      "dependencies": [
+        "T147",
+        "T161"
+      ]
+    },
+    {
+      "id": "T165",
+      "priority": "P2",
+      "status": "DONE",
+      "title": "Reconcile selected final-slide figures with current evidence",
+      "done_when": "Quantitative claims on slides 3, 4, 7, 8 and 10 and access status on slide 9 match cited evidence; limitations and unchecked slides 2, 5, 6 are disclosed; no broad independent-review claim",
+      "evidence": "evidence/final-slides-quantitative-claim-audit-2026-11-12.json",
+      "dependencies": [
+        "T164"
+      ]
+    },
+    {
+      "id": "T166",
+      "priority": "P2",
+      "status": "DONE",
+      "title": "Reconcile final-review slide scope, schema, and provenance claims",
+      "done_when": "Slides 2, 5 and 6 checked against current project mappings, DDL, inventory and source locators; caveats captured; no unsupported global LCI or rights claim",
+      "evidence": "evidence/final-slides-scope-schema-provenance-audit-2026-11-12.json",
+      "dependencies": [
+        "T165"
+      ]
+    },
+    {
+      "id": "T167",
+      "priority": "P2",
+      "status": "DONE",
+      "title": "Make RAG Thai answers lead with the direct point and omit unrelated evidence",
+      "done_when": "Prompt contract requires concise direct Thai answer, only relevant facts/citations, and a short missing-input explanation; mocked targeted tests pass; no live provider or deployment",
+      "evidence": "evidence/rag-thai-answer-focus-2026-11-12.json",
+      "dependencies": [
+        "T145"
+      ]
+    },
+    {
+      "id": "T168",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Re-run local release consistency audit after RAG Thai prompt update",
+      "done_when": "Local checker passes current technical/reusable-reference checks and task board; unresolved submission gates are copied with reasons; no live service or production claims",
+      "evidence": "evidence/current-release-readiness-2026-11-12-0634.json",
+      "dependencies": [
+        "T167"
+      ]
+    },
+    {
+      "id": "T169",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Make RAG rollback fail closed when backup listing fails",
+      "done_when": "Docker backup-list failure is detected before any active-container removal; isolated mock covers safe refusal and previous-release restoration; shell syntax passes; no EC2 or Docker daemon touched",
+      "evidence": "evidence/rag-rollback-script-fail-closed-2026-11-12.json",
+      "dependencies": [
+        "T152",
+        "T168"
+      ]
+    },
+    {
+      "id": "T170",
+      "priority": "P0",
+      "status": "WAITING",
+      "title": "Revoke and rotate the Gemini key disclosed in chat before any RAG re-enable",
+      "done_when": "Owner confirms the disclosed key is revoked and replacement stored only server-side; no key value is shared in chat/repository; verify Preview/Production secret references use only the replacement without exposing it",
+      "evidence": "evidence/gemini-credential-rotation-gate-2026-11-12.json",
+      "dependencies": [
+        "T154"
+      ]
+    },
+    {
+      "id": "T171",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Update Gemini GenerateContent structured-output request to current format",
+      "done_when": "Official docs confirm responseSchema deprecation and responseFormat replacement; mock request uses responseFormat.text schema and regression passes without live provider call",
+      "evidence": "evidence/gemini-generatecontent-response-format-review-2026-11-12.json",
+      "dependencies": [
+        "T167"
+      ]
+    },
+    {
+      "id": "T172",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Add a regression contract for per-question RAG consent in the ask page",
+      "done_when": "A focused test checks closed-by-default consent, per-question Thai notice, pre-fetch consent guard, consent payload, and reset in finally; evidence states the static-test limitation; no provider or Production access",
+      "evidence": "evidence/rag-ask-page-consent-contract-2026-11-12.json",
+      "dependencies": [
+        "T145",
+        "T153"
+      ]
+    },
+    {
+      "id": "T173",
+      "priority": "P1",
+      "status": "DONE",
+      "title": "Align first-install RAG memory preflight with container limit and host reserve",
+      "done_when": "Initial install requires 512 MiB container RAM ceiling plus the 320 MiB free-host reserve; runbook and focused test agree; Python memory-gate tests and Git Bash syntax pass; no install, Docker, EC2, or Production action",
+      "evidence": "evidence/rag-ec2-install-memory-headroom-2026-11-12.json",
+      "dependencies": [
+        "T162"
+      ]
     }
   ],
-  "automation_status": "DELETED",
-  "automation_note": "หยุดและลบheartbeatรายชั่วโมงหลังหลายรอบไม่มีงานอิสระใหม่;งานยังไม่complete ข้อค้าง104comparisons/หลักฐานทีม/finalreviewคงเดิม รอหลักฐานหรือคำสั่งใหม่ ไม่วนตรวจชุดเดิม"
+  "automation_status": "ACTIVE",
+  "automation_note": "Hourly heartbeat tamsoodbase-hourly-project-review is active; each invocation performs one bounded review/fix/test cycle, preserves uncommitted work, cannot change rights, secrets, databases, Production, push or deploy, and reports verified progress only.",
+  "latest_local_release_consistency_review": {
+    "date": "2026-11-12",
+    "checked_at": "2026-11-12T16:52:51+07:00",
+    "evidence": "evidence/local-release-consistency-after-grounding-ux-2026-11-12.json",
+    "candidate_id": "70f60e044947b42e16f82a14c69da066c4bba6e500138714dcbb86363b1f0dd1",
+    "passed": true,
+    "checks_total": 46,
+    "checks_passed": 46,
+    "live_rechecked": false,
+    "submission_ready": false,
+    "production_changed": false
+  },
+  "latest_release_readiness_review": {
+    "date": "2026-11-12",
+    "evidence": "evidence/current-release-readiness-2026-11-12-0634.json",
+    "checked_at": "2026-11-12T06:36:10.775142+07:00",
+    "technical_pass": true,
+    "reference_release_ready": true,
+    "submission_ready": false,
+    "manifest_file_count": 797,
+    "unresolved_gates": [
+      {
+        "id": "official_requirements",
+        "status": "PARTIAL"
+      },
+      {
+        "id": "source_rights",
+        "status": "PARTIAL"
+      },
+      {
+        "id": "domain_and_units",
+        "status": "PARTIAL"
+      },
+      {
+        "id": "team_and_defense",
+        "status": "UNCONFIRMED"
+      },
+      {
+        "id": "consent_forms",
+        "status": "UNCONFIRMED"
+      }
+    ],
+    "live_rechecked": false
+  },
+  "latest_rag_timeout_regression": {
+    "date": "2026-11-10",
+    "evidence": "evidence/rag-timeout-regression-2026-11-10.json",
+    "result": "passed",
+    "live_gemini_called": false,
+    "production_deployed": false
+  },
+  "latest_rag_prompt_hardening": {
+    "date": "2026-11-10",
+    "evidence": "evidence/rag-prompt-injection-contract-2026-11-10.json",
+    "result": "prompt-contract-test-passed",
+    "live_gemini_called": false,
+    "production_deployed": false
+  },
+  "latest_submission_doc_sync": {
+    "date": "2026-11-10",
+    "evidence": "evidence/current-release-readiness-2026-11-10.json",
+    "scope": "Corrected Final plan and RAG readiness to distinguish authenticated Preview from closed Production."
+  },
+  "latest_rag_per_request_cost_bounds": {
+    "date": "2026-11-10",
+    "evidence": "evidence/rag-per-request-cost-bounds-2026-11-10.json",
+    "result": "passed",
+    "global_budget_verified": false,
+    "production_changed": false
+  },
+  "latest_t149_local_mitigation_check": {
+    "date": "2026-11-10",
+    "evidence": "evidence/production-anonymous-api-mitigation-local-2026-11-10.json",
+    "result": "passed",
+    "production_deployed": false,
+    "status": "local-only"
+  },
+  "latest_rag_numeric_token_guard": {
+    "date": "2026-11-10",
+    "evidence": "evidence/rag-numeric-token-guard-2026-11-10.json",
+    "result": "passed",
+    "semantic_entailment_verified": false,
+    "production_deployed": false
+  },
+  "latest_rag_numeric_precision_guard": {
+    "date": "2026-11-10",
+    "evidence": "evidence/rag-numeric-token-precision-2026-11-10.json",
+    "result": "passed",
+    "production_deployed": false,
+    "semantic_entailment_verified": false
+  },
+  "latest_rag_gemini_billing_controls_review": {
+    "date": "2026-11-12",
+    "evidence": "evidence/rag-gemini-billing-controls-review-2026-11-12.json",
+    "official_docs_reviewed": true,
+    "project_billing_verified": false,
+    "budget_verified": false,
+    "production_changed": false,
+    "production_rag": "HOLD"
+  },
+  "latest_rag_launch_gate_parity_review": {
+    "date": "2026-11-12",
+    "evidence": "evidence/rag-launch-gate-parity-review-2026-11-12.json",
+    "manifest_gates": 9,
+    "canonical_contract": "docs/rag/required-release-gates.json",
+    "runtime_build_catalog_share_contract": true,
+    "all_current_gates_passed": false,
+    "targeted_tests": "passed",
+    "production_changed": false,
+    "production_rag": "HOLD"
+  },
+  "latest_rag_ask_data_retention_notice": {
+    "date": "2026-11-12",
+    "evidence": "evidence/rag-ask-data-retention-notice-2026-11-12.json",
+    "official_policy_rechecked": true,
+    "retention_disclosed": "55 days for prompts/context/output per abuse-monitoring documentation",
+    "targeted_tests": "consent static contract and two frontend unit tests passed; production build copy asserts notice/link",
+    "provider_called": false,
+    "production_changed": false,
+    "production_rag": "HOLD"
+  },
+  "latest_rag_gemini_terms_review": {
+    "date": "2026-11-10",
+    "evidence": "evidence/rag-gemini-terms-review-2026-11-10.json",
+    "notice_updated": true,
+    "billing_status_verified": false,
+    "audience_eligibility_verified": false,
+    "production_rag": "HOLD"
+  },
+  "latest_rag_provider_eligibility_gate": {
+    "date": "2026-11-10",
+    "evidence": "evidence/rag-provider-eligibility-gate-2026-11-10.json",
+    "runtime_and_build_gated": true,
+    "owner_confirmation": false,
+    "production_rag": "HOLD"
+  },
+  "latest_vercel_waf_rate_limit_review": {
+    "date": "2026-11-12",
+    "evidence": "evidence/rag-vercel-waf-pricing-review-2026-11-12.json",
+    "official_docs_reviewed": true,
+    "project_plan_verified": false,
+    "project_rule_verified": false,
+    "gemini_budget_verified": false,
+    "production_changed": false
+  },
+  "latest_t149_route_surface_local_review": {
+    "date": "2026-11-10",
+    "evidence": "evidence/production-api-route-surface-local-2026-11-10.json",
+    "result": "passed",
+    "production_api_probed": false,
+    "production_deployed": false
+  },
+  "latest_t149_production_verification": {
+    "date": "2026-11-10",
+    "evidence": "evidence/production-dataset-api-hotfix-2026-11-10.json",
+    "deployment_alias": "https://tamsoodbase.vercel.app",
+    "anonymous_dataset_routes_checked": 15,
+    "anonymous_dataset_routes_forbidden": 15,
+    "rows_returned": 0,
+    "health_and_release_metadata": "200",
+    "production_rag_query": "closed (503 before Gemini)",
+    "status": "passed"
+  },
+  "latest_t107_use_phase_source_check": {
+    "date": "2026-11-10",
+    "document": "docs/scientific-source-check-2026-11-10-pleanjai-use.md",
+    "evidence": "evidence/scientific-source-check-2026-11-10-pleanjai-use.json",
+    "result": "secondary per-litre use-phase values traced to a 2008 dissertation; original full text not located; no import or gate closure",
+    "status": "HOLD_CONTEXT"
+  },
+  "latest_system_srs_review": {
+    "date": "2026-11-10",
+    "version": "0.7.2",
+    "evidence": "evidence/srs-current-review.json",
+    "source_sha256": "544d064dc034d115195396cdd37589a777520952804869712df8186a495d0c39",
+    "pdf_sha256": "fc6d9a9de58cdacbbf90b455c8e030898558eabbb52a00bb8ddb1d3855836bcc",
+    "pages": 29,
+    "visual_reviewed": true,
+    "team_review_pending": true,
+    "slides_rebuilt": false,
+    "production_changed": false
+  },
+  "latest_rag_closed_state_ui": {
+    "date": "2026-11-10",
+    "evidence": "evidence/rag-closed-state-ui-2026-11-10.json",
+    "result": "passed",
+    "frontend_tests": "17 passed",
+    "browser_visual": false,
+    "production_changed": false
+  },
+  "latest_rag_numeric_locator_guard": {
+    "date": "2026-11-10",
+    "evidence": "evidence/rag-numeric-locator-guard-2026-11-10.json",
+    "result": "passed",
+    "production_changed": false,
+    "semantic_entailment_verified": false
+  },
+  "latest_rag_numeric_unit_guard": {
+    "date": "2026-11-10",
+    "evidence": "evidence/rag-numeric-unit-grounding-2026-11-10.json",
+    "result": "passed",
+    "unit_conversion": false,
+    "semantic_entailment_verified": false,
+    "production_changed": false
+  },
+  "latest_rag_numeric_unit_locale": {
+    "date": "2026-11-10",
+    "evidence": "evidence/rag-numeric-unit-locale-2026-11-10.json",
+    "result": "passed",
+    "localization": "Thai and English aliases",
+    "unit_conversion": false,
+    "semantic_entailment_verified": false,
+    "production_changed": false
+  },
+  "latest_slide_review": {
+    "date": "2026-11-10",
+    "evidence": "evidence/final-slides-2026-11-10.json",
+    "slides": 10,
+    "label": "SRS 0.7.2",
+    "scope": "version-label synchronization only; slide claims not revalidated",
+    "production_changed": false
+  },
+  "latest_rag_ec2_memory_gate_review": {
+    "date": "2026-11-12",
+    "evidence": "evidence/rag-ec2-install-memory-headroom-2026-11-12.json",
+    "initial_install_floor_kib": 851968,
+    "upgrade_runtime_floor_kib": 327680,
+    "bash_syntax": "passed via Git Bash",
+    "targeted_regression": "2 passed",
+    "ec2_touched": false,
+    "production_changed": false
+  },
+  "latest_rag_catalog_integrity_review": {
+    "date": "2026-11-12",
+    "checked_at": "2026-11-12T07:18:52+07:00",
+    "evidence": "evidence/rag-catalog-duplicate-approval-guard-2026-11-12.json",
+    "finding": "conflicting duplicate approvals could fail open in isolated simulation",
+    "guard": "duplicate source/manifest/corpus IDs rejected",
+    "targeted_tests": "8 passed",
+    "public_cleared_records": 0,
+    "actual_manifest_changed": false,
+    "production_changed": false,
+    "production_rag": "HOLD"
+  },
+  "latest_rag_corpus_manifest_sync": {
+    "date": "2026-11-12",
+    "checked_at": "2026-11-12T07:23:05+07:00",
+    "evidence": "evidence/rag-corpus-manifest-sync-2026-11-12.json",
+    "active_ids_match": true,
+    "record_decisions": "all PENDING",
+    "public_cleared_records": 0,
+    "release_gates_passed": 0,
+    "tests": "catalog 9 passed; deployment guard 1 passed",
+    "production_changed": false,
+    "production_rag": "HOLD"
+  },
+  "latest_rag_unitless_numeric_guard": {
+    "date": "2026-11-12",
+    "checked_at": "2026-11-12T14:54:52+07:00",
+    "evidence": "evidence/rag-unitless-numeric-answer-guard-2026-11-12.json",
+    "targeted_test": "node tests/rag-vercel-api.cjs passed",
+    "unitless_supported_measurement_rejected": true,
+    "semantic_entailment_verified": false,
+    "independent_user_evaluation": false,
+    "production_changed": false,
+    "production_rag": "HOLD"
+  },
+  "latest_rag_grounding_abstention_ux": {
+    "date": "2026-11-12",
+    "checked_at": "2026-11-12T15:54:18+07:00",
+    "evidence": "evidence/rag-grounding-abstention-ux-2026-11-12.json",
+    "route_mock_test": "passed",
+    "ui_contract_test": "passed",
+    "build_copy_test": "passed",
+    "live_gemini_called": false,
+    "browser_visual_review": false,
+    "production_changed": false,
+    "production_rag": "HOLD",
+    "build_copy_verified": true
+  },
+  "latest_rag_preview_missing_client_ip_guard": {
+    "date": "2026-11-12",
+    "evidence": "evidence/rag-preview-missing-client-ip-guard-2026-11-12.json",
+    "targeted_test": "node tests/rag-vercel-api.cjs passed",
+    "missing_client_identity_rejected_before_provider": true,
+    "global_limit_or_waf_verified": false,
+    "production_changed": false,
+    "production_rag": "HOLD"
+  }
 }

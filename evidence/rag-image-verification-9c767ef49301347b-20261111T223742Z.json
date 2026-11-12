@@ -1,0 +1,33 @@
+{
+  "created_at_utc": "2026-11-11T22:37:42.367016+00:00",
+  "image": "tamsoodbase-rag:9c767ef49301347b",
+  "image_id": "sha256:1bf44daf6880dd3e65ef1fa115f3708e0156145a66bc87cb7366e441202cbdd1",
+  "architecture": "linux/amd64",
+  "probe": {
+    "ready_records": 10,
+    "page_status": 200,
+    "fame_functional_unit_hit": "fame-functional-unit",
+    "source_locator_present": true,
+    "feedback_saved_to_tmp": true,
+    "wrong_origin_status": 403
+  },
+  "hardening": {
+    "network_mode": "none",
+    "read_only": true,
+    "memory_bytes": 536870912,
+    "memory_swap_bytes": 1073741824,
+    "nano_cpus": 500000000,
+    "pids_limit": 64,
+    "user": "10001:10001",
+    "cap_drop": [
+      "ALL"
+    ],
+    "security_opt": [
+      "no-new-privileges:true"
+    ],
+    "gemini_key_present": false,
+    "memory_usage": "499MiB / 512MiB"
+  },
+  "gemini_live_called": false,
+  "production_changed": false
+}

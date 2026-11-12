@@ -1,0 +1,22 @@
+{
+  "checked_at_utc": "2026-11-11T23:36:10.775142+00:00",
+  "scope": "Local technical and reusable-reference audit after the first-install RAG memory gate change. No live services, Docker install, Production or external rights were checked.",
+  "command": "python -X utf8 scripts/check_release.py",
+  "technical_pass": true,
+  "passed_checks": 68,
+  "total_checks": 68,
+  "failed_checks": [],
+  "reference_release_ready": true,
+  "submission_ready": false,
+  "manifest_file_count_at_check": 797,
+  "unresolved_gates": [
+    {"id": "official_requirements", "status": "PARTIAL"},
+    {"id": "source_rights", "status": "PARTIAL"},
+    {"id": "domain_and_units", "status": "PARTIAL"},
+    {"id": "team_and_defense", "status": "UNCONFIRMED"},
+    {"id": "consent_forms", "status": "UNCONFIRMED"}
+  ],
+  "note": "The audit is local and cannot establish external source accuracy, licence approval, MTEC acceptance, team contribution, or consent.",
+  "production_changed": false,
+  "rag_production_released": false
+}

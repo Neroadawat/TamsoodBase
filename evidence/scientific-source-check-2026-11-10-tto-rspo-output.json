@@ -1,0 +1,82 @@
+{
+  "review_date": "2026-11-10",
+  "company": "Thai Tallow and Oil Co., Ltd.",
+  "sources": [
+    {
+      "report_year": 2023,
+      "title": "RSPO Annual Communication of Progress 2023",
+      "url": "https://document.rspo.org/2023/Thai_Tallow_and_Oil_Co_Ltd_ACOP2023.pdf",
+      "locators": {
+        "mills_operated": "page 2, section 2.6.1",
+        "cpo_produced": "page 3, section 3.1",
+        "cspo_sold": "page 3, sections 3.2 and 3.5",
+        "ghg_intensity": "page 8, section 6.2",
+        "no_ghg_baseline": "page 8, section 6.4"
+      },
+      "mills_operated": 3,
+      "cpo_produced_t": 7000.0,
+      "cpo_produced_region_label": "Rest of the World",
+      "cspo_sold_t": 6333.7,
+      "reported_cspo_sold_share_percent": 90.48,
+      "reported_ghg_intensity_tco2e_per_t_cpo": 0.63,
+      "ghg_intensity_scope_label": "average GHG footprint for all certified management units per tonne of crude palm oil",
+      "ghg_baseline_reported": false
+    },
+    {
+      "report_year": 2024,
+      "title": "RSPO Annual Communication of Progress 2024",
+      "url": "https://document.rspo.org/2024/Thai_Tallow_and_Oil_Co_Ltd_ACOP2024.pdf",
+      "locators": {
+        "mills_operated": "page 2, section 2.6.1",
+        "cpo_produced": "page 3, section 3.1",
+        "cspo_sold": "page 3, sections 3.2 and 3.5",
+        "ghg_intensity": "page 8, section 6.2.2"
+      },
+      "mills_operated": 3,
+      "cpo_produced_t": 13165.84,
+      "cpo_produced_region_label": "Thailand",
+      "cspo_sold_t": 15685.7,
+      "reported_cspo_sold_share_percent": 119.14,
+      "reported_ghg_intensity_tco2e_per_t_cpo": 0.63,
+      "ghg_intensity_scope_label": "average GHG emissions per tonne of crude palm oil for all certified management units in reporting year"
+    }
+  ],
+  "team_arithmetic_checks": [
+    {
+      "report_year": 2023,
+      "calculation": "6333.70 / 7000.00 * 100",
+      "result_percent": 90.4814285714,
+      "reported_percent": 90.48,
+      "rounds_to_reported": true
+    },
+    {
+      "report_year": 2024,
+      "calculation": "15685.70 / 13165.84 * 100",
+      "result_percent": 119.1393788775,
+      "reported_percent": 119.14,
+      "rounds_to_reported": true
+    }
+  ],
+  "compatibility": {
+    "connection_to_unfccc_project_4589": "same company name but not demonstrated to be site-specific; ACOP aggregates 3 mills",
+    "year_match_to_methane_monitoring": false,
+    "bangsawan_cpo_output": null,
+    "bangsawan_ghg_intensity": null,
+    "fame_product_co2e": null,
+    "status": "HOLD_CONTEXT",
+    "reason": "company-level volume/intensity does not identify Bangsawan contribution, methane measurement period, product boundary, allocation, or full characterization method",
+    "added_to_inventory": false,
+    "joined_to_methane_data": false,
+    "published": false,
+    "added_to_rag": false,
+    "redistribution_rights": "NOT_CLEARED"
+  },
+  "review_scope": {
+    "pdf_text_extraction_reviewed": true,
+    "historical_acop_2021_lookup": "A search result exposed a URL named ACOP2021, but direct open failed and the extracted result redirected/referenced ACOP2023; treated as unverified and no 2021 values were used.",
+    "visual_table_review": "not completed; screenshot service timed out",
+    "local_pdf_copy": null,
+    "sha256": null,
+    "independent_verification": false
+  }
+}

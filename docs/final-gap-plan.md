@@ -35,7 +35,7 @@ F02→F03→F04ควบคู่F01 แล้วF05/F06/F07;F08ปรับเ�
 - F02: ปิดtechnicalcrosswalkแล้ว 13source snapshots/5layers;API+internalCSV/JSONL;IDเดิมไม่เปลี่ยน
 - F03: candidateFlow15/Unit4/Process2/Exchange16ตรวจroundtrip+4queries+3negativechecksผ่าน;productionmigrationยังไม่ทำและไม่จำเป็นต้องอ้างเพื่อส่งcandidateanalysis
 - F04: MySQL17checksและSQL/indexมีหลักฐาน;Neo4jengineเริ่มไม่สำเร็จ2รอบ จึงยังไม่ครบactualengineexperiment
-- F05/F07: มีPDFรายงาน16หน้า/สไลด์10หน้าและPPTXพร้อมnotes;ตรวจrenderPDFแล้ว รอข้อมูลทีม/รับรอง ไม่ถือfinalsigned
+- F05/F07: มี PDF รายงานและสไลด์ 10 หน้า; สไลด์ฉบับ 9 พ.ย. แสดง SRS0.7.1, เทียบข้อความหลักกับ evidence แล้ว และตรวจภาพครบทุกหน้า; รอสมาชิกตรวจ/ซ้อม ไม่ถือ final-signed (ดู `evidence/final-slides-2026-11-09.json`)
 - F06: rebuildERD/pipelineจากDDLล่าสุดและแพ็กเอกสาร/deriveddataภายในแยกกัน พร้อมmanifestตรวจhash ไม่แจกpublic
 - F08: หน้าSourceIDครบ13snapshotsและสิทธิ;browsermobile390x844ไม่มีoverflow375/375;taskentryและinventoryผ่าน
 - F09: privateEC2อัปเกรดc2d8db16b10a2fad,stage/active17routes,S3backup39membersและrollbackpreflightผ่าน;publicHTTPS/auth/domainยังค้าง

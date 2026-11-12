@@ -1,0 +1,35 @@
+{
+  "checked_at_utc": "2026-11-10T07:56:25Z",
+  "task": "T145 private RAG runtime/package contract reconciliation",
+  "candidate_release": "51d0ef861af7eb51",
+  "deployed": false,
+  "package": {
+    "payload_bytes_verified": 252217236,
+    "import_check": "passed",
+    "archive": "build/rag-ec2-51d0ef861af7eb51/tamsoodbase-rag-51d0ef861af7eb51.zip",
+    "contains_raw_pdfs_csv_credentials": false,
+    "archive_sha256": "9b627d4440d849badc172e9d8ccf77e3002a60b70693c6c0e68ea9c32a09ba1d",
+    "runtime_gemini_enabled": false,
+    "manifest_files_verified": 19
+  },
+  "checks": {
+    "shell_syntax": "passed",
+    "vercel_proxy_behavior": "passed",
+    "vercel_rag_contract": "passed; Production RAG remains closed",
+    "release_check": {
+      "technical_pass": true,
+      "manifest_file_count": 771,
+      "submission_ready": false,
+      "reference_release_ready": true,
+      "checked_at": "2026-11-10T07:57:23Z"
+    },
+    "targeted_python_tests": "37 passed, 1 skipped",
+    "git_diff_check": "passed after removing trailing whitespace"
+  },
+  "limitations": [
+    "Docker Desktop Linux engine unavailable; image build/verify not run locally",
+    "No deployment performed; deployed EC2 remains prior release 1c49e9d40b4b3936",
+    "No live MySQL index, authenticated Vercel-to-EC2 HTTPS connection, or fixed-query numeric API",
+    "Source permissions and public release remain gated"
+  ]
+}

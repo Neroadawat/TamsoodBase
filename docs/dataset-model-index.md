@@ -49,3 +49,8 @@ Unitmasterยังแยกตามmodel ไม่มีglobalunitFKครบ�
 ## ข้อค้างจริง
 
 Cross-sourceNSOล่าสุดเทียบ15/273 อีก258ยังไม่เทียบ;DEDErevised2024totalและ5subtotalตรง โดยคงpreliminaryที่ต่างแยกไว้ ไม่ถือเป็นindependentmeasurements;historicalDMFtimebasisยังไม่ชัด;สมาชิกยังต้องมีcontribution/defenseจริง;deadline/channelและข้อกำหนดส่งล่าสุดต้องมีหลักฐานก่อนfinalfreeze การผ่านtechnicalauditไม่ใช่submissionreadyหรือMTECapproval
+## ตรวจ freshness ของ DMF — 10 พฤศจิกายน 2569
+
+การตรวจ snapshot ต้องจัดกลุ่มด้วยคู่ `(year_ce, month)` ก่อนเรียงช่วงล่าสุด ห้ามหา `MAX(year_ce)` และ `MAX(month)` แยกกัน เพราะอาจหยิบค่าจากคนละแถว. ผลตรวจ CKAN ทั้งสามชุดล่าสุดคือ `2026-03`; การดึง candidate รอบ 10 พ.ย. ได้ SHA-256 ตรงกับ snapshot ปัจจุบันทุกไฟล์ จึงไม่มีข้อมูลใหม่จากช่องทาง CKAN. หน้าเผยแพร่รายงานรายเดือนของ DMF แสดงถึง ก.ย. 2569 ซึ่งเป็นคนละเส้นทางข้อมูลและยังไม่ได้ reconcile กับ CKAN. คงข้อมูลเป็น `PENDING` และห้ามเผยแพร่/ส่งให้ external LLM จนยืนยันหน่วย ฐานเวลา และเงื่อนไขเผยแพร่. รายละเอียด: `evidence/dmf-refresh-check-2026-11-10.json`.
+
+การเปรียบเทียบเดือนมีนาคม 2569 กับรายงาน Excel จากผู้เผยแพร่รายเดียวกันตรงกันใน 170 ช่องตัวเลขภายใน precision ที่แสดงและจำนวนวันผลิต แต่ไม่ใช่การตรวจวัดอิสระ; พบ label แปลง `14A16A`/`14A-16A` ต่างกัน 2 package จึงคง raw label ทั้งคู่. รายงานกันยายน 2569 มี 33 แถวและไฟล์ HTML/XLSX ที่ตรวจ hash แล้ว แต่ยังไม่ import. แหล่งรายงานรายเดือนทั้งสองถูกเพิ่มใน source registry เป็น `acquired_pending_review`, สิทธิ `NOT_CLEARED`; หลักฐาน `evidence/dmf-monthly-candidate-2026-11-10.json`.

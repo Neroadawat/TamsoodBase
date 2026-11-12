@@ -33,7 +33,7 @@ def inspect(root):
 
     build = read('build/frontend/build-manifest.json')
     check('frontend_private_data_excluded', build.get('containsPrivateResearchData') is False and build.get('containsRawDocuments') is False)
-    allowed = {'index.html','style.css','api.js','app.js','favicon.svg','upstream-inventory.json','case-study.js','case-study.json','discovery.js','story.js','theme.css','noto-sans-thai-06310198b08f.woff2','FONT-LICENSE.txt','config.js'}
+    allowed = {'index.html','ask.html','style.css','api.js','app.js','favicon.svg','upstream-inventory.json','case-study.js','case-study.json','discovery.js','story.js','theme.css','design-refresh.css','noto-sans-thai-06310198b08f.woff2','FONT-LICENSE.txt','config.js'}
     names = [entry['path'] for entry in build['files']]
     check('frontend_asset_allowlist', len(names) == len(set(names)) and set(names) == allowed)
     packaged_proxy=root/'build/vercel-upload/api/[route].js'

@@ -1,0 +1,64 @@
+{
+  "review_date": "2026-11-10",
+  "status": "HOLD_CONTEXT",
+  "acceptance_scope": "candidate for citation after reuse-rights/profile and certificate-scope review; excluded from default reference export, normalized LCI, and TSM scenario",
+  "source_type": "official TGO product carbon-footprint registry detail page",
+  "record": {
+    "product_name": "Ethanol 99.5% 1 liters",
+    "certificate_number": "TGO CFP FY26-727-7083",
+    "manufacturer": "P.S.C. STARCH PRODUCTS PUBLIC COMPANY LIMITED",
+    "manufacturer_location": "Nong Yai District, Chonburi, Thailand",
+    "industry": "Petrochemical industries",
+    "industry_size": "SME",
+    "functional_unit_amount": 1,
+    "functional_unit": "litre",
+    "boundary_label": "B2B",
+    "reported_cf_value": 475,
+    "reported_cf_unit": "g CO2e",
+    "converted_value": 0.475,
+    "converted_unit": "kg CO2e/L",
+    "conversion": "475 g CO2e / 1 L / 1000 g per kg = 0.475 kg CO2e/L",
+    "approved_date": "2026-06-24",
+    "expiry_date": "2029-06-23",
+    "valid_on_review_date": true
+  },
+  "source_urls": {
+    "registry_record": "https://thaicarbonlabel.tgo.or.th/index.php?action=WkdWMFlXbHM&lang=EN&mod=Y0hKdlpIVmpkSE5mWVhCd2NtOTJZV3c9&param=TXpFMk1EYz0",
+    "tgo_cfp_explanation": "https://thaicarbonlabel.tgo.or.th/index.php?lang=EN&mod=Y0hKdlpIVmpkSE5mYVhNPQ"
+  },
+  "locators": {
+    "registry_record": "Page detail fields: product name, CF value, certificate number, manufacturer, location, functional unit, boundary, approval date, expiry date",
+    "tgo_cfp_explanation": "CFP definition and B2B raw-material/intermediate explanation"
+  },
+  "not_disclosed_on_reviewed_record": [
+    "calculation/reporting period",
+    "stage-by-stage inventory",
+    "included distribution, use, and end-of-life stages for this specific product record",
+    "allocation method",
+    "emission-factor set",
+    "underlying verification sheet",
+    "underlying inventory redistribution terms"
+  ],
+  "controls": {
+    "use_as_general_thai_ethanol_factor": false,
+    "use_as_tsm_proxy": false,
+    "use_as_team_scenario_input": false,
+    "normalized_lci_exchange": false,
+    "underlying_inventory_added_to_public_export": false,
+    "underlying_inventory_added_to_rag": false,
+    "full_cradle_to_grave_claim_supported_by_record_alone": false,
+    "human_followup_needed_for_stage_scope": true
+  },
+  "review_method": {
+    "web_page_inspected": true,
+    "source_page_http_status": 200,
+    "source_page_capture_date": "2026-11-10",
+    "source_page_response_bytes": 42409,
+    "source_page_sha256": "81cd27a2d9daea065230d57be71eb6edf74617a031e261827fbb8dce5913de78",
+    "local_copy_persisted": false,
+    "certificate_pdf_reviewed": false,
+    "underlying_inventory_reviewed": false,
+    "rights_status_for_registry_metadata_reuse": "NOT_ASSESSED",
+    "rights_status_for_underlying_inventory": "NOT_ESTABLISHED"
+  }
+}

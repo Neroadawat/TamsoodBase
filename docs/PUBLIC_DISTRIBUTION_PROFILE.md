@@ -1,5 +1,9 @@
 # Public distribution contract v1
 
+## Current Production state — 10 November 2026
+
+The allowlist below describes the earlier reviewed projection contract; it is not the active public API surface. After the anonymous dataset disclosure review, the Production Vercel proxy was changed to allow only `model`, `release`, `readyz`, and `healthz`; dataset/login routes, including `/api/reference` and `/api/reference.json`, now fail closed with HTTP 403. `/api/rag/ask` remains closed with HTTP 503 until its release gates pass. Post-deploy evidence: `evidence/production-dataset-api-hotfix-2026-11-10.json`. The field allowlist below must not be read as current permission to serve quantities or metadata.
+
 วันที่5พฤศจิกายน2569;โค้ดรุ่นใหม่ ยังไม่ใช่การรับรองสิทธิจากเจ้าของข้อมูล
 
 Vercel proxy เป็นขอบเขต public ส่วน backend สำหรับงานวิจัยอยู่หลัง server-only upstream secret

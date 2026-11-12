@@ -1,6 +1,9 @@
 // Vercel same-origin read proxy. Upstream credentials stay in server-only env.
 const https = require('node:https');
 const routes = new Set(['model','release','summary','source-crosswalk','reports','report-pilot','nso','product-inventory','nso-comparison','reference','reference.json','reference.csv','records','record','eppo','export','login','readyz','healthz']);
+// Public deployments must not proxy dataset rows until source and record rights
+// are normalized and cleared. Service-to-service Basic Auth is not user auth.
+const publicSafeRoutes = new Set(['model','release','readyz','healthz']);
 const MAX_BUFFER_BYTES=4*1024*1024,MAX_EXPORT_BYTES=32*1024*1024;
 function compactNso(data){
   if(!Array.isArray(data.rows))throw Error('Invalid statistics payload');
@@ -45,6 +48,7 @@ function handler(req,res) {
   if(!routes.has(route))return fail(404,'Unknown API route');
   if(!['GET','HEAD'].includes(req.method))return fail(405,'Read-only API');
   if(req.url.length>8192)return fail(414,'Request URL too long');
+  if(!publicSafeRoutes.has(route))return fail(403,'ข้อมูลชุดนี้ยังไม่เปิดผ่านเว็บไซต์ระหว่างตรวจสอบสิทธิ์เผยแพร่');
   if(route==='model'||route==='release'){
     const metadata=require('../web/case-study.json');
     if(metadata.private_inventory_included!==false||metadata.full_lifecycle_inventory!==false)return fail(503,'Unreviewed model projection');
@@ -119,3 +123,4 @@ module.exports.origin=origin;
 module.exports.publicReference=publicReference;
 module.exports.compactNso=compactNso;
 module.exports.limits={MAX_BUFFER_BYTES,MAX_EXPORT_BYTES};
+module.exports.publicSafeRoutes=publicSafeRoutes;

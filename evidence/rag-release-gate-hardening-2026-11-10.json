@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-10",
+  "change": "Catalog public output now requires global release approval and every mandatory release gate in addition to per-record and per-source clearance.",
+  "files": [
+    "scripts/build_rag_catalog.py",
+    "tests/test_rag_catalog.py"
+  ],
+  "validation": {
+    "full_python_suite": {
+      "command": "python -X utf8 -m unittest discover -s tests -v",
+      "passed": 296,
+      "skipped": 10,
+      "failed": 0
+    },
+    "cjs_suite": {
+      "command": "Run every tests/*.cjs file with Node.js",
+      "files_passed": 17,
+      "failed": 0
+    },
+    "python_tests": {
+      "command": "python -X utf8 -m unittest tests.test_rag_catalog tests.test_frontend -v",
+      "passed": 20,
+      "failed": 0
+    },
+    "vercel_rag_api": {
+      "command": "node tests/rag-vercel-api.cjs",
+      "result": "passed"
+    },
+    "frontend_build": {
+      "command": "node scripts/build_frontend.mjs",
+      "result": "passed",
+      "publicRagEnabled": false,
+      "ragMode": "closed",
+      "containsPrivateResearchData": false
+    },
+    "catalog_check": {
+      "command": "python -X utf8 scripts/build_rag_catalog.py --check",
+      "result": "passed",
+      "private_source_entries": 20,
+      "restricted_evidence_records": 20,
+      "cleared_public_records": 0
+    }
+  },
+  "deployment": "No push, deploy, rights change, database access, or live service access was performed.",
+  "remaining": [
+    "Authenticated fixed-query backend for numeric questions is not implemented.",
+    "The repository-wide Codex Security scan did not produce a successfully completed report; the tool reported that the latest saved draft was incomplete.",
+    "Public rights and Production release gates remain closed."
+  ]
+}

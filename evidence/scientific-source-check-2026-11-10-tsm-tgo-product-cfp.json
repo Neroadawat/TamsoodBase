@@ -1,0 +1,106 @@
+{
+  "review_date": "2026-11-10",
+  "status": "HOLD_CONTEXT",
+  "acceptance_scope": "candidate official TGO product-CFP value with linked company/site metadata; pending reuse-rights/profile and certificate-scope review; excluded from default reference export and team model",
+  "record": {
+    "product_name": "เอทานอล 99.5% (Fuel Grade)",
+    "certificate_number": "TGO CFP FY26-600-6241",
+    "manufacturer_legal_name_th": "บริษัท น้ำตาลไทยเอทานอล จำกัด (สำนักงานใหญ่)",
+    "manufacturer_legal_name_en": "Thai Sugar Ethanol Co., Ltd.",
+    "linked_group": "TSM Group",
+    "registry_address": "1/104 Moo 8, Tha Mai, Tha Maka, Kanchanaburi 71120, Thailand",
+    "manufacturer_page_address_match": true,
+    "manufacturer_page_says_molasses_feedstock": true,
+    "functional_unit_amount": 1,
+    "functional_unit": "litre",
+    "boundary": "B2B",
+    "reported_cf_value": 638,
+    "reported_cf_unit": "g CO2e",
+    "converted_value": 0.638,
+    "converted_unit": "kg CO2e/L",
+    "conversion_formula": "638 g CO2e / 1 L / 1000 g per kg = 0.638 kg CO2e/L",
+    "approval_date": "2026-03-18",
+    "expiry_date": "2029-03-17",
+    "valid_on_review_date": true
+  },
+  "source_urls": {
+    "tgo_product_record": "https://thaicarbonlabel.tgo.or.th/index.php?action=WkdWMFlXbHM&lang=TH&mod=Y0hKdlpIVmpkSE5mWVhCd2NtOTJZV3c9&param=TWprek9UUT0",
+    "tsm_ethanol_business": "https://tsmgroup.co.th/about-us/affiliated-company/ethanol-business/",
+    "tgo_cfp_definition": "https://thaicarbonlabel.tgo.or.th/index.php?lang=EN&mod=Y0hKdlpIVmpkSE5mYVhNPQ",
+    "tgo_pcr_catalog": "https://thaicarbonlabel.tgo.or.th/index.php?lang=EN&mod=Y0hKdlpIVmpkSE5mY25Wc1pYTT0",
+    "separate_cassava_ethanol_comparator": "https://thaicarbonlabel.tgo.or.th/index.php?action=WkdWMFlXbHM&lang=TH&mod=Y0hKdlpIVmpkSE5mWVhCd2NtOTJZV3c9&param=TXpRMU16UT0"
+  },
+  "source_locators": {
+    "tgo_product_record": "Detail page fields: product name, CF value, certificate ID, manufacturer, address, functional unit, boundary, approval date, expiry date",
+    "tsm_ethanol_business": "Company identity, molasses feedstock, plant location; page also reports installed capacity, which is not used as actual output",
+    "tgo_cfp_definition": "General CFP lifecycle definition and B2B raw-material/intermediate explanation",
+    "tgo_pcr_catalog": "Rule says applicable PCR must be followed; where there is no Thai PCR, assessor/consultant submits draft product specification to TGO",
+    "separate_cassava_ethanol_comparator": "Union Solution AA 95% record cites the TGO PCR for cassava ethanol; not a TSM certificate or molasses-feedstock match"
+  },
+  "not_disclosed_for_this_certificate": [
+    "calculation/reporting period",
+    "feedstock mix for the assessed product",
+    "allocation method",
+    "stage-by-stage inventory",
+    "applicable PCR identifier or submitted product specification",
+    "specific downstream distribution, vehicle-use, and end-of-life coverage",
+    "emission-factor set",
+    "verification sheet",
+    "certificate-specific verification-sheet link on the inspected detail page",
+    "redistribution permissions for underlying inventory"
+  ],
+  "controls": {
+    "company_site_match_supported_by_name_and_address": true,
+    "candidate_for_internal_reference_review": true,
+    "use_as_certificate_specific_tsm_product_reference": false,
+    "use_as_measured_ch4_value": false,
+    "use_as_tank_to_wheel_result": false,
+    "claim_full_cradle_to_grave_from_registry_record_alone": false,
+    "join_to_2009_unfccc_project_period": false,
+    "scale_by_installed_capacity": false,
+    "insert_as_team_scenario_input": false,
+    "insert_as_normalized_lci_exchange": false,
+    "underlying_inventory_added_to_public_export": false,
+    "underlying_inventory_added_to_rag": false,
+    "human_followup_needed_for_stage_scope": true
+  },
+  "review_method": {
+    "tgo_registry_page_inspected": true,
+    "tsm_group_page_inspected": true,
+    "tgo_registry_capture": {
+      "http_status": 200,
+      "date": "2026-11-10",
+      "response_bytes": 54124,
+      "sha256": "c5d25c8d378d0cb49d567710a796bb7673e2907f5dbc5662fed9b081e833d789"
+    },
+    "tsm_group_page_capture": {
+      "http_status": 200,
+      "date": "2026-11-10",
+      "response_bytes": 274963,
+      "sha256": "dfa03486a53cbc999f0ce940cdab27bfc5e74ec5082b4bbda9a5a4d778ea30c0"
+    },
+    "tgo_pcr_catalog_capture": {
+      "http_status": 200,
+      "date": "2026-11-10",
+      "response_bytes": 48226,
+      "sha256": "6b8d7efa19d94185a43c7e821b623c2101079d3ed50c288e6ae90d7476034234"
+    },
+    "separate_cassava_ethanol_comparator_capture": {
+      "http_status": 200,
+      "date": "2026-11-10",
+      "response_bytes": 54653,
+      "sha256": "6e6af762f95b33f2f4a7a10ffecfaccfc7fbb85edec4faede93b75f1a16e4d35"
+    },
+    "local_certificate_copy": false,
+    "certificate_sha256": null,
+    "verification_sheet_reviewed": false,
+    "underlying_inventory_reviewed": false,
+    "registry_metadata_reuse_rights_status": "NOT_ASSESSED",
+    "underlying_rights_status": "NOT_ASSESSED",
+    "pcr_scope_status": "NOT_DISCLOSED_ON_TSM_REGISTRY_RECORD",
+    "pcr_catalog_search_status": "LIMITED_INSPECTION_DID_NOT_FIND_A_MOLASSES_ETHANOL_ENTRY; NOT_PROOF_OF_ABSENCE",
+    "other_feedstock_pcr_transfer_allowed": false,
+    "certificate_specific_attachment_link_on_inspected_detail_page": false,
+    "detail_page_link_scan": "No certificate-specific verification sheet link found among the page's anchors; two PDF links found in the global news carousel are unrelated to this certificate"
+  }
+}

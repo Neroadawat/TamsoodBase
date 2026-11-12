@@ -26,6 +26,7 @@ const caseStudy=JSON.parse(await readFile(path.join(root,'web/case-study.json'),
 const publicCaseKeys=new Set(['scope','schema_version','model_release_id','review_date','functional_unit','calculated_scope','full_lifecycle_inventory','CO2e_total','private_inventory_included','calculation_type','selection_note','cases','components','open_decisions','public_activity_kg','activity_source','verification','disclosure','metadata_snapshot_id']);
 if(caseStudy.scope!=='PUBLIC_CASE_STUDY_METADATA_NO_RESTRICTED_INVENTORY'||caseStudy.private_inventory_included!==false||caseStudy.full_lifecycle_inventory!==false||caseStudy.CO2e_total!==null||Object.keys(caseStudy).some(k=>!publicCaseKeys.has(k))||Object.keys(caseStudy.public_activity_kg).sort().join(',')!=='CPO,RBDPO')throw Error('Unreviewed or restricted case-study projection');
 const ragManifest=JSON.parse(await readFile(path.join(root,'docs/rag/public-release-manifest.json'),'utf8'));
+const requiredGates=JSON.parse(await readFile(path.join(root,'docs/rag/required-release-gates.json'),'utf8'));
 if(previewRagEnabled){
  const previewCorpus=JSON.parse(await readFile(path.join(root,'docs/rag/vercel-preview-corpus.json'),'utf8'));
  if(previewCorpus.scope!=='LIMITED_VERCEL_PREVIEW_CC_BY_4_0_NARRATIVE_ONLY'||previewCorpus.records.length!==6
@@ -39,12 +40,12 @@ if(publicRagEnabled){
  const sameIds=(rows,manifestRows)=>Array.isArray(rows)&&Array.isArray(manifestRows)
   &&rows.map(row=>row.id).sort().join('\n')===manifestRows.map(row=>row.id).sort().join('\n');
  const allCleared=rows=>rows.every(row=>row.release_allowed===true&&row.rights_review==='CLEARED');
- const requiredGates=['source_rights_cleared','rate_limit_and_cost_controls_verified','public_user_evaluation_complete',
-  'capacity_and_monitoring_accepted','privacy_notice_and_data_retention_reviewed','rollback_owner_and_drill_recorded'];
+ const manifestGateNames=Object.keys(ragManifest.release_gates||{});
  if(ragManifest.status!=='APPROVED_FOR_PUBLIC_RELEASE'||ragManifest.publicly_usable!==true
   ||ragManifest.public_release_allowed!==true||ragManifest.external_llm_allowed!==true
   ||!sameIds(cards,ragManifest.narrative_cards)||!sameIds(facts,ragManifest.statistical_facts)
   ||!allCleared(ragManifest.narrative_cards)||!allCleared(ragManifest.statistical_facts)
+  ||manifestGateNames.length!==requiredGates.length||requiredGates.some(name=>!manifestGateNames.includes(name))
   ||requiredGates.some(name=>ragManifest.release_gates?.[name]!==true))
   throw Error('Public RAG build blocked: the rights manifest or one or more launch gates are not approved.');
 }

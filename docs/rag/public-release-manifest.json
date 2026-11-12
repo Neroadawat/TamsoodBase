@@ -4,32 +4,115 @@
   "reviewed_at": "2026-11-09",
   "publicly_usable": false,
   "public_release_allowed": false,
-  "decision_note": "No source-by-source redistribution review has cleared the current RAG corpus. Keep public serving disabled.",
+  "decision_note": "The active manifest record IDs are synchronized with the narrative and statistical corpora. No source-by-source redistribution review has cleared the current corpus; all record decisions remain PENDING. Keep public serving disabled.",
   "external_llm_allowed": false,
   "narrative_cards": [
-    { "id": "ipcc-co2-equivalent-definition", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "co2e-calculation-method", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "e10-cold-start", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "ethanol-total-gap", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "bagasse-steam", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "reference-vs-model", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "tsm-unfccc-pdd-2009", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "tsm-current-company-page", "release_allowed": false, "rights_review": "PENDING" }
+    {
+      "id": "e10-cold-start",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "ethanol-total-gap",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "bagasse-steam",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "reference-vs-model",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "fame-functional-unit",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "palm-upstream-basis",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "palm-land-unit-hold",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "palm-cpo-provider-gap",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "fame-allocation-caution",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "fame-measurement-period",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    }
   ],
   "statistical_facts": [
-    { "id": "e10-cold-start-fuel-consumption", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "e10-cold-start-tailpipe-co2", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "tsm-pdd-ethanol-design-rate", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "tsm-pdd-biogas-design-rate", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "tsm-pdd-methane-content", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "tsm-pdd-annual-avoidance-estimate", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "tsm-current-capacity", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "tsm-actual-methane-null", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "tsm-actual-ethanol-output-null", "release_allowed": false, "rights_review": "PENDING" },
-    { "id": "ethanol-full-lifecycle-co2e-per-litre-null", "release_allowed": false, "rights_review": "PENDING" }
+    {
+      "id": "e10-cold-start-fuel-consumption",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "e10-cold-start-tailpipe-co2",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-pdd-ethanol-design-rate",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-pdd-biogas-design-rate",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-pdd-methane-content",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-pdd-annual-avoidance-estimate",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-current-capacity",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-actual-methane-null",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-actual-ethanol-output-null",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "ethanol-full-lifecycle-co2e-per-litre-null",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    }
   ],
   "release_gates": {
     "source_rights_cleared": false,
+    "provider_audience_eligibility_confirmed": false,
     "private_network_connectivity_verified": false,
     "server_to_server_auth_configured": false,
     "rate_limit_and_cost_controls_verified": false,

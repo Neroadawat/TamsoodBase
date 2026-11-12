@@ -1,0 +1,61 @@
+{
+  "reviewed_at_local": "2026-11-12T07:00:00+07:00",
+  "scope": "Compare all current public RAG release-manifest gate keys with runtime and production-build enforcement; no deployment, provider, credential, or database access.",
+  "finding": {
+    "manifest_gate_count": 9,
+    "runtime_gates_before_fix": 7,
+    "production_build_gates_before_fix": 7,
+    "previously_unenforced": [
+      "private_network_connectivity_verified",
+      "server_to_server_auth_configured"
+    ],
+    "current_manifest_all_gates_false": true,
+    "canonical_contract": "docs/rag/required-release-gates.json",
+    "runtime_build_catalog_share_one_contract": true,
+    "exact_manifest_gate_set_verified": true
+  },
+  "change": {
+    "files": [
+      "docs/rag/required-release-gates.json",
+      "api/rag/ask.js",
+      "scripts/build_frontend.mjs",
+      "scripts/build_rag_catalog.py"
+    ],
+    "description": "All three release guards consume one canonical nine-gate list and require exact key-set equality plus every value true; no actual gate was marked passed.",
+    "api_sha256": "7a967e4acc253d0bf575dd1fbf8443b6ade963825cb5c5c6cf9519bad2b7644d",
+    "build_sha256": "1058ee2bbf11851cd224a31d73012a76e033f37651379df4866664fc6de42fcb",
+    "sha256": {
+      "docs/rag/required-release-gates.json": "c9b9a4b4871665a06ee1f845fb1a297ca71a0301369294aef3eb4cf87d41f271",
+      "api/rag/ask.js": "6ac5bdda6b5e11af9c73a75d4c0088fa21a6848aca5cdef82476dd13d4fe5da3",
+      "scripts/build_frontend.mjs": "e1c361305f16876b46d5fa2df2e4dd8736949799142d8847741398e1510fd399",
+      "scripts/build_rag_catalog.py": "9b805d7d78fbb896a6aa34a253574bc20bfd2ff30a1dc25a323558c726f6a2f7"
+    }
+  },
+  "tests": [
+    {
+      "command": "node tests/rag-vercel-api.cjs",
+      "result": "passed",
+      "assertions": "runtime rejects each newly enforced false gate, missing required key, extra unreviewed key, and current rights-held manifest before body/Gemini",
+      "sha256": "3be6a2e53309bd8a9ca2793bc44beacffcb949639ab4e68158b8eaa76af3594a"
+    },
+    {
+      "command": "python -X utf8 -m unittest tests.test_rag_catalog tests.test_frontend.FrontendTests.test_deployment_build_only_copies_public_assets -v",
+      "result": "passed; 7 tests",
+      "assertions": "catalog predicate rejects missing/extra gate keys; production build rejects false and extra gates",
+      "sha256": {
+        "tests/test_rag_catalog.py": "87f8bb191ca53302c39d3f0fe794376c0910e73b7edd42c7f941b56824c70ff9",
+        "tests/test_frontend.py": "d83e1f2d87559ea6f59141b906d77d07dabdd8d9b837b8fa1165e56fa10bcb8e"
+      }
+    }
+  ],
+  "git_diff_check": "passed (exit 0; CRLF normalization warnings only)",
+  "production_changed": false,
+  "provider_called": false,
+  "database_accessed": false,
+  "production_rag": "HOLD",
+  "limitations": [
+    "The current manifest still has all nine gates false; this fix does not approve any release gate.",
+    "Owner must supply evidence or revise gate applicability explicitly before changing manifest values."
+  ],
+  "test_fixture_correction": "The first frontend test run exposed that its isolated temp project did not copy the new shared contract JSON; the fixture was corrected and the same targeted suite passed 7/7."
+}

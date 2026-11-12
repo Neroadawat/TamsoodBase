@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-11-12T14:54:52+07:00",
+  "scope": "LOCAL_RAG_NUMERIC_GROUNDING_REGRESSION",
+  "finding_before": "A cited evidence text saying \"7 t CO2e/year\" allowed the answer \"The annual estimate is 7.\" because the numeric token matched and the answer contained no unit claim to compare.",
+  "change": {
+    "file": "api/rag/ask.js",
+    "behavior": "When a numeric answer token matches one or more unit-bearing claims in cited evidence, at least one matching value+unit claim must appear in the answer. Existing unit allowlist and exact lexical unit comparison remain unchanged.",
+    "regression": "tests/rag-vercel-api.cjs rejects the unitless answer and continues to accept the same value with the cited t CO2e/year unit."
+  },
+  "verification": {
+    "command": "node tests/rag-vercel-api.cjs",
+    "result": "passed: Vercel RAG checks passed (Gemini request contract works; public route stays closed).",
+    "git_diff_check": "passed for api/rag/ask.js and tests/rag-vercel-api.cjs"
+  },
+  "limitations": [
+    "Only unit forms in the current lexical allowlist are compared.",
+    "This does not establish semantic entailment, metric identity, period/boundary equivalence, or unit conversion.",
+    "No independent Thai user acceptance was performed."
+  ],
+  "live_gemini_called": false,
+  "production_route_opened": false,
+  "production_changed": false,
+  "database_or_ec2_touched": false,
+  "release_status": "HOLD"
+}

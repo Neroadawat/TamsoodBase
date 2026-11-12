@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-10",
+  "issue": "Chatbot header implied service was about to open and used a green active-looking badge while the release banner and controls said the service was closed.",
+  "change": [
+    "Changed the closed-state label to say the website question feature is not available yet.",
+    "Changed the status badge to a muted amber closed treatment.",
+    "When a future enabled Preview/Production config is present, script removes the closed badge class."
+  ],
+  "verification": {
+    "specific_regression": "closed badge and label agree with disabled question field; enabled config path removes closed styling",
+    "git_diff_check": "passed with existing CRLF notices",
+    "result": "17 passed, 0 failures",
+    "browser_visual": "not performed",
+    "command": "python -X utf8 -m unittest discover -s tests -p test_frontend.py -v"
+  },
+  "limits": [
+    "Production was not deployed or changed.",
+    "No live service status was queried.",
+    "This is a local UI clarity correction; it does not enable RAG."
+  ],
+  "status": "LOCAL_VERIFIED"
+}

@@ -1,0 +1,67 @@
+{
+  "checked_at": "2026-11-12T07:23:05+07:00",
+  "scope": "LOCAL_RAG_RELEASE_MANIFEST_TO_ACTIVE_CORPUS_ID_ALIGNMENT",
+  "finding_before": {
+    "narrative_corpus_ids": 10,
+    "manifest_narrative_decisions": 8,
+    "missing_decisions": [
+      "fame-allocation-caution",
+      "fame-functional-unit",
+      "fame-measurement-period",
+      "palm-cpo-provider-gap",
+      "palm-land-unit-hold",
+      "palm-upstream-basis"
+    ],
+    "stale_pending_placeholders_removed_from_active_manifest": [
+      "co2e-calculation-method",
+      "ipcc-co2-equivalent-definition",
+      "tsm-current-company-page",
+      "tsm-unfccc-pdd-2009"
+    ],
+    "note": "Four stale entries were PENDING placeholders not present in the active corpus; no rights clearance was revoked."
+  },
+  "change": {
+    "active_narrative_manifest_ids_now_match_corpus": true,
+    "active_statistical_manifest_ids_match_corpus": true,
+    "new_pending_decisions_added": [
+      "fame-allocation-caution",
+      "fame-functional-unit",
+      "fame-measurement-period",
+      "palm-cpo-provider-gap",
+      "palm-land-unit-hold",
+      "palm-upstream-basis"
+    ],
+    "all_record_decisions_remain_pending": true,
+    "rights_or_release_gate_approved": false,
+    "stale_counts_in_docs_updated": [
+      "docs/rag/PUBLIC_WEB_READINESS.md"
+    ]
+  },
+  "current_gate_state": {
+    "manifest_status": "HOLD_RIGHTS_REVIEW",
+    "release_gate_count": 9,
+    "all_gates_false": true,
+    "source_rights_cleared_records": 0,
+    "production_rag": "HOLD"
+  },
+  "verification": {
+    "catalog_tests": "9 passed: python -X utf8 -m unittest tests.test_rag_catalog -v",
+    "deployment_build_guard": "1 passed: test_deployment_build_only_copies_public_assets; false public-RAG gates still block, protected preview fixture builds",
+    "catalog_check": "passed; 22 private sources; 20 restricted evidence records; 0 public-cleared records",
+    "manifest_id_set_check": "passed: 10 narrative IDs and 10 statistical-fact IDs exactly match their active corpora",
+    "git_diff_check": "passed on changed code/data/docs files"
+  },
+  "hashes": {
+    "manifest_sha256": "37ce52dad83946f61d38e5d46c9b92d051d15927f35e1702f8ac395faef05b49",
+    "narrative_corpus_sha256": "9b131dba2938161841cd3b51eb192c6d97f5f90e2ede3ac580c17dffc3ae0605",
+    "facts_corpus_sha256": "48fddd8e829669fb1c7f0f328d8accb82193849cef04a756a8a29f65ee63c464"
+  },
+  "production_changed": false,
+  "gemini_called": false,
+  "database_or_ec2_touched": false,
+  "limitations": [
+    "This is ID/metadata synchronization only, not source-rights clearance or content validation.",
+    "No public data became eligible.",
+    "No live service or final submission readiness was verified."
+  ]
+}

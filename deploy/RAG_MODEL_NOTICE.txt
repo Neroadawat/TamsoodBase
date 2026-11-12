@@ -1,0 +1,7 @@
+TamsoodBase RAG model attribution
+
+Model: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Packaged ONNX source: qdrant/paraphrase-multilingual-MiniLM-L12-v2-onnx-Q
+Model files are distributed under Apache License 2.0, as stated by the Qdrant FastEmbed model registry.
+Project documentation: https://qdrant.tech/documentation/embeddings/fastembed/
+The model is used locally for embeddings. No Gemini key or source PDFs are included in this image.

@@ -27,7 +27,8 @@
   function announce(state,key,id){
     if(state==='loading'){pending.set(id,key);versions.set(key,id);}
     else {pending.delete(id);if(versions.get(key)===id){if(state==='connected')failures.delete(key);else failures.set(key,state);}}
-    const aggregate=[...failures.values()].includes('unauthorized')?'unauthorized':failures.size?'error':pending.size?'loading':'connected';
+    const states=[...failures.values()];
+    const aggregate=states.includes('unauthorized')?'unauthorized':states.length&&states.every(state=>state==='restricted')?'restricted':states.length?'error':pending.size?'loading':'connected';
     root.dispatchEvent(new CustomEvent('tamsood:connection',{detail:{state:aggregate,dataset:key,datasetState:state,pending:pending.size,failedDatasets:[...failures.keys()]}}));
   }
   async function get(path, timeoutMs = 35000, options = {}) {
@@ -47,12 +48,16 @@
       }
       const data = await response.json();
       if (!response.ok) {
+        if(response.status===403&&data.error==='ข้อมูลชุดนี้ยังไม่เปิดผ่านเว็บไซต์ระหว่างตรวจสอบสิทธิ์เผยแพร่'){
+          announce('restricted',key,id);
+          const error=new Error('พักการแสดงข้อมูลชุดนี้ระหว่างตรวจสอบสิทธิ์เผยแพร่');error.accessRestricted=true;throw error;
+        }
         throw Error(data.error === 'Search too long' ? 'คำค้นยาวเกินไป กรุณาใช้ไม่เกิน 160 ตัวอักษร' : data.error || 'โหลดข้อมูลไม่สำเร็จ');
       }
       announce('connected',key,id);
       return data;
     } catch (error) {
-      if(!error.authenticationRequired)announce('error',key,id);
+      if(!error.authenticationRequired&&!error.accessRestricted)announce('error',key,id);
       if (error.name === 'AbortError') throw Error('backend ตอบช้าเกินไป กรุณาลองอีกครั้ง');
       if (error instanceof TypeError) throw Error('เชื่อมต่อ backend ไม่ได้ กรุณาตรวจเครือข่ายและที่อยู่ API');
       throw error;

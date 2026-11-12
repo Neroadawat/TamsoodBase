@@ -338,7 +338,7 @@ $('#connection-retry').addEventListener('click',()=>location.reload());
 window.addEventListener('tamsood:connection',event=>{
  const mode=event.detail.state,banner=$('#connection-banner');banner.dataset.state=mode;
  const failed=(event.detail.failedDatasets||[]).map(path=>({'/api/nso':'สถิติประเทศ','/api/nso-comparison':'ผลเทียบแหล่งข้อมูล','/api/eppo':'โรงกลั่น','/api/reference':'ข้อมูลบริษัท'}[path]||'ข้อมูลบางชุด'));
- $('#connection-message').textContent=mode==='error'&&failed.length?'โหลดไม่สำเร็จ: '+[...new Set(failed)].join(', ')+' · ชุดอื่นยังเปิดดูได้':mode==='unauthorized'?'เข้าสู่ระบบด้วยบัญชีทดสอบของทีมเพื่อดูข้อมูล':mode==='error'?'บางรายการโหลดไม่ได้ ตรวจการเชื่อมต่อแล้วลองใหม่':mode==='connected'?'เชื่อมต่อระบบแล้ว · เปิดแต่ละชุดเพื่อดูผลตรวจ':'กำลังโหลดข้อมูล…';
+ $('#connection-message').textContent=mode==='restricted'?'ปิดการโหลดข้อมูลจากฐานข้อมูลชั่วคราวระหว่างตรวจสอบสิทธิ์เผยแพร่':mode==='error'&&failed.length?'โหลดไม่สำเร็จ: '+[...new Set(failed)].join(', ')+' · ชุดอื่นยังเปิดดูได้':mode==='unauthorized'?'เข้าสู่ระบบด้วยบัญชีทดสอบของทีมเพื่อดูข้อมูล':mode==='error'?'บางรายการโหลดไม่ได้ ตรวจการเชื่อมต่อแล้วลองใหม่':mode==='connected'?'เชื่อมต่อระบบแล้ว · เปิดแต่ละชุดเพื่อดูผลตรวจ':'กำลังโหลดข้อมูล…';
  $('#connection-login').hidden=mode!=='unauthorized';
  $('#connection-retry').hidden=mode!=='error';
 });

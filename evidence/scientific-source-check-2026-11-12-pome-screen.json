@@ -1,0 +1,52 @@
+{
+  "checked_at_date": "2026-11-12",
+  "purpose": "Bounded primary-source screen for Thai FAME wastewater/methane gap",
+  "required_fit": [
+    "Thailand foreground data",
+    "traceable facility",
+    "compatible reporting period",
+    "methane or defensible wastewater inventory",
+    "actual production matched to same facility and period"
+  ],
+  "screened_candidate": {
+    "title": "Emissions of CH4 and CO2 from wastewater of palm oil mills: A real contribution to increase the greenhouse gas and its potential as renewable energy sources",
+    "author": "Putro LHS",
+    "publication_year": 2022,
+    "journal": "Environment and Natural Resources Journal",
+    "volume_issue_pages": "20(1):61-72",
+    "doi": "10.32526/ennrj/20/202100149",
+    "publisher_url": "https://ph02.tci-thaijo.org/index.php/ennrj/article/download/245510/166413/863558",
+    "primary_source": true,
+    "facility_country": "Indonesia",
+    "reported_outputs": {
+      "methane_observation": "Direct chamber measurement reported by the paper",
+      "pome_ghg_factor": "0.556 t CO2-eq/t CPO"
+    },
+    "locators": ["printed pp. 61, 63-64, 68-69"],
+    "rights_for_redistribution": "NOT_ASSESSED",
+    "decision": "REJECTED_SCOPE_MISMATCH_FOR_THAI_CASE",
+    "imported": false,
+    "used_for_team_calculation": false,
+    "reason": "Facility is in South Sumatra, Indonesia. The reported factor is not transferable to the Thai FAME foreground chain; no matched Thai provider and period are established. The paper itself calls for broader studies across mills and operating conditions."
+  },
+  "related_nonmatching_source": {
+    "doi": "10.1007/s10668-018-0181-4",
+    "publication_year": 2019,
+    "facility_country": "Malaysia",
+    "reported_period": "parts of 2017",
+    "reported_cpo_output": "approximately 156 metric tons/day",
+    "reported_pome_flow": "approximately 430 m3/day",
+    "decision": "NONMATCHING_GEOGRAPHY; no data imported",
+    "note": "Previously screened in project context; this is an exclusion note, not fresh cell extraction."
+  },
+  "overall_result": {
+    "thai_matched_methane_and_actual_output_gap_closed": false,
+    "allocation_closed": false,
+    "transport_use_background_gaps_closed": false,
+    "co2e_total": null,
+    "dataset_imported": false,
+    "rights_changed": false,
+    "production_changed": false,
+    "rag_publication_changed": false
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "reviewed_at_utc": "2026-11-10T07:37:12Z",
+  "finding": "The Gemini API official terms include age and region eligibility restrictions, but the local RAG release manifest and one of the runtime gates had no explicit owner-confirmed eligibility gate.",
+  "change": {
+    "manifest_gate": "provider_audience_eligibility_confirmed",
+    "default": false,
+    "enforced_by": [
+      "api/rag/ask.js: Preview and Production runtime release checks",
+      "scripts/build_rag_catalog.py: public catalog output predicate",
+      "scripts/build_frontend.mjs: public RAG frontend build predicate"
+    ],
+    "preview_env_flag": "TAMSOOD_GEMINI_AUDIENCE_ELIGIBILITY_CONFIRMED=true",
+    "flag_semantics": "Owner confirmation only; not an age or geolocation enforcement mechanism. Do not set until the actual intended audience is reviewed against current provider terms."
+  },
+  "validation": {
+    "python_test": {
+      "command": "python -X utf8 -m unittest tests.test_rag_catalog.RagCatalogTests.test_public_release_predicate_requires_every_mandatory_global_gate -v",
+      "result": "passed"
+    },
+    "api_contract": {
+      "command": "node tests/rag-vercel-api.cjs",
+      "result": "passed; Preview and mocked Production predicates reject absent/false eligibility and accept true only when all other release conditions are simulated as true; actual manifest is restored in memory; actual Production remains closed"
+    },
+    "frontend_gate": {
+      "command": "python -X utf8 -m unittest tests.test_frontend.FrontendTests.test_deployment_build_only_copies_public_assets -v",
+      "result": "passed; isolated public build is rejected when this single global gate is false while the other manifest conditions are simulated true"
+    },
+    "local_release_audit": {
+      "command": "python -X utf8 -m scripts.check_release",
+      "checked_at_utc": "2026-11-10T07:39:49.699864+00:00",
+      "technical_pass": true,
+      "checks_passed": 68,
+      "checks_failed": 0,
+      "reference_release_ready": true,
+      "submission_ready": false,
+      "manifest_file_count_at_check": 766
+    },
+    "syntax": "node --check api/rag/ask.js and scripts/build_frontend.mjs passed",
+    "gemini_called": false,
+    "production_deployed": false
+  },
+  "remaining": [
+    "Project owner must document actual intended audience ages and regions before setting the flag.",
+    "No age verification or regional access-control has been implemented; the new gate records owner review only.",
+    "Source rights, privacy approval, abuse/cost controls, independent UAT, capacity/monitoring and rollback acceptance remain separate release gates."
+  ],
+  "production_rag": "HOLD"
+}
