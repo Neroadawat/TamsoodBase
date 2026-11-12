@@ -1,9 +1,16 @@
 // Vercel same-origin read proxy. Upstream credentials stay in server-only env.
 const https = require('node:https');
 const routes = new Set(['model','release','summary','source-crosswalk','reports','report-pilot','nso','product-inventory','nso-comparison','reference','reference.json','reference.csv','records','record','eppo','export','login','readyz','healthz']);
-// Public deployments must not proxy dataset rows until source and record rights
-// are normalized and cleared. Service-to-service Basic Auth is not user auth.
-const publicSafeRoutes = new Set(['model','release','readyz','healthz']);
+// Owner decision 2026-11-12 (docs/rag/public-release-manifest.json): Thai
+// government open data (DMF, NSO, EPPO) and the CC BY article inventory are
+// shown on the public site. Company-report quantities stay withheld: the
+// 'reference' routes pass through publicReference(), which strips amounts, and
+// 'reports', 'report-pilot' and 'reference.csv' remain blocked below.
+// Service-to-service Basic Auth is not user auth.
+const publicSafeRoutes = new Set(['model','release','readyz','healthz',
+  'summary','source-crosswalk','records','record','export',
+  'nso','nso-comparison','eppo','product-inventory','reference','reference.json']);
+const withheldRoutes = new Set(['reports','report-pilot','reference.csv','login']);
 const MAX_BUFFER_BYTES=4*1024*1024,MAX_EXPORT_BYTES=32*1024*1024;
 function compactNso(data){
   if(!Array.isArray(data.rows))throw Error('Invalid statistics payload');
@@ -48,7 +55,7 @@ function handler(req,res) {
   if(!routes.has(route))return fail(404,'Unknown API route');
   if(!['GET','HEAD'].includes(req.method))return fail(405,'Read-only API');
   if(req.url.length>8192)return fail(414,'Request URL too long');
-  if(!publicSafeRoutes.has(route))return fail(403,'ข้อมูลชุดนี้ยังไม่เปิดผ่านเว็บไซต์ระหว่างตรวจสอบสิทธิ์เผยแพร่');
+  if(withheldRoutes.has(route)||!publicSafeRoutes.has(route))return fail(403,'ข้อมูลชุดนี้ยังไม่เปิดผ่านเว็บไซต์ระหว่างตรวจสอบสิทธิ์เผยแพร่');
   if(route==='model'||route==='release'){
     const metadata=require('../web/case-study.json');
     if(metadata.private_inventory_included!==false||metadata.full_lifecycle_inventory!==false)return fail(503,'Unreviewed model projection');
@@ -124,3 +131,4 @@ module.exports.publicReference=publicReference;
 module.exports.compactNso=compactNso;
 module.exports.limits={MAX_BUFFER_BYTES,MAX_EXPORT_BYTES};
 module.exports.publicSafeRoutes=publicSafeRoutes;
+module.exports.withheldRoutes=withheldRoutes;

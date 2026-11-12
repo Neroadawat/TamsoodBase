@@ -23,7 +23,10 @@ function call(path,auth='Basic dGVhbTpwYXNz',method='GET'){
  const projected=handler.publicReference({manifest:{release_id:'fixture',secret:'do-not-copy'},total:1,page:1,page_size:30,private:'do-not-copy',rows:[{label:'Water',scaled_amount:'123',raw_value:'123',payload:{secret:'do-not-copy'},redistribution_status:'NOT_CLEARED',source_url:'https://example.org/report.pdf'}]});
  assert.equal(projected.quantities_withheld,true);assert.equal(projected.rows[0].raw_value,undefined);assert.equal(projected.rows[0].payload,undefined);assert.equal(projected.private,undefined);assert.equal(projected.manifest.secret,undefined);assert.ok(!JSON.stringify(projected).includes('123'));
  const modelResponse=await call('/api/model',null);assert.equal(modelResponse.status,200);assert.equal(JSON.parse(modelResponse.body).private_inventory_included,false);
- const blockedRoutes=['summary','source-crosswalk','reports','report-pilot','nso','product-inventory','nso-comparison','reference','reference.json','reference.csv','records','record','eppo','export','login'];
+ const blockedRoutes=['reports','report-pilot','reference.csv','login'];
+ // Government open data is public by owner decision; company quantities are not.
+ for(const route of ['summary','source-crosswalk','nso','nso-comparison','eppo','product-inventory','records','record','export']){const open=await call('/api/'+route);assert.equal(open.status,200,route);assert.ok(open.seen,route);}
+ assert.ok(!handler.publicSafeRoutes.has('reports')&&!handler.publicSafeRoutes.has('reference.csv'));
  for(const route of blockedRoutes){const blocked=await call('/api/'+route);assert.equal(blocked.status,403,route);assert.match(blocked.body,/ยังไม่เปิดผ่านเว็บไซต์ระหว่างตรวจสอบสิทธิ์เผยแพร่/);assert.equal(blocked.seen,null,route);}
  let r=await call('/api/readyz',null);assert.equal(r.status,200);assert.equal(r.seen.options.headers.Authorization,process.env.TAMSOOD_BACKEND_AUTH);assert.ok(!r.headers['www-authenticate']);
  r=await call('/api/readyz','Basic x','POST');assert.equal(r.status,405);assert.equal(r.seen,null);
