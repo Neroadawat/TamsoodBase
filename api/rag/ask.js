@@ -448,7 +448,7 @@ function plainListing(results) {
   const blocks = results.map(result => {
     if (!result.rows.length) return `${result.title}\n${result.notes[0] || 'ไม่พบข้อมูลที่ตรงกับเงื่อนไขนี้'}`;
     const lines = result.rows.slice(0, 15).map(describeRow);
-    const more = result.rows_found > 15 ? `\n(แสดง 15 จาก ${formatNumber(result.rows_found)} รายการ)` : '';
+    const more = result.rows_found > lines.length ? `\n(แสดง ${lines.length} จาก ${formatNumber(result.rows_found)} รายการ)` : '';
     return `${result.title} — ${result.what}\n${lines.join('\n')}${more}\nหมายเหตุ: ${result.caveats[0]}`;
   });
   return `นี่คือข้อมูลที่ค้นได้ครับ\n\n${blocks.join('\n\n')}`;
