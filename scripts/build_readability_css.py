@@ -25,6 +25,7 @@ LIFT = {6: 6, 8: 12, 9: 12, 10: 12.5, 11: 13, 12: 13.5, 13: 14.5, 14: 15, 15: 16
 MANUAL = """
 body{line-height:1.7}
 main p{max-width:76ch}
+.reported-results p,.release-banner p{max-width:none}
 .dataset-grid{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))!important;gap:18px}
 .dataset-card{grid-column:auto!important;display:flex;flex-direction:column}
 .dataset-card>.button{margin-top:auto}

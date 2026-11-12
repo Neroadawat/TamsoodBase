@@ -309,6 +309,7 @@ footer{font-size:14.5px}
 @media (max-width: 760px){.catalog-welcome p:not(.eyebrow){font-size:15px}.welcome-action{font-size:14.5px}}
 body{line-height:1.7}
 main p{max-width:76ch}
+.reported-results p,.release-banner p{max-width:none}
 .dataset-grid{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))!important;gap:18px}
 .dataset-card{grid-column:auto!important;display:flex;flex-direction:column}
 .dataset-card>.button{margin-top:auto}
