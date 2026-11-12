@@ -143,6 +143,13 @@ const PLAN = { mode: 'data', queries: [{ dataset: 'dmf_production', filters: [{ 
   result = await answerQuestion('ปี 2567 ผลิตน้ำมันดิบเท่าไหร่', [], READY_ENV, mock.fetchImpl);
   assert.equal(result.summary.kind, 'plain-listing');
 
+  // An overloaded model is retried on the fallback model.
+  mock = scripted(geminiReply({}, 503), geminiReply({ mode: 'chat', reply: 'สวัสดีครับ' }));
+  result = await answerQuestion('สวัสดี', [], READY_ENV, mock.fetchImpl);
+  assert.equal(result.summary.text, 'สวัสดีครับ');
+  assert.match(mock.calls[0].url, /gemini-3\.5-flash-lite:generateContent/);
+  assert.match(mock.calls[1].url, /gemini-3\.1-flash-lite:generateContent/);
+
   // One malformed planner reply is retried instead of failing the question.
   mock = scripted({ ok: true, status: 200, text: async () => 'not json' }, geminiReply({ mode: 'chat', reply: 'สวัสดีครับ' }));
   result = await answerQuestion('สวัสดี', [], READY_ENV, mock.fetchImpl);
