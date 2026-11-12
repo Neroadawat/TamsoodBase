@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-10T06:51:09.659Z",
+  "checked_at_utc": "2026-11-12T13:05:40.009Z",
   "scope": "LOCAL_PROXY_CONCURRENT_FAULT_SIMULATION_NOT_PRODUCTION",
   "overlapping_requests": 12,
   "deadline504": 4,

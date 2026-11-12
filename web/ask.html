@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#173d32">
-  <meta name="description" content="ถามจากชุดเอกสารที่คัดไว้ พร้อมเปิดดูแหล่งที่มาและตำแหน่งอ้างอิง">
-  <title>ถามจากหลักฐาน | TamsoodBase</title>
+  <meta name="description" content="ถามข้อมูลเชื้อเพลิงของไทยเป็นภาษาพูด ได้คำตอบพร้อมตัวเลขและแหล่งที่มา">
+  <title>ถามข้อมูลเชื้อเพลิงไทย | TamsoodBase</title>
   <style>
     @font-face{font-family:"Noto Sans Thai";font-style:normal;font-weight:100 900;font-display:swap;src:url(/noto-sans-thai-06310198b08f.woff2) format("woff2")}
     :root{color-scheme:light;--ink:#202b27;--pine:#173d32;--pine2:#285749;--paper:#f2f0e8;--card:#fffdf7;--line:#d7d3c7;--muted:#58645e;--rust:#b95c36;--sand:#eee3d1;--blue:#315c6a}
@@ -43,6 +43,7 @@
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
     .composer-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:7px 0 10px;color:#657168;font-size:11px}.character-count{font-variant-numeric:tabular-nums;white-space:nowrap}.key-hint kbd{padding:2px 5px;border:1px solid #cec9bc;border-bottom-width:2px;border-radius:4px;background:#fffdf7;color:#415248;font:inherit}.composer textarea{min-height:58px;max-height:180px;resize:vertical}
     @media(max-width:560px){.composer-tools{align-items:flex-start;flex-direction:column;gap:4px}}
+    .data-details{margin-top:14px;border:1px solid #d9d5ca;border-radius:3px 12px 3px 12px;background:#f7f5ee}.data-details summary{cursor:pointer;padding:9px 12px;color:#344a3d;font-size:12px;font-weight:800}.data-scroll{overflow-x:auto;padding:0 12px 12px}.data-caption{margin:6px 0;color:#58645e;font-size:12px}.data-table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}.data-table th,.data-table td{padding:5px 8px;border-bottom:1px solid #e2ddd0;text-align:left;white-space:nowrap}.data-table th{color:#43534a;font-weight:800}.data-table td.num{text-align:right}
   </style>
 </head>
 <body>
@@ -52,39 +53,39 @@
       <span class="privacy-tag privacy-tag--closed"><span class="privacy-dot" aria-hidden="true"></span><span id="privacy-status">ยังปิดการถามผ่านเว็บไซต์</span></span>
     </header>
     <section class="intro" aria-labelledby="page-title">
-      <div><p class="eyebrow">ถามจากเอกสาร · ดูที่มาได้</p><h1 id="page-title">เริ่มจากคำถาม<br>แล้วตามไปดูหลักฐาน</h1><p class="intro-copy">พิมพ์แบบที่พูดตามปกติได้ ระบบจะค้นเอกสารในชุดที่คัดไว้ แล้วแสดงคำตอบพร้อมลิงก์และตำแหน่งอ้างอิงเมื่อมีหลักฐานรองรับ</p></div>
-      <aside class="side-note"><strong>ขอบเขตที่ควรรู้</strong>นี่เป็นชุดค้นคว้าขนาดเล็กที่ดูแลเป็นการภายใน หากเอกสารยังตอบไม่ได้ ระบบควรบอกว่ายังไม่พบ แทนการเดาตัวเลข</aside>
+      <div><p class="eyebrow">คุยกับข้อมูล · ดูที่มาได้</p><h1 id="page-title">ถามเรื่องเชื้อเพลิงไทย<br>ได้เหมือนคุยกับคน</h1><p class="intro-copy">พิมพ์แบบที่พูดตามปกติได้เลย ผู้ช่วยจะค้นตัวเลขจากฐานข้อมูลให้ แล้วเล่าเป็นภาษาง่าย ๆ พร้อมบอกว่าข้อมูลมาจากไหน ถามต่อจากคำตอบเดิมได้</p></div>
+      <aside class="side-note"><strong>ขอบเขตที่ควรรู้</strong>ตัวเลขมาจากข้อมูลเปิดของหน่วยงานรัฐ (กรมเชื้อเพลิงธรรมชาติ สนพ. สำนักงานสถิติแห่งชาติ) และบทความวิจัยหนึ่งฉบับ ถ้าไม่มีข้อมูล ผู้ช่วยจะบอกตรง ๆ ไม่เดาตัวเลข</aside>
     </section>
     <aside class="release-banner" id="release-banner" role="status"><div><strong>ยังไม่เปิดให้ถามผ่านเว็บไซต์</strong><p>ทีมกำลังตรวจสิทธิ์แหล่งข้อมูลและเตรียมทางเชื่อมระบบให้ปลอดภัย ระหว่างนี้ดูแหล่งข้อมูลที่มีอยู่ได้จากหน้าแรก</p></div></aside>
     <div class="workspace">
       <section class="conversation" id="results" aria-labelledby="conversation-title">
-        <header class="conversation-head"><div><h2 id="conversation-title">บทสนทนาบนหน้าจอนี้</h2><p>คำถามก่อนหน้าเก็บไว้ให้คุณย้อนดูในแท็บนี้เท่านั้น</p></div><button class="quiet-button" id="clear-thread" type="button">ล้างหน้าจอ</button></header>
+        <header class="conversation-head"><div><h2 id="conversation-title">บทสนทนา</h2><p>เก็บไว้ในแท็บนี้เท่านั้น ปิดแท็บแล้วหายไป</p></div><button class="quiet-button" id="clear-thread" type="button">ล้างหน้าจอ</button></header>
         <div class="thread" id="thread" role="log" aria-label="ประวัติการสนทนา" aria-live="polite" aria-relevant="additions" aria-atomic="false">
-          <div class="welcome" id="welcome"><p class="welcome-kicker">เริ่มตรงนี้ได้เลย</p><h3>อยากรู้เรื่องไหนของเชื้อเพลิง?</h3><p>ลองเลือกคำถามด้านข้าง หรือพิมพ์คำถามเองก็ได้ คำตอบจะแยกให้เห็นว่ารู้อะไรจากเอกสาร และยังขาดอะไรอยู่</p></div>
+          <div class="welcome" id="welcome"><p class="welcome-kicker">เริ่มตรงนี้ได้เลย</p><h3>อยากรู้เรื่องไหนของเชื้อเพลิง?</h3><p>ลองเลือกคำถามด้านข้าง หรือพิมพ์เองก็ได้ เช่น ถามปริมาณการผลิตของแหล่งหรือปีที่สนใจ แล้วถามต่อได้เรื่อย ๆ</p></div>
         </div>
         <div class="composer-wrap">
           <form class="composer" id="ask-form">
             <label for="question">คำถามของคุณ</label>
             <textarea id="question" required maxlength="500" rows="2" disabled aria-describedby="question-help question-count" placeholder="ระบบค้นหายังไม่เปิดให้บริการ"></textarea>
-            <div class="composer-tools"><span class="key-hint" id="question-help">กด <kbd>Ctrl</kbd> + <kbd>Enter</kbd> เพื่อส่ง · <kbd>Shift</kbd> + <kbd>Enter</kbd> ขึ้นบรรทัดใหม่</span><span class="character-count" id="question-count" aria-live="off">0 / 500</span></div>
-            <label class="consent-row"><input id="gemini-consent" type="checkbox" disabled><span>คำถามเฉพาะเนื้อหาจะส่งคำถามและข้อความหลักฐานที่พบไปยัง Google Gemini เพื่อสร้างคำตอบ ส่วนคำถามเกี่ยวกับรายการและขอบเขตคลังจะตอบจากรายการในระบบโดยไม่ส่งไป Gemini การกดค้นถือว่ายินยอมตามกรณีข้างต้น (ขอความยินยอมใหม่ทุกครั้ง) กรุณาไม่ใส่ข้อมูลส่วนบุคคลหรือข้อมูลลับ</span></label>
-            <div class="composer-footer"><span class="composer-hint">แต่ละคำถามค้นแยกกัน · ไม่เกิน 500 ตัวอักษร</span><button class="send-button" type="submit" disabled><span>ค้นหลักฐาน</span><span aria-hidden="true">↗</span></button></div>
+            <div class="composer-tools"><span class="key-hint" id="question-help">กด <kbd>Enter</kbd> เพื่อส่ง · <kbd>Shift</kbd> + <kbd>Enter</kbd> ขึ้นบรรทัดใหม่</span><span class="character-count" id="question-count" aria-live="off">0 / 500</span></div>
+            <label class="consent-row"><input id="gemini-consent" type="checkbox" disabled><span>ยินยอมให้ส่งคำถาม บทสนทนาล่าสุดในแท็บนี้ และข้อมูลที่ค้นได้ ไปยัง Google Gemini เพื่อเรียบเรียงคำตอบ ติ๊กครั้งเดียวใช้ได้ตลอดจนปิดแท็บ และยกเลิกได้ทุกเมื่อ กรุณาไม่ใส่ข้อมูลส่วนบุคคลหรือข้อมูลลับ</span></label>
+            <div class="composer-footer"><span class="composer-hint">ถามต่อจากคำตอบเดิมได้ · ไม่เกิน 500 ตัวอักษร</span><button class="send-button" type="submit" disabled><span>ส่ง</span><span aria-hidden="true">↗</span></button></div>
           </form>
           <p id="status" role="status" aria-live="polite"></p>
         </div>
       </section>
       <aside class="rail" aria-label="ตัวช่วยถามและข้อมูลระบบ">
         <section class="rail-card"><h2>ไม่รู้จะเริ่มถามอะไร?</h2><p class="examples-title">เลือกคำถามตัวอย่าง</p><div class="examples" aria-label="ตัวอย่างคำถาม">
-          <button type="button">CO₂e คิดยังไง?</button>
-          <button type="button">ทำไมเอทานอลยังไม่มี CO₂e ทั้งวงจร?</button>
-          <button type="button">รถ E10 ตอนสตาร์ตเย็นกินน้ำมันเท่าไหร่?</button>
-          <button type="button">โรงงานอ้อยผลิตไอน้ำจากอะไร?</button>
+          <button type="button">ที่นี่มีข้อมูลอะไรให้ถามบ้าง?</button>
+          <button type="button">ปี 2567 แหล่งไหนผลิตน้ำมันดิบมากที่สุด?</button>
+          <button type="button">ปีที่แล้วไทยผลิตดีเซลได้เท่าไหร่?</button>
+          <button type="button">ทำไบโอดีเซล FAME ต้องใช้อะไรบ้าง?</button>
         </div></section>
-        <section class="rail-card"><h2>รู้ไว้ก่อนอ่านคำตอบ</h2><p>คำถามแต่ละครั้งค้นแยกกัน ระบบไม่ได้จำเนื้อหาคำถามก่อนหน้าไว้ใช้ตอบคำถามถัดไป</p><ul class="privacy-list"><li>เปิดดูเอกสารต้นทางและตำแหน่งอ้างอิงได้</li><li>ตัวเลขอาจเป็นคนละปีหรือคนละขอบเขต จึงไม่ควรรวมกันทันที</li><li>คำตอบเป็นตัวช่วยค้น ต้องตรวจเทียบกับหลักฐานก่อนนำไปใช้</li></ul><p><strong>การประมวลผลเมื่อเปิดบริการ:</strong> เมื่อยินยอม คำถามและข้อความหลักฐานที่ค้นพบจะส่งจากเซิร์ฟเวอร์ไปยัง Google Gemini เพื่อเรียบเรียงคำตอบ การจัดการข้อมูลขึ้นกับสถานะ Billing ของ Google Cloud Project ที่ผูกกับ API key ซึ่งทีมยังไม่ได้ตรวจยืนยัน หากโปรเจกต์ไม่มี Billing ที่ใช้งานอยู่ Google อาจใช้คำถามและคำตอบเพื่อพัฒนาบริการ และผู้ตรวจที่ได้รับอนุญาตอาจอ่านหรือใส่คำอธิบายประกอบได้ หากมี Billing ที่ใช้งานอยู่ Google ระบุว่าจะไม่ใช้คำถามและคำตอบเพื่อปรับปรุงผลิตภัณฑ์ และจะจัดการตามข้อตกลงประมวลผลข้อมูล; การนี้ไม่ใช่การรับรองว่าไม่มีการตรวจเพื่อป้องกันการใช้งานผิดนโยบาย เอกสารนโยบายตรวจการใช้งานระบุว่า Google เก็บคำถาม บริบท และคำตอบไว้ 55 วันเพื่อจุดประสงค์ดังกล่าว และเจ้าหน้าที่ที่ได้รับอนุญาตอาจตรวจเนื้อหาที่ระบบแจ้งเตือน กรุณาอย่าส่งข้อมูลส่วนบุคคล ข้อมูลลับ หรือข้อมูลอ่อนไหว ดู <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">เงื่อนไข Gemini API</a> และ <a href="https://ai.google.dev/gemini-api/docs/billing" target="_blank" rel="noopener noreferrer">เงื่อนไข Billing</a> และ <a href="https://ai.google.dev/gemini-api/docs/usage-policies" target="_blank" rel="noopener noreferrer">นโยบายการใช้งานและการเก็บข้อมูล</a></p></section>
-        <section class="rail-card"><h2>เมื่อคำตอบยังไม่พอ</h2><p>ลองถามให้เจาะจงขึ้น เช่น ระบุเชื้อเพลิง ช่วงเวลา หรือหน่วยที่ต้องการ หรือเปิดต้นทางเพื่อตรวจบริบทด้วยตัวเอง</p></section>
+        <section class="rail-card"><h2>รู้ไว้ก่อนอ่านคำตอบ</h2><p>ตัวเลขทุกตัวในคำตอบดึงจากฐานข้อมูลด้วยโปรแกรม ไม่ได้ให้ AI คิดเอง AI ทำหน้าที่เข้าใจคำถามและเรียบเรียงคำตอบ</p><ul class="privacy-list"><li>กดดูตารางข้อมูลและเปิดแหล่งต้นทางได้ใต้คำตอบ</li><li>ตัวเลขเป็นค่าตามที่หน่วยงานรายงาน คนละชุดอาจคนละหน่วยหรือขอบเขต</li><li>ผู้ช่วยจำบทสนทนาล่าสุดในแท็บนี้เพื่อให้ถามต่อได้ ไม่เก็บไว้บนเซิร์ฟเวอร์ของเรา</li></ul><p><strong>การประมวลผล:</strong> เมื่อยินยอม คำถาม บทสนทนาล่าสุด และข้อมูลที่ค้นได้จะส่งจากเซิร์ฟเวอร์ไปยัง Google Gemini เพื่อเรียบเรียงคำตอบ การจัดการข้อมูลขึ้นกับสถานะ Billing ของ Google Cloud Project ที่ผูกกับ API key ซึ่งทีมยังไม่ได้ตรวจยืนยัน หากโปรเจกต์ไม่มี Billing ที่ใช้งานอยู่ Google อาจใช้คำถามและคำตอบเพื่อพัฒนาบริการ และผู้ตรวจที่ได้รับอนุญาตอาจอ่านหรือใส่คำอธิบายประกอบได้ หากมี Billing ที่ใช้งานอยู่ Google ระบุว่าจะไม่ใช้คำถามและคำตอบเพื่อปรับปรุงผลิตภัณฑ์ และจะจัดการตามข้อตกลงประมวลผลข้อมูล; การนี้ไม่ใช่การรับรองว่าไม่มีการตรวจเพื่อป้องกันการใช้งานผิดนโยบาย เอกสารนโยบายตรวจการใช้งานระบุว่า Google เก็บคำถาม บริบท และคำตอบไว้ 55 วันเพื่อจุดประสงค์ดังกล่าว และเจ้าหน้าที่ที่ได้รับอนุญาตอาจตรวจเนื้อหาที่ระบบแจ้งเตือน กรุณาอย่าส่งข้อมูลส่วนบุคคล ข้อมูลลับ หรือข้อมูลอ่อนไหว ดู <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">เงื่อนไข Gemini API</a> และ <a href="https://ai.google.dev/gemini-api/docs/billing" target="_blank" rel="noopener noreferrer">เงื่อนไข Billing</a> และ <a href="https://ai.google.dev/gemini-api/docs/usage-policies" target="_blank" rel="noopener noreferrer">นโยบายการใช้งานและการเก็บข้อมูล</a></p></section>
+        <section class="rail-card"><h2>ถามอะไรได้บ้าง</h2><p>การผลิตน้ำมันดิบ คอนเดนเสท และก๊าซธรรมชาติรายแหล่ง · น้ำมันที่ป้อนเข้าโรงกลั่นรายบริษัท · การผลิตน้ำมันสำเร็จรูป · สถิติพลังงานของประเทศ · ข้อมูลการผลิตไบโอดีเซลจากปาล์ม ถ้าคำตอบยังไม่ตรง ลองระบุปี แหล่งผลิต หรือชนิดเชื้อเพลิงเพิ่ม</p></section>
       </aside>
     </div>
-    <p class="mode"><strong>สถานะ:</strong> <span id="mode-notice">ระบบค้นหลักฐานยังปิดอยู่</span></p>
+    <p class="mode"><strong>สถานะ:</strong> <span id="mode-notice">แชตยังปิดอยู่</span></p>
   </div>
 <script src="/config.js"></script>
 <script>
@@ -99,39 +100,38 @@
   const privacyTag = document.querySelector('.privacy-tag');
   const characterCount = document.querySelector('#question-count');
   const publicRagEnabled = window.TAMSOOD_CONFIG?.publicRagEnabled === true;
-  const previewMode = window.TAMSOOD_CONFIG?.ragMode === 'limited-preview';
+  const CONSENT_KEY = 'tamsood.chat.gemini-consent';
+  const MAX_HISTORY_TURNS = 4;
+  const history = [];
+  let busy = false;
   clearButton.disabled = true;
+
+  function rememberedConsent() {
+    try { return sessionStorage.getItem(CONSENT_KEY) === 'yes'; } catch { return false; }
+  }
 
   if (publicRagEnabled) {
     releaseBanner.hidden = true;
     privacyTag.classList.remove('privacy-tag--closed');
-    document.querySelector('#privacy-status').textContent = previewMode ? 'RAG Preview · ชุดข้อมูลจำกัด' : 'ค้นหลักฐานพร้อมใช้';
+    document.querySelector('#privacy-status').textContent = 'พร้อมคุย';
     question.disabled = false;
     consent.disabled = false;
-    question.placeholder = 'เช่น ค่า CO₂e ต่อลิตรมีหลักฐานพอคำนวณหรือยัง?';
-    document.querySelector('#mode-notice').textContent = previewMode
-      ? 'Preview พร้อมทดสอบ · ใช้เฉพาะเอกสารที่ระบุด้านล่าง'
-      : 'เปิดค้นได้ · คำถามไม่ถูกเก็บข้ามครั้ง';
-    if (previewMode) {
-      const previewExamples = [
-        'แชตนี้มีข้อมูลเรื่องอะไรบ้าง?',
-        'หน่วยหน้าที่ของ FAME/H-FAME คืออะไร?',
-        'ทำไมยังเชื่อม FFB กับ CPO ไม่ได้?',
-        'ทำไมแถว Land seeding ถึงพักไว้?',
-      ];
-      document.querySelectorAll('.examples button').forEach((button, index) => {
-        if (previewExamples[index]) button.textContent = previewExamples[index];
-      });
-    }
+    consent.checked = rememberedConsent();
+    question.placeholder = 'เช่น ปี 2567 แหล่งเอราวัณผลิตก๊าซเฉลี่ยเดือนละเท่าไหร่?';
+    document.querySelector('#mode-notice').textContent = 'เปิดให้ถามได้ · บทสนทนาเก็บในแท็บนี้เท่านั้น';
   } else {
     status.textContent = 'ยังส่งคำถามไม่ได้จนกว่าจะเปิดบริการบนเว็บไซต์';
     for (const example of document.querySelectorAll('.examples button')) example.disabled = true;
   }
 
   function syncSubmitState() {
-    submit.disabled = !publicRagEnabled || !consent.checked || !question.value.trim();
+    submit.disabled = busy || !publicRagEnabled || !consent.checked || !question.value.trim();
   }
-  consent.addEventListener('change', syncSubmitState);
+  consent.addEventListener('change', () => {
+    // Consent is remembered for this tab only and can be withdrawn at any time.
+    try { consent.checked ? sessionStorage.setItem(CONSENT_KEY, 'yes') : sessionStorage.removeItem(CONSENT_KEY); } catch {}
+    syncSubmitState();
+  });
   question.addEventListener('input', () => {
     characterCount.textContent = `${question.value.length} / 500`;
     question.style.height = 'auto';
@@ -139,8 +139,9 @@
     syncSubmitState();
   });
   question.addEventListener('keydown', event => {
-    if (event.key === 'Enter' && event.ctrlKey && !event.shiftKey && !event.isComposing) {
+    if (event.key === 'Enter' && !event.shiftKey && !event.isComposing) {
       event.preventDefault();
+      if (!consent.checked) { status.textContent = 'ติ๊กยินยอมด้านล่างก่อนส่งคำถามครั้งแรก'; return; }
       if (!submit.disabled) form.requestSubmit();
     }
   });
@@ -164,7 +165,7 @@
     if (!hits.length) return;
     const section = document.createElement('section');
     section.className = 'sources';
-    appendText(section, 'h3', 'sources-heading', 'เอกสารที่ใช้ประกอบคำตอบ');
+    appendText(section, 'h3', 'sources-heading', 'ข้อมูลมาจาก');
     hits.forEach((hit, index) => {
       const url = safeSourceUrl(hit.source_url);
       if (!url) return;
@@ -176,10 +177,9 @@
       link.href = url;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
-      link.textContent = hit.display_title_th || hit.title || 'เปิดเอกสารต้นทาง';
+      link.textContent = hit.title || 'เปิดแหล่งต้นทาง';
       detail.append(link);
-      const locator = hit.display_locator_th || hit.locator;
-      if (locator) appendText(detail, 'p', '', 'ตำแหน่งในเอกสาร: ' + locator);
+      if (hit.locator) appendText(detail, 'p', '', hit.locator);
       if (hit.attribution) {
         const credit = document.createElement('p');
         credit.className = 'source-credit';
@@ -200,87 +200,117 @@
     if (section.querySelector('a')) container.append(section);
   }
 
+  const COLUMN_TH = {product: 'ชนิด', field: 'แหล่งผลิต', area: 'พื้นที่', block: 'แปลง', company: 'บริษัท', table: 'ตาราง', label: 'รายการ', year: 'ปี ค.ศ.', month: 'เดือน', process: 'กระบวนการ', direction: 'เข้า/ออก', flow: 'รายการ', stage: 'ขั้นตอน', value: 'ค่า', unit: 'หน่วย', months_with_data: 'จำนวนเดือนที่มีข้อมูล', at_year: 'เกิดในปี', at_month: 'เกิดในเดือน', status: 'สถานะ'};
+
+  function addTables(container, tables) {
+    const usable = tables.filter(table => Array.isArray(table.rows) && table.rows.length);
+    if (!usable.length) return;
+    const details = document.createElement('details');
+    details.className = 'data-details';
+    appendText(details, 'summary', '', 'ดูตารางข้อมูลที่ใช้ตอบ');
+    const scroll = document.createElement('div');
+    scroll.className = 'data-scroll';
+    for (const table of usable) {
+      appendText(scroll, 'p', 'data-caption', `${table.title} — ${table.what}${table.truncated ? ' (แสดงบางส่วน)' : ''}`);
+      const columns = [...new Set(table.rows.flatMap(row => Object.keys(row)))];
+      const element = document.createElement('table');
+      element.className = 'data-table';
+      const head = element.createTHead().insertRow();
+      for (const column of columns) appendText(head, 'th', '', COLUMN_TH[column] || column);
+      const body = element.createTBody();
+      for (const row of table.rows) {
+        const line = body.insertRow();
+        for (const column of columns) {
+          const value = row[column];
+          const cell = line.insertCell();
+          if (typeof value === 'number' && !['year', 'month', 'at_year', 'at_month'].includes(column)) {
+            cell.className = 'num';
+            cell.textContent = value.toLocaleString('en-US', {maximumFractionDigits: 3});
+          } else cell.textContent = value ?? '';
+        }
+      }
+      scroll.append(element);
+    }
+    details.append(scroll);
+    container.append(details);
+  }
+
   function renderTurn(asked, payload) {
     const turn = document.createElement('article');
     turn.className = 'turn';
     appendText(turn, 'div', 'question-bubble', asked);
     const hits = Array.isArray(payload.hits) ? payload.hits : [];
-    const sourceIds = Array.isArray(payload.summary?.source_ids) ? payload.summary.source_ids : [];
-    const cited = hits.filter(hit => sourceIds.includes(hit.id));
+    const tables = Array.isArray(payload.tables) ? payload.tables : [];
+    const answerText = typeof payload.summary?.text === 'string' && payload.summary.text.trim()
+      ? payload.summary.text.trim()
+      : 'ยังตอบคำถามนี้ไม่ได้ครับ ลองระบุชนิดเชื้อเพลิง แหล่งผลิต หรือปีที่สนใจเพิ่มอีกนิด';
     const answer = document.createElement('section');
     answer.className = 'answer-card';
-    appendText(answer, 'p', 'answer-kicker', payload.summary?.text && cited.length ? 'คำตอบจากหลักฐาน' : 'สถานะการค้น');
-    let answerText;
-    if (payload.summary?.text && cited.length) {
-      answerText = payload.summary.text;
-    } else if (payload.summary?.kind === 'numeric-query-unavailable' && payload.summary?.text) {
-      answer.classList.add('no-answer');
-      answerText = payload.summary.text;
-    } else if (payload.summary?.kind === 'grounding-abstention' && payload.summary?.text) {
-      answer.classList.add('no-answer');
-      answerText = payload.summary.text;
-    } else if (hits.length) {
-      answer.classList.add('no-answer');
-      answerText = 'พบเอกสารที่เกี่ยวข้อง แต่ยังไม่มีคำตอบที่สรุปพร้อมแหล่งอ้างอิงได้ ลองเปิดเอกสารด้านล่างหรือลองถามให้เจาะจงขึ้น';
-    } else {
-      answer.classList.add('no-answer');
-      answerText = 'ยังไม่พบเอกสารที่ตรงพอจะตอบคำถามนี้ ลองระบุชื่อเชื้อเพลิง ช่วงเวลา หรือหน่วยที่สนใจ';
-    }
+    if (payload.summary?.kind === 'no-data') answer.classList.add('no-answer');
+    appendText(answer, 'p', 'answer-kicker', 'ผู้ช่วย TamsoodBase');
     appendText(answer, 'p', 'answer-text', answerText);
-    const meta = document.createElement('div');
-    meta.className = 'answer-meta';
-    appendText(meta, 'span', '', cited.length ? 'อ้างอิง ' + cited.length + ' แหล่ง' : 'ตรวจต้นทางก่อนนำตัวเลขไปใช้');
-    const actions = document.createElement('div');
-    actions.className = 'answer-actions';
-    const copy = document.createElement('button');
-    copy.type = 'button';
-    copy.className = 'quiet-button';
-    copy.textContent = 'คัดลอกคำตอบ';
-    copy.addEventListener('click', async () => {
-      try { await navigator.clipboard.writeText(answerText); status.textContent = 'คัดลอกคำตอบแล้ว'; }
-      catch { status.textContent = 'เบราว์เซอร์ไม่อนุญาตให้คัดลอกอัตโนมัติ'; }
-    });
-    actions.append(copy);
-    meta.append(actions);
-    answer.append(meta);
-    addSources(answer, cited.length ? cited : hits);
+    if (hits.length || tables.length) {
+      const meta = document.createElement('div');
+      meta.className = 'answer-meta';
+      appendText(meta, 'span', '', 'ตัวเลขดึงจากฐานข้อมูลตามที่แหล่งรายงาน');
+      const actions = document.createElement('div');
+      actions.className = 'answer-actions';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.className = 'quiet-button';
+      copy.textContent = 'คัดลอกคำตอบ';
+      copy.addEventListener('click', async () => {
+        try { await navigator.clipboard.writeText(answerText); status.textContent = 'คัดลอกคำตอบแล้ว'; }
+        catch { status.textContent = 'เบราว์เซอร์ไม่อนุญาตให้คัดลอกอัตโนมัติ'; }
+      });
+      actions.append(copy);
+      meta.append(actions);
+      answer.append(meta);
+    }
+    addTables(answer, tables);
+    addSources(answer, hits);
     turn.append(answer);
     thread.append(turn);
     clearButton.disabled = false;
     turn.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'nearest'});
+    return answerText;
   }
 
   for (const example of document.querySelectorAll('.examples button')) {
     example.addEventListener('click', () => {
       question.value = example.textContent.trim();
+      question.dispatchEvent(new Event('input'));
       question.focus();
-      question.setSelectionRange(question.value.length, question.value.length);
+      if (!submit.disabled) form.requestSubmit();
     });
   }
 
   clearButton.addEventListener('click', () => {
     thread.replaceChildren();
+    history.length = 0;
     const welcome = document.createElement('div');
     welcome.className = 'welcome';
-    appendText(welcome, 'p', 'welcome-kicker', 'เริ่มตรงนี้ได้เลย');
+    appendText(welcome, 'p', 'welcome-kicker', 'เริ่มใหม่ได้เลย');
     appendText(welcome, 'h3', '', 'อยากรู้เรื่องไหนของเชื้อเพลิง?');
-    appendText(welcome, 'p', '', 'เลือกคำถามด้านข้างหรือพิมพ์เองก็ได้ แต่ละคำถามจะค้นแยกกัน');
+    appendText(welcome, 'p', '', 'เลือกคำถามด้านข้างหรือพิมพ์เองก็ได้ ผู้ช่วยลืมบทสนทนาเดิมแล้ว');
     thread.append(welcome);
     clearButton.disabled = true;
-    status.textContent = 'ล้างประวัติที่แสดงในหน้านี้แล้ว';
+    status.textContent = 'ล้างบทสนทนาแล้ว';
     question.focus();
   });
 
   form.addEventListener('submit', async event => {
     event.preventDefault();
     const asked = question.value.trim();
-    if (!asked || !consent.checked || submit.disabled) return;
-    submit.disabled = true;
+    if (!asked || !consent.checked || busy) return;
+    busy = true;
+    syncSubmitState();
     question.disabled = true;
     submit.setAttribute('aria-busy', 'true');
-    submit.querySelector('span').textContent = 'กำลังค้น…';
+    submit.querySelector('span').textContent = 'กำลังคิด…';
     status.classList.remove('error');
-    status.textContent = 'กำลังค้นเอกสารที่เกี่ยวข้อง…';
+    status.textContent = '';
+    document.querySelector('#welcome')?.remove();
     const loading = document.createElement('div');
     loading.className = 'loading';
     loading.setAttribute('role', 'status');
@@ -288,30 +318,34 @@
     spinner.className = 'spinner';
     spinner.setAttribute('aria-hidden', 'true');
     loading.append(spinner);
-    appendText(loading, 'span', '', 'กำลังเทียบคำถามกับชุดเอกสาร');
+    appendText(loading, 'span', '', 'กำลังค้นข้อมูลและเรียบเรียงคำตอบ');
     thread.append(loading);
+    loading.scrollIntoView({block: 'nearest'});
     try {
       const response = await fetch('/api/rag/ask', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({question: asked, geminiConsent: consent.checked})
+        body: JSON.stringify({question: asked, geminiConsent: consent.checked, history: history.slice(-MAX_HISTORY_TURNS)})
       });
-      if (!response.ok) throw new Error('Search failed');
+      if (response.status === 429) throw new Error('rate');
+      if (!response.ok) throw new Error('failed');
       const payload = await response.json();
       loading.remove();
-      renderTurn(asked, payload);
-      status.textContent = 'ค้นเสร็จแล้ว · คำถามนี้ประมวลผลแยกจากคำถามก่อนหน้า';
+      const answered = renderTurn(asked, payload);
+      history.push({question: asked.slice(0, 500), answer: answered.slice(0, 1200)});
       question.value = '';
-    } catch {
+      question.dispatchEvent(new Event('input'));
+    } catch (error) {
       loading.remove();
       status.classList.add('error');
-      status.textContent = 'เชื่อมต่อระบบค้นไม่ได้ในตอนนี้ คำถามยังอยู่ ลองกดค้นอีกครั้ง';
+      status.textContent = error.message === 'rate'
+        ? 'ถามถี่เกินไปนิด รอสักหนึ่งนาทีแล้วลองใหม่นะครับ คำถามยังอยู่ในช่องพิมพ์'
+        : 'ตอนนี้เชื่อมต่อผู้ช่วยไม่ได้ คำถามยังอยู่ในช่องพิมพ์ ลองส่งอีกครั้งได้เลย';
     } finally {
-      submit.disabled = false;
+      busy = false;
       question.disabled = false;
-      consent.checked = false;
       submit.removeAttribute('aria-busy');
-      submit.querySelector('span').textContent = 'ค้นหลักฐาน';
+      submit.querySelector('span').textContent = 'ส่ง';
       syncSubmitState();
       question.focus();
     }

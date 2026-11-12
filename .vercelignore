@@ -1,5 +1,5 @@
 # Allow only the static frontend builder, its assets, required API routes, and
-# the two reviewed JSON files included in the Gemini Preview Function.
+# the two JSON files the chat function and the build read.
 /*
 !vercel.json
 !api
@@ -34,4 +34,4 @@ docs/*
 !docs/rag
 docs/rag/*
 !docs/rag/public-release-manifest.json
-!docs/rag/vercel-preview-corpus.json
+!docs/rag/knowledge-pack.json

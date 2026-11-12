@@ -5,7 +5,7 @@
   "outputDirectory": "build/frontend",
   "functions": {
     "api/rag/ask.js": {
-      "includeFiles": "docs/rag/{public-release-manifest,vercel-preview-corpus}.json",
+      "includeFiles": "docs/rag/{public-release-manifest,knowledge-pack}.json",
       "maxDuration": 30
     }
   },

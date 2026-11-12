@@ -1,11 +1,40 @@
 {
-  "schema_version": 1,
-  "status": "HOLD_RIGHTS_REVIEW",
-  "reviewed_at": "2026-11-09",
-  "publicly_usable": false,
-  "public_release_allowed": false,
-  "decision_note": "The active manifest record IDs are synchronized with the narrative and statistical corpora. No source-by-source redistribution review has cleared the current corpus; all record decisions remain PENDING. Keep public serving disabled.",
-  "external_llm_allowed": false,
+  "schema_version": 2,
+  "status": "OWNER_APPROVED_PUBLIC_DEMO",
+  "reviewed_at": "2026-11-12",
+  "publicly_usable": true,
+  "public_release_allowed": true,
+  "external_llm_allowed": true,
+  "decision_note": "On 2026-11-12 the project owner decided to open the chat on the public website for the course demo. This is an owner decision, not a completed rights or readiness review: the checks under release_gates were not verified and stay false.",
+  "owner_decision": {
+    "decided_on": "2026-11-12",
+    "decided_by": "Project owner (repository and Vercel project owner), stated in a working session",
+    "audience": "Public website visitors; course demo",
+    "values_released_to_chat": [
+      "DMF monthly petroleum production (catalog.dmf.go.th, Open Data Common label)",
+      "EPPO refinery intake and petroleum product output (catalog.eppo.go.th, Open Data Common label)",
+      "NSO Statistical Yearbook 2026 energy tables 13.5-13.10 (public download)",
+      "Permpool, Ghani & Gheewala (2020) Tables 1-4 and six summary notes (CC BY 4.0)"
+    ],
+    "values_withheld_from_chat": [
+      "Thai Oil and SPRC sustainability-report metrics: described and linked only, no values",
+      "Ethanol case evidence (E10 vehicle test, TSM wastewater PDD): described and linked only, no values"
+    ],
+    "accepted_without_verification": [
+      "Specific reuse terms of the DMF, EPPO and NSO downloads were not confirmed with the agencies",
+      "Gemini API audience eligibility and billing state were not confirmed",
+      "No Vercel WAF rate limit is configured; only a per-instance limiter in the function",
+      "No independent user acceptance test, capacity test or rollback drill was run"
+    ],
+    "credential_note": "The owner reported that the Gemini key disclosed in chat was replaced. This was not independently verified and no key value was read."
+  },
+  "knowledge_pack": {
+    "path": "docs/rag/knowledge-pack.json",
+    "scope": "OWNER_RELEASED_GOV_OPEN_DATA_AND_CC_BY_ARTICLE",
+    "content_sha256": "2ebbc817588aae96fd5c3909285bae0e0064f3664573e9d579ce0ccf057cc089",
+    "contains_company_report_values": false
+  },
+  "legacy_corpus_note": "narrative_cards and statistical_facts below belong to the earlier local prototype. They are not served by the public chat and their rights decisions remain PENDING.",
   "narrative_cards": [
     {
       "id": "e10-cold-start",

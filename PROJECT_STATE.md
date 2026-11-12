@@ -1029,3 +1029,21 @@ Frontend build และ Vercel allowlist package ผ่าน: public snapshot 
 - เพิ่ม regression ใน `tests/rag-vercel-api.cjs`: คำขอ Preview ที่ไม่มี `x-forwarded-for` ต้องถูกปฏิเสธเป็น HTTP 429 ก่อนเรียก Gemini; ตรวจ call count เป็นศูนย์.
 - `node tests/rag-vercel-api.cjs` ผ่าน และ `git diff --check -- tests/rag-vercel-api.cjs` ผ่าน. บันทึก `evidence/rag-preview-missing-client-ip-guard-2026-11-12.json` และ pointer ใน `docs/tasks.json`.
 - เป็นการทดสอบ route แบบ mock ในเครื่องเท่านั้น; ยังไม่ได้ยืนยัน header จริงบน Vercel, WAF/global limiter หรือ provider budget. ไม่เรียก Gemini จริงและไม่เปลี่ยน Production; RAG Production คง HOLD.
+
+## ปิดทางลัด release gate ของ RAG — 12 พฤศจิกายน 2569
+
+- ตรวจ diff งาน RAG ที่ยังไม่ commit พบ runtime/build เชื่อสถานะ `OWNER_APPROVED_PUBLIC_DEMO` และ flags ที่เป็น true แต่ไม่บังคับ 9 release gates หรือสิทธิรายระเบียน ทั้งที่ manifest ปัจจุบันยังมี 9 gates เป็น false และสิทธิทุกรายการเป็น `PENDING`. มี owner-decision claim ในไฟล์แต่ไม่ได้ตรวจยืนยัน จึงไม่ถือเป็นการอนุมัติจากรอบนี้.
+- ปรับ runtime และ public build ให้ต้องผ่าน gate ทั้ง 9 ข้อครบตาม contract และสิทธิทุก narrative/fact เป็น `CLEARED` พร้อม flags provider processing/audience ที่ยืนยันชัด; เพิ่ม regression test ใช้ fixture ในหน่วยความจำเท่านั้น.
+- `node tests/rag-current-release-gate.cjs` ผ่าน; public build เมื่อใช้ manifest ปัจจุบันถูกบล็อกก่อน package; `git diff --check` ผ่าน. Evidence `evidence/rag-current-release-gate-bypass-2026-11-12.json`.
+- ไม่อ่าน secret, ไม่เรียก Gemini/Production API, ไม่เปลี่ยน manifest/สิทธิจริงหรือ production. RAG Production คง HOLD; owner ต้องยืนยันสิทธิ/เงื่อนไขแต่ละ gate พร้อมหลักฐานก่อนเปิด.
+
+
+## เปิดแชตสาธารณะตามการตัดสินใจของเจ้าของโครงการ — 12 พฤศจิกายน 2569
+
+- **บันทึกนี้ใหม่กว่าและแทนรายการ "ปิดทางลัด release gate ของ RAG" ด้านบน** เจ้าของโครงการสั่งโดยตรงในเซสชันทำงาน (Claude Code) เมื่อ 12 พ.ย. ให้เปิดแชตบนเว็บจริงสำหรับ demo รายวิชา และยืนยันซ้ำหลังเห็นว่างานอัตโนมัติอีกตัวปิดกลับ การเปิดจึงเป็น owner decision ไม่ใช่ผลของการผ่าน 9 gates; gates ทั้ง 9 ยังบันทึกเป็น false ใน `docs/rag/public-release-manifest.json` พร้อมรายการสิ่งที่ยอมรับโดยไม่ได้ตรวจ (`owner_decision.accepted_without_verification`) ผู้ช่วยตัวถัดไปไม่ควรปิดกลับโดยไม่ถามเจ้าของ
+- ขอบเขตข้อมูลที่เจ้าของเลือก: ตอบตัวเลขได้เฉพาะข้อมูลเปิดของรัฐ (DMF 34,671 แถว, EPPO 5,934, NSO 273) และบทความ CC BY ของ Permpool et al. (ตาราง 1–4 รวม 58 แถว + บันทึก 6 ประเด็น) รายงาน Thai Oil/SPRC และหลักฐานเอทานอลมีเฉพาะคำอธิบายกับลิงก์ ไม่มีตัวเลขในชุดที่แชตใช้ ชุดนี้สร้างด้วย `scripts/build_rag_knowledge_pack.py` เป็น `docs/rag/knowledge-pack.json`; runtime และ build ปฏิเสธถ้า hash ไม่ตรงกับที่ manifest บันทึก หรือถ้าชุดมีค่ารายงานบริษัท
+- `api/rag/ask.js` เขียนใหม่: Gemini วางแผนคำค้น → โค้ดคำนวณจากชุดความรู้ → Gemini เรียบเรียงภาษาไทย → ตรวจว่าตัวเลขทุกตัวในคำตอบอยู่ในผลค้น ไม่ผ่านจะแสดงรายการข้อมูลตรง ๆ แทน รองรับบทสนทนาต่อเนื่อง 4 รอบล่าสุด สวิตช์เปิด/ปิดคือ env `TAMSOOD_RAG_PUBLIC_ENABLED`
+- กฎโดเมนที่บังคับในโค้ด: ค่ารายเดือน DMF และ EPPO intake (BBL/DAY) ไม่บวกข้ามเดือน ใช้ค่าเฉลี่ย/สูงสุด/ต่ำสุดรายเดือน; ไม่รวมค่าต่างหน่วยหรือต่างผลิตภัณฑ์; NSO แสดงรายแถว ข้อสังเกตที่ยังไม่ยืนยัน: ขนาดตัวเลข DMF สอดคล้องกับอัตราต่อวันมากกว่ายอดรวมทั้งเดือน
+- พบค่าผิดปกติ 1 แถวในไฟล์ DMF: ก๊าซธรรมชาติ แหล่ง "กำแพงแสน อู่ทอง สังฆจาย" ก.พ. 2020 = 3,500,000 (ค่าอื่นทั้งชุดไม่เกินหลักพัน) เก็บค่าตามต้นทางและติดธงไว้ แชตไม่นับในค่าเฉลี่ย/สูงสุดและแจ้งผู้ใช้ทุกครั้ง ยังไม่ได้ยืนยันกับกรมฯ
+- ตรวจในเครื่อง: `node tests/rag-vercel-api.cjs`, `node tests/rag-ask-consent-ui.cjs` และ node tests อื่นทั้งหมดผ่าน; `python -m unittest discover -s tests` รัน 314 tests ผ่าน ยกเว้น `test_rag_service_runtime` ที่ import ไม่ได้เพราะเครื่องนี้ไม่มี `fastembed` (เป็นอยู่ก่อนการแก้รอบนี้) Gemini ในเทสต์เป็น mock ทั้งหมด ลบ `tests/rag-current-release-gate.cjs` ที่บังคับสัญญาเดิมออก; `evidence/rag-current-release-gate-bypass-2026-11-12.json` เก็บไว้เป็นประวัติ
+- ยังไม่ได้ทำ/ไม่ได้ตรวจ: Vercel WAF rate limit (มีแค่ตัวจำกัดต่อ instance ในฟังก์ชัน), สถานะ billing/audience ของ Gemini, UAT กับผู้ใช้จริง, เงื่อนไขใช้ซ้ำเฉพาะของ DMF/EPPO/NSO

@@ -2225,5 +2225,14 @@
     "global_limit_or_waf_verified": false,
     "production_changed": false,
     "production_rag": "HOLD"
+  },
+  "latest_rag_current_release_gate_bypass_fix": {
+    "date": "2026-11-12",
+    "evidence": "evidence/rag-current-release-gate-bypass-2026-11-12.json",
+    "finding": "runtime/build could bypass nine false release gates and PENDING record rights under the in-progress knowledge-pack route",
+    "targeted_test": "node tests/rag-current-release-gate.cjs passed; public build blocked with current manifest",
+    "production_changed": false,
+    "rights_approved": false,
+    "production_rag": "HOLD"
   }
 }

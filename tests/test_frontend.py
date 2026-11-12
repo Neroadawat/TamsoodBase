@@ -145,39 +145,35 @@ class FrontendTests(unittest.TestCase):
             self.assertEqual(proxy.returncode,0,proxy.stderr)
             self.assertIn('"apiBaseUrl":""',(out/'config.js').read_text())
             self.assertNotIn('loginUrl',(out/'config.js').read_text())
-            public_rag=subprocess.run([self.node,str(root/'scripts/build_frontend.mjs')],env=env|{'TAMSOOD_API_BASE_URL':'','TAMSOOD_DEPLOY_MODE':'proxy','TAMSOOD_PUBLIC_RAG_ENABLED':'true'},capture_output=True,text=True,timeout=20)
-            self.assertNotEqual(public_rag.returncode,0)
-            self.assertIn('Public RAG build blocked',public_rag.stderr)
-            preview_rag=subprocess.run([self.node,str(root/'scripts/build_frontend.mjs')],env=env|{'TAMSOOD_API_BASE_URL':'','TAMSOOD_DEPLOY_MODE':'proxy','VERCEL_ENV':'preview','TAMSOOD_PUBLIC_RAG_PREVIEW_ENABLED':'true'},capture_output=True,text=True,timeout=20)
-            self.assertEqual(preview_rag.returncode,0,preview_rag.stderr)
+            # Public chat: builds only with the exact knowledge pack the owner released.
+            chat_env=env|{'TAMSOOD_API_BASE_URL':'','TAMSOOD_DEPLOY_MODE':'proxy','TAMSOOD_RAG_PUBLIC_ENABLED':'true'}
+            no_pack=subprocess.run([self.node,str(root/'scripts/build_frontend.mjs')],env=chat_env,capture_output=True,text=True,timeout=20)
+            self.assertNotEqual(no_pack.returncode,0,'the chat UI must not ship without its knowledge pack')
+            shutil.copyfile(ROOT/'docs/rag/knowledge-pack.json',root/'docs/rag/knowledge-pack.json')
+            public_rag=subprocess.run([self.node,str(root/'scripts/build_frontend.mjs')],env=chat_env,capture_output=True,text=True,timeout=20)
+            self.assertEqual(public_rag.returncode,0,public_rag.stderr)
             self.assertIn('"publicRagEnabled":true',(out/'config.js').read_text())
+            self.assertIn('"ragMode":"public"',(out/'config.js').read_text())
             manifest_path=root/'docs/rag/public-release-manifest.json'
-            manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
-            manifest['status']='APPROVED_FOR_PUBLIC_RELEASE'
-            manifest['publicly_usable']=True
-            manifest['public_release_allowed']=True
-            manifest['external_llm_allowed']=True
-            for row in manifest['narrative_cards']+manifest['statistical_facts']:
-                row['release_allowed']=True
-                row['rights_review']='CLEARED'
-            manifest['release_gates']={name:True for name in manifest['release_gates']}
-            manifest['release_gates']['private_network_connectivity_verified']=False
-            manifest_path.write_text(json.dumps(manifest),encoding='utf-8')
-            network_gate_missing=subprocess.run([self.node,str(root/'scripts/build_frontend.mjs')],env=env|{'TAMSOOD_API_BASE_URL':'','TAMSOOD_DEPLOY_MODE':'proxy','TAMSOOD_PUBLIC_RAG_ENABLED':'true'},capture_output=True,text=True,timeout=20)
-            self.assertNotEqual(network_gate_missing.returncode,0)
-            self.assertIn('Public RAG build blocked',network_gate_missing.stderr)
-            manifest['release_gates']['private_network_connectivity_verified']=True
-            manifest['release_gates']['unreviewed_future_gate']=True
-            manifest_path.write_text(json.dumps(manifest),encoding='utf-8')
-            unknown_gate=subprocess.run([self.node,str(root/'scripts/build_frontend.mjs')],env=env|{'TAMSOOD_API_BASE_URL':'','TAMSOOD_DEPLOY_MODE':'proxy','TAMSOOD_PUBLIC_RAG_ENABLED':'true'},capture_output=True,text=True,timeout=20)
-            self.assertNotEqual(unknown_gate.returncode,0)
-            self.assertIn('Public RAG build blocked',unknown_gate.stderr)
-            manifest['release_gates'].pop('unreviewed_future_gate')
-            manifest['release_gates']['provider_audience_eligibility_confirmed']=False
-            manifest_path.write_text(json.dumps(manifest),encoding='utf-8')
-            eligibility_missing=subprocess.run([self.node,str(root/'scripts/build_frontend.mjs')],env=env|{'TAMSOOD_API_BASE_URL':'','TAMSOOD_DEPLOY_MODE':'proxy','TAMSOOD_PUBLIC_RAG_ENABLED':'true'},capture_output=True,text=True,timeout=20)
-            self.assertNotEqual(eligibility_missing.returncode,0)
-            self.assertIn('Public RAG build blocked',eligibility_missing.stderr)
+            original=json.loads(manifest_path.read_text(encoding='utf-8'))
+            def blocked(change):
+                manifest=json.loads(json.dumps(original))
+                change(manifest)
+                manifest_path.write_text(json.dumps(manifest),encoding='utf-8')
+                run=subprocess.run([self.node,str(root/'scripts/build_frontend.mjs')],env=chat_env,capture_output=True,text=True,timeout=20)
+                self.assertNotEqual(run.returncode,0)
+                self.assertIn('Public chat build blocked',run.stderr)
+            blocked(lambda m:m['knowledge_pack'].update(content_sha256='0'*64))
+            blocked(lambda m:m.update(status='HOLD_RIGHTS_REVIEW'))
+            blocked(lambda m:m.pop('owner_decision'))
+            blocked(lambda m:m.update(external_llm_allowed=False))
+            pack_path=root/'docs/rag/knowledge-pack.json'
+            pack=json.loads(pack_path.read_text(encoding='utf-8'))
+            pack['contains_company_report_values']=True
+            pack_path.write_text(json.dumps(pack),encoding='utf-8')
+            manifest_path.write_text(json.dumps(original),encoding='utf-8')
+            company_values=subprocess.run([self.node,str(root/'scripts/build_frontend.mjs')],env=chat_env,capture_output=True,text=True,timeout=20)
+            self.assertNotEqual(company_values.returncode,0,'a pack holding company-report values must never ship')
 
     def test_vercel_source_allowlist_excludes_private_and_data_files(self):
         git=shutil.which('git')
