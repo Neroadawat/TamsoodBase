@@ -142,6 +142,12 @@ const PLAN = { mode: 'data', queries: [{ dataset: 'dmf_production', filters: [{ 
   result = await answerQuestion('ปี 2567 ผลิตน้ำมันดิบเท่าไหร่', [], READY_ENV, mock.fetchImpl);
   assert.equal(result.summary.kind, 'plain-listing');
 
+  // One malformed planner reply is retried instead of failing the question.
+  mock = scripted({ ok: true, status: 200, text: async () => 'not json' }, geminiReply({ mode: 'chat', reply: 'สวัสดีครับ' }));
+  result = await answerQuestion('สวัสดี', [], READY_ENV, mock.fetchImpl);
+  assert.equal(result.summary.text, 'สวัสดีครับ');
+  assert.equal(mock.calls.length, 2);
+
   // Small talk and catalogue questions are answered in one call, without data.
   mock = scripted(geminiReply({ mode: 'chat', reply: 'สวัสดีครับ ถามเรื่องการผลิตน้ำมันดิบ ก๊าซธรรมชาติ หรือไบโอดีเซลได้เลยครับ' }));
   result = await answerQuestion('สวัสดี', [], READY_ENV, mock.fetchImpl);
@@ -211,7 +217,10 @@ const PLAN = { mode: 'data', queries: [{ dataset: 'dmf_production', filters: [{ 
     assert.equal(ok.headers['Cache-Control'], 'private, no-store');
     assert.equal(modelCalls, 1);
     global.fetch = async () => geminiReply({}, 500);
-    assert.equal((await request({ body: '{"question":"สวัสดี","geminiConsent":true}' })).statusCode, 503);
+    const quiet = console.error;
+    console.error = () => {};
+    try { assert.equal((await request({ body: '{"question":"สวัสดี","geminiConsent":true}' })).statusCode, 503); }
+    finally { console.error = quiet; }
     assert.equal((await request({ headers: { 'x-forwarded-for': undefined }, body: '{"question":"hi","geminiConsent":true}' })).statusCode, 429);
   } finally {
     global.fetch = realFetch;

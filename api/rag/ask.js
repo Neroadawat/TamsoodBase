@@ -21,7 +21,7 @@ const MAX_RESPONSE_BYTES = 64 * 1024;
 const MAX_QUERIES = 3;
 const MAX_RESULT_ROWS = 40;
 const DEFAULT_RESULT_ROWS = 24;
-const CALL_DEADLINE_MS = 11000;
+const CALL_DEADLINE_MS = 8000;
 const DEFAULT_MODEL = 'gemini-3.5-flash-lite';
 const RATE_WINDOW_MS = 60_000;
 const RATE_LIMIT_PER_MINUTE = 10;
@@ -564,6 +564,17 @@ const REQUEST_SHAPES = [
   () => ({ responseMimeType: 'application/json' }),
 ];
 
+// The model occasionally returns malformed JSON or a transient error. One
+// retry clears almost all of these; the error name is logged, never the key.
+async function callGeminiWithRetry(...args) {
+  try {
+    return await callGemini(...args);
+  } catch (error) {
+    console.error('chat model call failed, retrying once:', String(error?.message || error).slice(0, 80));
+    return callGemini(...args);
+  }
+}
+
 async function callGemini(instruction, input, schema, maxOutputTokens, env = process.env, fetchImpl = fetch) {
   const model = /^[a-z0-9.\-]{3,60}$/.test(env.TAMSOOD_GEMINI_MODEL || '') ? env.TAMSOOD_GEMINI_MODEL : DEFAULT_MODEL;
   const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
@@ -668,7 +679,7 @@ function validPayload(payload) {
 
 async function answerQuestion(question, history, env = process.env, fetchImpl = fetch) {
   const today = new Date().toISOString().slice(0, 10);
-  const plan = await callGemini(PLANNER_INSTRUCTION, { today, question, history }, PLAN_SCHEMA, 900, env, fetchImpl);
+  const plan = await callGeminiWithRetry(PLANNER_INSTRUCTION, { today, question, history }, PLAN_SCHEMA, 1200, env, fetchImpl);
   const results = (Array.isArray(plan.queries) ? plan.queries : []).slice(0, MAX_QUERIES).map(runQuery).filter(Boolean);
   const notes = (Array.isArray(plan.note_ids) ? plan.note_ids : []).map(id => NOTES.get(id)).filter(Boolean).slice(0, 4);
 
@@ -746,7 +757,8 @@ async function handler(req, res) {
 
   try {
     return send(res, await answerQuestion(payload.question.trim(), payload.history || []));
-  } catch {
+  } catch (error) {
+    console.error('chat request failed:', String(error?.message || error).slice(0, 80));
     return fail(res, 503, 'Chat is temporarily unavailable');
   }
 }
