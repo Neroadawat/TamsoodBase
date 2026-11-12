@@ -56,6 +56,13 @@ const unknownField = runQuery({ dataset: 'dmf_production', filters: [{ column: '
 assert.equal(unknownField.rows.length, 0);
 assert.match(unknownField.notes[0], /ไม่พบแหล่งผลิต/);
 assert.equal(runQuery({ dataset: 'company_reports', aggregate: 'list' }), null, 'withheld layers are not queryable');
+const erawanGroup = runQuery({ dataset: 'dmf_production', filters: [{ column: 'product', values: ['gas'] },
+  { column: 'field', values: ['เอราวัณ', 'กลุ่มเอราวัณ+'] }], year_from: 2017, year_to: 2017, group_by: ['year'], aggregate: 'avg' });
+assert.match(erawanGroup.notes.join(' '), /นับจากชื่อในไฟล์ต้นทาง: กลุ่มเอราวัณ\+.*กลุ่มรวมหลายแหล่ง/,
+  'a figure built from a group label must say so');
+const erawanSingle = runQuery({ dataset: 'dmf_production', filters: [{ column: 'product', values: ['gas'] },
+  { column: 'field', values: ['เอราวัณ'] }], year_from: 2024, year_to: 2024, group_by: ['year'], aggregate: 'avg' });
+assert.equal(erawanSingle.notes.length, 0, 'a single exact field label needs no grouping note');
 assert.ok(runQuery({ dataset: 'dmf_production', aggregate: 'list', limit: 9999 }).rows.length <= 40);
 
 // -------------------------------------------------------------------- grounding

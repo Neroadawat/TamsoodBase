@@ -220,6 +220,18 @@ function runTableQuery(dataset, query) {
   const flagged = allMatching.filter(row => anomalyKeys.has(row.join('|')));
   const listing = query.aggregate === 'list';
   const matching = listing ? allMatching : allMatching.filter(row => !anomalyKeys.has(row.join('|')));
+  // DMF reports the same field under different labels over time, and some
+  // labels are groups of several fields. Say exactly which labels a figure
+  // covers so a group is never read as a single field.
+  const fieldFiltered = query.filters.some(filter => filter.column === 'field') && 'field' in position;
+  if (fieldFiltered && !listing && !query.group_by.includes('field')) {
+    const labels = [...new Set(matching.map(row => dictionaries.field[row[position.field]].trim()))];
+    const grouped = labels.filter(name => /กลุ่ม|\+|,|และ|\//.test(name));
+    if (labels.length > 1 || grouped.length) {
+      notes.push(`ตัวเลขนี้นับจากชื่อในไฟล์ต้นทาง: ${labels.slice(0, 6).join(' | ')}${labels.length > 6 ? ' และอื่น ๆ' : ''}`
+        + `${grouped.length ? ' โดยชื่อที่เป็นกลุ่มรวมหลายแหล่งไว้ด้วยกัน จึงเทียบกับช่วงที่รายงานแยกแหล่งโดยตรงไม่ได้' : ''}`);
+    }
+  }
   for (const row of flagged) {
     notes.push(`${listing ? 'มี' : 'ไม่นับ'}ค่า ${formatNumber(row[position.amount])} ของแหล่ง ${dictionaries.field[row[position.field]].trim()} เดือน ${MONTHS_TH[row[position.month]]} ${row[position.year]} เพราะ${dataset.anomaly_reason}`);
   }
@@ -401,6 +413,10 @@ function withDisclosures(text, results) {
   const extra = [];
   for (const result of results) {
     for (const note of result.notes || []) {
+      if (/^ตัวเลขนี้นับจากชื่อ/.test(note)) {
+        if (!text.includes('กลุ่ม') && !text.includes('ชื่อในไฟล์')) extra.push(note);
+        continue;
+      }
       if (!/^(ไม่นับค่า|มีค่า)/.test(note)) continue;
       const figure = (note.match(/[\d,]+(?:\.\d+)?/) || [''])[0];
       if (figure && !text.includes(figure)) extra.push(note);
@@ -486,6 +502,7 @@ const PLANNER_INSTRUCTION = `${PERSONA}
 กติกาการเขียน query:
 - ช่อง today คือวันที่ปัจจุบัน (ค.ศ.) ใช้ตีความคำว่า ปีนี้ ปีที่แล้ว เดือนที่แล้ว
 - ปีในข้อมูลเป็น ค.ศ. ถ้าผู้ใช้พิมพ์ปี พ.ศ. ให้ลบ 543 ก่อน ถ้าผู้ใช้ไม่ระบุปีและถามค่าล่าสุด ให้ใช้ปีล่าสุดที่ข้อมูลครบทั้งปี
+- ชื่อแหล่งผลิต (field) ของกรมเชื้อเพลิงธรรมชาติเปลี่ยนตามช่วงปี และบางชื่อเป็นกลุ่มรวมหลายแหล่ง (มีคำว่า กลุ่ม หรือเครื่องหมาย +) ถ้าผู้ใช้ถามชื่อแหล่งเดี่ยว ให้ใส่เฉพาะชื่อที่ตรงตัว อย่าใส่ชื่อกลุ่มเพิ่มเอง เว้นแต่ชื่อตรงตัวไม่มีข้อมูลในปีที่ถาม
 - ใช้ชื่อคอลัมน์และค่าตามที่ระบุด้านล่างเท่านั้น ถ้าผู้ใช้สะกดต่างไปให้เลือกค่าที่ตรงที่สุด
 - ระบบจะรวมทุกแถวที่อยู่ในเดือนเดียวกันให้ก่อนเสมอ (เช่น รวมทุกแหล่งผลิตเป็นยอดประเทศของเดือนนั้น) แล้วจึงใช้ aggregate กับค่ารายเดือน ดังนั้นถามยอดทั้งประเทศไม่ต้องใส่ filter แหล่งผลิต
 - ถามปริมาณของทั้งปีหรือหลายปี: group_by ["year"] และใช้ aggregate "sum" ถ้าชุดนั้นอนุญาต ไม่เช่นนั้นใช้ "avg" (ค่าเฉลี่ยรายเดือน); ถามเปรียบเทียบแหล่งหรือชนิด: group_by คอลัมน์นั้นและ sort "value_desc"; ถามแนวโน้ม: group_by ["year"] และ sort "time"; ถามเดือนที่สูงสุดหรือต่ำสุด: aggregate "max" หรือ "min"
@@ -506,7 +523,7 @@ const ANSWER_INSTRUCTION = `${PERSONA}
 คุณจะได้รับคำถาม ประวัติสนทนา และผลค้นจากฐานข้อมูล (results) กับบันทึกความรู้ (notes) ให้เขียนคำตอบจากข้อมูลนั้นเท่านั้น
 - ตัวเลขทุกตัวในคำตอบต้องคัดมาจาก results หรือ notes ตรงตัว เขียนเต็มจำนวนแล้วตามด้วยหน่วยของแถวนั้นทันที (ช่อง unit ของแถวเดียวกัน อย่าใช้หน่วยของแถวอื่น แปลหน่วยเป็นไทยได้ เช่น kg = กิโลกรัม, kWh = กิโลวัตต์ชั่วโมง, m3 = ลูกบาศก์เมตร)
 - ถ้า truncated เป็น true แปลว่ามีรายการมากกว่าที่แสดง ให้บอกสั้น ๆ ว่ายังมีรายการอื่นอีก ไม่ต้องอธิบายเรื่องการตัดข้อมูล
-- ถ้า notes ของ result บอกว่าไม่นับค่าใด ต้องบอกผู้ใช้ด้วยหนึ่งประโยค ใส่จุลภาคคั่นหลักพันได้ ห้ามปัดเศษ ห้ามย่อเป็น "ล้าน" หรือ "พัน" เอง ห้ามคำนวณผลต่าง ร้อยละ หรืออัตราส่วนเอง ถ้าผู้ใช้อยากเทียบให้วางตัวเลขสองค่าคู่กันแล้วบอกว่าค่าไหนมากกว่า
+- ถ้า notes ของ result บอกว่าไม่นับค่าใด หรือบอกว่าตัวเลขนับจากชื่อกลุ่ม ต้องบอกผู้ใช้ด้วยหนึ่งประโยค และอย่าสรุปว่าแหล่งนั้นผลิตเพิ่มหรือลดเมื่อเทียบกับปีที่ใช้ชื่อต่างกัน ใส่จุลภาคคั่นหลักพันได้ ห้ามปัดเศษ ห้ามย่อเป็น "ล้าน" หรือ "พัน" เอง ห้ามคำนวณผลต่าง ร้อยละ หรืออัตราส่วนเอง ถ้าผู้ใช้อยากเทียบให้วางตัวเลขสองค่าคู่กันแล้วบอกว่าค่าไหนมากกว่า
 - บอกปีเป็น พ.ศ. ตามด้วย ค.ศ. ในวงเล็บได้ (พ.ศ. = ค.ศ. + 543) เลขปีที่ขึ้นต้นด้วย 25 คือ พ.ศ. และที่ขึ้นต้นด้วย 19 หรือ 20 คือ ค.ศ. อย่าติดป้ายสลับกัน เช่น เขียนว่า "ปี พ.ศ. 2567 (ค.ศ. 2024)"
 - ถ้า results มีหลายแถว สรุปประเด็นสำคัญก่อน แล้วไล่รายการเป็นบรรทัดสั้น ๆ ไม่ต้องยกมาทุกแถวถ้ายาวเกิน 8 แถว ให้เลือกแถวที่ตอบคำถามและบอกว่ามีเพิ่มเติม
 - ถ้ามี months_with_data น้อยกว่า 12 ในปีใด ให้บอกว่าปีนั้นข้อมูลยังไม่ครบปี
