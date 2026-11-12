@@ -64,6 +64,12 @@ const erawanSingle = runQuery({ dataset: 'dmf_production', filters: [{ column: '
   { column: 'field', values: ['เอราวัณ'] }], year_from: 2024, year_to: 2024, group_by: ['year'], aggregate: 'avg' });
 assert.equal(erawanSingle.notes.length, 0, 'a single exact field label needs no grouping note');
 assert.ok(runQuery({ dataset: 'dmf_production', aggregate: 'list', limit: 9999 }).rows.length <= 40);
+// The study's own Well-to-Wheels results are quoted as printed, never recomputed.
+const gwp = runQuery({ dataset: 'fame_lca_results', filters: [{ column: 'flow', values: ['Global warming'] }], aggregate: 'list' });
+assert.deepEqual(gwp.rows.map(row => [row.process, row.value, row.unit]),
+  [['FAME', 10.7, 'kg CO2 eq'], ['H-FAME', 12.3, 'kg CO2 eq'], ['BHD', 39.6, 'kg CO2 eq'], ['Fossil diesel', 219, 'kg CO2 eq']]);
+assert.match(gwp.caveats[0], /ไม่ใช่ผลที่ TamsoodBase คำนวณเอง/);
+assert.equal(gwp.rows[0].as_printed, '1.07 x 10^1');
 
 // -------------------------------------------------------------------- grounding
 assert.equal(isGrounded('ปี 2567 (2024) เฉลี่ย 80,575.03 บาร์เรล', [{ year: 2024, value: 80575.03 }]), true);

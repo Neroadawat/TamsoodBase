@@ -184,6 +184,7 @@ function runRecordQuery(dataset, query) {
   const rows = records.slice(0, MAX_RESULT_ROWS).map(record => ({
     process: record.process, direction: record.direction, flow: record.flow,
     ...(record.stage ? { stage: record.stage } : {}),
+    ...(record.amount_as_printed ? { as_printed: record.amount_as_printed } : {}),
     value: record.amount, unit: record.unit ?? 'ไม่ระบุหน่วยในบทความ',
     ...(record.status && record.status.startsWith('HOLD') ? { status: record.status } : {}),
   }));
@@ -383,6 +384,7 @@ const UNIT_ALIASES = {
   'Thousand kilogram': ['พันกิโลกรัม', 'thousand kilogram', 'พัน กก'],
   '10^3 ton of oil equivalent': ['พันตันเทียบเท่าน้ำมันดิบ', 'ktoe', '10^3 ton', 'พันตัน'],
   percent: ['%', 'ร้อยละ', 'เปอร์เซ็นต์', 'percent'],
+  'kg CO2 eq': ['kg co2 eq', 'kg co₂ eq', 'co2e', 'co₂e', 'co2 eq', 'คาร์บอนไดออกไซด์เทียบเท่า'],
 };
 
 function unitMismatches(answer, results) {
@@ -436,7 +438,7 @@ function formatNumber(value) {
 function describeRow(row) {
   const parts = [];
   for (const [key, value] of Object.entries(row)) {
-    if (['value', 'unit', 'months_with_data', 'status', 'at_year', 'at_month'].includes(key) || value === '' || value === null) continue;
+    if (['value', 'unit', 'months_with_data', 'status', 'at_year', 'at_month', 'as_printed', 'direction'].includes(key) || value === '' || value === null) continue;
     parts.push(key === 'month' ? MONTHS_TH[value] || value : key === 'year' ? `ปี ${value}` : value);
   }
   const status = row.status ? ' (พักไว้: บทความไม่ระบุหน่วย)' : '';
@@ -503,6 +505,7 @@ const PLANNER_INSTRUCTION = `${PERSONA}
 - ช่อง today คือวันที่ปัจจุบัน (ค.ศ.) ใช้ตีความคำว่า ปีนี้ ปีที่แล้ว เดือนที่แล้ว
 - ปีในข้อมูลเป็น ค.ศ. ถ้าผู้ใช้พิมพ์ปี พ.ศ. ให้ลบ 543 ก่อน ถ้าผู้ใช้ไม่ระบุปีและถามค่าล่าสุด ให้ใช้ปีล่าสุดที่ข้อมูลครบทั้งปี
 - ชื่อแหล่งผลิต (field) ของกรมเชื้อเพลิงธรรมชาติเปลี่ยนตามช่วงปี และบางชื่อเป็นกลุ่มรวมหลายแหล่ง (มีคำว่า กลุ่ม หรือเครื่องหมาย +) ถ้าผู้ใช้ถามชื่อแหล่งเดี่ยว ให้ใส่เฉพาะชื่อที่ตรงตัว อย่าใส่ชื่อกลุ่มเพิ่มเอง เว้นแต่ชื่อตรงตัวไม่มีข้อมูลในปีที่ถาม
+- คำถามเรื่อง CO2e คาร์บอนฟุตพรินต์ ภาวะโลกร้อน หรือผลกระทบทั้งวงจรของไบโอดีเซล (FAME, H-FAME, BHD) หรือเทียบกับดีเซลฟอสซิล ให้ใช้ชุด fame_lca_results (process คือชนิดเชื้อเพลิง, flow คือชื่อผลกระทบ) และถ้าถามว่าทำไม หรือรวมขั้นไหนบ้าง ให้ใส่ note_ids ที่เกี่ยวข้องด้วย
 - ใช้ชื่อคอลัมน์และค่าตามที่ระบุด้านล่างเท่านั้น ถ้าผู้ใช้สะกดต่างไปให้เลือกค่าที่ตรงที่สุด
 - ระบบจะรวมทุกแถวที่อยู่ในเดือนเดียวกันให้ก่อนเสมอ (เช่น รวมทุกแหล่งผลิตเป็นยอดประเทศของเดือนนั้น) แล้วจึงใช้ aggregate กับค่ารายเดือน ดังนั้นถามยอดทั้งประเทศไม่ต้องใส่ filter แหล่งผลิต
 - ถามปริมาณของทั้งปีหรือหลายปี: group_by ["year"] และใช้ aggregate "sum" ถ้าชุดนั้นอนุญาต ไม่เช่นนั้นใช้ "avg" (ค่าเฉลี่ยรายเดือน); ถามเปรียบเทียบแหล่งหรือชนิด: group_by คอลัมน์นั้นและ sort "value_desc"; ถามแนวโน้ม: group_by ["year"] และ sort "time"; ถามเดือนที่สูงสุดหรือต่ำสุด: aggregate "max" หรือ "min"

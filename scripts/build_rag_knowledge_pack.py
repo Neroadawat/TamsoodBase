@@ -274,13 +274,100 @@ def build_inventories() -> list[dict]:
     return packs
 
 
+LCA_FUELS = ["FAME", "H-FAME", "BHD", "Fossil diesel"]
+LCA_TABLES = {
+    "Table 5": ("Midpoint (Table 5)", [
+        ("Global warming", "kg CO2 eq"), ("Fine particulate matter formation", "kg PM2.5 eq"),
+        ("Terrestrial acidification", "kg SO2 eq"), ("Freshwater eutrophication", "kg P eq"),
+        ("Marine eutrophication", "kg N eq"), ("Human carcinogenic toxicity", "kg 1,4-DCB"),
+        ("Land use", "m2a crop eq"), ("Fossil resource scarcity", "kg oil eq"),
+    ]),
+    "Table 6": ("Endpoint (Table 6)", [
+        ("Human health", "DALY"), ("Ecosystem quality", "species.yr"), ("Resource availability", "USD2013"),
+    ]),
+}
+
+
+def build_lca_results() -> dict:
+    """Well-to-Wheels results as printed in Tables 5 and 6 of the article.
+
+    Read from the stored PDF so no figure is typed by hand.  The PDF prints
+    powers of ten as "1.07 x 101"; the digits after "10" are the exponent.
+    """
+    import re
+    from decimal import Decimal
+    from pypdf import PdfReader
+
+    pdf = ROOT / "data" / "raw" / "mdpi-9415" / "pdf-v3" / "source.pdf"
+    text = "\n".join(page.extract_text() or "" for page in PdfReader(str(pdf)).pages)
+    text = text.replace("ﬁ", "fi").replace("−", "-")
+    cell = r"(\d\.\d+) × 10(-?\d+)"
+    records = []
+    for table, (stage, categories) in LCA_TABLES.items():
+        start = text.index(f"{table}. Environmental impacts")
+        block = " ".join(text[start:start + 1500].split())
+        position = 0
+        for category, unit in categories:
+            match = re.compile(r"\s+".join([cell] * 4)).search(block, position)
+            if not match:
+                raise SystemExit(f"{table}: could not read the row for {category}")
+            position = match.end()
+            groups = match.groups()
+            for index, fuel in enumerate(LCA_FUELS):
+                value = Decimal(groups[index * 2]).scaleb(int(groups[index * 2 + 1]))
+                records.append({"process": fuel, "direction": "REPORTED_RESULT", "flow": category,
+                                "stage": stage, "amount": number(format(value.normalize(), "f")),
+                                "amount_as_printed": f"{groups[index * 2]} x 10^{groups[index * 2 + 1]}",
+                                "unit": unit})
+    expected = 4 * sum(len(categories) for _, categories in LCA_TABLES.values())
+    if len(records) != expected:
+        raise SystemExit(f"Expected {expected} reported results, read {len(records)}")
+    return {
+        "id": "fame_lca_results",
+        "title": "ผลประเมินวัฏจักรชีวิตแบบ Well-to-Wheels ต่อการใช้เชื้อเพลิง 1,000 MJ ตามที่บทความรายงาน (ตาราง 5–6)",
+        "publisher": "Permpool, Ghani & Gheewala (2020), Sustainability 12(22), 9415",
+        "licence": "CC BY 4.0",
+        "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": ARTICLE_ATTRIBUTION,
+        "source_urls": {"all": ARTICLE_URL},
+        "aggregations": ["list"],
+        "caveats": [
+            "เป็นผลที่ผู้วิจัยคำนวณและรายงานไว้ในบทความ ไม่ใช่ผลที่ TamsoodBase คำนวณเอง ทีมยังสร้างบัญชีรายการครบวงจรของตัวเองไม่ได้",
+            "ขอบเขต Well to Wheels: ปลูกปาล์ม ขนส่ง สกัด กลั่น ผลิตเชื้อเพลิง และการใช้ในรถกระบะ วิธี ReCiPe 2016 ใช้ฐานข้อมูลพื้นหลัง ecoinvent 3 และปันส่วนตามมูลค่าทางเศรษฐกิจ",
+            "BHD ใช้ข้อมูลการผลิตจากฟินแลนด์ และ H-FAME ใช้ข้อมูลโรงงานต้นแบบ จึงไม่ใช่การผลิตเชิงพาณิชย์ในไทย",
+        ],
+        "records": records,
+    }
+
+
+EXTRA_NOTES = [
+    {"id": "fame-wtw-boundary", "title": "ขอบเขต Well to Wheels และวิธีประเมินของบทความ FAME/H-FAME/BHD",
+     "text": "บทความประเมินแบบ Well to Wheels ตาม ISO 14040/14044 หน่วยหน้าที่คือการใช้เชื้อเพลิง 1000 MJ ขอบเขตรวมการปลูกและเก็บเกี่ยวทะลายปาล์มสด (FFB) การขนส่ง FFB ไปโรงสกัด การผลิตน้ำมันปาล์มดิบ (CPO) การขนส่ง CPO ไปโรงกลั่น การผลิตน้ำมันปาล์มกลั่น (RBDPO) การขนส่ง RBDPO การผลิตเชื้อเพลิง และการใช้ในรถกระบะ คำนวณด้วย SimaPro 8.5 วิธี ReCiPe 2016 ข้อมูลพื้นหลังส่วนใหญ่มาจาก ecoinvent 3 แบบ cut-off บทความไม่ได้พิมพ์ระยะทางขนส่งหรือค่าปล่อยไอเสียเป็นตัวเลข",
+     "locator": "Section 2, 2.1–2.3, PDF pages 2–4"},
+    {"id": "fame-allocation-factors", "title": "สัดส่วนการปันส่วนภาระ (allocation) ที่บทความใช้",
+     "text": "บทความใช้การปันส่วนตามมูลค่าทางเศรษฐกิจ ขั้นผลิตน้ำมันปาล์มดิบ: CPO 92% เมล็ดในแห้ง 6% กะลา 2% โดยอิงราคาตลาดในประเทศ ทะลายเปล่าและกากตะกอนดีแคนเตอร์ไม่นับเพราะไม่มีมูลค่าตลาด ขั้นกลั่น: PFAD ถูกป้อนกลับเข้ากระบวนการทั้งหมดจึงไม่นับในบัญชี ขั้นผลิต FAME: FAME 70% กลีเซอรีนดิบ 30% ขั้นผลิต BHD: BHD 97% ก๊าซเชื้อเพลิง 2% ไบโอแก๊สโซลีน 1% บทความไม่ได้ระบุว่าตัวเลขในตาราง 1–4 เป็นค่าก่อนหรือหลังปันส่วน",
+     "locator": "Section 3.1.2–3.1.4, PDF pages 5–7"},
+    {"id": "fame-data-basis", "title": "ที่มาของข้อมูลในบทความ FAME/H-FAME/BHD",
+     "text": "ข้อมูลการปลูกปาล์มมาจากเกษตรกรมากกว่า 800 รายทั่วประเทศ ข้อมูลโรงสกัดมาจาก 9 โรงซึ่งรวมกันมีกำลังผลิตเกิน 50% ของประเทศ ข้อมูลโรงกลั่นมาจาก 4 โรง และข้อมูล FAME มาจากโรงงานผลิต 5 แห่งตามรายงานระดับชาติ ข้อมูล H-FAME มาจากโรงงานต้นแบบระดับชาติของไทย ส่วน BHD ใช้ข้อมูลการผลิต NExBTL ของ Neste Oil ในฟินแลนด์ บทความไม่ได้ระบุปีที่เก็บข้อมูล",
+     "locator": "Section 2.2, PDF pages 3–4"},
+    {"id": "fame-contribution", "title": "ขั้นไหนของวงจรชีวิต FAME ส่งผลมากที่สุดตามบทความ",
+     "text": "บทความรายงานว่าผลกระทบส่วนใหญ่มาจากขั้นเกษตรคือการปลูกปาล์ม ภาวะโลกร้อนมาจากขั้นปลูกมากที่สุด รองลงมาคือการผลิต FAME และการผลิตน้ำมันปาล์มดิบ โดยมีที่มาหลักจากการผลิตและใช้ปุ๋ยไนโตรเจนและพลังงานฟอสซิล ส่วนการขนส่งและไอเสียจากการใช้ในรถเป็นขั้นที่ส่งผลน้อยที่สุด สัดส่วนรายขั้นแสดงเป็นกราฟเท่านั้น ไม่มีตัวเลขในเนื้อความ",
+     "locator": "Section 3.3, Figure 2, PDF page 9"},
+]
+
+
 def build_notes() -> list[dict]:
     corpus = json.loads((ROOT / "docs" / "rag" / "vercel-preview-corpus.json").read_text(encoding="utf-8"))
     for row in corpus["records"]:
         if row["licence"] != "CC BY 4.0" or row["source_url"] != ARTICLE_URL:
             raise SystemExit(f"Note {row['id']} is not from the CC BY article")
-    return [{key: row[key] for key in ("id", "title", "text", "locator", "source_url", "licence",
-                                       "licence_url", "attribution")} for row in corpus["records"]]
+    notes = [{key: row[key] for key in ("id", "title", "text", "locator", "source_url", "licence",
+                                        "licence_url", "attribution")} for row in corpus["records"]]
+    for note in EXTRA_NOTES:
+        notes.append({**note, "source_url": ARTICLE_URL, "licence": "CC BY 4.0",
+                      "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+                      "attribution": ARTICLE_ATTRIBUTION})
+    return notes
 
 
 def build_catalogue() -> list[dict]:
@@ -300,6 +387,8 @@ def build_catalogue() -> list[dict]:
          "summary": "รายการเข้า–ออกขั้นแปรรูปไบโอดีเซล FAME และ H-FAME ต่อการใช้เชื้อเพลิง 1,000 MJ จากบทความวิจัยของไทยที่เปิดให้ใช้ซ้ำ (CC BY 4.0)"},
         {"id": "palm_upstream", "answerable": True,
          "summary": "รายการเข้า–ออกต้นน้ำของปาล์มน้ำมัน (ทะลายปาล์มสด FFB, น้ำมันปาล์มดิบ CPO, น้ำมันปาล์มกลั่น RBDPO) ต่อ 1,000 kg จากบทความเดียวกัน"},
+        {"id": "fame_lca_results", "answerable": True,
+         "summary": "ผลประเมินวัฏจักรชีวิตแบบ Well-to-Wheels ของ FAME, H-FAME, BHD เทียบกับดีเซลฟอสซิล ต่อการใช้เชื้อเพลิง 1,000 MJ ตามที่บทความวิจัยรายงาน เช่น ภาวะโลกร้อน (kg CO2 eq) ฝุ่นละเอียด ภาวะกรด และผลกระทบปลายทาง เป็นผลของผู้วิจัย ไม่ใช่ผลที่ทีมคำนวณเอง"},
         {"id": "company_reports", "answerable": False,
          "summary": "ตัวชี้วัดสิ่งแวดล้อมที่คัดจากรายงานความยั่งยืนปี 2024 ของ Thai Oil และ SPRC รวม 101 รายการ ระบบเก็บไว้ใช้อ้างอิงภายใน แชตนี้ไม่คัดตัวเลขมาเผยแพร่ต่อเพราะยังไม่ได้ยืนยันสิทธิ์ ให้เปิดอ่านจากรายงานต้นฉบับ",
          "source_urls": [urls.get("THAIOIL-REPORT-2024"), urls.get("SPRC-REPORT-2024")]},
@@ -307,12 +396,12 @@ def build_catalogue() -> list[dict]:
          "summary": "หลักฐานประกอบกรณีศึกษาเอทานอลของไทย เช่น ผลทดสอบรถ E10 ช่วงสตาร์ตเย็น และเอกสารโครงการบำบัดน้ำเสีย/ไบโอแก๊สของโรงงานเอทานอล ระบบเก็บไว้ใช้ภายในและยังไม่มีค่า CO₂e ครบทั้งวงจร แชตนี้ไม่คัดตัวเลขมาเผยแพร่ต่อ",
          "source_urls": [urls.get("UNFCCC-TSM-WASTEWATER-PDD-2009")]},
         {"id": "project_scope", "answerable": True,
-         "summary": "TamsoodBase เป็นฐานข้อมูลเชื้อเพลิงของไทยที่ตรวจย้อนกลับถึงแหล่งต้นทางได้ ยังไม่ใช่บัญชีรายการวัฏจักรชีวิต (LCI) ที่เชื่อมครบทั้งวงจร และยังไม่มีค่า CO₂e รวมทั้งวงจรของเชื้อเพลิงใด"},
+         "summary": "TamsoodBase เป็นฐานข้อมูลเชื้อเพลิงของไทยที่ตรวจย้อนกลับถึงแหล่งต้นทางได้ ทีมยังไม่ได้สร้างบัญชีรายการวัฏจักรชีวิต (LCI) ที่เชื่อมครบทั้งวงจรด้วยตัวเอง แต่มีผล CO₂e แบบ Well-to-Wheels ของไบโอดีเซลปาล์มตามที่บทความวิจัยรายงานให้ถามได้ (ชุด fame_lca_results) ส่วนเอทานอลและเชื้อเพลิงฟอสซิลรายผลิตภัณฑ์ยังไม่มีค่าทั้งวงจร"},
     ]
 
 
 def build() -> dict:
-    datasets = [build_dmf(), *build_eppo(), build_nso(), *build_inventories()]
+    datasets = [build_dmf(), *build_eppo(), build_nso(), *build_inventories(), build_lca_results()]
     pack = {
         "schema_version": 1,
         "scope": PACK_SCOPE,

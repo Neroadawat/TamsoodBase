@@ -14,7 +14,7 @@
       "DMF monthly petroleum production (catalog.dmf.go.th, Open Data Common label)",
       "EPPO refinery intake and petroleum product output (catalog.eppo.go.th, Open Data Common label)",
       "NSO Statistical Yearbook 2026 energy tables 13.5-13.10 (public download)",
-      "Permpool, Ghani & Gheewala (2020) Tables 1-4 and six summary notes (CC BY 4.0)"
+      "Permpool, Ghani & Gheewala (2020) Tables 1-6 (inventory and the study's own reported Well-to-Wheels results) and summary notes (CC BY 4.0)"
     ],
     "values_withheld_from_chat": [
       "Thai Oil and SPRC sustainability-report metrics: described and linked only, no values",
@@ -31,7 +31,7 @@
   "knowledge_pack": {
     "path": "docs/rag/knowledge-pack.json",
     "scope": "OWNER_RELEASED_GOV_OPEN_DATA_AND_CC_BY_ARTICLE",
-    "content_sha256": "2ebbc817588aae96fd5c3909285bae0e0064f3664573e9d579ce0ccf057cc089",
+    "content_sha256": "abee761b61c547dfa270d2d92191364bb57240062278d8a63edcb9ff402a700d",
     "contains_company_report_values": false
   },
   "legacy_corpus_note": "narrative_cards and statistical_facts below belong to the earlier local prototype. They are not served by the public chat and their rights decisions remain PENDING.",
