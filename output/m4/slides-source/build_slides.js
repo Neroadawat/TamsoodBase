@@ -73,7 +73,7 @@ function content(stepLabel, title, notes) {
     text(s, unit, { x: x + 0.2, y: 4.12, w: 1.9, h: 0.3, fontSize: 12, color: C.mute });
     text(s, what, { x: x + 0.2, y: 4.55, w: 1.95, h: 1.1, fontSize: 13, color: C.ink, lineSpacingMultiple: 1.1 });
   });
-  text(s, 'ครอบคลุมปี 1986–2026 · ทุกแหล่งเป็นข้อมูลของประเทศไทย', { x: 0.6, y: 6.1, w: 12, h: 0.4, fontSize: 15, color: C.pine, bold: true });
+  text(s, 'ครอบคลุมปี 1986–2026 · สถิติทุกชุดเป็นของประเทศไทย (ผล LCA ของ BHD ใช้ข้อมูลโรงงานในฟินแลนด์)', { x: 0.6, y: 6.1, w: 12, h: 0.4, fontSize: 15, color: C.pine, bold: true });
 }
 
 // 3 ─ Step 2: source registry

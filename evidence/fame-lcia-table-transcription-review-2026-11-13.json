@@ -1,0 +1,49 @@
+{
+  "checked_at_local": "2026-11-13T01:07:30+07:00",
+  "scope": "Source verification of newly added 44 LCIA result rows for FAME, H-FAME, BHD and fossil diesel",
+  "source": {
+    "doi": "10.3390/su12229415",
+    "local_pdf": "data/raw/mdpi-9415/pdf-v3/source.pdf",
+    "sha256": "977f8ff66eed3e3833adb055778d5f9fc42acc214db342a71c53062a2b978f60",
+    "pages": 16,
+    "visually_reviewed_pages": [
+      "8 of 16 (Tables 5 and 6)",
+      "9 of 16 (contribution analysis context)"
+    ],
+    "licence_reported": "CC BY 4.0"
+  },
+  "dataset": {
+    "id": "fame_lca_results",
+    "table_5_midpoint_categories": 8,
+    "table_6_endpoint_categories": 3,
+    "processes_per_category": 4,
+    "records_expected": 44,
+    "records_found": 44,
+    "numerical_transcription_differences": 0,
+    "printed_scientific_notation_match": "44/44",
+    "decimal_conversion_match": "44/44",
+    "unit_and_reported_result_label_match": "44/44",
+    "functional_unit": "1000 MJ fuel per source table caption/method context",
+    "result_origin": "researchers reported LCIA results, not TamsoodBase calculation",
+    "important_limits": [
+      "No source data collection year stated",
+      "ecoinvent 3 background; not Thai-only",
+      "BHD is Finnish data and H-FAME is pilot-scale",
+      "This does not establish TamsoodBase full-life-cycle CO2e for ethanol or other products"
+    ]
+  },
+  "pack_reproducibility": {
+    "command": "python -X utf8 scripts/build_rag_knowledge_pack.py --check",
+    "result": "passed",
+    "pack_sha256": "abee761b61c547dfa270d2d92191364bb57240062278d8a63edcb9ff402a700d",
+    "fame_lca_results_rows": 44,
+    "notes_total": 10
+  },
+  "not_performed": {
+    "gemini_or_external_provider_called": false,
+    "production_api_checked": false,
+    "production_changed": false,
+    "rights_reapproved": false,
+    "independent_team_recalculation": false
+  }
+}
