@@ -1,5 +1,6 @@
 // Contract tests for the public chat function. Gemini is always mocked here;
 // nothing in this file calls a real service.
+process.env.NODE_ENV = 'test';
 const assert = require('node:assert/strict');
 const { EventEmitter } = require('node:events');
 const handler = require('../api/rag/ask.js');
@@ -137,8 +138,8 @@ const PLAN = { mode: 'data', queries: [{ dataset: 'dmf_production', filters: [{ 
   result = await answerQuestion('เดือนไหนผลิตก๊าซมากสุดปี 2563', [], READY_ENV, mock.fetchImpl);
   assert.match(result.summary.text, /หมายเหตุ: ไม่นับค่า 3,500,000/);
 
-  // If the wording call fails, the data is still returned.
-  mock = scripted(geminiReply(PLAN), geminiReply({}, 500));
+  // If the wording call fails twice, the data is still returned.
+  mock = scripted(geminiReply(PLAN), geminiReply({}, 503), geminiReply({}, 503));
   result = await answerQuestion('ปี 2567 ผลิตน้ำมันดิบเท่าไหร่', [], READY_ENV, mock.fetchImpl);
   assert.equal(result.summary.kind, 'plain-listing');
 

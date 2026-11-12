@@ -22,6 +22,7 @@ const MAX_QUERIES = 3;
 const MAX_RESULT_ROWS = 40;
 const DEFAULT_RESULT_ROWS = 24;
 const CALL_DEADLINE_MS = 8000;
+const RETRY_DELAY_MS = process.env.NODE_ENV === 'test' ? 0 : 500;
 const DEFAULT_MODEL = 'gemini-3.5-flash-lite';
 const RATE_WINDOW_MS = 60_000;
 const RATE_LIMIT_PER_MINUTE = 10;
@@ -570,7 +571,10 @@ async function callGeminiWithRetry(...args) {
   try {
     return await callGemini(...args);
   } catch (error) {
+    // A timeout already used its share of the request budget; do not repeat it.
+    if (error?.name === 'AbortError') throw error;
     console.error('chat model call failed, retrying once:', String(error?.message || error).slice(0, 80));
+    await new Promise(resolve => setTimeout(resolve, RETRY_DELAY_MS));
     return callGemini(...args);
   }
 }
@@ -700,7 +704,7 @@ async function answerQuestion(question, history, env = process.env, fetchImpl = 
   };
   let fallbackReason = 'empty_reply';
   try {
-    const composed = await callGemini(ANSWER_INSTRUCTION, evidence, ANSWER_SCHEMA, 2000, env, fetchImpl);
+    const composed = await callGeminiWithRetry(ANSWER_INSTRUCTION, evidence, ANSWER_SCHEMA, 2000, env, fetchImpl);
     const text = typeof composed.answer === 'string' ? composed.answer.trim() : '';
     const stray = text ? ungroundedNumbers(text, evidence.results, evidence.notes, question) : [];
     const wrongUnits = text ? unitMismatches(text, results) : [];
