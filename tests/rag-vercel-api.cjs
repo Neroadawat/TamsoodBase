@@ -115,6 +115,7 @@ const PLAN = { mode: 'data', queries: [{ dataset: 'dmf_production', filters: [{ 
     'the wording step receives the computed rows');
 
   // A reply with an invented number is replaced by a plain listing of the data.
+  handler._internals.resetModelState();
   mock = scripted(geminiReply(PLAN), geminiReply({ answer: 'ประมาณ 81,000 บาร์เรลครับ' }));
   result = await answerQuestion('ปี 2567 ผลิตน้ำมันดิบเท่าไหร่', [], READY_ENV, mock.fetchImpl);
   assert.equal(result.summary.kind, 'plain-listing');
@@ -123,10 +124,12 @@ const PLAN = { mode: 'data', queries: [{ dataset: 'dmf_production', filters: [{ 
 
   // A right number with the wrong unit is rejected too.
   const famePlan = { mode: 'data', queries: [{ dataset: 'fame_inventory', filters: [{ column: 'process', values: ['FAME'] }], aggregate: 'list' }] };
+  handler._internals.resetModelState();
   mock = scripted(geminiReply(famePlan), geminiReply({ answer: 'ใช้ไฟฟ้า 0.52 กิโลกรัมครับ' }));
   result = await answerQuestion('FAME ใช้ไฟฟ้าเท่าไหร่', [], READY_ENV, mock.fetchImpl);
   assert.equal(result.summary.kind, 'plain-listing');
   assert.match(result.summary.fallback_reason, /unit_not_matching_data/);
+  handler._internals.resetModelState();
   mock = scripted(geminiReply(famePlan), geminiReply({ answer: 'ใช้ไฟฟ้า 0.52 กิโลวัตต์ชั่วโมง และ Methanol 3.47 kg ครับ' }));
   result = await answerQuestion('FAME ใช้ไฟฟ้าเท่าไหร่', [], READY_ENV, mock.fetchImpl);
   assert.equal(result.summary.kind, 'answer');
@@ -134,29 +137,39 @@ const PLAN = { mode: 'data', queries: [{ dataset: 'dmf_production', filters: [{ 
   // A value the engine left out is disclosed even if the model forgets to.
   const gasPlan = { mode: 'data', queries: [{ dataset: 'dmf_production', filters: [{ column: 'product', values: ['gas'] }],
     year_from: 2020, year_to: 2020, aggregate: 'max' }] };
+  handler._internals.resetModelState();
   mock = scripted(geminiReply(gasPlan), geminiReply({ answer: 'เดือนมีนาคมสูงสุดครับ' }));
   result = await answerQuestion('เดือนไหนผลิตก๊าซมากสุดปี 2563', [], READY_ENV, mock.fetchImpl);
   assert.match(result.summary.text, /หมายเหตุ: ไม่นับค่า 3,500,000/);
 
   // If the wording call fails twice, the data is still returned.
+  handler._internals.resetModelState();
   mock = scripted(geminiReply(PLAN), geminiReply({}, 503), geminiReply({}, 503));
   result = await answerQuestion('ปี 2567 ผลิตน้ำมันดิบเท่าไหร่', [], READY_ENV, mock.fetchImpl);
   assert.equal(result.summary.kind, 'plain-listing');
 
   // An overloaded model is retried on the fallback model.
+  handler._internals.resetModelState();
   mock = scripted(geminiReply({}, 503), geminiReply({ mode: 'chat', reply: 'สวัสดีครับ' }));
   result = await answerQuestion('สวัสดี', [], READY_ENV, mock.fetchImpl);
   assert.equal(result.summary.text, 'สวัสดีครับ');
   assert.match(mock.calls[0].url, /gemini-3\.5-flash-lite:generateContent/);
   assert.match(mock.calls[1].url, /gemini-3\.1-flash-lite:generateContent/);
+  // ...and the next question goes straight to the fallback while the cooldown lasts.
+  mock = scripted(geminiReply({ mode: 'chat', reply: 'สวัสดีครับ' }));
+  await answerQuestion('สวัสดี', [], READY_ENV, mock.fetchImpl);
+  assert.match(mock.calls[0].url, /gemini-3\.1-flash-lite:generateContent/);
+  handler._internals.resetModelState();
 
   // One malformed planner reply is retried instead of failing the question.
+  handler._internals.resetModelState();
   mock = scripted({ ok: true, status: 200, text: async () => 'not json' }, geminiReply({ mode: 'chat', reply: 'สวัสดีครับ' }));
   result = await answerQuestion('สวัสดี', [], READY_ENV, mock.fetchImpl);
   assert.equal(result.summary.text, 'สวัสดีครับ');
   assert.equal(mock.calls.length, 2);
 
   // Small talk and catalogue questions are answered in one call, without data.
+  handler._internals.resetModelState();
   mock = scripted(geminiReply({ mode: 'chat', reply: 'สวัสดีครับ ถามเรื่องการผลิตน้ำมันดิบ ก๊าซธรรมชาติ หรือไบโอดีเซลได้เลยครับ' }));
   result = await answerQuestion('สวัสดี', [], READY_ENV, mock.fetchImpl);
   assert.equal(result.summary.kind, 'chat');
@@ -164,11 +177,13 @@ const PLAN = { mode: 'data', queries: [{ dataset: 'dmf_production', filters: [{ 
   assert.equal(mock.calls.length, 1);
 
   // A chat reply may not smuggle in statistics.
+  handler._internals.resetModelState();
   mock = scripted(geminiReply({ mode: 'chat', reply: 'ไทยผลิตน้ำมันดิบ 987,654 บาร์เรลครับ' }));
   result = await answerQuestion('ผลิตเท่าไหร่', [], READY_ENV, mock.fetchImpl);
   assert.doesNotMatch(result.summary.text, /987,654/);
 
   // Notes: explanatory questions use the CC BY summaries with attribution.
+  handler._internals.resetModelState();
   mock = scripted(geminiReply({ mode: 'notes', note_ids: ['fame-functional-unit', 'no-such-note'] }),
     geminiReply({ answer: 'หน่วยหน้าที่คือการใช้เชื้อเพลิง 1,000 MJ ครับ' }));
   result = await answerQuestion('หน่วยหน้าที่ของ FAME คืออะไร', [], READY_ENV, mock.fetchImpl);
@@ -177,11 +192,13 @@ const PLAN = { mode: 'data', queries: [{ dataset: 'dmf_production', filters: [{ 
   assert.equal(result.hits[0].licence, 'CC BY 4.0');
 
   // Conversation history reaches the planner so follow-ups make sense.
+  handler._internals.resetModelState();
   mock = scripted(geminiReply({ mode: 'chat', reply: 'ได้ครับ' }));
   await answerQuestion('แล้วปีก่อนล่ะ', [{ question: 'ปี 2567 ผลิตเท่าไหร่', answer: 'เฉลี่ย 80,575.03 บาร์เรล' }], READY_ENV, mock.fetchImpl);
   assert.match(mock.calls[0].body.contents[0].parts[0].text, /ปี 2567 ผลิตเท่าไหร่/);
 
   // The structured-output field is retried in another shape on HTTP 400.
+  handler._internals.resetModelState();
   mock = scripted(geminiReply({}, 400), geminiReply({ answer: 'ok' }));
   const fallback = await callGemini('instruction', {}, { type: 'object' }, 50, READY_ENV, mock.fetchImpl);
   assert.equal(fallback.answer, 'ok');

@@ -34,6 +34,8 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 const rateBuckets = new Map();
 let rateLastSweepAt = 0;
 let workingShape = 0;
+let primaryDownUntil = 0;
+const PRIMARY_COOLDOWN_MS = 120_000;
 
 const DATASETS = new Map(pack.datasets.map(dataset => [dataset.id, dataset]));
 const NOTES = new Map(pack.notes.map(note => [note.id, note]));
@@ -569,18 +571,23 @@ const REQUEST_SHAPES = [
 
 // The model occasionally returns malformed JSON or a transient error. One
 // retry clears almost all of these; the error name is logged, never the key.
-async function callGeminiWithRetry(...args) {
+async function callGeminiWithRetry(instruction, input, schema, maxOutputTokens, env = process.env, fetchImpl = fetch, retryAfterTimeout = false) {
+  const fallbackEnv = { ...env, TAMSOOD_GEMINI_MODEL: env.TAMSOOD_GEMINI_FALLBACK_MODEL || FALLBACK_MODEL };
+  // While the first model is overloaded or timing out, go straight to the
+  // fallback for a couple of minutes instead of making every visitor wait.
+  const primaryDown = Date.now() < primaryDownUntil;
   try {
-    return await callGemini(...args);
+    return await callGemini(instruction, input, schema, maxOutputTokens, primaryDown ? fallbackEnv : env, fetchImpl);
   } catch (error) {
-    // A timeout already used its share of the request budget; do not repeat it.
-    if (error?.name === 'AbortError') throw error;
+    const timedOut = error?.name === 'AbortError';
+    const overloaded = timedOut || /model_unavailable_(429|5\d\d)/.test(String(error?.message));
+    if (overloaded && !primaryDown) primaryDownUntil = Date.now() + PRIMARY_COOLDOWN_MS;
+    // A timeout already used a large share of the request budget; only the
+    // first (planning) call may repeat after one.
+    if (timedOut && !retryAfterTimeout) throw error;
     console.error('chat model call failed, retrying once:', String(error?.message || error).slice(0, 80));
     await new Promise(resolve => setTimeout(resolve, RETRY_DELAY_MS));
-    const [instruction, input, schema, maxOutputTokens, env = process.env, fetchImpl = fetch] = args;
-    const overloaded = /model_unavailable_(429|5\d\d)/.test(String(error?.message));
-    const retryEnv = overloaded ? { ...env, TAMSOOD_GEMINI_MODEL: env.TAMSOOD_GEMINI_FALLBACK_MODEL || FALLBACK_MODEL } : env;
-    return callGemini(instruction, input, schema, maxOutputTokens, retryEnv, fetchImpl);
+    return callGemini(instruction, input, schema, maxOutputTokens, overloaded && !primaryDown ? fallbackEnv : env, fetchImpl);
   }
 }
 
@@ -688,7 +695,7 @@ function validPayload(payload) {
 
 async function answerQuestion(question, history, env = process.env, fetchImpl = fetch) {
   const today = new Date().toISOString().slice(0, 10);
-  const plan = await callGeminiWithRetry(PLANNER_INSTRUCTION, { today, question, history }, PLAN_SCHEMA, 1200, env, fetchImpl);
+  const plan = await callGeminiWithRetry(PLANNER_INSTRUCTION, { today, question, history }, PLAN_SCHEMA, 1200, env, fetchImpl, true);
   const results = (Array.isArray(plan.queries) ? plan.queries : []).slice(0, MAX_QUERIES).map(runQuery).filter(Boolean);
   const notes = (Array.isArray(plan.note_ids) ? plan.note_ids : []).map(id => NOTES.get(id)).filter(Boolean).slice(0, 4);
 
@@ -775,6 +782,6 @@ async function handler(req, res) {
 module.exports = handler;
 module.exports.config = { api: { bodyParser: false } };
 module.exports._internals = {
-  isReleaseReady, rateAllowed, runQuery, numericTokens, isGrounded, plainListing, callGemini,
+  isReleaseReady, rateAllowed, resetModelState: () => { primaryDownUntil = 0; workingShape = 0; }, runQuery, numericTokens, isGrounded, plainListing, callGemini,
   answerQuestion, validPayload, sourceCards, ungroundedNumbers, catalogueCards, unitMismatches, withDisclosures, PLANNER_INSTRUCTION, ANSWER_INSTRUCTION, rateBuckets,
 };
