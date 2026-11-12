@@ -342,9 +342,13 @@ function allowedNumbers(...sources) {
   return allowed;
 }
 
-function isGrounded(answer, ...sources) {
+function ungroundedNumbers(answer, ...sources) {
   const allowed = allowedNumbers(...sources);
-  return numericTokens(answer).every(token => allowed.has(token));
+  return [...new Set(numericTokens(answer).filter(token => !allowed.has(token)))];
+}
+
+function isGrounded(answer, ...sources) {
+  return ungroundedNumbers(answer, ...sources).length === 0;
 }
 
 function formatNumber(value) {
@@ -415,9 +419,10 @@ const PLANNER_INSTRUCTION = `${PERSONA}
 เลือก mode:
 - "data": คำถามต้องใช้ตัวเลขหรือรายการจากชุดข้อมูล ให้ใส่ queries (ไม่เกิน ${MAX_QUERIES} รายการ) เว้น reply ว่าง
 - "notes": คำถามเชิงอธิบายที่ตรงกับบันทึกความรู้ ให้ใส่ note_ids ที่เกี่ยวข้อง (ใส่ queries เพิ่มได้ถ้าต้องใช้ตัวเลขประกอบ)
-- "chat": ทักทาย ขอบคุณ ถามว่าคุณทำอะไรได้หรือมีข้อมูลอะไรบ้าง ถามเรื่องที่ระบบไม่มีข้อมูล หรือคำถามกว้างเกินจนต้องถามกลับ ให้เขียนคำตอบจริงลงใน reply ได้เลย โดยใช้เฉพาะข้อมูลในรายการชุดข้อมูลด้านล่าง ห้ามใส่ตัวเลขสถิติใน reply และถ้าระบบไม่มีข้อมูลเรื่องนั้นให้บอกตรง ๆ พร้อมแนะนำเรื่องใกล้เคียงที่ถามได้
+- "chat": ทักทาย ขอบคุณ ถามว่าคุณทำอะไรได้หรือมีข้อมูลอะไรบ้าง ถามเรื่องที่ระบบไม่มีข้อมูล หรือคำถามกว้างเกินจนต้องถามกลับ ให้เขียนคำตอบจริงลงใน reply ได้เลย โดยใช้เฉพาะข้อมูลในรายการชุดข้อมูลด้านล่าง ห้ามใส่ตัวเลขสถิติใน reply และถ้าระบบไม่มีข้อมูลเรื่องนั้นให้บอกตรง ๆ พร้อมแนะนำเรื่องใกล้เคียงที่ถามได้ ถ้าคำถามเกี่ยวกับชุดที่แชตไม่คัดตัวเลขมาตอบ (เช่น รายงานบริษัท) ให้ใส่ id ของชุดนั้นใน catalogue_ids เพื่อให้หน้าเว็บแสดงลิงก์เอกสารต้นฉบับ และบอกผู้ใช้ว่าเปิดอ่านจากลิงก์ด้านล่างได้
 
 กติกาการเขียน query:
+- ช่อง today คือวันที่ปัจจุบัน (ค.ศ.) ใช้ตีความคำว่า ปีนี้ ปีที่แล้ว เดือนที่แล้ว
 - ปีในข้อมูลเป็น ค.ศ. ถ้าผู้ใช้พิมพ์ปี พ.ศ. ให้ลบ 543 ก่อน ถ้าผู้ใช้ไม่ระบุปีและถามค่าล่าสุด ให้ใช้ปีล่าสุดที่ข้อมูลครบทั้งปี
 - ใช้ชื่อคอลัมน์และค่าตามที่ระบุด้านล่างเท่านั้น ถ้าผู้ใช้สะกดต่างไปให้เลือกค่าที่ตรงที่สุด
 - ระบบจะรวมทุกแถวที่อยู่ในเดือนเดียวกันให้ก่อนเสมอ (เช่น รวมทุกแหล่งผลิตเป็นยอดประเทศของเดือนนั้น) แล้วจึงใช้ aggregate กับค่ารายเดือน ดังนั้นถามยอดทั้งประเทศไม่ต้องใส่ filter แหล่งผลิต
@@ -444,6 +449,7 @@ const ANSWER_INSTRUCTION = `${PERSONA}
 - อ่านช่อง what ของแต่ละ result ให้ดีว่าตัวเลขเป็นผลรวม ค่าเฉลี่ยรายเดือน หรือค่ารายเดือนสูงสุด/ต่ำสุด แล้วเรียกให้ถูก อย่าเรียกค่าเฉลี่ยรายเดือนว่ายอดรวมทั้งปี ถ้ามี at_year/at_month แปลว่าค่านั้นเกิดในเดือนและปีนั้น
 - ใส่ข้อควรรู้จาก caveats หรือ notes ของ results เฉพาะข้อที่มีผลต่อการอ่านคำตอบนี้ สั้น ๆ หนึ่งถึงสองประโยคท้ายคำตอบ
 - ถ้า results ว่างหรือไม่พอตอบ ให้บอกตรง ๆ ว่าไม่พบ และแนะนำว่าถามแบบไหนได้ อย่าเดา
+- ชื่อรายการที่เป็นภาษาอังกฤษในข้อมูล (เช่น Methanol, Steam) ให้คงชื่อเดิมไว้และใส่คำแปลไทยสั้น ๆ ในวงเล็บได้ เรียกชื่อหน่วยงานตามที่ปรากฏในข้อมูล
 - ไม่ต้องใส่ลิงก์หรือชื่อไฟล์ หน้าเว็บจะแสดงแหล่งที่มาให้เอง`;
 
 const PLAN_SCHEMA = {
@@ -451,6 +457,7 @@ const PLAN_SCHEMA = {
   properties: {
     mode: { type: 'string', enum: ['data', 'notes', 'chat'] },
     reply: { type: 'string' },
+    catalogue_ids: { type: 'array', items: { type: 'string' } },
     note_ids: { type: 'array', items: { type: 'string' } },
     queries: {
       type: 'array',
@@ -546,7 +553,8 @@ function sourceCards(results, notes) {
   for (const result of results) {
     if (!result.rows.length || cards.some(card => card.id === result.dataset)) continue;
     const dataset = DATASETS.get(result.dataset);
-    const products = [...new Set(result.rows.map(row => row.product).filter(Boolean))];
+    const labelToKey = Object.fromEntries(Object.entries(dataset.product_labels || {}).map(([key, label]) => [label, key]));
+    const products = [...new Set(result.rows.map(row => labelToKey[row.product] || row.product).filter(Boolean))];
     const tables = [...new Set(result.rows.map(row => row.table).filter(Boolean))];
     const urls = dataset.source_urls.all ? [dataset.source_urls.all]
       : [...products, ...tables].map(key => dataset.source_urls[key]).filter(Boolean);
@@ -564,8 +572,23 @@ function sourceCards(results, notes) {
   return cards;
 }
 
-function reply(text, kind, hits = [], tables = []) {
-  return { summary: { text, kind, source_ids: hits.map(hit => hit.id) }, hits, tables };
+function reply(text, kind, hits = [], tables = [], fallbackReason) {
+  return {
+    summary: { text, kind, source_ids: hits.map(hit => hit.id), ...(fallbackReason ? { fallback_reason: fallbackReason } : {}) },
+    hits, tables,
+  };
+}
+
+// Layers the chat may describe but not quote: link the original documents.
+function catalogueCards(ids) {
+  const cards = [];
+  for (const id of Array.isArray(ids) ? ids.slice(0, 3) : []) {
+    const item = pack.catalogue.find(entry => entry.id === id && entry.answerable === false);
+    (item?.source_urls || []).filter(Boolean).forEach((url, index) => cards.push({
+      id: `${id}-${index + 1}`, title: 'เอกสารต้นฉบับ (แชตไม่คัดตัวเลขจากชุดนี้)', source_url: url, locator: item.summary.slice(0, 120),
+    }));
+  }
+  return cards;
 }
 
 function validPayload(payload) {
@@ -585,13 +608,14 @@ function validPayload(payload) {
 }
 
 async function answerQuestion(question, history, env = process.env, fetchImpl = fetch) {
-  const plan = await callGemini(PLANNER_INSTRUCTION, { question, history }, PLAN_SCHEMA, 900, env, fetchImpl);
+  const today = new Date().toISOString().slice(0, 10);
+  const plan = await callGemini(PLANNER_INSTRUCTION, { today, question, history }, PLAN_SCHEMA, 900, env, fetchImpl);
   const results = (Array.isArray(plan.queries) ? plan.queries : []).slice(0, MAX_QUERIES).map(runQuery).filter(Boolean);
   const notes = (Array.isArray(plan.note_ids) ? plan.note_ids : []).map(id => NOTES.get(id)).filter(Boolean).slice(0, 4);
 
   if (!results.length && !notes.length) {
     const text = typeof plan.reply === 'string' ? plan.reply.trim().slice(0, 2500) : '';
-    if (text && isGrounded(text, CATALOGUE_TEXT, question)) return reply(text, 'chat');
+    if (text && isGrounded(text, CATALOGUE_TEXT, question)) return reply(text, 'chat', catalogueCards(plan.catalogue_ids));
     return reply('ผมช่วยตอบเรื่องข้อมูลเชื้อเพลิงของไทยในระบบ TamsoodBase ได้ครับ เช่น ปริมาณการผลิตน้ำมันดิบและก๊าซธรรมชาติรายแหล่ง การผลิตน้ำมันสำเร็จรูป สถิติพลังงานของประเทศ และข้อมูลไบโอดีเซล FAME ลองถามเจาะจงเป็นเรื่อง ปี หรือแหล่งผลิตได้เลยครับ', 'chat');
   }
 
@@ -604,16 +628,18 @@ async function answerQuestion(question, history, env = process.env, fetchImpl = 
       ({ dataset, title, what, rows, rows_found, truncated, caveats, notes: remarks })),
     notes: notes.map(({ id, title, text }) => ({ id, title, text })),
   };
+  let fallbackReason = 'empty_reply';
   try {
-    const composed = await callGemini(ANSWER_INSTRUCTION, evidence, ANSWER_SCHEMA, 1400, env, fetchImpl);
+    const composed = await callGemini(ANSWER_INSTRUCTION, evidence, ANSWER_SCHEMA, 2000, env, fetchImpl);
     const text = typeof composed.answer === 'string' ? composed.answer.trim() : '';
-    if (text && text.length <= 3500 && isGrounded(text, evidence.results, evidence.notes, question)) {
-      return reply(text, 'answer', hits, tables);
-    }
+    const stray = text ? ungroundedNumbers(text, evidence.results, evidence.notes, question) : [];
+    if (text && text.length <= 3500 && !stray.length) return reply(text, 'answer', hits, tables);
+    if (text) fallbackReason = stray.length ? `numbers_not_in_data: ${stray.slice(0, 6).join(', ')}` : 'reply_too_long';
   } catch (error) {
     if (!results.some(result => result.rows.length)) throw error;
+    fallbackReason = `model_error: ${String(error?.message || error).slice(0, 60)}`;
   }
-  if (results.some(result => result.rows.length)) return reply(plainListing(results), 'plain-listing', hits, tables);
+  if (results.some(result => result.rows.length)) return reply(plainListing(results), 'plain-listing', hits, tables, fallbackReason);
   return reply(results[0]?.notes[0] || 'ยังไม่พบข้อมูลที่ตรงกับคำถามนี้ครับ ลองระบุชื่อเชื้อเพลิง แหล่งผลิต หรือปีที่สนใจเพิ่มอีกนิด', 'no-data', hits, tables);
 }
 
@@ -664,5 +690,5 @@ module.exports = handler;
 module.exports.config = { api: { bodyParser: false } };
 module.exports._internals = {
   isReleaseReady, rateAllowed, runQuery, numericTokens, isGrounded, plainListing, callGemini,
-  answerQuestion, validPayload, sourceCards, PLANNER_INSTRUCTION, ANSWER_INSTRUCTION, rateBuckets,
+  answerQuestion, validPayload, sourceCards, ungroundedNumbers, catalogueCards, PLANNER_INSTRUCTION, ANSWER_INSTRUCTION, rateBuckets,
 };
