@@ -200,3 +200,9 @@ class ReportedResultsBlockTests(unittest.TestCase):
         self.assertIn('ไม่ใช่ผลที่ TamsoodBase คำนวณเอง',block)
         self.assertIn('https://doi.org/10.3390/su12229415',block)
         self.assertIn('ยังคำนวณ CO₂e รวมไม่ได้',page)
+
+
+class ReadabilityLayerTests(unittest.TestCase):
+    def test_generated_readability_css_is_current(self):
+        result=subprocess.run([sys.executable,'-X','utf8',str(ROOT/'scripts/build_readability_css.py'),'--check'],capture_output=True,text=True,encoding='utf-8')
+        self.assertEqual(result.returncode,0,result.stderr)
