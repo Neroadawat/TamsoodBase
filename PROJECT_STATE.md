@@ -1054,3 +1054,23 @@ Frontend build และ Vercel allowlist package ผ่าน: public snapshot 
 - ทดสอบสดกับ Gemini จริงบน Production รอบสุดท้าย 8 คำถาม ตอบได้ 8/8: 5 ข้อเป็นคำตอบเรียบเรียง, 3 ข้อเป็นรายการข้อมูลตรง ๆ เพราะขั้นเรียบเรียงหมดเวลา ตัวเลขตรงกับผลคำนวณในเครื่องทุกข้อที่ตรวจ เวลาตอบ 3–17 วินาที
 - ปัญหาที่พบจากการทดสอบสดและแก้แล้ว: (1) คำตอบจับคู่ตัวเลขกับหน่วยผิด (ไฟฟ้า 0.52 เป็นกิโลกรัม) → เพิ่มตัวตรวจหน่วย; (2) คำตอบไม่บอกว่าตัดค่าผิดปกติออก → ระบบเติมหมายเหตุเองเสมอ; (3) `gemini-3.5-flash-lite` ตอบ 503/ช้าเป็นช่วง → retry หนึ่งครั้งและสลับไป `gemini-3.1-flash-lite` 2 นาทีเมื่อรุ่นหลักมีปัญหา (รายชื่อรุ่นตรวจจากหน้า models ทางการ 12 พ.ย.)
 - ข้อจำกัดที่ยังอยู่: ความเร็วขึ้นกับผู้ให้บริการ บางช่วงช้าเกิน 10 วินาที; ถ้าขั้นวางแผนล้มเหลวสองครั้งผู้ใช้จะเห็นข้อความให้ลองใหม่; ตัวตรวจหน่วยเป็นแบบจับคำ ครอบคลุมเฉพาะหน่วยที่อยู่ในชุดข้อมูล; ยังไม่มี UAT กับผู้ใช้จริง และยังไม่ได้ตั้ง WAF rate limit/spend cap
+
+## ตรวจ gate หลัง commit แชต — 12 พฤศจิกายน 2569
+
+- ที่ HEAD `ee78f90e` ตรวจ manifest พบ required release gates 9 ข้อเป็น false และสิทธิทุก record เป็น `PENDING`; แต่การจำลอง runtime ด้วย environment ปลอมในเครื่องคืน `isReleaseReady=true` ได้. ไม่ได้เรียก Gemini หรือ production API. สถานะ `Production launch` ที่บันทึกใน state ยังไม่ได้ตรวจยืนยันสด.
+- ตรวจ `python -X utf8 scripts/build_rag_knowledge_pack.py --check` ผ่าน: 6 ชุดข้อมูล, 41,862 แถวรวม, 6 notes, SHA-256 `2ebbc817588aae96fd5c3909285bae0e0064f3664573e9d579ce0ccf057cc089`. ไม่สร้าง frontend public build.
+- บันทึก `evidence/rag-release-gate-head-recheck-2026-11-12.json`; pointer ใน `docs/tasks.json` ระบุว่าหลักฐาน local fix ก่อนหน้าไม่ตรงกับ HEAD ปัจจุบัน. ตามคำสั่งรอบนี้ไม่แตะ production, ไม่ push/deploy, และ RAG Production ต้องถือ HOLD จนกว่าจะปิดข้อขัดแย้งและ gates.
+
+## ทบทวน route expansion ของ proxy — 12 พฤศจิกายน 2569
+
+- ตรวจ diff ใน working tree พบเพิ่ม `summary`, `source-crosswalk`, `records`, `record`, `export`, `nso`, `nso-comparison`, `eppo`, `product-inventory` ในชุด route สาธารณะ; ยังคงบล็อก `reports`, `report-pilot`, `reference.csv`, `login`.
+- `node tests/vercel-proxy-behavior.cjs` ผ่านกับ upstream จำลองเท่านั้น. fixture ของ route ที่เปิดใหม่มี `rows: []` และตรวจเพียง status/upstream call จึงยังไม่ยืนยันการกรองสิทธิหรือความปลอดภัยของข้อมูลจริงในแต่ละ route.
+- ตามคำสั่ง automation ปัจจุบันไม่เปิด public route, ไม่ push/deploy และไม่เรียก Production API; ปล่อย diff ที่ยังไม่ commit ไว้ตามเดิมและกำหนด HOLD จนกว่าจะตรวจ source/record rights ราย route และทบทวนนโยบายร่วมกัน. Evidence `evidence/proxy-public-route-expansion-review-2026-11-12.json`.
+
+## ผล Well-to-Wheels ที่บทความรายงาน เข้าชุดความรู้ของแชต — 13 พฤศจิกายน 2569
+
+- ค้นข้อมูลปิดช่องว่าง LCI อีกรอบตามคำสั่งเจ้าของโครงการ ข้อสรุปเดิมยังคงอยู่: ทีมสร้าง LCI ครบวงจรของตัวเองไม่ได้ เพราะบทความ Permpool et al. (2020) ไม่ได้พิมพ์ระยะขนส่ง ค่าไอเสีย หรือระบุว่าตาราง 1–4 เป็นค่าก่อนหรือหลัง allocation (ตรวจจาก PDF ที่เก็บไว้ `data/raw/mdpi-9415/pdf-v3/source.pdf` ด้วย pypdf)
+- สิ่งใหม่: บทความเดียวกันรายงานผล LCIA แบบ Well to Wheels ต่อ 1,000 MJ ไว้ในตาราง 5 (midpoint 8 หมวด) และตาราง 6 (endpoint 3 หมวด) ของ FAME, H-FAME, BHD และดีเซลฟอสซิล รวม 44 ค่า เช่น Global warming 10.7 / 12.3 / 39.6 / 219 kg CO2 eq นำเข้าเป็นชุด `fame_lca_results` ใน `docs/rag/knowledge-pack.json` โดยอ่านจาก PDF ด้วยโค้ดและเก็บรูปที่พิมพ์ (`amount_as_printed`) คู่กับค่าทศนิยม ติดป้ายชัดว่าเป็นผลของผู้วิจัย ไม่ใช่ผลคำนวณของ TamsoodBase
+- เพิ่มบันทึก 4 ข้อจากเนื้อความบทความ: ขอบเขตและวิธี (ReCiPe 2016, SimaPro 8.5, ecoinvent 3 cut-off), สัดส่วน economic allocation (CPO 92/เมล็ดใน 6/กะลา 2; FAME 70/กลีเซอรีน 30; BHD 97/2/1), ที่มาข้อมูล (เกษตรกร >800 ราย, โรงสกัด 9, โรงกลั่น 4, โรง FAME 5), และขั้นที่ส่งผลมากที่สุด (เป็นข้อความเท่านั้น สัดส่วนอยู่ในกราฟ)
+- ทดสอบสดบน Production 3 คำถาม ตอบได้และอ้าง `fame_lca_results` พร้อมบอกว่าเป็นผลของผู้วิจัย หน้าเว็บ B100 ยังแสดง "ยังคำนวณ CO₂e รวมไม่ได้" ซึ่งยังถูกต้องสำหรับโมเดลของทีมเอง ยังไม่ได้เพิ่มผลที่บทความรายงานลงหน้าเว็บ
+- ข้อจำกัด: ผลใช้ ecoinvent เป็น background จึงไม่ใช่ Thai-only; BHD ใช้ข้อมูลฟินแลนด์; H-FAME เป็นโรงงานต้นแบบ; ไม่มีปีเก็บข้อมูล; เอทานอลและเชื้อเพลิงฟอสซิลรายผลิตภัณฑ์ยังไม่มีผลทั้งวงจร
