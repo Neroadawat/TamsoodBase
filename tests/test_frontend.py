@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 
@@ -188,3 +189,14 @@ class FrontendTests(unittest.TestCase):
             ignored=subprocess.run([git,'-C',str(root),'-c','core.excludesFile='+str(ROOT/'.vercelignore'),
                 'check-ignore','--no-index',*paths],capture_output=True,text=True,check=True).stdout.splitlines()
             self.assertEqual(set(ignored),set(paths)-{'vercel.json','web/index.html','web/config.js','web/upstream-inventory.json','scripts/build_frontend.mjs','api/[route].js','api/rag/ask.js'})
+
+
+class ReportedResultsBlockTests(unittest.TestCase):
+    def test_b100_reported_results_match_the_knowledge_pack(self):
+        result=subprocess.run([sys.executable,'-X','utf8',str(ROOT/'scripts/build_reported_results_html.py'),'--check'],capture_output=True,text=True,encoding='utf-8')
+        self.assertEqual(result.returncode,0,result.stderr)
+        page=(ROOT/'web/index.html').read_text(encoding='utf-8')
+        block=page[page.index('<!-- reported-results:start -->'):page.index('<!-- reported-results:end -->')]
+        self.assertIn('ไม่ใช่ผลที่ TamsoodBase คำนวณเอง',block)
+        self.assertIn('https://doi.org/10.3390/su12229415',block)
+        self.assertIn('ยังคำนวณ CO₂e รวมไม่ได้',page)
