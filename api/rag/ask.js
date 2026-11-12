@@ -347,6 +347,63 @@ function ungroundedNumbers(answer, ...sources) {
   return [...new Set(numericTokens(answer).filter(token => !allowed.has(token)))];
 }
 
+// A right number with the wrong unit is still a wrong answer. For every figure
+// that comes from a result row, the row's unit must follow it in the reply.
+const UNIT_ALIASES = {
+  kg: ['kg', 'กิโลกรัม', 'กก.'],
+  g: ['g', 'กรัม'],
+  mg: ['mg', 'มิลลิกรัม'],
+  kWh: ['kwh', 'กิโลวัตต์ชั่วโมง', 'กิโลวัตต์-ชั่วโมง', 'หน่วยไฟฟ้า'],
+  MJ: ['mj', 'เมกะจูล'],
+  m3: ['m3', 'm³', 'ลูกบาศก์เมตร', 'ลบ.ม'],
+  'บาร์เรล': ['บาร์เรล', 'bbl'],
+  'ล้านลูกบาศก์ฟุต': ['ล้านลูกบาศก์ฟุต', 'ล้าน ลบ.ฟ', 'mmscf'],
+  'BBL/DAY': ['bbl/day', 'บาร์เรลต่อวัน', 'บาร์เรล/วัน'],
+  'Million Litres': ['ล้านลิตร', 'million lit'],
+  'Million litre': ['ล้านลิตร', 'million lit'],
+  'Million Baht': ['ล้านบาท', 'million baht'],
+  'Thousand litre': ['พันลิตร', 'thousand lit'],
+  'Thousand kilogram': ['พันกิโลกรัม', 'thousand kilogram', 'พัน กก'],
+  '10^3 ton of oil equivalent': ['พันตันเทียบเท่าน้ำมันดิบ', 'ktoe', '10^3 ton', 'พันตัน'],
+  percent: ['%', 'ร้อยละ', 'เปอร์เซ็นต์', 'percent'],
+};
+
+function unitMismatches(answer, results) {
+  const unitsByValue = new Map();
+  for (const result of results) {
+    for (const row of result.rows || []) {
+      const token = numericTokens(String(row.value))[0];
+      if (!token || !UNIT_ALIASES[row.unit]) continue;
+      if (!unitsByValue.has(token)) unitsByValue.set(token, new Set());
+      unitsByValue.get(token).add(row.unit);
+    }
+  }
+  const text = String(answer).replace(/[๐-๙]/g, digit => String('๐๑๒๓๔๕๖๗๘๙'.indexOf(digit)));
+  const wrong = [];
+  for (const match of text.matchAll(/(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?/g)) {
+    const token = numericTokens(match[0])[0];
+    const units = unitsByValue.get(token);
+    if (!units) continue;
+    const after = text.slice(match.index + match[0].length, match.index + match[0].length + 36).toLowerCase();
+    const ok = [...units].some(unit => UNIT_ALIASES[unit].some(alias => after.includes(alias.toLowerCase())));
+    if (!ok) wrong.push(`${match[0]} (${[...units].join('/')})`);
+  }
+  return wrong;
+}
+
+// Values the engine left out or flagged must always reach the reader.
+function withDisclosures(text, results) {
+  const extra = [];
+  for (const result of results) {
+    for (const note of result.notes || []) {
+      if (!/^(ไม่นับค่า|มีค่า)/.test(note)) continue;
+      const figure = (note.match(/[\d,]+(?:\.\d+)?/) || [''])[0];
+      if (figure && !text.includes(figure)) extra.push(note);
+    }
+  }
+  return extra.length ? `${text}\n\nหมายเหตุ: ${extra.join(' ')}` : text;
+}
+
 function isGrounded(answer, ...sources) {
   return ungroundedNumbers(answer, ...sources).length === 0;
 }
@@ -442,7 +499,9 @@ ${describeSchemaForPlanner()}`;
 const ANSWER_INSTRUCTION = `${PERSONA}
 
 คุณจะได้รับคำถาม ประวัติสนทนา และผลค้นจากฐานข้อมูล (results) กับบันทึกความรู้ (notes) ให้เขียนคำตอบจากข้อมูลนั้นเท่านั้น
-- ตัวเลขทุกตัวในคำตอบต้องคัดมาจาก results หรือ notes ตรงตัว เขียนเต็มจำนวนพร้อมหน่วย ใส่จุลภาคคั่นหลักพันได้ ห้ามปัดเศษ ห้ามย่อเป็น "ล้าน" หรือ "พัน" เอง ห้ามคำนวณผลต่าง ร้อยละ หรืออัตราส่วนเอง ถ้าผู้ใช้อยากเทียบให้วางตัวเลขสองค่าคู่กันแล้วบอกว่าค่าไหนมากกว่า
+- ตัวเลขทุกตัวในคำตอบต้องคัดมาจาก results หรือ notes ตรงตัว เขียนเต็มจำนวนแล้วตามด้วยหน่วยของแถวนั้นทันที (ช่อง unit ของแถวเดียวกัน อย่าใช้หน่วยของแถวอื่น แปลหน่วยเป็นไทยได้ เช่น kg = กิโลกรัม, kWh = กิโลวัตต์ชั่วโมง, m3 = ลูกบาศก์เมตร)
+- ถ้า truncated เป็น true แปลว่ามีรายการมากกว่าที่แสดง ให้บอกสั้น ๆ ว่ายังมีรายการอื่นอีก ไม่ต้องอธิบายเรื่องการตัดข้อมูล
+- ถ้า notes ของ result บอกว่าไม่นับค่าใด ต้องบอกผู้ใช้ด้วยหนึ่งประโยค ใส่จุลภาคคั่นหลักพันได้ ห้ามปัดเศษ ห้ามย่อเป็น "ล้าน" หรือ "พัน" เอง ห้ามคำนวณผลต่าง ร้อยละ หรืออัตราส่วนเอง ถ้าผู้ใช้อยากเทียบให้วางตัวเลขสองค่าคู่กันแล้วบอกว่าค่าไหนมากกว่า
 - บอกปีเป็น พ.ศ. ตามด้วย ค.ศ. ในวงเล็บได้ (พ.ศ. = ค.ศ. + 543)
 - ถ้า results มีหลายแถว สรุปประเด็นสำคัญก่อน แล้วไล่รายการเป็นบรรทัดสั้น ๆ ไม่ต้องยกมาทุกแถวถ้ายาวเกิน 8 แถว ให้เลือกแถวที่ตอบคำถามและบอกว่ามีเพิ่มเติม
 - ถ้ามี months_with_data น้อยกว่า 12 ในปีใด ให้บอกว่าปีนั้นข้อมูลยังไม่ครบปี
@@ -633,13 +692,19 @@ async function answerQuestion(question, history, env = process.env, fetchImpl = 
     const composed = await callGemini(ANSWER_INSTRUCTION, evidence, ANSWER_SCHEMA, 2000, env, fetchImpl);
     const text = typeof composed.answer === 'string' ? composed.answer.trim() : '';
     const stray = text ? ungroundedNumbers(text, evidence.results, evidence.notes, question) : [];
-    if (text && text.length <= 3500 && !stray.length) return reply(text, 'answer', hits, tables);
-    if (text) fallbackReason = stray.length ? `numbers_not_in_data: ${stray.slice(0, 6).join(', ')}` : 'reply_too_long';
+    const wrongUnits = text ? unitMismatches(text, results) : [];
+    if (text && text.length <= 3500 && !stray.length && !wrongUnits.length) {
+      return reply(withDisclosures(text, results), 'answer', hits, tables);
+    }
+    if (text) fallbackReason = stray.length ? `numbers_not_in_data: ${stray.slice(0, 6).join(', ')}`
+      : wrongUnits.length ? `unit_not_matching_data: ${wrongUnits.slice(0, 4).join(', ')}` : 'reply_too_long';
   } catch (error) {
     if (!results.some(result => result.rows.length)) throw error;
     fallbackReason = `model_error: ${String(error?.message || error).slice(0, 60)}`;
   }
-  if (results.some(result => result.rows.length)) return reply(plainListing(results), 'plain-listing', hits, tables, fallbackReason);
+  if (results.some(result => result.rows.length)) {
+    return reply(withDisclosures(plainListing(results), results), 'plain-listing', hits, tables, fallbackReason);
+  }
   return reply(results[0]?.notes[0] || 'ยังไม่พบข้อมูลที่ตรงกับคำถามนี้ครับ ลองระบุชื่อเชื้อเพลิง แหล่งผลิต หรือปีที่สนใจเพิ่มอีกนิด', 'no-data', hits, tables);
 }
 
@@ -690,5 +755,5 @@ module.exports = handler;
 module.exports.config = { api: { bodyParser: false } };
 module.exports._internals = {
   isReleaseReady, rateAllowed, runQuery, numericTokens, isGrounded, plainListing, callGemini,
-  answerQuestion, validPayload, sourceCards, ungroundedNumbers, catalogueCards, PLANNER_INSTRUCTION, ANSWER_INSTRUCTION, rateBuckets,
+  answerQuestion, validPayload, sourceCards, ungroundedNumbers, catalogueCards, unitMismatches, withDisclosures, PLANNER_INSTRUCTION, ANSWER_INSTRUCTION, rateBuckets,
 };

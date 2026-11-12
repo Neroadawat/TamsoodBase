@@ -120,6 +120,23 @@ const PLAN = { mode: 'data', queries: [{ dataset: 'dmf_production', filters: [{ 
   assert.match(result.summary.text, /80,575\.03 บาร์เรล/);
   assert.doesNotMatch(result.summary.text, /81,000/);
 
+  // A right number with the wrong unit is rejected too.
+  const famePlan = { mode: 'data', queries: [{ dataset: 'fame_inventory', filters: [{ column: 'process', values: ['FAME'] }], aggregate: 'list' }] };
+  mock = scripted(geminiReply(famePlan), geminiReply({ answer: 'ใช้ไฟฟ้า 0.52 กิโลกรัมครับ' }));
+  result = await answerQuestion('FAME ใช้ไฟฟ้าเท่าไหร่', [], READY_ENV, mock.fetchImpl);
+  assert.equal(result.summary.kind, 'plain-listing');
+  assert.match(result.summary.fallback_reason, /unit_not_matching_data/);
+  mock = scripted(geminiReply(famePlan), geminiReply({ answer: 'ใช้ไฟฟ้า 0.52 กิโลวัตต์ชั่วโมง และ Methanol 3.47 kg ครับ' }));
+  result = await answerQuestion('FAME ใช้ไฟฟ้าเท่าไหร่', [], READY_ENV, mock.fetchImpl);
+  assert.equal(result.summary.kind, 'answer');
+
+  // A value the engine left out is disclosed even if the model forgets to.
+  const gasPlan = { mode: 'data', queries: [{ dataset: 'dmf_production', filters: [{ column: 'product', values: ['gas'] }],
+    year_from: 2020, year_to: 2020, aggregate: 'max' }] };
+  mock = scripted(geminiReply(gasPlan), geminiReply({ answer: 'เดือนมีนาคมสูงสุดครับ' }));
+  result = await answerQuestion('เดือนไหนผลิตก๊าซมากสุดปี 2563', [], READY_ENV, mock.fetchImpl);
+  assert.match(result.summary.text, /หมายเหตุ: ไม่นับค่า 3,500,000/);
+
   // If the wording call fails, the data is still returned.
   mock = scripted(geminiReply(PLAN), geminiReply({}, 500));
   result = await answerQuestion('ปี 2567 ผลิตน้ำมันดิบเท่าไหร่', [], READY_ENV, mock.fetchImpl);
