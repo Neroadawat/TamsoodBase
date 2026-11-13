@@ -1,0 +1,39 @@
+{
+  "reviewed_at_local": "2026-11-12",
+  "review_type": "OFFICIAL_VERCEL_WAF_RATE_LIMITING_AND_BILLING_RECHECK",
+  "sources": [
+    {
+      "url": "https://vercel.com/docs/vercel-firewall/vercel-waf/rate-limiting",
+      "page_last_updated": "2026-08-28",
+      "observed": "Rate limiting is available on all plans. Hobby/Pro use fixed windows with IP and JA4 keys; counters are regional. Hobby lists 1M included allowed requests; Pro is usage-based. Pricing shown as $0.50 per 1M allowed requests."
+    },
+    {
+      "url": "https://vercel.com/docs/vercel-firewall/vercel-waf/usage-and-pricing",
+      "page_last_updated": "2026-06-16",
+      "observed": "Denied, challenged, or rate-limited traffic does not incur CDN Requests/Fast Data Transfer; rate limiting itself remains a priced feature billed by allowed requests."
+    },
+    {
+      "url": "https://vercel.com/pricing",
+      "checked_at": "2026-11-12",
+      "observed": "Pricing table lists 1M monthly firewall rate-limit requests included on Hobby and usage-based pricing starting at $0.50 per 1M on Pro. Account plan and actual quota were not inspected."
+    },
+    {
+      "url": "https://vercel.com/changelog/web-application-firewall-mitigated-traffic-is-free-on-vercel",
+      "published": "2026-05-18",
+      "observed": "Vercel waives CDN request and Fast Data Transfer charges for requests denied, challenged, or rate-limited by its firewall. This does not say WAF feature charges or third-party Gemini charges are waived."
+    }
+  ],
+  "change": "Updated docs/rag/VERCEL_RATE_LIMITER_RUNBOOK.md with current plan/price distinctions, the CDN/FDT waiver nuance, and the fact that regional counters are not a global cap.",
+  "runbook_sha256": "0990a056971512dd07ab4bf7ed7efa8b9a43f85527f0718351e29ac18058cd3f",
+  "project_dashboard_inspected": false,
+  "project_plan_verified": false,
+  "rule_configured": false,
+  "gemini_budget_verified": false,
+  "production_changed": false,
+  "rag_production": "HOLD",
+  "limitations": [
+    "Public docs do not reveal this project's selected plan, quota, regional traffic, rate rule, or billing configuration.",
+    "Regional fixed-window counters can allow aggregate traffic above a single region's threshold.",
+    "Vercel ingress limiting does not establish a Gemini quota, provider spend cap, or hard global request limit."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "checked_at_local": "2026-11-09",
+  "status": "LOCAL_UI_REFRESH_STATIC_AND_DESKTOP_VISUAL_CHECKS_PASS_RELEASE_PENDING",
+  "scope": {
+    "public_catalog": "web/index.html + web/design-refresh.css",
+    "private_rag_ui": "scripts/rag_demo.html",
+    "data_or_retrieval_changed": false,
+    "public_rag_route_added": false,
+    "production_or_vercel_changed": false
+  },
+  "changes": [
+    "Applied a restrained field-desk/editorial style to the public catalog without changing data or navigation semantics.",
+    "Refreshed the private chat UI with selectable prompt examples, in-tab transcript, live loading/status, clear and copy controls, cited-source cards and Thai locator display.",
+    "Made stateless-query behavior and the small curated evidence scope explicit; only the current question is sent to /ask.",
+    "Renders dynamic text with textContent, allows only HTTP(S) source URLs, and adds noopener/noreferrer to external links.",
+    "Respects reduced-motion preference and adds mobile breakpoints."
+  ],
+  "verification": {
+    "command": "python scripts/verify_ui_refresh.py",
+    "result": "PASS",
+    "checks": [
+      "catalog stylesheet link",
+      "mobile and reduced-motion styles",
+      "unique chat-page IDs and integration IDs",
+      "server mode-notice placeholder",
+      "current-question-only request body",
+      "no innerHTML rendering",
+      "safe external source links",
+      "stateless-query disclosure",
+      "Node.js syntax check of embedded chat script"
+    ]
+  },
+  "visual_review": {
+    "browser": "Microsoft Edge headless",
+    "desktop_screenshots": [
+      "evidence/ui-refresh/catalog-wide.png (1440x1100)",
+      "evidence/ui-refresh/chat-wide.png (1440x1050; local-only preview notice; no live API connection)"
+    ],
+    "result": "Both desktop layouts were rendered and visually inspected. A narrow-window screenshot was also inspected, but Edge reported a 477 CSS-pixel viewport despite a 390-pixel screenshot request; do not claim exact 390 CSS-pixel mobile visual verification. No live /ask interaction was exercised in these screenshots."
+  },
+  "open_constraints": [
+    "The CUA browser kernel could not initialize. Headless Edge screenshots provide desktop visual QA; exact 390 CSS-pixel mobile layout and interactive chat flow remain unverified.",
+    "No fresh EC2 owner/resource preflight or release was run. The deployment runbook requires at least 720 MiB available RAM before staging; the previous 2026-11-08 preflight recorded 560884 KiB, below that gate, and is not a current measurement.",
+    "The RAG remains private behind SSH local forwarding. Do not add a public Vercel, tunnel, proxy, or security-group path.",
+    "A Gemini API key was pasted into the conversation earlier. If it is still active, revoke it and create a replacement; do not put the replacement into repository files or client-side code."
+  ]
+}

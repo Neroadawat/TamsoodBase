@@ -4,8 +4,9 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const out=path.join(root,'build/vercel-upload');
-const files=['vercel.json','scripts/build_frontend.mjs','api/[route].js',
- 'web/index.html','web/style.css','web/app.js','web/api.js','web/config.js','web/favicon.svg','web/upstream-inventory.json','web/case-study.js','web/case-study.json','web/discovery.js','web/story.js','web/theme.css','web/noto-sans-thai-06310198b08f.woff2','web/FONT-LICENSE.txt'];
+const files=['vercel.json','scripts/build_frontend.mjs','api/[route].js','api/rag/ask.js',
+ 'docs/rag/public-release-manifest.json','docs/rag/knowledge-pack.json',
+ 'web/index.html','web/ask.html','web/style.css','web/design-refresh.css','web/app.js','web/api.js','web/config.js','web/favicon.svg','web/upstream-inventory.json','web/case-study.js','web/case-study.json','web/discovery.js','web/story.js','web/theme.css','web/noto-sans-thai-06310198b08f.woff2','web/FONT-LICENSE.txt'];
 await mkdir(out,{recursive:true});
 for(const name of files){
  const source=path.join(root,name),target=path.join(out,name);

@@ -1,0 +1,74 @@
+{
+  "review_date": "2026-11-10",
+  "sources": [
+    {
+      "source_type": "third-party RSPO audit summary",
+      "title": "RSPO P&C Public Summary Report - Saikueng Bangsawan Community Enterprise Group, Revision 15 (Nov 2023)",
+      "url": "https://www.bsigroup.com/globalassets/localfiles/en-my/rspo/Public%20Summary%20Report/2024/07-3.-rspo-pc-public-summary-report_saikueng-bangsawan-community-enterprise-grp-asa1_1_approved_cert-d.pdf",
+      "locators": [
+        {"claim": "TTO1/TTO2 mill registration IDs and FFB sold by buyer", "pdf_pages": [9, 10], "section": "13A"},
+        {"claim": "smallholder group maintains FFB receipt/sales records; weighing tickets at TTO1/TTO2", "pdf_pages": [114, 115], "section": "D.2"},
+        {"claim": "audit period", "pdf_pages": [11], "section": "2.1"}
+      ],
+      "audit_period": {"start": "2023-11-13", "end": "2023-11-21"},
+      "reported_license_period_for_current_physical_sales": {"start": "2023-01-13", "end": "2023-08-22"},
+      "tto1_rspo_id": "PO1000002415",
+      "tto2_rspo_id": "PO1000005375",
+      "source_reported_tto2_ffb_sale_entries_t": [3000, 3000],
+      "team_sum_tto2_ffb_sales_t": 6000,
+      "source_reported_current_license_group_physical_ffb_sales_t": 26000,
+      "source_reported_previous_license_group_physical_ffb_sales_t": 1482.42,
+      "rights": "NOT_CLEARED_FOR_REDISTRIBUTION"
+    },
+    {
+      "source_type": "buyer supply-chain mill list",
+      "title": "COFCO International Palm Traceability to Mill list 2021",
+      "url": "https://www.cofcointernational.com/media/re3fpi5s/cofco-international-2021-palm-mill-list.pdf",
+      "locator": "row for Thai Tallow / Bangsawan",
+      "mill_name": "Bangsawan",
+      "rspo_id": "PO1000005375",
+      "coordinates_as_listed": {"latitude": 8.613282, "longitude": 99.000667},
+      "rights": "NOT_CLEARED_FOR_REDISTRIBUTION"
+    },
+    {
+      "source_type": "official UNFCCC CDM project registry",
+      "project_id": "4589",
+      "title": "Wastewater Treatment with Biogas System in Palm Oil Mill at Bangsawan, Surat Thani, Thailand",
+      "url": "https://cdm.unfccc.int/Projects/DB/SGS-UKL1300274895.63/view",
+      "operator": "Thai Tallow and Oil Co., Ltd.",
+      "site_coordinates_as_reported": {"latitude": 8.5998417, "longitude": 99.0288528},
+      "appendix_name_indication": "TTO2",
+      "rights": "NOT_CLEARED_FOR_REDISTRIBUTION"
+    }
+  ],
+  "team_arithmetic": {
+    "calculation": "3000 + 3000",
+    "result_t": 6000,
+    "component_scope": "two FFB sales entries listing TTO2 / RSPO_PO1000005375 in the audit report's current license period",
+    "cross_check": "TTO1 entries (10000 + 10000) plus TTO2 entries (3000 + 3000) equal the report's 26000 t current-license group physical sales; adding prior-license 1482.42 equals report table total 27482.42",
+    "not_a_measurement": true
+  },
+  "product_linkage": {
+    "input_flow": "FFB",
+    "source_group": "Saikueng Bangsawan Community Enterprise Group",
+    "destination_linkage": "TTO2 buyer registration PO1000005375 maps to Bangsawan in the 2021 COFCO mill list; UNFCCC project 4589 is at Bangsawan and refers to TTO2 appendices",
+    "identity_confidence": "cross-source name and registration-ID linkage; not an explicit same-record statement in one source",
+    "coverage": "certified smallholder group deliveries only, not total mill input",
+    "period_match_to_unfccc_methane_monitoring": false,
+    "actual_cpo_output_of_mill": null,
+    "ch4_per_t_ffb": null,
+    "product_co2e": null,
+    "status": "HOLD_CONTEXT",
+    "imported_to_inventory": false,
+    "added_to_model": false,
+    "published": false,
+    "added_to_rag": false
+  },
+  "review_scope": {
+    "pdf_text_extraction_reviewed": true,
+    "visual_table_audit": false,
+    "local_source_copies": false,
+    "sha256": null,
+    "independent_review": false
+  }
+}

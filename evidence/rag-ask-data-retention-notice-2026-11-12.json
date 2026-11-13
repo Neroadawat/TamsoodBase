@@ -1,0 +1,53 @@
+{
+  "reviewed_at_local": "2026-11-12T06:52:00+07:00",
+  "scope": "Public privacy-copy and source-backed regression review for the RAG ask page; no prompt, key, user data, provider call, dashboard access, or production change.",
+  "official_sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/usage-policies",
+      "claims_checked": [
+        "Gemini API abuse-monitoring policy states that prompts, contextual information, and outputs are retained for 55 days for policy enforcement, safety/security, and required legal/regulatory disclosures.",
+        "Authorized Google employees may assess content flagged by safety filters and abuse detection."
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/terms",
+      "claims_checked": [
+        "Unpaid services may use submitted content and generated responses to improve Google products; human reviewers may read/process input/output.",
+        "For Paid Services, prompts and responses are not used to improve products; they are processed under the applicable DPA, while policy enforcement and safety logging still apply."
+      ]
+    }
+  ],
+  "change": {
+    "file": "web/ask.html",
+    "description": "Added Thai disclosure of the 55-day prompt/context/output retention described by Google abuse-monitoring policy and linked the official usage policies page. Existing billing caveat and closed-by-default consent were preserved.",
+    "sha256": "3ee0fb7d9fee090157e0e4d0e588489f3826ee02a07e5e1cdf0f72e7b311fe1c"
+  },
+  "test": {
+    "command": "node tests/rag-ask-consent-ui.cjs",
+    "result": "passed",
+    "scope": "Static source assertions for per-question consent and retention disclosure; not a browser visual or server behavior test.",
+    "test_sha256": "56f231e76974216167fbad579c2213256f2e7aaad9070715f6b7f573efeaf1f0"
+  },
+  "targeted_existing_test": {
+    "command": "python -X utf8 -m unittest tests.test_frontend.FrontendTests.test_deployment_build_only_copies_public_assets tests.test_frontend.FrontendTests.test_gemini_privacy_notice_distinguishes_billing_terms -v",
+    "result": "both passed"
+  },
+  "git_diff_check": "passed for web/ask.html, tests/rag-ask-consent-ui.cjs, and tests/test_frontend.py",
+  "provider_called": false,
+  "production_changed": false,
+  "owner_billing_verified": false,
+  "production_rag": "HOLD",
+  "limitations": [
+    "Policy language may change and should be rechecked before launch.",
+    "No browser visual review was performed.",
+    "This copy does not resolve account-specific billing, audience age/region eligibility, rights, or credential-rotation gates."
+  ],
+  "deployment_copy_test": {
+    "command": "python -X utf8 -m unittest tests.test_frontend.FrontendTests.test_deployment_build_only_copies_public_assets -v",
+    "result": "passed",
+    "assertions_added": [
+      "built ask.html contains the 55-day privacy notice",
+      "built ask.html links the official usage policies"
+    ]
+  }
+}

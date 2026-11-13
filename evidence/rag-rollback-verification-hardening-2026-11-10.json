@@ -1,0 +1,24 @@
+{
+  "review_date": "2026-11-10",
+  "checked_at_utc": "2026-11-10T07:23:48Z",
+  "change": "Automatic RAG EC2 upgrade rollback now verifies the restored release health/readiness and confirms API and Ginder baselines; reports a critical owner-review message if recovery checks fail.",
+  "files": {
+    "deploy/upgrade_rag_ec2.sh": "f3e8c30f88844f347e2d7c366aeb5e146d5d052fb9725d1c21397884634c1df2",
+    "tests/rag-rollback-mock.sh": "39f92db74287d5b9c85ccfdc0f7f0fcd0901553dde54b62eeed8f8962eebf456"
+  },
+  "checks": [
+    {
+      "command": "Git Bash: bash -n deploy/upgrade_rag_ec2.sh tests/rag-rollback-mock.sh",
+      "result": "passed"
+    },
+    {
+      "command": "Git Bash: tests/rag-rollback-mock.sh",
+      "result": "passed; healthy restore, failed readiness, and API image change cases"
+    }
+  ],
+  "scope": "Mocked local Docker/curl behavior only; no EC2 or Production service was contacted or changed.",
+  "limitations": [
+    "The mock does not prove Docker/EC2 behavior; retain the existing owner-approved rollback drill and verify host health during any future authorized upgrade."
+  ],
+  "production_or_ec2_changed": false
+}

@@ -1,0 +1,91 @@
+{
+  "reviewed_at_utc": "2026-11-11T23:05:55.409472+00:00",
+  "scope": "Selected quantitative and access-status claims in the 12 Nov review deck; evidence review only, no source reruns or production probes.",
+  "deck": {
+    "pptx": {
+      "path": "output/presentations/TamsoodBase-final-review-2026-11-12.pptx",
+      "sha256": "a803a41086bf6fdf71e86a000396d8109f73ab8fdd494dad107e841fcfa61b06",
+      "slide_count": 10
+    },
+    "pdf": {
+      "path": "output/pdf/TamsoodBase-final-slides-review-2026-11-12.pdf",
+      "sha256": "c6b21d8f34ef0974d2ef096fedee8ac434c4fe70edf738a3115e63cae36dd5f4",
+      "pages": 10,
+      "page_size_points": [
+        960,
+        540
+      ]
+    }
+  },
+  "claims_checked": [
+    {
+      "slide": 3,
+      "claim": "Corporate 97 accepted references and 4 holds; 16 source-reported FAME/H-FAME inventory observations.",
+      "result": "matches",
+      "evidence": [
+        "evidence/rag-live-backend-connectivity-2026-11-10.json",
+        "evidence/neo4j-inventory-audit.json"
+      ]
+    },
+    {
+      "slide": 4,
+      "claim": "13 source snapshots in the crosswalk across five dataset layers.",
+      "result": "matches",
+      "evidence": [
+        "evidence/source-contract.json",
+        "docs/source-contract.md"
+      ],
+      "scope_note": "Source registry has additional screened/candidate entries that are not part of this crosswalk; the slide only claims 13 integrated snapshots."
+    },
+    {
+      "slide": 7,
+      "claim": "MySQL lab has 17 checks; NSO cross-publication results are 169 compared out of 273, with 141 exact, 24 display-rounding, 4 divergences and 104 without direct cross-publication comparison.",
+      "result": "matches",
+      "evidence": [
+        "evidence/mysql-transaction-audit.json",
+        "evidence/nso-review-ledger.json",
+        "docs/source-completion-review.md"
+      ],
+      "limitation": "Independent measurement verification remains zero."
+    },
+    {
+      "slide": 8,
+      "claim": "102-row period query produces equal results; medians are 0.208 ms with index and 12.0 ms with index ignored.",
+      "result": "matches",
+      "evidence": [
+        "evidence/sql-performance.json",
+        "docs/sql-performance.md"
+      ],
+      "limitation": "Local warm-cache server iterator timing, not an API SLA."
+    },
+    {
+      "slide": 10,
+      "claim": "Neo4j test contains 16 observations, 39 nodes and 68 relationships.",
+      "result": "matches",
+      "evidence": [
+        "evidence/neo4j-inventory-audit.json"
+      ],
+      "limitation": "Disposable internal graph projection, not the production database or a full LCI graph."
+    },
+    {
+      "slide": 9,
+      "claim": "Checked anonymous dataset routes return 403; no authenticated user data path is implemented/verified.",
+      "result": "matches",
+      "evidence": [
+        "evidence/production-dataset-api-hotfix-2026-11-10.json",
+        "evidence/rag-live-backend-connectivity-2026-11-10.json",
+        "docs/tasks.json:T147"
+      ]
+    }
+  ],
+  "not_rechecked_in_this_pass": [
+    2,
+    5,
+    6
+  ],
+  "no_claims_made": {
+    "all_slide_content_independently_reviewed": false,
+    "team_approved": false,
+    "production_rechecked": false
+  }
+}

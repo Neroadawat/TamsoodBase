@@ -1,0 +1,17 @@
+{
+  "review_date": "2026-11-10",
+  "checked_at_utc": "2026-11-10T06:30:11.527051+00:00",
+  "area": "RAG Gemini request cost/latency guard",
+  "change": "Added regression coverage proving callGemini attaches an AbortSignal, aborts it at the configured 18-second deadline, rejects the pending upstream call, and clears its timer.",
+  "test_command": "node tests/rag-vercel-api.cjs",
+  "result": "passed",
+  "observed_output": "Vercel RAG checks passed (Gemini request contract works; public route stays closed).",
+  "scope": "Local unit/contract test with a fake fetch implementation; no live Gemini request.",
+  "not_proven": [
+    "A globally shared request/token budget or distributed rate limit.",
+    "Live Vercel timeout behavior or Production acceptance.",
+    "Rights, external-model privacy approval, UAT, monitoring, or rollback gates."
+  ],
+  "production_code_changed": false,
+  "deployment_or_publish": false
+}

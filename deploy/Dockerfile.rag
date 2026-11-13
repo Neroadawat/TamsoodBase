@@ -1,0 +1,30 @@
+FROM python:3.12-slim-bookworm
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONIOENCODING=utf-8 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_NO_CACHE_DIR=1 \
+    RAG_FEEDBACK_PATH=/tmp/rag-feedback.jsonl
+
+WORKDIR /app
+COPY requirements-rag.txt /app/requirements-rag.txt
+RUN python -m pip install --no-cache-dir -r /app/requirements-rag.txt
+
+COPY --chown=10001:10001 scripts/rag_retrieve.py /app/scripts/rag_retrieve.py
+COPY --chown=10001:10001 scripts/rag_gemini.py /app/scripts/rag_gemini.py
+COPY --chown=10001:10001 scripts/rag_scope.py /app/scripts/rag_scope.py
+COPY --chown=10001:10001 scripts/rag_review.py /app/scripts/rag_review.py
+COPY --chown=10001:10001 scripts/rag_http.py /app/scripts/rag_http.py
+COPY --chown=10001:10001 scripts/rag_demo.html /app/scripts/rag_demo.html
+COPY --chown=10001:10001 docs/rag/public-evidence.json /app/docs/rag/public-evidence.json
+COPY --chown=10001:10001 docs/rag/retrieval-scope.json /app/docs/rag/retrieval-scope.json
+COPY --chown=10001:10001 docs/rag/statistical-facts.json /app/docs/rag/statistical-facts.json
+COPY --chown=10001:10001 docs/rag/thai-answer-copy.json /app/docs/rag/thai-answer-copy.json
+COPY --chown=10001:10001 build/rag/models /app/build/rag/models
+COPY --chown=10001:10001 deploy/RAG_MODEL_NOTICE.txt /app/RAG_MODEL_NOTICE.txt
+
+USER 10001:10001
+EXPOSE 8767
+HEALTHCHECK --interval=30s --timeout=5s --start-period=180s --retries=2 \
+  CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8767/readyz', timeout=3)"
+CMD ["python", "scripts/rag_retrieve.py", "--in-memory", "serve", "--host", "0.0.0.0", "--port", "8767"]

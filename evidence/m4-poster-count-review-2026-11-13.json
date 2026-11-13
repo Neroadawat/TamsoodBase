@@ -1,0 +1,35 @@
+{
+  "checked_at_local": "2026-11-13T03:07:32+07:00",
+  "scope": "Read-only visual/content QA of the newly present M4 poster and slide exports",
+  "artifacts": {
+    "poster_pdf": "output/m4/S2-G05_M4_Poster_A4.pdf",
+    "slides_pdf": "output/m4/S2-G05_M4_Slides.pdf",
+    "slides_pptx": "output/m4/S2-G05_M4_Slides.pptx",
+    "poster_rendered_and_viewed": true,
+    "slides_rendered_contact_sheet_and_viewed": true,
+    "poster_pages": 1,
+    "slide_pages": 10
+  },
+  "finding": {
+    "poster_claim": "41,862 rows of government and research data available on the web",
+    "counts_from_listed_knowledge_pack": {
+      "DMF": 34671,
+      "EPPO_refinery_intake": 3012,
+      "EPPO_product_output": 2922,
+      "NSO": 273,
+      "research_inventory_FAME_and_palm": 58,
+      "research_LCIA_results": 44
+    },
+    "sum_of_same_listed_scopes": 40980,
+    "difference": 882,
+    "interpretation": "The poster total does not reconcile with the dataset counts presented in the same project; 40,980 is the arithmetic sum if those exact listed scopes are intended. Confirm scope before revising the artifact."
+  },
+  "verification": {
+    "knowledge_pack_file": "docs/rag/knowledge-pack.json",
+    "pack_build_check": "passed previously during the current project session; 7 datasets with the counts above",
+    "poster_source_occurrences_of_41862": 1,
+    "production_api_touched": false,
+    "artifact_files_edited": false
+  },
+  "decision_needed": "Confirm the intended count/scope and rebuild the poster PDF; do not describe the collection as publicly cleared while release gates remain unresolved."
+}

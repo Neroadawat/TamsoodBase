@@ -1,0 +1,44 @@
+{
+  "checked_at_utc": "2026-11-09T07:10:00Z",
+  "scope": "TARGETED_SOURCE_SCREEN_NOT_NEW_INVENTORY_OR_SYSTEMATIC_REVIEW",
+  "sources": [
+    {
+      "url": "https://ph02.tci-thaijo.org/index.php/ennrj/article/download/83884/66780/203319",
+      "locator": "Environment and Natural Resources Journal 11(1), 2013, PDF pp. 25-26: Thai palm biodiesel case, assumed transport distances, inventory sources, mass allocation",
+      "finding": "Historical Thai case reports an assumed 20 km round-trip transport segment and mass allocation between CPO/kernel and biodiesel/glycerin, using mixed Thai LCI, ecoinvent and literature sources. Its FU, technology and source vintage do not establish compatible providers or activity for the current 1000 MJ FAME case.",
+      "decision": "HISTORICAL_BENCHMARK_ONLY_NOT_IMPORTED"
+    },
+    {
+      "url": "https://doi.org/10.1016/j.spc.2025.04.023",
+      "locator": "Search-indexed article abstract and method excerpt; DOI redirect could not be opened for full text in this review",
+      "finding": "Indexed text describes spatially differentiated Thai transport LCA and Thai biodiesel data based on 2013 Thai National LCI, with ecoinvent 3.8 background. Full tables and underlying inventory were not inspectable.",
+      "decision": "CANDIDATE_FULLTEXT_NOT_VERIFIED_NO_IMPORT"
+    },
+    {
+      "url": "https://thainationallci.nstda.or.th/",
+      "locator": "Official landing page, service description",
+      "finding": "Confirms Thai National LCI database service publishes inventory and impact information; landing page did not expose the specific biodiesel record, exchanges, version, period, provider or record license required here.",
+      "decision": "SERVICE_EXISTENCE_ONLY_NO_NUMERIC_OR_LICENSE_CLAIM"
+    },
+    {
+      "url": "https://li01.tci-thaijo.org/index.php/anres/article/view/245102",
+      "locator": "Journal abstract and methods: B100 tested in 441 kW marine engine and 177 kW generator under stated loads",
+      "finding": "Thai palm-oil B100 engine test reports BSFC, efficiency, exhaust temperature and CO; it does not match the pickup-truck use context or supply matched CH4/N2O factors for the current study.",
+      "decision": "INCOMPATIBLE_ENGINE_USE_PHASE_NOT_CLOSED"
+    }
+  ],
+  "numeric_inventory_imports": 0,
+  "source_values_changed": false,
+  "allocation_applied": false,
+  "matched_actual_methane_and_ethanol_output": null,
+  "CO2e_total": null,
+  "local_primary_pdf_hashes_claimed": false,
+  "primary_pdf_visual_reaudit": false,
+  "raw_redistributed": false,
+  "limits": [
+    "Targeted search is not a systematic review.",
+    "The 2025 DOI full text could not be inspected in this review; search-indexed excerpts were not used as inventory data.",
+    "The Thai LCI landing page is not evidence for the content or licensing of an individual dataset record.",
+    "No evidence was found to close current allocation, provider compatibility, use-phase, treatment or background-exchange gates."
+  ]
+}

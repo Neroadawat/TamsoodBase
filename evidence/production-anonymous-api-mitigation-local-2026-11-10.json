@@ -1,0 +1,20 @@
+{
+  "review_date": "2026-11-10",
+  "checked_at_utc": "2026-11-10T06:43:45.158197+00:00",
+  "review_type": "LOCAL_ANONYMOUS_API_MITIGATION_RECHECK",
+  "source_exposure": "evidence/production-anonymous-api-exposure-2026-11-10.json",
+  "source_file": "api/[route].js",
+  "source_sha256": "2decbcd69ea0e7b2fb12b745468ee785f5db48408558c1b42da2a228002de522",
+  "test_command": "node tests/vercel-proxy-behavior.cjs",
+  "result": "passed",
+  "observed_output": "Vercel proxy: restricted dataset APIs fail closed, safe health proxy is authenticated, origin allowlist and read-only checks passed",
+  "coverage": "15 known dataset/login routes return 403 before a fake upstream request; health/readiness and public model metadata paths are tested separately.",
+  "production_deployed": false,
+  "production_rechecked_after_local_change": false,
+  "decision": "Keep HOLD; local mitigation is not a live fix until an authorized deployment and post-deployment probes occur.",
+  "limitations": [
+    "The test stubs https.request and does not access Production.",
+    "The listed routes are the known route set; this is not a complete infrastructure audit.",
+    "Rights status was not changed."
+  ]
+}

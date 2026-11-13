@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-10",
+  "change": "Extended the cited-text numeric guard to require exact numeric-plus-unit/denominator matches for a conservative supported set of measurement units.",
+  "verification": {
+    "syntax_result": "passed",
+    "git_diff_check": "passed",
+    "command": "node tests/rag-vercel-api.cjs",
+    "syntax_checks": [
+      "node --check api/rag/ask.js",
+      "node --check tests/rag-vercel-api.cjs"
+    ],
+    "result": "passed",
+    "new_cases": [
+      "Reject 7 kg CO2e/L when cited text reports 7 t CO2e/year.",
+      "Accept 7 t CO2e/year with Unicode CO₂ and spacing variation when cited text reports the same value and unit."
+    ]
+  },
+  "limits": [
+    "The unit matcher covers only the explicit unit forms encoded in the allowlist; unrecognized units are not semantically compared.",
+    "No unit conversions are performed.",
+    "A matching value/unit still does not prove that the statistic answers the question or shares the same period/boundary.",
+    "No live Gemini call, database query, Production deployment, or route enablement."
+  ],
+  "status": "LOCAL_VERIFIED"
+}

@@ -1,0 +1,60 @@
+{
+  "reviewed_at": "2026-11-10T18:12:38+07:00",
+  "purpose": "Synchronize the presentation version label with the current SRS 0.7.2 without changing slide claims or implying team approval.",
+  "source_pptx": {
+    "path": "output/presentations/TamsoodBase-final-review-2026-11-09.pptx",
+    "sha256": "0D6573B5F7435C0FFAE9C6B3AB811AFEA816B52E5370591F0D3CB79AE0BC2DF0",
+    "modified": false
+  },
+  "review_pptx": {
+    "path": "output/presentations/TamsoodBase-final-review-2026-11-10.pptx",
+    "sha256": "A6602890E2E46081FB15D69E1727A4E2A84D2F14105B0D76169D2E746D366DBA",
+    "slides": 10,
+    "change": "Slide 10 SRS version label changed from SRS0.7.1 to SRS0.7.2; all slide paragraph text compared and exactly this one text change was found."
+  },
+  "review_pdf": {
+    "path": "output/pdf/TamsoodBase-final-slides-review-2026-11-10.pdf",
+    "sha256": "4CA5B515E180CD64D4D44994CE7C14AB7F6ED09D8448EA61CE8EF638BCC1486A",
+    "pages": 10,
+    "page_size_points": [
+      960,
+      540
+    ],
+    "rendered_by": "Microsoft PowerPoint",
+    "page_10_visual_reviewed": true,
+    "page_10_text_check": {
+      "SRS0.7.2": true,
+      "SRS0.7.1": false
+    }
+  },
+  "source_evidence": {
+    "srs_path": "docs/submission/SRS.md",
+    "srs_version": "0.7.2",
+    "srs_sha256": "544D064DC034D115195396CDD37589A777520952804869712DF8186A495D0C39",
+    "srs_review_evidence": "evidence/srs-current-review.json"
+  },
+  "validation": {
+    "artifact_tool_import_passed": true,
+    "slide_count": 10,
+    "slide_dimensions_emu": [
+      12192000,
+      6858000
+    ],
+    "layout_findings": 0,
+    "package_integrity_findings": 0,
+    "all_slide_paragraph_comparison_passed": true,
+    "changed_paragraphs": [
+      {
+        "slide": 10,
+        "before": "SRS0.7.1",
+        "after": "SRS0.7.2"
+      }
+    ]
+  },
+  "scope_limits": [
+    "This is a version-label synchronization only.",
+    "Other slide facts were not revalidated against current databases or sources in this pass.",
+    "No team approval, consent, submission, defense, production deployment, or full-LCI completion is claimed."
+  ],
+  "status": "Draft for team review"
+}

@@ -1,0 +1,29 @@
+{
+  "reviewed_at": "2026-11-10T19:06:47+07:00",
+  "scope": "Static safety review of the additive RAG installer memory preflight; no EC2 commands or service changes.",
+  "finding": {
+    "severity": "P2",
+    "issue": "Installer compared MemAvailable KiB with 720000 while its stated gate is 720 MiB. 720000 KiB is about 703.125 MiB, so hosts 17 MiB below the documented floor could pass.",
+    "source": "deploy/install_rag_ec2.sh:25"
+  },
+  "change": {
+    "path": "deploy/install_rag_ec2.sh",
+    "guard": "available_kb >= 737280",
+    "message": "host MemAvailable below 720 MiB (737280 KiB)",
+    "sha256": "84AA614F11B3E1ED63414C085749B77DEE9468C12A7F2BCDBCB67D96B5CB60BC"
+  },
+  "runbook": {
+    "path": "docs/rag/EC2_PRIVATE_DEPLOYMENT.md",
+    "memory_gate": "720 MiB (737280 KiB)"
+  },
+  "checks": {
+    "bash_syntax": "passed: bash -n deploy/install_rag_ec2.sh",
+    "targeted_static_regression": "passed: 720 * 1024 == 737280; old 720000 guard absent; error message and guard agree",
+    "git_diff_check": "passed"
+  },
+  "limits": [
+    "No EC2 memory measurement was taken.",
+    "No Docker image was built or transferred.",
+    "No service, API, credentials, permissions, public route, or Production setting was changed."
+  ]
+}

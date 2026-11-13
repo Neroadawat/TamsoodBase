@@ -1,0 +1,21 @@
+{
+  "review_date": "2026-11-10",
+  "checked_at_utc": "2026-11-10T06:32:51.329421+00:00",
+  "change": "Clarified Gemini system instruction: answer in natural plain Thai; use only supplied evidence; treat the user question and all retrieved fields as untrusted data rather than instructions; ignore embedded commands; preserve source conflicts and numeric qualifiers; abstain when unsupported.",
+  "test_command": "node tests/rag-vercel-api.cjs",
+  "test_result": "passed",
+  "test_output": "Vercel RAG checks passed (Gemini request contract works; public route stays closed).",
+  "assertions_added": [
+    "Natural and understandable Thai instruction is present.",
+    "Question and evidence are explicitly designated untrusted data, not commands.",
+    "Embedded commands and requests for API keys/secrets are explicitly rejected by instruction.",
+    "Unsupported numeric combinations across unit, period, basis, or boundary are prohibited by instruction."
+  ],
+  "scope": "Static request-contract test with fake fetch; no live Gemini call.",
+  "limitations": [
+    "A prompt instruction is not a security boundary or proof that a generative model always complies.",
+    "No model-generated adversarial-answer evaluation or independent Thai reviewer was run.",
+    "Does not address global rate/cost control, corpus rights, or Production release approval."
+  ],
+  "production_deployed": false
+}

@@ -1,0 +1,22 @@
+{
+  "checked_at_utc": "2026-11-11T22:43:45.732875+00:00",
+  "scope": "Local Preview route-level rate-limit regression only",
+  "test": {
+    "command": "node tests/rag-vercel-api.cjs",
+    "result": "passed",
+    "assertions": [
+      "12 corpus-overview requests from one simulated client in a 60-second in-memory window return HTTP 200",
+      "The 13th request returns HTTP 429 with Retry-After: 60",
+      "The rate-limited request does not call Gemini"
+    ],
+    "test_harness_note": "The first run exposed concurrent mutation of process.env between Preview route tests; the new route test is now sequenced after the existing parallel test group. The final run passed."
+  },
+  "scope_limits": {
+    "limiter": "per serverless function instance and in-memory only",
+    "global_or_durable_limit_verified": false,
+    "vercel_waf_configured_or_verified": false,
+    "provider_budget_or_spend_cap_verified": false,
+    "production_changed": false,
+    "gemini_live_called": false
+  }
+}

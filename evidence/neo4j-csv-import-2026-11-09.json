@@ -1,0 +1,46 @@
+{
+  "checked_at_utc": "2026-11-09T16:01:53.469200+00:00",
+  "passed": true,
+  "method": "Neo4j LOAD CSV WITH HEADERS + MERGE",
+  "source_report_sha256": "d95b721aded3a98be0cbeeaf9cf964841133cee788235ecba8608ffc6775a134",
+  "csv_sha256": "fe1a2a7e43768491877c6ace37f7aec399c4418511b35ed29773d7bd4f254838",
+  "csv_rows": 16,
+  "csv_columns": 31,
+  "loaded_rows_match_source_fields": 16,
+  "nodes": 39,
+  "relationships": 68,
+  "expected_projection_nodes": 39,
+  "expected_projection_relationships": 68,
+  "process_direction_checks": [
+    {
+      "process": "FAME",
+      "direction": "INPUT",
+      "rows": 8,
+      "relationships_traversed": 2,
+      "equal_to_csv": true
+    },
+    {
+      "process": "FAME",
+      "direction": "OUTPUT",
+      "rows": 2,
+      "relationships_traversed": 2,
+      "equal_to_csv": true
+    },
+    {
+      "process": "H-FAME",
+      "direction": "INPUT",
+      "rows": 5,
+      "relationships_traversed": 2,
+      "equal_to_csv": true
+    },
+    {
+      "process": "H-FAME",
+      "direction": "OUTPUT",
+      "rows": 1,
+      "relationships_traversed": 2,
+      "equal_to_csv": true
+    }
+  ],
+  "network": "owner-labelled internal network; no published ports",
+  "scope": "Local disposable graph import of 16 source-reported Table 4 inventory rows; not full lifecycle LCI; no production change"
+}

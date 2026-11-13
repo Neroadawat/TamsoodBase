@@ -1,0 +1,25 @@
+{
+  "checked_at_local": "2026-11-12T10:57:23+07:00",
+  "scope": "Local mocked Vercel Preview route regression for absent client identity",
+  "test": {
+    "command": "node tests/rag-vercel-api.cjs",
+    "result": "passed",
+    "assertions": [
+      "Request without x-forwarded-for is rejected with HTTP 429 before provider invocation",
+      "Gemini/provider call count remains zero for request without client identity"
+    ]
+  },
+  "format_check": {
+    "command": "git diff --check -- tests/rag-vercel-api.cjs",
+    "result": "passed"
+  },
+  "limits": {
+    "live_vercel_header_behavior_rechecked": false,
+    "global_or_durable_rate_limit_verified": false,
+    "waf_configured_or_verified": false,
+    "provider_budget_verified": false,
+    "live_gemini_called": false,
+    "production_changed": false,
+    "production_rag": "HOLD"
+  }
+}

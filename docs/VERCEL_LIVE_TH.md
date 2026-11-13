@@ -1,4 +1,21 @@
-## สถานะปัจจุบัน 30 ตุลาคม 2569
+## สถานะล่าสุด — 10 พฤศจิกายน 2569
+
+- ก่อน hotfix การ probe anonymous พบ `/api/eppo` (40 rows), `/api/nso` (273), `/api/product-inventory` (16), `/api/records` (30 `PENDING`), `/api/reference` (30 `NOT_CLEARED` metadata) และ `/api/summary` ตอบ 200. หลักฐานก่อนแก้ไม่เก็บค่าระเบียน: `evidence/production-anonymous-api-exposure-2026-11-10.json`
+- สาเหตุ: Vercel Function ใส่ service Basic Auth ไป backend เอง; สิ่งนี้ไม่ยืนยันตัวตนผู้เยี่ยมชมเว็บ
+- ทดลอง Preview ก่อน แล้ว deploy hotfix ไป `https://tamsoodbase.vercel.app`: 15 dataset/login endpoints ตอบ 403 ก่อนออก upstream และคืน 0 rows; `/`, `/ask.html`, `/api/healthz`, `/api/release` ยังใช้ได้. RAG POST ตอบ 503 ก่อนเรียก Gemini. หลักฐาน: `evidence/production-dataset-api-hotfix-2026-11-10.json`
+- การเปิดให้ผู้ใช้เข้าข้อมูลหรือ RAG ยัง HOLD จนสิทธิ์, end-user authentication, privacy, global rate/cost, quality, monitoring และ rollback ผ่าน; ห้ามเปิด dataset routes กลับก่อนผ่าน gate
+
+## สถานะก่อนหน้า — 9 พฤศจิกายน 2569 (ประวัติ)
+
+- Vercel เชื่อมกับ GitHub repo `Neroadawat/TamsoodBase` แล้ว; push branch ที่ไม่ใช่ production branch สร้าง Preview ได้
+- Preview จาก commit `b5b53cf` พร้อมที่ [tamsoodbase-fg26o95bz-neroadawats-projects.vercel.app](https://tamsoodbase-fg26o95bz-neroadawats-projects.vercel.app/); หน้าแรกมีลิงก์ไป `/ask.html` และทดสอบ Gemini ผ่าน Preview ได้หนึ่งคำถาม
+- Preview ยังใช้ Vercel Authentication; การ deploy Preview ไม่ได้ทำให้คนทั่วไปเข้าถึงได้
+- Production ยังเป็น `main` รุ่นเก่า (`aff41e1` ตามการตรวจล่าสุด), ไม่มี RAG entry point รุ่นใหม่ และ Production RAG ต้องคงปิดจนผ่าน release gates ใน `docs/rag/PUBLIC_WEB_READINESS.md`
+- ตั้งแต่เชื่อม Git แล้ว push เข้า `main` อาจสร้าง Production deployment อัตโนมัติ ห้าม merge/promote branch นี้จนตรวจ source, Preview, release gates และแผน rollback ก่อน
+
+เนื้อหาและคำสั่งด้านล่างที่ระบุสถานะก่อน 9 พ.ย. เป็นประวัติ อย่าใช้เป็นหลักฐานสถานะ runtime ปัจจุบัน
+
+## ประวัติสถานะ ณ 30 ตุลาคม 2569
 
 เว็บเปิดอ่านโดยไม่ล็อกอินตามผู้ใช้ Vercelเก็บเฉพาะstaticcodeและupstream42observationsที่ตรวจสิทธิCCBY4.0พร้อมattribution;ข้อมูลAPIอื่นอยู่EC2MySQL ไม่มีrawPDF/ข้อมูลบริษัทเพิ่มในstaticbuild Export FAME/H-FAMEเป็นreviewJSONแยกจากต้นน้ำ รหัสupstreamอยู่serverเท่านั้น ข้อความด้านล่างที่ให้login/บอกว่าVercelไม่มีข้อมูลเลยเป็นประวัติที่ถูกแทนแล้ว ดู evidence/current-frontend-release.json และ docs/expert-review-action-plan.md
 
@@ -32,23 +49,15 @@ Production alias ของ project คือ `tamsoodbase.vercel.app`; deploymen
 
 การทำให้ทั้งระบบถาวรยังต้องมี backend domain/named tunnel และระบบบัญชีสำหรับใช้งานระยะยาว ไม่อ้างว่า Quick Tunnel มี uptime guarantee
 
-## Deploy ครั้งถัดไป
+## ขั้นเผยแพร่รอบถัดไป
 
-ใช้บัญชีที่เชื่อม CLI แล้ว และ project `neroadawats-projects/tamsoodbase`
+ให้ใช้ Git-connected flow ตามปกติ: push ไป feature branch เพื่อสร้าง Preview, ตรวจ deployment ที่ commit ตรงกับ branch และทดสอบหน้าแรก, `/ask.html`, API, citations และ error state ก่อน การสร้าง Preview ไม่ควรใช้ `--prod`
 
-```powershell
-node scripts/package_vercel.mjs
-npx --yes vercel@65.5.0 deploy --cwd build/vercel-upload --prod --yes
-```
+อย่ารันคำสั่งเก่า `npx vercel deploy --prod` จาก feature branch หรือ package ที่ยังไม่ได้ตรวจ คู่มือและ `scripts/package_vercel.mjs` เคยเป็น allowlist รุ่นก่อนและกำลังอัปเดตให้รวมหน้า RAG/API/corpus ปัจจุบัน การแพ็กเกจอย่างเดียวไม่ใช่เหตุผลให้ Production พร้อมปล่อย
 
-ต้องใช้โฟลเดอร์ upload ที่คัดไฟล์แล้ว ไม่ deploy root repository โดยตรง เพราะรอบจริงพบ CLI อัปโหลดได้เฉพาะ vercel.json จาก pattern allowlist เดิม ทำให้ builder หาย โฟลเดอร์ upload มี source allowlist เพียง9ไฟล์ กับ metadata link project ที่ไม่ใช่ credential
+ก่อน deploy Production ต้องตรวจ `docs/rag/PUBLIC_WEB_READINESS.md` และ `docs/rag/public-release-manifest.json` ใหม่ให้ผ่านทุก gate, ยืนยัน privacy/rights/user acceptance/rate-limit/monitoring/rollback, แล้ว deploy จากสายโค้ดที่ตรงกับ Production branch เท่านั้น หลังเชื่อม Git แล้ว push เข้า `main` สามารถเริ่ม Production deploy อัตโนมัติ
 
-Production environment:
-
-- `TAMSOOD_DEPLOY_MODE=proxy` สำหรับ build same-origin UI
-- `TAMSOOD_BACKEND_ORIGIN` เป็น HTTPS gateway origin เท่านั้น ไม่มี username/password
-
-อย่าอัปโหลด `.env.local`, `.local/`, research data หรือ token ของ CLI ให้ Git/Vercel source package
+อย่าอัปโหลด `.env.local`, `.local/`, research data หรือ token ของ CLI ไป Git/Vercel source package; เก็บ `GEMINI_API_KEY` เป็น server-side Secret ใน Vercel environment ที่ตรงกับ deploy target เท่านั้น
 
 ## ตรวจจริงแล้ว
 

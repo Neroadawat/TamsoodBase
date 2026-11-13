@@ -12,6 +12,16 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 
 
+def team_rule_accepted():
+    """Accepted tuples under the team's own rule (docs/acceptance-ledger.json).
+
+    Separate from competition_accepted, which stays 0: no acceptance by MTEC is claimed.
+    """
+    path=ROOT/'docs/acceptance-ledger.json'
+    if not path.exists():return None
+    ledger=json.loads(path.read_text(encoding='utf-8'))
+    return {'rule':ledger['rule'],'decided_on':ledger['decided_on'],'accepted_total':ledger['accepted_total'],'held_total':ledger['held_total']}
+
 def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
@@ -90,7 +100,7 @@ def audit(run_tests=False,package=False):
     report={'checked_at':datetime.now(timezone.utc).isoformat(),'technical_pass':all(c['passed'] for c in checks),
         'reference_release_ready':all(c['passed'] for c in checks if c['name'].startswith('reference_')),
         'submission_ready':all(c['passed'] for c in checks) and not unresolved,'checks':checks,
-        'unresolved_gates':unresolved,'competition_accepted':0,'manifest_file_count':len(files),
+        'unresolved_gates':unresolved,'competition_accepted':0,'accepted_by_team_rule':team_rule_accepted(),'manifest_file_count':len(files),
         'note':'Technical pass does not verify external source accuracy, licensing or MTEC acceptance'}
     out=ROOT/'build/release';out.mkdir(parents=True,exist_ok=True)
     (out/'readiness.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')

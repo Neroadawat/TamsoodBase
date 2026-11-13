@@ -1,0 +1,139 @@
+{
+  "reviewed_at": "2026-11-10",
+  "artifact": "build/rag/catalog/private-database-record-index.sqlite",
+  "artifact_sha256": "5b881b4dfb5dc82cbe2a9351bd44363a9ed911b8d8d24697a1f37b66bdf09124",
+  "artifact_size_bytes": 152690688,
+  "generated_at_utc": "2026-11-09T19:45:11.057209+00:00",
+  "visibility": "PRIVATE_INTERNAL_SNAPSHOT_ONLY",
+  "source_registry_rows": 22,
+  "indexed_documents": 41017,
+  "records_by_layer": {
+    "COMPANY": 103,
+    "DMF": 34677,
+    "EPPO": 5937,
+    "NSO": 278,
+    "RESEARCH": 18,
+    "SUPPORTING": 4
+  },
+  "full_text_documents": 41017,
+  "sqlite_integrity_check": "ok",
+  "snapshot_freshness": {
+    "basis": "LOCAL_FILE_MTIME_ONLY",
+    "live_database_read": false,
+    "freshness_attested": false,
+    "oldest_input_modified_at_utc": "2026-10-22T15:14:00.037847+00:00",
+    "newest_input_modified_at_utc": "2026-11-09T08:33:39.181921+00:00",
+    "warning": "File modification times do not prove source freshness or current database state."
+  },
+  "source_activity_by_layer": {
+    "DMF": {
+      "timestamp_type": "source_acquired_at",
+      "basis": "resource.acquired_at",
+      "count": 3,
+      "oldest": "2026-10-22T15:13:21.111329+00:00",
+      "newest": "2026-10-22T15:13:21.111329+00:00"
+    },
+    "COMPANY": {
+      "timestamp_type": "source_accessed_at",
+      "basis": "document.accessed_at",
+      "count": 2,
+      "oldest": "2026-10-22T16:20:23.242315+00:00",
+      "newest": "2026-10-22T16:26:09.052409+00:00",
+      "release_build_newest": "2026-11-09T07:27:19.016602+00:00"
+    },
+    "NSO": {
+      "timestamp_type": "source_acquired_at",
+      "basis": "source_manifest.resources[].acquired_at",
+      "count": 5,
+      "oldest": "2026-10-23T09:24:08.788665+00:00",
+      "newest": "2026-10-23T09:24:08.806857+00:00"
+    },
+    "EPPO": {
+      "timestamp_type": "source_acquired_at",
+      "basis": "source_snapshot.payload.acquired_at",
+      "count": 2,
+      "oldest": "2026-10-23T10:48:34.148533+00:00",
+      "newest": "2026-10-23T10:48:34.148533+00:00"
+    },
+    "RESEARCH": {
+      "timestamp_type": "local_validation_checked_at",
+      "basis": "report.checked_at; not source-acquisition time",
+      "count": 1,
+      "oldest": "2026-10-23T10:07:29.083851+00:00",
+      "newest": "2026-10-23T10:07:29.083851+00:00"
+    },
+    "SUPPORTING": {
+      "timestamp_type": "unknown",
+      "basis": "source registry has no standardized acquisition/access timestamp",
+      "count": 0
+    }
+  },
+  "release_allowed_rows": 0,
+  "external_llm_allowed_rows": 0,
+  "latest_input_modified_at_utc": "2026-11-09T19:43:34.594721+00:00",
+  "snapshot_inputs": [
+    {
+      "path": "docs/source-registry.csv",
+      "modified_at": "2026-11-09T19:43:34.594721+00:00",
+      "sha256": "7e4a7f01792b4c880992c440fad72d0b429a4e2709414071d1f8325951c11508"
+    },
+    {
+      "path": "data/raw/dmf/latest.json",
+      "modified_at": "2026-10-22T15:14:00.037847+00:00",
+      "sha256": "36e1acfc7354f11cb96dc913169fe61ac9399e3e3be24bf6c22c64df34698b04"
+    },
+    {
+      "path": "build/dmf/20261022T151321110294Z/candidates.sqlite",
+      "modified_at": "2026-10-22T16:15:26.432333+00:00",
+      "sha256": "306b027b4d2f0406303ad4591ce71badd70dfc1578a0a8148a095fec8190b808"
+    },
+    {
+      "path": "build/reusable/reference.sqlite",
+      "modified_at": "2026-11-09T08:33:39.181921+00:00",
+      "sha256": "93110e76c14df069751bddfa938d23e6e8352ff22030b7491f75d46ee7e52c48"
+    },
+    {
+      "path": "build/eppo/eppo.sqlite",
+      "modified_at": "2026-10-23T10:48:35.125372+00:00",
+      "sha256": "863cf8f740c70e8ad49ac518063667b759c4c5001a240d0434f79fde88f6d8b4"
+    },
+    {
+      "path": "build/nso/report.json",
+      "modified_at": "2026-10-23T09:51:24.324282+00:00",
+      "sha256": "52d8150b4cc1923fe3a3cb1fa845d963fe008568380bf6bbfc5df716e2277be7"
+    },
+    {
+      "path": "build/eppo/report.json",
+      "modified_at": "2026-10-23T10:48:35.513212+00:00",
+      "sha256": "8fca0bcc322b9e6d597ef3b6b81acba31a6f2d2211a346e26e7ec9a3d6c37db3"
+    },
+    {
+      "path": "build/product-inventory/report.json",
+      "modified_at": "2026-10-23T10:07:29.085864+00:00",
+      "sha256": "d95b721aded3a98be0cbeeaf9cf964841133cee788235ecba8608ffc6775a134"
+    }
+  ],
+  "validation": {
+    "python_full_suite": "305 tests run, 295 passed, 10 skipped; the full suite used the report environment, and the RAG database/catalog/scope suite separately passed all 24 tests in the RAG environment",
+    "search_rights_default": "public-release-only; external_llm requires release plus separate model approval; internal review is explicit opt-in",
+    "actual_index_search_smoke": "Internal Thai query กันยายน returned DMF-MONTHLY-2569-09; public=0; external_llm=0",
+    "cjs_behavior_and_contract_suite": "17 passed",
+    "catalog_snapshot_check": "valid; 22 sources; 41,017 records; no public or external-model permissions",
+    "frontend_build": "passed; RAG closed; private research data absent",
+    "vercel_source_package": "passed; 22 allowlisted files; no private research data or credentials",
+    "private_index_excluded_from_frontend_build": true,
+    "private_index_gitignored": true,
+    "vercel_rag_contract": "passed; public route remains closed",
+    "python_rag_catalog_database_scope_suite": "24 passed"
+  },
+  "limitations": [
+    "These are local snapshots, not live MySQL reads; their ages differ by source.",
+    "The private index is not connected to Vercel, EC2, or Gemini and must not be published or sent to an external model.",
+    "Source-by-source redistribution and external-processing rights are not cleared.",
+    "Authenticated fixed-query SQL API and live user acceptance are still absent."
+  ],
+  "previous_build": {
+    "artifact_sha256": "670bf4f2d40d1ea4d82efd0ca6a71371884e1ed5521a050587951ad801285df9",
+    "indexed_documents": 41015
+  }
+}

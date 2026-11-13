@@ -1,0 +1,74 @@
+{
+  "reviewed_at_local": "2026-11-12",
+  "scope": "Evidence reconciliation for the previously unchecked content on slides 2, 5, and 6 of the current review deck. No source values edited, no production probes, no publishing/deployment.",
+  "deck": {
+    "pptx": "output/presentations/TamsoodBase-final-review-2026-11-12.pptx",
+    "pptx_sha256": "a803a41086bf6fdf71e86a000396d8109f73ab8fdd494dad107e841fcfa61b06",
+    "pdf": "output/pdf/TamsoodBase-final-slides-review-2026-11-12.pdf",
+    "pdf_sha256": "c6b21d8f34ef0974d2ef096fedee8ac434c4fe70edf738a3115e63cae36dd5f4",
+    "slides": 10
+  },
+  "claims_checked": [
+    {
+      "slide": 2,
+      "result": "matches",
+      "claims": [
+        "Unit/time/boundary/source are required context",
+        "company energy totals are not automatically product-unit values",
+        "EPPO BBL/DAY intake is distinct from MillionLitres national output",
+        "publication year and measurement period are separate"
+      ],
+      "evidence": [
+        "docs/submission/SRS.md:41,57,115,177,245",
+        "docs/submission/mapping-validation.md: EPPO mapping row",
+        "docs/source-contract.md"
+      ],
+      "limits": "Reviewed against current written mappings and requirements; not a fresh source-site audit."
+    },
+    {
+      "slide": 5,
+      "result": "matches",
+      "claims": [
+        "Four domain schemas are reusable/corporate, DMF, supplemental, EPPO; tamsood_api is separate runtime schema",
+        "Inventory process/exchange design has basis/direction/role",
+        "Flow and unit master coverage is source-local/candidate and not complete across layers"
+      ],
+      "evidence": [
+        "docs/submission/SRS.md: 4.1, 4.2",
+        "sql/mysql/reusable-schema.sql",
+        "sql/mysql/full-schema.sql",
+        "sql/mysql/supplemental-schema.sql",
+        "sql/mysql/eppo-schema.sql",
+        "sql/mysql/api-schema.sql",
+        "evidence/inventory-candidate.json",
+        "evidence/inventory-model-review.json"
+      ],
+      "limits": "Slide uses conceptual grouping; supplemental schema includes more than one source family. Flow/Unit candidate is not a global ontology or production migration."
+    },
+    {
+      "slide": 6,
+      "result": "matches_with_scope_note",
+      "claims": [
+        "Crude glycerine is the project review's co-product classification",
+        "locator is Table 4, source row 24, column 3 with source hash",
+        "measurement period is unspecified",
+        "allocation remains unresolved; no full lifecycle model is established"
+      ],
+      "evidence": [
+        "docs/final-project-recheck-2026-10-27.md:22",
+        "evidence/inventory-model-review.json: mapped_exchanges",
+        "evidence/product-inventory.json",
+        "docs/inventory-flow-registry.json: MDPI9415-FLOW-15"
+      ],
+      "limits": "Classification is the project's source-local interpretation; slide says 'not an emission' in this inventory role, not a universal ontology judgment. Publisher DOM-derived snapshot, not an original PDF/HTTP capture; no independent expert review."
+    }
+  ],
+  "outcome": "No slide text correction was justified by the inspected project evidence. Slide 6 remains a project-local classification and non-model-ready inventory statement, not a globally normalized LCI claim.",
+  "not_claimed": {
+    "all_slides_independently_audited": false,
+    "source_rights_cleared": false,
+    "team_approved": false,
+    "submitted": false,
+    "production_rechecked": false
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "checked_at": "2026-11-12T07:18:52+07:00",
+  "scope": "LOCAL_SYNTHETIC_RELEASE-MANIFEST_AND_SOURCE-REGISTRY_INTEGRITY_REVIEW",
+  "finding": "Duplicate IDs in release-manifest approval rows were silently collapsed by a dict comprehension. With global gates and source rows set to cleared in an isolated synthetic fixture, a denied+approved duplicate could release the record according to the last row.",
+  "actual_project_state": {
+    "public_release_manifest_status": "HOLD_RIGHTS_REVIEW",
+    "all_current_global_release_gates_passed": false,
+    "actual_manifest_mutated": false,
+    "source_registry_mutated": false,
+    "catalog_check": "Catalog valid; 22 private source entries; 20 restricted evidence records; 0 cleared public records (rights gate closed)."
+  },
+  "change": {
+    "files": [
+      "scripts/build_rag_catalog.py",
+      "tests/test_rag_catalog.py"
+    ],
+    "behavior": "The catalog builder now rejects missing or duplicate source IDs, duplicate IDs across release-manifest decisions, and duplicate IDs in narrative/fact corpora before building an index.",
+    "not_changed": [
+      "release rights",
+      "manifest gate values",
+      "preview allowlist",
+      "Production configuration"
+    ]
+  },
+  "verification": {
+    "synthetic_before_fix": "Reproduced fail-open in a temporary fixture only; one duplicated record entered the synthetic public evidence output.",
+    "targeted_test_command": "python -X utf8 -m unittest tests.test_rag_catalog -v",
+    "targeted_tests": "8 passed",
+    "catalog_command": "python -X utf8 scripts/build_rag_catalog.py --check",
+    "catalog_result": "passed; 22 sources, 20 restricted evidence records, 0 public-cleared records",
+    "diff_check": "git diff --check -- scripts/build_rag_catalog.py tests/test_rag_catalog.py passed"
+  },
+  "live_gemini_called": false,
+  "production_or_ec2_touched": false,
+  "limitations": [
+    "Synthetic regression verifies a future malformed-manifest scenario; no current data was published.",
+    "No external rights decision was made.",
+    "Production RAG remains HOLD."
+  ]
+}

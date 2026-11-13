@@ -1,0 +1,55 @@
+{
+  "checked_at": "2026-11-10T07:02:38Z",
+  "deployment": "https://tamsoodbase.vercel.app",
+  "change": "Production Vercel proxy denies all dataset and login routes before opening an upstream request; model/release metadata and health/readiness remain available.",
+  "preview": {
+    "ready": true,
+    "deployment_protection": "enabled",
+    "anonymous_dataset_request_status": 302,
+    "app_reached_via_authenticated_cli": true,
+    "dataset_routes_checked": 15,
+    "dataset_routes_returning_403": 15,
+    "rows_returned": 0
+  },
+  "production_post_deploy": {
+    "dataset_routes_checked": 15,
+    "dataset_routes_returning_403": 15,
+    "rows_returned": 0,
+    "healthz_status": 200,
+    "release_metadata_status": 200,
+    "home_status": 200,
+    "ask_page_status": 200,
+    "restricted_banner_present_in_app_js": true,
+    "rag_ask_get_status": 405,
+    "rag_ask_post_without_question_status": 503,
+    "gemini_called": false
+  },
+  "routes": [
+    "/api/summary",
+    "/api/source-crosswalk",
+    "/api/reports",
+    "/api/report-pilot",
+    "/api/nso",
+    "/api/product-inventory",
+    "/api/nso-comparison",
+    "/api/reference?page=1",
+    "/api/reference.csv",
+    "/api/reference.json",
+    "/api/records?page=1",
+    "/api/record?id=test",
+    "/api/eppo?dataset=11_13&year=2024",
+    "/api/export",
+    "/api/login"
+  ],
+  "verification_scope": "Anonymous Production GET requests; only status and returned row counts were recorded. No dataset field values were saved.",
+  "release_limitations": "This closes anonymous dataset API responses only. No end-user authenticated dataset path, rights approval, production RAG corpus, fixed-query SQL service, or Vercel-to-EC2 connection was added.",
+  "local_tests": {
+    "python_run": 306,
+    "python_passed": 296,
+    "python_skipped": 10,
+    "python_failed": 0,
+    "cjs_files_passed": 17,
+    "frontend_build": "passed",
+    "vercel_package": "passed"
+  }
+}

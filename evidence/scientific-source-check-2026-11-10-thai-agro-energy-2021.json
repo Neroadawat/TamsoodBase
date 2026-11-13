@@ -1,0 +1,163 @@
+{
+  "review_date": "2026-11-10",
+  "status": "HOLD_CONTEXT",
+  "subject": "Thai Agro Energy PCL ethanol plant wastewater and actual production, 2021",
+  "sources": [
+    {
+      "source_type": "company annual report, indexed PDF text",
+      "title": "Thai Agro Energy Public Company Limited Annual Report 2021 (Form 56-1 One Report)",
+      "investor_relations_url": "https://www.thaiagroenergy.com/web/investor.php?investor=1&investorsubmenu=1&lang=EN",
+      "historical_pdf_url": "https://www.thaiagroenergy.com/web/pdf/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B5%202564.pdf",
+      "sec_register_url": "https://market.sec.or.th/public/idisc/en/FinancialReport/R562-0000007097",
+      "locators": [
+        {"claim": "site and two-line plant context", "printed_pages": [13, 14], "pdf_text_lines": [541, 548]},
+        {"claim": "actual 2021 output by line and total", "printed_page": 14, "pdf_text_lines": [550, 599]},
+        {"claim": "reported product purity", "printed_page": 15, "pdf_text_lines": [612, 617]},
+        {"claim": "2021 spent-wash quantity and biogas capacity utilization", "printed_page": 41, "pdf_text_lines": [1774, 1780]},
+        {"claim": "wastewater routing and anaerobic digestion", "printed_page": 39, "pdf_text_lines": [1759, 1769]},
+        {"claim": "electricity values and printed units", "printed_page": 41, "pdf_text_lines": [1781, 1786]},
+        {"claim": "company states GHG assessment was being prepared", "printed_page": 42, "pdf_text_lines": [1792, 1799]},
+        {"claim": "company conversion-ethanol sales volume", "printed_page": 13, "pdf_text_lines": [513, 525]}
+      ],
+      "site": "Nong Makhamong, Dan Chang District, Suphanburi Province, Thailand",
+      "reporting_year": 2021,
+      "download_attempt": {"date": "2026-11-10", "historical_pdf_http_status": 404, "local_copy": false, "sha256": null},
+      "indexed_text_reviewed": true,
+      "visual_page_audit": false,
+      "rights_status": "NOT_CLEARED_FOR_REDISTRIBUTION"
+    },
+    {
+      "source_type": "company Form 56-1 annual report, indexed PDF text",
+      "title": "Thai Agro Energy PCL 2025 Form 56-1 One Report",
+      "url": "https://www.thaiagroenergy.com/web/pdf/%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%AA%E0%B8%B3%E0%B8%AB%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%9C%E0%B8%B9%E0%B9%89%E0%B8%96%E0%B8%B7%E0%B8%AD%E0%B8%AB%E0%B8%B8%E0%B9%89%E0%B8%99/68/56-1-2025.pdf",
+      "locators": [
+        {"claim": "2021 base-year organizational GHG assessment certified by TGO and follow-up assessments", "printed_page": 37, "pdf_text_lines": [1503, 1510]},
+        {"claim": "organizational annual GHG totals and scope breakdown for reporting years 2022-2024", "printed_page": 37, "pdf_text_lines": [1514, 1549]}
+      ],
+      "reporting_boundary_detail_sufficient_for_site_only_claim": false,
+      "local_fetch_http_status": 403,
+      "local_copy": false,
+      "sha256": null,
+      "indexed_text_reviewed": true,
+      "visual_page_audit": false,
+      "rights_status": "NOT_CLEARED_FOR_REDISTRIBUTION"
+    },
+    {
+      "source_type": "company annual report, indexed PDF text",
+      "title": "Thai Agro Energy PCL Annual Report 2022 (Form 56-1 One Report)",
+      "url": "https://www.thaiagroenergy.com/web/pdf/%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B8%AA%E0%B8%B3%E0%B8%AB%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%9C%E0%B8%B9%E0%B9%89%E0%B8%96%E0%B8%B7%E0%B8%AD%E0%B8%AB%E0%B8%B8%E0%B9%89%E0%B8%99/66/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9B%E0%B8%B0%E0%B8%88%E0%B8%B3%E0%B8%9B%E0%B8%B52565EN.pdf",
+      "locators": [
+        {"claim": "actual ethanol production by line and total for reporting years 2021 and 2022", "pdf_text_lines": [671, 717]},
+        {"claim": "2022 spent-wash volume, biogas-capacity periods, steam, fuels and electricity", "pdf_text_lines": [1747, 1767]},
+        {"claim": "company says the organization-level GHG assessment uses 2021 base data and was approved by TGO on 2022-08-23", "printed_page": 42, "pdf_text_lines": [1770, 1786]},
+        {"claim": "2021 base-year organization-level CFO scope totals", "printed_page": 42, "pdf_text_lines": [1782, 1798]}
+      ],
+      "local_fetch_http_status": null,
+      "local_fetch_attempted": false,
+      "local_copy": false,
+      "sha256": null,
+      "indexed_text_reviewed": true,
+      "visual_page_audit": false,
+      "rights_status": "NOT_CLEARED_FOR_REDISTRIBUTION"
+    }
+  ],
+  "base_year_cfo_reported_in_2022_annual_report": {
+    "base_year": 2021,
+    "certification_reported_date": "2022-08-23",
+    "unit": "t CO2e",
+    "scope1": 143210,
+    "scope2": 4350,
+    "scope3": 892,
+    "sum_scope1_scope2_scope3": 148452,
+    "team_arithmetic_reconciles": true,
+    "organizational_not_product_lci": true,
+    "site_specific_attribution": null,
+    "gas_specific_ch4_mass": null
+  },
+  "current_tgo_registry_metadata": {
+    "url": "https://thaicarbonlabel.tgo.or.th/index.php?action=WkdWMFlXbHM&lang=TH&mod=YjNKbllXNXBlbUYwYVc5dVgyRndjSEp2ZG1Gcw&param=TXpBeE5EQT0",
+    "record_label": "ผลิตเอทานอลเพื่อใช้เป็นเชื้อเพลิง",
+    "record_category": "Carbon Footprint for Organization (CFO)",
+    "certificate_id": "TGO CFO FY25-02-033",
+    "approved_date": "2026-04-22",
+    "expiry_date": "2027-04-21",
+    "product_cfp_value_per_litre": null,
+    "interpretation": "Current organization-level certification metadata; not a product CFP result or the detailed 2021 base-year inventory."
+  },
+  "source_reported_2022_plant_operations": {
+    "production_line1_L": 14022334,
+    "production_line2_L": 59494253,
+    "total_actual_ethanol_production_L": 73516587,
+    "spent_wash_volume_m3": 614816,
+    "biogas_capacity_utilization_jan_mar_percent": 92,
+    "biogas_capacity_utilization_apr_percent": null,
+    "biogas_capacity_utilization_apr_status": "treatment stopped while both production lines temporarily ceased",
+    "biogas_capacity_utilization_may_dec_percent": 54,
+    "steam_produced_tonnes": 256777.43,
+    "activity_diesel_L": 82590,
+    "activity_gasohol_e10_L": 6386,
+    "activity_fuel_oil_L": 92000,
+    "electricity_total_reported_number": 25000000,
+    "electricity_generated_reported_number": 15000000,
+    "electricity_purchased_reported_number": 10000000,
+    "electricity_unit_as_printed": "kW",
+    "reported_ch4_mass": null,
+    "measured_biogas_volume": null,
+    "biogas_ch4_fraction": null
+  },
+  "source_reported": {
+    "line1_actual_ethanol_production_L_2021": 23118435,
+    "line2_actual_ethanol_production_L_2021": 62164766,
+    "total_actual_ethanol_production_L_2021": 85283201,
+    "product_purity_volume_fraction": 0.998,
+    "spent_wash_volume_m3_2021": 734615,
+    "biogas_capacity_utilization_jan_jun_percent": 83,
+    "biogas_capacity_utilization_jul_dec_percent": 47,
+    "reported_electricity_consumption_number": 28000000,
+    "reported_electricity_generation_number": 19000000,
+    "electricity_unit_as_printed": "kW",
+    "conversion_ethanol_sales_L_2021_rounded": 85352000,
+    "reported_ch4_emissions_mass": null,
+    "reported_biogas_volume": null,
+    "reported_biogas_ch4_fraction": null
+  },
+  "later_company_organizational_ghg_reported": {
+    "assessment_baseline_year": 2021,
+    "baseline_assessment_tgo_certified_on": "2022-08-23",
+    "table_reporting_years": [2022, 2023, 2024],
+    "total_tco2e": [148452, 153080, 257665],
+    "scope1_tco2e": [143210, 146338, 250339],
+    "scope2_tco2e": [4350, 5603, 6062],
+    "scope3_tco2e": [892, 1139, 1264],
+    "scope_components_sum_to_total": [true, true, true],
+    "2021_baseline_total_disclosed_in_this_table": null,
+    "gas_specific_ch4_mass": null,
+    "matched_ethanol_denominator_for_table_years": null,
+    "use_as_product_lci": false
+  },
+  "team_calculation": {
+    "formula": "734615 m3 * 1000 L/m3 / 85283201 L reported ethanol",
+    "spent_wash_L_per_reported_ethanol_L": 8.613830055464264,
+    "line_output_sum_reconciles": true,
+    "2022_formula": "614816 m3 * 1000 L/m3 / 73516587 L reported ethanol",
+    "2022_spent_wash_L_per_reported_ethanol_L": 8.362956240065932,
+    "2022_line_output_sum_reconciles": true,
+    "production_vs_sales_difference_L": 68799,
+    "production_vs_sales_difference_percent_of_production": 0.08067122152227846,
+    "interpretation": "Production and sales remain distinct reported metrics; no unexplained difference is adjusted away.",
+    "calculated_ch4_intensity": null,
+    "calculated_co2e": null
+  },
+  "scope_controls": {
+    "is_tsm_or_thai_sugar_ethanol": false,
+    "is_feedstock_specific": false,
+    "same_year_production_and_wastewater": true,
+    "same_period_measured_ch4_and_production": false,
+    "usable_as_tsm_proxy": false,
+    "imported_to_normalized_lci": false,
+    "added_to_tsm_model": false,
+    "public_release": false,
+    "added_to_rag": false,
+    "status_reason": "Useful same-company plant operations with matched actual production and spent-wash totals for 2021 and 2022, plus a 2021 organization-level CFO base-year value disclosed in the 2022 annual report. Biogas capacity statements are not measured gas quantities; no gas-specific methane mass, site-only attribution for CFO, product denominator for the CFO total, local source hash, visual audit, or redistribution clearance."
+  }
+}

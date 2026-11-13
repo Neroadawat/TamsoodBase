@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "status_as_of": "2026-11-10",
+  "source_registry": "docs/source-registry.csv",
+  "layers": [
+    {
+      "id": "DMF",
+      "name": "DMF petroleum production",
+      "schema": "tamsood_research",
+      "tables": ["source_resource", "resource_snapshot", "source_record", "production_context", "observation", "duplicate_disposition", "rejected_record"],
+      "status": "Source records are staged/candidate; review_status is constrained to PENDING; historical time basis remains unresolved.",
+      "rights_status": "Per source registry; public redistribution is not cleared by schema acceptance.",
+      "rights_enforcement": {
+        "normalized_database_field": null,
+        "descriptive_license_field": "tamsood_research.resource_snapshot.license_label",
+        "record_status_field": "tamsood_research.observation.review_status",
+        "record_status_constraint": "PENDING",
+        "api_clearance_source": "docs/source-registry.csv plus a source-and-record release decision",
+        "queryable_as_cleared_in_current_schema": false
+      },
+      "scope": null,
+      "unit": null,
+      "period": null,
+      "locator": "source line + CSV hash in tamsood_research; source_registry locator is not normalized for every row",
+      "release_allowed": false
+    },
+    {
+      "id": "COMPANY",
+      "name": "Company reports",
+      "schema": "tamsood_reusable",
+      "tables": ["document", "context", "metric", "observation", "quality_issue", "issue_observation", "review", "data_release", "release_observation"],
+      "status": "Selected references may be accepted for internal reference use; publication/redistribution remains NOT_CLEARED unless a source-specific decision says otherwise.",
+      "rights_status": "Per document.rights_status and source registry; raw values are not approved for public distribution.",
+      "rights_enforcement": {
+        "normalized_database_field": "tamsood_reusable.document.rights_status",
+        "record_status_field": "tamsood_reusable.review.decision",
+        "record_status_constraint": "ACCEPTED_REFERENCE or HOLD_CONTEXT; neither value implies redistribution permission",
+        "api_clearance_source": "document rights plus a separate record and external-model release decision",
+        "queryable_as_cleared_in_current_schema": false
+      },
+      "scope": null,
+      "unit": null,
+      "period": "reference_year is stored on each observation; this is not necessarily the report publication year",
+      "locator": "PDF page/printed page/table/column fields in observation or reference projection",
+      "release_allowed": false
+    },
+    {
+      "id": "NSO",
+      "name": "National Statistical Office tables",
+      "schema": "tamsood_supplemental",
+      "tables": ["dataset_snapshot", "observation", "national_statistic"],
+      "status": "STAGED_SOURCE_VERIFIED; source comparison and normalization are incomplete; not product LCI.",
+      "rights_status": "Public download observed; reuse scope is unconfirmed per source registry.",
+      "rights_enforcement": {
+        "normalized_database_field": null,
+        "descriptive_license_field": null,
+        "record_status_field": "tamsood_supplemental.observation.status",
+        "record_status_constraint": "STAGED_SOURCE_VERIFIED",
+        "api_clearance_source": "docs/source-registry.csv plus a source-and-record release decision",
+        "queryable_as_cleared_in_current_schema": false
+      },
+      "scope": null,
+      "unit": "Source-specific; preserve original unit and footnotes.",
+      "period": "reference_year is stored per national_statistic row",
+      "locator": "source_sha256 + source_line + source_column",
+      "release_allowed": false
+    },
+    {
+      "id": "RESEARCH",
+      "name": "Research inventories and other studies",
+      "schema": "tamsood_supplemental",
+      "tables": ["dataset_snapshot", "observation", "process", "inventory_exchange"],
+      "status": "SOURCE_REPORTED_PRODUCT_INVENTORY; selected research values are not a complete or normalized lifecycle inventory.",
+      "rights_status": "Per source registry; an article license notice does not by itself clear every derived record or external-model use.",
+      "rights_enforcement": {
+        "normalized_database_field": null,
+        "descriptive_license_field": null,
+        "record_status_field": "tamsood_supplemental.observation.status",
+        "record_status_constraint": "SOURCE_REPORTED_PRODUCT_INVENTORY",
+        "api_clearance_source": "docs/source-registry.csv plus a source-and-record release decision",
+        "queryable_as_cleared_in_current_schema": false
+      },
+      "scope": null,
+      "unit": "Per inventory exchange; reference amount/unit and source unit must remain linked.",
+      "period": "data_period may be NULL when source measurement period is unspecified",
+      "locator": "source_sha256 + source_row + source_column",
+      "release_allowed": false
+    },
+    {
+      "id": "EPPO",
+      "name": "EPPO refinery and petroleum statistics",
+      "schema": "tamsood_eppo",
+      "tables": ["source_snapshot", "observation"],
+      "status": "STAGED_SOURCE_VERIFIED; not normalized product LCI; unit and time basis remain dataset-specific.",
+      "rights_status": "Open Data Common label observed for some sources; specific redistribution terms are not verified.",
+      "rights_enforcement": {
+        "normalized_database_field": null,
+        "descriptive_license_field": "tamsood_eppo.source_snapshot.metadata",
+        "record_status_field": "tamsood_eppo.observation.status",
+        "record_status_constraint": "STAGED_SOURCE_VERIFIED",
+        "api_clearance_source": "docs/source-registry.csv plus a source-and-record release decision",
+        "queryable_as_cleared_in_current_schema": false
+      },
+      "scope": null,
+      "unit": "Dataset-specific; BBL/DAY and Million Litres are distinct quantities.",
+      "period": "reference_year + month",
+      "locator": "source_line + source snapshot",
+      "release_allowed": false
+    },
+    {
+      "id": "SUPPORTING",
+      "name": "Methodology and comparison references not loaded into a domain data schema",
+      "schema": null,
+      "tables": [],
+      "status": "Citation/context only or comparison issue; not a queryable production data table.",
+      "rights_status": "Per source registry; citation access does not clear redistribution or external-model use.",
+      "rights_enforcement": {
+        "normalized_database_field": null,
+        "rights_registry": "docs/source-registry.csv rights_status",
+        "record_status_field": null,
+        "api_clearance_source": "source registry and separate release decision",
+        "queryable_as_cleared_in_current_schema": false
+      },
+      "scope": null,
+      "unit": null,
+      "period": null,
+      "locator": "Source registry notes or linked review evidence; no normalized row locator is asserted",
+      "release_allowed": false
+    }
+  ],
+  "public_filter": {
+    "rights_values_that_may_be_considered": ["CLEARED"],
+    "status_values_that_may_be_considered": ["ACCEPTED_REFERENCE", "STAGED_SOURCE_VERIFIED", "SOURCE_REPORTED_PRODUCT_INVENTORY"],
+    "external_llm_requires_separate_approval": true,
+    "current_public_release_allowed": false
+  },
+  "numeric_api_status": "NOT_IMPLEMENTED: current domain schemas do not expose normalized per-source clearance for all layers; implement source/record release predicates before adding any public aggregate query."
+}

@@ -1,0 +1,52 @@
+{
+  "reviewed_at_utc": "2026-11-11T22:59:23.483229+00:00",
+  "status": "Draft for team review; not submitted",
+  "source_deck": "output/presentations/TamsoodBase-final-review-2026-11-10.pptx",
+  "source_deck_sha256": "0D6573B5F7435C0FFAE9C6B3AB811AFEA816B52E5370591F0D3CB79AE0BC2DF0",
+  "change": {
+    "slide": 9,
+    "finding": "The previous bullet implied Vercel-to-EC2 MySQL data access for users, but current post-deploy evidence shows checked anonymous data routes return 403; no authenticated user data path is verified.",
+    "new_text": [
+      "หน้าเว็บ Vercel เปิด; API ข้อมูล 15 เส้นทางที่ตรวจตอบ 403; มี S3 backup/restore",
+      "ยังไม่มีทางให้ผู้ใช้ล็อกอินดูข้อมูล; Quick Tunnel ชั่วคราว; raw ที่สิทธิไม่ชัดยังแจกไม่ได้"
+    ],
+    "source_evidence": [
+      "evidence/production-dataset-api-hotfix-2026-11-10.json",
+      "evidence/rag-live-backend-connectivity-2026-11-10.json",
+      "docs/tasks.json:T147 TODO"
+    ],
+    "scope": "Only slide 9 status wording changed; all other slide text is unchanged."
+  },
+  "outputs": {
+    "pptx": {
+      "path": "output/presentations/TamsoodBase-final-review-2026-11-12.pptx",
+      "sha256": "a803a41086bf6fdf71e86a000396d8109f73ab8fdd494dad107e841fcfa61b06",
+      "slide_count": 10
+    },
+    "pdf": {
+      "path": "output/pdf/TamsoodBase-final-slides-review-2026-11-12.pdf",
+      "sha256": "c6b21d8f34ef0974d2ef096fedee8ac434c4fe70edf738a3115e63cae36dd5f4",
+      "pages": 10,
+      "page_size_points": [
+        960,
+        540
+      ]
+    }
+  },
+  "verification": {
+    "pptx_zip_integrity": "passed; zero findings",
+    "pptx_layout": "passed; 10 slides, 16:9, zero findings and warnings",
+    "text_comparison": "passed; only slide 9 differs from source",
+    "rendering": "all 10 pages rendered; page 9 visually reviewed; pages 1-8 and 10 pixel-identical to source PDF at 72 dpi",
+    "pdf_text": "passed; page 9 includes 15 routes, 403 and no login path",
+    "authoring_note": "PowerPoint automation used to preserve the existing template. Artifact Tool import was unavailable in the bundled Node runtime because @oai/granola/node was not installed; PPTX package/layout validators and render comparison were used instead."
+  },
+  "limits": {
+    "team_review": false,
+    "team_consent": false,
+    "submitted": false,
+    "production_changed": false,
+    "rights_changed": false,
+    "full_lci_claimed": false
+  }
+}

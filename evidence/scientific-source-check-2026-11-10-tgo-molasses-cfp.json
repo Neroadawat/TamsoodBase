@@ -1,0 +1,139 @@
+{
+  "review_date": "2026-11-10",
+  "status": "HOLD_CONTEXT",
+  "acceptance_scope": "candidate source-reported TGO upstream product CFP for molasses; actual supply to TSM ethanol, period/method compatibility, and reuse rights are unverified",
+  "record": {
+    "product_name_th": "กากน้ำตาล (โมลาส)",
+    "certificate_number": "TGO CFP FY26-477-3693",
+    "producer_legal_name_th": "บริษัท น้ำตาลไทยกาญจนบุรี จำกัด (สำนักงานใหญ่)",
+    "linked_group": "TSM Group",
+    "registry_address": "1 Moo 8, Saeng Chuto Road, Tha Mai, Tha Maka, Kanchanaburi 71120, Thailand",
+    "functional_unit_amount": 1,
+    "functional_unit": "tonne",
+    "boundary": "B2B",
+    "reported_cf_value": 92.3,
+    "reported_cf_unit": "kg CO2e",
+    "converted_value": 0.0923,
+    "converted_unit": "kg CO2e/kg molasses",
+    "conversion_formula": "92.3 kg CO2e / 1000 kg per tonne = 0.0923 kg CO2e/kg molasses",
+    "approval_date": "2025-11-25",
+    "expiry_date": "2028-11-24",
+    "valid_on_review_date": true
+  },
+  "source_urls": {
+    "tgo_molasses_product_record": "https://thaicarbonlabel.tgo.or.th/index.php?action=WkdWMFlXbHM&lang=TH&mod=Y0hKdlpIVmpkSE5mWVhCd2NtOTJZV3c9&param=TWpjek9EST0",
+    "tsm_sugar_business": "https://tsmgroup.co.th/about-us/affiliated-company/sugar-business/",
+    "tsm_ethanol_business": "https://tsmgroup.co.th/about-us/affiliated-company/ethanol-business/",
+    "tsm_ethanol_process": "https://tsmgroup.co.th/our-product/ethanol/",
+    "tgo_pcr_rules": "https://thaicarbonlabel.tgo.or.th/index.php?lang=EN&mod=Y0hKdlpIVmpkSE5mY25Wc1pYTT0"
+  },
+  "source_locators": {
+    "tgo_molasses_product_record": "Product detail fields: product, certificate, producer, address, functional unit, boundary, CF value, approval and expiry dates",
+    "tsm_sugar_business": "Thai Sugar Kanchanaburi identity; molasses among sugar-production by-products; group resource-circulation description",
+    "tsm_ethanol_business": "Thai Sugar Ethanol and statement that ethanol is made from molasses",
+    "tsm_ethanol_process": "Company-reported qualitative steps: anaerobic yeast fermentation, distillation to 95%, dehydration to 99.5%, storage, then sale to oil companies for gasohol production; no quantitative inventory",
+    "tgo_pcr_rules": "Requirement to follow applicable PCR and submit a draft product specification when there is no Thai PCR"
+  },
+  "company_reported_process_context": {
+    "steps": [
+      "molasses feedstock",
+      "anaerobic yeast fermentation",
+      "distillation to 95% ethanol",
+      "dehydration to 99.5% ethanol",
+      "storage before sale",
+      "sale to oil companies for gasohol production"
+    ],
+    "quantitative_inventory_available": false,
+    "matched_operating_period_available": false,
+    "supplier_identity_for_certified_molasses_confirmed": false,
+    "supports_process_boundary_context_only": true
+  },
+  "bounded_supply_link_check": {
+    "review_date": "2026-11-10",
+    "scope": "Targeted search of official TSM Group public pages for a direct Thai Sugar Kanchanaburi to Thai Sugar Ethanol molasses delivery, supplier, or matched-period record",
+    "queries": [
+      "site:tsmgroup.co.th กากน้ำตาล น้ำตาลไทยเอทานอล",
+      "site:tsmgroup.co.th น้ำตาลไทยเอทานอล น้ำตาลไทยกาญจนบุรี กากน้ำตาล"
+    ],
+    "result": "Official pages describe molasses as a sugar-production by-product and feedstock for ethanol, but no direct sale/delivery record, matched period, or quantity was located in this bounded search.",
+    "absence_interpretation": "A bounded public-site search is not proof that no supply relationship exists.",
+    "effect_on_status": "Keep HOLD_CONTEXT; actual supplier relationship remains NOT_VERIFIED."
+  },
+  "bounded_pcr_catalog_check": {
+    "review_date": "2026-11-10",
+    "source_url": "https://thaicarbonlabel.tgo.or.th/index.php?lang=EN&mod=Y0hKdlpIVmpkSE5mY25Wc1pYTT0",
+    "pagination_reviewed": {
+      "national_product_rules": 54,
+      "general_product_rules": 266,
+      "total_listing_titles": 320,
+      "pages_read": 28
+    },
+    "literal_title_terms_checked": [
+      "ethanol",
+      "molasses",
+      "sugar",
+      "เอทานอล",
+      "น้ำตาล",
+      "กากน้ำตาล",
+      "biofuel"
+    ],
+    "result": "No listing title containing the checked terms was found among the 320 paginated product-rule titles reviewed.",
+    "interpretation": "Title-only bounded search; not proof that no applicable PCR exists, since relevant rules may have other titles, linked documents, or product specifications.",
+    "certificate_pcr_disclosure": "NOT_DISCLOSED_ON_INSPECTED_MOLASSES_RECORD",
+    "does_not_authorize_allocation_assumption": true
+  },
+  "not_disclosed_or_not_verified": [
+    "calculation/reporting period",
+    "actual sale or delivery of the certified molasses product to Thai Sugar Ethanol",
+    "matched feedstock quantity and ethanol output period",
+    "stage-level inventory and allocation method",
+    "applicable PCR or product specification for this certificate",
+    "emission-factor set",
+    "verification sheet",
+    "transport coverage to the ethanol plant",
+    "redistribution rights for underlying assessment materials"
+  ],
+  "controls": {
+    "same_group_and_feedstock_type_supported": true,
+    "actual_supply_chain_link_supported": false,
+    "candidate_for_internal_reference_review": true,
+    "use_as_actual_tsm_feedstock_factor": false,
+    "use_as_measured_ch4_value": false,
+    "join_to_tsm_ethanol_output": false,
+    "insert_as_team_scenario_input": false,
+    "insert_as_normalized_lci_exchange": false,
+    "underlying_inventory_added_to_public_export": false,
+    "underlying_inventory_added_to_rag": false
+  },
+  "review_method": {
+    "tgo_record_inspected": true,
+    "tsm_sugar_page_inspected": true,
+    "tsm_ethanol_page_inspected": true,
+    "tsm_ethanol_process_page_inspected": true,
+    "certificate_copy": false,
+    "verification_sheet_reviewed": false,
+    "underlying_inventory_reviewed": false,
+    "redistribution_rights_status": "NOT_ASSESSED",
+    "pcr_status": "NOT_DISCLOSED_ON_INSPECTED_RECORD",
+    "actual_supplier_relationship_status": "NOT_VERIFIED",
+    "tgo_registry_capture": {
+      "http_status": 200,
+      "date": "2026-11-10",
+      "response_bytes": 54147,
+      "sha256": "da9121b748e995f5628d18132344276121f05194fca659718d3383f50a693a08"
+    },
+    "tsm_sugar_page_capture": {
+      "http_status": 200,
+      "date": "2026-11-10",
+      "response_bytes": 334811,
+      "sha256": "7a7a666c8caba8c8637a48de06651ec8c384997927028073e09861b49f0fe318"
+    },
+    "tsm_ethanol_process_page_capture": {
+      "http_status": 200,
+      "date": "2026-11-10",
+      "response_bytes": 528272,
+      "sha256": "57d7682569d77d7a919177a541b40ecc84e44d2c10af0e4a589360091e7f483c"
+    },
+    "page_hashes_are_content_identity_only": true
+  }
+}

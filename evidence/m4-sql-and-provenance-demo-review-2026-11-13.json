@@ -1,0 +1,58 @@
+{
+  "checked_at_local": "2026-11-12T22:05:34+07:00",
+  "scope": "Read-only verification of the M4 slide SQL example and one-row provenance walkthrough against the local DMF snapshot and schema",
+  "source_snapshot": {
+    "run": "20261022T151321110294Z",
+    "file": "build/dmf/20261022T151321110294Z/deduplicated-candidates.csv"
+  },
+  "slide_7_query": {
+    "filter": "production-oil / March 2026 / SINGLETON or EXACT_REPRESENTATIVE",
+    "eligible_rows": 34,
+    "top_4": [
+      {
+        "source_group": "เบญจมาศ",
+        "area": "ในทะเล",
+        "amount": "19337.54839",
+        "metadata_unit": "บาร์เรล",
+        "source_line": 11399
+      },
+      {
+        "source_group": "Sirikit และอื่นๆใน S1",
+        "area": "บนบก",
+        "amount": "18557",
+        "metadata_unit": "บาร์เรล",
+        "source_line": 11425
+      },
+      {
+        "source_group": "ปลาทอง",
+        "area": "ในทะเล",
+        "amount": "11760.67294",
+        "metadata_unit": "บาร์เรล",
+        "source_line": 11407
+      },
+      {
+        "source_group": "นงเยาว์",
+        "area": "ในทะเล",
+        "amount": "9703.50129",
+        "metadata_unit": "บาร์เรล",
+        "source_line": 11402
+      }
+    ],
+    "matches_slide_table": true,
+    "schema_view_checked": "sql/mysql/full-schema.sql: deduplicated_pending selects singleton and exact representative rows"
+  },
+  "slide_8_trace": {
+    "package": "production-condensate",
+    "source_line": 11394,
+    "period": "2026-03",
+    "source_group": "ไพลินเหนือ",
+    "amount": "5876.859677",
+    "metadata_unit": "บาร์เรล",
+    "matches_slide_walkthrough": true
+  },
+  "limits": {
+    "production_api_touched": false,
+    "rights_approved": false,
+    "artifact_files_edited": false
+  }
+}
