@@ -31,7 +31,7 @@
   "knowledge_pack": {
     "path": "docs/rag/knowledge-pack.json",
     "scope": "OWNER_RELEASED_GOV_OPEN_DATA_AND_CC_BY_ARTICLE",
-    "content_sha256": "abee761b61c547dfa270d2d92191364bb57240062278d8a63edcb9ff402a700d",
+    "content_sha256": "18c943ca84a7e25c276a7d562e3040f468aeabe74b7c28964af2a27284c81a00",
     "contains_company_report_values": false
   },
   "legacy_corpus_note": "narrative_cards and statistical_facts below belong to the earlier local prototype. They are not served by the public chat and their rights decisions remain PENDING.",

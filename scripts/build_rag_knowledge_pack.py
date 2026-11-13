@@ -370,6 +370,14 @@ def build_notes() -> list[dict]:
     return notes
 
 
+def acceptance_summary() -> str:
+    ledger = json.loads((ROOT / "docs" / "acceptance-ledger.json").read_text(encoding="utf-8"))
+    parts = " · ".join(f"{layer['dataset']} {layer['accepted']:,}" for layer in ledger["layers"])
+    return (f"จำนวนรายการที่ทีมรับแล้ว (Accepted) ตามกฎ {ledger['rule']} รวม {ledger['accepted_total']:,} รายการ และพักไว้ "
+            f"{ledger['held_total']:,} รายการ แยกเป็น {parts} เกณฑ์คือค่าตรงกับไฟล์ต้นทางที่เก็บสำเนา ไม่ซ้ำ ย้อนถึงต้นทางได้ "
+            "และเป็นข้อมูลของไทย การรับไม่ได้ยืนยันฐานเวลาของข้อมูล DMF และไม่ได้ทำให้เป็นบัญชี LCI ต่อผลิตภัณฑ์")
+
+
 def build_catalogue() -> list[dict]:
     """Every layer the project holds, including the ones the chat may not quote."""
     registry = list(csv.DictReader((ROOT / "docs" / "source-registry.csv").open(encoding="utf-8-sig")))
@@ -395,6 +403,7 @@ def build_catalogue() -> list[dict]:
         {"id": "ethanol_evidence", "answerable": False,
          "summary": "หลักฐานประกอบกรณีศึกษาเอทานอลของไทย เช่น ผลทดสอบรถ E10 ช่วงสตาร์ตเย็น และเอกสารโครงการบำบัดน้ำเสีย/ไบโอแก๊สของโรงงานเอทานอล ระบบเก็บไว้ใช้ภายในและยังไม่มีค่า CO₂e ครบทั้งวงจร แชตนี้ไม่คัดตัวเลขมาเผยแพร่ต่อ",
          "source_urls": [urls.get("UNFCCC-TSM-WASTEWATER-PDD-2009")]},
+        {"id": "acceptance", "answerable": True, "summary": acceptance_summary()},
         {"id": "project_scope", "answerable": True,
          "summary": "TamsoodBase เป็นฐานข้อมูลเชื้อเพลิงของไทยที่ตรวจย้อนกลับถึงแหล่งต้นทางได้ ทีมยังไม่ได้สร้างบัญชีรายการวัฏจักรชีวิต (LCI) ที่เชื่อมครบทั้งวงจรด้วยตัวเอง แต่มีผล CO₂e แบบ Well-to-Wheels ของไบโอดีเซลปาล์มตามที่บทความวิจัยรายงานให้ถามได้ (ชุด fame_lca_results) ส่วนเอทานอลและเชื้อเพลิงฟอสซิลรายผลิตภัณฑ์ยังไม่มีค่าทั้งวงจร"},
     ]

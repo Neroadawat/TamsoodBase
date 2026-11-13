@@ -1,0 +1,97 @@
+{
+  "rule": "AR-2",
+  "decided_on": "2026-11-13",
+  "decided_by": "Project owner, stated in a working session; the team should confirm it in a meeting memo",
+  "meaning": "Accepted = verified against the snapshotted source, unique, traceable and Thailand-relevant. It does not confirm the DMF time basis, clear redistribution rights, or make a tuple a normalised product LCI exchange.",
+  "database_state": "The MySQL column review_status still holds PENDING until sql/mysql/acceptance-ar2-migration.sql is applied on the server.",
+  "layers": [
+    {
+      "dataset": "DMF การผลิตปิโตรเลียม",
+      "source_rows": 34905,
+      "accepted": 34667,
+      "held": [
+        {
+          "count": 6,
+          "reason": "REJECTED_STRUCTURE: ค่าว่าง ไม่ระบุพื้นที่หรือแหล่ง"
+        },
+        {
+          "count": 42,
+          "reason": "EXACT_COPY: สำเนาซ้ำที่ค่าเท่ากันทุกช่อง นับเฉพาะตัวแทน"
+        },
+        {
+          "count": 186,
+          "reason": "HOLD_CONFLICT: ช่วงเวลาและแหล่งเดียวกันแต่ค่าต่างกัน"
+        },
+        {
+          "count": 1,
+          "reason": "HOLD_MAGNITUDE: ค่าสูงกว่าค่าอื่นของชุดเดียวกันเกินร้อยเท่า น่าจะเป็นปัญหาหน่วยในไฟล์ต้นทาง"
+        },
+        {
+          "count": 3,
+          "reason": "HOLD_UNIT_LABEL: ชื่อแหล่งในไฟล์ระบุว่าเป็น LPG หน่วยกิโลกรัม ไม่ตรงกับหน่วยของไฟล์"
+        }
+      ],
+      "status": "ACCEPTED_SOURCE_STATISTIC",
+      "caveat": "ฐานเวลาของค่ารายเดือน (ยอดรวมทั้งเดือนหรืออัตราต่อวัน) ยังไม่ยืนยันกับกรมเชื้อเพลิงธรรมชาติ และชื่อแหล่งผลิตยังไม่ได้จัดเป็นมาตรฐานเดียว",
+      "verification": "ทุกแถวอ่านกลับได้ตรงกับไฟล์ CSV ที่เก็บสำเนา (เทียบด้วย SHA-256 ของไฟล์และเลขบรรทัด)"
+    },
+    {
+      "dataset": "EPPO สถิติโรงกลั่น",
+      "source_rows": 5934,
+      "accepted": 5934,
+      "held": [],
+      "status": "ACCEPTED_SOURCE_STATISTIC",
+      "caveat": "วัตถุดิบเข้ารายบริษัท (BBL/DAY) กับผลผลิตรวมประเทศ (Million Litres) เป็นคนละขอบเขต ห้ามหารเป็น yield",
+      "verification": "ไม่มีค่าซ้ำตาม (ชุดข้อมูล, ปี, เดือน, รายการ); ทุกแถวมีเลขบรรทัดและ hash ของไฟล์ต้นทาง"
+    },
+    {
+      "dataset": "NSO สถิติพลังงาน",
+      "source_rows": 273,
+      "accepted": 273,
+      "held": [],
+      "status": "ACCEPTED_SOURCE_STATISTIC",
+      "caveat": "เทียบข้ามแหล่งได้ 169 ค่า ในจำนวนนี้ 4 ค่าไม่ตรงกับหน่วยงานต้นทางอีกแห่ง ค่าที่รับคือค่าตามตารางของสำนักงานสถิติแห่งชาติ",
+      "verification": "ทุกค่าตรงกับช่องของไฟล์ CSV ที่เก็บสำเนา มีเลขบรรทัดและคอลัมน์"
+    },
+    {
+      "dataset": "งานวิจัย: บัญชีรายการปาล์มและไบโอดีเซล",
+      "source_rows": 58,
+      "accepted": 57,
+      "held": [
+        {
+          "count": 1,
+          "reason": "HOLD_MISSING_UNIT: บทความไม่ระบุหน่วย ทีมไม่เดาหน่วยให้"
+        }
+      ],
+      "status": "ACCEPTED_SOURCE_INVENTORY",
+      "caveat": "แต่ละกระบวนการใช้ฐานของตัวเอง ยังไม่ได้เชื่อมเป็นบัญชี LCI ครบวงจร",
+      "verification": "ทุกค่าชี้กลับถึงตาราง แถว และคอลัมน์ของบทความ (CC BY 4.0)"
+    },
+    {
+      "dataset": "งานวิจัย: ผล LCA ที่บทความรายงาน",
+      "source_rows": 44,
+      "accepted": 44,
+      "held": [],
+      "status": "ACCEPTED_SOURCE_RESULT",
+      "caveat": "เป็นผลที่ผู้วิจัยคำนวณ ใช้ข้อมูลพื้นหลัง ecoinvent และข้อมูล BHD จากฟินแลนด์ ไม่ใช่ผลคำนวณของทีม",
+      "verification": "อ่านจาก PDF ที่เก็บสำเนาด้วยโค้ด เก็บรูปที่พิมพ์คู่กับค่าทศนิยม ตรงกัน 44/44"
+    },
+    {
+      "dataset": "รายงานบริษัท (Thai Oil, SPRC)",
+      "source_rows": 101,
+      "accepted": 97,
+      "held": [
+        {
+          "count": 4,
+          "reason": "HOLD_CONTEXT: ชื่อและบริบทของตารางในรายงานไม่ตรงกัน"
+        }
+      ],
+      "status": "ACCEPTED_REFERENCE",
+      "caveat": "รับเป็นข้อมูลอ้างอิงภายใน ปริมาณไม่เผยแพร่ต่อเพราะยังไม่ยืนยันสิทธิ์",
+      "verification": "สกัดซ้ำจาก PDF ได้ค่าเดิมครบ มีเลขหน้า PDF และเลขหน้าที่พิมพ์"
+    }
+  ],
+  "accepted_total": 41072,
+  "held_total": 243,
+  "source_rows_total": 41315
+}
