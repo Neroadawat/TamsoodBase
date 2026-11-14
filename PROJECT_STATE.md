@@ -1,3 +1,10 @@
+## 15 พฤศจิกายน 2569 (ค่ำ) — รับช่วงจาก f407555: ใช้เล่ม review-2026-11-15 v2 เป็นฐาน
+
+- เล่มล่าสุดที่ใช้ต่อ: `output/m4/review-2026-11-15/S2-G05_M4_Report_REVIEW_2026-11-15_v2.docx` (ของ Codex: Revision 0.4, Traceability NFR01–06, ลิงก์ branch GitHub). ไม่ย้อนกลับไปใช้ `..._Final_UPDATED_REVIEW_2026-11-13_v2.docx` (ฉบับเก่ากว่า).
+- เพิ่มในเล่มนั้น (ไฮไลต์เหลือง, สคริปต์ `output/m4/book-source/patch_review_v2_poster_row.py`): แถว 7.1 โปสเตอร์ A4 10 บล็อก; แถว CSV ชี้ `output/m4/dataset/product_inventory.csv`. เรนเดอร์ Word (สำเนา) ได้ 71 หน้า; เลขหน้าในสารบัญที่สุ่มตรวจ 7 หัวข้อ (7.1, 7.2, 8.1, ภาคผนวก ก–ง) ตรงกับหน้าจริง; ยังไม่เปิด/ตรวจรูปครบทุกหน้า.
+- โปสเตอร์และสไลด์ 5: เปลี่ยนข้อความ SQL เป็น "รันซ้ำบน MySQL 8.4 ฐานทดลองแยก (evidence/presentation-mysql-local-2026-11-15.json) ไม่ใช่ EC2 โดยตรง" ตามผลของ Codex แล้ว; ผลคือ DMF top4, Q1 FAME INPUT 8 รายการ, Q2 FAME 8/2 และ H-FAME 5/1 ตรง.
+- ยังค้าง: รันบน EC2 โดยตรง (ต้องมีผู้เชื่อมฐานได้ ใช้ `sql/mysql/presentation-verification.sql`), ข้อมูลทีม (Consent, Contribution %, บันทึกประชุม M4, ช่อง [ทีมกรอก]), PDF ของ Report/Memo หลังทีมกรอก, merge เข้า main (รอผู้ใช้ตัดสินใจ), ซ้อมบนเครื่องฉาย/พิมพ์โปสเตอร์จริง.
+
 ## 15 พฤศจิกายน 2569 (ต่อ) — แก้ตาม review ของ Codex, เติมหลักฐาน Index/Transaction, commit + push
 
 - Commit `b3d6e22` (เว็บ/RAG/สคริปต์ CSV source_id/evidence/docs) และ `e7631ce` (ชุดนำเสนอ M4) push ไป `origin/codex/rag-gemini-preview-2026-11-09` แล้ว (ไม่ push main, ไม่ force). ลิงก์ GitHub ในเล่มชี้ repo ปกติ งานล่าสุดอยู่บน branch นี้ จนกว่าจะ merge เข้า main ต้องรู้ไว้ก่อนอ้างลิงก์. ไม่รวมในคอมมิต: tmp/, ไฟล์ล็อก Word `~$*`, วิดีโอเก่า 4 ไฟล์ใน output/prototype, output/m4/review-2026-11-15/. เพิ่ม `output/m4/dataset/product_inventory.csv` (16×32 มี source_id) เป็นไฟล์ชุดส่ง.
