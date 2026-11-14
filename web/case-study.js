@@ -16,7 +16,7 @@
   if(!data)return;
   const chosen=data.cases.find(c=>c.id===$('#case-choice').value)||data.cases[0];
   $('#case-selected').textContent=chosen.label+' · เลือกบริบทโรงสกัดเท่านั้น ตัวเลข CPO/RBDPO ด้านล่างใช้ฐานปลายทางปี 2020 เดียวกันทุกกรณี จึงยังไม่ใช่การเปรียบเทียบคาร์บอนหรือปริมาณรายโรงงาน · '+data.selection_note;
-  $('#case-run').textContent='รุ่นโมเดล '+data.model_release_id.slice(0,12)+' · metadata '+data.metadata_snapshot_id.slice(0,12);
+  $('#case-run').textContent='รุ่นโมเดล '+data.model_release_id.slice(0,12)+' · รุ่นข้อมูลประกอบ '+data.metadata_snapshot_id.slice(0,12);
   const flow=$('#case-processes');flow.replaceChildren();
   data.components.forEach(component=>{
    const b=make('button',undefined,'case-process');b.type='button';b.dataset.component=component.id;b.setAttribute('aria-pressed',String(selected===component.id));

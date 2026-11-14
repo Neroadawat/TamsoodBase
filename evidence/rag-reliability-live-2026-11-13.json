@@ -1,0 +1,266 @@
+{
+  "checked_at": "2026-11-13T08:15:31.110032+00:00",
+  "deployment": "dpl_4r7FeqKB8AEZBppbMLJhXnFBKftt",
+  "tests": [
+    {
+      "question": "FAME ใช้ยูเรเนียมเท่าไหร่",
+      "passed": true,
+      "payload": {
+        "summary": {
+          "text": "ระบบไม่มีข้อมูลการใช้ยูเรเนียมสำหรับการผลิต FAME ครับ ลองสอบถามเกี่ยวกับรายการสารเคมีหรือวัตถุดิบอื่น ๆ ที่ใช้ในการผลิตได้นะครับ",
+          "kind": "chat",
+          "source_ids": []
+        },
+        "hits": [],
+        "tables": []
+      }
+    },
+    {
+      "question": "ขอข้อมูลการผลิต FAME ปี 2575",
+      "passed": true,
+      "payload": {
+        "summary": {
+          "text": "ผมช่วยตอบเรื่องข้อมูลเชื้อเพลิงของไทยในระบบ TamsoodBase ได้ครับ เช่น ปริมาณการผลิตน้ำมันดิบและก๊าซธรรมชาติรายแหล่ง การผลิตน้ำมันสำเร็จรูป สถิติพลังงานของประเทศ และข้อมูลไบโอดีเซล FAME ลองถามเจาะจงเป็นเรื่อง ปี หรือแหล่งผลิตได้เลยครับ",
+          "kind": "chat",
+          "source_ids": []
+        },
+        "hits": [],
+        "tables": []
+      }
+    },
+    {
+      "question": "เปรียบเทียบผลโลกร้อน FAME กับเอทานอล",
+      "passed": true,
+      "payload": {
+        "summary": {
+          "text": "ระบบไม่มีข้อมูลผลกระทบโลกร้อนของเอทานอลครับ มีเฉพาะค่า CO2e แบบ Well-to-Wheels ของไบโอดีเซลปาล์ม (FAME, H-FAME, BHD) ตามที่บทความวิจัยรายงานในชุด fame_lca_results ครับ อยากดูผลของไบโอดีเซลอย่างเดียวไหมครับ",
+          "kind": "chat",
+          "source_ids": []
+        },
+        "hits": [],
+        "tables": []
+      }
+    },
+    {
+      "question": "ปี 2567 เอราวัณผลิตก๊าซรวมทั้งปีกี่ลูกบาศก์ฟุต",
+      "passed": true,
+      "payload": {
+        "summary": {
+          "text": "ปี พ.ศ. 2567 (ค.ศ. 2024) แหล่งเอราวัณมีค่าเฉลี่ยรายเดือนของก๊าซธรรมชาติอยู่ที่ 207.47 ล้านลูกบาศก์ฟุตครับ ทีมยังไม่ได้ยืนยันว่าค่ารายเดือนของกรมเชื้อเพลิงธรรมชาติเป็นยอดรวมทั้งเดือนหรืออัตราต่อวัน จึงไม่บวกข้ามเดือนและแสดงเป็นค่าเฉลี่ยของค่ารายเดือนแทนครับ",
+          "kind": "answer",
+          "source_ids": [
+            "dmf_production"
+          ]
+        },
+        "hits": [
+          {
+            "id": "dmf_production",
+            "title": "ปริมาณการผลิตปิโตรเลียมรายเดือน แยกแหล่งผลิต (กรมเชื้อเพลิงธรรมชาติ)",
+            "source_url": "https://catalog.dmf.go.th/dataset/ad91d31d-7e3b-48a3-b454-53c174156705/resource/f86d5605-e407-461f-83d8-47f9b4bd0803/download/production_gas.csv",
+            "locator": "ค่าเฉลี่ยรายเดือน · ปี 2024",
+            "attribution": "กรมเชื้อเพลิงธรรมชาติ, catalog.dmf.go.th — ดึงเมื่อ 22 ต.ค. 2569",
+            "licence": "Open Data Common (ป้ายบน catalog.dmf.go.th)"
+          }
+        ],
+        "tables": [
+          {
+            "title": "ปริมาณการผลิตปิโตรเลียมรายเดือน แยกแหล่งผลิต (กรมเชื้อเพลิงธรรมชาติ)",
+            "what": "ค่าเฉลี่ยรายเดือน · ปี 2024",
+            "rows": [
+              {
+                "product": "ก๊าซธรรมชาติ",
+                "year": 2024,
+                "value": 207.47,
+                "unit": "ล้านลูกบาศก์ฟุต",
+                "months_with_data": 12
+              }
+            ],
+            "rows_found": 1,
+            "truncated": false
+          }
+        ]
+      }
+    },
+    {
+      "question": "ขอค่าไฟฟ้าที่ใช้ผลิต FAME และ H-FAME",
+      "passed": true,
+      "payload": {
+        "summary": {
+          "text": "ค่าไฟฟ้าที่ใช้ผลิต FAME (ไบโอดีเซล) อยู่ที่ 0.52 กิโลวัตต์ชั่วโมง และ H-FAME อยู่ที่ 0.08 กิโลวัตต์ชั่วโมง ครับ ฐานข้อมูลนี้คิดจากการใช้เชื้อเพลิง 1,000 เมกะจูล เป็นเฉพาะขั้นแปรรูป ไม่ใช่บัญชีรายการครบทั้งวงจรชีวิตครับ",
+          "kind": "answer",
+          "source_ids": [
+            "fame_inventory"
+          ]
+        },
+        "hits": [
+          {
+            "id": "fame_inventory",
+            "title": "รายการเข้า–ออกขั้นแปรรูป FAME และ H-FAME ต่อการใช้เชื้อเพลิง 1,000 MJ (ตาราง 4 ของบทความ)",
+            "source_url": "https://doi.org/10.3390/su12229415",
+            "locator": "ค่าตามที่รายงาน · ทุกปีที่มีข้อมูล",
+            "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12(22), 9415 — CC BY 4.0; คัดค่าตามที่บทความรายงานโดย TamsoodBase",
+            "licence": "CC BY 4.0",
+            "licence_url": "https://creativecommons.org/licenses/by/4.0/"
+          }
+        ],
+        "tables": [
+          {
+            "title": "รายการเข้า–ออกขั้นแปรรูป FAME และ H-FAME ต่อการใช้เชื้อเพลิง 1,000 MJ (ตาราง 4 ของบทความ)",
+            "what": "ค่าตามที่รายงาน · ทุกปีที่มีข้อมูล",
+            "rows": [
+              {
+                "process": "FAME",
+                "direction": "INPUT",
+                "flow": "Electricity (grid)",
+                "stage": "FAME conversion",
+                "value": 0.52,
+                "unit": "kWh"
+              },
+              {
+                "process": "H-FAME",
+                "direction": "INPUT",
+                "flow": "Electricity (CHP Biomass)",
+                "stage": "Hydrogenation",
+                "value": 0.08,
+                "unit": "kWh"
+              }
+            ],
+            "rows_found": 2,
+            "truncated": false
+          }
+        ]
+      }
+    },
+    {
+      "question": "FAME ปล่อย 9 kg CO2 eq ใช่ไหม",
+      "passed": true,
+      "payload": {
+        "summary": {
+          "text": "ไม่ใช่ครับ จากข้อมูล FAME มีค่า Global warming อยู่ที่ 10.7 กิโลกรัม CO2 eq ต่อการใช้เชื้อเพลิง 1,000 MJ ครับ เป็นผลที่ผู้วิจัยคำนวณและรายงานไว้ในบทความ ไม่ใช่ผลที่ TamsoodBase คำนวณเอง ทีมยังสร้างบัญชีรายการครบวงจรของตัวเองไม่ได้",
+          "kind": "answer",
+          "source_ids": [
+            "fame_lca_results"
+          ]
+        },
+        "hits": [
+          {
+            "id": "fame_lca_results",
+            "title": "ผลประเมินวัฏจักรชีวิตแบบ Well-to-Wheels ต่อการใช้เชื้อเพลิง 1,000 MJ ตามที่บทความรายงาน (ตาราง 5–6)",
+            "source_url": "https://doi.org/10.3390/su12229415",
+            "locator": "ค่าตามที่รายงาน · ทุกปีที่มีข้อมูล",
+            "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12(22), 9415 — CC BY 4.0; คัดค่าตามที่บทความรายงานโดย TamsoodBase",
+            "licence": "CC BY 4.0",
+            "licence_url": "https://creativecommons.org/licenses/by/4.0/"
+          }
+        ],
+        "tables": [
+          {
+            "title": "ผลประเมินวัฏจักรชีวิตแบบ Well-to-Wheels ต่อการใช้เชื้อเพลิง 1,000 MJ ตามที่บทความรายงาน (ตาราง 5–6)",
+            "what": "ค่าตามที่รายงาน · ทุกปีที่มีข้อมูล",
+            "rows": [
+              {
+                "process": "FAME",
+                "direction": "REPORTED_RESULT",
+                "flow": "Global warming",
+                "stage": "Midpoint (Table 5)",
+                "as_printed": "1.07 x 10^1",
+                "value": 10.7,
+                "unit": "kg CO2 eq"
+              }
+            ],
+            "rows_found": 1,
+            "truncated": false
+          }
+        ]
+      }
+    },
+    {
+      "question": "เอาอันนั้นก็ได้",
+      "passed": true,
+      "payload": {
+        "summary": {
+          "text": "ลองดูผลด้านโลกร้อนที่บทความประเมินตั้งแต่ปลูกปาล์มจนถึงการใช้เชื้อเพลิงในรถครับ เมื่อเทียบที่การใช้เชื้อเพลิง 1,000 MJ เท่ากัน ผลที่รายงานในหน่วย kg CO2 eq คือ FAME 10.7 · H-FAME 12.3 · BHD 39.6 · Fossil diesel 219 ครับ ตัวเลขเหล่านี้เป็นผลประเมินของผู้วิจัย หากอยากดูว่าวัตถุดิบหรือพลังงานอะไรเข้ากระบวนการผลิต FAME ถามต่อได้เลย\n\nหมายเหตุ: BHD ใช้ข้อมูลการผลิตจากฟินแลนด์ และ H-FAME ใช้ข้อมูลโรงงานต้นแบบ จึงไม่ใช่การผลิตเชิงพาณิชย์ในไทย",
+          "kind": "answer",
+          "source_ids": [
+            "fame_lca_results",
+            "fame-wtw-boundary"
+          ]
+        },
+        "hits": [
+          {
+            "id": "fame_lca_results",
+            "title": "ผลประเมินวัฏจักรชีวิตแบบ Well-to-Wheels ต่อการใช้เชื้อเพลิง 1,000 MJ ตามที่บทความรายงาน (ตาราง 5–6)",
+            "source_url": "https://doi.org/10.3390/su12229415",
+            "locator": "ค่าตามที่รายงาน · ทุกปีที่มีข้อมูล",
+            "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12(22), 9415 — CC BY 4.0; คัดค่าตามที่บทความรายงานโดย TamsoodBase",
+            "licence": "CC BY 4.0",
+            "licence_url": "https://creativecommons.org/licenses/by/4.0/"
+          },
+          {
+            "id": "fame-wtw-boundary",
+            "title": "ขอบเขต Well to Wheels และวิธีประเมินของบทความ FAME/H-FAME/BHD",
+            "locator": "Section 2, 2.1–2.3, PDF pages 2–4",
+            "source_url": "https://doi.org/10.3390/su12229415",
+            "licence": "CC BY 4.0",
+            "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+            "attribution": "Permpool, Ghani & Gheewala (2020), Sustainability 12(22), 9415 — CC BY 4.0; คัดค่าตามที่บทความรายงานโดย TamsoodBase"
+          }
+        ],
+        "tables": [
+          {
+            "dataset": "fame_lca_results",
+            "title": "ผลประเมินวัฏจักรชีวิตแบบ Well-to-Wheels ต่อการใช้เชื้อเพลิง 1,000 MJ ตามที่บทความรายงาน (ตาราง 5–6)",
+            "what": "ค่าตามที่รายงาน · ทุกปีที่มีข้อมูล",
+            "aggregate": "list",
+            "rows": [
+              {
+                "process": "FAME",
+                "direction": "REPORTED_RESULT",
+                "flow": "Global warming",
+                "stage": "Midpoint (Table 5)",
+                "as_printed": "1.07 x 10^1",
+                "value": 10.7,
+                "unit": "kg CO2 eq"
+              },
+              {
+                "process": "H-FAME",
+                "direction": "REPORTED_RESULT",
+                "flow": "Global warming",
+                "stage": "Midpoint (Table 5)",
+                "as_printed": "1.23 x 10^1",
+                "value": 12.3,
+                "unit": "kg CO2 eq"
+              },
+              {
+                "process": "BHD",
+                "direction": "REPORTED_RESULT",
+                "flow": "Global warming",
+                "stage": "Midpoint (Table 5)",
+                "as_printed": "3.96 x 10^1",
+                "value": 39.6,
+                "unit": "kg CO2 eq"
+              },
+              {
+                "process": "Fossil diesel",
+                "direction": "REPORTED_RESULT",
+                "flow": "Global warming",
+                "stage": "Midpoint (Table 5)",
+                "as_printed": "2.19 x 10^2",
+                "value": 219,
+                "unit": "kg CO2 eq"
+              }
+            ],
+            "rows_found": 4,
+            "truncated": false,
+            "caveats": [
+              "เป็นผลที่ผู้วิจัยคำนวณและรายงานไว้ในบทความ ไม่ใช่ผลที่ TamsoodBase คำนวณเอง ทีมยังสร้างบัญชีรายการครบวงจรของตัวเองไม่ได้",
+              "ขอบเขต Well to Wheels: ปลูกปาล์ม ขนส่ง สกัด กลั่น ผลิตเชื้อเพลิง และการใช้ในรถกระบะ วิธี ReCiPe 2016 ใช้ฐานข้อมูลพื้นหลัง ecoinvent 3 และปันส่วนตามมูลค่าทางเศรษฐกิจ",
+              "BHD ใช้ข้อมูลการผลิตจากฟินแลนด์ และ H-FAME ใช้ข้อมูลโรงงานต้นแบบ จึงไม่ใช่การผลิตเชิงพาณิชย์ในไทย"
+            ],
+            "notes": []
+          }
+        ]
+      }
+    }
+  ]
+}

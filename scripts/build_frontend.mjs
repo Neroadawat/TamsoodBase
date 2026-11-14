@@ -49,6 +49,20 @@ for(const name of assets){
  await copyFile(source,path.join(output,name));
 }
 await writeFile(path.join(output,'config.js'),'window.TAMSOOD_CONFIG = '+JSON.stringify({apiBaseUrl,publicRagEnabled:ragUiEnabled,ragMode:publicRagEnabled?'public':'closed'})+';\n');
+// Content-specific URLs prevent an already cached stylesheet/script from hiding
+// navigation fixes after a deployment. Include generated config in the versioning.
+const assetVersions=new Map();
+for(const name of [...assets,'config.js'].filter(name=>/\.(css|js)$/.test(name))){
+ const body=await readFile(path.join(output,name));
+ assetVersions.set(name,createHash('sha256').update(body).digest('hex').slice(0,12));
+}
+for(const name of ['index.html','ask.html']){
+ const file=path.join(output,name);
+ const html=await readFile(file,'utf8');
+ await writeFile(file,html.replace(/\b(src|href)=(['"])\/([^'"?]+\.(?:css|js))\2/g,
+  (match,attribute,quote,asset)=>assetVersions.has(asset)
+   ?`${attribute}=${quote}/${asset}?v=${assetVersions.get(asset)}${quote}`:match));
+}
 const files=[];
 for(const name of [...assets,'config.js']){
  const body=await readFile(path.join(output,name));

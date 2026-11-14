@@ -2233,6 +2233,111 @@
     "targeted_test": "node tests/rag-current-release-gate.cjs passed; public build blocked with current manifest",
     "production_changed": false,
     "rights_approved": false,
-    "production_rag": "HOLD"
+    "production_rag": "HOLD",
+    "status": "historical local fix; superseded by HEAD ee78f90e which does not enforce the 9 gates or pending row rights",
+    "current_release_ready": false
+  },
+  "latest_rag_gate_recheck_after_commit": {
+    "date": "2026-11-12",
+    "evidence": "evidence/rag-release-gate-head-recheck-2026-11-12.json",
+    "head": "ee78f90e",
+    "simulated_runtime_ready_with_0_of_9_gates": true,
+    "record_rights": "PENDING",
+    "knowledge_pack_check": "passed",
+    "production_api_checked": false,
+    "production_status_verified": false,
+    "required_action": "Do not check, change, or deploy production from this task; owner must resolve deployed route state if it conflicts with HOLD",
+    "production_rag": "HOLD per current instructions"
+  },
+  "latest_proxy_public_route_expansion_review": {
+    "date": "2026-11-12",
+    "evidence": "evidence/proxy-public-route-expansion-review-2026-11-12.json",
+    "local_proxy_test": "passed (mock upstream)",
+    "newly_public_routes": 9,
+    "data_rights_output_verified": false,
+    "production_api_checked": false,
+    "deployment_or_push": false,
+    "status": "HOLD pending per-route rights and policy reconciliation"
+  },
+  "latest_fame_lcia_table_transcription_review": {
+    "date": "2026-11-13",
+    "evidence": "evidence/fame-lcia-table-transcription-review-2026-11-13.json",
+    "source_table_review": "visual PDF pages 8 and 9; 44 of 44 numeric strings and units matched",
+    "knowledge_pack_check": "passed",
+    "team_calculated_lifecycle_result": false,
+    "thai_only": false,
+    "production_api_checked": false,
+    "production_changed": false
+  },
+  "latest_m4_poster_count_review": {
+    "date": "2026-11-13",
+    "evidence": "evidence/m4-poster-count-review-2026-11-13.json",
+    "poster_claim": 41862,
+    "listed_dataset_sum": 40980,
+    "difference": 882,
+    "artifact_edited": false,
+    "production_touched": false,
+    "status": "HOLD for scope confirmation and poster rebuild"
+  },
+  "latest_m4_slide_scope_claim_review": {
+    "date": "2026-11-13",
+    "evidence": "evidence/m4-slide-scope-claim-review-2026-11-13.json",
+    "slide": 2,
+    "claim_supported": false,
+    "reason": "LCIA study includes Finnish BHD inventory and ecoinvent background",
+    "artifact_edited": false,
+    "production_touched": false,
+    "status": "HOLD for wording correction by owner/editor"
+  },
+  "latest_m4_sql_and_provenance_demo_review": {
+    "date": "2026-11-13",
+    "evidence": "evidence/m4-sql-and-provenance-demo-review-2026-11-13.json",
+    "slide_7_result_rows_verified": 4,
+    "slide_8_source_locator_verified": true,
+    "source_snapshot": "20261022T151321110294Z",
+    "production_touched": false,
+    "artifact_edited": false
+  },
+  "latest_m4_artifact_correction_postcheck": {
+    "date": "2026-11-13",
+    "evidence": "evidence/m4-correction-postcheck-2026-11-13.json",
+    "poster_pdf_total": 40980,
+    "poster_total_reconciles_to_listed_knowledge_pack": true,
+    "slide_2_finnish_bhd_caveat_present": true,
+    "editorial_scope_confirmation_pending": true,
+    "public_rights_clearance_confirmed": false,
+    "production_touched": false
+  },
+  "latest_proxy_public_routes_release_gate_recheck": {
+    "date": "2026-11-13",
+    "head": "bc1ff5d9fd70e3ae2129b6fb043f15951edb0821",
+    "evidence": "evidence/proxy-public-routes-release-gate-recheck-2026-11-13.json",
+    "public_data_routes_in_checked_out_code": 9,
+    "readiness_gates_passed": 0,
+    "production_api_checked": false,
+    "deployment_or_push": false,
+    "status": "HOLD until owner reconciles public-route configuration with release gates"
+  },
+  "latest_proxy_route_output_static_review": {
+    "date": "2026-11-13",
+    "head": "bc1ff5d9fd70e3ae2129b6fb043f15951edb0821",
+    "evidence": "evidence/proxy-route-output-static-review-2026-11-13.json",
+    "record_detail_includes_raw_fields": true,
+    "export_includes_raw_source_values": true,
+    "reference_json_quantity_projection": "withheld",
+    "redistribution_terms_verified": false,
+    "production_api_checked": false,
+    "status": "HOLD pending source-rights and route-policy reconciliation"
+  },
+  "latest_government_source_license_metadata_review": {
+    "date": "2026-11-13",
+    "evidence": "evidence/government-source-license-metadata-review-2026-11-13.json",
+    "dmf_open_data_common_label_found": true,
+    "eppo_open_data_common_label_found": true,
+    "eppo_isopen_false_conflict": true,
+    "nso_dataset_specific_license_verified": false,
+    "rights_status_changed": false,
+    "production_api_checked": false,
+    "result": "PARTIAL_METADATA_EVIDENCE_ONLY_NOT_RIGHTS_CLEARANCE"
   }
 }

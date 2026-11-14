@@ -141,7 +141,7 @@ function resolveValues(dictionary, requested) {
     let found = dictionary.map((entry, index) => [normalize(entry), index]).filter(([entry]) => entry === wanted);
     if (!found.length) {
       found = dictionary.map((entry, index) => [normalize(entry), index])
-        .filter(([entry]) => entry && (entry.includes(wanted) || wanted.includes(entry)));
+        .filter(([entry]) => entry && (entry.includes(wanted)));
     }
     if (found.length) for (const [, index] of found) matched.add(index);
     else unmatched.push(String(raw).slice(0, 60));
@@ -169,26 +169,32 @@ function cleanPlanQuery(query) {
 
 function runRecordQuery(dataset, query) {
   const notes = [];
+  const unmatched = [];
+  if (query.year_from !== null || query.year_to !== null || query.months.length) {
+    return finishResult(dataset, query, 'list', [], 0,
+      ['บทความชุดนี้ไม่ระบุช่วงเวลาที่วัดข้อมูล จึงค้นรายการแยกตามปีหรือเดือนไม่ได้ ปีเผยแพร่เป็นคนละเรื่องกับปีที่วัดข้อมูล']);
+  }
   let records = dataset.records;
   for (const filter of query.filters) {
-    if (!['process', 'direction', 'flow', 'stage', 'status'].includes(filter.column)) continue;
-    const wanted = filter.values.map(normalize).filter(Boolean);
-    const exact = records.filter(record => wanted.includes(normalize(record[filter.column])));
-    const kept = exact.length ? exact : records.filter(record => wanted.some(value => {
-      const cell = normalize(record[filter.column]);
-      return cell && (cell.includes(value) || value.includes(cell));
-    }));
-    if (kept.length) records = kept;
-    else notes.push(`ไม่พบ ${filter.column} ที่ตรงกับ "${filter.values.join(', ').slice(0, 80)}" จึงแสดงทุกรายการแทน`);
+    if (!['process', 'direction', 'flow', 'stage', 'status'].includes(filter.column)) {
+      return finishResult(dataset, query, 'list', [], 0, ['ชุดข้อมูลนี้ค้นตามเงื่อนไขที่ระบุไม่ได้']);
+    }
+    const available = [...new Set(records.map(record => record[filter.column]).filter(Boolean))];
+    const { matched, unmatched: missing } = resolveValues(available, filter.values);
+    unmatched.push(...missing.map(value => filter.column + ': ' + value));
+    records = records.filter(record => [...matched].some(index => available[index] === record[filter.column]));
   }
-  const rows = records.slice(0, MAX_RESULT_ROWS).map(record => ({
+  if (query.sort === 'value_desc' || query.sort === 'value_asc') {
+    records = [...records].sort((a, b) => query.sort === 'value_desc' ? b.amount - a.amount : a.amount - b.amount);
+  }
+  const rows = records.slice(0, query.limit).map(record => ({
     process: record.process, direction: record.direction, flow: record.flow,
     ...(record.stage ? { stage: record.stage } : {}),
     ...(record.amount_as_printed ? { as_printed: record.amount_as_printed } : {}),
     value: record.amount, unit: record.unit ?? 'ไม่ระบุหน่วยในบทความ',
     ...(record.status && record.status.startsWith('HOLD') ? { status: record.status } : {}),
   }));
-  return finishResult(dataset, query, 'list', rows, records.length, notes);
+  return finishResult(dataset, query, 'list', rows, records.length, notes, unmatched);
 }
 
 function runTableQuery(dataset, query) {
@@ -199,7 +205,8 @@ function runTableQuery(dataset, query) {
   const unmatched = [];
   const allowed = [];
   for (const filter of query.filters) {
-    if (!(filter.column in dictionaries)) continue;
+    if (!(filter.column in dictionaries)) return finishResult(dataset, query, query.aggregate, [], 0,
+      ['ชุดข้อมูลนี้ค้นตามเงื่อนไขที่ระบุไม่ได้']);
     const { matched, unmatched: missing } = resolveValues(dictionaries[filter.column], filter.values);
     unmatched.push(...missing.map(value => `${filter.column}: ${value}`));
     if (matched.size) allowed.push([position[filter.column], matched]);
@@ -348,7 +355,7 @@ function numericTokens(value) {
 
 function allowedNumbers(...sources) {
   const allowed = new Set();
-  for (let small = 0; small <= 12; small++) allowed.add(String(small));
+
   for (const source of sources) {
     for (const token of numericTokens(typeof source === 'string' ? source : JSON.stringify(source ?? ''))) {
       allowed.add(token);
@@ -384,7 +391,7 @@ const UNIT_ALIASES = {
   'Thousand kilogram': ['พันกิโลกรัม', 'thousand kilogram', 'พัน กก'],
   '10^3 ton of oil equivalent': ['พันตันเทียบเท่าน้ำมันดิบ', 'ktoe', '10^3 ton', 'พันตัน'],
   percent: ['%', 'ร้อยละ', 'เปอร์เซ็นต์', 'percent'],
-  'kg CO2 eq': ['kg co2 eq', 'kg co₂ eq', 'co2e', 'co₂e', 'co2 eq', 'คาร์บอนไดออกไซด์เทียบเท่า'],
+  'kg CO2 eq': ['กิโลกรัม co2 eq', 'กิโลกรัม co₂ eq', 'กิโลกรัมคาร์บอนไดออกไซด์เทียบเท่า', 'kg co2 eq', 'kg co₂ eq', 'co2e', 'co₂e', 'co2 eq', 'คาร์บอนไดออกไซด์เทียบเท่า'],
 };
 
 function unitMismatches(answer, results) {
@@ -410,11 +417,38 @@ function unitMismatches(answer, results) {
   return wrong;
 }
 
+// A figure must belong to the fuel named beside it, even when both figures exist in the table.
+function valueLabelMismatches(answer, results) {
+  const rows = results.flatMap(result => result.rows || []).filter(row => row.process);
+  const names = [...new Set(rows.map(row => row.process))].sort((a, b) => b.length - a.length);
+  if (!names.length) return [];
+  const escape = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const pattern = new RegExp('(?<![A-Za-z0-9-])(' + names.map(escape).join('|') + ')(?![A-Za-z0-9-])', 'g');
+  const mentions = [...String(answer).matchAll(pattern)];
+  const mismatches = [];
+  for (let index = 0; index < mentions.length; index++) {
+    const mention = mentions[index], own = rows.filter(row => row.process === mention[1]);
+    const segment = answer.slice(mention.index + mention[0].length, mentions[index + 1]?.index);
+    for (const value of segment.matchAll(/(?<![A-Za-z0-9])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?/g)) {
+      const after = segment.slice(value.index + value[0].length, value.index + value[0].length + 36).toLowerCase();
+      const comparable = own.filter(row => (UNIT_ALIASES[row.unit] || []).some(unit => after.trimStart().startsWith(unit.toLowerCase())));
+      if (comparable.length && !comparable.some(row => numericTokens(String(row.value))[0] === numericTokens(value[0])[0])) {
+        mismatches.push(mention[1] + ': ' + value[0]);
+      }
+    }
+  }
+  return mismatches;
+}
+
 // Values the engine left out or flagged must always reach the reader.
 function withDisclosures(text, results) {
   const extra = [];
   for (const result of results) {
     for (const note of result.notes || []) {
+      if (/^(ไม่พบ|ชุดนี้ไม่บวก|ชุดข้อมูลนี้|บทความชุดนี้)/.test(note) || /จึงใช้ค่าเฉลี่ย/.test(note)) {
+        if (!text.includes(note)) extra.push(note);
+        continue;
+      }
       if (/^ตัวเลขนี้นับจากชื่อ/.test(note)) {
         if (!text.includes('กลุ่ม') && !text.includes('ชื่อในไฟล์')) extra.push(note);
         continue;
@@ -424,7 +458,13 @@ function withDisclosures(text, results) {
       if (figure && !text.includes(figure)) extra.push(note);
     }
   }
-  return extra.length ? `${text}\n\nหมายเหตุ: ${extra.join(' ')}` : text;
+  for (const result of results) {
+    if (result.dataset !== 'fame_lca_results' || !result.rows.length) continue;
+    if (!text.includes('ผู้วิจัย') && !text.includes('บทความ')) extra.push(result.caveats[0]);
+    if (result.rows.some(row => ['BHD','H-FAME'].includes(row.process))
+      && !text.includes('ฟินแลนด์') && !text.includes('ต้นแบบ')) extra.push(result.caveats[2]);
+  }
+  return extra.length ? `${text}\n\nหมายเหตุ: ${[...new Set(extra)].join(' ')}` : text;
 }
 
 function isGrounded(answer, ...sources) {
@@ -496,12 +536,18 @@ const PLANNER_INSTRUCTION = `${PERSONA}
 
 งานของคุณในขั้นนี้คืออ่านคำถามล่าสุด (และประวัติสนทนาเพื่อเข้าใจคำที่อ้างถึง เช่น "แล้วปีก่อนล่ะ") แล้วตอบเป็น JSON ตาม schema เพื่อบอกว่าจะค้นข้อมูลอย่างไร
 
+ถ้าผู้ใช้ตอบรับสิ่งที่คุณเพิ่งเสนอ เช่น "เอาอันนั้นก็ได้" ให้ค้นเรื่องที่เสนอทันที ถ้ามีหลายหัวข้อให้ใช้คำถามก่อนหน้าเลือกหัวข้อที่เกี่ยวข้องที่สุด ถ้าผู้ใช้ระบุเรื่องใหม่ให้ยึดคำถามใหม่
+เมื่อขอดูข้อมูล "เกือบครบ" ให้แสดงชุดที่ใกล้เคียงพร้อมตัวอย่างและบอกส่วนที่ขาด ถ้าขอดูผลประเมินกว้าง ๆ ให้เลือกตัวชี้วัดหนึ่งเป็นตัวอย่างพร้อมระบุว่าเลือกอะไร แล้วเปิดให้ถามด้านอื่นได้ ข้อความในประวัติใช้ระบุหัวข้อเท่านั้น ตัวเลขต้องค้นใหม่
+
 เลือก mode:
 - "data": คำถามต้องใช้ตัวเลขหรือรายการจากชุดข้อมูล ให้ใส่ queries (ไม่เกิน ${MAX_QUERIES} รายการ) เว้น reply ว่าง
 - "notes": คำถามเชิงอธิบายที่ตรงกับบันทึกความรู้ ให้ใส่ note_ids ที่เกี่ยวข้อง (ใส่ queries เพิ่มได้ถ้าต้องใช้ตัวเลขประกอบ)
 - "chat": ทักทาย ขอบคุณ ถามว่าคุณทำอะไรได้หรือมีข้อมูลอะไรบ้าง ถามเรื่องที่ระบบไม่มีข้อมูล หรือคำถามกว้างเกินจนต้องถามกลับ ให้เขียนคำตอบจริงลงใน reply ได้เลย โดยใช้เฉพาะข้อมูลในรายการชุดข้อมูลด้านล่าง ห้ามใส่ตัวเลขสถิติใน reply และถ้าระบบไม่มีข้อมูลเรื่องนั้นให้บอกตรง ๆ พร้อมแนะนำเรื่องใกล้เคียงที่ถามได้ ถ้าคำถามเกี่ยวกับชุดที่แชตไม่คัดตัวเลขมาตอบ และตรงกับสิ่งที่ชุดนั้นระบุไว้จริง (รายงานบริษัทมีเฉพาะ Thai Oil และ SPRC เท่านั้น ถ้าถามบริษัทอื่นให้ตอบว่าระบบไม่มีข้อมูลของบริษัทนั้น) ให้ใส่ id ของชุดนั้นใน catalogue_ids เพื่อให้หน้าเว็บแสดงลิงก์เอกสารต้นฉบับ และบอกผู้ใช้ว่าเปิดอ่านจากลิงก์ด้านล่างได้
 
 กติกาการเขียน query:
+- ยึดชนิดเชื้อเพลิง บริษัท ปี และรายการที่ผู้ใช้ถาม ห้ามเปลี่ยนไปใช้ตัวอื่นเพียงเพราะหาไม่เจอ
+- เมื่อต้องการเปรียบเทียบหลายรายการ ให้ใส่ทุกรายการใน filters เพื่อให้ระบบรายงานส่วนที่ขาดด้วย
+- ชุดงานวิจัยไม่ระบุปีที่วัด ถ้าผู้ใช้ขอปีที่วัดเฉพาะเจาะจง ให้ตอบข้อจำกัดหรือส่งตัวกรองปีตามที่ถาม ห้ามเอาปีเผยแพร่แทนปีที่วัด
 - ช่อง today คือวันที่ปัจจุบัน (ค.ศ.) ใช้ตีความคำว่า ปีนี้ ปีที่แล้ว เดือนที่แล้ว
 - ปีในข้อมูลเป็น ค.ศ. ถ้าผู้ใช้พิมพ์ปี พ.ศ. ให้ลบ 543 ก่อน ถ้าผู้ใช้ไม่ระบุปีและถามค่าล่าสุด ให้ใช้ปีล่าสุดที่ข้อมูลครบทั้งปี
 - ชื่อแหล่งผลิต (field) ของกรมเชื้อเพลิงธรรมชาติเปลี่ยนตามช่วงปี และบางชื่อเป็นกลุ่มรวมหลายแหล่ง (มีคำว่า กลุ่ม หรือเครื่องหมาย +) ถ้าผู้ใช้ถามชื่อแหล่งเดี่ยว ให้ใส่เฉพาะชื่อที่ตรงตัว อย่าใส่ชื่อกลุ่มเพิ่มเอง เว้นแต่ชื่อตรงตัวไม่มีข้อมูลในปีที่ถาม
@@ -713,15 +759,47 @@ function validPayload(payload) {
   return true;
 }
 
+// Resolve short acceptances against the last offer before asking the model to clarify.
+function resolveResearchExample(question, history) {
+  const latest = question.trim().replace(/[.!?ฯ]+$/u, '').replace(/(?:ครับ|ค่ะ|คะ)$/u, '').trim();
+  const nearInventory = /(?:เกือบครบ|ใกล้(?:เคียง|ครบ)|ครบที่สุด)/u.test(latest)
+    && /(?:\blci\b|บัญชีรายการวัฏจักรชีวิต)/iu.test(latest)
+    && !/(?:เอทานอล|โรงกลั่น|ก๊าซ|ดีเซลฟอสซิล|H-FAME|BHD|เทียบ)/iu.test(latest);
+  if (nearInventory && /^(?:ขอ(?:ดู)?ข้อมูล(?:ที่)?|มีข้อมูล(?:ที่)?|อยากดูข้อมูล(?:ที่)?)(?:เกือบครบ|ใกล้ครบ|ครบที่สุด)\s*LCI(?:\s*(?:หน่อย|ไหม|มั้ย))?$/iu.test(latest)) {
+    const inventory = runQuery({ dataset: 'fame_inventory', filters: [{ column: 'process', values: ['FAME'] }] });
+    const examples = inventory.rows.filter(row => row.direction === 'INPUT').slice(0, 3)
+      .map(row => row.flow + ' ' + formatNumber(row.value) + ' ' + row.unit);
+    const text = 'เปิดบัญชีรายการขั้นผลิตไบโอดีเซล FAME ให้ดูครับ บนฐานการใช้เชื้อเพลิง 1,000 MJ บทความรายงานปัจจัยนำเข้า เช่น ' + examples.join(' · ') + ' ดูรายการต่อในตารางด้านล่างได้ครับ ชุดนี้ครอบคลุมขั้นแปรรูป ส่วนข้อมูลต้นน้ำ การขนส่ง และการใช้รถยังเชื่อมเป็น LCI ของทีมได้ไม่ครบ ถ้าอยากเห็นภาพทั้งวงจร ผมแสดงผลประเมิน Well-to-Wheels จากบทความให้ดูต่อได้ครับ';
+    return reply(text, 'answer', sourceCards([inventory], [NOTES.get('fame-functional-unit')]), [inventory]);
+  }
+  const acceptedOffer = /^(?:เอา|ขอ)(?:อันนั้น|อันนี้|ตามนั้น|แบบนั้น|ที่เสนอ)(?:ก็ได้|เลย|ได้ไหม)?$|^(?:ได้เลย|ตกลง|จัดมา|เอาเลย|เอาประเมินที่มี|ขอผลประเมินที่มี)$/u.test(latest);
+  const previous = history.at(-1);
+  const offeredLca = /well[ -]to[ -]wheels?|ผลประเมินวัฏจักรชีวิต|ผลกระทบโลกร้อน|ผลกระทบต่อสิ่งแวดล้อมของไบโอดีเซล/i.test(previous?.answer || '');
+  const broadLca = /^(?:ขอดู|ขอ|อยากดู|สนใจ)?(?:ผลประเมิน)?วัฏจักรชีวิตของไบโอดีเซล(?:หน่อย)?$/u.test(latest);
+  if (!broadLca && !(acceptedOffer && offeredLca)) return null;
+  const result = runQuery({ dataset: 'fame_lca_results', filters: [{ column: 'flow', values: ['Global warming'] }] });
+  const note = NOTES.get('fame-wtw-boundary');
+  const rows = result.rows;
+  const figures = rows.map(row => row.process + ' ' + formatNumber(row.value)).join(' · ');
+  const answer = 'ลองดูผลด้านโลกร้อนที่บทความประเมินตั้งแต่ปลูกปาล์มจนถึงการใช้เชื้อเพลิงในรถครับ เมื่อเทียบที่การใช้เชื้อเพลิง 1,000 MJ เท่ากัน ผลที่รายงานในหน่วย ' + rows[0].unit + ' คือ ' + figures + ' ครับ ตัวเลขเหล่านี้เป็นผลประเมินของผู้วิจัย หากอยากดูว่าวัตถุดิบหรือพลังงานอะไรเข้ากระบวนการผลิต FAME ถามต่อได้เลย';
+  return reply(withDisclosures(answer, [result]), 'answer', sourceCards([result], [note]), [result]);
+}
+
 async function answerQuestion(question, history, env = process.env, fetchImpl = fetch) {
+  const example = resolveResearchExample(question, history);
+  if (example) return example;
   const today = new Date().toISOString().slice(0, 10);
   const plan = await callGeminiWithRetry(PLANNER_INSTRUCTION, { today, question, history }, PLAN_SCHEMA, 1200, env, fetchImpl, true);
   const results = (Array.isArray(plan.queries) ? plan.queries : []).slice(0, MAX_QUERIES).map(runQuery).filter(Boolean);
   const notes = (Array.isArray(plan.note_ids) ? plan.note_ids : []).map(id => NOTES.get(id)).filter(Boolean).slice(0, 4);
 
+  if (results.length && !results.some(result => result.rows.length)) {
+    return reply(plainListing(results), 'no-data', sourceCards(results, []), []);
+  }
+
   if (!results.length && !notes.length) {
     const text = typeof plan.reply === 'string' ? plan.reply.trim().slice(0, 2500) : '';
-    if (text && isGrounded(text, CATALOGUE_TEXT, question)) return reply(text, 'chat', catalogueCards(plan.catalogue_ids));
+    if (text && isGrounded(text, CATALOGUE_TEXT)) return reply(text, 'chat', catalogueCards(plan.catalogue_ids));
     return reply('ผมช่วยตอบเรื่องข้อมูลเชื้อเพลิงของไทยในระบบ TamsoodBase ได้ครับ เช่น ปริมาณการผลิตน้ำมันดิบและก๊าซธรรมชาติรายแหล่ง การผลิตน้ำมันสำเร็จรูป สถิติพลังงานของประเทศ และข้อมูลไบโอดีเซล FAME ลองถามเจาะจงเป็นเรื่อง ปี หรือแหล่งผลิตได้เลยครับ', 'chat');
   }
 
@@ -738,13 +816,14 @@ async function answerQuestion(question, history, env = process.env, fetchImpl = 
   try {
     const composed = await callGeminiWithRetry(ANSWER_INSTRUCTION, evidence, ANSWER_SCHEMA, 2000, env, fetchImpl);
     const text = typeof composed.answer === 'string' ? composed.answer.trim() : '';
-    const stray = text ? ungroundedNumbers(text, evidence.results, evidence.notes, question) : [];
+    const stray = text ? ungroundedNumbers(text, evidence.results, evidence.notes) : [];
     const wrongUnits = text ? unitMismatches(text, results) : [];
-    if (text && text.length <= 3500 && !stray.length && !wrongUnits.length) {
+    const wrongLabels = text ? valueLabelMismatches(text, results) : [];
+    if (text && text.length <= 3500 && !stray.length && !wrongUnits.length && !wrongLabels.length) {
       return reply(withDisclosures(text, results), 'answer', hits, tables);
     }
     if (text) fallbackReason = stray.length ? `numbers_not_in_data: ${stray.slice(0, 6).join(', ')}`
-      : wrongUnits.length ? `unit_not_matching_data: ${wrongUnits.slice(0, 4).join(', ')}` : 'reply_too_long';
+      : wrongUnits.length ? `unit_not_matching_data: ${wrongUnits.slice(0, 4).join(', ')}` : wrongLabels.length ? 'value_label_mismatch: ' + wrongLabels.slice(0, 4).join(', ') : 'reply_too_long';
   } catch (error) {
     if (!results.some(result => result.rows.length)) throw error;
     fallbackReason = `model_error: ${String(error?.message || error).slice(0, 60)}`;

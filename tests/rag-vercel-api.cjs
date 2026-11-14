@@ -71,9 +71,21 @@ assert.deepEqual(gwp.rows.map(row => [row.process, row.value, row.unit]),
 assert.match(gwp.caveats[0], /ไม่ใช่ผลที่ TamsoodBase คำนวณเอง/);
 assert.equal(gwp.rows[0].as_printed, '1.07 x 10^1');
 
+// Filters must never substitute unrelated rows when an exact request is absent.
+assert.equal(runQuery({dataset:'fame_inventory',filters:[{column:'flow',values:['Uranium']}]}).rows.length,0);
+assert.equal(runQuery({dataset:'fame_inventory',filters:[{column:'process',values:['superFAME']}]}).rows.length,0);
+assert.equal(runQuery({dataset:'fame_inventory',year_from:2032,year_to:2032}).rows.length,0);
+assert.equal(runQuery({dataset:'fame_inventory',filters:[{column:'company',values:['unknown']}]}).rows.length,0);
+const partialFuel = runQuery({dataset:'fame_lca_results',filters:[{column:'process',values:['FAME','Ethanol']},{column:'flow',values:['Global warming']}]});
+assert.equal(partialFuel.rows.length,1);
+assert.match(partialFuel.notes.join(' '),/Ethanol/);
+assert.equal(runQuery({dataset:'fame_inventory',limit:2}).rows.length,2);
+assert.equal(runQuery({dataset:'fame_lca_results',filters:[{column:'flow',values:['Global warming']}],sort:'value_desc',limit:1}).rows[0].process,'Fossil diesel');
+
 // -------------------------------------------------------------------- grounding
 assert.equal(isGrounded('ปี 2567 (2024) เฉลี่ย 80,575.03 บาร์เรล', [{ year: 2024, value: 80575.03 }]), true);
 assert.equal(isGrounded('ประมาณ 80,600 บาร์เรล', [{ year: 2024, value: 80575.03 }]), false, 'rounded figures are rejected');
+assert.equal(isGrounded('FAME 9 kg CO2 eq', [{value:10.7}]),false);
 assert.equal(isGrounded('เพิ่มขึ้น 21%', [{ value: 66493.89 }, { value: 80575.03 }]), false, 'model arithmetic is rejected');
 assert.match(plainListing([oilByYear]), /80,575\.03 บาร์เรล/);
 
@@ -113,6 +125,37 @@ const PLAN = { mode: 'data', queries: [{ dataset: 'dmf_production', filters: [{ 
   year_from: 2024, year_to: 2024, group_by: ['year'], aggregate: 'avg' }] };
 
 (async () => {
+  const inventory = await answerQuestion('ขอดูข้อมูลที่เกือบครบ LCI หน่อย', [], READY_ENV, () => { throw Error('unexpected provider call'); });
+  assert.equal(inventory.tables[0].rows[0].process, 'FAME');
+  assert.match(inventory.summary.text, /ขั้นแปรรูป/);
+  const offer = [{question: 'ขอดูข้อมูลที่เกือบครบ LCI หน่อย', answer: 'มีผลประเมินแบบ Well-to-Wheels ของไบโอดีเซลปาล์มให้ดูครับ'}];
+  for (const question of ['เอาอันนั้นก็ได้', 'เอาประเมินที่มี', 'วัฏจักรชีวิตของไบโอดีเซล']) {
+    const result = await answerQuestion(question, offer, READY_ENV, () => { throw Error('unexpected provider call'); });
+    assert.equal(result.tables[0].rows.length, 4);
+    assert.equal(result.tables[0].rows[0].flow, 'Global warming');
+    assert.match(result.summary.text, /1,000 MJ/);
+    assert.ok(result.hits.some(hit => hit.source_url));
+  }
+  // A missing result stops before composition, including unsupported research years.
+  let absent = scripted(geminiReply({mode:'data',queries:[{dataset:'fame_inventory',filters:[{column:'flow',values:['Uranium']}]}]}));
+  const noRows = await answerQuestion('FAME ใช้ยูเรเนียมเท่าไร',[],READY_ENV,absent.fetchImpl);
+  assert.equal(noRows.summary.kind,'no-data');
+  assert.equal(noRows.tables.length,0);
+  assert.equal(absent.calls.length,1);
+  const resultPlan = {mode:'data',queries:[{dataset:'fame_lca_results',filters:[{column:'flow',values:['Global warming']},{column:'process',values:['FAME','H-FAME']}]}]};
+  for (const answer of ['FAME 12.3 kg CO2 eq และ H-FAME 10.7 kg CO2 eq','FAME 9 kg CO2 eq']) {
+    const bad = scripted(geminiReply(resultPlan),geminiReply({answer}));
+    const response = await answerQuestion('FAME 9 kg CO2 eq ใช่ไหม',[],READY_ENV,bad.fetchImpl);
+    assert.equal(response.summary.kind,'plain-listing');
+    assert.match(response.summary.fallback_reason, answer.includes('12.3') ? /value_label_mismatch/ : /numbers_not_in_data/);
+    assert.match(response.summary.text,/10\.7/);
+  }
+  const correctLabels = scripted(geminiReply(resultPlan),geminiReply({answer:'FAME 10.7 kg CO2 eq และ H-FAME 12.3 kg CO2 eq ครับ'}));
+  const correctResponse = await answerQuestion('เทียบ FAME กับ H-FAME',[],READY_ENV,correctLabels.fetchImpl);
+  assert.equal(correctResponse.summary.kind,'answer');
+  assert.match(correctResponse.summary.text,/ต้นแบบ/);
+  const partial = scripted(geminiReply({mode:'data',queries:[{dataset:'fame_lca_results',filters:[{column:'flow',values:['Global warming']},{column:'process',values:['FAME','Ethanol']}]}]}),geminiReply({answer:'FAME 10.7 kg CO2 eq ครับ'}));
+  assert.match((await answerQuestion('เทียบ FAME กับเอทานอล',[],READY_ENV,partial.fetchImpl)).summary.text,/ไม่พบค่าที่ระบุ: process: Ethanol/);
   // A data question: the model plans, code computes, the model words it.
   let mock = scripted(geminiReply(PLAN), geminiReply({ answer: 'ปี 2567 (2024) ไทยผลิตน้ำมันดิบเฉลี่ยเดือนละ 80,575.03 บาร์เรลครับ' }));
   let result = await answerQuestion('ปี 2567 ผลิตน้ำมันดิบเท่าไหร่', [], READY_ENV, mock.fetchImpl);

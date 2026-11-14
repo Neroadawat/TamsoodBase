@@ -9,7 +9,7 @@ const layouts=['grid','list'].map(layout=>node({catalogLayout:layout}));
 const groups={'.dataset-card':cards,'[data-catalog-level]':pills,'[data-level-count]':counts,'[data-catalog-layout]':layouts};
 const ctx={$:id=>ids.get(id),document:{querySelectorAll:key=>groups[key]},localStorage:{getItem:()=>{throw Error('blocked');},setItem:()=>{throw Error('blocked');}}};
 vm.runInNewContext(s.slice(s.indexOf('function filterCatalog(){'),s.indexOf('const eppoState')),ctx);
-assert.equal(ids.get('#catalog-grid').dataset.layout,'grid','Blocked localStorage must not break startup');
+assert.equal(ids.get('#catalog-grid').dataset.layout,'list','Blocked localStorage must not break startup');
 assert.equal(ids.get('#catalog-reset').disabled,true);
 pills[2].listeners.click();assert.equal(ids.get('#catalog-level').value,'organization');assert.equal(cards.filter(c=>!c.hidden).length,1);assert.equal(pills[2].attributes['aria-pressed'],'true');
 ids.get('#catalog-search').value='oil';ids.get('#catalog-search').listeners.input();

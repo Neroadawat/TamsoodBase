@@ -1,0 +1,43 @@
+{
+  "checked_on": "2026-11-15",
+  "method": "Production API read-only; not direct SQL execution",
+  "eligible_march_rows": 34,
+  "top4_match": true,
+  "top4": [
+    {
+      "source_group": "เบญจมาศ",
+      "raw_value": "19337.54839",
+      "source_line": 11399,
+      "review_status": "ACCEPTED_SOURCE_STATISTIC",
+      "duplicate_status": "SINGLETON"
+    },
+    {
+      "source_group": "Sirikit และอื่นๆใน S1",
+      "raw_value": "18557",
+      "source_line": 11425,
+      "review_status": "ACCEPTED_SOURCE_STATISTIC",
+      "duplicate_status": "SINGLETON"
+    },
+    {
+      "source_group": "ปลาทอง",
+      "raw_value": "11760.67294",
+      "source_line": 11407,
+      "review_status": "ACCEPTED_SOURCE_STATISTIC",
+      "duplicate_status": "SINGLETON"
+    },
+    {
+      "source_group": "นงเยาว์",
+      "raw_value": "9703.50129",
+      "source_line": 11402,
+      "review_status": "ACCEPTED_SOURCE_STATISTIC",
+      "duplicate_status": "SINGLETON"
+    }
+  ],
+  "inventory_direction_counts": {
+    "FAME/INPUT": 8,
+    "H-FAME/INPUT": 5,
+    "FAME/OUTPUT": 2,
+    "H-FAME/OUTPUT": 1
+  },
+  "direct_ec2_sql": "UNVERIFIED: SSH connection timed out; no writes performed"
+}

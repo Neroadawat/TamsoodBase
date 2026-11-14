@@ -1,4 +1,4 @@
--- Small fixture for the AR-2 migration: one row of each kind the rule distinguishes.
+-- Partial snapshot for AR-2. The guarded migration must reject these seven rows.
 USE tamsood_research;
 INSERT INTO publisher VALUES ('DMF','กรมเชื้อเพลิงธรรมชาติ');
 INSERT INTO product VALUES ('natural_gas','ก๊าซธรรมชาติ'),('crude_oil','น้ำมันดิบ');

@@ -2,7 +2,7 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const source=fs.readFileSync(path.join(__dirname,'../web/app.js'),'utf8');
 const nodes=new Map(),pending=[];let requests=0,searches=0;
 function node(text){return {textContent:text,value:'',children:[],listeners:{},append(...items){this.children.push(...items);},replaceChildren(...items){this.children=items;},addEventListener(event,fn){this.listeners[event]=fn;},setAttribute(){},focus(){},showModal(){this.open=true;}};}
-const ctx={document:{querySelectorAll:()=>[]},$:key=>{if(!nodes.has(key))nodes.set(key,node());return nodes.get(key);},el:(tag,text)=>node(text),
+const ctx={document:{querySelectorAll:()=>[],querySelector:()=>null},$:key=>{if(!nodes.has(key))nodes.set(key,node());return nodes.get(key);},el:(tag,text)=>node(text),
  get:()=>{requests++;return new Promise((resolve,reject)=>pending.push({resolve,reject}));},filterCatalog:()=>searches++,load:()=>searches++,loadReference:()=>searches++,loadEppo:()=>searches++,renderNso:()=>searches++,state:{page:8},referenceState:{page:8},eppoState:{page:8},nsoData:null};
 vm.runInNewContext(source.slice(source.indexOf('// Plain-language help'))+'\nthis.terms=matchingTerms;this.choices=eppoChoices;this.ensure=ensureReferenceChoices;this.fill=fillChoices;this.nso=populateNsoChoices;',ctx);
 (async()=>{

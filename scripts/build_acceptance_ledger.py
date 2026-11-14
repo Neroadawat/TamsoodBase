@@ -126,7 +126,7 @@ def build() -> dict:
         "decided_on": DECIDED_ON,
         "decided_by": "Project owner, stated in a working session; the team should confirm it in a meeting memo",
         "meaning": "Accepted = verified against the snapshotted source, unique, traceable and Thailand-relevant. It does not confirm the DMF time basis, clear redistribution rights, or make a tuple a normalised product LCI exchange.",
-        "database_state": "The MySQL column review_status still holds PENDING until sql/mysql/acceptance-ar2-migration.sql is applied on the server.",
+        "database_state": "EC2 MySQL verified on 2026-11-13 after AR-2 migration: DMF accepted 34667, unit-label hold 3, magnitude hold 1, pending 228.",
         "layers": layers,
         "accepted_total": sum(layer["accepted"] for layer in layers),
         "held_total": sum(item["count"] for layer in layers for item in layer["held"]),

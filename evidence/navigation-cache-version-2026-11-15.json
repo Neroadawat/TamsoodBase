@@ -1,0 +1,14 @@
+{
+  "open": true,
+  "overflow": "visible",
+  "css": "https://tamsoodbase.vercel.app/design-refresh.css?v=971d70000c63",
+  "js": [
+    "https://tamsoodbase.vercel.app/config.js?v=2b199c46b8c5",
+    "https://tamsoodbase.vercel.app/api.js?v=e6d7627875b8",
+    "https://tamsoodbase.vercel.app/case-study.js?v=c656b02f1587",
+    "https://tamsoodbase.vercel.app/discovery.js?v=9b9b48241ba6",
+    "https://tamsoodbase.vercel.app/app.js?v=c794e438444a",
+    "https://tamsoodbase.vercel.app/story.js?v=63d0d9f9a5a4"
+  ],
+  "publicChat": true
+}
