@@ -1,3 +1,12 @@
+## 15 พฤศจิกายน 2569 (ต่อ) — แก้ตาม review ของ Codex, เติมหลักฐาน Index/Transaction, commit + push
+
+- Commit `b3d6e22` (เว็บ/RAG/สคริปต์ CSV source_id/evidence/docs) และ `e7631ce` (ชุดนำเสนอ M4) push ไป `origin/codex/rag-gemini-preview-2026-11-09` แล้ว (ไม่ push main, ไม่ force). ลิงก์ GitHub ในเล่มชี้ repo ปกติ งานล่าสุดอยู่บน branch นี้ จนกว่าจะ merge เข้า main ต้องรู้ไว้ก่อนอ้างลิงก์. ไม่รวมในคอมมิต: tmp/, ไฟล์ล็อก Word `~$*`, วิดีโอเก่า 4 ไฟล์ใน output/prototype, output/m4/review-2026-11-15/. เพิ่ม `output/m4/dataset/product_inventory.csv` (16×32 มี source_id) เป็นไฟล์ชุดส่ง.
+- แก้ตาม docs/review-after-claude-2026-11-15.md: สไลด์ 5 ไม่อ้างว่าคลิปฉาก 4 เป็นแถว 11399 (คลิปใช้เอราวัณ 11202, หน้าปกใช้ไพลินเหนือ 11394); "243" เป็น "ยังไม่รวมในยอดรับ" ไม่ใช้คำว่าไม่รับ/Rejected รวมก้อน; ERD เพิ่มเส้น FK source_record→observation และระบุภาพย่อ 7 จาก 9 ตาราง; โปสเตอร์ระบุว่าผล SQL vs Cypher เดิมเทียบ SQLite และยังไม่รัน SQL กับ MySQL รอบล่าสุด, view deduplicated_pending ไม่ใช่ accepted-only, ไม่อ้างพิสูจน์ 3NF/CP, LOAD CSV เป็นตัวอย่างย่อ, ข้อจำกัด BHD/H-FAME.
+- เติมหลักฐานที่คอร์สกำหนดแต่เล่มยังไม่มี (5.2/5.3/7): Index ix_period_context (EXPLAIN ANALYZE 0.208 ms เทียบ table scan 12.0 ms, 34,899 แถว, lab MySQL 8.1.0 — evidence/sql-performance.json) และผล transaction/ISOLATION (evidence/mysql-transaction-audit.json) ลงเล่ม v2 (ไฮไลต์เหลือง), โปสเตอร์บล็อก 7 และ backup Q&A เรื่อง FLOW เป็นข้อความ (คำถามตัวอย่างหน้า W15).
+- `sql/mysql/presentation-verification.sql`: สคริปต์ SELECT อย่างเดียวพร้อมค่าที่คาดไว้ สำหรับให้ผู้ที่เชื่อม MySQL ได้รันยืนยัน (SSH ไป EC2 ของ Codex หมดเวลา ผมไม่ได้แก้ firewall/สิทธิ์).
+- LOAD CSV กับ CSV ใหม่ (32 คอลัมน์) ผ่านแล้วตาม evidence/neo4j-csv-import-2026-11-15.json (Codex) — ข้อค้างเรื่องนี้ปิดแล้ว.
+- หน้าคอร์สที่อ่านเทียบแล้ว: mission, prepare, final-process, knowledge, knowledge-memo, -erd, -txn-index, -neo4j, w15 (ยังไม่ได้อ่าน knowledge-lci/-srs/timeline/index เทียบ).
+
 ## 15 พฤศจิกายน 2569 — โปสเตอร์ A4 ใหม่ครบ 10 บล็อก
 
 - ไฟล์: `output/m4/S2-G05_M4_Poster_A4_10blocks.pdf` (1 หน้า A4 แนวตั้ง) สร้างจาก `output/m4/poster-source/poster10.template.html` + `build_poster10.py` (Edge headless; QR ใช้ของโปสเตอร์เดิม). โปสเตอร์เดิม `S2-G05_M4_Poster_A4.pdf` ไม่ถูกแก้ — ถ้าส่งฉบับใหม่ ให้ใช้ชื่อไฟล์ใหม่นี้.

@@ -238,6 +238,7 @@ RETURN p.name, e.direction, count(e)</code></td></tr>
         <li>Neo4j/Qdrant เป็น lab เครื่องเดียว ไม่ใช่ cluster</li></ul></div>
     </div>
     <p class="note" style="margin-top:.4mm"><b class="r">ยังไม่ทดสอบ:</b> ไฟดับ/รีสตาร์ต · SERIALIZABLE · โหลดจริง</p>
+    <p class="note" style="margin-top:.6mm"><b>Index + EXPLAIN:</b> ix_period_context ค้นรายงวด 0.21 ms เทียบ table scan 12.0 ms (EXPLAIN ANALYZE · 34,899 แถว · lab)</p>
   </section>
 
   <!-- 8 -->
