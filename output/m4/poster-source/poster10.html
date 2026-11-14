@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>TamsoodBase · Poster (10 blocks) · S2-G05</title>
+<style>
+@font-face{font-family:"Noto Sans Thai";src:url("NotoSansThai.ttf");font-weight:100 900}
+@page{size:210mm 297mm;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--pine:#143a30;--pine2:#1f5245;--leaf:#2f7d62;--rust:#c2572d;--sand:#f4ecdc;--paper:#fbf8f1;--ink:#1d2a25;--mute:#55645d;--line:#dcd5c5;--cream:#f0c9a0}
+html,body{width:210mm;height:297mm}
+body{font-family:"Noto Sans Thai",sans-serif;color:var(--ink);background:var(--paper);font-size:6.85pt;line-height:1.34;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;display:flex;flex-direction:column;overflow:hidden}
+code,.mono{font-family:Consolas,"Courier New",monospace}
+
+.hero{background:var(--pine);color:#fff;padding:2mm 9mm 1.6mm;display:grid;grid-template-columns:1fr auto;gap:6mm;align-items:end}
+.kicker{font-size:6.6pt;letter-spacing:.15em;color:var(--cream);font-weight:700}
+h1{font-size:20pt;line-height:1.05;font-weight:800;letter-spacing:-.02em;margin:1mm 0 1.2mm}
+h1 span{color:var(--cream)}
+.tagline{font-size:8.4pt;color:#dfeae4}
+.team{font-size:6pt;line-height:1.28;color:#cfe0d8;text-align:right}
+.team b{display:block;color:#fff;font-size:8.6pt}
+
+.grid{flex:1;padding:2.2mm 9mm 1.5mm;display:grid;grid-template-columns:1fr 1fr;gap:2mm;align-content:start}
+.blk{background:#fff;border:.3mm solid var(--line);border-radius:1mm 3.5mm 1mm 3.5mm;padding:1.6mm 2.4mm;min-width:0}
+.blk.wide{grid-column:1 / -1}
+.blk.dark{background:var(--pine);border-color:var(--pine);color:#fff}
+h2{font-size:8.4pt;font-weight:800;color:var(--pine);display:flex;align-items:center;gap:1.6mm;margin-bottom:.9mm;line-height:1.2}
+h2 i{font-style:normal;display:inline-grid;place-items:center;min-width:5mm;height:5mm;border-radius:50%;background:var(--rust);color:#fff;font-size:7pt;font-weight:800;flex:none}
+h2 small{font-size:6.2pt;color:var(--mute);font-weight:600;margin-left:auto;text-align:right}
+.dark h2{color:#fff}.dark h2 i{background:var(--cream);color:var(--pine)}.dark h2 small{color:#cfe0d8}
+p{margin:0}
+.mute{color:var(--mute)}
+b.r{color:var(--rust)}
+ul{list-style:none;display:grid;gap:.6mm}
+ul li{padding-left:3mm;position:relative}
+ul li::before{content:"";position:absolute;left:.2mm;top:1.6mm;width:1.3mm;height:1.3mm;border-radius:50%;background:var(--leaf)}
+
+/* 1 */
+.qs{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6mm;margin:1mm 0}
+.q{background:var(--sand);border-radius:.8mm 2.4mm .8mm 2.4mm;padding:1.2mm 1.8mm}
+.q small{display:block;font-size:5.8pt;letter-spacing:.1em;color:var(--rust);font-weight:800}
+.q strong{font-size:7.3pt;color:var(--pine);line-height:1.25;display:block}
+.gate{display:flex;flex-wrap:wrap;gap:1mm;margin-top:1mm}
+.gate span{background:var(--pine);color:#fff;border-radius:3mm;padding:.2mm 2mm;font-size:6.4pt;font-weight:700}
+.flowline{margin-top:1.2mm;font-size:6.6pt;color:var(--mute)}
+
+/* 2 erd */
+.erd{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6mm 4mm;margin:.6mm 0 1.2mm}
+.t{border:.3mm solid var(--pine2);border-radius:1mm;font-size:6.2pt;line-height:1.3;position:relative;background:#fff}
+.t b{display:block;background:var(--pine2);color:#fff;padding:.3mm 1.2mm;font-size:6.4pt;font-family:Consolas,monospace}
+.t.hi{border-color:var(--rust)}.t.hi b{background:var(--rust)}
+.t span{display:block;padding:.4mm 1.2mm;color:#33423b}
+.t::after{content:"→";position:absolute;right:-3.4mm;top:2.2mm;color:var(--rust);font-weight:800;font-size:7pt}
+.t.nx::after{content:""}
+.note{font-size:6.6pt;color:#3d4b44}
+
+/* 3 table */
+table{border-collapse:collapse;width:100%}
+.ds td,.ds th{padding:.5mm 1.2mm;border-bottom:.2mm solid var(--line);font-size:6.9pt;vertical-align:top;text-align:left}
+.ds th{color:var(--mute);font-size:6.2pt;font-weight:700}
+.ds td:nth-child(n+3),.ds th:nth-child(n+3){text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ds td:first-child{font-weight:800;color:var(--pine);white-space:nowrap}
+.ds tr.tot td{font-weight:800;color:var(--rust);border-bottom:0}
+.big{display:flex;gap:3mm;align-items:baseline;margin-bottom:.8mm}
+.big strong{font-size:15pt;color:var(--rust);font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.big span{font-size:6.8pt;color:var(--mute)}
+
+/* 4 graph */
+pre{font-family:Consolas,monospace;font-size:6.1pt;line-height:1.35;background:var(--pine);color:#e8f1ec;border-radius:1.2mm;padding:1.4mm 1.8mm;white-space:pre-wrap;word-break:break-all}
+pre em{font-style:normal;color:var(--cream);font-weight:700}
+.chips{display:flex;gap:1mm;flex-wrap:wrap;margin-top:1mm}
+.chips span{border:.25mm solid var(--leaf);color:var(--pine);border-radius:3mm;padding:.1mm 1.8mm;font-size:6.2pt;font-weight:700}
+.chips span.k{background:var(--leaf);color:#fff}
+
+/* 5 compare */
+.cmp td,.cmp th{border:.2mm solid var(--line);padding:.7mm 1.3mm;font-size:6.3pt;vertical-align:top;text-align:left}
+.cmp th{background:var(--sand);color:var(--pine);font-size:6.4pt}
+.cmp td:first-child{width:27mm;font-weight:700;color:var(--pine)}
+.cmp code{font-size:5.8pt;line-height:1.3;display:block;white-space:pre-wrap;color:#27362f}
+.ok{color:var(--leaf);font-weight:800}
+
+/* 6 */
+.res{width:100%;margin:.6mm 0}
+.res td,.res th{font-size:6.6pt;padding:.35mm 1.1mm;border-bottom:.2mm solid var(--line);text-align:left}
+.res th{font-size:6pt;color:var(--mute)}
+.res td:nth-child(n+3),.res th:nth-child(n+3){text-align:right;font-variant-numeric:tabular-nums}
+.res td:last-child{color:var(--rust);font-weight:800}
+.hop{display:grid;grid-template-columns:4.6mm 1fr;gap:1.6mm;margin-top:.9mm}
+.hop em{font-style:normal;width:4.6mm;height:4.6mm;border-radius:50%;border:.3mm solid var(--rust);color:var(--rust);display:grid;place-items:center;font-size:6pt;font-weight:800}
+.hop span{font-size:6.6pt;line-height:1.35;overflow-wrap:anywhere}
+.hop span b{color:var(--pine)}
+
+/* 7 */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:2mm}
+.mini h3{font-size:7pt;color:var(--rust);margin-bottom:.4mm}
+.mini li{font-size:6.6pt}
+.stack{display:grid;gap:.9mm;margin-top:1mm}
+.stack div{background:var(--sand);border-radius:1mm;padding:.8mm 1.6mm;font-size:6.5pt}
+.stack b{color:var(--pine)}
+
+/* 9 */
+.bars{display:grid;gap:.6mm;margin:.6mm 0 1mm}
+.bar{display:grid;grid-template-columns:19mm 1fr 9mm;gap:1.4mm;align-items:center;font-size:6.6pt}
+.bar div{height:2.6mm;background:#e9e2d2;border-radius:.5mm;overflow:hidden}
+.bar div i{display:block;height:100%;background:var(--leaf)}
+.bar.f div i{background:var(--rust)}
+.bar b{text-align:right;color:var(--pine);font-variant-numeric:tabular-nums}
+.bar.f b{color:var(--rust)}
+
+/* 10 */
+.refs{display:grid;grid-template-columns:1fr 1fr;gap:.3mm 5mm;font-size:5.9pt;line-height:1.35;color:#33423b}
+.refs div{padding-left:2.2mm;text-indent:-2.2mm}
+.foot{margin-top:auto;display:grid;grid-template-columns:1fr auto;gap:4mm;align-items:center;padding:1.6mm 9mm 2.6mm;border-top:.3mm solid var(--line);background:#fff}
+.limits{font-size:6.4pt;line-height:1.4;color:#3d4b44}
+.limits b{color:var(--rust)}
+.qr{display:grid;grid-template-columns:auto 14mm;gap:2.4mm;align-items:center;text-align:right}
+.qr span{font-size:6.4pt;color:var(--mute);line-height:1.4}
+.qr span b{display:block;color:var(--pine);font-size:8pt}
+.qr svg{width:14mm;height:14mm;display:block}
+.refwrap{display:grid;grid-template-columns:1fr auto;gap:4mm;align-items:center}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="hero">
+  <div>
+    <p class="kicker">CN230 × MTEC · DATA TO NET ZERO DAY · PETROLEUM, NATURAL GAS &amp; FUELS</p>
+    <h1>Tamsood<span>Base</span></h1>
+    <p class="tagline">ฐานข้อมูลเชื้อเพลิงของไทย ที่ทุกตัวเลขเปิดย้อนกลับไปถึงไฟล์ต้นทางได้</p>
+  </div>
+  <div class="team"><b>ทีม S2-G05 · Section 2</b>ตฤณเดช พิตติรวิภาส · PM/BA<br>เอดาวัต เอื้ออารยมนตรี · Schema Lead<br>สิริเดช บุราคร · Data Lead<br>พีรภัทร แสงศรี · SQL Lead<br>ณวตา พุฒพินิจ · QA Lead</div>
+</header>
+
+<main class="grid">
+  <!-- 1 -->
+  <section class="blk">
+    <h2><i>1</i>Problem &amp; Objectives<small>โจทย์และเป้าหมาย</small></h2>
+    <p>เป้าหมาย: ฐานข้อมูลสถิติเชื้อเพลิง/LCI ของไทยที่ตรวจย้อนกลับได้ ตอบ 3 คำถามของ MTEC ด้วยหลักฐาน</p>
+    <div class="qs">
+      <div class="q"><small>FINDABLE</small><strong>ข้อมูลไทยอยู่ที่ไหน?</strong></div>
+      <div class="q"><small>VERIFIABLE</small><strong>ค่า หน่วย ปี ที่มา ตรวจได้ไหม?</strong></div>
+      <div class="q"><small>REUSABLE</small><strong>รวมหลายแหล่งใช้ซ้ำได้ไหม?</strong></div>
+    </div>
+    <div class="gate"><span>Accepted</span><span>Unique</span><span>Verified</span><span>Traceable</span></div>
+    <p class="flowline">ค้น → ดึง+เก็บสำเนา → อ่านความหมาย → จัดรูปแบบ → ตรวจ/คัด → เก็บ MySQL</p>
+  </section>
+  <!-- 2 -->
+  <section class="blk">
+    <h2><i>2</i>Relational Schema<small>MySQL InnoDB · ภาพย่อ 7 จาก 9 ตาราง (ชุด DMF)</small></h2>
+    <div class="erd">
+      <div class="t"><b>source_resource</b><span>PK package</span></div>
+      <div class="t"><b>resource_snapshot</b><span>PK snapshot_id · csv_sha256</span></div>
+      <div class="t nx"><b>source_record</b><span>PK (snapshot_id, source_line) · raw_json</span></div>
+      <div class="t"><b>production_context</b><span>PK context_id · area · source_group</span></div>
+      <div class="t hi"><b>observation</b><span>PK=FK (snapshot_id, source_line) · raw_value + amount</span></div>
+      <div class="t nx"><b>duplicate_disposition</b><span>PK=FK · status · representative_line</span></div>
+    </div>
+    <p class="note">+ <code>rejected_record</code> · FK ประกอบ observation → source_record · <b class="r">ยังไม่ได้พิสูจน์ normal form</b> ทุก relation (raw_value คู่ amount ไว้ audit)</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="blk">
+    <h2><i>3</i>Dataset &amp; Sources<small>22 แหล่งในทะเบียน · ปี 1986–2026</small></h2>
+    <div class="big"><strong>41,072</strong><span>ที่ทีมรับ (Accepted) จาก 41,315 · อีก 243 ยังไม่รวมในยอดรับ มีเหตุผลทุกแถว</span></div>
+    <table class="ds">
+      <tr><th>ชุด</th><th>เนื้อหา</th><th>พิจารณา</th><th>รับ</th></tr>
+      <tr><td>DMF</td><td>ผลิตน้ำมันดิบ คอนเดนเสท ก๊าซ รายเดือน</td><td>34,905</td><td>34,667</td></tr>
+      <tr><td>EPPO</td><td>น้ำมันเข้าโรงกลั่น/ผลผลิตรายบริษัท</td><td>5,934</td><td>5,934</td></tr>
+      <tr><td>NSO</td><td>สถิติพลังงานประเทศ 5 ตาราง</td><td>273</td><td>273</td></tr>
+      <tr><td>งานวิจัย</td><td>บัญชีรายการปาล์ม–ไบโอดีเซล + ผล LCA</td><td>102</td><td>101</td></tr>
+      <tr><td>รายงานบริษัท</td><td>Thai Oil · SPRC (พลังงาน/น้ำ)</td><td>101</td><td>97</td></tr>
+    </table>
+    <p class="note" style="margin-top:.5mm">รับ = ตรงต้นทาง · ไม่ซ้ำ · ย้อนได้ · เป็นข้อมูลไทย (เกณฑ์ทีม ไม่ใช่การรับรองจาก MTEC)</p>
+  </section>
+  <!-- 4 -->
+  <section class="blk">
+    <h2><i>4</i>RDB → Graph<small>LOAD CSV … MERGE · lab แยก</small></h2>
+    <p class="note" style="margin-bottom:.8mm">CSV จาก Table 4 ของงานวิจัย <b>16 แถว · 32 คอลัมน์ · มี source_id</b> → Neo4j 5.26 (container ชั่วคราว)</p>
+<pre><em>LOAD CSV WITH HEADERS FROM</em> 'file:///product_inventory.csv' <em>AS</em> row
+<em>MERGE</em> (e:Exchange {id: row.observation_id})
+<em>MERGE</em> (p:Process {id: …row.process})
+<em>MERGE</em> (p)-[:HAS_EXCHANGE]-&gt;(e)-[:OF_FLOW]-&gt;(f:Flow)</pre>
+    <div class="chips"><span class="k">39 โหนด</span><span class="k">68 ความสัมพันธ์</span><span>HAS_EXCHANGE</span><span>OF_FLOW</span></div>
+    <p class="note" style="margin-top:.5mm">ตัวอย่างย่อ ไม่ใช่คำสั่งพร้อมรัน (scripts/load_product_inventory_csv.cypher) · lab ไม่ใช่ graph ของเว็บจริง</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="blk wide">
+    <h2><i>5</i>SQL JOIN vs Cypher<small>ผลเดิมเทียบ SQLite · ยืนยันกับ CSV/Neo4j/API · ยังไม่รัน SQL นี้กับ MySQL รอบล่าสุด</small></h2>
+    <table class="cmp">
+      <tr><th>คำถาม</th><th>SQL สำหรับ MySQL · tamsood_supplemental</th><th>Cypher (Neo4j lab)</th></tr>
+      <tr><td>Q1 FAME ใช้ INPUT อะไรบ้าง? <span class="ok">8 = 8</span></td>
+        <td><code>SELECT ie.flow, o.amount, o.unit_code
+FROM inventory_exchange ie JOIN observation o USING (snapshot_id, observation_id)
+WHERE ie.process_id='FAME' AND ie.direction='INPUT';</code></td>
+        <td><code>MATCH (p:Process {name:'FAME'})-[:HAS_EXCHANGE]-&gt;(e:Exchange)-[:OF_FLOW]-&gt;(f:Flow)
+WHERE e.direction='INPUT' RETURN f.name, e.amount, e.unit</code></td></tr>
+      <tr><td>Q2 นับ INPUT/OUTPUT ต่อกระบวนการ <span class="ok">8/2 · 5/1</span></td>
+        <td><code>SELECT process_id, direction, COUNT(*) FROM inventory_exchange
+GROUP BY process_id, direction;</code></td>
+        <td><code>MATCH (p:Process)-[:HAS_EXCHANGE]-&gt;(e:Exchange)
+RETURN p.name, e.direction, count(e)</code></td></tr>
+      <tr><td>Q3 ค่านี้มาจากบทความไหน? <span class="mute">(ตัวอย่าง)</span></td>
+        <td><code>ต้อง JOIN ไปตารางแหล่ง/ใช้ source_id ของ observation (หลายตาราง)</code></td>
+        <td><code>MATCH (e:Exchange)-[:FROM_SOURCE]-&gt;(s:Source) RETURN e.id, s.doi</code></td></tr>
+    </table>
+    <p class="note" style="margin-top:.5mm"><b class="r">ข้อสังเกต:</b> SQL เหมาะกับนับ/กรอง/คุมด้วย CHECK+FK · Cypher อ่านหลายทอดสั้นกว่า · lab เล็ก (16 แถว) ไม่ได้วัดประสิทธิภาพ</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="blk">
+    <h2><i>6</i>Key SQL Results<small>view deduplicated_pending</small></h2>
+    <p class="note"><code>… FROM deduplicated_pending WHERE product_code='crude_oil' AND period_start='2026-03-01' ORDER BY amount DESC LIMIT 4</code></p>
+    <table class="res">
+      <tr><th>แหล่งผลิต</th><th>พื้นที่</th><th>ค่าต้นฉบับ (บาร์เรล)</th><th>บรรทัด</th></tr>
+      <tr><td>เบญจมาศ</td><td>ในทะเล</td><td>19337.54839</td><td>11399</td></tr>
+      <tr><td>Sirikit และอื่นๆ ใน S1</td><td>บนบก</td><td>18557</td><td>11425</td></tr>
+      <tr><td>ปลาทอง</td><td>ในทะเล</td><td>11760.67294</td><td>11407</td></tr>
+      <tr><td>นงเยาว์</td><td>ในทะเล</td><td>9703.50129</td><td>11402</td></tr>
+    </table>
+    <p class="note">ไม่บวกข้ามเดือน (ไม่ระบุรวมเดือน/ต่อวัน) · view ชื่อเดิม ไม่ได้กรองเฉพาะ Accepted (4 แถวนี้ Accepted)</p>
+    <div class="hop"><em>1</em><span><b>ตามหนึ่งค่า:</b> ไพลินเหนือ · คอนเดนเสท · มี.ค. 2026 = <b>5,876.859677 บาร์เรล</b></span></div>
+    <div class="hop"><em>2</em><span><code>production_condensate.csv</code> บรรทัด <code>11394</code> · SHA-256 <code>79f5ac2a…ae678d1c</code> · กรมเชื้อเพลิงธรรมชาติ (ดึง 22 ต.ค. 2569)</span></div>
+  </section>
+  <!-- 7 -->
+  <section class="blk">
+    <h2><i>7</i>ACID vs CAP<small>ผลทดสอบ lab · MySQL 8.1 InnoDB</small></h2>
+    <div class="two">
+      <div class="mini"><h3>ACID ที่ทดสอบแล้ว</h3><ul>
+        <li><b>A</b> ROLLBACK คืนทั้งชุดคำสั่ง</li>
+        <li><b>C</b> CHECK/FK กันค่าผิด (3819)</li>
+        <li><b>I</b> ไม่เกิด dirty read (READ COMMITTED) · snapshot คงที่ (REPEATABLE READ) · แถวที่ล็อกกันเขียนทับ (1205)</li>
+        <li><b>D</b> COMMIT ยังอยู่เมื่อต่อใหม่</li></ul></div>
+      <div class="mini"><h3>CAP ของระบบเรา</h3><ul>
+        <li>โหนดเดียว ไม่มีสำเนา จึงยังไม่ได้ทดสอบ partition</li>
+        <li>แนวทางออกแบบเน้นความสอดคล้อง (ไม่ใช่ผลพิสูจน์ว่าเป็น CP)</li>
+        <li>Neo4j/Qdrant เป็น lab เครื่องเดียว ไม่ใช่ cluster</li></ul></div>
+    </div>
+    <p class="note" style="margin-top:.4mm"><b class="r">ยังไม่ทดสอบ:</b> ไฟดับ/รีสตาร์ต · SERIALIZABLE · โหลดจริง</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="blk">
+    <h2><i>8</i>Ch.6.x Embedding + Vector Search<small>แยกจาก RAG</small></h2>
+    <div class="stack">
+      <div><b>ฝัง + ดัชนี:</b> evidence-card 10 ใบ · <code>paraphrase-multilingual-MiniLM-L12-v2</code> · 384 มิติ · cosine · Qdrant Local (10 points)</div>
+      <div><b>ผลค้น:</b> คะแนนอย่างเดียว (0.45) 10/12 และปฏิเสธถูก 6/8 → เพิ่มกฎขอบเขต <span class="ok">12/12 · 8/8</span></div>
+      <div><b>ตัวอย่าง:</b> “สตาร์ตเย็น E10 ค่าเท่าไร?” → 2.36 กม./ลิตร · CO₂ ท่อไอเสีย 934.990 g/km (ไม่ใช่ CO₂e ตลอดวงจร)</div>
+    </div>
+    <p class="note" style="margin-top:.5mm">ข้อจำกัด: คำถามทีมเขียนเอง วัด retrieval ไม่ใช่ความถูกต้องของคำตอบ</p>
+  </section>
+  <!-- 9 -->
+  <section class="blk">
+    <h2><i>9</i>Findings<small>ผลที่ได้และข้อจำกัด</small></h2>
+    <ul>
+      <li>รับ <b>41,072</b> จาก 41,315 · DMF พัก 228 = สำเนา 42 + ขัดกัน 186 (+4 หน่วย/ขนาด)</li>
+      <li>ทุกค่าเปิด “ดูที่มา” ถึงบรรทัดต้นฉบับ + SHA-256 ได้</li>
+      <li>ผลวิจัย (ไม่ใช่ผลคำนวณทีม) ต่อ 1,000 MJ:</li>
+    </ul>
+    <div class="bars">
+      <div class="bar"><span>FAME</span><div><i style="width:4.9%"></i></div><b>10.7</b></div>
+      <div class="bar"><span>H-FAME</span><div><i style="width:5.6%"></i></div><b>12.3</b></div>
+      <div class="bar"><span>BHD</span><div><i style="width:18.1%"></i></div><b>39.6</b></div>
+      <div class="bar f"><span>ดีเซลฟอสซิล</span><div><i style="width:100%"></i></div><b>219</b></div>
+    </div>
+    <p class="note">kg CO₂ eq · ตาราง 5 (BHD: โรงงานฟินแลนด์ · H-FAME: pilot) · <b class="r">ยังไม่ปิด:</b> LCI ครบวงจร (CO₂e รวมของทีมไม่คำนวณ) · ฐานเวลา DMF · สิทธิ์ข้อมูล · “รับ” ไม่ใช่การรับรองภายนอก</p>
+  </section>
+
+  <!-- 10 -->
+  <section class="blk wide">
+    <h2><i>10</i>References<small>แหล่งในทะเบียน docs/source-registry.csv</small></h2>
+    <div class="refwrap"><div class="refs">
+      <div>กรมเชื้อเพลิงธรรมชาติ. ปริมาณการผลิตน้ำมันดิบ / ก๊าซธรรมชาติเหลว / ก๊าซธรรมชาติ. catalog.dmf.go.th (ดึง 22 ต.ค. 2569)</div>
+      <div>Permpool N., Ghani H.U., Gheewala S.H. (2020). Sustainability 12(22), 9415. doi:10.3390/su12229415 · CC BY 4.0 (ตาราง 4–5)</div>
+      <div>EPPO. การใช้น้ำมันในการกลั่น (11_13) · การผลิตน้ำมันสำเร็จรูป (11_14). catalog.eppo.go.th</div>
+      <div>Thai Oil PCL และ Star Petroleum Refining PCL (2024). Sustainability Report · NSO Statistical Yearbook 2026 ตาราง 13.5–13.10</div>
+      <div>E10 cold start: doi:10.15282/ijame.19.1.2022.18.0737 (ตาราง 5)</div>
+    </div>
+    <div class="qr"><span><b>tamsoodbase.vercel.app</b>เปิดเว็บ · ลองถามผู้ช่วย</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" shape-rendering="crispEdges"><path stroke="#173d32" d="M0 0.5h7m1 0h1m1 0h2m10 0h7M0 1.5h1m5 0h1m2 0h2m1 0h1m3 0h4m2 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m2 0h2m1 0h2m1 0h3m2 0h1m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h3m1 0h1m3 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m1 0h1m4 0h2m1 0h1m1 0h1m3 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h3m2 0h3m1 0h4m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m2 0h1m2 0h1m2 0h4M0 8.5h1m3 0h1m1 0h6m1 0h5m1 0h1m1 0h5m2 0h1M0 9.5h1m1 0h1m1 0h2m2 0h1m1 0h1m7 0h1m3 0h7M0 10.5h1m1 0h1m2 0h2m1 0h1m4 0h3m1 0h2m5 0h1m3 0h1M1 11.5h2m1 0h1m7 0h2m1 0h6m2 0h1m1 0h1m1 0h2M0 12.5h2m2 0h1m1 0h4m1 0h3m3 0h1m2 0h2m1 0h1m3 0h1M0 13.5h1m2 0h2m2 0h1m1 0h2m1 0h3m1 0h3m1 0h1m1 0h7M0 14.5h1m1 0h3m1 0h2m1 0h1m1 0h2m3 0h3m1 0h1m4 0h2m1 0h1M0 15.5h1m4 0h1m2 0h2m1 0h1m2 0h1m2 0h1m2 0h1m3 0h1m2 0h2M0 16.5h1m1 0h9m2 0h9m5 0h1M0 17.5h1m1 0h1m1 0h1m2 0h1m1 0h1m7 0h2m3 0h4m1 0h2M2 18.5h2m2 0h4m3 0h3m2 0h1m1 0h1m1 0h1m3 0h1m1 0h1M4 19.5h1m8 0h1m1 0h3m1 0h1m1 0h3m3 0h2M0 20.5h4m2 0h1m1 0h1m1 0h4m3 0h1m1 0h7m2 0h1M8 21.5h1m3 0h3m1 0h1m1 0h1m1 0h1m3 0h1m3 0h1M0 22.5h7m1 0h4m4 0h2m1 0h2m1 0h1m1 0h3m1 0h1M0 23.5h1m5 0h1m2 0h1m1 0h1m2 0h1m2 0h4m3 0h1m2 0h1M0 24.5h1m1 0h3m1 0h1m1 0h4m1 0h3m1 0h1m1 0h7m1 0h2M0 25.5h1m1 0h3m1 0h1m4 0h3m6 0h2m5 0h1M0 26.5h1m1 0h3m1 0h1m2 0h3m2 0h4m3 0h1m3 0h4M0 27.5h1m5 0h1m2 0h3m3 0h3m2 0h4m1 0h1m1 0h2M0 28.5h7m1 0h3m3 0h1m1 0h2m2 0h1m1 0h3m2 0h1"/></svg></div></div>
+  </section>
+</main>
+
+</div>
+</body>
+</html>
