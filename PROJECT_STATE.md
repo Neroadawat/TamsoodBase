@@ -1276,3 +1276,19 @@ output/prototype/TamsoodBase-Follow-the-Evidence-TH.mp4 เล่าโจทย
 ## 15 พฤศจิกายน 2569 — ป้องกัน navbar ใช้ asset เก่า
 
 ผู้ใช้ยังเปิดชุดข้อมูลไม่ได้ ตรวจเว็บจริง Chrome6ขนาดและEdge1920พบเมนูเปิดได้ overflow visible จึงยังไม่ยืนยันว่าสาเหตุที่ผู้ใช้พบคือcache แต่เพิ่มcontent-hash queryให้CSS/JSรวมconfigในHTMLตอนbuild เพื่อแยกURLเมื่อไฟล์เปลี่ยน ป้องกันใช้assetรุ่นก่อน แก้เฉพาะscripts/build_frontend.mjs; frontend Python19tests และ catalog/API/consent3ชุดผ่าน เผยแพร่Production dpl_H3bV2hz1zHAe1KDwfdZe3Rafs7XY ไม่แก้เอกสารClaudeหรือข้อมูลEC2
+
+
+## 15 พฤศจิกายน 2569 — อัปเดตเล่มหลังผล CSV และทดสอบ SQL ใน MySQL แยก
+
+ผู้ใช้สั่งให้ทำส่วนที่ทำได้ต่อ ใช้เล่มv2เป็นฐานสร้าง output/m4/review-2026-11-15/S2-G05_M4_Report_REVIEW_2026-11-15.docx แก้/เพิ่ม7จุดไฮไลต์เหลือง รวมสถานะLOAD CSVล่าสุด ผลSQLlocal และหมายเหตุแยกประวัติในmemo แก้คำรอทดสอบLOAD CSVที่ค้างในบท5/6/เช็กลิสต์ คงmediaER6ไฟล์/10drawing และข้อความรวมตารางภาคผนวกเดิมตรงv2 หลังnativeWordบันทึก เปรียบเทียบแล้วครบ69หน้า สารบัญ55รายการตรงหน้าจริง ตรวจภาพรวมทุกหน้าและหน้าที่เปลี่ยนแบบเต็มขนาด ไม่คืนPDFเล่มที่ทีมยังกรอกไม่ครบ
+
+ทดสอบqueryของสไลด์/โปสเตอร์ด้วยMySQL8.4InnoDBในcontainerชั่วคราวnetworknoneจากfullDMFและinventorysnapshotเดิม: 4อันดับมี.ค.2026ตรงค่า/บรรทัดทุกแถว; JOIN Q1FAMEinput8แถวตรงflow/amount/unit; Q2FAME8/2,H-FAME5/1ตรงทั้งหมด เก็บ evidence/presentation-mysql-local-2026-11-15.json ลบเฉพาะcontainerทดสอบแล้ว ไม่ใช่ผลรันEC2โดยตรง
+
+ระหว่างทำพบClaudeแก้สไลด์/โปสเตอร์ล่าสุดแล้ว จึงหยุดก่อนเขียนoutputสไลด์อีกชุด ไม่เขียนทับต้นทางหรือสร้างซ้ำ ส่งสถานะและผลSQLlocalต่อใน CODEX_REVIEW_FOR_CLAUDE_2026-11-15.md รายการแก้อยู่โฟลเดอร์เล่มใหม่/CHANGES.md เหลือทีมตรวจไฮไลต์Contribution/Consent/MemoM4/ออกPDFฉบับส่ง และผู้ที่เข้าถึงEC2ได้ยืนยันSQLโดยตรง ไม่มีdeployหรือcommitเพิ่มในรอบเอกสารนี้
+
+
+## 15 พฤศจิกายน 2569 — ปิดช่อง Traceability และเตรียมส่งต่อ Claude
+
+ผู้ใช้สั่งจัดการจุดตกหล่นและคุยกับClaude เติม NFR01–06 ในตารางTraceabilityและRevision0.4 พร้อมไฮไลต์เหลือง แก้hyperlinkGitHubไปbranchงานล่าสุด สร้างเล่ม output/m4/review-2026-11-15/S2-G05_M4_Report_REVIEW_2026-11-15_v2.docx ตรวจnativeWord70หน้า/สารบัญ55รายการตรง ผลQAอยู่evidence/report-final-review-2026-11-15.json คงERและmemoเดิม รวบรวมเล่มล่าสุดกับผลSQLlocalเพื่อcommit/pushเฉพาะbranchงาน ไม่mergeเข้าmain
+
+ComputerUseผ่านnode_replยังเปิดไม่ได้ kernel-assets path error จึงไม่ได้ส่งข้อความตรงเข้าClaude สร้าง docs/CODEX_CLAUDE_COORDINATION_2026-11-15.md และ C:/Users/HP/Documents/ChatGPT/MTECH/CLAUDE_NEXT_ACTIONS_2026-11-15.md เป็นhandoffที่อ่านต่อได้ รายการConsent/Contribution/MemoM4และPDFกรอกครบยังเป็นงานทีม SQLlocalผ่านแต่EC2directยังไม่ยืนยัน
