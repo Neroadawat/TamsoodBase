@@ -1348,3 +1348,8 @@ Created standalone HTML first, then one-page A4 PDF, under C:/Users/HP/Documents
 ## 15 พฤศจิกายน 2569 — เปิดทางเข้า semantic ผ่าน gateway เดิม (ยังไม่ deploy ask.js/ไม่เปิด flag)
 
 แก้ deploy/private_gateway.py เพิ่ม POST /semantic-search (Basic Auth เดิม, ฉีด Bearer token ของบริการฝั่ง gateway, body<=4KB JSON, ตอบ<=16KB, timeout 4s) และ ask.js โหมด gateway ใช้ BACKEND_ORIGIN/AUTH เดิม บน EC2: สำรองไฟล์เดิมที่ /home/ubuntu/tamsoodbase/backup-gateway-20261115T083220, ตรึง IP บริการ semantic 10.253.77.2, เพิ่ม semantic_url/semantic_token ใน access.json, restart เฉพาะ tamsoodbase-https-gateway ตรวจผ่าน gateway: 200/401/400/405 ตามคาด, healthz เดิม 200, ginder และ container อื่นไม่ถูกแตะ tests: test_private_gateway(+semantic) 11 ข้อ, rag-semantic-contract, rag-vercel-api ผ่าน เหลือ: deploy ask.js รุ่นใหม่ขึ้น Vercel, ตั้ง TAMSOOD_SEMANTIC_ENABLED=true, วัดกับ Gemini จริง, แก้ข้อความยินยอม ไม่ commit
+
+
+## 15 พฤศจิกายน 2569 — ทดสอบ preview กับ Gemini จริง (semantic เปิด) เทียบ production
+
+ตั้ง env ใน Vercel เฉพาะ Preview ของ branch codex/rag-gemini-preview-2026-11-09 (TAMSOOD_SEMANTIC_ENABLED, TAMSOOD_BACKEND_ORIGIN, TAMSOOD_BACKEND_AUTH) commit ว่าง 8d0bc53 สร้าง preview ใหม่ ตรวจ: เส้นทาง browser→Vercel→gateway→EC2 ใช้ได้ (retrieval.mode ครบ 4 แบบ) healthz 200 รันคำถามเดียวกัน 29 ข้อบน preview (semantic เปิด) และ production (เดิม) ผล: ตัวเลข 6 ข้อถูกจากข้อมูลทั้งสองฝั่ง (preview มี plain-listing 2 จาก validator/Gemini timeout); เชิงสำนวน 14 ข้อ แสดงต้นทางที่เกี่ยวข้อง 13/14 ทั้งสองฝั่ง; กวนใจ 9 ข้อ พฤติกรรมเหมือนกัน ไม่แต่งตัวเลข สรุป: semantic ทำงานครบเส้นทางโดยไม่ทำให้ตัวเลข/ต้นทางเสีย แต่ยังไม่พบข้อดีด้านความแม่นยำเหนือ planner เดิมในชุดนี้ (n เล็ก รัน 1 ครั้ง) production ยังไม่เปิด flag ไฟล์: evidence/semantic-preview-live-2026-11-15.json

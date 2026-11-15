@@ -282,7 +282,7 @@ body{background:#f1f4f2}
             <div class="composer-tools"><span class="key-hint" id="question-help">กด <kbd>Enter</kbd> เพื่อส่ง · <kbd>Shift</kbd> + <kbd>Enter</kbd> ขึ้นบรรทัดใหม่</span><span class="character-count" id="question-count" aria-live="off">0 / 500</span></div>
             <div class="composer-footer"><span class="composer-hint">ถามต่อจากคำตอบเดิมได้ · ไม่เกิน 500 ตัวอักษร</span><button class="send-button" type="submit" disabled><span>ส่ง</span><span aria-hidden="true">↗</span></button></div>
             <label class="consent-row"><input id="gemini-consent" type="checkbox" disabled><span>ยินยอมส่งคำถาม บทสนทนาล่าสุด และข้อมูลที่ค้นได้ไปยัง Gemini</span></label>
-            <details class="consent-details"><summary>รายละเอียดการส่งข้อมูล</summary><p>ติ๊กครั้งเดียวใช้ได้ตลอดจนปิดแท็บ และยกเลิกได้ทุกเมื่อ คำถาม บทสนทนาล่าสุดในแท็บนี้ และข้อมูลที่ค้นได้จะส่งไปยัง Google Gemini เพื่อเรียบเรียงคำตอบ กรุณาไม่ใส่ข้อมูลส่วนบุคคลหรือข้อมูลลับ อ่านเงื่อนไขเพิ่มเติมได้ที่ “คำถามตัวอย่างและข้อมูลความเป็นส่วนตัว” ท้ายหน้า</p></details>
+            <details class="consent-details"><summary>รายละเอียดการส่งข้อมูล</summary><p>ติ๊กครั้งเดียวใช้ได้ตลอดจนปิดแท็บ และยกเลิกได้ทุกเมื่อ คำถาม บทสนทนาล่าสุดในแท็บนี้ และข้อมูลที่ค้นได้จะส่งไปยัง Google Gemini เพื่อเรียบเรียงคำตอบ นอกจากนี้คำถามล่าสุดจะถูกส่งผ่านอุโมงค์ Cloudflare ไปยังบริการค้นหาเชิงความหมายบนเซิร์ฟเวอร์ของโครงการเอง เพื่อหาบันทึกที่เกี่ยวข้อง บริการนี้ไม่ได้เก็บคำถามไว้และไม่ส่งต่อให้ผู้อื่น หากบริการนี้ใช้ไม่ได้ ระบบจะตอบด้วยวิธีเดิม กรุณาไม่ใส่ข้อมูลส่วนบุคคลหรือข้อมูลลับ อ่านเงื่อนไขเพิ่มเติมได้ที่ “คำถามตัวอย่างและข้อมูลความเป็นส่วนตัว” ท้ายหน้า</p></details>
           </form>
           <p id="status" role="status" aria-live="polite"></p>
         </div>

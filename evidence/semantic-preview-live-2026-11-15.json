@@ -1,0 +1,56 @@
+﻿{
+    "generated_at":  "2026-11-15T11:40:21Z",
+    "scope":  "Real Gemini planner/answer; same 29 questions asked once each on preview (semantic ON via gateway to EC2, commit 8d0bc53) and on production (c042778, no semantic). Measures which source cards/evidence appeared and answer shape. Not human-graded answer correctness; n is small and Gemini output varies run to run.",
+    "preview":  "tamsoodbase-git-codex-rag-gemini-pr-0a9dfd-neroadawats-projects.vercel.app",
+    "corpus_version":  "f590197f715ddb17",
+    "paths_verified":  [
+                           "browser -\u003e Vercel preview /api/rag/ask -\u003e /semantic-search on tunnel gateway (Basic auth) -\u003e EC2 tamsoodbase-semantic -\u003e hits",
+                           "/api/healthz 200 on preview after env set",
+                           "retrieval field present: modes seen = semantic, hybrid, structured, structured-fallback(no_hits)"
+                       ],
+    "numeric_6_questions":  {
+                                "production_off":  {
+                                                       "answer":  6,
+                                                       "plain_listing":  0
+                                                   },
+                                "preview_on":  {
+                                                   "answer":  4,
+                                                   "plain_listing":  2,
+                                                   "reasons":  [
+                                                                   "value_label_mismatch: H-FAME 219 (answer validator rejected Gemini text; plain table listing returned)",
+                                                                   "model_error: Gemini call aborted at ~9.8 s (listing returned from data)"
+                                                               ]
+                                               },
+                                "note":  "every numeric answer on both sides came from the structured data with tables and source cards; no invented number. The two preview fallbacks are existing safety paths (validator / Gemini timeout) and can occur with the flag off too; a single run cannot attribute them to semantic retrieval."
+                            },
+    "paraphrase_14_questions":  {
+                                    "relevant_source_shown":  {
+                                                                  "production_off":  "13/14",
+                                                                  "preview_on":  "13/14"
+                                                              },
+                                    "answer_kind":  {
+                                                        "production_off":  "answer 10, plain-listing 2, chat 2 (hit cards shown)",
+                                                        "preview_on":  "answer 11, plain-listing 0, chat 3"
+                                                    },
+                                    "missed_both":  "project scope question (chat reply without a source card)",
+                                    "evidence_modes_preview":  {
+                                                                   "semantic":  8,
+                                                                   "hybrid":  1,
+                                                                   "structured":  5
+                                                               },
+                                    "median_ms":  {
+                                                      "preview_on":  2265,
+                                                      "production_off":  "about 2.3 s (not computed precisely)"
+                                                  },
+                                    "conclusion":  "No measurable retrieval gain over the existing planner on this set. The planner already routes well from the 10-note index."
+                                },
+    "adversarial_9_questions":  {
+                                    "production_off":  "1 answer that attached fame-wtw-boundary (exhaust-vs-lifecycle question), 8 chat refusals, no invented figures",
+                                    "preview_on":  "same pattern: 1 answer using fame-wtw-boundary, 8 chat (2 reported structured-fallback no_hits), evidence outside acceptable list = 0"
+                                },
+    "limits":  [
+                   "one run per question; Gemini temperature 0.3 so results vary",
+                   "questions were not tuned on, but the relevant-ID labels are the author\u0027s",
+                   "does not show semantic retrieval is more accurate, only that it works end to end without breaking numbers or sources"
+               ]
+}
