@@ -1313,3 +1313,6 @@ ComputerUseผ่านnode_replยังเปิดไม่ได้ kernel-a
 ผู้ใช้สั่งตรวจแล้วmergeเข้าmain ตรวจbranchad46309เทียบorigin/mainf6fda64เป็นancestorรวมแบบfast-forwardได้ Frontend/RAG17ไฟล์ทดสอบและPythonfrontend19ข้อผ่าน check_release technical/referenceผ่าน submissionยังfalse ตรวจCSVชุดส่ง16x32/source_idครบ สไลด์หลัก10หน้าและCanvaเสริม2หน้าแยกกัน ตรวจเล่มล่าสุด71หน้าพบcachedTOC7หัวข้อท้ายยังเก่า จึงสำรองแล้วnativeWordอัปเดตและบันทึกใหม่ ตรวจครบ55หัวข้อตรงกับPDFทุกรายการ ภาพERคงเดิม ผลอยู่evidence/main-merge-review-2026-11-15.json
 
 รวมเฉพาะสไลด์Canvaใหม่/PPTXและภาพpreview เล่มที่แก้สารบัญ ผลQA และรายการไฟล์ล่าสุดไว้ในbranchงาน ไม่รวมWordlock/tmp/คลิปเก่าที่มีข้อผิดพลาด เพิ่มdocs/submission/LATEST_DELIVERABLES.mdและลิงก์จากREADME งานทีมConsent/Contribution/MemoM4/PDFกรอกครบและEC2directSQLยังค้าง ไม่แก้ข้อมูลEC2หรือส่งฟอร์ม
+
+
+ผลรวมเข้า main สำเร็จ: fast-forward f6fda64 → 5b101ce และ push origin/main แล้ว เทียบremote mainกับbranchงานได้SHAเดียวกัน ProductionจากGitmainเป็นReady deployment dpl_33FnhcnahpZyUsLw7WxDG1DPm3HD ตรวจ /, /ask.html, /config.js, /api/healthz, /api/summary ได้200; หน้าแรกมีversionedassetsและpublic chatยังเปิด ไม่รวมWordlock/tmp/คลิปเก่าหรือเล่มreviewรุ่นก่อนเข้าชุดใหม่ การmergeไม่ใช่การรับรองsubmission_readyและไม่ใช่การแก้EC2
