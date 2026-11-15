@@ -2,16 +2,16 @@
 
 ## สถานะจริง
 
-- **โค้ดพร้อมและทดสอบในเครื่องแล้ว แต่ยังไม่ได้เปิดใน production** ค่าเริ่มต้น `TAMSOOD_SEMANTIC_ENABLED` ไม่ตั้ง = ผู้ช่วยทำงานเหมือนเดิมทุกประการ (รูปแบบคำตอบไม่เปลี่ยน)
-- ยังไม่มีบริการ semantic ที่เข้าถึงจาก Vercel ได้: RAG บน EC2 เดิมเป็น FAQ pilot แบบ internal-only (ไม่มี public endpoint) และรอบนี้ไม่มีสิทธิ์ SSH EC2 ดังนั้น production ยัง **ไม่ได้ใช้ Qdrant/embedding** ห้ามเขียนว่าใช้
-- ผล Recall และ latency ด้านล่างเป็น **คุณภาพการค้นคืนบน corpus 21 ชิ้นเท่านั้น** ไม่ใช่ความถูกต้องของคำตอบบนเว็บ (ไม่มี Gemini key ให้ทดสอบ planner จริง)
+- **เปิดใช้บน production แล้วตั้งแต่ 15 พฤศจิกายน 2569** (Vercel env `TAMSOOD_SEMANTIC_ENABLED=true` บน Production, commit bcfcd9b) ปิดได้โดยลบ/แก้ flag ค่าเริ่มต้นเมื่อไม่ตั้ง = ผู้ช่วยทำงานเหมือนเดิมทุกประการ
+- ผลวัดตัวเลข Recall และ latency ในส่วน "ผลที่วัดได้" เป็น **คุณภาพการค้นคืนบน corpus 21 ชิ้นเท่านั้น** ส่วนผลกับ Gemini จริงอยู่ในหัวข้อ "ผลตรวจจริง" ท้ายไฟล์
+- ก่อนเปิดใช้ เคยเป็นโค้ดพร้อมที่ยังไม่ deploy เอกสารรุ่นก่อนหน้าที่เขียนแบบนั้นเป็นประวัติ ณ ตอนนั้น
 
 ## อัปเดต 15 พฤศจิกายน 2569 (หลังติดตั้งบน EC2)
 
 - **บริการ semantic รันบน EC2 แล้ว** (`tamsoodbase-semantic`, 640 MiB, เครือข่ายภายใน `tamsoodbase-rag-private`, IP ตรึง 10.253.77.2, ไม่เปิดพอร์ตภายนอก) `tamsoodbase-rag` เดิมถูกหยุดไว้ (ไม่ลบ)
 - **ทางเข้า:** `POST /semantic-search` บน gateway เดิม (`deploy/private_gateway.py`) ใช้ Basic Auth เดียวกับ API เดิม gateway เติม Bearer token ของบริการเอง token ไม่ไปถึง Vercel/เบราว์เซอร์ ตรวจบน EC2 แล้ว: 200 พร้อม corpus_version ตรง, ไม่มี auth → 401, body ผิด → 400, POST path อื่น → 405, `/healthz` เดิม 200
 - **ฝั่ง Vercel (`ask.js`):** เมื่อไม่ได้ตั้ง `TAMSOOD_SEMANTIC_URL` และเปิด `TAMSOOD_SEMANTIC_ENABLED=true` จะใช้ `TAMSOOD_BACKEND_ORIGIN` + `TAMSOOD_BACKEND_AUTH` เดิมเรียก `/semantic-search` ไม่ต้องมี secret ใหม่
-- **ณ ตอนที่เขียน production ยังไม่ใช้ semantic:** โค้ด `ask.js` รุ่นนี้ยังไม่ได้ deploy ขึ้น Vercel และยังไม่ได้ตั้ง flag
+- **ข้อความยินยอม** ในหน้า `/ask.html` แจ้งแล้วว่าคำถามล่าสุดถูกส่งผ่านอุโมงค์ Cloudflare ไปบริการค้นของโครงการ ซึ่งไม่เก็บคำถาม
 - **ย้อนกลับ:** ตั้ง flag เป็นอย่างอื่น (ไม่ต้อง deploy) | gateway: คืนไฟล์จาก `/home/ubuntu/tamsoodbase/backup-gateway-20261115T083220/` แล้ว `docker restart tamsoodbase-https-gateway` | บริการ: `docker stop tamsoodbase-semantic; docker start tamsoodbase-rag`
 - ข้อควรระวัง: แรมเครื่องเหลือว่างราว 350 MB (ใช้ร่วมกับ ginder)
 
@@ -69,3 +69,10 @@ Latency ในโปรเซส (ค้น 5 อันดับ) median 7.2 ms 
 ## ยังไม่ได้ทำ
 
 deploy บริการ semantic, ตั้งค่า flag บน Vercel, วัดคำตอบจริง/latency Gemini ก่อน–หลังบน production, ทดสอบ browser→production, แก้ข้อความยินยอมให้ตรงเส้นทางเมื่อเปิดใช้
+
+## ผลตรวจจริงกับ Gemini (15 พฤศจิกายน 2569)
+
+- ชุดเดียวกัน 29 ข้อบน preview (เปิด) เทียบ production เดิม (ปิด): เชิงสำนวน 14 ข้อแสดงต้นทางที่เกี่ยวข้อง 13/14 ทั้งสองฝั่ง ตัวเลข 6 ข้อถูกจากข้อมูลทั้งสองฝั่ง กวนใจ 9 ข้อไม่แต่งตัวเลขทั้งสองฝั่ง (evidence/semantic-preview-live-2026-11-15.json)
+- หลังเปิดบน production ถามชุดใหม่ (docs/rag/semantic-eval-questions-v3-live.json กำหนดคำตอบก่อนถาม): เชิงสำนวน 12 ข้อแสดงต้นทางที่เกี่ยวข้อง 11/12, กวนใจ 6 ข้อไม่มีต้นทางนอกรายการที่ยอมรับ, ตัวเลข 6 ข้อตรงค่าเดิม (evidence/semantic-production-live-2026-11-15.json)
+- สรุปตามจริง: ทำงานครบเส้นทางและไม่ทำให้ตัวเลข/ต้นทางเสีย แต่ยังไม่พบข้อดีด้านความแม่นยำเหนือ planner เดิม; มัธยฐานเวลาตอบรอบหลังเปิดราว 4.8 วินาที เทียบราว 2.3 วินาทีก่อนเปิด (รันครั้งเดียว ยังไม่แยกสาเหตุ: อุโมงค์/swap บน EC2/ความผันผวนของ Gemini)
+- รายการ `project_scope` และ `acceptance` ไม่มีลิงก์ต้นทางหรือชุดข้อมูลให้แสดงการ์ด จึงไม่ใช่ข้อบกพร่องของการค้น
