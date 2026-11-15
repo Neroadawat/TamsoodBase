@@ -1316,3 +1316,35 @@ ComputerUseผ่านnode_replยังเปิดไม่ได้ kernel-a
 
 
 ผลรวมเข้า main สำเร็จ: fast-forward f6fda64 → 5b101ce และ push origin/main แล้ว เทียบremote mainกับbranchงานได้SHAเดียวกัน ProductionจากGitmainเป็นReady deployment dpl_33FnhcnahpZyUsLw7WxDG1DPm3HD ตรวจ /, /ask.html, /config.js, /api/healthz, /api/summary ได้200; หน้าแรกมีversionedassetsและpublic chatยังเปิด ไม่รวมWordlock/tmp/คลิปเก่าหรือเล่มreviewรุ่นก่อนเข้าชุดใหม่ การmergeไม่ใช่การรับรองsubmission_readyและไม่ใช่การแก้EC2
+
+
+## 15 พฤศจิกายน 2569 — จัดร่าง Memo M4 ในเล่ม
+
+ผู้ใช้ขอให้ทำMemoและระบุวัน11พ.ย./สมาชิกครบ แต่ต่อมาระบุว่าให้แต่งว่าประชุมและงานเสร็จ จึงไม่บันทึกเหตุการณ์หรือมติแต่งขึ้นเป็นข้อเท็จจริง สร้างเล่ม v3_M4memo ต่อจากv2โดยคงสถานะร่างเพื่อรับรอง มี5วาระ ข้อเสนอมติและมอบหมายงาน รายชื่อสมาชิกตามผู้ใช้แจ้ง เว้นเวลา/ช่องทาง/ผลรับรองจริง และแยกหมายเหตุสถานะ13–15พ.ย.จากวันประชุมที่เสนอ ไม่รับรองย้อนหลัง
+
+ไฟล์ output/m4/review-2026-11-15/S2-G05_M4_Report_REVIEW_2026-11-15_v3_M4memo.docx มี74หน้า สารบัญ63รายการตรงหน้าจริง รวมRevision0.5และดัชนีMemo อัปเดตส่วนเพิ่มไฮไลต์เหลือง คงERและMemoM1–M3ข้อความเดิมครบ เทียบPDFก่อน/หลังพบเปลี่ยนหน้า2/4/54และ71–74 ตรวจภาพครบหน้าที่เปลี่ยน ร่างmemoแยก4หน้าคงเป็นไฟล์ทำงานภายใน ไม่ส่งเป็นหลักฐานรับรองให้ทีม สำเนาเล่มที่เปิดได้อยู่MTECH/M4_final_files ไม่commit/push/แก้ฉบับv2บนmainจนทีมยืนยัน
+
+
+## M4 memo formatting — 2026-11-15
+Local v4_M4memo_formatted: 73 pages, 55 TOC entries. TH SarabunPSK body/tables 14pt, agenda headings 16pt; original appendix title retained. Current status integrated in agenda 2; draft decisions await actual member confirmation. Changed pages 2/54/71-73 visually checked. Prior memo text and embedded media preserved. Delivery copy in MTECH/M4_final_files. No commit/push.
+
+
+## 15 พฤศจิกายน 2569 — เชื่อม semantic retrieval เข้า ask.js (flag ปิด, ยังไม่ deploy)
+
+ต่อจาก handoff RAG: เพิ่ม corpus ความหมาย 21 ชิ้นจาก knowledge-pack (scripts/build_semantic_corpus.py), บริการ FastEmbed+Qdrant (scripts/semantic_service.py, deploy/Dockerfile.semantic) และ hook ใน api/rag/ask.js ที่ปิดโดยค่าเริ่มต้น (TAMSOOD_SEMANTIC_ENABLED) ใช้เป็นตัวเสนอ candidates ให้ planner เท่านั้น ตัวเลข/ตาราง/ต้นทางยังมาจาก runQuery เดิม มี fallback structured-fallback และ field retrieval ตอนเปิด flag
+
+ผล: tests/*.cjs ทั้งหมด + test_rag*.py 43 ข้อ + test_semantic_corpus 5 ข้อผ่าน; contract test ใหม่ผ่าน; held-out ใหม่ 14 ข้อ Recall@3 hybrid 0.929 / keyword 0.857 / semantic 0.929 (ไม่ชนะ keyword ชัดเจนบน corpus เล็ก) และไม่มี threshold ที่แยกคำถามกวนใจได้ จึงไม่แนบ hit อัตโนมัติ Gemini เป็น mock จึงยังไม่วัดคุณภาพคำตอบจริง ไม่มี SSH/EC2 และ Vercel secret อ่านไม่ได้ ดังนั้น production ยังไม่ใช้ semantic/Qdrant ไม่ commit/deploy รายละเอียด docs/rag/SEMANTIC_RETRIEVAL.md, evidence/semantic-*.json
+
+
+## Poster comprehensive redesign — 2026-11-15
+Created standalone HTML first, then one-page A4 PDF, under C:/Users/HP/Documents/ChatGPT/MTECH/M4_final_files/S2-G05_M4_Poster_Comprehensive_2026-11-15.*. Source/render/QA scripts in MTECH/.poster-comprehensive. Ten sections plus architecture and provenance strip; retained corrected team name. Current RAG status reflects local API/service wiring with mocked Gemini per semantic-pipeline-local-2026-11-15.json, not confirmed production. Historical FAQ retrieval scores explicitly labelled. Browser layout and final PDF visually checked, key values checked, QR decoded to project website. Prior poster/report/code unchanged by this poster task. No commit/push.
+
+
+## 15 พฤศจิกายน 2569 — ติดตั้งบริการ semantic บน EC2 (ยังไม่เปิด flag บน Vercel)
+
+ตามคำสั่งผู้ใช้: หยุด container tamsoodbase-rag เดิม (docker stop, ยังเก็บ container/image ไว้กู้คืนได้ด้วย docker start tamsoodbase-rag) แล้วรัน tamsoodbase-semantic:f590197f715ddb17 บนเครือข่าย tamsoodbase-rag-private จำกัด 640MiB/swap 1GiB, read-only, ไม่เปิดพอร์ตสู่ภายนอก ตรวจในตัว container: /readyz corpus f590197f715ddb17 21 chunks, ไม่มี token ได้ 401, 4 query ได้ผลตามคาดที่ 16–169 ms แรมใช้ ~630MiB/640MiB เครื่องเหลือว่าง ~350MB ginder และ container อื่นไม่ถูกแตะ ยังไม่มีทางเข้าจาก Vercel (gateway เดิมรับเฉพาะ GET) และยังไม่ตั้ง TAMSOOD_SEMANTIC_* บน Vercel จึง production ยังไม่ใช้ semantic token อยู่ที่ EC2 /home/ubuntu/semantic.env และสำเนาใน .local/semantic-token.env (ไม่ commit)
+
+
+## 15 พฤศจิกายน 2569 — เปิดทางเข้า semantic ผ่าน gateway เดิม (ยังไม่ deploy ask.js/ไม่เปิด flag)
+
+แก้ deploy/private_gateway.py เพิ่ม POST /semantic-search (Basic Auth เดิม, ฉีด Bearer token ของบริการฝั่ง gateway, body<=4KB JSON, ตอบ<=16KB, timeout 4s) และ ask.js โหมด gateway ใช้ BACKEND_ORIGIN/AUTH เดิม บน EC2: สำรองไฟล์เดิมที่ /home/ubuntu/tamsoodbase/backup-gateway-20261115T083220, ตรึง IP บริการ semantic 10.253.77.2, เพิ่ม semantic_url/semantic_token ใน access.json, restart เฉพาะ tamsoodbase-https-gateway ตรวจผ่าน gateway: 200/401/400/405 ตามคาด, healthz เดิม 200, ginder และ container อื่นไม่ถูกแตะ tests: test_private_gateway(+semantic) 11 ข้อ, rag-semantic-contract, rag-vercel-api ผ่าน เหลือ: deploy ask.js รุ่นใหม่ขึ้น Vercel, ตั้ง TAMSOOD_SEMANTIC_ENABLED=true, วัดกับ Gemini จริง, แก้ข้อความยินยอม ไม่ commit

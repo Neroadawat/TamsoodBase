@@ -43,8 +43,30 @@ class Gateway(BaseHTTPRequestHandler):
         if valid:
             with self.server.auth_lock:self.server.cached_token=token
         return valid
+    def semantic(self):
+        """POST /semantic-search -> semantic service /search. The service token lives only in
+        the gateway config; the caller proves itself with the same Basic credential as the API."""
+        cfg=self.server.config;base=cfg.get('semantic_url');token=cfg.get('semantic_token')
+        if not base or not token or len(token)<32:return self.reply(404,b'Not found')
+        try:
+            length=int(self.headers.get('Content-Length','0'))
+            if not 1<=length<=4096 or self.headers.get_content_type()!='application/json':return self.reply(400,b'Bad request')
+            body=self.rfile.read(length)
+            if not isinstance(json.loads(body),dict):return self.reply(400,b'Bad request')
+        except (ValueError,TypeError,UnicodeError):return self.reply(400,b'Bad request')
+        request=urllib.request.Request(base.rstrip('/')+'/search',data=body,method='POST',
+            headers={'Content-Type':'application/json','Authorization':'Bearer '+token})
+        try:
+            with urllib.request.urlopen(request,timeout=4) as response:
+                data=response.read(16*1024+1)
+            if len(data)>16*1024:return self.reply(502,b'Response too large')
+            self.send_response(200);self.send_header('Content-Type','application/json; charset=utf-8')
+            self.send_header('Cache-Control','no-store');self.send_header('X-Content-Type-Options','nosniff')
+            self.send_header('Content-Length',str(len(data)));self.end_headers();self.wfile.write(data)
+        except (OSError,TimeoutError,urllib.error.URLError):self.reply(502,b'Semantic service unavailable')
     def do_GET(self):
         if not self.authorized():return self.reply(401,b'Authentication required',True)
+        if self.command=='POST' and self.path=='/semantic-search':return self.semantic()
         if self.command not in ('GET','HEAD','OPTIONS'):return self.reply(405,b'Read-only gateway')
         if not self.path.startswith('/') or self.path.startswith('//') or len(self.path)>8192:return self.reply(400)
         headers={key:self.headers[key] for key in ('Accept','Origin','Access-Control-Request-Method','Access-Control-Request-Headers') if self.headers.get(key)}

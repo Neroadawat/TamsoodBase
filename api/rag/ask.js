@@ -12,6 +12,17 @@
 const manifest = require('../../docs/rag/public-release-manifest.json');
 const pack = require('../../docs/rag/knowledge-pack.json');
 
+const semanticCorpus = require('../../docs/rag/semantic-corpus.json');
+
+// Semantic retrieval is an optional, flag-gated candidate generator. It only
+// suggests which explanatory notes / datasets look related; the planner decides
+// what to use and every figure still comes from runQuery over the bundled pack.
+const SEMANTIC_TIMEOUT_MS = 2500;
+const SEMANTIC_K = 5;
+const SEMANTIC_CANDIDATE_FLOOR = 0.4; // noise cut on the hybrid score, not a relevance claim
+const SEMANTIC_MAX_RESPONSE_BYTES = 8 * 1024;
+const SEMANTIC_CHUNKS = new Map(semanticCorpus.chunks.map(chunk => [chunk.id, chunk]));
+
 const MAX_REQUEST_BYTES = 8 * 1024;
 const MAX_QUESTION_CHARS = 500;
 const MAX_HISTORY_TURNS = 4;
@@ -73,6 +84,84 @@ function isReleaseReady(env = process.env) {
     && manifest.knowledge_pack?.content_sha256 === pack.content_sha256
     && pack.scope === 'OWNER_RELEASED_GOV_OPEN_DATA_AND_CC_BY_ARTICLE'
     && pack.contains_company_report_values === false;
+}
+
+// ------------------------------------------------------------ semantic retrieval
+
+function semanticConfig(env = process.env) {
+  if (env.TAMSOOD_SEMANTIC_ENABLED !== 'true') return null;
+  if (semanticCorpus.pack_sha256 !== pack.content_sha256) return null;
+  if (!env.TAMSOOD_SEMANTIC_URL) {
+    // Gateway mode: same protected origin and credentials the data API already uses.
+    // The gateway holds the semantic service token; it never reaches Vercel.
+    let base;
+    try { base = new URL(env.TAMSOOD_BACKEND_ORIGIN || ''); } catch { return null; }
+    const authorization = env.TAMSOOD_BACKEND_AUTH || '';
+    if (base.protocol !== 'https:' || base.username || base.password || base.port || base.search || base.hash
+      || base.pathname !== '/' || !authorization.startsWith('Basic ') || authorization.length > 4096) return null;
+    return { endpoint: new URL('/semantic-search', base).toString(), authorization };
+  }
+  let url;
+  try { url = new URL(env.TAMSOOD_SEMANTIC_URL || ''); } catch { return null; }
+  const loopback = ['127.0.0.1', 'localhost', '[::1]'].includes(url.hostname);
+  const token = (env.TAMSOOD_SEMANTIC_TOKEN || '').trim();
+  if (url.username || url.password || url.search || url.hash) return null;
+  if (!(url.protocol === 'https:' || (url.protocol === 'http:' && loopback))) return null;
+  if (token.length < 32) return null;
+  return { endpoint: new URL('/search', url).toString(), authorization: `Bearer ${token}` };
+}
+
+// Never throws: any failure becomes {status:'unavailable', reason} so the caller
+// falls back to the structured route and says so.
+async function semanticSearch(question, env = process.env, fetchImpl = fetch) {
+  const config = semanticConfig(env);
+  if (!config) return { status: 'disabled', hits: [] };
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), SEMANTIC_TIMEOUT_MS);
+  try {
+    const response = await fetchImpl(config.endpoint, {
+      method: 'POST', signal: controller.signal,
+      headers: { 'Content-Type': 'application/json', Authorization: config.authorization },
+      body: JSON.stringify({ question, k: SEMANTIC_K }),
+    });
+    if (!response.ok) return { status: 'unavailable', reason: `http_${response.status}`, hits: [] };
+    const text = await response.text();
+    if (Buffer.byteLength(text, 'utf8') > SEMANTIC_MAX_RESPONSE_BYTES) return { status: 'unavailable', reason: 'response_too_large', hits: [] };
+    const body = JSON.parse(text);
+    if (body?.corpus_version !== semanticCorpus.corpus_version) return { status: 'unavailable', reason: 'corpus_version_mismatch', hits: [] };
+    if (!Array.isArray(body.hits) || body.hits.length > SEMANTIC_K) return { status: 'unavailable', reason: 'bad_response', hits: [] };
+    const seen = new Set();
+    const hits = [];
+    for (const hit of body.hits) {
+      const chunk = SEMANTIC_CHUNKS.get(hit?.id);
+      if (!chunk || seen.has(hit.id) || typeof hit.score !== 'number' || !Number.isFinite(hit.score)) {
+        return { status: 'unavailable', reason: 'bad_response', hits: [] };
+      }
+      seen.add(hit.id);
+      if (hit.score >= SEMANTIC_CANDIDATE_FLOOR) hits.push({ id: chunk.id, kind: chunk.kind, ref: chunk.ref, title: chunk.title, score: hit.score });
+    }
+    return hits.length ? { status: 'ok', hits } : { status: 'unavailable', reason: 'no_hits', hits: [] };
+  } catch (error) {
+    return { status: 'unavailable', reason: error?.name === 'AbortError' ? 'timeout' : 'service_error', hits: [] };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// How the answer was grounded, for the page and for tests. No secrets.
+function describeRetrieval(semantic, trace) {
+  if (semantic.status === 'disabled') return undefined;
+  const base = { corpus_version: semanticCorpus.corpus_version };
+  if (semantic.status !== 'ok') return { mode: 'structured-fallback', fallback_reason: semantic.reason, ...base };
+  const noteIds = (trace.notes || []).map(note => `note:${note.id}`);
+  const queryIds = (trace.results || []).filter(result => result.rows.length).map(result => `catalogue:${result.dataset}`);
+  const used = semantic.hits.filter(hit => noteIds.includes(hit.id) || queryIds.includes(hit.id)).map(hit => hit.id);
+  if (!used.length) return { mode: 'structured', candidates: semantic.hits.length, evidence_ids: [], ...base };
+  const hasData = Boolean(queryIds.length);
+  const hasNotes = used.some(id => id.startsWith('note:'));
+  // 'semantic': the answer rests on retrieved explanation notes only;
+  // 'hybrid': numbers from the structured query engine plus retrieved notes.
+  return { mode: hasData && hasNotes ? 'hybrid' : hasNotes ? 'semantic' : 'structured', candidates: semantic.hits.length, evidence_ids: used, ...base };
 }
 
 function readBody(req) {
@@ -544,6 +633,8 @@ const PLANNER_INSTRUCTION = `${PERSONA}
 - "notes": คำถามเชิงอธิบายที่ตรงกับบันทึกความรู้ ให้ใส่ note_ids ที่เกี่ยวข้อง (ใส่ queries เพิ่มได้ถ้าต้องใช้ตัวเลขประกอบ)
 - "chat": ทักทาย ขอบคุณ ถามว่าคุณทำอะไรได้หรือมีข้อมูลอะไรบ้าง ถามเรื่องที่ระบบไม่มีข้อมูล หรือคำถามกว้างเกินจนต้องถามกลับ ให้เขียนคำตอบจริงลงใน reply ได้เลย โดยใช้เฉพาะข้อมูลในรายการชุดข้อมูลด้านล่าง ห้ามใส่ตัวเลขสถิติใน reply และถ้าระบบไม่มีข้อมูลเรื่องนั้นให้บอกตรง ๆ พร้อมแนะนำเรื่องใกล้เคียงที่ถามได้ ถ้าคำถามเกี่ยวกับชุดที่แชตไม่คัดตัวเลขมาตอบ และตรงกับสิ่งที่ชุดนั้นระบุไว้จริง (รายงานบริษัทมีเฉพาะ Thai Oil และ SPRC เท่านั้น ถ้าถามบริษัทอื่นให้ตอบว่าระบบไม่มีข้อมูลของบริษัทนั้น) ให้ใส่ id ของชุดนั้นใน catalogue_ids เพื่อให้หน้าเว็บแสดงลิงก์เอกสารต้นฉบับ และบอกผู้ใช้ว่าเปิดอ่านจากลิงก์ด้านล่างได้
 
+ถ้าอินพุตมี semantic_candidates นั่นคือรายการที่ระบบค้นด้วยความคล้ายของความหมายเสนอมา (id ชนิด คะแนน) ใช้เป็นข้อเสนอเท่านั้น อาจผิดหรือไม่เกี่ยวข้องได้ ให้ใส่ note_ids เฉพาะบันทึกที่ตรงกับคำถามจริง ไม่ต้องใช้ครบทุกรายการ ห้ามใช้คะแนนยืนยันว่าเป็นเชื้อเพลิง ปี หน่วย หรือขอบเขตเดียวกัน และตัวเลขต้องมาจาก queries เสมอ ไม่ใช่จาก candidates
+
 กติกาการเขียน query:
 - ยึดชนิดเชื้อเพลิง บริษัท ปี และรายการที่ผู้ใช้ถาม ห้ามเปลี่ยนไปใช้ตัวอื่นเพียงเพราะหาไม่เจอ
 - เมื่อต้องการเปรียบเทียบหลายรายการ ให้ใส่ทุกรายการใน filters เพื่อให้ระบบรายงานส่วนที่ขาดด้วย
@@ -788,10 +879,28 @@ function resolveResearchExample(question, history) {
 async function answerQuestion(question, history, env = process.env, fetchImpl = fetch) {
   const example = resolveResearchExample(question, history);
   if (example) return example;
+  // Consent for Gemini was already checked by the handler. The semantic service
+  // is our own, so the question goes there only when the flag is on.
+  const semantic = await semanticSearch(question, env, fetchImpl);
+  const trace = {};
+  const body = await planAndAnswer(question, history, env, fetchImpl, semantic, trace);
+  const retrieval = describeRetrieval(semantic, trace);
+  return retrieval ? { ...body, retrieval } : body;
+}
+
+async function planAndAnswer(question, history, env, fetchImpl, semantic, trace) {
   const today = new Date().toISOString().slice(0, 10);
-  const plan = await callGeminiWithRetry(PLANNER_INSTRUCTION, { today, question, history }, PLAN_SCHEMA, 1200, env, fetchImpl, true);
+  const planInput = { today, question, history };
+  if (semantic.status === 'ok') {
+    // id is exactly what the planner must put in note_ids (kind "note") or in a
+    // query's dataset (kind "catalogue"), so a copied id can never miss.
+    planInput.semantic_candidates = semantic.hits.map(({ ref, kind, title, score }) => ({ kind, id: ref, title, score }));
+  }
+  const plan = await callGeminiWithRetry(PLANNER_INSTRUCTION, planInput, PLAN_SCHEMA, 1200, env, fetchImpl, true);
   const results = (Array.isArray(plan.queries) ? plan.queries : []).slice(0, MAX_QUERIES).map(runQuery).filter(Boolean);
   const notes = (Array.isArray(plan.note_ids) ? plan.note_ids : []).map(id => NOTES.get(id)).filter(Boolean).slice(0, 4);
+  trace.results = results;
+  trace.notes = notes;
 
   if (results.length && !results.some(result => result.rows.length)) {
     return reply(plainListing(results), 'no-data', sourceCards(results, []), []);
@@ -882,5 +991,5 @@ module.exports = handler;
 module.exports.config = { api: { bodyParser: false } };
 module.exports._internals = {
   isReleaseReady, rateAllowed, resetModelState: () => { primaryDownUntil = 0; workingShape = 0; }, runQuery, numericTokens, isGrounded, plainListing, callGemini,
-  answerQuestion, validPayload, sourceCards, ungroundedNumbers, catalogueCards, unitMismatches, withDisclosures, PLANNER_INSTRUCTION, ANSWER_INSTRUCTION, rateBuckets,
+  semanticSearch, semanticConfig, describeRetrieval, semanticCorpus, answerQuestion, validPayload, sourceCards, ungroundedNumbers, catalogueCards, unitMismatches, withDisclosures, PLANNER_INSTRUCTION, ANSWER_INSTRUCTION, rateBuckets,
 };

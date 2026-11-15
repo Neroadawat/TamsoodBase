@@ -35,3 +35,4 @@ docs/*
 docs/rag/*
 !docs/rag/public-release-manifest.json
 !docs/rag/knowledge-pack.json
+!docs/rag/semantic-corpus.json
