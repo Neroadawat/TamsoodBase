@@ -1299,3 +1299,17 @@ output/prototype/TamsoodBase-Follow-the-Evidence-TH.mp4 เล่าโจทย
 ผู้ใช้สั่งจัดการจุดตกหล่นและคุยกับClaude เติม NFR01–06 ในตารางTraceabilityและRevision0.4 พร้อมไฮไลต์เหลือง แก้hyperlinkGitHubไปbranchงานล่าสุด สร้างเล่ม output/m4/review-2026-11-15/S2-G05_M4_Report_REVIEW_2026-11-15_v2.docx ตรวจnativeWord70หน้า/สารบัญ55รายการตรง ผลQAอยู่evidence/report-final-review-2026-11-15.json คงERและmemoเดิม รวบรวมเล่มล่าสุดกับผลSQLlocalเพื่อcommit/pushเฉพาะbranchงาน ไม่mergeเข้าmain
 
 ComputerUseผ่านnode_replยังเปิดไม่ได้ kernel-assets path error จึงไม่ได้ส่งข้อความตรงเข้าClaude สร้าง docs/CODEX_CLAUDE_COORDINATION_2026-11-15.md และ C:/Users/HP/Documents/ChatGPT/MTECH/CLAUDE_NEXT_ACTIONS_2026-11-15.md เป็นhandoffที่อ่านต่อได้ รายการConsent/Contribution/MemoM4และPDFกรอกครบยังเป็นงานทีม SQLlocalผ่านแต่EC2directยังไม่ยืนยัน
+
+
+## 15 พฤศจิกายน 2569 — เพิ่มสไลด์สองหน้าธีม Canva
+
+ผู้ใช้ขอเพิ่มเฉพาะ2หน้าโดยคง6หน้าเดิม สร้าง output/m4/TamsoodBase_Canva_Additions_2slides_2026-11-15.pptx ด้วยArtifactToolเป็นnativeeditable2หน้า ขนาด1920x1080 หัวข้อPoppinsสี#111A29ที่อ่านจากCanva ธีมขาวน้ำเงิน SQLพร้อม4ผลจริงและข้อจำกัด/การใช้ต่อ ตรวจPNGทั้งสองและผ่านfinalizer ไม่ได้แก้6หน้าต้นฉบับในCanva
+
+พยายามนำเข้าผ่านFile>UploadในCanvaแต่fileChooser.setFilesติดสิทธิ์Allow access to file URLsของส่วนขยาย ไม่เปลี่ยนสิทธิ์เอง Nativefallbackเข้าEdgeไม่ได้เพราะwindowminimizedและAPIไม่คืนappbinding จึงยังไม่ได้เพิ่มหน้าเข้าCanvaจริง ส่งPPTXเฉพาะ2หน้าและภาพให้ผู้ใช้ใช้ต่อ งานต้นทาง .local/canva-additions/ ไม่commit/pushในรอบนี้
+
+
+## 15 พฤศจิกายน 2569 — ตรวจและเตรียมรวมเข้า main ตามคำสั่งผู้ใช้
+
+ผู้ใช้สั่งตรวจแล้วmergeเข้าmain ตรวจbranchad46309เทียบorigin/mainf6fda64เป็นancestorรวมแบบfast-forwardได้ Frontend/RAG17ไฟล์ทดสอบและPythonfrontend19ข้อผ่าน check_release technical/referenceผ่าน submissionยังfalse ตรวจCSVชุดส่ง16x32/source_idครบ สไลด์หลัก10หน้าและCanvaเสริม2หน้าแยกกัน ตรวจเล่มล่าสุด71หน้าพบcachedTOC7หัวข้อท้ายยังเก่า จึงสำรองแล้วnativeWordอัปเดตและบันทึกใหม่ ตรวจครบ55หัวข้อตรงกับPDFทุกรายการ ภาพERคงเดิม ผลอยู่evidence/main-merge-review-2026-11-15.json
+
+รวมเฉพาะสไลด์Canvaใหม่/PPTXและภาพpreview เล่มที่แก้สารบัญ ผลQA และรายการไฟล์ล่าสุดไว้ในbranchงาน ไม่รวมWordlock/tmp/คลิปเก่าที่มีข้อผิดพลาด เพิ่มdocs/submission/LATEST_DELIVERABLES.mdและลิงก์จากREADME งานทีมConsent/Contribution/MemoM4/PDFกรอกครบและEC2directSQLยังค้าง ไม่แก้ข้อมูลEC2หรือส่งฟอร์ม
