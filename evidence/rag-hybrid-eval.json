@@ -1,0 +1,606 @@
+{
+  "created_at_utc": "2026-11-08T14:51:38.937454+00:00",
+  "suite": "tamsood-rag-targeted-statistics-v1",
+  "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "documents": 18,
+  "narrative_cards": 8,
+  "statistical_facts": 10,
+  "corpus_sha256": "5427ae467a78e1dcc122974fef7a8a178f45ade5a5f4def6fddb4b234fd6ee6e",
+  "facts_sha256": "48fddd8e829669fb1c7f0f328d8accb82193849cef04a756a8a29f65ee63c464",
+  "suite_sha256": "88e16a20145bfdbc9ff9f2e7320594ead7a6c06843b6344bc0e5a3173c3ff142",
+  "retrieval_config": {
+    "min_dense_score": 0.45,
+    "min_bm25_score": 1.5,
+    "min_bm25_query_coverage": 0.2,
+    "rrf_k": 60
+  },
+  "dense_only": {
+    "recall_at_3": 0.9333,
+    "mrr_at_3": 0.7667,
+    "negative_abstention_rate": 1.0,
+    "relevant_cases": 15,
+    "negative_cases": 3
+  },
+  "hybrid_bm25_dense_rrf": {
+    "recall_at_3": 1.0,
+    "mrr_at_3": 0.8667,
+    "negative_abstention_rate": 1.0,
+    "relevant_cases": 15,
+    "negative_cases": 3
+  },
+  "statistical_answer_exact_match": {
+    "correct": 11,
+    "cases": 11,
+    "out_of_domain_no_fact_citation": true
+  },
+  "method_answer_quality": {
+    "correct": 2,
+    "cases": 2,
+    "no_unrelated_stat_fact": true
+  },
+  "comparison_guard": {
+    "cases": 1,
+    "incompatible_comparisons_abstained": true
+  },
+  "plain_thai_answer_style": {
+    "statistical_cases": 11,
+    "passed": true,
+    "forbidden_internal_terms": [
+      "raw status codes",
+      "metric",
+      "basis",
+      "qualifier"
+    ],
+    "exact_source_value_preserved": true
+  },
+  "answer_panel_guard": {
+    "uncited_statistical_facts": 0,
+    "only_cited_facts_shown": true
+  },
+  "cases": [
+    {
+      "question": "CO2e มาจากไหน ต้องคำนวณเองไหม",
+      "expected_id": "co2e-calculation-method",
+      "expected_fact_id": null,
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "co2e-calculation-method",
+        "ipcc-co2-equivalent-definition",
+        "ethanol-total-gap"
+      ],
+      "hybrid_top3": [
+        "ipcc-co2-equivalent-definition",
+        "co2e-calculation-method",
+        "ethanol-total-gap"
+      ],
+      "stat_answer_source_ids": [
+        "co2e-calculation-method",
+        "ipcc-co2-equivalent-definition"
+      ],
+      "stat_answer_text": "คำนวณได้ครับ ไม่จำเป็นต้องรอตัวเลขสำเร็จเสมอไป: นำข้อมูลกิจกรรม เช่น ปริมาณเชื้อเพลิง ไฟฟ้า หรือวัตถุดิบ คูณกับตัวคูณการปล่อยที่หน่วยและขอบเขตตรงกัน ถ้ามีค่าการปล่อยแยกเป็นก๊าซ ให้คูณแต่ละก๊าซด้วยค่าที่ใช้แปลงเป็น CO₂e ตามช่วงเวลาที่กำหนดแล้วรวมกัน แต่ถ้าตัวคูณระบุเป็น CO₂e อยู่แล้ว ห้ามคูณซ้ำ ต้องเช็กด้วยว่าตัวคูณครอบคลุมขั้นตอนไหนบ้าง สำหรับเอทานอลของเรา ข้อมูลที่จับคู่กันยังไม่ครบ จึงยังคำนวณยอดตลอดวงจรต่อหนึ่งลิตรไม่ได้ครับ",
+      "plain_thai_answer_style_ok": null,
+      "answer_panel_evidence_ids": [
+        "co2e-calculation-method",
+        "ipcc-co2-equivalent-definition"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": null,
+      "expected_method_ids": [
+        "co2e-calculation-method",
+        "ipcc-co2-equivalent-definition"
+      ],
+      "method_answer_exact": true,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "อธิบายวิธีคิด CO2e ต่อลิตรเอทานอลแบบเข้าใจง่าย",
+      "expected_id": "co2e-calculation-method",
+      "expected_fact_id": null,
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "ipcc-co2-equivalent-definition",
+        "co2e-calculation-method",
+        "ethanol-total-gap"
+      ],
+      "hybrid_top3": [
+        "ipcc-co2-equivalent-definition",
+        "co2e-calculation-method",
+        "ethanol-total-gap"
+      ],
+      "stat_answer_source_ids": [
+        "co2e-calculation-method",
+        "ipcc-co2-equivalent-definition"
+      ],
+      "stat_answer_text": "คำนวณได้ครับ ไม่จำเป็นต้องรอตัวเลขสำเร็จเสมอไป: นำข้อมูลกิจกรรม เช่น ปริมาณเชื้อเพลิง ไฟฟ้า หรือวัตถุดิบ คูณกับตัวคูณการปล่อยที่หน่วยและขอบเขตตรงกัน ถ้ามีค่าการปล่อยแยกเป็นก๊าซ ให้คูณแต่ละก๊าซด้วยค่าที่ใช้แปลงเป็น CO₂e ตามช่วงเวลาที่กำหนดแล้วรวมกัน แต่ถ้าตัวคูณระบุเป็น CO₂e อยู่แล้ว ห้ามคูณซ้ำ ต้องเช็กด้วยว่าตัวคูณครอบคลุมขั้นตอนไหนบ้าง สำหรับเอทานอลของเรา ข้อมูลที่จับคู่กันยังไม่ครบ จึงยังคำนวณยอดตลอดวงจรต่อหนึ่งลิตรไม่ได้ครับ",
+      "plain_thai_answer_style_ok": null,
+      "answer_panel_evidence_ids": [
+        "co2e-calculation-method",
+        "ipcc-co2-equivalent-definition"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": null,
+      "expected_method_ids": [
+        "co2e-calculation-method",
+        "ipcc-co2-equivalent-definition"
+      ],
+      "method_answer_exact": true,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "รถ E10 ช่วงสตาร์ตเย็นวิ่งได้กี่กิโลต่อลิตร",
+      "expected_id": "e10-cold-start-fuel-consumption",
+      "expected_fact_id": "e10-cold-start-fuel-consumption",
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "e10-cold-start",
+        "e10-cold-start-fuel-consumption",
+        "e10-cold-start-tailpipe-co2"
+      ],
+      "hybrid_top3": [
+        "e10-cold-start",
+        "e10-cold-start-fuel-consumption",
+        "e10-cold-start-tailpipe-co2"
+      ],
+      "stat_answer_source_ids": [
+        "e10-cold-start-fuel-consumption"
+      ],
+      "stat_answer_text": "งานวิจัยทดลองรถที่ใช้น้ำมัน E10 แล้วพบว่า ช่วงสตาร์ตเย็นรถวิ่งได้ 2.36 กิโลเมตรต่อลิตร ค่านี้เป็นผลจากรถและเงื่อนไขทดลองในงานนั้น จึงใช้แทนอัตราของรถทุกคันไม่ได้ครับ",
+      "plain_thai_answer_style_ok": true,
+      "answer_panel_evidence_ids": [
+        "e10-cold-start-fuel-consumption",
+        "e10-cold-start"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": true,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "How many km per litre did the E10 cold start test report?",
+      "expected_id": "e10-cold-start-fuel-consumption",
+      "expected_fact_id": "e10-cold-start-fuel-consumption",
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "e10-cold-start",
+        "e10-cold-start-fuel-consumption",
+        "e10-cold-start-tailpipe-co2"
+      ],
+      "hybrid_top3": [
+        "e10-cold-start-fuel-consumption",
+        "e10-cold-start",
+        "e10-cold-start-tailpipe-co2"
+      ],
+      "stat_answer_source_ids": [
+        "e10-cold-start-fuel-consumption"
+      ],
+      "stat_answer_text": "งานวิจัยทดลองรถที่ใช้น้ำมัน E10 แล้วพบว่า ช่วงสตาร์ตเย็นรถวิ่งได้ 2.36 กิโลเมตรต่อลิตร ค่านี้เป็นผลจากรถและเงื่อนไขทดลองในงานนั้น จึงใช้แทนอัตราของรถทุกคันไม่ได้ครับ",
+      "plain_thai_answer_style_ok": true,
+      "answer_panel_evidence_ids": [
+        "e10-cold-start-fuel-consumption",
+        "e10-cold-start"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": true,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "ช่วง cold start ปล่อย CO2 กรัมต่อกิโลเมตรเท่าไหร่",
+      "expected_id": "e10-cold-start-tailpipe-co2",
+      "expected_fact_id": "e10-cold-start-tailpipe-co2",
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "co2e-calculation-method",
+        "e10-cold-start-tailpipe-co2",
+        "ipcc-co2-equivalent-definition"
+      ],
+      "hybrid_top3": [
+        "e10-cold-start-tailpipe-co2",
+        "co2e-calculation-method",
+        "ipcc-co2-equivalent-definition"
+      ],
+      "stat_answer_source_ids": [
+        "e10-cold-start-tailpipe-co2"
+      ],
+      "stat_answer_text": "งานวิจัยวัด CO₂ จากท่อไอเสียได้ 934.990 กรัมต่อกิโลเมตร ในช่วงสตาร์ตเย็น ค่านี้ครอบคลุมเฉพาะไอเสียระหว่างการทดลอง ไม่รวมการผลิตและขนส่งเชื้อเพลิงครับ",
+      "plain_thai_answer_style_ok": true,
+      "answer_panel_evidence_ids": [
+        "e10-cold-start-tailpipe-co2"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": true,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "What ethanol rate was stated for the TSM plant in the 2009 PDD?",
+      "expected_id": "tsm-pdd-ethanol-design-rate",
+      "expected_fact_id": "tsm-pdd-ethanol-design-rate",
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "tsm-pdd-ethanol-design-rate",
+        "tsm-current-capacity",
+        "tsm-actual-ethanol-output-null"
+      ],
+      "hybrid_top3": [
+        "tsm-pdd-ethanol-design-rate",
+        "tsm-current-capacity",
+        "tsm-pdd-biogas-design-rate"
+      ],
+      "stat_answer_source_ids": [
+        "tsm-pdd-ethanol-design-rate"
+      ],
+      "stat_answer_text": "เอกสารแผนออกแบบโรงงานปี 2009 ระบุเอทานอล 100 ลูกบาศก์เมตรต่อวัน ตัวเลขนี้เป็นค่าตามแผน ไม่ใช่ยอดผลิตจริง และไม่ควรนำไปแทนข้อมูลของปีปัจจุบันครับ",
+      "plain_thai_answer_style_ok": true,
+      "answer_panel_evidence_ids": [
+        "tsm-pdd-ethanol-design-rate"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": true,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "PDD เก่าคาดว่าจะได้ก๊าซชีวภาพเท่าไรต่อวัน",
+      "expected_id": "tsm-pdd-biogas-design-rate",
+      "expected_fact_id": "tsm-pdd-biogas-design-rate",
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "tsm-pdd-biogas-design-rate",
+        "tsm-pdd-methane-content",
+        "tsm-pdd-annual-avoidance-estimate"
+      ],
+      "hybrid_top3": [
+        "tsm-pdd-biogas-design-rate",
+        "tsm-current-company-page",
+        "tsm-pdd-methane-content"
+      ],
+      "stat_answer_source_ids": [
+        "tsm-pdd-biogas-design-rate"
+      ],
+      "stat_answer_text": "แผนออกแบบปี 2009 คาดว่าจะได้ก๊าซชีวภาพ 62,000 ลูกบาศก์เมตรต่อวัน แต่ตัวเลขปริมาณรวมรายปีในเอกสารไม่สอดคล้องกับค่านี้ จึงยังไม่แปลงเป็นยอดรายปีหรือคำนวณปริมาณมีเทนครับ",
+      "plain_thai_answer_style_ok": true,
+      "answer_panel_evidence_ids": [
+        "tsm-pdd-biogas-design-rate"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": true,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "What methane content did the old design state?",
+      "expected_id": "tsm-pdd-methane-content",
+      "expected_fact_id": "tsm-pdd-methane-content",
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "tsm-pdd-methane-content",
+        "tsm-unfccc-pdd-2009",
+        "tsm-actual-methane-null"
+      ],
+      "hybrid_top3": [
+        "tsm-pdd-methane-content",
+        "tsm-actual-ethanol-output-null",
+        "tsm-actual-methane-null"
+      ],
+      "stat_answer_source_ids": [
+        "tsm-pdd-methane-content"
+      ],
+      "stat_answer_text": "แผนออกแบบปี 2009 ระบุสัดส่วนมีเทน 55% ในก๊าซชีวภาพ แต่ไม่ได้ระบุฐานการคิดไว้อย่างชัดเจน และไม่ใช่ผลตรวจวัดจริง จึงยังแปลงเป็นมวลมีเทนไม่ได้ครับ",
+      "plain_thai_answer_style_ok": true,
+      "answer_panel_evidence_ids": [
+        "tsm-pdd-methane-content",
+        "tsm-unfccc-pdd-2009"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": true,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "ค่าประเมินลดก๊าซเรือนกระจกต่อปีใน PDD เท่าไร",
+      "expected_id": "tsm-pdd-annual-avoidance-estimate",
+      "expected_fact_id": "tsm-pdd-annual-avoidance-estimate",
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "tsm-pdd-annual-avoidance-estimate",
+        "co2e-calculation-method",
+        "tsm-pdd-methane-content"
+      ],
+      "hybrid_top3": [
+        "tsm-pdd-annual-avoidance-estimate",
+        "co2e-calculation-method",
+        "tsm-pdd-biogas-design-rate"
+      ],
+      "stat_answer_source_ids": [
+        "tsm-pdd-annual-avoidance-estimate"
+      ],
+      "stat_answer_text": "เอกสารโครงการประเมินการลดก๊าซเรือนกระจกไว้ 146,023 ตันคาร์บอนไดออกไซด์เทียบเท่าต่อปี สำหรับช่วง 2010–2019 เทียบกับกรณีฐานของโครงการ คำว่า CO₂e หมายถึงการคิดผลของก๊าซเรือนกระจกหลายชนิดให้เทียบกับ CO₂ ตามช่วงเวลาที่งานนั้นกำหนด ค่านี้เป็นการประเมินล่วงหน้า ไม่ใช่ผลวัดและไม่ใช่ค่าต่อเอทานอลหนึ่งลิตรครับ",
+      "plain_thai_answer_style_ok": true,
+      "answer_panel_evidence_ids": [
+        "tsm-pdd-annual-avoidance-estimate"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": true,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "กำลังการผลิตติดตั้งปัจจุบันของโรง TSM กี่ลิตรต่อวัน",
+      "expected_id": "tsm-current-capacity",
+      "expected_fact_id": "tsm-current-capacity",
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "tsm-current-capacity",
+        "tsm-pdd-ethanol-design-rate",
+        "tsm-unfccc-pdd-2009"
+      ],
+      "hybrid_top3": [
+        "tsm-current-capacity",
+        "tsm-pdd-ethanol-design-rate",
+        "tsm-current-company-page"
+      ],
+      "stat_answer_source_ids": [
+        "tsm-current-capacity"
+      ],
+      "stat_answer_text": "หน้าองค์กร TSM ระบุกำลังผลิตที่ติดตั้งไว้ 200,000 ลิตรต่อวัน ตัวเลขนี้บอกความสามารถของโรงงาน ไม่ใช่ปริมาณที่ผลิตได้จริงในแต่ละวันครับ",
+      "plain_thai_answer_style_ok": true,
+      "answer_panel_evidence_ids": [
+        "tsm-current-capacity",
+        "tsm-current-company-page"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": true,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "กำลังผลิตติดตั้ง TSM กี่ลิตรต่อวัน",
+      "expected_id": "tsm-current-capacity",
+      "expected_fact_id": "tsm-current-capacity",
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "tsm-current-capacity",
+        "tsm-pdd-ethanol-design-rate",
+        "tsm-unfccc-pdd-2009"
+      ],
+      "hybrid_top3": [
+        "tsm-current-capacity",
+        "tsm-pdd-ethanol-design-rate",
+        "tsm-actual-ethanol-output-null"
+      ],
+      "stat_answer_source_ids": [
+        "tsm-current-capacity"
+      ],
+      "stat_answer_text": "หน้าองค์กร TSM ระบุกำลังผลิตที่ติดตั้งไว้ 200,000 ลิตรต่อวัน ตัวเลขนี้บอกความสามารถของโรงงาน ไม่ใช่ปริมาณที่ผลิตได้จริงในแต่ละวันครับ",
+      "plain_thai_answer_style_ok": true,
+      "answer_panel_evidence_ids": [
+        "tsm-current-capacity",
+        "tsm-current-company-page"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": true,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "How much methane did TSM actually measure in a period matched to ethanol production?",
+      "expected_id": "tsm-actual-methane-null",
+      "expected_fact_id": "tsm-actual-methane-null",
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "tsm-actual-ethanol-output-null",
+        "tsm-pdd-methane-content",
+        "tsm-current-company-page"
+      ],
+      "hybrid_top3": [
+        "tsm-actual-ethanol-output-null",
+        "tsm-actual-methane-null",
+        "tsm-pdd-methane-content"
+      ],
+      "stat_answer_source_ids": [
+        "tsm-actual-methane-null"
+      ],
+      "stat_answer_text": "จากเอกสารที่ตรวจตอนนี้ ยังไม่พบผลวัดปริมาณมีเทนจริงที่จับคู่กับยอดผลิตเอทานอลในช่วงเวลาเดียวกันครับ ตัวเลขในแผนปี 2009 เป็นค่าคาดการณ์ จึงใช้แทนผลจริงไม่ได้",
+      "plain_thai_answer_style_ok": true,
+      "answer_panel_evidence_ids": [
+        "tsm-actual-methane-null",
+        "tsm-unfccc-pdd-2009"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": true,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": false,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "เอทานอลมี CO2e ต่อลิตรตลอดวงจรเท่าไร",
+      "expected_id": "ethanol-total-gap",
+      "expected_fact_id": "ethanol-full-lifecycle-co2e-per-litre-null",
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "co2e-calculation-method",
+        "ethanol-total-gap",
+        "ipcc-co2-equivalent-definition"
+      ],
+      "hybrid_top3": [
+        "ethanol-total-gap",
+        "ethanol-full-lifecycle-co2e-per-litre-null",
+        "ipcc-co2-equivalent-definition"
+      ],
+      "stat_answer_source_ids": [
+        "ethanol-full-lifecycle-co2e-per-litre-null"
+      ],
+      "stat_answer_text": "ตอนนี้ยังไม่มีตัวเลขที่ยืนยันได้สำหรับการปล่อยก๊าซเรือนกระจกตลอดวงจรต่อเอทานอลหนึ่งลิตรครับ ค่า CO₂e คือการคิดผลของก๊าซเรือนกระจกหลายชนิดให้เทียบกับ CO₂ ตามช่วงเวลาที่กำหนด เรายังขาดข้อมูลจริงที่จับคู่กันเรื่องการผลิต พลังงาน การขนส่ง มีเทนจากน้ำเสีย และการใช้เชื้อเพลิงในรถ จึงนำยอดลดการปล่อยรายปีหรือค่าไอเสียรถมาแทนไม่ได้",
+      "plain_thai_answer_style_ok": true,
+      "answer_panel_evidence_ids": [
+        "ethanol-full-lifecycle-co2e-per-litre-null",
+        "ethanol-total-gap"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": true,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "Compare the 2009 PDD project avoidance in tCO2e/year with whole lifecycle ethanol kg CO2e/L",
+      "expected_id": "tsm-pdd-annual-avoidance-estimate",
+      "expected_fact_id": null,
+      "expected_comparison_abstention": true,
+      "dense_top3": [
+        "tsm-pdd-annual-avoidance-estimate",
+        "ethanol-full-lifecycle-co2e-per-litre-null",
+        "co2e-calculation-method"
+      ],
+      "hybrid_top3": [
+        "tsm-pdd-annual-avoidance-estimate",
+        "ethanol-full-lifecycle-co2e-per-litre-null",
+        "tsm-pdd-methane-content"
+      ],
+      "stat_answer_source_ids": [
+        "ethanol-full-lifecycle-co2e-per-litre-null",
+        "tsm-pdd-annual-avoidance-estimate"
+      ],
+      "stat_answer_text": "พบข้อมูลสองชุด แต่ยังเทียบกันตรง ๆ ไม่ได้ เพราะหน่วย, ช่วงเวลา, สถานที่หรือขอบเขต และ วิธีได้มาไม่ตรงกัน จึงไม่รวมตัวเลขหรือหาผลต่างครับ",
+      "plain_thai_answer_style_ok": null,
+      "answer_panel_evidence_ids": [
+        "ethanol-full-lifecycle-co2e-per-litre-null",
+        "tsm-pdd-annual-avoidance-estimate"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": null,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "โรงงานอ้อยใช้ชานอ้อยผลิตพลังงานอะไรและต้องระวังเรื่องใด",
+      "expected_id": "bagasse-steam",
+      "expected_fact_id": null,
+      "expected_comparison_abstention": false,
+      "dense_top3": [
+        "bagasse-steam",
+        "tsm-current-company-page",
+        "tsm-unfccc-pdd-2009"
+      ],
+      "hybrid_top3": [
+        "bagasse-steam",
+        "tsm-current-company-page",
+        "tsm-unfccc-pdd-2009"
+      ],
+      "stat_answer_source_ids": [],
+      "stat_answer_text": null,
+      "plain_thai_answer_style_ok": null,
+      "answer_panel_evidence_ids": [
+        "bagasse-steam",
+        "tsm-current-company-page",
+        "tsm-unfccc-pdd-2009",
+        "ethanol-total-gap"
+      ],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": null,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "วิธีปลูกกล้วยไม้ในกระถาง",
+      "expected_id": null,
+      "expected_fact_id": null,
+      "expected_comparison_abstention": false,
+      "dense_top3": [],
+      "hybrid_top3": [],
+      "stat_answer_source_ids": [],
+      "stat_answer_text": null,
+      "plain_thai_answer_style_ok": null,
+      "answer_panel_evidence_ids": [],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": null,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "How many people live in Canada in 2024?",
+      "expected_id": null,
+      "expected_fact_id": null,
+      "expected_comparison_abstention": false,
+      "dense_top3": [],
+      "hybrid_top3": [],
+      "stat_answer_source_ids": [],
+      "stat_answer_text": null,
+      "plain_thai_answer_style_ok": null,
+      "answer_panel_evidence_ids": [],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": null,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    },
+    {
+      "question": "How much water should I use for orchids?",
+      "expected_id": null,
+      "expected_fact_id": null,
+      "expected_comparison_abstention": false,
+      "dense_top3": [],
+      "hybrid_top3": [],
+      "stat_answer_source_ids": [],
+      "stat_answer_text": null,
+      "plain_thai_answer_style_ok": null,
+      "answer_panel_evidence_ids": [],
+      "uncited_fact_ids_in_answer_panel": [],
+      "stat_answer_exact": null,
+      "expected_method_ids": null,
+      "method_answer_exact": null,
+      "dense_correct_at_3": true,
+      "hybrid_correct_at_3": true
+    }
+  ],
+  "limitations": [
+    "Small hand-authored smoke suite; not a representative benchmark.",
+    "Plain-language checks are deterministic phrase/term/value guards, not a human readability study or semantic entailment judge.",
+    "Gemini narrative answers are not evaluated because no live API call was made.",
+    "The benchmark runs with an in-memory Qdrant instance and cached local embeddings."
+  ],
+  "quality_gate": {
+    "hybrid_recall_at_3_is_1": true,
+    "hybrid_mrr_not_below_dense": true,
+    "ood_abstention_is_1": true,
+    "all_stat_fact_ids_exact": true,
+    "all_method_answers_exact_and_plain": true,
+    "method_questions_not_routed_to_unrelated_project_stats": true,
+    "ood_not_cited_as_stat_fact": true,
+    "incompatible_comparison_abstained": true,
+    "answer_panel_has_no_uncited_facts": true,
+    "plain_thai_stat_answers_pass_copy_guard": true,
+    "answer_values_remain_verbatim": true,
+    "passed": true
+  }
+}

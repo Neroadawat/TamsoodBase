@@ -1,12 +1,13 @@
 # Software Requirements Specification
 # TamsoodBase — Petroleum, Natural Gas & Fuels
 
-CN230 × MTEC · ฉบับร่างเพื่อให้ทีมตรวจ · Version 0.7.1 · 5 พฤศจิกายน 2569
+CN230 × MTEC · ฉบับร่างเพื่อให้ทีมตรวจ · Version 0.7.2 · 10 พฤศจิกายน 2569
 
 **ไม่ใช่ฉบับส่งแล้ว:** รหัสทีม/section/รายชื่อ/บทบาท/ผู้รับรอง: **รอสมาชิกกรอกข้อมูลจริง** ไม่ถือผู้ช่วย AI เป็นสมาชิกหรือผู้ลงนาม รายงานนี้อธิบายระบบที่มีหลักฐานปัจจุบัน ไม่รับรอง MTEC acceptance
 
 | รุ่น | วันที่ | การเปลี่ยนแปลง | สถานะการทบทวน |
 |---|---|---|---|
+| 0.7.2 | 2026-11-10 | แยก architecture ของ RAG จาก dataset API; เพิ่มข้อกำหนด privacy/provider eligibility และสถานะ release gate จากโค้ด/evidence ล่าสุด | AI-assisted technical draft; รอสมาชิกตรวจทานและยืนยัน audience |
 | 0.7.1 | 2026-11-05 | ยืนยันAPIโมเดล/metadataบนVercel และMySQLcandidate8.4.13ที่ทดสอบแยกแล้ว;เพิ่มสถานะส่งมอบจริง | ไม่มีproductionDBmigrationหรือscientificcertification |
 | 0.7 | 2026-11-05 | เพิ่ม activity model store, sealed release, source/provider invariants, evidence-bound decisions, public metadata profile, B100 API และขอบเขต local/live | AI-assisted technical draft; scientific/team review ยังไม่ครบ |
 | 0.6 | 2026-10-30 | เพิ่มรหัสอ้างอิง SRC-01–SRC-10 พร้อม mapping ไปยัง source IDs ใน registry; รวม NSO tables ตามสิ่งพิมพ์และลงทะเบียน MDPI Tables 1–3 | AI-assisted draft; รอสมาชิกทบทวน |
@@ -82,7 +83,9 @@ TamsoodBase จึงจัดเก็บและเปิดค้นข้�
 
 ### 2.2 สถาปัตยกรรมและสภาพแวดล้อม
 
-Browser HTML/CSS/JavaScript บน Vercel → same-origin Node.js read proxy → HTTPS Cloudflare gateway บน EC2 → Python WSGI/Gunicorn API → MySQL8.4 typed schemas และ API representation views บน EC2 ใช้ IAM role เข้าถึง private S3 ไม่ใส่รหัสฐานข้อมูล/AWS key ลงหน้าเว็บ ค่า upstream credential อยู่ใน Vercel server-only environment ผู้ใช้สั่งให้หน้าเว็บอ่านได้โดยไม่ต้องล็อกอิน จึงเป็น URL ที่ใครเข้าถึงได้อ่านข้อมูลได้ ไม่ใช่ private network แม้ DB/S3/origin ports ยังเป็น private
+ระบบมีสองเส้นทางที่ต้องแยกกัน. เส้นทาง dataset ใช้หน้า HTML/CSS/JavaScript บน Vercel และ same-origin Node.js proxy ไปยัง HTTPS gateway บน EC2 → Python WSGI/Gunicorn API → MySQL 8.4 typed schemas; EC2 ใช้ IAM role เข้าถึง private S3 สำหรับงานสำรองข้อมูล. Credential อยู่ฝั่ง server เท่านั้น. ตามหลักฐานตรวจ Production ล่าสุด anonymous requests ต่อ dataset routes 15 เส้นทางถูกปฏิเสธ 403 และไม่มีแถวข้อมูลตอบกลับ; ยังไม่มีเส้นทางยืนยันตัวตนผู้ใช้สำหรับอ่าน dataset และห้ามเรียกหน้าเว็บสาธารณะว่า private network
+
+เส้นทาง RAG แยกเป็นหน้า `/ask.html` และ Vercel Function `/api/rag/ask`; ไม่เชื่อม EC2. Preview ใช้ corpus แคบ 6 ระเบียนที่มี attribution และ CC BY 4.0 พร้อม Vercel Authentication. คำถามภาพรวมคลังตอบจากรายการใน function; คำถามเนื้อหาส่งคำถามและข้อความหลักฐานที่ค้นพบไป Google Gemini เฉพาะเมื่อผู้ใช้ยินยอมรายคำถามและ release gates ผ่าน. Production endpoint ปัจจุบันยังปิดและตอบ 503 ก่อนเรียก Gemini; ไม่มีระเบียนปัจจุบันที่อนุญาต public/external-LLM release.
 
 ```mermaid
 flowchart LR
@@ -135,6 +138,7 @@ flowchart LR
 | FR-05 | แสดงผล validation/reject/coverage แยกชัด | แสดง cross-source compared และ not compared ไม่ปนกัน |
 | FR-06 | ทำซ้ำ offline จาก snapshot ที่ตรวจ hash แล้ว | replay ตรวจค่าและ metadata ตรง ไม่เพิ่มแถวซ้ำ |
 | FR-07 | จัดการ API error และ retry | ไม่ใช้ตาราง/export เก่ามาอ้าง success; lazy view ล้มเหลวลองใหม่ได้ |
+| FR-08 | ค้นคำตอบจากคลังหลักฐานขนาดจำกัดพร้อมที่มา | แสดงหลักฐาน/ลิงก์ที่ตอบได้; คำถามภาพรวมไม่ส่ง Gemini; คำถามเนื้อหาต้องมี consent รายครั้งและใช้เฉพาะ corpus ที่ผ่านสิทธิ์; หลักฐานไม่พอให้ปฏิเสธตอบ |
 
 ### 3.4 Non-functional requirements
 
@@ -146,6 +150,7 @@ flowchart LR
 | NFR-04 | Credential isolation | non-root/read-only API; DB/origin loopback/internal network; IAM role; server-only proxy secret; browser ไม่ต้องล็อกอินตามคำสั่งเจ้าของ ไม่เรียก frontend ว่า private network |
 | NFR-05 | Recovery | MySQL single-transaction dump5ฐานลงprivateS3 ตรวจhash กู้คืนฐานแยกและเทียบlogical fingerprint/API;ไม่อ้างfull-machine recovery |
 | NFR-06 | Performance | ใช้ query plan/ผลวัดก่อน–หลังตาม dataset/query จริง; ไม่ตั้ง latency SLA โดยไม่มีการทดลอง |
+| NFR-07 | Privacy และข้อกำหนดผู้ให้บริการ AI | ส่งเฉพาะคำถามกับหลักฐานที่ผ่านสิทธิ์ หลัง consent; key อยู่ server-side; ต้องมี owner approval, ตรวจการจัดการข้อมูลตาม Billing, ตรวจอายุ/พื้นที่ผู้ใช้ และผ่าน release gates ก่อนเปิด; flag อายุ/พื้นที่เป็น owner attestation ไม่ใช่ระบบยืนยันอายุหรือ geoblock |
 
 ### 3.5 Use cases และเส้นทางการใช้งาน
 
@@ -159,6 +164,7 @@ flowchart LR
 | UC-06 ผู้ตรวจระบบ | ตรวจ readiness, version, SQL constraints และ API parity | health ตอบได้ไม่เท่ากับข้อมูลพร้อม; DB ใช้ไม่ได้ต้อง fail ไม่ fallback เงียบไปชุดเก่า |
 | UC-07 ผู้ดูแลการกู้คืน | เลือก backup → ดาวน์โหลดจาก private S3 → ตรวจ hash → restore ลงฐานแยก → เทียบข้อมูลและ API | ห้าม restore ทับ production เพื่อทดลอง; หาก hash/identity/count ต่างต้องระบุ fail และเก็บระบบเดิม |
 | UC-08 สมาชิกผู้ทำ Defense | เปิด requirement → ERD/key/constraint → query → observation → source evidence | ต้องอธิบายงานของตนเองและข้อจำกัดจริง ไม่ใช้จำนวน commit แทนความเข้าใจหรือสร้าง contribution ย้อนหลัง |
+| UC-09 ผู้ถามหลักฐาน | เปิด `/ask.html` → เลือกคำถามตัวอย่างหรือพิมพ์ → อ่านคำตอบและหลักฐานอ้างอิง | คำถามภาพรวมตอบจากรายการในคลัง; คำถามเนื้อหาต้องยินยอมก่อนส่งไป Gemini; เมื่อ endpoint/gates ปิดต้องแสดง unavailable โดยไม่เรียกโมเดล |
 
 ### 3.6 กฎข้อมูลและความหมายที่ต้องรักษา
 
@@ -180,6 +186,7 @@ flowchart LR
 | /api/nso, /api/eppo | NSO273; EPPO5934แยกdataset11_13/11_14 และหน่วยตามsource | ปีว่างของEPPOหมายถึงทุกปี ไม่กลับdefault2024; ปี2026ไม่เต็มปีต้องไม่annualizeเอง |
 | /api/product-inventory | source-reported foreground16exchanges พร้อม1000MJ fuel basis | ไม่รวมBHDต่างบริบทไทย8รายการ; ไม่อ้างfull supply-chain LCI |
 | /api/source-crosswalk | source identities/hash/relationshipของdataset release | comparison publicationsเพิ่มเติมไม่ใช่source observationsใหม่โดยอัตโนมัติ |
+| /api/rag/ask | Vercel Function; Preview ใช้ corpus 6 ระเบียนและ Gemini เฉพาะคำถามที่ยินยอม | Production ปัจจุบันปิด (503); release/provider/rights gate ไม่ครบต้องไม่เรียก Gemini |
 | /healthz และ /readyz | healthตรวจprocess; readinessตรวจDB/config/release/counts | readyต้อง503เมื่อMySQLไม่พร้อมหรือreleaseไม่ตรง ไม่fallbackSQLite |
 
 Vercel proxy อนุญาต read methods/route allowlist; upstream URL มาจากserver environment ไม่ใช่ปลายทางที่ผู้ใช้ส่งมากับquery ไม่ follow upstream redirectsโดยอัตโนมัติ ปกป้องsecretจากassetsและerrorข้อความ การไม่บังคับloginหน้าเว็บเป็นคำตัดสินของเจ้าของเพื่อreview ไม่ใช่การมีระบบผู้ใช้หรือauthorizationรายบุคคล
@@ -194,6 +201,7 @@ Vercel proxy อนุญาต read methods/route allowlist; upstream URL ม�
 | AC-04 Recovery | S3 dump5schemasกู้คืนแยก;ordered logical-data fingerprintตรงlive56,887,016bytes;API27กรณีตรง | ไม่ใช่fullEC2 disaster recovery/power-loss test |
 | AC-05 Deployment | Vercel production API27กรณีตรงbaselineเมื่อไม่ส่งbrowsercredential;APIต้นทาง/DBไม่เปิดhostpublicport | QuickTunnelยังชั่วคราว ไม่มีuptime SLAหรือdomainถาวร |
 | AC-06 Graph experiment | Neo4jจริง16payloads/39nodes/68relationships;4queriesตรงSQLและUNIQUErejectsduplicate | ไม่ใช่Neo4jproduction,ไม่มีbenchmarkชนะMySQL,ไม่มีMongoDBengineclaim |
+| AC-07 RAG safety | preview/public catalog/frontend build/runtime gates ปฏิเสธเมื่อ provider eligibility flag/gate ไม่ผ่าน; corpus checker พบ 0 public-cleared records | เป็น local/mock contract evidence ไม่ยืนยัน production UAT, external-processing approval, age verification หรือ geoblocking |
 
 รายละเอียดเหล่านี้เป็นเกณฑ์สำหรับ review รุ่นปัจจุบัน เมื่อ source/code/release เปลี่ยนต้องผูกหลักฐานใหม่ ไม่เปลี่ยน expected counts เพียงเพื่อให้ test ผ่าน
 
@@ -245,11 +253,11 @@ Graph/document projection รักษา exchange identity และ source con
 
 หลักฐาน: [pipeline audit](../../evidence/pipeline-audit.json), [integrity followup](../../evidence/system-integrity-followup.json), [live local MySQL](../../evidence/live-mysql-audit.json), [transaction experiment](../../evidence/transaction-audit.json), [index/performance](../../evidence/sql-performance.json) Transaction evidence เดิมเป็น SQLite disposable copy; เพิ่ม [MySQL/InnoDB lab](../transaction-index-review.md) 17 checks ผ่านบน synthetic isolated containerแล้ว ไม่ใช่ power-loss หรือ production experiment และ MySQL roundtrip บางloaderเป็น postcommit verification ไม่ใช่ precommit gateทุกตัว
 
-ผลตรวจล่าสุด28ตุลาคม: full suite124ผ่าน; production Vercel API27กรณีตรงbaselineและไม่ต้องbrowserlogin ดู [Vercel evidence](../../evidence/vercel-deployment.json) และ [source review](../source-review-2026-10-28.md) หลักฐานlocal imageรุ่นเก่าคงเป็นประวัติ ไม่ใช้แทนสถานะproduction
+ผลตรวจ ณ 28 ตุลาคมเป็นประวัติ: full suite124ผ่าน; production Vercel API27กรณีตรงbaselineและไม่ต้องbrowserlogin ดู [Vercel evidence](../../evidence/vercel-deployment.json) และ [source review](../source-review-2026-10-28.md) ไม่ใช้ผลดังกล่าวแทนสถานะล่าสุด; RAG และ dataset route มีหลักฐานเฉพาะตามส่วน 9.8
 
 ### 5.3 Deployment และ recovery
 
-EC2 active release dea667bbd79dc1d9 อ่านMySQLจริง ผ่านstaging/active17routesและS3IAM-role checks มีlogicaldump5schemasในprivateS3 กู้คืนฐานแยกและเทียบlogicalfingerprint/APIแล้ว เก็บrollback00c68ca585cf0220พร้อมenvcheckpoint Frontendอยู่ https://tamsoodbase.vercel.app ผ่านserver-onlycredentialไปgateway;ผู้เปิดเว็บไม่ต้องloginตามคำสั่งเจ้าของ ไม่มีโดเมนbackendถาวรและQuickTunnelอาจเปลี่ยนURLหลังrestart จึงยังต้องอัปเดตserverenvironment/deployเมื่อเกิดกรณีนั้น ไม่แก้Ginder/Caddy/SGของเพื่อน
+EC2/MySQL/S3 restore มีหลักฐานก่อนหน้า แต่ไม่ใช่การตรวจ live รอบ 10 พ.ย. หน้า frontend ยังอยู่ที่ https://tamsoodbase.vercel.app; หลักฐาน post-deploy ล่าสุดยืนยัน anonymous dataset routes 15 รายการตอบ 403 และ 0 rows; ยังไม่มีเส้นทาง dataset แบบ user-authenticated. Limited RAG Preview เคยผ่าน Vercel Authentication และ smoke test 9 พ.ย.; Production `/api/rag/ask` ปิดและตอบ 503 ก่อน Gemini. Gateway backend ยังใช้ QuickTunnel ชั่วคราวและอาจเปลี่ยน URL หลัง restart. ห้ามแตะ Ginder/Caddy/SG ของเพื่อน.
 
 ## 6. Requirements Traceability
 
@@ -264,6 +272,7 @@ EC2 active release dea667bbd79dc1d9 อ่านMySQLจริง ผ่านst
 | FR-07,NFR-03 | web/api.js,app.js responsive/lazy retry | frontend-retry.json,catalog-ux.json,final-project-recheck.json | automated+browser checks ไม่ใช่ userstudy |
 | NFR-04,NFR-05 | EC2/MySQL/S3/Vercel proxy | ec2-upgrade.json,mysql-restore-drill.json,vercel-deployment.json | actual deployment/restore verified;backend tunnel remains temporary |
 | NFR-06 | indexed query experiment | sql-performance.json | เฉพาะ workload ที่บันทึก |
+| FR-08,NFR-07,UC-09 | `/ask.html`, `api/rag/ask.js`, rights manifest/runtime gates | `rag-system-recheck-2026-11-10.json`, `rag-provider-eligibility-gate-2026-11-10.json`, `production-dataset-api-hotfix-2026-11-10.json` | Preview จำกัด; Production RAG ปิด; provider audience ยังรอเจ้าของยืนยัน |
 | BR-06 | member review/memo/consent | ยังไม่มีหลักฐานรับรองจริงครบ | รอสมาชิก |
 
 ## 7. Evidence, Limitations & Contribution
@@ -369,5 +378,15 @@ MySQLcandidateของactivitymodelผ่านengine8.4.13จริงบน�
 แหล่งเพิ่มเติมของโมเดล: Huailuek et al.2019 Journal of Sustainable Energy & Environment10:65–73/TableS2 (PDF11), สิทธิแจกจ่ายNOT_CLEAREDเก็บrawภายใน;Silalertruksa/Gheewala2013 chapter DOI10.1007/978-3-642-34519-7_2ใช้เพียงcandidateuse/treatmentที่ยังไม่เชื่อม;COMPETEThailandreportSection3.1/PDF11–13production-only ไม่ใช้ปิดusephase รายละเอียดhash/locatorอยู่evidence/thai-mill-2019-review.json,thai-use-treatment-review.json,fame-gate-closure-review.json ไม่ใช้ปีพิมพ์แทนปีวัด
 
 หลักฐานส่งมอบล่าสุด: evidence/review-production-verification.json,activity-model-mysql.json,frontend-cleanroom.json และmodel-flow-contract.json ผลflowcontract130sourcesยังไม่มีelementarymappingที่อนุมัติและไม่มีCF จึงยังไม่คำนวณCO2eรวม ส่วนuseracceptance/independentscientificreview/openLCAengineimportและstablebackendendpointยังไม่เสร็จ ไม่ถือtestspassเป็นหลักฐานแทน
+
+### 9.8 RAG, privacy และสถานะการเปิดใช้ — 10 พฤศจิกายน 2569
+
+RAG เป็นช่องค้นหลักฐานประกอบเว็บ ไม่ใช่ฐานข้อมูลแหล่งข้อมูลทั้งหมดและไม่ใช่เครื่องคำนวณ LCI/CO₂e. Preview ที่เคยตรวจเป็นชุดจำกัดและ Vercel-protected; smoke test วันที่ 9 พฤศจิกายนเป็นเพียงการทดสอบเชื่อมต่อหนึ่งครั้ง ไม่ใช่ user acceptance. ชุดหลักฐาน private ปัจจุบันมี 20 ระเบียนจำกัดสิทธิ และยังไม่มี public-cleared record จึงไม่มีสิทธิส่งข้อความจากชุดนั้นไปภายนอก.
+
+เมื่อบริการเปิด คำถามเนื้อหาพร้อมข้อความหลักฐานที่ค้นพบจะถูกส่งจาก server ไป Google Gemini หลัง consent รายครั้ง. การจัดการข้อมูลขึ้นกับสถานะ Billing ของ Google Cloud Project ที่ผูกกับ API key; ทีมยังไม่ได้ตรวจสถานะจริง. เงื่อนไขทางการแยก Unpaid Services ซึ่งอาจใช้ prompt/คำตอบเพื่อพัฒนาบริการและมีผู้ตรวจอ่านได้ ออกจาก Paid Services ซึ่งไม่ใช้ prompt/คำตอบเพื่อปรับปรุงผลิตภัณฑ์และจัดการตาม Data Processing Addendum; ยังต้องอ่านข้อกำหนด abuse monitoring แยกต่างหาก. ห้ามใส่ข้อมูลลับ/ส่วนบุคคล และสถานะ Paid ไม่ได้อนุมัติสิทธิข้อมูลให้ทีมโดยอัตโนมัติ. แหล่งทางการ: https://ai.google.dev/gemini-api/terms · https://ai.google.dev/gemini-api/docs/billing · https://ai.google.dev/gemini-api/docs/usage-policies.
+
+ข้อกำหนด Gemini จำกัดการใช้ API ไว้กับอายุ 18 ปีขึ้นไปและพื้นที่ที่รองรับ. อายุและพื้นที่ของกลุ่มผู้ใช้จริงยังไม่ได้ยืนยัน; gate `provider_audience_eligibility_confirmed` ใน manifest จึงยังเป็น `false`. Preview/Production runtime ต้องมี `TAMSOOD_GEMINI_AUDIENCE_ELIGIBILITY_CONFIRMED=true`; ค่านี้เป็นการรับรองจากเจ้าของเท่านั้น ไม่ได้ตรวจอายุหรือกั้นภูมิศาสตร์. Production RAG ยังปิดและ endpoint ตอบ 503 ก่อนเรียกโมเดล. สิทธิ, owner approval, rate/cost controls, independent Thai UAT, capacity/monitoring และ rollback acceptance ยังเป็น gate แยกกัน.
+
+หลักฐานตรวจ ณ รุ่นนี้: `evidence/rag-provider-eligibility-gate-2026-11-10.json`, `evidence/rag-gemini-terms-review-2026-11-10.json`, `evidence/rag-readiness-review-2026-11-10.json` และ `evidence/production-dataset-api-hotfix-2026-11-10.json`. การทดสอบ local/mock ไม่ยืนยันสถานะ live Preview/Production หลังแก้ gate และไม่ใช่การอนุมัติจากสมาชิก ผู้ให้บริการ หรือผู้สอน.
 
 ก่อนส่งต้องตรวจliveversionsให้ตรงcandidate,reviewสิทธิแต่ละแหล่ง,ทดสอบuserworkflowจริง และให้สมาชิกกรอกข้อมูลทีม/contribution/รับรองตามจริง PDFนี้ยังเป็นreviewdraft ไม่มีลายเซ็นหรือหลักฐานส่งงานที่สร้างแทนสมาชิก

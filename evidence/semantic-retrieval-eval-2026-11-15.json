@@ -1,0 +1,752 @@
+{
+ "generated_at": "2026-11-15T07:43:54+00:00",
+ "scope": "retrieval quality over the semantic corpus only; not answer correctness on the web",
+ "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+ "dimensions": 384,
+ "metric": "cosine",
+ "lexical_weight": 0.5,
+ "corpus_version": "f590197f715ddb17",
+ "chunks": 21,
+ "k": 3,
+ "k_planner_candidates": 5,
+ "chosen_rescue_floor": 0.6,
+ "threshold_sweep_dev": [
+  {
+   "floor": 0.3,
+   "dev_recall_at_3": 0.875,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.325,
+   "dev_recall_at_3": 0.875,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.35,
+   "dev_recall_at_3": 0.875,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.375,
+   "dev_recall_at_3": 0.875,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.4,
+   "dev_recall_at_3": 0.875,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.425,
+   "dev_recall_at_3": 0.875,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.45,
+   "dev_recall_at_3": 0.75,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.475,
+   "dev_recall_at_3": 0.75,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.5,
+   "dev_recall_at_3": 0.75,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.525,
+   "dev_recall_at_3": 0.75,
+   "dev_adversarial_leak": 0.25
+  },
+  {
+   "floor": 0.55,
+   "dev_recall_at_3": 0.75,
+   "dev_adversarial_leak": 0.25
+  },
+  {
+   "floor": 0.575,
+   "dev_recall_at_3": 0.75,
+   "dev_adversarial_leak": 0.25
+  },
+  {
+   "floor": 0.6,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.625,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.65,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.675,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.7,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.725,
+   "dev_recall_at_3": 0.5,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.75,
+   "dev_recall_at_3": 0.25,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.775,
+   "dev_recall_at_3": 0.125,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.8,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.825,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.85,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.875,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.9,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.925,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.95,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.975,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 1.0,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 1.025,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 1.05,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 1.075,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 1.1,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 1.125,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 1.15,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 1.175,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 1.2,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 1.225,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 1.25,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 1.275,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 1.3,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  }
+ ],
+ "results": {
+  "dev": {
+   "n_paraphrase": 8,
+   "n_adversarial": 4,
+   "lexical": {
+    "recall_at_1": 0.625,
+    "recall_at_3": 0.875,
+    "recall_at_5": 0.875
+   },
+   "semantic": {
+    "recall_at_1": 0.375,
+    "recall_at_3": 0.875,
+    "recall_at_5": 1.0
+   },
+   "hybrid": {
+    "recall_at_1": 0.5,
+    "recall_at_3": 0.875,
+    "recall_at_5": 1.0,
+    "recall_at_5_above_candidate_floor": 1.0,
+    "recall_at_3_above_floor": 0.625,
+    "adversarial_leak_above_floor": 0.0,
+    "adversarial_leaks": []
+   }
+  },
+  "heldout_round1": {
+   "n_paraphrase": 14,
+   "n_adversarial": 9,
+   "lexical": {
+    "recall_at_1": 0.786,
+    "recall_at_3": 1.0,
+    "recall_at_5": 1.0
+   },
+   "semantic": {
+    "recall_at_1": 0.357,
+    "recall_at_3": 0.786,
+    "recall_at_5": 0.929
+   },
+   "hybrid": {
+    "recall_at_1": 0.643,
+    "recall_at_3": 0.929,
+    "recall_at_5": 1.0,
+    "recall_at_5_above_candidate_floor": 0.929,
+    "recall_at_3_above_floor": 0.786,
+    "adversarial_leak_above_floor": 0.333,
+    "adversarial_leaks": [
+     {
+      "q": "ขอค่า CO2e ทั้งวงจรของเอทานอล E20 ปี 2030",
+      "surfaced": [
+       "catalogue:fame_lca_results"
+      ]
+     },
+     {
+      "q": "ผลิตน้ำมันดิบปี 2030 ได้กี่บาร์เรล",
+      "surfaced": [
+       "catalogue:eppo_product_output",
+       "catalogue:dmf_production",
+       "catalogue:eppo_refinery_intake"
+      ]
+     },
+     {
+      "q": "ปริมาณการผลิตดีเซลเป็นกิโลวัตต์เท่าไหร่",
+      "surfaced": [
+       "catalogue:eppo_product_output",
+       "catalogue:fame_inventory"
+      ]
+     }
+    ]
+   }
+  },
+  "heldout2": {
+   "n_paraphrase": 14,
+   "n_adversarial": 9,
+   "lexical": {
+    "recall_at_1": 0.786,
+    "recall_at_3": 0.857,
+    "recall_at_5": 0.929
+   },
+   "semantic": {
+    "recall_at_1": 0.571,
+    "recall_at_3": 0.929,
+    "recall_at_5": 1.0
+   },
+   "hybrid": {
+    "recall_at_1": 0.786,
+    "recall_at_3": 0.929,
+    "recall_at_5": 0.929,
+    "recall_at_5_above_candidate_floor": 0.929,
+    "recall_at_3_above_floor": 0.786,
+    "adversarial_leak_above_floor": 0.556,
+    "adversarial_leaks": [
+     {
+      "q": "ตอนนี้ราคาน้ำมันเบนซินลิตรละเท่าไหร่",
+      "surfaced": [
+       "catalogue:eppo_product_output",
+       "note:fame-allocation-factors"
+      ]
+     },
+     {
+      "q": "ขอตัวเลข CO2e ทั้งวงจรของ E85 ปี 2035",
+      "surfaced": [
+       "catalogue:fame_lca_results"
+      ]
+     },
+     {
+      "q": "บริษัทบางจากเปิดเผยการปล่อยก๊าซเรือนกระจกปี 2024 เท่าไหร่",
+      "surfaced": [
+       "catalogue:company_reports",
+       "catalogue:dmf_production",
+       "catalogue:fame_lca_results"
+      ]
+     },
+     {
+      "q": "ผลิตก๊าซธรรมชาติปี 2040 คาดว่าเท่าไหร่",
+      "surfaced": [
+       "catalogue:dmf_production",
+       "catalogue:nso_energy"
+      ]
+     },
+     {
+      "q": "น้ำมันดิบเข้าโรงกลั่นเป็นกิโลเมตรต่อชั่วโมงเท่าไหร่",
+      "surfaced": [
+       "catalogue:eppo_refinery_intake",
+       "catalogue:eppo_product_output",
+       "note:palm-upstream-basis"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "latency_ms_in_process": {
+  "n": 69,
+  "median": 7.2,
+  "p95": 9.1
+ },
+ "heldout2_detail": [
+  {
+   "q": "ถ้าอยากรู้ว่าไบโอดีเซลดีต่อโลกแค่ไหน ทำไมเลขรวมจากทีมยังไม่ออก",
+   "relevant": [
+    "note:fame-wtw-boundary",
+    "catalogue:fame_lca_results"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "catalogue:fame_inventory",
+     "score": 0.6392
+    },
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.5507
+    },
+    {
+     "id": "catalogue:fame_lca_results",
+     "score": 0.5165
+    },
+    {
+     "id": "note:fame-allocation-caution",
+     "score": 0.4661
+    },
+    {
+     "id": "note:fame-measurement-period",
+     "score": 0.4627
+    }
+   ]
+  },
+  {
+   "q": "ตัวเลขในตารางต่าง ๆ ของบทความอ้างอิงจากปริมาณเท่าไหร่",
+   "relevant": [
+    "note:fame-functional-unit"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.5515
+    },
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.4764
+    },
+    {
+     "id": "note:fame-data-basis",
+     "score": 0.4593
+    },
+    {
+     "id": "note:fame-allocation-caution",
+     "score": 0.4358
+    },
+    {
+     "id": "catalogue:company_reports",
+     "score": 0.4322
+    }
+   ]
+  },
+  {
+   "q": "กระบวนการไหนในสายการผลิตไบโอดีเซลปล่อยมลภาวะเยอะที่สุด",
+   "relevant": [
+    "note:fame-contribution"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "note:fame-contribution",
+     "score": 0.8167
+    },
+    {
+     "id": "catalogue:fame_inventory",
+     "score": 0.7444
+    },
+    {
+     "id": "catalogue:fame_lca_results",
+     "score": 0.6413
+    },
+    {
+     "id": "catalogue:project_scope",
+     "score": 0.5213
+    },
+    {
+     "id": "catalogue:eppo_product_output",
+     "score": 0.511
+    }
+   ]
+  },
+  {
+   "q": "หน่วยของข้อมูลต้นน้ำปาล์มต่างจากหน่วยของเชื้อเพลิงยังไง",
+   "relevant": [
+    "note:palm-upstream-basis"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "note:palm-upstream-basis",
+     "score": 0.7852
+    },
+    {
+     "id": "note:fame-functional-unit",
+     "score": 0.6909
+    },
+    {
+     "id": "catalogue:fame_inventory",
+     "score": 0.6807
+    },
+    {
+     "id": "note:palm-cpo-provider-gap",
+     "score": 0.6302
+    },
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.6295
+    }
+   ]
+  },
+  {
+   "q": "โรงงานสกัดน้ำมันปาล์มไม่มีข้อมูลอะไรที่ทำให้คำนวณต่อไม่ได้",
+   "relevant": [
+    "note:palm-cpo-provider-gap"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "note:palm-cpo-provider-gap",
+     "score": 0.77
+    },
+    {
+     "id": "note:palm-upstream-basis",
+     "score": 0.571
+    },
+    {
+     "id": "catalogue:palm_upstream",
+     "score": 0.526
+    },
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.4227
+    },
+    {
+     "id": "note:fame-measurement-period",
+     "score": 0.4028
+    }
+   ]
+  },
+  {
+   "q": "เอาของพลอยได้มาหักภาระออกจากตัวหลักเป็นร้อยละเท่าไหร่",
+   "relevant": [
+    "note:fame-allocation-factors",
+    "note:fame-allocation-caution"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.5622
+    },
+    {
+     "id": "note:fame-allocation-caution",
+     "score": 0.5488
+    },
+    {
+     "id": "note:fame-contribution",
+     "score": 0.3599
+    },
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.3554
+    },
+    {
+     "id": "note:palm-upstream-basis",
+     "score": 0.3032
+    }
+   ]
+  },
+  {
+   "q": "ตัวเลขของ FAME ในรายงานนี้เก็บเมื่อไหร่ และเป็นค่าของทั้งประเทศไหม",
+   "relevant": [
+    "note:fame-measurement-period",
+    "note:fame-data-basis"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "note:fame-measurement-period",
+     "score": 0.6659
+    },
+    {
+     "id": "note:fame-data-basis",
+     "score": 0.6304
+    },
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.6282
+    },
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.546
+    },
+    {
+     "id": "catalogue:company_reports",
+     "score": 0.5138
+    }
+   ]
+  },
+  {
+   "q": "ข้อมูลการปลูกพืชน้ำมันแบบไหนที่ทีมพักไว้ไม่ใช้",
+   "relevant": [
+    "note:palm-land-unit-hold"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.7164
+    },
+    {
+     "id": "note:palm-land-unit-hold",
+     "score": 0.693
+    },
+    {
+     "id": "note:palm-cpo-provider-gap",
+     "score": 0.6752
+    },
+    {
+     "id": "note:fame-data-basis",
+     "score": 0.6735
+    },
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.6296
+    }
+   ]
+  },
+  {
+   "q": "รายงานนี้ได้ข้อมูลจากเกษตรกรและโรงงานกี่แห่ง",
+   "relevant": [
+    "note:fame-data-basis"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "note:fame-data-basis",
+     "score": 0.9592
+    },
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.6274
+    },
+    {
+     "id": "catalogue:company_reports",
+     "score": 0.6111
+    },
+    {
+     "id": "note:fame-contribution",
+     "score": 0.5993
+    },
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.4709
+    }
+   ]
+  },
+  {
+   "q": "ข้อมูลผลิตก๊าซธรรมชาติเป็นรายเดือนแยกแหล่งเริ่มปีไหน",
+   "relevant": [
+    "catalogue:dmf_production"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "catalogue:dmf_production",
+     "score": 0.8842
+    },
+    {
+     "id": "catalogue:eppo_product_output",
+     "score": 0.6514
+    },
+    {
+     "id": "catalogue:nso_energy",
+     "score": 0.6004
+    },
+    {
+     "id": "note:fame-measurement-period",
+     "score": 0.5772
+    },
+    {
+     "id": "catalogue:eppo_refinery_intake",
+     "score": 0.539
+    }
+   ]
+  },
+  {
+   "q": "รายงานความยั่งยืนของบริษัทไหนที่ระบบนำมาใช้",
+   "relevant": [
+    "catalogue:company_reports"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "catalogue:company_reports",
+     "score": 0.8079
+    },
+    {
+     "id": "catalogue:eppo_refinery_intake",
+     "score": 0.4887
+    },
+    {
+     "id": "note:fame-contribution",
+     "score": 0.4806
+    },
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.4625
+    },
+    {
+     "id": "catalogue:project_scope",
+     "score": 0.4534
+    }
+   ]
+  },
+  {
+   "q": "ระบบ TamsoodBase คืออะไร และมีข้อจำกัดอะไร",
+   "relevant": [
+    "catalogue:project_scope"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "catalogue:project_scope",
+     "score": 0.6846
+    },
+    {
+     "id": "note:fame-functional-unit",
+     "score": 0.4369
+    },
+    {
+     "id": "note:fame-allocation-caution",
+     "score": 0.416
+    },
+    {
+     "id": "note:palm-land-unit-hold",
+     "score": 0.3476
+    },
+    {
+     "id": "note:palm-upstream-basis",
+     "score": 0.3297
+    }
+   ]
+  },
+  {
+   "q": "มีข้อมูลปริมาณน้ำมันเบนซินและดีเซลที่ผลิตได้ในประเทศไหม",
+   "relevant": [
+    "catalogue:eppo_product_output"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "catalogue:eppo_product_output",
+     "score": 0.9133
+    },
+    {
+     "id": "catalogue:dmf_production",
+     "score": 0.7129
+    },
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.6728
+    },
+    {
+     "id": "note:fame-data-basis",
+     "score": 0.6592
+    },
+    {
+     "id": "note:palm-upstream-basis",
+     "score": 0.6299
+    }
+   ]
+  },
+  {
+   "q": "รถยนต์เติมน้ำมันผสมเอทานอลตอนเครื่องยังเย็น มีผลวัดไหม",
+   "relevant": [
+    "catalogue:ethanol_evidence"
+   ],
+   "hybrid_top5": [
+    {
+     "id": "catalogue:ethanol_evidence",
+     "score": 0.699
+    },
+    {
+     "id": "catalogue:eppo_product_output",
+     "score": 0.5503
+    },
+    {
+     "id": "catalogue:eppo_refinery_intake",
+     "score": 0.5443
+    },
+    {
+     "id": "note:fame-wtw-boundary",
+     "score": 0.5048
+    },
+    {
+     "id": "note:palm-upstream-basis",
+     "score": 0.4824
+    }
+   ]
+  }
+ ]
+}

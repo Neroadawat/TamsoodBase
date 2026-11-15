@@ -1,0 +1,84 @@
+{
+  "reviewed_at": "2026-11-10",
+  "scope": "Local final-readiness review; no live database, remote EC2, Vercel deployment, Production route, or credentials changed.",
+  "python_tests": {
+    "full_suite": {
+      "command": "build/final-review-venv/Scripts/python.exe -X utf8 -m unittest discover -s tests -v",
+      "tests_run": 306,
+      "passed": 296,
+      "skipped": 10,
+      "failed": 0,
+      "skip_scope": "9 optional RAG dependency tests are run separately in the RAG environment; 1 test requires a restored review store."
+    },
+    "rag_database_catalog_scope": {
+      "command": "build/rag-verified-venv/Scripts/python.exe -X utf8 -m unittest tests.test_rag_database_index tests.test_rag_catalog tests.test_rag_scope -v",
+      "tests_run": 24,
+      "passed": 24,
+      "failed": 0
+    },
+    "environment_integrity": {
+      "report_environment_pip_check": "passed",
+      "rag_environment_pip_check": "passed",
+      "note": "PDF report and optional RAG dependencies use separate virtual environments because their pinned Pillow requirements conflict."
+    }
+  },
+  "javascript_tests": {
+    "command": "Run every tests/*.cjs file with Node.js",
+    "files": 17,
+    "passed": 17,
+    "failed": 0,
+    "network_simulation": "proxy-concurrent-fault test used no real network requests"
+  },
+  "build_and_package": {
+    "frontend_build": {
+      "passed": true,
+      "public_snapshot_rows": 42,
+      "public_rag_enabled": false,
+      "rag_mode": "closed",
+      "contains_private_research_data": false
+    },
+    "vercel_source_package": {
+      "passed": true,
+      "source_files": 22,
+      "contains_private_research_data": false,
+      "contains_credentials": false
+    },
+    "catalog_check": {
+      "passed": true,
+      "registry_sources": 22,
+      "indexed_documents": 41017,
+      "public_release_allowed": false,
+      "external_llm_allowed": false
+    },
+    "private_index": {
+      "sha256": "5b881b4dfb5dc82cbe2a9351bd44363a9ed911b8d8d24697a1f37b66bdf09124",
+      "sqlite_integrity": "ok",
+      "live_database_read": false
+    },
+    "git_diff_check": "passed with line-ending notices only"
+  },
+  "automation": {
+    "id": "tamsoodbase-hourly-project-review",
+    "status_in_local_automation_config": "ACTIVE",
+    "interval": "hourly",
+    "scope_note": "One bounded review/fix/test per invocation; production release, rights, credentials, push, and deployment remain gated."
+  },
+  "release_decision": "HOLD",
+  "open_requirements": [
+    "Anonymous Production dataset endpoints were confirmed to return records whose rights/status were not cleared; local fail-closed mitigation is tested but is not deployed.",
+    "There is no end-user authentication on the public Production API; the Vercel-to-backend service credential is not user authentication.",
+    "The current private snapshot is not a live database read and is not connected to Vercel, EC2, or Gemini.",
+    "No current source/record has public redistribution or external Gemini-processing clearance.",
+    "No authenticated fixed-query SQL API exists for numeric questions.",
+    "Production privacy approval, durable abuse/cost controls, independent Thai acceptance, and release-specific production capacity/monitoring/rollback evidence are missing.",
+    "The restored review store required by one Python test is unavailable in this worktree."
+  ],
+  "mutations": {
+    "source_or_canonical_data_changed": false,
+    "live_database_changed": false,
+    "production_deployed": false,
+    "public_rag_enabled": false,
+    "credentials_read": false,
+    "rights_changed": false
+  }
+}

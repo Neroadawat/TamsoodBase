@@ -1,0 +1,73 @@
+{
+  "checked_at_utc": "2026-11-11T22:37:42.367016Z",
+  "scope": "Local Docker package/build/image verification only",
+  "docker_engine": {
+    "client": "28.2.2",
+    "server": "28.2.2",
+    "platform": "linux/amd64"
+  },
+  "diagnosis": {
+    "failed_candidate": "51d0ef861af7eb51",
+    "observed": "Page and health checks passed, but POST /ask returned 503 Evidence search unavailable.",
+    "root_cause": "The allowlisted image omitted docs/rag/retrieval-scope.json, which scripts/rag_scope.py reads at query time.",
+    "fix": [
+      "Added docs/rag/retrieval-scope.json to the EC2 package allowlist.",
+      "Added an explicit COPY for that file in deploy/Dockerfile.rag.",
+      "Added a regression assertion covering both the allowlist and Dockerfile copy."
+    ]
+  },
+  "targeted_tests": {
+    "command": "python -m unittest tests.test_rag_service_runtime -v",
+    "passed": 3,
+    "failed": 0
+  },
+  "candidate": {
+    "release": "9c767ef49301347b",
+    "package_files": 20,
+    "package_payload_bytes": 252220255,
+    "package_zip_bytes": 221848048,
+    "package_zip_sha256": "9705e8cda7c65302e1deb8d29f6236966f4390341e8391ec29bc4d12a121ceac",
+    "package_verification": "passed: all 20 files and archive hashes",
+    "image": "tamsoodbase-rag:9c767ef49301347b",
+    "image_id": "sha256:1bf44daf6880dd3e65ef1fa115f3708e0156145a66bc87cb7366e441202cbdd1",
+    "architecture": "linux/amd64",
+    "image_size_bytes": 350640766
+  },
+  "isolated_smoke": {
+    "ready_cards": 10,
+    "page_http": 200,
+    "readyz_http": 200,
+    "fame_functional_unit_query": "expected evidence card returned with source URL and locator",
+    "wrong_origin_http": 403,
+    "feedback_write": "passed to container tmpfs",
+    "network_mode": "none",
+    "read_only_root": true,
+    "uid": "10001:10001",
+    "capabilities_dropped": ["ALL"],
+    "no_new_privileges": true,
+    "memory_bytes": 536870912,
+    "memory_swap_bytes": 1073741824,
+    "cpu_limit": 0.5,
+    "pids_limit": 64,
+    "observed_memory": "499MiB / 512MiB",
+    "gemini_key_present": false,
+    "live_gemini_called": false
+  },
+  "result": {
+    "local_candidate_verified": true,
+    "uploaded": false,
+    "ec2_changed": false,
+    "vercel_changed": false,
+    "production_changed": false,
+    "public_route_created": false,
+    "rights_changed": false,
+    "rag_to_database_search_verified": false,
+    "production_release_approved": false
+  },
+  "deployment_constraints": [
+    "Five submission release gates remain open in the 12 Nov local readiness snapshot.",
+    "The local image test used nearly the full 512 MiB container memory allowance.",
+    "The EC2 host's current memory/API/Ginder/rollback preflight was not run in this task."
+  ],
+  "verifier_evidence": "evidence/rag-image-verification-9c767ef49301347b-20261111T223742Z.json"
+}

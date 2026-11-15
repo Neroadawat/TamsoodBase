@@ -1,0 +1,68 @@
+{
+  "checked_at_utc": "2026-11-10T12:34:27Z",
+  "scope": "Live read-only connectivity verification; no dataset row contents captured",
+  "vercel_production": {
+    "api_readyz": 200,
+    "api_records": 403,
+    "api_rag_ask_get": 405,
+    "api_rag_ask_post": 503,
+    "api_rag_search": 404,
+    "api_rag_query": 404,
+    "api_healthz": 200,
+    "note": "The existing Vercel backend proxy reaches its authenticated backend health endpoints; dataset routes remain denied.",
+    "url": "https://tamsoodbase.vercel.app"
+  },
+  "ec2": {
+    "ssh_host_key_previously_pinned": true,
+    "known_hosts_last_modified": "2026-10-24T16:22:28+07:00",
+    "mysql": "tamsoodbase-mysql-runtime running",
+    "api_mysql_network": "tamsoodbase-mysql-runtime-private",
+    "rag_published_host_ports": [],
+    "counts": {
+      "nso": 273,
+      "inventory": 16,
+      "reference": 101,
+      "dmf": 34899,
+      "eppo": 5934
+    },
+    "api_mysql_reader_grants": {
+      "select_or_usage_only": true,
+      "grant_count": 6
+    },
+    "api": "tamsoodbase-api healthy",
+    "rag": "tamsoodbase-rag healthy",
+    "https_gateway": "pre-existing unhealthy container",
+    "rag_readyz": 200,
+    "rag_network": "tamsoodbase-rag-private",
+    "api_readyz": 200,
+    "mysql_dataset_release": "9f6475ffbbe1ccbfcdb724d764bbc70d01c0190ee9155268909b9fcf92c705ea"
+  },
+  "result": {
+    "public_dataset_access": "closed",
+    "fixed_query_api": "not_implemented",
+    "production_changed": false,
+    "row_data_captured": false,
+    "vercel_to_backend_health_connectivity": "verified",
+    "rag_to_database_search": "not_connected"
+  },
+  "live_status_counts_from_mysql_reader": {
+    "DMF": [{ "status": "PENDING", "count": 34899 }],
+    "SUPPLEMENTAL": [
+      { "status": "STAGED_SOURCE_VERIFIED", "count": 273 },
+      { "status": "SOURCE_REPORTED_PRODUCT_INVENTORY", "count": 16 }
+    ],
+    "EPPO": [{ "status": "STAGED_SOURCE_VERIFIED", "count": 5934 }],
+    "COMPANY_RIGHTS": [{ "status": "PUBLIC_REPORT_REUSE_NOT_CONFIRMED", "count": 2 }],
+    "COMPANY_REVIEW": [
+      { "status": "ACCEPTED_REFERENCE", "count": 97 },
+      { "status": "HOLD_CONTEXT", "count": 4 }
+    ],
+    "interpretation": "Review/staging status is not redistribution permission; no source layer has a demonstrated public-cleared release in this check."
+  },
+  "blockers": [
+    "No rights-cleared public source/record release ledger exists across all five data layers.",
+    "No RAG search or fixed-query route is deployed behind the existing Vercel-to-backend health path.",
+    "The EC2 RAG container is not attached to the API/MySQL network.",
+    "RAG corpus and external Gemini permissions remain closed."
+  ]
+}

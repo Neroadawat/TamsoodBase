@@ -1,20 +1,43 @@
 {
   "artifact": "output\\pdf\\TamsoodBase-SRS-review.pdf",
-  "pages": 27,
-  "rendered_pages": 27,
-  "sha256": "647444a9ae5086e10b5328edf09a9ed84c4363860e4dbb9ab05c274d1c76c067",
-  "source_sha256": "c2299cd48cad6bf7c4105be8f97a3d9f7317ee4482a13722b2b2b543a1cbd3a3",
+  "pages": 29,
+  "rendered_pages": 29,
+  "sha256": "fc6d9a9de58cdacbbf90b455c8e030898558eabbb52a00bb8ddb1d3855836bcc",
+  "source_sha256": "544d064dc034d115195396cdd37589a777520952804869712df8186a495d0c39",
   "status": "DRAFT_TEAM_REVIEW_PENDING",
   "slides_rebuilt": false,
   "source_path": "docs\\submission\\SRS.md",
-  "review_date": "2026-11-08",
-  "visual_review": "All 27 pages in current contact sheets; full-size cover/reference and diagram pages inspected; no clipping or overlap observed.",
-  "text_and_page_bounds_checked": true,
-  "team_review_pending": true,
-  "submitted": false,
-  "srs_markdown_changed": false,
-  "limits": [
-    "Re-render of the current 0.7.1 Markdown, not new team approval or a fresh audit of every historical production claim.",
-    "Source ZIP excludes output/PDF; transfer the generated PDF separately if needed."
+  "version": "0.7.2",
+  "review_date": "2026-11-10",
+  "visual_review": {
+    "all_pages_rendered": true,
+    "contact_sheets_reviewed": "all 29 pages",
+    "full_size_pages_reviewed": [
+      2,
+      13,
+      14,
+      23,
+      24
+    ],
+    "clipping_or_overlap_found": false,
+    "notes": "Page 2 no longer mostly blank; pages 13 and 23 have section-transition whitespace but no clipped content."
+  },
+  "content_checks": {
+    "source_hash_matches": true,
+    "contains_version_0_7_2": true,
+    "contains_current_rag_architecture_and_eligibility_gate": true,
+    "contains_preview_production_distinction": true,
+    "contains_provider_terms_and_owner_confirmation_limits": true,
+    "team_review_pending": true,
+    "submitted": false
+  },
+  "previous_version_archive": {
+    "artifact": "output\\pdf\\archive\\TamsoodBase-SRS-0.7.1-2026-11-09.pdf",
+    "sha256": "9ec6437462e3c6a4ae634b6095a986614cb8badd0a4c25de0bc5973c2ee77a04"
+  },
+  "limitations": [
+    "PDF rendering and text checks do not establish instructor acceptance.",
+    "Slides were not rebuilt.",
+    "No live Preview or Production service was rechecked as part of this SRS artifact review."
   ]
 }

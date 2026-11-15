@@ -1,0 +1,67 @@
+{
+  "review_date": "2026-11-10",
+  "review_type": "FRESH_LOCAL_RELEASE_READINESS_AUDIT",
+  "checked_at": "2026-11-10T07:27:14.320546+00:00",
+  "command": "python -m scripts.check_release (without --tests or --package)",
+  "scope": "Local code, documentation, evidence, available snapshots and recorded release artifacts; no live production service check.",
+  "technical_pass": true,
+  "reference_release_ready": true,
+  "submission_ready": false,
+  "check_counts": {
+    "passed": 68,
+    "failed": 0,
+    "total": 68
+  },
+  "manifest_file_count": 763,
+  "source_manifest_sha256": "c033e78cf8a94a9d1854d422bdd993523d8f8b85c61c6fd64605f1e43ec6ed9b",
+  "competition_accepted": 0,
+  "unresolved_gates": [
+    {
+      "id": "official_requirements",
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/submission-checklist.md",
+        "docs/course-project-review-2026-10-27.md",
+        "evidence/course-project-review.json"
+      ],
+      "reason": "Authenticated project site reviewed27Oct: milestones/SRS/PDF/memo/video/slides found; timeline marked Draft and Teams/Form channel conflict remain; M4/closing times not confirmed"
+    },
+    {
+      "id": "source_rights",
+      "status": "PARTIAL",
+      "evidence": [
+        "evidence/dmf-rights-review-2026-10-22.json",
+        "docs/source-use-notice.md",
+        "evidence/source-use-review-2026-10-23.json"
+      ],
+      "reason": "DMF G0 reviewed; company report redistribution/reuse unresolved"
+    },
+    {
+      "id": "domain_and_units",
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/dmf-review-results.md",
+        "docs/sprc-review.md",
+        "evidence/dmf-time-basis-review-2026-10-23.json"
+      ],
+      "reason": "Historical DMF time basis and report boundaries remain unresolved"
+    },
+    {
+      "id": "team_and_defense",
+      "status": "UNCONFIRMED",
+      "evidence": [],
+      "reason": "Real member contributions and individual defense not yet recorded"
+    },
+    {
+      "id": "consent_forms",
+      "status": "UNCONFIRMED",
+      "evidence": [],
+      "reason": "Project website requires every member consent; actual team consent submission evidence not provided"
+    }
+  ],
+  "limitations": [
+    "Technical pass does not verify external source accuracy, licensing or MTEC acceptance",
+    "This audit does not verify external source accuracy, licensing or MTEC acceptance.",
+    "This audit does not check live Vercel/EC2 service health or attest RAG Production readiness."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "review_date": "2026-11-10",
+  "checked_at_utc": "2026-11-10T07:10:55Z",
+  "topic": "Preview RAG client-IP header used by in-memory rate limiter",
+  "official_source": "https://vercel.com/docs/headers/request-headers",
+  "source_last_updated": "2025-12-13",
+  "source_finding": "Vercel documents x-forwarded-for as the public IP of the client and says it overwrites the header to prevent IP spoofing. It documents x-vercel-forwarded-for as equivalent; x-forwarded-for may be overwritten by a proxy in front of Vercel.",
+  "code_mapping": {
+    "file": "api/rag/ask.js",
+    "behavior": "previewRateAllowed reads the first comma-separated value of x-forwarded-for",
+    "scope": "In-memory Preview request throttling only"
+  },
+  "assessment": "No code change justified for the current direct *.vercel.app Preview path from the official header contract. Re-review if traffic is routed through another proxy.",
+  "limitations": [
+    "Documentation review only; no live header probe was performed.",
+    "The in-memory limiter is per function instance and is not a durable/global abuse control or spend cap.",
+    "This does not clear the Vercel WAF rate-limit release gate."
+  ],
+  "production_or_ec2_changed": false
+}

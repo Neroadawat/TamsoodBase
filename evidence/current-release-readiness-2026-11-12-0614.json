@@ -1,0 +1,67 @@
+{
+  "checked_at_utc": "2026-11-11T23:14:28.619616+00:00",
+  "scope": "Local release artifact audit after RAG Thai-answer prompt/test change; no external or production probes, no release package created.",
+  "command": "python -X utf8 scripts/check_release.py",
+  "technical_pass": true,
+  "reference_release_ready": true,
+  "submission_ready": false,
+  "passed_checks": 68,
+  "total_checks": 68,
+  "failed_checks": [],
+  "unresolved_gates": [
+    {
+      "id": "official_requirements",
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/submission-checklist.md",
+        "docs/course-project-review-2026-10-27.md",
+        "evidence/course-project-review.json"
+      ],
+      "reason": "Authenticated project site reviewed27Oct: milestones/SRS/PDF/memo/video/slides found; timeline marked Draft and Teams/Form channel conflict remain; M4/closing times not confirmed"
+    },
+    {
+      "id": "source_rights",
+      "status": "PARTIAL",
+      "evidence": [
+        "evidence/dmf-rights-review-2026-10-22.json",
+        "docs/source-use-notice.md",
+        "evidence/source-use-review-2026-10-23.json"
+      ],
+      "reason": "DMF G0 reviewed; company report redistribution/reuse unresolved"
+    },
+    {
+      "id": "domain_and_units",
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/dmf-review-results.md",
+        "docs/sprc-review.md",
+        "evidence/dmf-time-basis-review-2026-10-23.json"
+      ],
+      "reason": "Historical DMF time basis and report boundaries remain unresolved"
+    },
+    {
+      "id": "team_and_defense",
+      "status": "UNCONFIRMED",
+      "evidence": [],
+      "reason": "Real member contributions and individual defense not yet recorded"
+    },
+    {
+      "id": "consent_forms",
+      "status": "UNCONFIRMED",
+      "evidence": [],
+      "reason": "Project website requires every member consent; actual team consent submission evidence not provided"
+    }
+  ],
+  "manifest_file_count": 788,
+  "manifest_sha256": "bf930884f4321d5a4da89f8328c240a54679c42475b3cc8ae5078b6ada688023",
+  "readiness_sha256": "bfb10795bec93ac169c28ab50c8b862b589d4d68276fdf4866dbd33b263984fd",
+  "checks_exclude": [
+    "live Gemini answer quality",
+    "live Vercel/EC2 health",
+    "external source-rights approval",
+    "MTEC acceptance",
+    "team consent/contribution"
+  ],
+  "production_changed": false,
+  "rag_production_released": false
+}

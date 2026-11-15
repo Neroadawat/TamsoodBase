@@ -1,0 +1,131 @@
+{
+  "origin": "https://tamsoodbase.vercel.app/",
+  "local": false,
+  "results": [
+    {
+      "width": 1440,
+      "visible": true,
+      "x": 384.484375,
+      "right": 654.484375,
+      "scrollWidth": 1440,
+      "sidebarOverflow": "visible",
+      "navigationPassed": true,
+      "escapePassed": true
+    },
+    {
+      "width": 1024,
+      "visible": true,
+      "x": 285.96875,
+      "right": 555.96875,
+      "scrollWidth": 1024,
+      "sidebarOverflow": "visible",
+      "navigationPassed": true,
+      "escapePassed": true
+    },
+    {
+      "width": 768,
+      "visible": true,
+      "x": 285.96875,
+      "right": 555.96875,
+      "scrollWidth": 768,
+      "sidebarOverflow": "visible",
+      "navigationPassed": true,
+      "escapePassed": true
+    },
+    {
+      "width": 760,
+      "visible": true,
+      "x": 28,
+      "right": 742,
+      "scrollWidth": 760,
+      "sidebarOverflow": "visible",
+      "navigationPassed": true,
+      "escapePassed": true
+    },
+    {
+      "width": 390,
+      "visible": true,
+      "x": 28,
+      "right": 372,
+      "scrollWidth": 390,
+      "sidebarOverflow": "visible",
+      "navigationPassed": true,
+      "escapePassed": true
+    },
+    {
+      "width": 320,
+      "visible": true,
+      "x": 28,
+      "right": 302,
+      "scrollWidth": 320,
+      "sidebarOverflow": "visible",
+      "navigationPassed": true,
+      "escapePassed": true
+    }
+  ],
+  "checked_on": "2026-11-15",
+  "deployment": "dpl_HW5ABctUkVMdNbPGmHggX6NH3kTy",
+  "root_cause": "Production sidebar overflow clipped absolute dataset dropdown; existing working-tree navigation patch deployed",
+  "api_smoke": {
+    "/config.js": {
+      "status": 200,
+      "bytes": 86,
+      "config": "window.TAMSOOD_CONFIG = {\"apiBaseUrl\":\"\",\"publicRagEnabled\":true,\"ragMode\":\"public\"};\n"
+    },
+    "/api/summary": {
+      "status": 200,
+      "bytes": 60457,
+      "keys": [
+        "run_id",
+        "acquired_at",
+        "report",
+        "quality",
+        "years",
+        "sources",
+        "coverage"
+      ]
+    },
+    "/api/records?product=production-oil&year=2026&page=1": {
+      "status": 200,
+      "bytes": 23456,
+      "keys": [
+        "run_id",
+        "total",
+        "page",
+        "page_size",
+        "rows"
+      ],
+      "rows": 30
+    },
+    "/api/product-inventory": {
+      "status": 200,
+      "bytes": 30426,
+      "keys": [
+        "doi",
+        "checked_at",
+        "source_url",
+        "limitations",
+        "excluded_rows",
+        "context_sha256",
+        "excluded_count",
+        "evidence_method",
+        "source_snapshot_sha256",
+        "source_reported_inventory_count",
+        "rows"
+      ],
+      "rows": 16
+    },
+    "/ask.html": {
+      "status": 200,
+      "bytes": 52922
+    },
+    "/api/healthz": {
+      "status": 200,
+      "bytes": 43,
+      "keys": [
+        "status",
+        "service"
+      ]
+    }
+  }
+}

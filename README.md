@@ -1,5 +1,7 @@
 # TamsoodBase — Thailand Petroleum, Natural Gas & Fuels
 
+**ชุดงาน M4 ล่าสุด:** [เปิดรายการไฟล์สำหรับตรวจและเตรียมส่ง](docs/submission/LATEST_DELIVERABLES.md) — เล่ม สไลด์ โปสเตอร์ คลิป และ CSV พร้อมข้อค้างของทีม
+
 คู่มือ frontend และ Vercel: [docs/FRONTEND_DEPLOY_TH.md](docs/FRONTEND_DEPLOY_TH.md) · build เฉพาะหน้าเว็บ ไม่รวมฐานข้อมูลหรือ credentials
 
 

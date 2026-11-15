@@ -1,0 +1,76 @@
+{
+  "review_date": "2026-11-10",
+  "review_type": "READ_ONLY_RELEASE_EVIDENCE_FRESHNESS_CHECK",
+  "historical_readiness": {
+    "path": "build/release/readiness.json",
+    "checked_at": "2026-11-09T16:23:51.415370+00:00",
+    "technical_pass": true,
+    "reference_release_ready": true,
+    "submission_ready": false,
+    "interpretation": "This records the result at the stated check time only; it is not a current attestation after later working-tree changes."
+  },
+  "later_relevant_worktree_files": [
+    {
+      "path": "api/rag/ask.js",
+      "modified_at_utc": "2026-11-09T18:16:27.173260+00:00",
+      "modified_after_readiness_check": true,
+      "size_bytes": 19620,
+      "sha256": "1d6e676709ce8dffd5bfb0784342f9c2c0c9c3238c7bcc8bc8028311e3a07e44"
+    },
+    {
+      "path": "docs/source-registry.csv",
+      "modified_at_utc": "2026-11-09T19:43:34.594721+00:00",
+      "modified_after_readiness_check": true,
+      "size_bytes": 8831,
+      "sha256": "7e4a7f01792b4c880992c440fad72d0b429a4e2709414071d1f8325951c11508"
+    },
+    {
+      "path": "docs/rag/PUBLIC_WEB_READINESS.md",
+      "modified_at_utc": "2026-11-09T19:45:56.567648+00:00",
+      "modified_after_readiness_check": true,
+      "size_bytes": 22679,
+      "sha256": "79132fa8ca594d3d98f34949eaab41e89d27647f7ae05eb21af4b37a4fa80677"
+    },
+    {
+      "path": "docs/rag/README.md",
+      "modified_at_utc": "2026-11-09T19:45:56.567648+00:00",
+      "modified_after_readiness_check": true,
+      "size_bytes": 22197,
+      "sha256": "394e3e6c62651201c0f94e90cd8206bee531e5392c2a6acb110c3c45ffd997c9"
+    },
+    {
+      "path": "docs/tasks.json",
+      "modified_at_utc": "2026-11-09T19:45:11.147134+00:00",
+      "modified_after_readiness_check": true,
+      "size_bytes": 75751,
+      "sha256": "9325e2bfa1e299f32c48ab103fbd50d8aeca0f992a7aa990282e29f9f9e93e18"
+    },
+    {
+      "path": "docs/scientific-source-check-2026-11-10-tgo-molasses-cfp.md",
+      "modified_at_utc": "2026-11-10T03:56:04.115730+00:00",
+      "modified_after_readiness_check": true,
+      "working_tree_status": "untracked",
+      "size_bytes": 6050,
+      "sha256": "59489acbf0f9a48031833159e114642478c7a3b9955c8820885ef2f6d9e1af1c"
+    },
+    {
+      "path": "evidence/scientific-source-check-2026-11-10-tgo-molasses-cfp.json",
+      "modified_at_utc": "2026-11-10T03:56:04.120751+00:00",
+      "modified_after_readiness_check": true,
+      "working_tree_status": "untracked",
+      "size_bytes": 7071,
+      "sha256": "4ca15ddba599787d52127ca174501303218c00523a4b8b678a7aa47fbee2c02c"
+    }
+  ],
+  "result": {
+    "current_submission_readiness": "NOT_REVERIFIED_AFTER_LATER_CHANGES",
+    "does_not_prove": [
+      "that later changes broke a release check",
+      "that the current working tree is releasable",
+      "that an external source, permission, or submission requirement has changed"
+    ],
+    "next_action": "After owners freeze the exact candidate, rerun the release-consistency/readiness audit against that candidate and refresh the evidence manifest; keep submission_ready=false until human/official gates are evidenced.",
+    "no_tests_or_builds_run": true,
+    "no_deploy_or_publish": true
+  }
+}

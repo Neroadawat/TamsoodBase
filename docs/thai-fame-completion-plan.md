@@ -4,6 +4,10 @@
 
 อัปเดต5พฤศจิกายน2569 หลังผู้ใช้อนุญาตให้ทำตามลำดับทั้งหมด งานหลักT97ยังไม่เสร็จ ไม่ใช้จำนวนtask/จำนวนแถวเป็นเปอร์เซ็นต์ความครบLCI
 
+## ตรวจเพิ่ม 10 พฤศจิกายน 2569 — use-phase Pleanjai (2008)
+
+บท Springer ปี 2013 รายงานค่าปล่อยไอเสียต่อ L จาก pickup/LDDV และอ้าง Pleanjai (2008), *Integrated environmental assessment of biodiesel from palm oil* (PhD dissertation, JGSEE/KMUTT). ยังหา full text ทางการของวิทยานิพนธ์ไม่พบ; ค่าที่เห็นจึงเป็น secondary-reported ไม่ใช่ข้อมูลทดสอบที่ตรวจซ้ำได้. ห้าม scale เข้ากับ FU 1,000 MJ ของโมเดลปี 2020 เพราะยังไม่มี LHV/density และ test/provider compatibility ที่ยืนยัน. สถานะ `HOLD_CONTEXT`, ไม่เพิ่ม inventory, ไม่ปิด T97/T107. รายละเอียด: [source screen](scientific-source-check-2026-11-10-pleanjai-use.md).
+
 ## กรณีศึกษาที่เริ่มประกอบ
 
 เลือกเส้นทางFAMEจากปาล์มไทยบนฐาน **use of1000MJfuel** ตามงาน2020 DOI10.3390/su12229415 ส่วนphysicalmodelที่สร้างได้ขณะนี้จบที่การผลิตFAME การระบุstudyFUไม่ได้แปลว่าusephaseถูกคำนวณแล้ว

@@ -42,7 +42,7 @@ def render(srs_only=False, source_path=None, evidence_name='srs-current-review.j
     h3=ParagraphStyle('H3',parent=h2,fontSize=12,leading=20)
     rowstyle=ParagraphStyle('Row',parent=body,fontSize=9.4,leading=15,leftIndent=10,borderColor=colors.HexColor('#d7e1d9'),borderWidth=.4,borderPadding=7,spaceAfter=10)
     history_style=ParagraphStyle('History',parent=rowstyle,fontSize=9,leading=13.5,borderPadding=4,spaceAfter=5)
-    story=[];table_header=None;in_code=False
+    story=[];table_header=None;in_code=False;first_major_heading=True
     source_path=source_path or ROOT/'docs/submission/SRS.md'
     source_bytes=source_path.read_bytes()
     text=source_bytes.decode('utf-8')
@@ -63,7 +63,13 @@ def render(srs_only=False, source_path=None, evidence_name='srs-current-review.j
         level=len(line)-len(line.lstrip('#'))
         if level:
             content=plain(line[level:].strip())
-            if level==2 and story:story.append(PageBreak())
+            if level==2 and story:
+                # Keep the first Introduction with the cover/revision history, and
+                # avoid isolating one trailing traceability row from the following
+                # evidence section on a nearly empty page.
+                continuation=first_major_heading or content.startswith('4. Design') or content.startswith('7. Evidence, Limitations')
+                if not continuation:story.append(PageBreak())
+            if level==2:first_major_heading=False
             story.append(Paragraph(html.escape(content),h1 if level==1 else h2 if level==2 else h3))
         else:story.append(Paragraph(html.escape(plain(line)),body))
     story.extend([PageBreak(),Paragraph('Appendix: domain DDL diagrams',h1),Paragraph('Four domain schemas. The tamsood_api runtime views and representation tables are described separately in the SRS; these diagrams do not claim to include that fifth schema.',body)])

@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-10",
+  "change": "Numeric grounding now reads numeric tokens only from cited evidence text, excluding title metadata, page/table locators, DOI/attribution, and licence labels.",
+  "risk": "Previously a number appearing only as a PDF page or DOI component could make an unsupported numeric claim pass the lexical grounding check.",
+  "regression_case": {
+    "expected": "rejected as ungrounded_numeric_claim",
+    "evidence_text": "The source discusses a process but reports no quantity.",
+    "answer": "ผลการปล่อยเท่ากับ 7 kg CO2e",
+    "citation_metadata": [
+      "title year 2008",
+      "PDF page 7",
+      "table 4",
+      "DOI 10.1000/example.2024",
+      "CC BY 4.0"
+    ],
+    "result": "passed"
+  },
+  "verification": {
+    "git_diff_check": "passed; existing line-ending notices only",
+    "command": "node tests/rag-vercel-api.cjs",
+    "syntax_result": "passed",
+    "syntax": [
+      "node --check api/rag/ask.js",
+      "node --check tests/rag-vercel-api.cjs"
+    ],
+    "result": "passed"
+  },
+  "limits": [
+    "Lexical number matching still does not prove metric, unit, period, boundary, or semantic relationship.",
+    "No live Gemini call, database query, Production deployment, or route enablement."
+  ],
+  "status": "LOCAL_VERIFIED"
+}

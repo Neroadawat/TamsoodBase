@@ -23,7 +23,7 @@ try{
  };
  for(let index=0;index<12;index++){
   const response=Object.assign(new EventEmitter(),{ends:0,setHeader(){},end(){this.ends++;this.writableEnded=true;this.emit('finish');}});
-  responses.push(response);handler({url:'/api/reference',method:'GET',headers:{}},response);
+  responses.push(response);handler({url:'/api/readyz',method:'GET',headers:{}},response);
  }
  assert.equal(requests.length,12);assert.equal(timers.length,12);
  for(let index=0;index<12;index++){

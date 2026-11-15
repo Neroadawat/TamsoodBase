@@ -1,0 +1,31 @@
+{
+  "reviewed_at_local": "2026-11-12",
+  "scope": "First-install resource preflight compared with the verified candidate's enforced container memory ceiling and documented host reserve. No Docker daemon, EC2, API, Ginder, credentials, or Production access.",
+  "finding": {
+    "previous_preflight_kib": 737280,
+    "candidate_container_memory_ceiling_kib": 524288,
+    "required_host_reserve_kib": 327680,
+    "minimum_safe_preflight_kib": 851968,
+    "minimum_safe_preflight_mib": 832,
+    "calculation": "512 MiB + 320 MiB = 832 MiB; 832 * 1024 = 851968 KiB",
+    "candidate_observed_memory": "499 MiB of 512 MiB in the isolated image verification; this is a measurement, not a guarantee of peak host impact"
+  },
+  "change": "deploy/install_rag_ec2.sh now fails closed unless MemAvailable is at least 851968 KiB before staging, preserving the existing 320 MiB runtime floor even if the container reaches its 512 MiB RAM limit. The deployment runbook and focused regression were updated.",
+  "verification": {
+    "command": "python -m unittest tests.test_rag_memory_gates -v",
+    "result": "passed",
+    "tests_passed": 2,
+    "shell_syntax": "Git Bash bash -n deploy/install_rag_ec2.sh passed",
+    "diff_check": "passed for changed install script, memory-gate test, and runbook",
+    "note": "The default WSL bash alias was unavailable; syntax verification succeeded through the installed Git Bash executable. The install script was not executed."
+  },
+  "limitations": "This conservative preflight may reject hosts that could run in practice; actual EC2 headroom and co-tenant behavior were not measured. The threshold bounds only the container's configured RAM and desired free-memory reserve; it is not a capacity guarantee.",
+  "hashes": {
+    "deploy/install_rag_ec2.sh": "59d32e50df661628f301ac0f5390167dc525618bf79b833d5dbc522f5dfc47e1",
+    "tests/test_rag_memory_gates.py": "057d3faba5252f60e004e2f5f32e6c102ad1499f80abf176f50d7a1668af0133",
+    "docs/rag/EC2_PRIVATE_DEPLOYMENT.md": "74de26dbffbdff14bc49f1d980c3f09ac88d21e26fae46c3647a0da0878a6adb"
+  },
+  "production_changed": false,
+  "ec2_touched": false,
+  "docker_daemon_touched": false
+}

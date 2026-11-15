@@ -69,6 +69,21 @@ class ScopeTests(unittest.TestCase):
                                                 'palm-upstream-basis', 'palm-cpo-provider-gap',
                                                 'palm-land-unit-hold') for h in hits))
 
+    def test_fame_measurement_year_is_metadata_not_an_unsupported_plant_year(self):
+        hits = retrieve(HighSimilarityClient(), Encoder(), 'test', self.cards,
+                        'ตัวเลขของ FAME ที่เห็นใน paper วัดในปี 2020 ใช่ไหม')
+        self.assertIn('fame-measurement-period', [hit['id'] for hit in hits])
+
+    def test_palm_basis_comparison_prefers_upstream_basis_card(self):
+        hits = retrieve(HighSimilarityClient(), Encoder(), 'test', self.cards,
+                        'ข้อมูลต้นน้ำปาล์มกับข้อมูลเชื้อเพลิงในตาราง 4 ใช้ฐานเดียวกันหรือเปล่า')
+        self.assertEqual(hits[0]['id'], 'palm-upstream-basis')
+
+    def test_reverse_cpo_quantity_question_prefers_provider_gap(self):
+        hits = retrieve(HighSimilarityClient(), Encoder(), 'test', self.cards,
+                        'คำนวณย้อนปริมาณผลปาล์มจากยอด CPO รวมได้ไหม')
+        self.assertEqual(hits[0]['id'], 'palm-cpo-provider-gap')
+
 
 if __name__ == '__main__':
     unittest.main()

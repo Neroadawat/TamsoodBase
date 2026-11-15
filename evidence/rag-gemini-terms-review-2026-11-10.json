@@ -1,0 +1,65 @@
+{
+  "reviewed_at_utc": "2026-11-10T07:30:44Z",
+  "scope": "Compare current official Gemini API terms with the local RAG privacy notice; no project prompt, evidence, key, or user data sent to Google.",
+  "official_sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/terms",
+      "provider": "Google AI for Developers",
+      "claims_checked": [
+        "Unpaid Gemini API service may use submitted prompts and generated responses to provide, improve, and develop Google products; human reviewers may read, annotate, and process input/output.",
+        "Gemini API use through a Google Cloud project with active billing is treated as a Paid Service; prompts and responses are not used to improve Google products and are processed under the applicable data processing terms.",
+        "The terms include region availability and 18+ eligibility restrictions for API use and API clients."
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/billing",
+      "provider": "Google AI for Developers",
+      "claims_checked": [
+        "Data-use treatment for Gemini API depends on whether the Cloud project associated with API access has active billing."
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/usage-policies",
+      "provider": "Google AI for Developers",
+      "claims_checked": [
+        "Abuse monitoring and policy enforcement are distinct from product-improvement use."
+      ]
+    }
+  ],
+  "local_change": {
+    "file": "web/ask.html",
+    "change": "Clarified that user question and retrieved evidence are sent to Gemini after consent; explained unpaid versus active-billing treatment in plain Thai; disclosed that the project's billing status was not verified; linked official terms and billing docs; avoided promising zero review/logging.",
+    "tests_added": "tests/test_frontend.py::test_gemini_privacy_notice_distinguishes_billing_terms"
+  },
+  "validation": {
+    "targeted_tests": {
+      "command": "python -X utf8 -m unittest tests.test_frontend.FrontendTests.test_gemini_privacy_notice_distinguishes_billing_terms tests.test_frontend.FrontendTests.test_deployment_build_only_copies_public_assets -v",
+      "passed": 2,
+      "failed": 0
+    },
+    "task_board": "regenerated from docs/tasks.json",
+    "release_audit": {
+      "command": "python -X utf8 -m scripts.check_release",
+      "technical_pass": true,
+      "passed": 68,
+      "failed": 0,
+      "reference_release_ready": true,
+      "submission_ready": false,
+      "manifest_file_count": 765
+    }
+  },
+  "unresolved_owner_gates": [
+    "The project owner has not confirmed the active billing status of the Google Cloud project linked to the deployment API key.",
+    "The target audience's age and geographic availability have not been reviewed against provider eligibility restrictions.",
+    "No approval has been recorded to send any restricted project evidence or user prompts to an external model."
+  ],
+  "limits": [
+    "This review is not legal advice or a determination that project content is cleared for external processing.",
+    "Official pages were retrieved via Google AI for Developers search results; direct page opens redirected to AI Studio pages unavailable to the web reader.",
+    "No live Google Cloud billing configuration, API key, Gemini request, Vercel setting, or production service was inspected or changed."
+  ],
+  "production_rag": "HOLD",
+  "production_changed": false,
+  "external_model_called": false,
+  "secrets_read_or_recorded": false
+}

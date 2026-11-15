@@ -1,0 +1,25 @@
+{
+  "suite": "tamsood-rag-targeted-statistics-v1",
+  "created": "2026-11-08",
+  "purpose": "Small targeted regression suite for Thai/English paraphrases, exact statistical fact retrieval, evidence-status handling, and abstention. It is not a representative research benchmark.",
+  "cases": [
+    {"question": "CO2e มาจากไหน ต้องคำนวณเองไหม", "expected_id": "co2e-calculation-method", "expected_method_ids": ["co2e-calculation-method", "ipcc-co2-equivalent-definition"]},
+    {"question": "อธิบายวิธีคิด CO2e ต่อลิตรเอทานอลแบบเข้าใจง่าย", "expected_id": "co2e-calculation-method", "expected_method_ids": ["co2e-calculation-method", "ipcc-co2-equivalent-definition"]},
+    {"question": "รถ E10 ช่วงสตาร์ตเย็นวิ่งได้กี่กิโลต่อลิตร", "expected_id": "e10-cold-start-fuel-consumption", "expected_fact_id": "e10-cold-start-fuel-consumption"},
+    {"question": "How many km per litre did the E10 cold start test report?", "expected_id": "e10-cold-start-fuel-consumption", "expected_fact_id": "e10-cold-start-fuel-consumption"},
+    {"question": "ช่วง cold start ปล่อย CO2 กรัมต่อกิโลเมตรเท่าไหร่", "expected_id": "e10-cold-start-tailpipe-co2", "expected_fact_id": "e10-cold-start-tailpipe-co2"},
+    {"question": "What ethanol rate was stated for the TSM plant in the 2009 PDD?", "expected_id": "tsm-pdd-ethanol-design-rate", "expected_fact_id": "tsm-pdd-ethanol-design-rate"},
+    {"question": "PDD เก่าคาดว่าจะได้ก๊าซชีวภาพเท่าไรต่อวัน", "expected_id": "tsm-pdd-biogas-design-rate", "expected_fact_id": "tsm-pdd-biogas-design-rate"},
+    {"question": "What methane content did the old design state?", "expected_id": "tsm-pdd-methane-content", "expected_fact_id": "tsm-pdd-methane-content"},
+    {"question": "ค่าประเมินลดก๊าซเรือนกระจกต่อปีใน PDD เท่าไร", "expected_id": "tsm-pdd-annual-avoidance-estimate", "expected_fact_id": "tsm-pdd-annual-avoidance-estimate"},
+    {"question": "กำลังการผลิตติดตั้งปัจจุบันของโรง TSM กี่ลิตรต่อวัน", "expected_id": "tsm-current-capacity", "expected_fact_id": "tsm-current-capacity"},
+    {"question": "กำลังผลิตติดตั้ง TSM กี่ลิตรต่อวัน", "expected_id": "tsm-current-capacity", "expected_fact_id": "tsm-current-capacity"},
+    {"question": "How much methane did TSM actually measure in a period matched to ethanol production?", "expected_id": "tsm-actual-methane-null", "expected_fact_id": "tsm-actual-methane-null"},
+    {"question": "เอทานอลมี CO2e ต่อลิตรตลอดวงจรเท่าไร", "expected_id": "ethanol-total-gap", "expected_fact_id": "ethanol-full-lifecycle-co2e-per-litre-null"},
+    {"question": "Compare the 2009 PDD project avoidance in tCO2e/year with whole lifecycle ethanol kg CO2e/L", "expected_id": "tsm-pdd-annual-avoidance-estimate", "expected_fact_id": null, "comparison_abstention": true},
+    {"question": "โรงงานอ้อยใช้ชานอ้อยผลิตพลังงานอะไรและต้องระวังเรื่องใด", "expected_id": "bagasse-steam"},
+    {"question": "วิธีปลูกกล้วยไม้ในกระถาง", "expected_id": null},
+    {"question": "How many people live in Canada in 2024?", "expected_id": null},
+    {"question": "How much water should I use for orchids?", "expected_id": null}
+  ]
+}

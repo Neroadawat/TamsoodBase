@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-08",
+  "server": "http://127.0.0.1:8767",
+  "html_http_status": 200,
+  "ui_single_answer_and_no_duplicate_cards": true,
+  "cases": [
+    {
+      "question": "กำลังการผลิตติดตั้งปัจจุบันของโรง TSM กี่ลิตรต่อวัน",
+      "expected_fact_id": "tsm-current-capacity",
+      "http_status": 200,
+      "answer": "หน้าองค์กร TSM ระบุกำลังผลิตที่ติดตั้งไว้ 200,000 ลิตรต่อวัน ตัวเลขนี้บอกความสามารถของโรงงาน ไม่ใช่ปริมาณที่ผลิตได้จริงในแต่ละวันครับ",
+      "source_ids": [
+        "tsm-current-capacity"
+      ],
+      "source_links": [
+        {
+          "title": "กำลังผลิตเอทานอลที่ติดตั้งของโรงงาน TSM",
+          "locator": "หน้าองค์กร TSM, รายละเอียดโรงงาน"
+        }
+      ],
+      "has_thai": true,
+      "no_internal_codes_or_fields": true,
+      "selection_correct": true
+    },
+    {
+      "question": "กำลังผลิตติดตั้ง TSM กี่ลิตรต่อวัน",
+      "expected_fact_id": "tsm-current-capacity",
+      "http_status": 200,
+      "answer": "หน้าองค์กร TSM ระบุกำลังผลิตที่ติดตั้งไว้ 200,000 ลิตรต่อวัน ตัวเลขนี้บอกความสามารถของโรงงาน ไม่ใช่ปริมาณที่ผลิตได้จริงในแต่ละวันครับ",
+      "source_ids": [
+        "tsm-current-capacity"
+      ],
+      "source_links": [
+        {
+          "title": "กำลังผลิตเอทานอลที่ติดตั้งของโรงงาน TSM",
+          "locator": "หน้าองค์กร TSM, รายละเอียดโรงงาน"
+        }
+      ],
+      "has_thai": true,
+      "no_internal_codes_or_fields": true,
+      "selection_correct": true
+    },
+    {
+      "question": "How much methane did TSM actually measure in a period matched to ethanol production?",
+      "expected_fact_id": "tsm-actual-methane-null",
+      "http_status": 200,
+      "answer": "จากเอกสารที่ตรวจตอนนี้ ยังไม่พบผลวัดปริมาณมีเทนจริงที่จับคู่กับยอดผลิตเอทานอลในช่วงเวลาเดียวกันครับ ตัวเลขในแผนปี 2009 เป็นค่าคาดการณ์ จึงใช้แทนผลจริงไม่ได้",
+      "source_ids": [
+        "tsm-actual-methane-null"
+      ],
+      "source_links": [
+        {
+          "title": "ปริมาณมีเทนที่ปล่อยจริง เทียบกับยอดผลิตเอทานอลช่วงเดียวกัน",
+          "locator": "รายการ UNFCCC และเอกสารแผนออกแบบ TSM"
+        }
+      ],
+      "has_thai": true,
+      "no_internal_codes_or_fields": true,
+      "selection_correct": true
+    },
+    {
+      "question": "เอทานอลมี CO2e ต่อลิตรตลอดวงจรเท่าไร",
+      "expected_fact_id": "ethanol-full-lifecycle-co2e-per-litre-null",
+      "http_status": 200,
+      "answer": "ตอนนี้ยังไม่มีตัวเลขที่ยืนยันได้สำหรับการปล่อยก๊าซเรือนกระจกตลอดวงจรต่อเอทานอลหนึ่งลิตรครับ ค่า CO₂e คือการคิดผลของก๊าซเรือนกระจกหลายชนิดให้เทียบกับ CO₂ ตามช่วงเวลาที่กำหนด เรายังขาดข้อมูลจริงที่จับคู่กันเรื่องการผลิต พลังงาน การขนส่ง มีเทนจากน้ำเสีย และการใช้เชื้อเพลิงในรถ จึงนำยอดลดการปล่อยรายปีหรือค่าไอเสียรถมาแทนไม่ได้",
+      "source_ids": [
+        "ethanol-full-lifecycle-co2e-per-litre-null"
+      ],
+      "source_links": [
+        {
+          "title": "การปล่อยก๊าซเรือนกระจกตลอดวงจรต่อเอทานอลหนึ่งลิตร",
+          "locator": "กรณีเอทานอล; รายการช่องว่างข้อมูลวัฏจักรชีวิต"
+        }
+      ],
+      "has_thai": true,
+      "no_internal_codes_or_fields": true,
+      "selection_correct": true
+    },
+    {
+      "question": "Compare the 2009 PDD project avoidance in tCO2e/year with whole lifecycle ethanol kg CO2e/L",
+      "expected_fact_id": null,
+      "http_status": 200,
+      "answer": "พบข้อมูลสองชุด แต่ยังเทียบกันตรง ๆ ไม่ได้ เพราะหน่วย, ช่วงเวลา, สถานที่หรือขอบเขต และ วิธีได้มาไม่ตรงกัน จึงไม่รวมตัวเลขหรือหาผลต่างครับ",
+      "source_ids": [
+        "ethanol-full-lifecycle-co2e-per-litre-null",
+        "tsm-pdd-annual-avoidance-estimate"
+      ],
+      "source_links": [
+        {
+          "title": "การปล่อยก๊าซเรือนกระจกตลอดวงจรต่อเอทานอลหนึ่งลิตร",
+          "locator": "กรณีเอทานอล; รายการช่องว่างข้อมูลวัฏจักรชีวิต"
+        },
+        {
+          "title": "ค่าประเมินการลดก๊าซเรือนกระจกของโครงการ TSM",
+          "locator": "รายการ UNFCCC และหน้าเอกสาร 11, 43–44"
+        }
+      ],
+      "has_thai": true,
+      "no_internal_codes_or_fields": true,
+      "selection_correct": true
+    }
+  ],
+  "live_gemini_called": false,
+  "notes": [
+    "Smoke requests used local loopback only.",
+    "Source numeric records and corpus were not edited."
+  ]
+}

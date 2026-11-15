@@ -1,0 +1,96 @@
+{
+  "review_date": "2026-11-10",
+  "review_scope": "Bounded primary-source screen for Thai palm-oil-mill cradle-to-gate GHG and allocation context; no import into the current FAME inventory",
+  "source": {
+    "citation": "Kaewmai, R.; H-Kittikun, A.; Musikavong, C. (2012). Greenhouse gas emissions of palm oil mills in Thailand. International Journal of Greenhouse Gas Control, 11, 141-151.",
+    "doi": "10.1016/j.ijggc.2012.08.006",
+    "publisher_article": "https://www.sciencedirect.com/science/article/abs/pii/S1750583612001910",
+    "accessed_material": [
+      "publisher metadata and abstract",
+      "publisher-indexed excerpts for the goal/system-boundary, wet-extraction-process, and conclusion sections"
+    ],
+    "local_pdf": false,
+    "source_snapshot_sha256": null,
+    "full_text_direct_open": "HTTP 403; not retried",
+    "visual_table_audit": false,
+    "data_period": null,
+    "data_period_note": "The abstract uses Thai national CPO production in 2009 in a national total calculation, but the accessible abstract does not establish the measurement period of all 14 mill observations or allocated intensity values.",
+    "geography": "Thailand; 14 wet-extraction palm oil mills representing 34.6% of national CPO production capacity according to the abstract",
+    "process_boundary": "Cradle-to-gate, from FFB acquisition to CPO production, as reported by the publisher-indexed article text",
+    "fu": "metric ton CPO (as the denominator for reported kg CO2-equivalent intensity)",
+    "locators": [
+      "publisher abstract",
+      "publisher-indexed section snippet: Goal and system boundary of research",
+      "publisher-indexed section snippet: Wet extraction process",
+      "publisher abstract / highlights: conclusion-level values"
+    ]
+  },
+  "reported_facts": [
+    {
+      "name": "14-mill average GHG intensity without allocation",
+      "value": 1198,
+      "unit": "kg CO2e/metric ton CPO",
+      "evidence_class": "PUBLISHER_ABSTRACT_REPORTED",
+      "scope_note": "Cradle-to-gate wet-extraction CPO result; not direct methane mass or a FAME product result"
+    },
+    {
+      "name": "Energy-allocated intensity, mills with biogas capture",
+      "value": 750,
+      "unit": "kg CO2e/metric ton CPO",
+      "evidence_class": "PUBLISHER_ABSTRACT_REPORTED",
+      "scope_note": "Allocation share and underlying mill-period data not confirmed from full methods/tables"
+    },
+    {
+      "name": "Energy-allocated intensity, mills without biogas capture",
+      "value": 1087,
+      "unit": "kg CO2e/metric ton CPO",
+      "evidence_class": "PUBLISHER_ABSTRACT_REPORTED",
+      "scope_note": "Allocation share and underlying mill-period data not confirmed from full methods/tables"
+    },
+    {
+      "name": "Energy-allocated Thailand average",
+      "value": 871,
+      "unit": "kg CO2e/metric ton CPO",
+      "evidence_class": "PUBLISHER_ABSTRACT_REPORTED",
+      "scope_note": "Not assumed to be a 2019/2020 provider-matched value"
+    },
+    {
+      "name": "Energy-allocated best-observed scenario",
+      "value": 440,
+      "unit": "kg CO2e/metric ton CPO",
+      "evidence_class": "PUBLISHER_ABSTRACT_REPORTED",
+      "scope_note": "Scenario benchmark; not assumed to represent the current selected mill"
+    },
+    {
+      "name": "Estimated total emissions from Thai wet-extraction CPO production in 2009",
+      "value": 1620000,
+      "unit": "metric ton CO2e",
+      "evidence_class": "PUBLISHER_ABSTRACT_REPORTED_APPROXIMATE",
+      "scope_note": "National estimate from reported national CPO production context; not an observed plant-level output or inventory exchange"
+    }
+  ],
+  "limitations": [
+    "The accessible publisher abstract does not expose allocation equations or allocation shares; do not infer them from the four allocated results.",
+    "The period represented by the 14-mill mean is not established by accessible text. The national 2009 total does not prove the mill observation period.",
+    "CO2e intensities are not methane-mass measurements, COD removal, or methane capture/slip data.",
+    "The CPO cradle-to-gate boundary does not cover the team's complete FAME chain, downstream distribution/use, or end-of-life.",
+    "Provider, site, vintage, product, and foreground data do not match the selected Mill 1 / 2019-2020 FAME scenario."
+  ],
+  "decision": {
+    "classification": "HOLD_CONTEXT",
+    "use": "Private context-only historical Thai CPO mill benchmark for boundary and allocation discussion",
+    "current_FAME_inventory_imports": 0,
+    "lifecycle_candidate_changed": false,
+    "allocation_applied_to_current_case": false,
+    "CO2e_total_changed": false,
+    "redistribution_status": "NOT_CLEARED",
+    "website_or_RAG_use": false,
+    "reason": "Publisher abstract supports source-reported benchmark only; full methods/tables, matched current provider/time, and redistribution permission have not been verified."
+  },
+  "next_evidence_needed": [
+    "Full text with method/table audit for allocation equations, GWP assumptions, and the observation period of the 14 mills",
+    "Provider-matched methane mass plus actual CPO output from the same selected mill and reporting period",
+    "Current foreground chain allocation basis and coproduct fate, including confirmation no allocation was already applied",
+    "Explicit reuse/redistribution license before reproducing table content in public output"
+  ]
+}

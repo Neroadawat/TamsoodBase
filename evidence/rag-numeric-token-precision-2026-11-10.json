@@ -1,0 +1,26 @@
+{
+  "review_date": "2026-11-10",
+  "checked_at_utc": "2026-11-10T06:51:07.487292+00:00",
+  "review_type": "RAG_NUMERIC_TOKEN_PRECISION_REGRESSION",
+  "finding": "The previous numeric-token guard converted text tokens through JavaScript Number, allowing distinct integers above Number.MAX_SAFE_INTEGER to collapse to the same rounded value.",
+  "change": "Canonicalize sign, integer digits and trailing-zero-trimmed fractional digits as strings; preserve exact integer precision while matching Thai digits, comma grouping and equivalent decimal display forms.",
+  "source_file": "api/rag/ask.js",
+  "source_sha256": "456c4261894cef39067a46954a31c9e34d5d532e308a3c0596c36f58331acb26",
+  "test_file": "tests/rag-vercel-api.cjs",
+  "test_sha256": "a409419241f0eeba743148b07f0f429d5d371610c5eb2c8b4ac3eebf2f035ef5",
+  "test_command": "node tests/rag-vercel-api.cjs",
+  "result": "passed",
+  "observed_cases": [
+    "Rejects 9007199254740992 when the cited evidence contains 9007199254740993.",
+    "Matches Thai-digit ๑๐๐๐ against cited 1,000.00.",
+    "Existing Gemini response, citation, request, timeout and closed-route contract checks passed."
+  ],
+  "live_gemini_called": false,
+  "production_deployed": false,
+  "production_rag_status": "HOLD",
+  "limitations": [
+    "Lexical number presence does not establish metric, unit, period, basis, scope or semantic entailment.",
+    "Number words and alternative unit conversions are not verified.",
+    "The test does not establish model compliance or independent Thai user acceptance."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-11-12T15:54:18+07:00",
+  "scope": "LOCAL_PREVIEW_ROUTE_MOCK_FOR_NUMERIC_GROUNDING_ABSTENTION_AND_UI_COPY",
+  "finding_before": "The parser correctly rejected an ungrounded numeric claim, but the route caught every error as HTTP 503 and presented a temporary-service-outage state to the user.",
+  "change": {
+    "route": "api/rag/ask.js returns an expected grounding failure as HTTP 200 with summary.kind=grounding-abstention, no cited source IDs for the rejected generated answer, and the retrieved source cards still available for inspection.",
+    "ui": "web/ask.html renders a short Thai explanation that the number could not be confirmed with its unit; it does not label this as a service outage.",
+    "scope": "Only the specific ungrounded_numeric_claim exception gets this response; transport/model failures remain 503."
+  },
+  "verification": {
+    "route_mock": "node tests/rag-vercel-api.cjs passed; mocked model supplied a unitless value and route returned safe abstention with no generated-answer citations.",
+    "ui_contract": "node tests/rag-ask-consent-ui.cjs passed; static assertion checks the grounding-abstention render branch.",
+    "build_copy": "test_deployment_build_only_copies_public_assets passed (1 test).",
+    "diff_check": "git diff --check passed for changed API, page, and targeted tests."
+  },
+  "limitations": [
+    "Provider response was mocked; no live Gemini call.",
+    "UI was checked by source contract and build-copy test, not browser visual/mobile interaction.",
+    "This is not independent Thai user acceptance or semantic evaluation."
+  ],
+  "production_route_opened": false,
+  "production_changed": false,
+  "database_or_ec2_touched": false,
+  "release_status": "HOLD",
+  "live_gemini_called": false
+}

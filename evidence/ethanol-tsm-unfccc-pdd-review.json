@@ -1,0 +1,172 @@
+{
+  "review_date": "2026-11-08",
+  "source_id": "UNFCCC-TSM-WASTEWATER-PDD-2009",
+  "source_class": "OFFICIAL_PROJECT_DESIGN_DOCUMENT_EX_ANTE_REFERENCE",
+  "source": {
+    "publisher": "UNFCCC Clean Development Mechanism",
+    "title": "TSM Bio Energy Wastewater Management and Methane Capturing for Electricity",
+    "document_type": "Project Design Document (CDM-PDD), Version 01",
+    "document_date": "2009-07-05",
+    "methodology": "ACM0014 version 3.1 stated in the PDD; UNFCCC listing labels ACM0014 ver. 3",
+    "project_location": "Kaeng Sian, Mueang Kanchanaburi, Kanchanaburi, Thailand",
+    "project_linkage": "The PDD states that TSM Bio Energy was contracted by Thai Sugar Ethanol Co. Ltd. to manage wastewater from its ethanol facility.",
+    "listing_url": "https://cdm.unfccc.int/Projects/Validation/DB/8CIS1C5D9HBBRSIRR1R0STCX9SKQZC/view.html",
+    "document_url": "https://cdm.unfccc.int/UserManagement/FileStorage/7YKN5LO6P4A8HC3RZM0EDFST12J9UG",
+    "document_pages": 73,
+    "public_access_note": "The UNFCCC listing says the project participant chose to make the PDD publicly available directly on the UNFCCC website.",
+    "rights_status": "NOT_CLEARED_FOR_REDISTRIBUTION",
+    "local_copy_or_hash": null
+  },
+  "source_reported_design_values": [
+    {
+      "name": "ethanol_capacity",
+      "value": 100,
+      "unit": "m3/day",
+      "basis": "fuel-grade ethanol plant capacity/design stated in PDD",
+      "locator": "PDF printed pages 2 and 6; extracted pages 1 and 5",
+      "classification": "DESIGN_CONTEXT_NOT_ACTUAL_PERIOD_OUTPUT"
+    },
+    {
+      "name": "vinasse_after_evaporation",
+      "value": 600,
+      "unit": "m3/day",
+      "basis": "approximately; PDD also describes 600-800 m3/day in a process figure",
+      "locator": "PDF printed pages 2, 6-7; extracted pages 1, 5-6",
+      "classification": "DESIGN_ESTIMATE_INTERNAL_RANGE_REQUIRES_RECONCILIATION"
+    },
+    {
+      "name": "vinasse_COD",
+      "value": 351353,
+      "unit": "mg/L",
+      "basis": "maximum stated value for concentrated vinasse; sample point and operating period not given",
+      "locator": "PDF printed pages 3, 6, 9; extracted pages 2, 5, 8",
+      "classification": "DESIGN_MAXIMUM_NOT_MATCHED_MEASUREMENT"
+    },
+    {
+      "name": "digester_count_and_volume",
+      "value": {"count": 2, "volume_each_m3": 25000},
+      "unit": "m3",
+      "basis": "proposed modified covered lagoon digesters",
+      "locator": "PDF printed pages 7-9; extracted pages 6-8",
+      "classification": "PROJECT_DESIGN"
+    },
+    {
+      "name": "biogas_flow",
+      "value": 62000,
+      "unit": "m3/day",
+      "basis": "expected design flow; PDD says treatment operates 300 days/year",
+      "locator": "PDF printed pages 8-9; extracted pages 7-8",
+      "classification": "EX_ANTE_DESIGN_NOT_MONITORED_RESULT"
+    },
+    {
+      "name": "biogas_methane_fraction",
+      "value": 55,
+      "unit": "%",
+      "basis": "PDD describes methane content as 55%, without clearly stating whether this is a volume or mass fraction; measurement proposed quarterly with calibrated portable gas meter",
+      "locator": "PDF printed pages 9 and 50; extracted pages 8 and 49",
+      "classification": "DESIGN_VALUE_WITH_FUTURE_MONITORING_PLAN"
+    },
+    {
+      "name": "expected_electricity_generation",
+      "value": 18,
+      "unit": "GWh/year",
+      "basis": "approximate project description; other PDD sections report 17,520 and 18,613 MWh/year",
+      "locator": "PDF printed pages 8-9 and 40; extracted pages 7-8 and 39",
+      "classification": "EX_ANTE_DESIGN_VALUES_CONFLICT_WITHIN_DOCUMENT"
+    },
+    {
+      "name": "estimated_annual_emission_reductions",
+      "value": 146023,
+      "unit": "tCO2e/year",
+      "basis": "UNFCCC listing explicitly says estimates in unvalidated PDDs; PDD estimates baseline minus project emissions",
+      "locator": "UNFCCC listing note; PDD printed pages 11 and 43-44; extracted pages 10 and 42-43",
+      "classification": "EX_ANTE_PROJECT_AVOIDANCE_ESTIMATE_NOT_PRODUCT_LCI_OR_VERIFIED_OPERATING_RESULT"
+    }
+  ],
+  "monitoring_design": {
+    "biogas_flow": "Continuous at main gas outlet using a pre-calibrated flow meter; annual aggregation in calculations.",
+    "methane_concentration": "Quarterly sampling with a calibrated portable gas meter and stated 95% confidence level.",
+    "leakage": "PDD describes a 5% default for months when leakage is detected; it also uses 5% in an ex-ante calculation while separately saying leakage is not expected.",
+    "other_relevant_parameters": ["influent/effluent volume", "COD at digester and downstream lagoon", "net electricity", "flare parameters", "sludge and land application", "electricity/fossil energy consumed by project"],
+    "classification": "PROPOSED_MONITORING_PLAN_NOT_EVIDENCE_THAT_MONITORING_DATA_WERE_COLLECTED"
+  },
+  "source_reported_ex_ante_model_values": {
+    "classification": "PDD_MODEL_ESTIMATES_ONLY_NOT_MEASUREMENTS_OR_CURRENT_FACTORS",
+    "locator": "PDF printed pages 39-44 and 49-50; extracted pages 38-43 and 48-49",
+    "values": {
+      "GWPCH4_tCO2e_per_tCH4": 21,
+      "baseline_methane_emissions_tCO2e_per_year": 136472.29,
+      "baseline_electricity_emissions_tCO2_per_year": 10048.07,
+      "baseline_total_tCO2e_per_year": 146520,
+      "project_effluent_methane_emissions_tCO2e_per_year": 255.76,
+      "project_digester_leakage_tCO2e_per_year": 87.56,
+      "project_electricity_consumption_emissions_tCO2e_per_year": 154.03,
+      "project_total_tCO2e_per_year": 497.35,
+      "estimated_annual_reduction_tCO2e_per_year": 146023
+    },
+    "use_limit": "Keep as a historical project-method example. Do not use as current TSM inventory, per-litre product result, or independent verification."
+  },
+  "internal_consistency_review": [
+    {
+      "issue": "Annual biogas volume conflicts with declared operating days",
+      "source_values": ["62,000 m3/day", "300 treatment operating days/year", "600 m3/day vinasse", "219,000 m3/year wastewater in ex-ante calculation", "22.81 million m3/year biogas", "22.63 million m3/year biogas"],
+      "team_arithmetic": "62,000 × 300 = 18,600,000 m3/year; 62,000 × 365 = 22,630,000 m3/year; 600 × 300 = 180,000 m3/year; 600 × 365 = 219,000 m3/year.",
+      "assessment": "The PDD's annual values do not reconcile to its stated 300 operating days; 22.63 million biogas and 219,000 m3 wastewater correspond to 365 days, while 22.81 million corresponds to neither stated basis.",
+      "disposition": "RETAIN_ALL_SOURCE_VALUES; HOLD_ANY_ANNUALIZED_FLOW_OR_DERIVED_METHANE_RESULT"
+    },
+    {
+      "issue": "Methane content and methane mass concentration have an unresolved basis",
+      "source_values": ["55% methane content; fraction basis unspecified", "0.0067 kg CH4/m3 used in the leakage calculation"],
+      "assessment": "The document does not provide a gas reference condition or a clear fraction basis that reconciles the reported 55% content with the mass concentration used in the calculation. Do not convert one to the other or recompute leakage from these inputs.",
+      "disposition": "HOLD; REQUEST_REFERENCE_CONDITIONS_AND_PARAMETER_TRACEABILITY"
+    },
+    {
+      "issue": "Displayed leakage calculation does not reproduce the printed result if displayed parameters and units are applied literally",
+      "source_values": ["Fbiogas = 22,630,000 m3/year", "FL = 0.05", "wCH4 = 0.0067 kg CH4/m3", "GWPCH4 = 21 tCO2e/tCH4", "printed result = 87.56 tCO2e/year"],
+      "team_arithmetic": "22,630,000 × 0.05 × 0.0067 × 21 × 0.001 = 159.20205 tCO2e/year.",
+      "assessment": "The displayed output does not match the literal equation inputs. The separately printed 55% methane value and ambiguous mass-concentration basis may indicate a transcription/unit issue, but the source does not resolve it.",
+      "disposition": "PRESERVE_SOURCE_OUTPUT_AND_INPUTS; HOLD; DO NOT SUBSTITUTE_TEAM_RESULT_INTO_SOURCE"
+    },
+    {
+      "issue": "Annual electricity generation values differ",
+      "source_values": ["approximately 18 GWh/year", "17,520 MWh/year", "18,613 MWh/year"],
+      "assessment": "Different PDD sections use these values for design or baseline calculations without a clear reconciliation in the reviewed locators.",
+      "disposition": "RETAIN_WITH_LOCATORS; DO_NOT_SELECT_OR_APPLY_AS_A_SINGLE_VALUE"
+    },
+    {
+      "issue": "Leakage-factor semantics differ between parameter description and ex-ante calculation",
+      "source_values": ["5% default applied in months when leakage is detected", "5% used in annual ex-ante leakage equation"],
+      "assessment": "The period/trigger for applying the default is not resolved in the document sections reviewed.",
+      "disposition": "KEEP_AS_METHODOLOGY_QUESTION; DO_NOT_TREAT_AS_MEASURED_LEAKAGE"
+    }
+  ],
+  "boundary_and_lifecycle_assessment": {
+    "covered_by_project_method": ["wastewater treatment and methane baseline", "digester leakage", "flare", "downstream wastewater/lagoon", "sludge land application", "project electricity/fossil energy use", "grid electricity displacement"],
+    "not_a_product_lifecycle_boundary": ["molasses cultivation and supply", "ethanol production foreground inventory as a complete dataset", "fuel distribution and vehicle use", "vehicle fuel-cycle emissions", "end-of-life of the vehicle/fuel system"],
+    "decision": "USE_AS_A_SITE_LINKED_HISTORICAL_PROJECT_DESIGN_AND_MONITORING_METHOD_REFERENCE_ONLY; DO_NOT_JOIN_TO_CURRENT_TSM_DISCLOSURES_OR_OTHER_STUDIES_AS_IF_SAME_PERIOD"
+  },
+  "compatibility_decision": {
+    "usable_as": ["historical site-specific treatment-chain design context", "project boundary/method reference", "candidate monitoring variables and QA/QC plan", "internal-consistency issue register"],
+    "not_usable_as": ["actual methane emitted or recovered", "actual same-period ethanol output", "current CH4 factor or GWP", "current grid factor", "current project CO2e", "full fuel-product LCI", "evidence the proposed project operated as designed"],
+    "actual_ethanol_output_l_per_period": null,
+    "actual_methane_emitted_kg_per_period": null,
+    "actual_methane_recovered_kg_per_period": null,
+    "actual_electricity_by_period_mwh": null,
+    "team_calculated_product_co2e_per_l": null,
+    "rights_status": "NOT_CLEARED_FOR_REDISTRIBUTION",
+    "local_copy_or_hash": null,
+    "production_or_public_release_changed": false
+  },
+  "review": {
+    "review_scope": "Official UNFCCC listing and linked 73-page PDD inspected through web text extraction; selected page locators checked; no local download/hash or page-image rendering performed.",
+    "bounded_follow_up_search": {
+      "date": "2026-11-08",
+      "scope": "Two targeted UNFCCC-domain searches for a separate TSM monitoring report or monitoring-report file storage record",
+      "result": "No separate monitoring report surfaced; search result returned the validation listing and PDD only. This is not proof that no report exists elsewhere or is available on request."
+    },
+    "source_observations_promoted_to_current_inventory": 0,
+    "source_values_preserved_without_correction": true,
+    "team_arithmetic_separated_from_source_reported_values": true,
+    "independent_human_review": false
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "schema_version": 2,
+  "status": "OWNER_APPROVED_PUBLIC_DEMO",
+  "reviewed_at": "2026-11-12",
+  "publicly_usable": true,
+  "public_release_allowed": true,
+  "external_llm_allowed": true,
+  "decision_note": "On 2026-11-12 the project owner decided to open the chat on the public website for the course demo. This is an owner decision, not a completed rights or readiness review: the checks under release_gates were not verified and stay false.",
+  "owner_decision": {
+    "decided_on": "2026-11-12",
+    "decided_by": "Project owner (repository and Vercel project owner), stated in a working session",
+    "audience": "Public website visitors; course demo",
+    "values_released_to_chat": [
+      "DMF monthly petroleum production (catalog.dmf.go.th, Open Data Common label)",
+      "EPPO refinery intake and petroleum product output (catalog.eppo.go.th, Open Data Common label)",
+      "NSO Statistical Yearbook 2026 energy tables 13.5-13.10 (public download)",
+      "Permpool, Ghani & Gheewala (2020) Tables 1-6 (inventory and the study's own reported Well-to-Wheels results) and summary notes (CC BY 4.0)"
+    ],
+    "values_withheld_from_chat": [
+      "Thai Oil and SPRC sustainability-report metrics: described and linked only, no values",
+      "Ethanol case evidence (E10 vehicle test, TSM wastewater PDD): described and linked only, no values"
+    ],
+    "accepted_without_verification": [
+      "Specific reuse terms of the DMF, EPPO and NSO downloads were not confirmed with the agencies",
+      "Gemini API audience eligibility and billing state were not confirmed",
+      "No Vercel WAF rate limit is configured; only a per-instance limiter in the function",
+      "No independent user acceptance test, capacity test or rollback drill was run"
+    ],
+    "credential_note": "The owner reported that the Gemini key disclosed in chat was replaced. This was not independently verified and no key value was read."
+  },
+  "knowledge_pack": {
+    "path": "docs/rag/knowledge-pack.json",
+    "scope": "OWNER_RELEASED_GOV_OPEN_DATA_AND_CC_BY_ARTICLE",
+    "content_sha256": "18c943ca84a7e25c276a7d562e3040f468aeabe74b7c28964af2a27284c81a00",
+    "contains_company_report_values": false
+  },
+  "legacy_corpus_note": "narrative_cards and statistical_facts below belong to the earlier local prototype. They are not served by the public chat and their rights decisions remain PENDING.",
+  "narrative_cards": [
+    {
+      "id": "e10-cold-start",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "ethanol-total-gap",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "bagasse-steam",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "reference-vs-model",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "fame-functional-unit",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "palm-upstream-basis",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "palm-land-unit-hold",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "palm-cpo-provider-gap",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "fame-allocation-caution",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "fame-measurement-period",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    }
+  ],
+  "statistical_facts": [
+    {
+      "id": "e10-cold-start-fuel-consumption",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "e10-cold-start-tailpipe-co2",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-pdd-ethanol-design-rate",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-pdd-biogas-design-rate",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-pdd-methane-content",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-pdd-annual-avoidance-estimate",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-current-capacity",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-actual-methane-null",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "tsm-actual-ethanol-output-null",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    },
+    {
+      "id": "ethanol-full-lifecycle-co2e-per-litre-null",
+      "release_allowed": false,
+      "rights_review": "PENDING"
+    }
+  ],
+  "release_gates": {
+    "source_rights_cleared": false,
+    "provider_audience_eligibility_confirmed": false,
+    "private_network_connectivity_verified": false,
+    "server_to_server_auth_configured": false,
+    "rate_limit_and_cost_controls_verified": false,
+    "public_user_evaluation_complete": false,
+    "capacity_and_monitoring_accepted": false,
+    "privacy_notice_and_data_retention_reviewed": false,
+    "rollback_owner_and_drill_recorded": false
+  }
+}

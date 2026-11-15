@@ -1,0 +1,23 @@
+{
+  "review_date": "2026-11-10",
+  "checked_at_utc": "2026-11-10T06:47:47.283569+00:00",
+  "change": "Gemini answer parsing now compares normalized digit tokens in the answer against only the cited hit text/title/locator/attribution/licence and rejects values absent from those cited hits.",
+  "test_command": "node tests/rag-vercel-api.cjs",
+  "result": "passed",
+  "cases": [
+    "Supports comma-grouped and Thai-digit representation of a cited 1000 value.",
+    "Rejects 2024 when absent from the cited hit.",
+    "Rejects unknown source IDs.",
+    "Existing prompt/citation/deadline/response-size/public-route-closed contract checks pass."
+  ],
+  "source_sha256": "689a57d08f12e6362e3602ab39e1f454694b5b77a9bd70c401b66a61ffae53ab",
+  "test_sha256": "a1476a83219264c09ccd37bae78a1dd5c0ed1a1cd33837263fa725558d8a61cb",
+  "limitations": [
+    "This is lexical token matching, not entailment validation.",
+    "Matching a number does not prove that its metric, unit, period, basis, scope, or relationship is correct.",
+    "Numbers written as words are not checked.",
+    "No live Gemini request or deployment occurred."
+  ],
+  "production_deployed": false,
+  "production_rag_status": "HOLD"
+}

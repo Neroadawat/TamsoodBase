@@ -1,0 +1,30 @@
+{
+  "review_date": "2026-11-10",
+  "checked_at_utc": "2026-11-10T06:56:31.832385+00:00",
+  "review_type": "OFFICIAL_VERCEL_WAF_RATE_LIMIT_RESEARCH",
+  "sources": [
+    {
+      "url": "https://vercel.com/docs/vercel-firewall/vercel-waf/rate-limiting",
+      "observed": "WAF rate limiting available on all plans; Hobby/Pro fixed window with IP and JA4 keys; counters are per-region; Hobby quota lists 1,000,000 allowed requests; Pro usage-based; rate-limit price listed as $0.50 per million allowed requests."
+    },
+    {
+      "url": "https://vercel.com/docs/vercel-firewall/vercel-waf/usage-and-pricing",
+      "observed": "WAF rate limiting is a priced feature; denied/mitigated traffic does not incur CDN Requests/FDT; billing metric is region-based rate-limited allowed requests."
+    },
+    {
+      "url": "https://vercel.com/docs/vercel-firewall/vercel-waf",
+      "observed": "WAF configuration changes take effect immediately and prior Firewall versions can be restored from the audit log."
+    }
+  ],
+  "artifact": "docs/rag/VERCEL_RATE_LIMITER_RUNBOOK.md",
+  "artifact_sha256": "65f037479bbcfde17f0137f376b97166eab7cff334c9e268d007fe06b55d6780",
+  "project_dashboard_inspected": false,
+  "rule_configured": false,
+  "production_changed": false,
+  "decision": "Owner must verify current plan, quota, billing and approve a threshold before configuring; runbook does not assert project-specific settings.",
+  "limitations": [
+    "Regional fixed-window counters are not a hard global cap.",
+    "No usage plan, rule, rate threshold, budget or owner decision for TamsoodBase was observed.",
+    "No live rate-limit behavior was tested; RAG Production remains HOLD."
+  ]
+}

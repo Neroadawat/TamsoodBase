@@ -1,0 +1,104 @@
+{
+  "review_date": "2026-11-10",
+  "scope": "Local repository review and targeted checks for RAG Final readiness; no production or EC2 mutation",
+  "five_gates": {
+    "rights_and_corpus": {
+      "catalog_check": "passed",
+      "private_source_entries": 20,
+      "restricted_evidence_records": 20,
+      "cleared_public_records": 0,
+      "status": "BLOCKED"
+    },
+    "privacy_and_external_model": {
+      "server_requires_explicit_gemini_consent": true,
+      "production_external_processing_approval": "not evidenced",
+      "status": "BLOCKED"
+    },
+    "abuse_and_cost_controls": {
+      "durable_global_rate_limit_and_budget_controls": "not evidenced",
+      "status": "BLOCKED"
+    },
+    "quality_and_user_acceptance": {
+      "rag_unit_scope_catalog_tests": {
+        "passed": 13,
+        "skipped": 0
+      },
+      "frontend_and_release_consistency_tests": {
+        "passed": 18,
+        "skipped": 0
+      },
+      "vercel_rag_route_contract": "passed",
+      "independent_thai_user_acceptance": "not evidenced",
+      "status": "PARTIAL"
+    },
+    "deployment_capacity_monitoring_rollback": {
+      "frontend_build": "passed",
+      "public_rag_enabled": false,
+      "rag_mode": "closed",
+      "private_research_data_in_frontend_build": false,
+      "ec2_last_recorded_private_release": "1c49e9d40b4b3936",
+      "ec2_evidence_date": "2026-11-08",
+      "remote_ec2_reprobe_this_review": false,
+      "public_production_deployment_this_review": false,
+      "status": "BLOCKED_FOR_PUBLIC_RELEASE"
+    }
+  },
+  "checks": [
+    {
+      "command": "build/rag-verified-venv Python: unittest tests.test_rag_catalog tests.test_rag_scope",
+      "result": "13 passed, 0 skipped"
+    },
+    {
+      "command": "python: unittest tests.test_frontend tests.test_release_consistency",
+      "result": "18 passed, 0 skipped"
+    },
+    {
+      "command": "node tests/rag-vercel-api.cjs",
+      "result": "passed; numeric abstention copy assertions and Gemini request contract passed; public route remains closed"
+    },
+    {
+      "command": "node --check api/rag/ask.js && node --check tests/rag-vercel-api.cjs",
+      "result": "passed"
+    },
+    {
+      "command": "node scripts/build_frontend.mjs",
+      "result": "passed; publicRagEnabled=false; ragMode=closed; containsPrivateResearchData=false"
+    },
+    {
+      "command": "python -X utf8 scripts/build_rag_catalog.py --check",
+      "result": "passed; 20 private source entries; 20 restricted evidence records; 0 cleared public records"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed; Git emitted only CRLF-to-LF notices for existing modified files"
+    }
+  ],
+  "release_decision": "HOLD",
+  "blockers": [
+    "No current corpus record is cleared for public redistribution.",
+    "Production Gemini data-processing/privacy approval is not evidenced.",
+    "Durable ingress rate limiting, global spend budget, and alert ownership are not evidenced.",
+    "Independent Thai user acceptance of generated answers and citations is not evidenced.",
+    "Current production ingress/capacity/monitoring and release-specific rollback acceptance are not evidenced."
+  ],
+  "mutations": {
+    "production_deploy": false,
+    "production_route_enabled": false,
+    "ec2_changed": false,
+    "secrets_read_or_recorded": false,
+    "rights_status_changed": false
+  },
+  "credential_scan": {
+    "scope": "782 text files under application source, docs, tests, and config; excludes data/raw, tmp, build, output, dependency and VCS directories",
+    "patterns": "Google AIza keys, AQ-prefixed Google key shape, and literal GEMINI_API_KEY/GOOGLE_API_KEY assignments",
+    "matches_in_scoped_files": 0,
+    "root_env_files": [
+      ".env.local"
+    ],
+    "env_file_values_read": false,
+    "env_files_tracked_by_git": false,
+    "ignore_rule_verified": ".gitignore .env*",
+    "limitation": "pattern scan is not a complete secret audit and cannot revoke or assess a credential pasted into chat; rotate that key independently",
+    "status": "targeted_scan_passed_with_scope_limit"
+  }
+}

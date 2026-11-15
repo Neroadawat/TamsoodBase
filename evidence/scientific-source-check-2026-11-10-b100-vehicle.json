@@ -1,0 +1,64 @@
+{
+  "review_date": "2026-11-10",
+  "scope": "Bounded screening of a newly identified Thai B100 pickup-use thesis; no current-chain import",
+  "source": {
+    "citation": "Kanokkhanarat, Phobkrit (2023). Influence of Biodiesel and Biodiesel Blended with Ethanol Fuels on Combustion and Emission Characteristics of Diesel Engine and Vehicle. M.Eng. thesis, School of Engineering, King Mongkut's Institute of Technology Ladkrabang.",
+    "repository_identifier": "KMITL-2023-EN-M-037-012",
+    "repository_pdf": "https://opacimages.lib.kmitl.ac.th/medias/b00293450/Phobkrit%20Kanokkhanarat.pdf",
+    "local_pdf": false,
+    "source_snapshot_sha256": null,
+    "data_period": null,
+    "data_period_note": "Cover reports thesis year 2023; the reviewed passages do not establish the measurement dates/period for the sample fuels or vehicle tests.",
+    "geography": "Thailand; chassis dynamometer test at Pollution Control Department according to thesis methods",
+    "study_fu": null,
+    "use_test": {
+      "fuel": "B100 palm methyl ester (PME); thesis says palm oil, acid-esterification/transesterification with methanol",
+      "vehicle": "Toyota Hilux Tiger, diesel engine 2KD-FTV, 2,500 cc, vehicle mass 1,590 kg",
+      "test_type": "chassis dynamometer",
+      "driving_cycle": "New European Driving Cycle (NEDC), urban and highway phases",
+      "cycle_distances_km": {
+        "urban": 4,
+        "highway": 7
+      },
+      "cycle_durations_s": {
+        "urban": 780,
+        "highway": 400
+      }
+    },
+    "locators": [
+      "cover, printed pp. 1-2: thesis title, author, institution, thesis year and identifier",
+      "printed pp. 15-17: B100 fuel origin and sample properties",
+      "printed pp. 20-22: vehicle, chassis dynamometer, NEDC phase characteristics",
+      "printed pp. 82-84: vehicle pollutant charts; Figure 4.85 CO2 in mg/km"
+    ],
+    "text_extraction_review": true,
+    "visual_chart_audit": false,
+    "rights_notice": "Thesis states educational use only, prohibits commercial use and modification, and requires attribution.",
+    "redistribution_permission": "NOT_ESTABLISHED"
+  },
+  "screened_findings": [
+    "The thesis reports B100 vehicle tailpipe CO2 per distance and other vehicle pollutant categories under NEDC; the abstract/results do not establish CH4 and N2O per matching fuel functional unit.",
+    "A fuel-properties table includes carbon content, calorific value, and density for the study B100, but the reviewed evidence does not establish that the calorific-value basis is the LHV required for the current 1000-MJ functional unit or that this B100 is the current-chain product.",
+    "The vehicle emissions are reported per distance; no verified fuel-energy-per-cycle or distance-per-MJ link was identified in the reviewed passages. Do not convert to the team's FU without that bridge.",
+    "NEDC is not a Thai driving cycle. Test location in Thailand does not make its driving pattern representative of Thai use.",
+    "No actual measurement period, repeated-test/uncertainty record, cold-start boundary, or product-provider match was established from screened pages."
+  ],
+  "decision": {
+    "classification": "HOLD_CONTEXT",
+    "use": "Private historical Thai B100 pickup-use candidate for documenting a possible use-phase evidence path",
+    "current_FAME_inventory_imports": 0,
+    "use_gate_closed": false,
+    "CO2e_total_changed": false,
+    "redistribution_status": "NOT_CLEARED",
+    "website_or_RAG_use": false,
+    "reason": "NEDC/distance basis, missing measured period and fuel-energy bridge, incomplete GHG gases, no foreground product match, and restrictive educational-only/no-modification notice"
+  },
+  "next_evidence_needed": [
+    "Visual audit of original vehicle-emission figure(s) and exact source locators before any number is transcribed",
+    "Measured B100 mass or energy consumed per the same NEDC cycle and explicit LHV basis for the same sample",
+    "CH4 and N2O emissions compatible with the same vehicle, fuel, test cycle, and reporting basis",
+    "Measurement dates, repeat counts and uncertainty, cold-start/after-treatment configuration",
+    "Evidence linking the tested fuel/vehicle-use scenario to the current FAME foreground chain or an explicit reason to retain a separate scenario",
+    "Rights-holder clarification before reproducing data or content in public website/RAG"
+  ]
+}

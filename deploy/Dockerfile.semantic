@@ -1,0 +1,25 @@
+FROM python:3.12-slim-bookworm
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONIOENCODING=utf-8 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR /app
+COPY requirements-rag.txt /app/requirements-rag.txt
+RUN python -m pip install --no-cache-dir -r /app/requirements-rag.txt
+
+COPY --chown=10001:10001 scripts/semantic_service.py /app/scripts/semantic_service.py
+COPY --chown=10001:10001 scripts/rag_http.py /app/scripts/rag_http.py
+COPY --chown=10001:10001 docs/rag/semantic-corpus.json /app/docs/rag/semantic-corpus.json
+# Model files are copied from the verified local cache (Apache-2.0, see RAG_MODEL_NOTICE.txt);
+# the service starts with local_files_only=True and never downloads at runtime.
+COPY --chown=10001:10001 build/rag/models /app/build/rag/models
+COPY --chown=10001:10001 deploy/RAG_MODEL_NOTICE.txt /app/RAG_MODEL_NOTICE.txt
+
+USER 10001:10001
+EXPOSE 8768
+# SEMANTIC_API_TOKEN must be supplied at run time (32-512 characters); it is never baked into the image.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=120s --retries=2 \
+  CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8768/readyz', timeout=3)"
+CMD ["python", "scripts/semantic_service.py", "--host", "0.0.0.0", "--port", "8768"]

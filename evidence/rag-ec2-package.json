@@ -1,0 +1,70 @@
+{
+  "created_at_utc": "2026-11-08T14:51:46.883947+00:00",
+  "release": "1c49e9d40b4b3936",
+  "image_tag": "tamsoodbase-rag:1c49e9d40b4b3936",
+  "image_id": "sha256:ed7d7b8e87db81df63205b7fee62f3338516b2fc9ec6992c6c3fd877e2f1a8fd",
+  "architecture": "linux/amd64",
+  "manifest_file_count": 16,
+  "payload_bytes": 252213297,
+  "package_archive_bytes": 221845381,
+  "package_archive_sha256": "9941d6344f98c79c75e0735e98fd464c9640e224aea7d0da645100b125d7a5bf",
+  "upgrade_script_sha256": "4a0347d450b4efbbe57d7f75478595490e31499fadbc36d44f45b525e3acf0b8",
+  "rollback_script_sha256": "91f8e9952a4bdc2861c1e51caf4537d6102bbdf1fe0dc1dc781407cbc1ed8bb0",
+  "raw_pdf_csv_included": false,
+  "credentials_included": false,
+  "runtime_gemini_enabled": false,
+  "build_network_used": true,
+  "runtime_network_test": "none",
+  "runtime_resource_test": {
+    "ram_bytes": 536870912,
+    "ram_plus_swap_bytes": 1073741824,
+    "cpu_cores": 0.5,
+    "pids": 64,
+    "measured_container_memory": "490.9MiB / 512MiB"
+  },
+  "functional_checks": {
+    "ready_records": 18,
+    "capacity_fact": "tsm-current-capacity",
+    "methane_gap_fact": "tsm-actual-methane-null",
+    "full_lifecycle_gap_fact": "ethanol-full-lifecycle-co2e-per-litre-null",
+    "wrong_origin_http": 403,
+    "co2e_method_sources": [
+      "co2e-calculation-method",
+      "ipcc-co2-equivalent-definition"
+    ]
+  },
+  "production_changed": false,
+  "docker_image_archive": {
+    "path": "build/rag-ec2-1c49e9d40b4b3936/tamsoodbase-rag-image.tar",
+    "bytes": 350621696,
+    "sha256": "b4be20e1bd93a4586e5339a5e6f7fc1a0fc460b70b700d670a5f65139d960b94"
+  },
+  "deployment_status": "DEPLOYED_PRIVATE_EC2",
+  "deployment_release": "1c49e9d40b4b3936",
+  "previous_release_retained_for_rollback": "bbbe648cba3fc42b",
+  "ec2_postcheck": {
+    "rag_ready_http": 200,
+    "rag_docker_health": "healthy",
+    "api_ready_http": 200,
+    "api_image_unchanged": "tamsoodbase-api:dea667bbd79dc1d9",
+    "ginder_container_states_unchanged": true,
+    "internal_network": "10.253.77.0/29",
+    "rag_container_ip": "10.253.77.2",
+    "published_host_ports": {},
+    "host_mem_available_kib_after_deploy": 587000,
+    "ssh_forward_smoke": {
+      "local_url": "http://127.0.0.1:8877/",
+      "page_ready_health_http": 200,
+      "co2e_method_exact_sources": [
+        "co2e-calculation-method",
+        "ipcc-co2-equivalent-definition"
+      ],
+      "current_capacity_fact": "tsm-current-capacity",
+      "full_lifecycle_gap_fact": "ethanol-full-lifecycle-co2e-per-litre-null",
+      "methane_gap_fact": "tsm-actual-methane-null",
+      "out_of_domain_abstained": true,
+      "wrong_origin_http": 403
+    }
+  },
+  "rollback_drill": "A production update attempt was automatically aborted on a failed health-status gate; prior owner-verified RAG container was restored, then the corrected update completed. API and Ginder checks remained healthy/unchanged."
+}

@@ -1,0 +1,23 @@
+{
+  "checked_at_local": "2026-11-12T21:06:03+07:00",
+  "scope": "Read-only factual claim check in the M4 slide deck against the included LCIA source",
+  "artifact": {
+    "source": "output/m4/slides-source/build_slides.js",
+    "slide": 2,
+    "claim": "ครอบคลุมปี 1986–2026 · ทุกแหล่งเป็นข้อมูลของประเทศไทย",
+    "output": "output/m4/S2-G05_M4_Slides.pdf"
+  },
+  "source_check": {
+    "article": "Permpool, Ghani & Gheewala (2020), Sustainability 12(22), 9415; DOI 10.3390/su12229415",
+    "pdf_page": 4,
+    "finding": "The article says BHD inventory values were sourced from Neste Oil NExBTL production in Finland; most background databases came from ecoinvent 3.",
+    "source_pdf_sha256": "977f8ff66eed3e3833adb055778d5f9fc42acc214db342a71c53062a2b978f60"
+  },
+  "review": {
+    "claim_supported_as_written": false,
+    "recommended_wording": "ครอบคลุมสถิติไทยหลายชุด; งานวิจัย LCA บางส่วนใช้ข้อมูลพื้นหลัง ecoinvent และข้อมูล BHD จากฟินแลนด์",
+    "artifact_edited": false,
+    "production_api_touched": false
+  },
+  "reason_not_edited": "The M4 source directory and generated files are new untracked work; preserved them for the owner/editor to reconcile with the already flagged poster count."
+}

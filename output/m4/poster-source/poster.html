@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>TamsoodBase · Poster · S2-G05</title>
+<style>
+@font-face{font-family:"Noto Sans Thai";src:url("NotoSansThai.ttf");font-weight:100 900}
+@page{size:210mm 297mm;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--pine:#143a30;--pine2:#1f5245;--leaf:#2f7d62;--rust:#c2572d;--sand:#f4ecdc;--paper:#fbf8f1;--ink:#1d2a25;--mute:#5b6a63;--line:#dcd5c5}
+html,body{width:210mm;height:297mm}
+body{font-family:"Noto Sans Thai",sans-serif;color:var(--ink);background:var(--paper);font-size:8.6pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;display:flex;flex-direction:column;overflow:hidden}
+
+/* header */
+.hero{background:var(--pine);color:#fff;padding:6.5mm 11mm 5mm;display:grid;grid-template-columns:1fr auto;gap:8mm;align-items:end}
+.kicker{font-size:7.4pt;letter-spacing:.16em;color:#f0c9a0;font-weight:700}
+h1{font-size:27pt;line-height:1.08;font-weight:800;letter-spacing:-.02em;margin:1.5mm 0 2mm}
+h1 span{color:#f0c9a0}
+.tagline{font-size:10.5pt;line-height:1.45;color:#dfeae4;max-width:118mm}
+.team{font-size:7.2pt;line-height:1.55;color:#cfe0d8;text-align:right}
+.team b{display:block;color:#fff;font-size:10pt;letter-spacing:.04em}
+
+.body{flex:1;padding:4.4mm 11mm 0;display:flex;flex-direction:column;gap:3.3mm}
+h2{font-size:11pt;font-weight:800;color:var(--pine);display:flex;align-items:center;gap:2.2mm;margin-bottom:1.7mm}
+h2 i{font-style:normal;display:inline-grid;place-items:center;width:6mm;height:6mm;border-radius:50%;background:var(--rust);color:#fff;font-size:8pt;font-weight:800;flex:none}
+
+/* three questions */
+.questions{display:grid;grid-template-columns:repeat(3,1fr);gap:3.2mm}
+.q{background:#fff;border:.3mm solid var(--line);border-radius:1mm 4mm 1mm 4mm;padding:2.4mm 3.2mm}
+.q small{font-size:6.6pt;letter-spacing:.12em;color:var(--rust);font-weight:800}
+.q strong{display:block;font-size:10.4pt;color:var(--pine);line-height:1.3;margin:.4mm 0 1mm}
+.q p{color:var(--mute);font-size:8pt;line-height:1.45}
+
+/* pipeline */
+.pipe{display:grid;grid-template-columns:repeat(6,1fr);gap:0;background:var(--sand);border-radius:1mm 5mm 1mm 5mm;padding:2.6mm 2mm}
+.step{padding:0 2.2mm;border-right:.3mm dashed #cdbf9f;text-align:left}
+.step:last-child{border-right:0}
+.step b{display:block;font-size:6.4pt;letter-spacing:.1em;color:var(--rust)}
+.step strong{display:block;font-size:9.2pt;color:var(--pine);margin:.3mm 0}
+.step span{font-size:7.3pt;color:#4d5a53;line-height:1.4;display:block}
+
+/* two columns */
+.cols{display:grid;grid-template-columns:1.08fr .92fr;gap:5mm}
+.numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4mm}
+.n{background:#fff;border:.3mm solid var(--line);border-radius:1mm 3.5mm 1mm 3.5mm;padding:1.7mm 2.6mm}
+.n strong{display:block;white-space:nowrap;font-size:13.5pt;font-weight:800;color:var(--pine);line-height:1.15;font-variant-numeric:tabular-nums}
+.n span{font-size:7.2pt;color:var(--mute);line-height:1.35;display:block}
+.n.hot strong{color:var(--rust)}
+.layers{margin-top:2mm;border-collapse:collapse;width:100%;font-size:7.5pt}
+.layers td{padding:.75mm 1.4mm;border-bottom:.2mm solid var(--line);vertical-align:top}
+.layers td:first-child{font-weight:800;color:var(--pine);white-space:nowrap}
+.layers td:last-child{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--ink)}
+
+/* trace */
+.trace{background:var(--pine);color:#fff;border-radius:1mm 5mm 1mm 5mm;padding:3.4mm 4.2mm;align-self:stretch}
+.trace h2{color:#fff}.trace h2 i{background:#f0c9a0;color:var(--pine)}
+.hop{display:grid;grid-template-columns:5.4mm 1fr;gap:2.2mm;margin-bottom:2.6mm}
+.hop em{font-style:normal;width:5.4mm;height:5.4mm;border-radius:50%;border:.35mm solid #f0c9a0;color:#f0c9a0;display:grid;place-items:center;font-size:7pt;font-weight:800}
+.hop b{display:block;font-size:8.6pt;color:#fff}
+.hop span{font-size:7.4pt;color:#cfe0d8;line-height:1.4;display:block;overflow-wrap:anywhere}
+.hop code{font-family:Consolas,monospace;font-size:7.2pt;color:#f6dcbd}
+.value{font-size:17pt;font-weight:800;color:#f0c9a0;line-height:1.1;font-variant-numeric:tabular-nums}
+
+/* schema + beyond */
+.schemas{display:grid;grid-template-columns:repeat(4,1fr);gap:2.2mm}
+.s{border:.3mm solid var(--line);background:#fff;border-radius:1mm 3mm 1mm 3mm;padding:2.2mm 2.4mm}
+.s code{font-family:Consolas,monospace;font-size:7.4pt;font-weight:700;color:var(--leaf);display:block}
+.s span{font-size:7.1pt;color:var(--mute);line-height:1.35;display:block;margin-top:.5mm}
+.rule{margin-top:1.6mm;font-size:7.6pt;color:#3d4b44}
+.rule b{color:var(--pine)}
+.beyond{display:grid;gap:1.8mm}
+.lv{display:grid;grid-template-columns:13mm 1fr;gap:2.4mm;align-items:start}
+.lv b{font-size:6.6pt;letter-spacing:.08em;color:#fff;background:var(--leaf);border-radius:1mm;padding:.7mm 0;text-align:center}
+.lv.l3 b{background:var(--rust)}
+.lv span{font-size:7.8pt;line-height:1.4}
+.lv span strong{color:var(--pine)}
+
+/* result bars */
+.bars{display:grid;gap:1mm;margin-top:.4mm}
+.bar{display:grid;grid-template-columns:23mm 1fr 15mm;gap:2mm;align-items:center;font-size:7.8pt}
+.bar div{height:3.4mm;background:#e9e2d2;border-radius:.6mm;overflow:hidden}
+.bar div i{display:block;height:100%;background:var(--leaf)}
+.bar.fossil div i{background:var(--rust)}
+.bar b{text-align:right;font-variant-numeric:tabular-nums;color:var(--pine)}
+.bar.fossil b{color:var(--rust)}
+.cap{font-size:6.9pt;color:var(--mute);line-height:1.4;margin-top:1.4mm}
+
+/* footer */
+.foot{margin-top:auto;display:grid;grid-template-columns:1fr auto;gap:6mm;align-items:center;padding:2.8mm 11mm 4.5mm;border-top:.3mm solid var(--line);background:#fff}
+.limits{font-size:7.3pt;line-height:1.45;color:#3d4b44}
+.limits b{color:var(--rust)}
+.qr{display:grid;grid-template-columns:auto 17mm;gap:3mm;align-items:center;text-align:right}
+.qr span{font-size:7.4pt;color:var(--mute);line-height:1.45}
+.qr span b{display:block;color:var(--pine);font-size:9.4pt}
+.qr svg{width:17mm;height:17mm;display:block}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <div>
+      <p class="kicker">CN230 × MTEC · DATA TO NET ZERO DAY · PETROLEUM, NATURAL GAS &amp; FUELS</p>
+      <h1>Tamsood<span>Base</span></h1>
+      <p class="tagline">ฐานข้อมูลเชื้อเพลิงของไทย ที่ทุกตัวเลขเปิดย้อนกลับไปถึงไฟล์ต้นทางได้</p>
+    </div>
+    <div class="team">
+      <b>ทีม S2-G05 · Section 2</b>
+      ตฤณเดช พิตติรวิภาส · PM/BA<br>
+      เอดาวัต เอื้ออารยมนตรี · Schema Lead<br>
+      สิริเดช บุราคร · Data Lead<br>
+      พีรภัทร แสงศรี · SQL Lead<br>
+      ณวตา พุฒพินิจ · QA Lead
+    </div>
+  </header>
+
+  <main class="body">
+    <section>
+      <h2><i>1</i>สามคำถามของ MTEC และคำตอบของเรา</h2>
+      <div class="questions">
+        <div class="q"><small>FINDABLE</small><strong>ข้อมูลไทยอยู่ที่ไหน?</strong><p>รวม 22 แหล่งไว้ในทะเบียนเดียว ทั้งหน่วยงานรัฐ รายงานบริษัท และงานวิจัย พร้อมลิงก์และสถานะสิทธิ์</p></div>
+        <div class="q"><small>VERIFIABLE</small><strong>เชื่อได้แค่ไหน?</strong><p>ทุกแถวมีลิงก์ไฟล์ รหัส SHA-256 ของไฟล์ และเลขบรรทัดหรือหน้า ค่าเดิมเก็บคู่กับค่าที่แปลงแล้วเสมอ</p></div>
+        <div class="q"><small>REUSABLE</small><strong>ใช้ต่อได้ไหม?</strong><p>เก็บใน MySQL แยกตามความหมายของข้อมูล ไม่รวมค่าต่างหน่วยหรือต่างขอบเขต ส่งออก CSV/JSON พร้อมที่มา</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2><i>2</i>จากไฟล์กระจัดกระจาย สู่ข้อมูลที่ตรวจได้</h2>
+      <div class="pipe">
+        <div class="step"><b>01 DISCOVER</b><strong>ค้นแหล่ง</strong><span>DMF · EPPO · NSO · รายงานบริษัท · งานวิจัย</span></div>
+        <div class="step"><b>02 EXTRACT</b><strong>ดึงและเก็บสำเนา</strong><span>บันทึกไฟล์ต้นฉบับพร้อมรหัส hash ก่อนแตะข้อมูล</span></div>
+        <div class="step"><b>03 UNDERSTAND</b><strong>อ่านความหมาย</strong><span>หน่วย ปี ขอบเขต แยกจากปีที่เผยแพร่</span></div>
+        <div class="step"><b>04 GENERALIZE</b><strong>จัดรูปแบบ</strong><span>แปลงเป็นชนิดข้อมูลเดียวกัน เก็บค่าดิบไว้คู่กัน</span></div>
+        <div class="step"><b>05 VALIDATE</b><strong>ตรวจและคัด</strong><span>ตัดสำเนาซ้ำ พักค่าที่ขัดกัน บันทึกเหตุผลทุกแถว</span></div>
+        <div class="step"><b>06 STORE</b><strong>จัดเก็บ</strong><span>MySQL พร้อมคีย์และข้อบังคับ เปิดดูผ่านเว็บ</span></div>
+      </div>
+    </section>
+
+    <div class="cols">
+      <section>
+        <h2><i>3</i>ข้อมูลที่มีในระบบ</h2>
+        <div class="numbers">
+          <div class="n"><strong>40,980</strong><span>ค่าจากข้อมูลรัฐและงานวิจัยที่เปิดดูได้บนเว็บ</span></div>
+          <div class="n"><strong>22</strong><span>แหล่งข้อมูลในทะเบียน</span></div>
+          <div class="n"><strong>1986–2026</strong><span>ช่วงปีที่ครอบคลุม</span></div>
+          <div class="n hot"><strong>41,072</strong><span>รายการที่ทีมรับแล้ว (Accepted) ตามกฎ AR-2</span></div>
+          <div class="n"><strong>243</strong><span>รายการที่พักไว้ พร้อมเหตุผลทุกรายการ</span></div>
+          <div class="n"><strong>4 ข้อ</strong><span>เกณฑ์รับ: ตรงต้นทาง ไม่ซ้ำ ย้อนได้ เป็นข้อมูลไทย</span></div>
+        </div>
+        <table class="layers">
+          <tr><td>DMF</td><td>ผลิตน้ำมันดิบ คอนเดนเสท ก๊าซ รายเดือน แยกแหล่ง</td><td>34,671 แถว</td></tr>
+          <tr><td>EPPO</td><td>น้ำมันเข้าโรงกลั่นรายบริษัท และผลผลิตน้ำมันสำเร็จรูป</td><td>5,934 แถว</td></tr>
+          <tr><td>NSO</td><td>สถิติพลังงานของประเทศ 5 ตาราง</td><td>273 ค่า</td></tr>
+          <tr><td>รายงานบริษัท</td><td>ตัวชี้วัดพลังงานและน้ำของ Thai Oil และ SPRC</td><td>101 รายการ</td></tr>
+          <tr><td>งานวิจัย</td><td>บัญชีรายการปาล์มและไบโอดีเซล และผล LCA ที่ตีพิมพ์</td><td>58 + 44 ค่า</td></tr>
+        </table>
+      </section>
+
+      <section class="trace">
+        <h2><i>4</i>ตามหนึ่งค่ากลับไปถึงต้นทาง</h2>
+        <div class="hop"><em>1</em><div><b>ค่าในฐานข้อมูล</b><span>แหล่งไพลินเหนือ · คอนเดนเสท · มีนาคม 2026</span><div class="value">5,876.859677 <span style="display:inline;font-size:8pt;color:#cfe0d8">บาร์เรล</span></div></div></div>
+        <div class="hop"><em>2</em><div><b>แถวต้นฉบับ</b><span>ไฟล์ <code>production_condensate.csv</code> บรรทัดที่ <code>11394</code> เก็บข้อความดิบไว้ครบ</span></div></div>
+        <div class="hop"><em>3</em><div><b>ไฟล์ที่ดึงมา</b><span>SHA-256 <code>79f5ac2a…ae678d1c</code> ดึงเมื่อ 22 ต.ค. 2569</span></div></div>
+        <div class="hop" style="margin-bottom:0"><em>4</em><div><b>หน่วยงานเจ้าของ</b><span>กรมเชื้อเพลิงธรรมชาติ · catalog.dmf.go.th</span></div></div>
+      </section>
+    </div>
+
+    <div class="cols">
+      <section>
+        <h2><i>5</i>ออกแบบฐานข้อมูลตามความหมายของข้อมูล</h2>
+        <div class="schemas">
+          <div class="s"><code>tamsood_research</code><span>แถวดิบและค่าที่แปลงของ DMF ผลตรวจซ้ำ แถวที่ปฏิเสธ</span></div>
+          <div class="s"><code>tamsood_reusable</code><span>เอกสาร ขอบเขต ตัวชี้วัด ค่า ผลทบทวน และรุ่นเผยแพร่</span></div>
+          <div class="s"><code>tamsood_supplemental</code><span>สถิติประเทศ กระบวนการ และรายการเข้า–ออก</span></div>
+          <div class="s"><code>tamsood_eppo</code><span>สถิติโรงกลั่นรายเดือน คุมหน่วยด้วย CHECK</span></div>
+        </div>
+        <p class="rule"><b>หลักที่ยึด:</b> แยกแถวดิบจากค่าที่แปลงแล้ว · คีย์ประกอบกันขอบเขตข้ามเอกสาร · ผลทบทวนผูกกับรุ่นของกฎ · ค่าที่ขาดเก็บเป็นค่าว่าง ไม่แทนด้วยศูนย์</p>
+      </section>
+      <section>
+        <h2><i>6</i>ต่อยอดเกินขั้นต่ำ</h2>
+        <div class="beyond">
+          <div class="lv"><b>LEVEL 1</b><span><strong>ฐานข้อมูลเชิงสัมพันธ์</strong> ครบคีย์ ข้อบังคับ และผลทดสอบ transaction</span></div>
+          <div class="lv"><b>LEVEL 2</b><span><strong>เว็บค้นข้อมูล</strong> กด "ดูที่มา" ได้ทุกแถว เปิดใช้จริง</span></div>
+          <div class="lv l3"><b>LEVEL 3</b><span><strong>ผู้ช่วยตอบคำถาม (RAG)</strong> ตัวเลขคำนวณด้วยโค้ด ไม่ให้ AI คิดเลขเอง · <strong>กราฟ Neo4j</strong> 39 โหนด 68 ความสัมพันธ์</span></div>
+        </div>
+      </section>
+    </div>
+
+    <section>
+      <h2><i>7</i>ตัวอย่างการใช้: ภาวะโลกร้อนตลอดวัฏจักรชีวิต ต่อการใช้เชื้อเพลิง 1,000 MJ</h2>
+      <div class="cols" style="grid-template-columns:1.25fr .75fr;align-items:center">
+        <div class="bars">
+          <div class="bar"><span>ไบโอดีเซล FAME</span><div><i style="width:4.9%"></i></div><b>10.7</b></div>
+          <div class="bar"><span>H-FAME</span><div><i style="width:5.6%"></i></div><b>12.3</b></div>
+          <div class="bar"><span>BHD</span><div><i style="width:18.1%"></i></div><b>39.6</b></div>
+          <div class="bar fossil"><span>ดีเซลฟอสซิล</span><div><i style="width:100%"></i></div><b>219</b></div>
+        </div>
+        <p class="cap">หน่วย kg CO₂ eq · ขอบเขต Well-to-Wheels · เป็นผลที่งานวิจัยรายงาน ไม่ใช่ผลที่ทีมคำนวณเอง<br>ที่มา: Permpool, Ghani &amp; Gheewala (2020), Sustainability 12(22), 9415, ตาราง 5 · CC BY 4.0</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p class="limits"><b>ข้อจำกัดที่บอกตรง ๆ:</b> ยังไม่ใช่บัญชี LCI ที่ทีมเชื่อมครบทั้งวงจรเอง · การรับข้อมูลยืนยันว่าตรงกับต้นทาง ไม่ได้ยืนยันฐานเวลาของข้อมูล DMF · ชื่อแหล่งผลิตของ DMF ยังไม่ได้จัดให้เป็นมาตรฐานเดียว · ตัวเลขรายงานบริษัทไม่เผยแพร่ต่อเพราะยังไม่ยืนยันสิทธิ์</p>
+    <div class="qr"><span><b>tamsoodbase.vercel.app</b>เปิดเว็บและลองถามผู้ช่วย</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" shape-rendering="crispEdges"><path stroke="#173d32" d="M0 0.5h7m1 0h1m1 0h2m10 0h7M0 1.5h1m5 0h1m2 0h2m1 0h1m3 0h4m2 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m2 0h2m1 0h2m1 0h3m2 0h1m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h2m1 0h1m2 0h3m1 0h1m3 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m1 0h1m4 0h2m1 0h1m1 0h1m3 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m1 0h3m2 0h3m1 0h4m1 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M8 7.5h1m2 0h1m2 0h1m2 0h4M0 8.5h1m3 0h1m1 0h6m1 0h5m1 0h1m1 0h5m2 0h1M0 9.5h1m1 0h1m1 0h2m2 0h1m1 0h1m7 0h1m3 0h7M0 10.5h1m1 0h1m2 0h2m1 0h1m4 0h3m1 0h2m5 0h1m3 0h1M1 11.5h2m1 0h1m7 0h2m1 0h6m2 0h1m1 0h1m1 0h2M0 12.5h2m2 0h1m1 0h4m1 0h3m3 0h1m2 0h2m1 0h1m3 0h1M0 13.5h1m2 0h2m2 0h1m1 0h2m1 0h3m1 0h3m1 0h1m1 0h7M0 14.5h1m1 0h3m1 0h2m1 0h1m1 0h2m3 0h3m1 0h1m4 0h2m1 0h1M0 15.5h1m4 0h1m2 0h2m1 0h1m2 0h1m2 0h1m2 0h1m3 0h1m2 0h2M0 16.5h1m1 0h9m2 0h9m5 0h1M0 17.5h1m1 0h1m1 0h1m2 0h1m1 0h1m7 0h2m3 0h4m1 0h2M2 18.5h2m2 0h4m3 0h3m2 0h1m1 0h1m1 0h1m3 0h1m1 0h1M4 19.5h1m8 0h1m1 0h3m1 0h1m1 0h3m3 0h2M0 20.5h4m2 0h1m1 0h1m1 0h4m3 0h1m1 0h7m2 0h1M8 21.5h1m3 0h3m1 0h1m1 0h1m1 0h1m3 0h1m3 0h1M0 22.5h7m1 0h4m4 0h2m1 0h2m1 0h1m1 0h3m1 0h1M0 23.5h1m5 0h1m2 0h1m1 0h1m2 0h1m2 0h4m3 0h1m2 0h1M0 24.5h1m1 0h3m1 0h1m1 0h4m1 0h3m1 0h1m1 0h7m1 0h2M0 25.5h1m1 0h3m1 0h1m4 0h3m6 0h2m5 0h1M0 26.5h1m1 0h3m1 0h1m2 0h3m2 0h4m3 0h1m3 0h4M0 27.5h1m5 0h1m2 0h3m3 0h3m2 0h4m1 0h1m1 0h2M0 28.5h7m1 0h3m3 0h1m1 0h2m2 0h1m1 0h3m2 0h1"/></svg>
+</div>
+  </footer>
+</div>
+</body>
+</html>

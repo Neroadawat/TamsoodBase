@@ -1,0 +1,23 @@
+{
+  "reviewed_at_local": "2026-11-12",
+  "scope": "Prompt-only usability adjustment for the Vercel RAG Gemini answer contract; no provider call, corpus change, DB access, or deployment.",
+  "change": [
+    "Require a concise direct answer first, with short plain Thai sentences.",
+    "Tell the model to omit retrieved facts that do not answer the question and cite only supporting source IDs.",
+    "Require concise explanation of missing inputs when evidence cannot answer."
+  ],
+  "verification": {
+    "test_command": "node tests/rag-vercel-api.cjs",
+    "result": "passed",
+    "stdout": "Vercel RAG checks passed (Gemini request contract works; public route stays closed).",
+    "node_syntax": "passed: node --check api/rag/ask.js",
+    "diff_check": "passed: git diff --check -- api/rag/ask.js tests/rag-vercel-api.cjs",
+    "provider_called": false,
+    "production_route_opened": false
+  },
+  "hashes": {
+    "api/rag/ask.js": "dd77485ac1ed78059a4b883ead768b57ae8e6e93f45937132029b904c7e8f397",
+    "tests/rag-vercel-api.cjs": "b45bac077fd01455a14347af870795548b2df08c9d81b45af519dda82df53cbe"
+  },
+  "limitations": "Prompt contract assertions and mocked handler tests do not prove live Gemini answer quality or semantic citation entailment. Public RAG remains gated by source rights, privacy/audience, WAF, UAT, capacity/monitoring, and rollback gates."
+}

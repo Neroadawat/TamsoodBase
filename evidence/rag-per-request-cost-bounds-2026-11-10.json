@@ -1,0 +1,31 @@
+{
+  "review_date": "2026-11-10",
+  "checked_at_utc": "2026-11-10T06:39:17.030127+00:00",
+  "review_type": "RAG_PER_REQUEST_RESOURCE_BOUNDS_REGRESSION",
+  "observed_limits": {
+    "request_body_bytes": 2048,
+    "question_characters": 500,
+    "retrieved_evidence_cards": 4,
+    "gemini_max_output_tokens": 700,
+    "gemini_response_bytes": 49152,
+    "gemini_deadline_ms": 18000
+  },
+  "test_command": "node tests/rag-vercel-api.cjs",
+  "result": "passed",
+  "checks": [
+    "Retrieved Gemini context remains within four-card ceiling.",
+    "Outgoing request fixes maxOutputTokens at 700.",
+    "A 501-character question is rejected before Gemini.",
+    "An incoming body over 2 KiB is rejected before Gemini.",
+    "Declared and observed model responses above 48 KiB are rejected.",
+    "Existing deadline/abort and route-closed assertions pass."
+  ],
+  "scope": "Local contract tests with fake fetch; no live Gemini/API request.",
+  "remaining_gaps": [
+    "Per-instance Preview rate limiting is not durable or global.",
+    "No verified ingress rate limiter, project budget/alerts, or named spend owner.",
+    "No live capacity or monitoring acceptance."
+  ],
+  "reference": "https://ai.google.dev/gemini-api/docs/safety-guidance",
+  "production_changed": false
+}

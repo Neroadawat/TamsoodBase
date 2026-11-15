@@ -1,0 +1,92 @@
+{
+  "checked_at": "2026-11-10T07:35:50.741296+00:00",
+  "scope": "Read-only verification; no data row values captured",
+  "production": {
+    "anonymous_get": {
+      "/api/eppo": 403,
+      "/api/nso": 403,
+      "/api/records": 403,
+      "/api/reference": 403,
+      "/api/product-inventory": 403,
+      "/api/summary": 403,
+      "/api/healthz": 200,
+      "/api/release": 200
+    },
+    "anonymous_post": {
+      "/api/rag/ask": 503,
+      "note": "Probe sent no Gemini consent; no answer or data rows captured."
+    }
+  },
+  "local_catalog": {
+    "registry_sources": 22,
+    "curated_narrative_and_fact_records": 20,
+    "cleared_public_records": 0,
+    "validation": "python scripts/build_rag_catalog.py --check"
+  },
+  "local_database_index": {
+    "records": 41017,
+    "by_layer": {
+      "DMF": 34677,
+      "COMPANY": 103,
+      "NSO": 278,
+      "EPPO": 5937,
+      "RESEARCH": 18,
+      "SUPPORTING": 4
+    },
+    "public_release_allowed": false,
+    "external_llm_allowed": false,
+    "validation": "python scripts/build_rag_database_index.py --check",
+    "freshness": "Local file mtimes only; not a live database read or freshness attestation.",
+    "sample_search": {
+      "query": "ก๊าซธรรมชาติ",
+      "audience_counts": {
+        "internal": 20,
+        "public": 0,
+        "external_llm": 0
+      },
+      "visibility": "Counts only; no row payload captured",
+      "checked_at": "2026-11-10T07:30:58.964691+00:00"
+    },
+    "index_file_size_bytes": 152690688
+  },
+  "tests": {
+    "command": "python -m unittest tests.test_rag_catalog tests.test_rag_database_index tests.test_rag_scope tests.test_release_consistency -q",
+    "result": "28 tests passed; 9 skipped"
+  },
+  "automation": {
+    "id": "tamsoodbase-hourly-project-review",
+    "status": "ACTIVE",
+    "interval": "HOURLY",
+    "duplicate_created": false
+  },
+  "catalog_build": {
+    "private_sources": 22,
+    "restricted_evidence_records": 20,
+    "limited_preview_records": 6,
+    "public_sources": 0,
+    "public_evidence_records": 0,
+    "withheld_sources": 22,
+    "artifacts": [
+      "build/rag/catalog/private-source-catalog.json",
+      "build/rag/catalog/public-source-index.json"
+    ]
+  },
+  "vercel_package": {
+    "source_files": 22,
+    "contains_private_research_data": false,
+    "contains_credentials": false,
+    "artifact": "build/vercel-upload"
+  },
+  "latest_tests": {
+    "python": "24 tests run, 15 passed, 9 skipped",
+    "node_proxy": "passed",
+    "node_rag_contract": "passed; public route remains closed"
+  },
+  "latest_release_audit": {
+    "checked_at_utc": "2026-11-10T07:34:53.047686+00:00",
+    "technical_pass": true,
+    "reference_release_ready": true,
+    "submission_ready": false,
+    "manifest_file_count": 765
+  }
+}

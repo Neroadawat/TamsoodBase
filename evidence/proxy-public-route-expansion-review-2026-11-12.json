@@ -1,0 +1,37 @@
+{
+  "checked_at_local": "2026-11-12T16:05:58+07:00",
+  "scope": "Review of current uncommitted Vercel proxy route expansion; mocked local test only",
+  "working_tree_change": {
+    "file": "api/[route].js",
+    "routes_newly_marked_public": [
+      "summary",
+      "source-crosswalk",
+      "records",
+      "record",
+      "export",
+      "nso",
+      "nso-comparison",
+      "eppo",
+      "product-inventory"
+    ],
+    "still_withheld": [
+      "reports",
+      "report-pilot",
+      "reference.csv",
+      "login"
+    ]
+  },
+  "test": {
+    "command": "node tests/vercel-proxy-behavior.cjs",
+    "result": "passed",
+    "scope_limit": "HTTPS upstream was mocked; newly exposed route checks used an empty rows payload and only asserted HTTP 200/upstream invocation, not returned-data rights or field-level privacy."
+  },
+  "policy": {
+    "current_automation_allows_public_route": false,
+    "production_api_touched": false,
+    "deployment_or_push": false,
+    "production_status_verified": false,
+    "rights_approved": false,
+    "recommendation": "Keep this uncommitted route expansion on HOLD until current public-route policy and per-route source/record clearance are reconciled."
+  }
+}

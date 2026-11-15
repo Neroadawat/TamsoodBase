@@ -1,0 +1,37 @@
+{
+  "reviewed_at_local": "2026-11-12",
+  "scope": "Official-doc check and request-shape update for Gemini structured JSON output. No credential read, no network/API call from project code, and no deployment.",
+  "source_review": [
+    {
+      "url": "https://ai.google.dev/api/generate-content",
+      "finding": "Current GenerateContent REST reference labels responseSchema deprecated and directs clients to responseFormat; lists responseFormat.text.mimeType and schema."
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/generate-content/structured-output",
+      "finding": "Official GenerateContent structured-output examples use responseFormat with a text JSON schema."
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite",
+      "finding": "Official model listing identifies gemini-3.5-flash-lite as the model code; no API call was made. The page fetch redirected to AI Studio and was not opened by the browser tool; model availability is based on official search-result content."
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+      "finding": "Official deprecations listing shows gemini-3.5-flash-lite with no announced shutdown date at the time screened; not account or region entitlement."
+    }
+  ],
+  "change": "Replaced generationConfig.responseMimeType + deprecated responseSchema with generationConfig.responseFormat.text.mimeType/schema using standard lowercase JSON Schema types.",
+  "verification": {
+    "command": "node tests/rag-vercel-api.cjs",
+    "result": "passed",
+    "stdout": "Vercel RAG checks passed (Gemini request contract works; public route stays closed).",
+    "syntax": "node --check api/rag/ask.js passed",
+    "diff_check": "git diff --check -- api/rag/ask.js tests/rag-vercel-api.cjs passed",
+    "provider_api_called": false,
+    "production_changed": false
+  },
+  "hashes": {
+    "api/rag/ask.js": "60e241f0a91262995f1eed26ea95e201ae1985b29718f6120671b46660fd42b0",
+    "tests/rag-vercel-api.cjs": "a6b31d515730ea4a085de8ba70d86afc247449c16ba0c5a9fbf8ef0efe1a71e2"
+  },
+  "limitations": "Mock assertions verify request structure only, not provider acceptance or model answer quality. Account entitlement, billing, audience/privacy approval and source rights remain unverified; public RAG remains HOLD."
+}

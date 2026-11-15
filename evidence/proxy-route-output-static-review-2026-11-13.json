@@ -1,0 +1,35 @@
+{
+  "checked_at_local": "2026-11-13T08:09:00+07:00",
+  "scope": "Local source inspection of backend handlers for proxy routes; no network, credentials, tests, or production access",
+  "head": "bc1ff5d9fd70e3ae2129b6fb043f15951edb0821",
+  "findings": [
+    {
+      "route": "/api/records",
+      "handler": "src/explorer.py::records",
+      "fields": ["raw_value", "source_line", "source URL", "CSV SHA-256", "review status", "duplicate status"],
+      "observation": "Returns candidate values and source locators under the public proxy allowlist."
+    },
+    {
+      "route": "/api/record",
+      "handler": "src/explorer.py::detail",
+      "fields": ["raw_fields", "raw_value", "related source rows", "identity hash", "source locator"],
+      "observation": "Returns raw source row fields and related records; no redistribution-status filter is visible in this handler."
+    },
+    {
+      "route": "/api/export",
+      "handler": "src/explorer.py::records(export=True) + csv_export",
+      "observation": "Streams up to 5,000 filtered candidate rows and neutralizes spreadsheet-formula prefixes. The handler includes raw values and source metadata."
+    },
+    {
+      "route": "/api/reference.json and /api/reference",
+      "handler": "src/reusable_api.py::catalog + api/[route].js::publicReference",
+      "observation": "Backend marks records NOT_CLEARED; proxy projection withholds quantity fields for the JSON reference routes."
+    }
+  ],
+  "policy_context": "docs/rag/public-release-manifest.json says specific reuse terms for DMF, EPPO, and NSO downloads were not confirmed. This review does not decide whether public display or redistribution is legally permitted.",
+  "risk": "The public proxy allowlist includes endpoints returning raw values and source row fields. Route availability plus an owner demo decision does not settle data reuse rights; keep public-route readiness on HOLD until the owner resolves the rights and release-gate mismatch.",
+  "production_state_verified": false,
+  "production_api_checked": false,
+  "deployment_or_push": false,
+  "files_edited_by_reviewer": false
+}

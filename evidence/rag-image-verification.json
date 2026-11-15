@@ -1,0 +1,37 @@
+{
+  "created_at_utc": "2026-11-08T14:52:46.215090+00:00",
+  "image": "tamsoodbase-rag:1c49e9d40b4b3936",
+  "image_id": "sha256:ed7d7b8e87db81df63205b7fee62f3338516b2fc9ec6992c6c3fd877e2f1a8fd",
+  "architecture": "linux/amd64",
+  "probe": {
+    "ready_records": 18,
+    "page_status": 200,
+    "capacity_fact": "tsm-current-capacity",
+    "methane_null_fact": "tsm-actual-methane-null",
+    "full_lifecycle_null_fact": "ethanol-full-lifecycle-co2e-per-litre-null",
+    "co2e_method_sources": [
+      "co2e-calculation-method",
+      "ipcc-co2-equivalent-definition"
+    ],
+    "wrong_origin_status": 403
+  },
+  "hardening": {
+    "network_mode": "none",
+    "read_only": true,
+    "memory_bytes": 536870912,
+    "memory_swap_bytes": 1073741824,
+    "nano_cpus": 500000000,
+    "pids_limit": 64,
+    "user": "10001:10001",
+    "cap_drop": [
+      "ALL"
+    ],
+    "security_opt": [
+      "no-new-privileges:true"
+    ],
+    "gemini_key_present": false,
+    "memory_usage": "490.9MiB / 512MiB"
+  },
+  "gemini_live_called": false,
+  "production_changed": false
+}

@@ -1,0 +1,45 @@
+{
+  "review_date": "2026-11-10",
+  "scope": "Targeted primary-source screen for Thai palm mill methane and allocation context; not imported into the current FAME activity chain",
+  "source": {
+    "citation": "Saswattecha, K.; Cuevas Romero, M.; Hein, L.; Jawjit, W.; Kroeze, C. (2015). Non-CO2 greenhouse gas emissions from palm oil production in Thailand. Journal of Integrative Environmental Sciences, 12(S1), 67-85.",
+    "doi": "10.1080/1943815X.2015.1110184",
+    "publisher_full_text": "https://www.tandfonline.com/doi/pdf/10.1080/1943815X.2015.1110184",
+    "institutional_metadata": "https://research.wur.nl/en/publications/non-cosub2sub-greenhouse-gas-emissions-from-palm-oil-production-i/",
+    "data_period": "2012 current-situation mill estimates; production-capacity inputs referenced to DIT 2011/2012 and mill-operator communications",
+    "geography": "Tapi river basin, Thailand",
+    "process": "CPO mills; POME treatment and EFB disposal; management groups N-RSPO, P-RSPO, C-RSPO",
+    "functional_unit": "Table 2 reports non-CO2 greenhouse-gas impact per ton CPO",
+    "table_unit": "g CO2-equivalent / ton CPO",
+    "locators": [
+      "printed pp. 73-75, equations (1.2)-(3), Table 2 and adjoining text"
+    ],
+    "source_snapshot_sha256": null,
+    "visual_table_audit": false,
+    "publisher_pdf_download": "blocked by publisher anti-bot challenge; web-extracted full text inspected; no local source PDF retained"
+  },
+  "method_and_limitations": [
+    "The paper calculates non-CO2 emissions as activity data times emission factors; for POME, methane is estimated from COD-removal activity, including captured-biogas cases. This is a modeled category estimate, not a direct methane-flux observation for the present FAME chain.",
+    "The reported CPO mill values are allocated between CPO and palm kernel by mass using category-specific CPO:PK shares 0.75:0.25, 0.77:0.23, and 0.80:0.20. Do not apply these factors again to this paper's reported per-ton-CPO results, and do not transfer them to the 2019/2020 FAME case.",
+    "The study covers non-CO2 gases and states it excludes land-use-change effects and cannot quantify the relative importance of CO2 versus non-CO2 gases. Therefore it is not a full CPO carbon footprint or full lifecycle CO2e result.",
+    "The regional management groups and 2012 activity/capacity basis are not matched to the selected Mill 1/2019-2020 foreground providers. The paper does not provide the matched methane mass and actual CPO output for the selected mill and period required by the model."
+  ],
+  "decision": {
+    "classification": "HOLD_CONTEXT",
+    "use": "Private historical Thai CPO-mill benchmark and evidence of relevant pathways/allocation method only",
+    "current_FAME_model_imports": 0,
+    "current_FAME_chain_linked": false,
+    "CO2e_total_changed": false,
+    "allocation_applied_to_current_case": false,
+    "redistribution_status": "NOT_CLEARED",
+    "public_RAG_or_site_use": false,
+    "reason": "different region/provider vintage and scenario grouping; modeled non-CO2 only; source visual table audit and redistribution license were not established"
+  },
+  "next_evidence_needed": [
+    "Actual plant-level methane mass or measured/captured/slipped methane with a stated period and boundary",
+    "Actual CPO production for the same mill and period",
+    "Selected mill identity and wastewater/EFB treatment configuration linking the measurements to the current chain",
+    "Allocation basis for the current 2019/2020 source tables and confirmation whether reported burdens are already allocated",
+    "Visual cell-level verification plus explicit reuse/redistribution license before any table values are republished"
+  ]
+}

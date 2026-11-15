@@ -1,0 +1,30 @@
+{
+  "checked_at_local": "2026-11-12T12:01:54+07:00",
+  "finding": "The working tree RAG route/build had begun trusting a new owner-approved status while ignoring nine false required gates and PENDING per-record rights. The checked-in manifest also contains an owner-decision claim whose authorization is not independently verified; no approval was inferred by this review.",
+  "current_manifest": {
+    "all_nine_required_gates_true": false,
+    "narrative_and_fact_record_rights": "all PENDING",
+    "public_release_allowed_flag": true,
+    "external_llm_allowed_flag": true
+  },
+  "changes": [
+    "Runtime now requires provider-processing and audience flags, exact required-gate keys all true, and every narrative/statistical row explicitly CLEARED and release_allowed.",
+    "Frontend public build now applies the same exact-gate and per-row-rights checks before packaging chat assets.",
+    "Added isolated synthetic regression test; it restores the in-memory manifest and does not modify authorization data on disk."
+  ],
+  "verification": {
+    "command": "node tests/rag-current-release-gate.cjs",
+    "result": "passed",
+    "coverage": "all 9 gates independently fail closed; pending narrative rights and withheld fact row fail closed; synthetic fully-cleared contract passes",
+    "public_build_with_current_pending_manifest": "blocked before packaging",
+    "git_diff_check": "passed"
+  },
+  "limits": {
+    "production_api_checked": false,
+    "production_changed": false,
+    "gemini_called": false,
+    "rights_approved": false,
+    "owner_claim_verified": false,
+    "rag_production": "HOLD"
+  }
+}

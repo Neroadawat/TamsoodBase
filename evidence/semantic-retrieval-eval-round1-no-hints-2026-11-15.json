@@ -1,0 +1,623 @@
+{
+ "generated_at": "2026-11-15T07:41:04+00:00",
+ "scope": "retrieval quality over the semantic corpus only; not answer correctness on the web",
+ "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+ "dimensions": 384,
+ "metric": "cosine",
+ "k": 3,
+ "corpus_version": "2f709510f69a2a5e",
+ "chunks": 21,
+ "questions": {
+  "dev_paraphrase": 8,
+  "dev_adversarial": 4,
+  "heldout_paraphrase": 14,
+  "heldout_adversarial": 9
+ },
+ "threshold_sweep_dev": [
+  {
+   "floor": 0.2,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 1.0
+  },
+  {
+   "floor": 0.225,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.25,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.275,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.3,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.325,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.35,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.375,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.4,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.425,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.5
+  },
+  {
+   "floor": 0.45,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.25
+  },
+  {
+   "floor": 0.475,
+   "dev_recall_at_3": 0.625,
+   "dev_adversarial_leak": 0.25
+  },
+  {
+   "floor": 0.5,
+   "dev_recall_at_3": 0.5,
+   "dev_adversarial_leak": 0.25
+  },
+  {
+   "floor": 0.525,
+   "dev_recall_at_3": 0.5,
+   "dev_adversarial_leak": 0.25
+  },
+  {
+   "floor": 0.55,
+   "dev_recall_at_3": 0.375,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.575,
+   "dev_recall_at_3": 0.125,
+   "dev_adversarial_leak": 0.0
+  },
+  {
+   "floor": 0.6,
+   "dev_recall_at_3": 0.0,
+   "dev_adversarial_leak": 0.0
+  }
+ ],
+ "chosen_floor": 0.55,
+ "heldout": {
+  "semantic": {
+   "recall_at_1": 0.0,
+   "recall_at_3": 0.214,
+   "recall_at_3_no_floor": 0.714,
+   "adversarial_leak": 0.222,
+   "adversarial_leaks": [
+    {
+     "q": "ขอค่า CO2e ทั้งวงจรของเอทานอล E20 ปี 2030",
+     "surfaced": [
+      "catalogue:nso_energy"
+     ]
+    },
+    {
+     "q": "ผลิตน้ำมันดิบปี 2030 ได้กี่บาร์เรล",
+     "surfaced": [
+      "catalogue:eppo_product_output",
+      "catalogue:dmf_production",
+      "catalogue:eppo_refinery_intake"
+     ]
+    }
+   ]
+  },
+  "lexical_baseline": {
+   "recall_at_1": 0.429,
+   "recall_at_3": 0.643,
+   "adversarial_leak_at_same_floor": 0.0
+  }
+ },
+ "dev": {
+  "semantic_recall_at_3_no_floor": 0.625,
+  "lexical_recall_at_3": 0.625
+ },
+ "latency_ms": {
+  "n": 35,
+  "median": 20.9,
+  "p95": 30.5
+ },
+ "heldout_per_question": [
+  {
+   "q": "ทำไมยังสรุปคาร์บอนทั้งวงจรของไบโอดีเซลไม่ได้",
+   "relevant": [
+    "note:fame-wtw-boundary",
+    "catalogue:fame_lca_results"
+   ],
+   "semantic": [
+    {
+     "id": "catalogue:fame_lca_results",
+     "score": 0.5073
+    },
+    {
+     "id": "catalogue:project_scope",
+     "score": 0.4735
+    },
+    {
+     "id": "catalogue:fame_inventory",
+     "score": 0.4621
+    }
+   ],
+   "lexical": [
+    {
+     "id": "catalogue:project_scope",
+     "score": 0.301
+    },
+    {
+     "id": "note:palm-cpo-provider-gap",
+     "score": 0.2115
+    },
+    {
+     "id": "catalogue:ethanol_evidence",
+     "score": 0.1756
+    }
+   ]
+  },
+  {
+   "q": "ค่าในบทความใช้เทียบกันบนฐานอะไร",
+   "relevant": [
+    "note:fame-functional-unit"
+   ],
+   "semantic": [
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.4916
+    },
+    {
+     "id": "note:fame-allocation-caution",
+     "score": 0.4627
+    },
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.4157
+    }
+   ],
+   "lexical": [
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.1844
+    },
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.1371
+    },
+    {
+     "id": "catalogue:fame_lca_results",
+     "score": 0.1281
+    }
+   ]
+  },
+  {
+   "q": "ส่วนไหนของวงจรไบโอดีเซลกระทบมากสุด",
+   "relevant": [
+    "note:fame-contribution"
+   ],
+   "semantic": [
+    {
+     "id": "catalogue:fame_inventory",
+     "score": 0.5142
+    },
+    {
+     "id": "note:fame-contribution",
+     "score": 0.4541
+    },
+    {
+     "id": "catalogue:project_scope",
+     "score": 0.4422
+    }
+   ],
+   "lexical": [
+    {
+     "id": "note:fame-contribution",
+     "score": 0.316
+    },
+    {
+     "id": "catalogue:project_scope",
+     "score": 0.193
+    },
+    {
+     "id": "catalogue:ethanol_evidence",
+     "score": 0.135
+    }
+   ]
+  },
+  {
+   "q": "เอาตัวเลขปาล์มจากสองตารางมาบวกกันตรง ๆ ได้ไหม",
+   "relevant": [
+    "note:palm-upstream-basis"
+   ],
+   "semantic": [
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.3554
+    },
+    {
+     "id": "catalogue:palm_upstream",
+     "score": 0.3195
+    },
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.2925
+    }
+   ],
+   "lexical": [
+    {
+     "id": "note:palm-cpo-provider-gap",
+     "score": 0.2341
+    },
+    {
+     "id": "catalogue:palm_upstream",
+     "score": 0.1928
+    },
+    {
+     "id": "note:fame-contribution",
+     "score": 0.1797
+    }
+   ]
+  },
+  {
+   "q": "ทำไมย้อนจากน้ำมันปาล์มดิบกลับไปหาผลปาล์มสดไม่ได้",
+   "relevant": [
+    "note:palm-cpo-provider-gap"
+   ],
+   "semantic": [
+    {
+     "id": "catalogue:palm_upstream",
+     "score": 0.6077
+    },
+    {
+     "id": "note:palm-cpo-provider-gap",
+     "score": 0.5568
+    },
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.5465
+    }
+   ],
+   "lexical": [
+    {
+     "id": "catalogue:palm_upstream",
+     "score": 0.393
+    },
+    {
+     "id": "note:palm-cpo-provider-gap",
+     "score": 0.3871
+    },
+    {
+     "id": "note:fame-wtw-boundary",
+     "score": 0.1991
+    }
+   ]
+  },
+  {
+   "q": "ผลพลอยได้อย่างกลีเซอรีนถูกแบ่งภาระกันยังไง",
+   "relevant": [
+    "note:fame-allocation-factors",
+    "note:fame-allocation-caution"
+   ],
+   "semantic": [
+    {
+     "id": "note:fame-allocation-caution",
+     "score": 0.533
+    },
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.4184
+    },
+    {
+     "id": "note:fame-contribution",
+     "score": 0.3822
+    }
+   ],
+   "lexical": [
+    {
+     "id": "note:fame-allocation-caution",
+     "score": 0.2586
+    },
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.178
+    },
+    {
+     "id": "note:fame-wtw-boundary",
+     "score": 0.1512
+    }
+   ]
+  },
+  {
+   "q": "ข้อมูลไบโอดีเซลในบทความเป็นปีไหน วัดจากโรงงานจริงหรือเปล่า",
+   "relevant": [
+    "note:fame-measurement-period",
+    "note:fame-data-basis"
+   ],
+   "semantic": [
+    {
+     "id": "catalogue:fame_inventory",
+     "score": 0.6271
+    },
+    {
+     "id": "note:fame-measurement-period",
+     "score": 0.5043
+    },
+    {
+     "id": "catalogue:fame_lca_results",
+     "score": 0.5039
+    }
+   ],
+   "lexical": [
+    {
+     "id": "note:fame-data-basis",
+     "score": 0.2749
+    },
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.1934
+    },
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.1772
+    }
+   ]
+  },
+  {
+   "q": "ทำไมข้อมูลเตรียมที่ดินปลูกปาล์มถึงไม่ถูกนำไปใช้",
+   "relevant": [
+    "note:palm-land-unit-hold"
+   ],
+   "semantic": [
+    {
+     "id": "note:fame-contribution",
+     "score": 0.5789
+    },
+    {
+     "id": "note:palm-land-unit-hold",
+     "score": 0.5624
+    },
+    {
+     "id": "note:fame-data-basis",
+     "score": 0.5603
+    }
+   ],
+   "lexical": [
+    {
+     "id": "note:palm-cpo-provider-gap",
+     "score": 0.2262
+    },
+    {
+     "id": "note:fame-data-basis",
+     "score": 0.1718
+    },
+    {
+     "id": "note:fame-contribution",
+     "score": 0.1553
+    }
+   ]
+  },
+  {
+   "q": "ข้อมูลของบทความมาจากไหน เก็บมาได้ยังไง",
+   "relevant": [
+    "note:fame-data-basis"
+   ],
+   "semantic": [
+    {
+     "id": "note:fame-data-basis",
+     "score": 0.3817
+    },
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.3803
+    },
+    {
+     "id": "catalogue:company_reports",
+     "score": 0.3206
+    }
+   ],
+   "lexical": [
+    {
+     "id": "note:fame-data-basis",
+     "score": 0.3525
+    },
+    {
+     "id": "note:fame-contribution",
+     "score": 0.1927
+    },
+    {
+     "id": "catalogue:project_scope",
+     "score": 0.1871
+    }
+   ]
+  },
+  {
+   "q": "ข้อมูลหน่วยงานที่ดูแลแหล่งน้ำมันดิบมีรายเดือนตั้งแต่ปีไหน",
+   "relevant": [
+    "catalogue:dmf_production"
+   ],
+   "semantic": [
+    {
+     "id": "catalogue:eppo_refinery_intake",
+     "score": 0.7066
+    },
+    {
+     "id": "catalogue:eppo_product_output",
+     "score": 0.6693
+    },
+    {
+     "id": "catalogue:dmf_production",
+     "score": 0.6046
+    }
+   ],
+   "lexical": [
+    {
+     "id": "catalogue:eppo_refinery_intake",
+     "score": 0.2565
+    },
+    {
+     "id": "catalogue:dmf_production",
+     "score": 0.2547
+    },
+    {
+     "id": "note:fame-functional-unit",
+     "score": 0.2354
+    }
+   ]
+  },
+  {
+   "q": "ระบบเก็บรายงานของบริษัทกลั่นน้ำมันรายไหนไว้บ้าง",
+   "relevant": [
+    "catalogue:company_reports"
+   ],
+   "semantic": [
+    {
+     "id": "catalogue:eppo_refinery_intake",
+     "score": 0.7053
+    },
+    {
+     "id": "catalogue:eppo_product_output",
+     "score": 0.6607
+    },
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.6038
+    }
+   ],
+   "lexical": [
+    {
+     "id": "catalogue:eppo_refinery_intake",
+     "score": 0.2567
+    },
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.1905
+    },
+    {
+     "id": "catalogue:company_reports",
+     "score": 0.1676
+    }
+   ]
+  },
+  {
+   "q": "โปรเจกต์นี้ขอบเขตแค่ไหน",
+   "relevant": [
+    "catalogue:project_scope"
+   ],
+   "semantic": [
+    {
+     "id": "note:fame-allocation-caution",
+     "score": 0.3845
+    },
+    {
+     "id": "note:fame-allocation-factors",
+     "score": 0.3349
+    },
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.3015
+    }
+   ],
+   "lexical": [
+    {
+     "id": "note:fame-functional-unit",
+     "score": 0.1853
+    },
+    {
+     "id": "note:fame-wtw-boundary",
+     "score": 0.1045
+    },
+    {
+     "id": "catalogue:ethanol_evidence",
+     "score": 0.0896
+    }
+   ]
+  },
+  {
+   "q": "รายการที่ทีมรับแล้วกับที่พักไว้ต่างกันยังไง",
+   "relevant": [
+    "catalogue:acceptance"
+   ],
+   "semantic": [
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.4163
+    },
+    {
+     "id": "note:palm-land-unit-hold",
+     "score": 0.3319
+    },
+    {
+     "id": "note:fame-allocation-caution",
+     "score": 0.3194
+    }
+   ],
+   "lexical": [
+    {
+     "id": "catalogue:acceptance",
+     "score": 0.2918
+    },
+    {
+     "id": "note:palm-cpo-provider-gap",
+     "score": 0.1841
+    },
+    {
+     "id": "note:fame-allocation-caution",
+     "score": 0.1835
+    }
+   ]
+  },
+  {
+   "q": "ผลทดสอบรถผสมเอทานอลตอนติดเครื่องช่วงเช้ามืดมีไหม",
+   "relevant": [
+    "catalogue:ethanol_evidence"
+   ],
+   "semantic": [
+    {
+     "id": "catalogue:ethanol_evidence",
+     "score": 0.3938
+    },
+    {
+     "id": "catalogue:fame_lca_results",
+     "score": 0.3876
+    },
+    {
+     "id": "catalogue:fame_inventory",
+     "score": 0.3571
+    }
+   ],
+   "lexical": [
+    {
+     "id": "catalogue:ethanol_evidence",
+     "score": 0.3295
+    },
+    {
+     "id": "catalogue:project_scope",
+     "score": 0.1545
+    },
+    {
+     "id": "note:fame-functional-unit",
+     "score": 0.1279
+    }
+   ]
+  }
+ ]
+}

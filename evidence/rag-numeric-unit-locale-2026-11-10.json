@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-10",
+  "change": "Normalized common English and Thai unit spellings before checking the conservative numeric-unit allowlist. Canonical forms now recognize tonne/ton, kilogram/gram/litre, per-year/per-day, English per, and common Thai mass/volume/distance/energy terms.",
+  "verification": {
+    "command": "node tests/rag-vercel-api.cjs",
+    "syntax_checks": [
+      "node --check api/rag/ask.js",
+      "node --check tests/rag-vercel-api.cjs"
+    ],
+    "result": "passed",
+    "syntax_result": "passed",
+    "new_cases": [
+      "English: 7 tonnes CO2e per year is equivalent to 7 t CO2e/year.",
+      "Thai: 7 กก. CO2e ต่อลิตรเอทานอล is equivalent to 7 kg CO2e/L ethanol.",
+      "Earlier mismatched denominator regression still rejects 7 t CO2e/year rewritten as 7 kg CO2e/L."
+    ]
+  },
+  "limits": [
+    "Only listed unit aliases are normalized; no generic dimensional analysis or unit conversion.",
+    "Matching value and unit do not prove metric meaning, time period, boundary, or answer relevance.",
+    "No live Gemini call, database query, Production deployment, or route enablement."
+  ],
+  "status": "LOCAL_VERIFIED"
+}

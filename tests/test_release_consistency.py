@@ -24,7 +24,7 @@ class ReleaseConsistencyTests(unittest.TestCase):
                       'build/vercel-upload/api/[route].js',
                       'data/raw/mdpi-9415/pdf-v3/source.pdf','data/raw/mdpi-9415/table4-dom.json',
                       'build/frontend/build-manifest.json','output/pdf/TamsoodBase-SRS-review.pdf'])
-        for name in ('index.html','style.css','api.js','app.js','favicon.svg','upstream-inventory.json','case-study.js','case-study.json','config.js','discovery.js','story.js','theme.css','noto-sans-thai-06310198b08f.woff2','FONT-LICENSE.txt'):
+        for name in ('index.html','ask.html','style.css','api.js','app.js','favicon.svg','upstream-inventory.json','case-study.js','case-study.json','config.js','discovery.js','story.js','theme.css','design-refresh.css','noto-sans-thai-06310198b08f.woff2','FONT-LICENSE.txt'):
             names.update(['web/'+name,'build/frontend/'+name])
         for name in names:
             target = self.root/name

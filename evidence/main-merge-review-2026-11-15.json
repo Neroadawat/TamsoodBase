@@ -1,0 +1,18 @@
+{
+  "checked_on": "2026-11-15",
+  "report": "output/m4/review-2026-11-15/S2-G05_M4_Report_REVIEW_2026-11-15_v2.docx",
+  "report_sha256": "239bbe518bc86a937dc39bb0007ed6464a6e5daf396f8d442552a12dfdfebe82",
+  "report_pages": 71,
+  "toc_entries_verified": 55,
+  "toc_fixed_after_claude_update": true,
+  "frontend_node_test_files_passed": 17,
+  "frontend_python_tests_passed": 19,
+  "technical_pass": true,
+  "submission_ready": false,
+  "csv_rows": 16,
+  "csv_columns": 32,
+  "primary_slide_count": 10,
+  "canva_addition_slide_count": 2,
+  "source_branch": "codex/rag-gemini-preview-2026-11-09",
+  "scope": "Pre-merge checks; team signoffs, direct EC2 SQL and presentation-room testing remain unverified"
+}

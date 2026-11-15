@@ -1,0 +1,31 @@
+{
+  "checked_on": "2026-11-15",
+  "passed": true,
+  "engine": "MySQL 8.4 InnoDB",
+  "scope": "Isolated local import of existing source snapshot; not a direct EC2 SQL execution; no production changes",
+  "dmf_top4": [
+    "เบญจมาศ\tในทะเล\t19337.54839\tบาร์เรล\t11399",
+    "Sirikit และอื่นๆใน S1\tบนบก\t18557\tบาร์เรล\t11425",
+    "ปลาทอง\tในทะเล\t11760.67294\tบาร์เรล\t11407",
+    "นงเยาว์\tในทะเล\t9703.50129\tบาร์เรล\t11402"
+  ],
+  "poster_q1": [
+    "Tap water\t0.400000000000\tm3",
+    "RBDPO\t24.600000000000\tkg",
+    "Methanol\t3.470000000000\tkg",
+    "Electricity (grid)\t0.520000000000\tkWh",
+    "Cooling water\t0.010000000000\tm3",
+    "Steam\t1.840000000000\tkg",
+    "Potassium hydroxide\t0.270000000000\tkg",
+    "Phosphoric acid\t0.110000000000\tkg"
+  ],
+  "poster_q2": [
+    "FAME\tINPUT\t8",
+    "H-FAME\tINPUT\t5",
+    "FAME\tOUTPUT\t2",
+    "H-FAME\tOUTPUT\t1"
+  ],
+  "source_inventory_sha256": "d95b721aded3a98be0cbeeaf9cf964841133cee788235ecba8608ffc6775a134",
+  "full_mysql_sha256": "a0ac4930af850e3728959144f19e61a4e15999a8f6b1bfe7441498a8dd04bf93",
+  "temporary_container_removed": true
+}

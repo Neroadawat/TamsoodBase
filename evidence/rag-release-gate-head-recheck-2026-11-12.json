@@ -1,0 +1,44 @@
+{
+  "checked_at_local": "2026-11-12T14:05:56+07:00",
+  "head": "ee78f90e",
+  "scope": "Local-only release-gate and knowledge-pack consistency review; no production endpoint contacted",
+  "manifest_observed": {
+    "status": "OWNER_APPROVED_PUBLIC_DEMO",
+    "public_release_allowed": true,
+    "external_llm_allowed": true,
+    "required_release_gate_count": 9,
+    "release_gates_true": 0,
+    "record_rights": [
+      "PENDING"
+    ]
+  },
+  "runtime_simulation": {
+    "command": "node -e ... api._internals.isReleaseReady(fake production env)",
+    "result": true,
+    "provider_called": false,
+    "meaning": "The checked-in runtime predicate can return ready while all manifest gates are false and records remain PENDING."
+  },
+  "knowledge_pack_check": {
+    "command": "python -X utf8 scripts/build_rag_knowledge_pack.py --check",
+    "result": "passed",
+    "content_sha256": "2ebbc817588aae96fd5c3909285bae0e0064f3664573e9d579ce0ccf057cc089",
+    "rows": {
+      "dmf_production": 34671,
+      "eppo_refinery_intake": 3012,
+      "eppo_product_output": 2922,
+      "nso_energy": 273,
+      "fame_inventory": 16,
+      "palm_upstream": 42
+    }
+  },
+  "limits": {
+    "production_api_checked": false,
+    "production_changed": false,
+    "deployment_or_push": false,
+    "secrets_read": false,
+    "gemini_called": false,
+    "owner_rights_approval_inferred": false,
+    "production_status_independently_verified": false,
+    "current_instruction": "Keep RAG Production HOLD while required release gates are incomplete"
+  }
+}

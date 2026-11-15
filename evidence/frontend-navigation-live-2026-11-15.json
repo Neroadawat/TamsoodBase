@@ -1,0 +1,136 @@
+{
+  "checked_on": "2026-11-15",
+  "scope": "13 views at 1440/390px: routing, page overflow, runtime exceptions, floating chat visibility; not every data filter or Safari",
+  "results": [
+    {
+      "view": "catalog",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "explore",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "eppo",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "nso",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "inventory",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "reference",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "case-study",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "ethanol",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "quality",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "reports",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "sources",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "pipeline",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "ar-2",
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "view": "catalog",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "explore",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "eppo",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "nso",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "inventory",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "reference",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "case-study",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "ethanol",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "quality",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "reports",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "sources",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "pipeline",
+      "width": 390,
+      "scrollWidth": 390
+    },
+    {
+      "view": "ar-2",
+      "width": 390,
+      "scrollWidth": 390
+    }
+  ]
+}

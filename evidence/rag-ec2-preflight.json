@@ -1,0 +1,58 @@
+{
+  "checked_at_utc": "2026-11-08T14:24:00Z",
+  "host": "TamsoodBase EC2",
+  "architecture": "x86_64",
+  "docker_version": "29.9.1",
+  "active_api": {
+    "container": "tamsoodbase-api",
+    "owner_label": "TamsoodBase",
+    "image": "tamsoodbase-api:dea667bbd79dc1d9",
+    "image_id": "sha256:7df54d4ea424845847501b84d788af38908d831990f3b1a5bbae47a0ca9b0e1f",
+    "running": true,
+    "health": "healthy",
+    "readyz_http": 200
+  },
+  "available_memory_kib": 850816,
+  "free_project_disk_kib": 20011456,
+  "host_ports": {
+    "8767": "free",
+    "18767": "free"
+  },
+  "ginder_containers": [
+    "ginder-production-backend-1|Up 4 days (healthy)|ginder-backend:production",
+    "ginder-production-celery-worker-1|Up 4 days (healthy)|b384a52cbb3c",
+    "ginder-production-celery-beat-1|Up 4 days (healthy)|b384a52cbb3c",
+    "ginder-production-caddy-1|Up 6 days (healthy)|caddy:2-alpine",
+    "ginder-production-migrate-1|Exited (0) 3 weeks ago|6625bdceba9b",
+    "ginder-production-db-1|Up 3 weeks (healthy)|postgres:15-alpine",
+    "ginder-production-redis-1|Up 3 weeks (healthy)|redis:7-alpine"
+  ],
+  "other_tamsood_containers": [
+    "tamsoodbase-https-tunnel|Up 11 days",
+    "tamsoodbase-https-gateway|Up 11 days (unhealthy)",
+    "tamsoodbase-mysql-runtime|Up 11 days",
+    "tamsoodbase-rollback-*|Exited"
+  ],
+  "existing_rag_container": false,
+  "existing_internal_rag_network": false,
+  "decision": "Eligible for controlled staging only; RAM headroom is limited and staging must preserve API readiness",
+  "public_endpoint": false,
+  "staging_attempts": [
+    {
+      "time": "2026-11-08T14:32Z",
+      "result": "ABORTED_BEFORE_ACTIVATION",
+      "reason": "Docker internal network host port publication was not reachable at 127.0.0.1:18767",
+      "cleanup": "staging container owner-verified and removed; empty owner-verified internal network removed",
+      "postcheck": {
+        "api_health": "healthy",
+        "ginder_changed": false,
+        "active_rag_created": false
+      }
+    }
+  ],
+  "subnet_candidate_check": {
+    "cidr": "10.253.77.0/29",
+    "host_route_conflicts": [],
+    "docker_network_conflicts": []
+  }
+}

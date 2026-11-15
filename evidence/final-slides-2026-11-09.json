@@ -1,0 +1,43 @@
+{
+  "reviewed_at": "2026-11-09",
+  "purpose": "Record the current 10-slide review deck and PDF companion against the current SRS/evidence without changing the original deck.",
+  "source_pptx": {
+    "path": "output/presentations/TamsoodBase-final-review.pptx",
+    "sha256": "52252DFE69CF44CD0F9ABAE885CB1DD3F331DEFA1D5F0CB78AF79D65048FFB10",
+    "modified": false
+  },
+  "review_pptx": {
+    "path": "output/presentations/TamsoodBase-final-review-2026-11-09.pptx",
+    "sha256": "0D6573B5F7435C0FFAE9C6B3AB811AFEA816B52E5370591F0D3CB79AE0BC2DF0",
+    "slides": 10,
+    "change": "Updated slide 10 SRS version label from SRS0.4 to SRS0.7.1; original deck preserved."
+  },
+  "review_pdf": {
+    "path": "output/pdf/TamsoodBase-final-slides-review-2026-11-09.pdf",
+    "sha256": "2F984E5AC06EC9D1D99220C216C9125861481E97E6192C66E52F48BC6870240E",
+    "pages": 10,
+    "page_size_points": [960, 540],
+    "matches_powerpoint_review_export_byte_for_byte": true
+  },
+  "source_evidence": {
+    "srs_path": "docs/submission/SRS.md",
+    "srs_sha256": "267196B358D94AAFC30794E636FB5CDBB8C07838A4F732CBAD74C0250C990134",
+    "cross_source_coverage_path": "evidence/cross-source-coverage.json",
+    "cross_source_coverage_sha256": "F6A4B1C9CE19692906EC8092A9678A4E32B1A2CC9B3C68C669353B30BBB3F396"
+  },
+  "review_scope": {
+    "all_slide_renders_visually_inspected": true,
+    "checked_content": [
+      "SRS0.7.1 label and explicit team contribution/memo/consent review gate",
+      "cross-source comparison counts: 169 compared, 141 exact, 24 display rounding, 4 divergences",
+      "10-page 16:9 PDF layout and page numbers",
+      "existing evidence caveats on NSO, FAME/H-FAME, Neo4j, web, and local SQL results"
+    ],
+    "not_claimed": [
+      "team approval or consent",
+      "independent scientific verification",
+      "submission or defense completion"
+    ]
+  },
+  "status": "Draft for team review"
+}

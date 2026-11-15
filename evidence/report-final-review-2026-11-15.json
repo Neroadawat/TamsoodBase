@@ -1,0 +1,14 @@
+{
+  "checked_on": "2026-11-15",
+  "file": "output/m4/review-2026-11-15/S2-G05_M4_Report_REVIEW_2026-11-15_v2.docx",
+  "sha256": "239bbe518bc86a937dc39bb0007ed6464a6e5daf396f8d442552a12dfdfebe82",
+  "pages": 71,
+  "toc_entries_verified": 55,
+  "nfr_traceability_rows_added": 6,
+  "revision_added": "0.4",
+  "code_link_target": "https://github.com/Neroadawat/TamsoodBase/tree/codex/rag-gemini-preview-2026-11-09",
+  "ER_and_historical_memo_preserved": true,
+  "review_copy_not_submission_certification": true,
+  "native_Word_render_checked": true,
+  "rechecked_after_claude_additions": true
+}

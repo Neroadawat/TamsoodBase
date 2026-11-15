@@ -1,0 +1,95 @@
+{
+  "review_date": "2026-11-10",
+  "scope": "Anonymous HTTPS GET smoke checks against the Production alias; response bodies were summarized in memory and record values were not saved.",
+  "host": "https://tamsoodbase.vercel.app",
+  "authorization_header_sent": false,
+  "www_authenticate_challenge": false,
+  "probes": [
+    {
+      "path": "/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "result": "public static page"
+    },
+    {
+      "path": "/api/eppo?dataset=11_13&year=2024&page=1",
+      "status": 200,
+      "rows_returned": 40,
+      "rights_status_distribution": {
+        "CATALOG_OPEN_DATA_COMMON_LABEL_OBSERVED": 40
+      },
+      "redistribution_status_distribution": {
+        "SPECIFIC_TERMS_NOT_YET_VERIFIED": 40
+      },
+      "record_status_distribution": {
+        "STAGED_SOURCE_VERIFIED": 40
+      }
+    },
+    {
+      "path": "/api/nso",
+      "status": 200,
+      "rows_returned": 273,
+      "rights_status_distribution": {
+        "PUBLIC_DOWNLOAD_REUSE_SCOPE_UNCONFIRMED": 273
+      },
+      "record_status_distribution": {
+        "STAGED_SOURCE_VERIFIED": 273
+      }
+    },
+    {
+      "path": "/api/product-inventory",
+      "status": 200,
+      "rows_returned": 16,
+      "record_status_distribution": {
+        "SOURCE_REPORTED_PRODUCT_INVENTORY": 16
+      }
+    },
+    {
+      "path": "/api/records?page=1",
+      "status": 200,
+      "rows_returned": 30,
+      "record_status_distribution": {
+        "PENDING": 30
+      }
+    },
+    {
+      "path": "/api/reference?page=1",
+      "status": 200,
+      "rows_returned": 30,
+      "redistribution_status_distribution": {
+        "NOT_CLEARED": 30
+      },
+      "quantity_projection": "withheld"
+    },
+    {
+      "path": "/api/summary",
+      "status": 200,
+      "result": "dataset metadata and aggregate review summary returned"
+    }
+  ],
+  "local_mitigation": {
+    "source_file": "api/[route].js",
+    "behavior": "All dataset API routes fail closed with HTTP 403 before contacting the backend; only model/release metadata and readiness/health routes remain available.",
+    "tests": [
+      "tests/vercel-proxy-behavior.cjs asserts 15 data/login routes return 403 without an upstream request.",
+      "tests/proxy-concurrent-faults.cjs exercises the safe health route with simulated faults only.",
+      "tests/rag-vercel-api.cjs confirms the RAG route remains closed."
+    ],
+    "deployed_to_production": false
+  },
+  "post_change_verification": {
+    "python_full_suite": "306 tests run; 296 passed; 10 skipped; 0 failed",
+    "all_cjs_files": "17 passed",
+    "proxy_route_tests": "15 restricted data/login routes returned 403 before backend request; health/readiness allowlist tested separately",
+    "frontend_restriction_copy": "API transport emits a distinct restricted state; banner explains database data is temporarily withheld during rights review",
+    "frontend_build": "passed; 42 licensed public snapshot rows; no private research data; RAG closed",
+    "vercel_package": "passed; 22 allowlisted source files; no private research data or credentials",
+    "git_diff_check": "passed"
+  },
+  "decision": "CONFIRMED_PRODUCTION_DISCLOSURE; local mitigation is not live until a separately reviewed deployment is made.",
+  "limitations": [
+    "This was a bounded read-only probe of listed endpoints, not an exhaustive route or infrastructure audit.",
+    "Source/record rights remain unchanged; HTTP exposure does not imply permission to redistribute.",
+    "Production status must be rechecked after an authorized deployment."
+  ]
+}

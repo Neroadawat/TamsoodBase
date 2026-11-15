@@ -1,0 +1,25 @@
+{
+  "reviewed_at_local": "2026-11-12",
+  "scope": "Static safety correction and isolated mock verification of deploy/rollback_rag_ec2.sh; no Docker daemon, EC2, API, Ginder, credentials or production service used.",
+  "finding": "The rollback script collected prior-container IDs via process substitution. If docker ps -aq failed while other Docker inspections still worked, mapfile could appear successful with an empty list and take the no-backup branch, removing the active RAG container.",
+  "change": "Capture docker ps -aq output in a checked command substitution. On listing failure, print a refusal and exit before any removal; parse the output into an array only after success.",
+  "verification": {
+    "syntax_command": "Git Bash: bash -n deploy/rollback_rag_ec2.sh tests/rag-rollback-script-mock.sh",
+    "syntax": "passed",
+    "mock_command": "Git Bash: bash tests/rag-rollback-script-mock.sh",
+    "mock": "passed",
+    "mock_cases": [
+      "Backup listing failure exits nonzero and logs no removal of active service",
+      "Verified previous-release mock restores previous container and passes /readyz plus API/Ginder baseline checks"
+    ],
+    "stdout": "PASS: backup-list failure aborts without removing the active RAG container\nPASS: owner-verified previous release is restored and readiness checked",
+    "diff_check": "passed: git diff --check -- deploy/rollback_rag_ec2.sh tests/rag-rollback-script-mock.sh",
+    "ec2_or_docker_daemon_touched": false,
+    "production_changed": false
+  },
+  "hashes": {
+    "deploy/rollback_rag_ec2.sh": "043ee5cf2268e1f61bb186afbf07cf6e2094dcfefaf0d1806b1019747897c7de",
+    "tests/rag-rollback-script-mock.sh": "f98772c7406cc4dad470c2a5cb0a5b0ad7c3d98a6d7f04217f23612216cad9ea"
+  },
+  "limitations": "Mock verification does not prove Docker/EC2 behavior, rollback ownership or the real host baseline. An owner-approved live preflight and rollback drill remain required before upgrade."
+}

@@ -65,10 +65,33 @@ def constraints(question):
     topics = set()
     if re.search(r'หน่วยหน้าที่|ฐาน|\bfu\b', text): topics.add('basis')
     if re.search(r'จัดสรร|ปันส่วน|สัดส่วน', text): topics.add('allocation')
-    # The pilot has no plant/year-specific observations. Fail closed if requested.
-    specific = bool(re.search(r'\b(?:tsm|bbgi|dmf)\b|(?<!\d)(?:19|20|25|26)\d{2}(?!\d)|(?:แก๊สโซฮอล์?|gasohol|octane|ออกเทน|เบนซิน)\s*(?:91|95)', text))
+    # The pilot has no plant/year-specific observations. A year asked specifically
+    # as the FAME measurement/publication period is answerable as a metadata caveat.
+    fame_period_question = bool(
+        re.search(r'(?<![a-z0-9])(?:h-fame|fame)(?![a-z0-9])', text)
+        and re.search(r'ปี|เวลา|period|วัด|เผยแพร่|publication|measurement', text)
+    )
+    specific = bool(re.search(
+        r'\b(?:tsm|bbgi|dmf)\b|'
+        r'(?<!\d)(?:19|20|25|26)\d{2}(?!\d)|'
+        r'(?:แก๊สโซฮอล์?|gasohol|octane|ออกเทน|เบนซิน)\s*(?:91|95)', text
+    ))
+    if fame_period_question and not re.search(r'\b(?:tsm|bbgi|dmf)\b', text):
+        specific = False
+    preferred_card = None
+    palm_terms = r'ffb|cpo|rbdpo|ปาล์ม|ต้นน้ำ'
+    if (re.search(palm_terms, text)
+            and re.search(r'ตาราง\s*4|table\s*4|เชื้อเพลิง|\bmj\b', text)
+            and re.search(r'ฐาน|หน่วย|เหมือนกัน|เดียวกัน|ต่างกัน', text)):
+        preferred_card = 'palm-upstream-basis'
+    elif (re.search(r'คำนวณย้อน|ย้อน(?:กลับ)?|ย้อนหา|คำนวณกลับ|back[ -]?calculat', text)
+          and re.search(r'\bcpo\b|โรงสกัด', text)
+          and re.search(r'\bffb\b|ปาล์ม|ผลปาล์ม|ผลผลิต', text)):
+        preferred_card = 'palm-cpo-provider-gap'
     return {'fuels': fuels, 'species': species, 'vehicle_stages': stages,
-            'numeric': numeric, 'specific': specific, 'topics': topics, 'text': text}
+            'numeric': numeric, 'specific': specific, 'topics': topics, 'text': text,
+            'fame_period_question': fame_period_question,
+            'preferred_card': preferred_card}
 
 
 def load_scope(cards):

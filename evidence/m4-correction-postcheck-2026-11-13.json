@@ -1,0 +1,28 @@
+{
+  "checked_at_local": "2026-11-13T06:07:00+07:00",
+  "scope": "Read-only post-check of updated M4 poster and slide PDF text after the owner/editor regenerated the artifacts",
+  "poster": {
+    "file": "output/m4/S2-G05_M4_Poster_A4.pdf",
+    "pages": 1,
+    "displayed_total": 40980,
+    "text_extraction_confirmed": true,
+    "prior_total_41862_present": false,
+    "listed_knowledge_pack_sum": 40980,
+    "public_rights_clearance_confirmed": false
+  },
+  "slides": {
+    "file": "output/m4/S2-G05_M4_Slides.pdf",
+    "pages": 10,
+    "slide_2_text_extraction_confirmed": true,
+    "prior_absolute_claim_present": false,
+    "updated_text_mentions_finnish_bhd_lca_data": true,
+    "remaining_editorial_note": "Confirm that the phrase about Thai statistics is scoped to the Thai statistical datasets and cannot be read as describing every research input."
+  },
+  "methods": [
+    "Extracted PDF text locally with pypdf; no external service or production API was contacted.",
+    "Searched M4 source files for old and new totals and old and revised slide wording."
+  ],
+  "production_touched": false,
+  "files_edited_by_reviewer": false,
+  "decision_needed": "The team/editor should confirm the intended scope of the poster's 'available on the web' wording and the slide's Thai-statistics phrase before treating the M4 artifacts as approved."
+}

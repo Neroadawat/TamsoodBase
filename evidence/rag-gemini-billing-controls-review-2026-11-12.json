@@ -1,0 +1,40 @@
+{
+  "reviewed_at_local": "2026-11-12T06:45:00+07:00",
+  "scope": "Official Gemini API billing-control review for RAG release planning; no project dashboard, key, account, payment data, prompt, or user data inspected or sent.",
+  "official_sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/billing",
+      "observed": [
+        "Project-level monthly spend caps are marked experimental and can overrun by around ten minutes of billing-processing latency; long-running tasks may also exceed the project cap.",
+        "Billing-account tier caps aggregate usage across linked projects; API keys inherit project billing state and do not have independent billing settings.",
+        "Prepay reaching zero stops API keys across projects linked to that billing account, but documented processing latency may still cause overage.",
+        "Monthly auto-charge limit constrains automatic reloads; manually initiated one-time purchases do not count against that limit."
+      ]
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/terms",
+      "observed": "Billing state of the project used for Gemini API access determines whether the service is treated as Paid Service; the actual TamsoodBase project state was not inspected."
+    }
+  ],
+  "change": {
+    "file": "docs/rag/VERCEL_RATE_LIMITER_RUNBOOK.md",
+    "added": "Owner-only billing verification checklist and explicit warning that Gemini spend controls are not a hard zero-overrun guarantee.",
+    "sha256": "1ba8db87c380daba0ac1d34ff4f1bbd397a59d3ae20d510c94a50774f5500f6d"
+  },
+  "validation": {
+    "runbook_sha256_computed": true,
+    "tasks_json_parse": "passed",
+    "git_diff_check": "passed; CRLF normalization warnings only, no whitespace errors",
+    "tests": "not run; documentation-only change"
+  },
+  "project_billing_verified": false,
+  "owner_budget_decision": false,
+  "billing_settings_changed": false,
+  "credentials_inspected": false,
+  "production_changed": false,
+  "rag_production": "HOLD",
+  "limitations": [
+    "Official docs establish provider behavior but do not establish this project's selected billing mode, cap, payment settings, account linkage, or actual spend.",
+    "No claim is made that current Gemini spend is bounded to a user-approved amount."
+  ]
+}

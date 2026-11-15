@@ -1,0 +1,23 @@
+{
+  "reviewed_at_local": "2026-11-12",
+  "scope": "RAG ask-page consent control contract. Source and existing UI/server tests reviewed; no network, key, provider, or production access.",
+  "verification": {
+    "command": "node tests/rag-ask-consent-ui.cjs",
+    "result": "passed",
+    "stdout": "RAG ask-page consent contract passed (static source assertions only).",
+    "git_diff_check": "passed for the new test file",
+    "checked": [
+      "consent is disabled by default while the page is closed",
+      "Thai notice says consent is requested for each question",
+      "consent/enabled-state guard precedes the sole RAG fetch callsite",
+      "explicit consent state is sent to the API",
+      "consent resets in finally after success or failure"
+    ]
+  },
+  "limitations": "This is a static source-contract regression, not a browser interaction test. It does not prove browser behavior or server enforcement; API-side consent enforcement is covered separately by tests/rag-vercel-api.cjs.",
+  "hashes": {
+    "tests/rag-ask-consent-ui.cjs": "5c1d4fc6a74ced907b6231288def0a0f64d4c5aeb7709f9195caaba2a60cf22d"
+  },
+  "provider_called": false,
+  "production_changed": false
+}

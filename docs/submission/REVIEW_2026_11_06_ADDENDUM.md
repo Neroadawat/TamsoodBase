@@ -1,6 +1,6 @@
 # SRS engineering addendum — 6 November 2026
 
-ส่วนเสริมร่างเทคนิคSRS0.7.1 ไม่ใช่finalapproval;PDF28หน้าเดิมยังไม่renderรวมaddendumนี้.
+ส่วนเสริมร่างเทคนิคSRS0.7.1 ไม่ใช่finalapproval;PDF27หน้าที่ render 9พ.ย. ยังไม่รวม addendum นี้.
 
 FR-D01: NSO table/year/q<=160ต้องvalidatedในURLและreload/back/shareคงผลเดิม.
 FR-D02: routeใหม่เห็นtitle/focus;backคืนตำแหน่งอ่าน;storyjumpไม่เสีย.

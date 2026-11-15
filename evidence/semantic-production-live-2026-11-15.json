@@ -1,0 +1,36 @@
+﻿{
+    "generated_at":  "2026-11-15T11:53:37Z",
+    "scope":  "Production https://tamsoodbase.vercel.app after enabling TAMSOOD_SEMANTIC_ENABLED (deploy of commit bcfcd9b). Real Gemini, one run per question, questions in docs/rag/semantic-eval-questions-v3-live.json written before the run and never used for tuning. Retrieval/answer-shape metrics, not human-graded correctness.",
+    "healthz":  200,
+    "probe":  "retrieval.mode=semantic, corpus_version f590197f715ddb17",
+    "paraphrase_12":  {
+                          "relevant_source_shown":  "11/12",
+                          "missed":  "eppo_refinery_intake question answered as chat without a source card",
+                          "modes":  {
+                                        "structured":  6,
+                                        "semantic":  3,
+                                        "hybrid":  3
+                                    },
+                          "plain_listing_fallbacks":  0,
+                          "median_ms":  4785
+                      },
+    "adversarial_6":  {
+                          "source_cards_outside_acceptable":  0,
+                          "structured_fallback_no_hits":  2,
+                          "note":  "no invented figures; PTT question showed company_reports link cards only"
+                      },
+    "numeric_6":  {
+                      "answers_from_structured_data":  "6/6",
+                      "values_unchanged_vs_before":  true,
+                      "examples":  [
+                                       "oil 2024 avg 80,575.03 bbl",
+                                       "refinery intake 2024 avg 1,085,166.5 BBL/DAY",
+                                       "diesel 2024 27,897.552 million litres"
+                                   ]
+                  },
+    "caveats":  [
+                    "median latency 4.8 s on this run vs about 2.3 s on earlier production runs without semantic (single run, cause not isolated: tunnel/EC2 swap/Gemini variance all possible)",
+                    "project_scope and acceptance catalogue entries have no source URL or dataset, so no card can be shown for them; not a retrieval defect",
+                    "n is small; does not demonstrate higher accuracy than the pre-existing planner"
+                ]
+}

@@ -1,0 +1,33 @@
+{
+  "checked_at_utc": "2026-11-11T23:31:32.277679+00:00",
+  "scope": "Local technical/reference release consistency audit after adding T172 consent regression. The first invocation detected a stale generated Markdown task board; regenerated from docs/tasks.json and reran the audit.",
+  "command": "python -X utf8 scripts/task_board.py; python -X utf8 scripts/check_release.py",
+  "task_board": {
+    "result": "regenerated from docs/tasks.json",
+    "counts": {
+      "DONE": 163,
+      "WAITING": 4,
+      "IN_PROGRESS": 4,
+      "TODO": 1
+    }
+  },
+  "final_audit": {
+    "technical_pass": true,
+    "passed_checks": 68,
+    "total_checks": 68,
+    "failed_checks": [],
+    "reference_release_ready": true,
+    "submission_ready": false,
+    "manifest_file_count_at_check": 795,
+    "unresolved_gates": [
+      {"id": "official_requirements", "status": "PARTIAL"},
+      {"id": "source_rights", "status": "PARTIAL"},
+      {"id": "domain_and_units", "status": "PARTIAL"},
+      {"id": "team_and_defense", "status": "UNCONFIRMED"},
+      {"id": "consent_forms", "status": "UNCONFIRMED"}
+    ]
+  },
+  "limitations": "This is a local artifact audit, not an external-source rights review, MTEC acceptance, live service check, Gemini evaluation, Docker deployment, or Production release.",
+  "production_changed": false,
+  "rag_production_released": false
+}

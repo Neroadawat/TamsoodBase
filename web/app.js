@@ -10,7 +10,7 @@ function badge(status){return el('span',statusLabel[status]||status,'tag '+(stat
 function params(){return new URLSearchParams(new FormData($('#filters')));}
 const get=(url,options)=>window.TamsoodAPI.get(url,35000,options);
 const apiUrl=path=>window.TamsoodAPI.url(path);
-async function load(){const request=++state.request;const p=params();p.set('page',state.page);$('#results').textContent='กำลังค้นหา…';$('#rows').replaceChildren();$('#previous').disabled=true;$('#next').disabled=true;$('#export').removeAttribute('href');try{const data=await get('/api/records?'+p);if(request!==state.request)return;state.total=data.total;$('#rows').replaceChildren();data.rows.forEach(row=>{const tr=el('tr');const name=el('td');name.append(el('strong',row.source_group),el('small',`${row.area} · ${row.block_label||'ไม่ระบุแปลง'}`));const amount=el('td',row.raw_value,'number');amount.append(el('small',`${row.unit_label} · ฐานเวลารอตรวจ`));const action=el('td'),button=el('button','ดูที่มา','evidence-btn');button.addEventListener('click',()=>openDetail(row));action.append(button);const status=el('td');status.append(badge(row.duplicate_status));tr.append(name,el('td',labels[row.package]),el('td',`${row.year_ce}-${String(row.month).padStart(2,'0')}`),amount,status,action);$('#rows').append(tr);});if(!data.rows.length){const tr=el('tr'),td=el('td','ไม่พบข้อมูลตามตัวกรอง ลองล้างตัวกรองหรือเปลี่ยนคำค้น','empty');td.colSpan=6;tr.append(td);$('#rows').append(tr);}$('#results').textContent=`พบ ${number(data.total)} รายการ · ทุกค่าคงสถานะรอตรวจ`;$('#page-label').textContent=`หน้า ${state.page} / ${Math.max(1,Math.ceil(data.total/30))}`;$('#previous').disabled=state.page<=1;$('#next').disabled=state.page*30>=data.total;const exportLink=$('#export');const limited=Number.isInteger(data.export_max_rows)&&data.total>data.export_max_rows;
+async function load(){const request=++state.request;const p=params();p.set('page',state.page);$('#results').textContent='กำลังค้นหา…';$('#rows').replaceChildren();$('#previous').disabled=true;$('#next').disabled=true;$('#export').removeAttribute('href');try{const data=await get('/api/records?'+p);if(request!==state.request)return;state.total=data.total;$('#rows').replaceChildren();data.rows.forEach(row=>{const tr=el('tr');const name=el('td');name.append(el('strong',row.source_group),el('small',`${row.area} · ${row.block_label||'ไม่ระบุแปลง'}`));const amount=el('td',row.raw_value,'number');amount.append(el('small',`${row.unit_label} · ฐานเวลารอตรวจ`));const action=el('td'),button=el('button','ดูที่มา','evidence-btn');button.addEventListener('click',()=>openDetail(row));action.append(button);const status=el('td');status.append(badge(row.duplicate_status));tr.append(name,el('td',labels[row.package]),el('td',`${row.year_ce}-${String(row.month).padStart(2,'0')}`),amount,status,action);$('#rows').append(tr);});if(!data.rows.length){const tr=el('tr'),td=el('td','ไม่พบข้อมูลตามตัวกรอง ลองล้างตัวกรองหรือเปลี่ยนคำค้น','empty');td.colSpan=6;tr.append(td);$('#rows').append(tr);}$('#results').textContent=`พบ ${number(data.total)} รายการ · แถวที่ไม่ซ้ำและไม่ถูกพัก ทีมรับเป็นสถิติต้นทางแล้ว`;$('#page-label').textContent=`หน้า ${state.page} / ${Math.max(1,Math.ceil(data.total/30))}`;$('#previous').disabled=state.page<=1;$('#next').disabled=state.page*30>=data.total;const exportLink=$('#export');const limited=Number.isInteger(data.export_max_rows)&&data.total>data.export_max_rows;
 if(limited){exportLink.removeAttribute('href');exportLink.setAttribute('aria-disabled','true');exportLink.textContent='กรองให้เหลือไม่เกิน '+number(data.export_max_rows)+' รายการเพื่อส่งออก';}
 else{exportLink.href=apiUrl('/api/export?'+params());exportLink.removeAttribute('aria-disabled');exportLink.textContent='ดาวน์โหลด CSV';}}
 catch(error){if(request!==state.request)return;$('#results').textContent=error.message;$('#rows').replaceChildren();$('#page-label').textContent='';return false;}}
@@ -20,7 +20,7 @@ function evidenceDestinations(kind,row){
  const links=[];
  if(kind==='nso'&&['13.5','13.6','13.7','13.8','13.10'].includes(row.table_id))links.push(['เว็บไซต์รายงาน สสช.','https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/Page_SYB_TH.html','เลือกบท 13 และตาราง '+row.table_id+' · รายงานเผยแพร่ 2569 ไม่ใช่ปีข้อมูล']);
  if(kind==='eppo'&&['11_13','11_14'].includes(row.dataset_id))links.push(['หน้าเว็บไซต์ชุดข้อมูล EPPO','https://catalog.eppo.go.th/th/dataset/dataset_'+row.dataset_id,'อ่านคำอธิบาย หน่วย และแหล่งที่มาของชุดข้อมูล']);
- if(kind==='dmf'&&['production-oil','production-condensate','production-natural-gas'].includes(row.package))links.push(['หน้าเว็บไซต์ชุดข้อมูล DMF','https://catalog.dmf.go.th/dataset/'+row.package,'อ่าน metadata และข้อจำกัดของฐานเวลา']);
+ if(kind==='dmf'&&['production-oil','production-condensate','production-natural-gas'].includes(row.package))links.push(['หน้าเว็บไซต์ชุดข้อมูล DMF','https://catalog.dmf.go.th/dataset/'+row.package,'อ่านรายละเอียดชุดข้อมูลและวิธีรายงานช่วงเวลา']);
  const raw=row.source_url||row.url;
  try{const u=new URL(raw);if(u.protocol==='https:'&&!u.username&&!u.password)links.push(['ดาวน์โหลดไฟล์ข้อมูล CSV',u.href,'ไฟล์จากเจ้าของข้อมูล · อาจเปิดเป็นข้อความหรือดาวน์โหลด']);}catch{}
  return links;
@@ -30,7 +30,7 @@ function evidenceNavigation(kind,row){
  for(const [title,url,note] of evidenceDestinations(kind,row)){
   const a=el('a',undefined,'evidence-destination');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.append(el('strong',title+' ↗'),el('small',note));section.append(a);
  }
- section.append(el('p','ลิงก์เปิดเว็บปัจจุบันของเจ้าของข้อมูล ส่วนค่าด้านล่างอ้างอิง snapshot ที่เก็บไว้ จึงอาจต่างจากไฟล์ที่เจ้าของปรับปรุงภายหลัง','muted'));
+ section.append(el('p','ลิงก์เปิดเว็บปัจจุบันของเจ้าของข้อมูล ส่วนค่าด้านล่างอ้างอิงสำเนาต้นทางที่ทีมเก็บไว้ จึงอาจต่างจากไฟล์ที่เจ้าของปรับปรุงภายหลัง','muted'));
  return section;
 }
 function sourceRowPreview(row){
@@ -38,8 +38,8 @@ function sourceRowPreview(row){
  const list=el('ol',undefined,'source-cells');
  (row.source_row||[]).forEach((value,index)=>{const selected=index+1===Number(row.source_column),cell=el('li',undefined,selected?'source-cell selected':'source-cell');cell.append(el('small','คอลัมน์ '+(index+1)+(selected?' · ค่าที่เลือก':'')),el('strong',String(value??'')||'(ว่าง)'));list.append(cell);});const details=el('details',undefined,'raw-row-details');details.append(el('summary','ดูแถวต้นฉบับทั้งหมด'),list);section.append(details);return section;
 }
-async function openDetail(record){$('#detail-content').replaceChildren(el('p','กำลังโหลดหลักฐาน…'));if(!$('#detail').open)$('#detail').showModal();try{const data=await get(`/api/record?package=${encodeURIComponent(record.package)}&line=${record.source_line}`);const content=$('#detail-content');content.replaceChildren(el('h2',data.source_group,'detail-title'));content.append(badge(data.duplicate_status));const grid=el('div',undefined,'detail-grid');grid.append(item('ผลิตภัณฑ์',labels[data.package]),item('ค่าตามต้นฉบับ',data.raw_value),item('ช่วงเวลา',`${data.year_ce}-${String(data.month).padStart(2,'0')}`),item('พื้นที่ / แปลง',`${data.area} / ${data.block_label||'ไม่ระบุ'}`),item('หน่วยตาม metadata',data.unit_label),item('ตำแหน่งต้นฉบับ',`CSV บรรทัด ${data.source_line}`));content.append(grid,el('p',data.unit_status+' · ยังไม่ใช่ Accepted Tuple','notice'));if(data.conflict_investigation){const note=data.conflict_investigation;content.append(el('h3','ประเด็นที่ต้องตรวจเพิ่ม'),el('p',`วันผลิตของกลุ่มรวม ${note.sum_days} วัน / ปฏิทิน ${note.calendar_days} วัน`),el('p',note.pattern==='POSSIBLE_SUBPERIOD'?'อาจเป็นข้อมูลแบ่งช่วงภายในเดือน แต่ยังไม่มีวันที่เริ่ม–สิ้นสุดยืนยัน จึงยังพักทั้งกลุ่มและไม่รวมค่าอัตโนมัติ':'จำนวนวันรวมยังอธิบายช่วงเวลาที่ไม่ซ้อนกันไม่ได้ จึงพักทั้งกลุ่มและไม่รวมค่าอัตโนมัติ','notice'));}content.append(evidenceNavigation('dmf',data),el('h3','ร่องรอยข้อมูล'),el('p',`Snapshot ${data.run_id}`,'muted'),el('div',data.csv_sha256,'hash'),el('p',`ดึงข้อมูล ${data.acquired_at} · ใบอนุญาตตาม metadata: ${data.license_label}`,'muted'));content.append(el('h3','แถวต้นฉบับ'),el('pre',JSON.stringify(data.raw_fields,null,2)));if(data.related.length>1){content.append(el('h3','รายการในกลุ่มตัวตนเดียวกัน'));data.related.forEach(row=>{const box=el('div',undefined,'source-card');box.append(el('p',`บรรทัด ${row.source_line} · ค่า ${row.raw_value}`),badge(row.status),el('pre',JSON.stringify(JSON.parse(row.raw_json),null,2)));content.append(box);});}const copy=el('button','คัดลอก metadata อ้างอิง','button primary');copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(JSON.stringify({package:data.package,source_url:data.url,source_line:data.source_line,snapshot:data.run_id,sha256:data.csv_sha256,accessed_at:data.acquired_at,status:'PENDING'},null,2));copy.textContent='คัดลอกแล้ว ✓';}catch{copy.textContent='เบราว์เซอร์ไม่อนุญาตให้คัดลอก';}});content.append(copy);}catch(error){$('#detail-content').replaceChildren(el('p',error.message));}}
-function renderOverview(data){state.summary=data;$('#raw-count').textContent=number(data.quality.raw_rows);$('#pending-count').textContent=number(data.report.deduplicated_candidates_pending_review);$('#hold-count').textContent=number(data.report.total_row_dispositions.HOLD_CONFLICT);$('#accepted-count').textContent=number(data.report.competition_accepted);$('#snapshot').textContent='DMF snapshot '+data.run_id;data.years.forEach(year=>{const opt=el('option',String(year));opt.value=year;$('#year').append(opt);});const quality=el('div',undefined,'quality-grid');[['แยกสำเนาที่เหมือนกันทุกช่อง',data.report.total_row_dispositions.EXCLUDE_EXACT_COPY,'คง raw และแถวตัวแทนไว้ ไม่ลบหลักฐาน'],['ไม่ผ่านรูปแบบ',data.quality.rejected,'แยกเหตุผลตรวจสอบได้ใน rejected log'],['ตัวเลข spot-check',`${data.report.unit_review.numeric_sample_matches} / ${data.report.unit_review.checks}`,'ตัวอย่างเลือกเอง ไม่ใช่อัตราความถูกต้องทั้งชุด'],['บริบทแปลงตรงแบบ exact',`${data.report.unit_review.exact_block_matches} / ${data.report.unit_review.checks}`,'ค่าตรงไม่ได้แปลว่าขอบเขตข้อมูลตรงกันทั้งหมด']].forEach(([title,value,note])=>{const box=el('div',undefined,'quality-card');box.append(el('p',title),el('strong',typeof value==='number'?number(value):value),el('p',note));quality.append(box);});$('#quality-content').append(quality);const patterns=data.report.conflict_patterns||{};$('#quality-content').append(el('h3','ทบทวนกลุ่มที่ต้องพักตรวจ'),el('p',`${patterns.POSSIBLE_SUBPERIOD||0} กลุ่มมีวันผลิตรวมเท่ากับวันในเดือน และ ${patterns.DAYS_EXCEED_MONTH||0} กลุ่มมีวันรวมเกินเดือน`),el('p','รูปแบบนี้ใช้จัดลำดับการตรวจเท่านั้น ยังพิสูจน์ไม่ได้ว่าช่วงวันไม่ซ้อนกันหรือใช้ฐานอัตราเดียวกัน ทุกกลุ่มยังคง HOLD และไม่รวมค่า','notice'));const max=Math.max(...data.coverage.map(r=>r.n));data.coverage.forEach((row,index)=>{const bar=el('div',undefined,'bar');bar.style.height=`${row.n/max*120}px`;bar.title=`${row.year_ce}: ${number(row.n)} candidates`;if(index%3===0||index===data.coverage.length-1)bar.append(el('span',String(row.year_ce)));$('#coverage').append(bar);});data.sources.forEach(source=>{const box=el('article',undefined,'source-card');box.append(el('h3',labels[source.package]),el('p','กรมเชื้อเพลิงธรรมชาติ · '+source.package),el('p',`หน่วย metadata: ${source.unit_label} · ${source.license_label}`));const link=el('a','เปิดข้อมูลต้นทาง ↗');link.href=source.url;link.target='_blank';link.rel='noopener noreferrer';box.append(link,el('div',source.csv_sha256,'hash'),el('p',`ดึงข้อมูล: ${source.acquired_at}`,'muted'));$('#sources').append(box);});}
+async function openDetail(record){$('#detail-content').replaceChildren(el('p','กำลังโหลดหลักฐาน…'));if(!$('#detail').open)$('#detail').showModal();try{const data=await get(`/api/record?package=${encodeURIComponent(record.package)}&line=${record.source_line}`);const content=$('#detail-content');content.replaceChildren(el('h2',data.source_group,'detail-title'));content.append(badge(data.duplicate_status));const grid=el('div',undefined,'detail-grid');grid.append(item('ผลิตภัณฑ์',labels[data.package]),item('ค่าตามต้นฉบับ',data.raw_value),item('ช่วงเวลา',`${data.year_ce}-${String(data.month).padStart(2,'0')}`),item('พื้นที่ / แปลง',`${data.area} / ${data.block_label||'ไม่ระบุ'}`),item('หน่วยที่ระบุในข้อมูลต้นทาง',data.unit_label),item('ตำแหน่งต้นฉบับ',`CSV บรรทัด ${data.source_line}`));content.append(grid,el('p',data.unit_status+' · แถวที่ไม่ซ้ำและไม่ถูกพัก ทีมรับเป็นสถิติต้นทางแล้ว (กฎ AR-2)','notice'));if(data.conflict_investigation){const note=data.conflict_investigation;content.append(el('h3','ประเด็นที่ต้องตรวจเพิ่ม'),el('p',`วันผลิตของกลุ่มรวม ${note.sum_days} วัน / ปฏิทิน ${note.calendar_days} วัน`),el('p',note.pattern==='POSSIBLE_SUBPERIOD'?'อาจเป็นข้อมูลแบ่งช่วงภายในเดือน แต่ยังไม่มีวันที่เริ่ม–สิ้นสุดยืนยัน จึงยังพักทั้งกลุ่มและไม่รวมค่าอัตโนมัติ':'จำนวนวันรวมยังอธิบายช่วงเวลาที่ไม่ซ้อนกันไม่ได้ จึงพักทั้งกลุ่มและไม่รวมค่าอัตโนมัติ','notice'));}content.append(evidenceNavigation('dmf',data),el('h3','ร่องรอยข้อมูล'),el('p',`Snapshot ${data.run_id}`,'muted'),el('div',data.csv_sha256,'hash'),el('p',`ดึงข้อมูล ${data.acquired_at} · ใบอนุญาตตาม metadata: ${data.license_label}`,'muted'));content.append(el('h3','แถวต้นฉบับ'),el('pre',JSON.stringify(data.raw_fields,null,2)));if(data.related.length>1){content.append(el('h3','รายการในกลุ่มตัวตนเดียวกัน'));data.related.forEach(row=>{const box=el('div',undefined,'source-card');box.append(el('p',`บรรทัด ${row.source_line} · ค่า ${row.raw_value}`),badge(row.status),el('pre',JSON.stringify(JSON.parse(row.raw_json),null,2)));content.append(box);});}const copy=el('button','คัดลอก metadata อ้างอิง','button primary');copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(JSON.stringify({package:data.package,source_url:data.url,source_line:data.source_line,snapshot:data.run_id,sha256:data.csv_sha256,accessed_at:data.acquired_at,status:'PENDING'},null,2));copy.textContent='คัดลอกแล้ว ✓';}catch{copy.textContent='เบราว์เซอร์ไม่อนุญาตให้คัดลอก';}});content.append(copy);}catch(error){$('#detail-content').replaceChildren(el('p',error.message));}}
+function renderOverview(data){state.summary=data;$('#raw-count').textContent=number(data.quality.raw_rows);$('#pending-count').textContent=number(data.report.deduplicated_candidates_pending_review);$('#hold-count').textContent=number(data.report.total_row_dispositions.HOLD_CONFLICT);/* AR-2 (docs/acceptance-ledger.json): unique, source-verified rows minus the 4 held for unit or magnitude doubts. */$('#accepted-count').textContent=number(data.report.deduplicated_candidates_pending_review-4);$('#snapshot').textContent='สำเนาข้อมูล DMF ชุด '+data.run_id;data.years.forEach(year=>{const opt=el('option',String(year));opt.value=year;$('#year').append(opt);});const quality=el('div',undefined,'quality-grid');[['แยกสำเนาที่เหมือนกันทุกช่อง',data.report.total_row_dispositions.EXCLUDE_EXACT_COPY,'เก็บแถวต้นฉบับและแถวตัวแทนไว้ให้ตรวจย้อนหลัง'],['ไม่ผ่านรูปแบบ',data.quality.rejected,'บันทึกเหตุผลของแต่ละแถวที่ไม่ผ่านไว้ให้ตรวจย้อนหลัง'],['ค่าตัวอย่างที่ตรวจเทียบ',`${data.report.unit_review.numeric_sample_matches} / ${data.report.unit_review.checks}`,'ตัวอย่างเลือกเอง ไม่ใช่อัตราความถูกต้องทั้งชุด'],['ชื่อแปลงตรงกับต้นทางทุกตัวอักษร',`${data.report.unit_review.exact_block_matches} / ${data.report.unit_review.checks}`,'ค่าตรงไม่ได้แปลว่าขอบเขตข้อมูลตรงกันทั้งหมด']].forEach(([title,value,note])=>{const box=el('div',undefined,'quality-card');box.append(el('p',title),el('strong',typeof value==='number'?number(value):value),el('p',note));quality.append(box);});$('#quality-content').append(quality);const patterns=data.report.conflict_patterns||{};$('#quality-content').append(el('h3','รายการที่ยังต้องตรวจเพิ่มเติม'),el('p',`${patterns.POSSIBLE_SUBPERIOD||0} กลุ่มมีวันผลิตรวมเท่ากับวันในเดือน และ ${patterns.DAYS_EXCEED_MONTH||0} กลุ่มมีวันรวมเกินเดือน`),el('p','รูปแบบนี้ใช้จัดลำดับการตรวจเท่านั้น ยังพิสูจน์ไม่ได้ว่าช่วงวันไม่ซ้อนกันหรือใช้ฐานอัตราเดียวกัน ทุกกลุ่มยังคง HOLD และไม่รวมค่า','notice'));const max=Math.max(...data.coverage.map(r=>r.n));data.coverage.forEach((row,index)=>{const bar=el('div',undefined,'bar');bar.style.height=`${row.n/max*120}px`;bar.title=`${row.year_ce}: ${number(row.n)} candidates`;if(index%3===0||index===data.coverage.length-1)bar.append(el('span',String(row.year_ce)));$('#coverage').append(bar);});data.sources.forEach(source=>{const box=el('article',undefined,'source-card');box.append(el('h3',labels[source.package]),el('p','กรมเชื้อเพลิงธรรมชาติ · '+source.package),el('p',`หน่วย metadata: ${source.unit_label} · ${source.license_label}`));const link=el('a','เปิดข้อมูลต้นทาง ↗');link.href=source.url;link.target='_blank';link.rel='noopener noreferrer';box.append(link,el('div',source.csv_sha256,'hash'),el('p',`ดึงข้อมูล: ${source.acquired_at}`,'muted'));$('#sources').append(box);});}
 $('#filters').addEventListener('submit',event=>{event.preventDefault();state.page=1;load();});$('#reset').addEventListener('click',()=>{$('#filters').reset();state.page=1;load();});$('#previous').addEventListener('click',()=>{if(state.page>1){state.page--;load();}});$('#next').addEventListener('click',()=>{if(state.page*30<state.total){state.page++;load();}});$('#close-detail').addEventListener('click',()=>$('#detail').close());document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>activateView(button.dataset.view,true)));
 let summaryPromise=null;function ensureSummary(){if(!summaryPromise)summaryPromise=get('/api/summary').then(data=>{renderOverview(data);return data;}).catch(error=>{summaryPromise=null;throw error;});return summaryPromise;}
 
@@ -52,7 +52,7 @@ function openReportDetail(row){
  const grid=el('div',undefined,'detail-grid');
  grid.append(item('ปีข้อมูล',row.year),item('ค่าต้นฉบับ',row.raw_value+' '+row.source_unit),item('ปรับเฉพาะตัวคูณหน่วย',row.normalized_value+' '+row.normalized_unit),item('ตำแหน่ง PDF',`หน้าไฟล์ ${row.pdf_page} / เลขพิมพ์ ${row.printed_page}`),item('เอกสารอธิบายขอบเขต',`หน้าไฟล์ ${row.footnotes_pdf_page} / เลขพิมพ์ ${row.footnotes_printed_page}`),item('ขอบเขต',boundaryTitle(row)));
  const link=el('a','เปิดรายงานต้นฉบับ ↗','button secondary');link.href=row.source_url+'#page='+row.pdf_page;link.target='_blank';link.rel='noopener noreferrer';
- content.append(grid,el('p','ปรับหน่วยด้วยตัวคูณตามต้นทางเท่านั้น ยังไม่หารด้วยปริมาณผลิตหรือทำ allocation','notice'),link,el('h3','SHA256 ของต้นฉบับ'),el('div',row.pdf_sha256,'hash'));
+ content.append(grid,el('p','ปรับหน่วยด้วยตัวคูณตามต้นทางเท่านั้น ยังไม่ได้คำนวณต่อหน่วยผลิตภัณฑ์หรือแบ่งภาระสิ่งแวดล้อม','notice'),link,el('h3','SHA256 ของต้นฉบับ'),el('div',row.pdf_sha256,'hash'));
  const issues=(reportData.issues||[]).filter(i=>i.year===row.year&&i.metrics.includes(row.metric_id));
  issues.forEach(issue=>{content.append(el('h3','ประเด็นทบทวนบริบท'),el('p','ค่าระหว่างสองตารางต่างเกินช่วงการปัดเศษที่แสดง แต่ชื่อรายการยังต่างกัน จึงยังไม่สรุปว่าเป็นข้อมูลเดียวกันหรือเลือกค่าที่ถูก','notice'));issue.metrics.forEach(id=>{const related=reportData.rows.find(r=>r.metric_id===id&&r.year===issue.year);content.append(el('p',`${metricTitle(related)}: ${related.raw_value} ${related.source_unit} · PDF หน้า ${related.pdf_page}`));const evidenceLink=el('a',`เปิด PDF หน้า ${related.pdf_page} ↗`);evidenceLink.href=related.source_url+'#page='+related.pdf_page;evidenceLink.target='_blank';evidenceLink.rel='noopener noreferrer';content.append(evidenceLink);});});
  content.append(el('h3','Metadata และ mapping'),el('pre',JSON.stringify(row,null,2)));if(!$('#detail').open)$('#detail').showModal();
@@ -201,7 +201,7 @@ function renderUpstream(){
    const content=$('#detail-content');content.replaceChildren(el('h2',flowDisplay(row.flow),'detail-title'));
    const grid=el('div',undefined,'detail-grid');grid.append(item('กระบวนการ / ฐาน',row.process+' / '+row.reference_amount+' '+row.reference_unit+' '+row.reference_flow),item('ค่าตามต้นฉบับ',row.raw_value+' '+(row.unit??'(ไม่ระบุหน่วย)')),item('ตาราง / หน้า PDF / แถวข้อมูล',row.table_id+' / '+row.pdf_page+' / '+row.table_data_row),item('ปีเผยแพร่ / ช่วงปีวัด',row.publication_year+' / ไม่ระบุ'));
    grid.append(item('ค่าที่ระบบจัดเก็บ',row.amount+' '+(row.unit??'(ไม่ระบุหน่วย)')),item('การแปลงที่ทำ','อ่านเลขเป็นทศนิยม · ไม่เปลี่ยนหน่วยหรือปันส่วนเพิ่ม'));
-   content.append(grid,el('p',row.status==='HOLD_MISSING_UNIT'?'รายการนี้พักไว้ ไม่เติมหน่วยและไม่นำไปคำนวณ':'ตรวจค่าจากต้นฉบับแล้ว แต่ยังไม่ยืนยัน allocation และความครบถ้วนของแบบจำลอง','notice'));
+   content.append(grid,el('p',row.status==='HOLD_MISSING_UNIT'?'รายการนี้พักไว้ ไม่เติมหน่วยและไม่นำไปคำนวณ':'ตรวจค่าจากต้นฉบับแล้ว แต่ยังต้องตรวจการแบ่งภาระสิ่งแวดล้อมและความครบถ้วนของแบบจำลอง','notice'));
    const links=el('div',undefined,'evidence-navigation');
    for(const [label,url] of [['เปิด PDF ตรงหน้าตาราง',row.source_url],['เปิดเว็บไซต์บทความ',upstreamData.publisher_url]]){const a=el('a',label+' ↗','evidence-destination');a.href=url;a.target='_blank';a.rel='noopener noreferrer';links.append(a);}
    content.append(links,el('p','ลิงก์ PDF เปิดหน้าตาราง ไม่ได้เน้นช่องข้อมูลอัตโนมัติ · แถวข้อมูลนับเฉพาะรายการในตาราง'),el('p',upstreamData.attribution),el('p','CC BY 4.0 · ค่าดิบและหน่วยไม่เปลี่ยน; ไม่มีการปันส่วนเพิ่ม'),el('p','รุ่นชุดข้อมูล: '+upstreamData.public_snapshot_id.slice(0,12)),el('div',row.source_sha256,'hash'));
@@ -245,6 +245,9 @@ document.querySelectorAll('[data-open]').forEach(button=>button.addEventListener
  const heading=document.querySelector('#view-'+button.dataset.open+' h2');
  heading.setAttribute('tabindex','-1');heading.focus();
 }));
+document.querySelector('.catalog-search').addEventListener('submit',event=>{
+ event.preventDefault();filterCatalog();$('#catalog-results').scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+});
 function filterCatalog(){
  const query=$('#catalog-search').value.trim().toLocaleLowerCase(),level=$('#catalog-level').value;
  let visible=0;const counts={'':0,national:0,organization:0,product:0};
@@ -254,7 +257,7 @@ function filterCatalog(){
   const matches=(!level||card.dataset.level===level)&&queryMatches;
   card.hidden=!matches;if(matches)visible++;
  });
- $('#catalog-results').textContent=`พบ ${visible} ชุดข้อมูล · จำนวนแถวและผลตรวจแสดงแยกภายในแต่ละชุด`;
+ $('#catalog-results').textContent=`พบ ${visible} ชุดข้อมูล · กดดูข้อมูลของแต่ละชุดได้เลย`;
  $('#catalog-empty').hidden=visible!==0;
  document.querySelectorAll('[data-catalog-level]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.catalogLevel===level)));
  document.querySelectorAll('[data-level-count]').forEach(label=>{label.textContent=String(counts[label.dataset.levelCount]||0);});
@@ -268,7 +271,7 @@ function setCatalogLayout(layout){
  try{localStorage.setItem('tamsood.catalog-layout',layout);}catch{}
 }
 document.querySelectorAll('[data-catalog-layout]').forEach(button=>button.addEventListener('click',()=>setCatalogLayout(button.dataset.catalogLayout)));
-setCatalogLayout('grid');
+setCatalogLayout('list');
 $('#catalog-search').addEventListener('input',filterCatalog);
 $('#catalog-level').addEventListener('change',filterCatalog);
 $('#catalog-reset').addEventListener('click',()=>{$('#catalog-search').value='';$('#catalog-level').value='';filterCatalog();});
@@ -280,7 +283,7 @@ async function loadEppo(){
  const request=++eppoState.request,p=new URLSearchParams(new FormData($('#eppo-filters')));p.set('page',eppoState.page);
  $('#eppo-status').textContent='กำลังค้นหา…';$('#eppo-rows').replaceChildren();$('#eppo-prev').disabled=true;$('#eppo-next').disabled=true;
  try{const data=await get('/api/eppo?'+p,{signal:eppoState.controller.signal});if(request!==eppoState.request)return;eppoState.total=data.total;
- $('#eppo-status').textContent=`พบ ${data.total} ค่า · ข้อมูลต้นทาง DOEB ผ่าน EPPO · ปีอัปเดต metadata บางช่องล้าหลังค่าจริง`;
+ $('#eppo-status').textContent=`พบ ${data.total} ค่า · ข้อมูลต้นทาง DOEB ผ่าน EPPO · ปีที่ระบุในคำอธิบายบางส่วนเก่ากว่าปีของตัวเลขในตาราง`;
  $('#eppo-rows').replaceChildren();
  for(const row of data.rows){const tr=el('tr'),amount=el('td',row.raw_value,'number'),action=el('td'),button=el('button','ดูที่มา','evidence-btn');amount.append(el('small',row.unit));
  button.addEventListener('click',()=>{const content=$('#detail-content');content.replaceChildren(el('h2',row.subject,'detail-title'));const grid=el('div',undefined,'detail-grid');grid.append(item('ค่า / หน่วย',row.raw_value+' '+row.unit),item('เดือน',row.reference_year+'-'+String(row.month).padStart(2,'0')),item('ขอบเขต',row.scope),item('บรรทัด CSV',row.source_line));content.append(grid,el('p',row.temporal_basis,'notice'),evidenceNavigation('eppo',row),el('p',row.license_label+' · เงื่อนไขแจกจ่ายเฉพาะยังไม่ยืนยัน'),el('div',row.source_sha256,'hash'),el('pre',JSON.stringify(row.source_row,null,2)));if(!$('#detail').open)$('#detail').showModal();});action.append(button);tr.append(el('td',row.subject),el('td',row.reference_year+'-'+String(row.month).padStart(2,'0')),amount,action);$('#eppo-rows').append(tr);}
@@ -294,7 +297,7 @@ $('#eppo-prev').addEventListener('click',()=>{if(eppoState.page>1){eppoState.pag
 $('#eppo-next').addEventListener('click',()=>{if(eppoState.page*40<eppoState.total){eppoState.page++;loadEppo();}});
 
 // Navigation is bookmarkable; the mobile menu closes after a selection.
-const views=['catalog','explore','quality','reference','reports','inventory','case-study','ethanol','nso','eppo','sources'];
+const views=['catalog','explore','quality','reference','reports','inventory','case-study','ethanol','nso','eppo','sources','pipeline','ar-2'];
 const viewScroll=new Map();
 function closeNavigation(){document.body.classList.remove('menu-open');$('#nav-toggle').setAttribute('aria-expanded','false');}
 function activateView(view,push=false,options={}){
@@ -315,7 +318,8 @@ function activateView(view,push=false,options={}){
  const destination='#'+view+(view==='ethanol'&&requestedCase?'?case='+caseId:'');
  if(push&&location.hash!==destination)history.pushState(null,'',destination);
  closeNavigation();
- const activeButton=document.querySelector('[data-view="'+view+'"]');const group=activeButton?.closest('details');if(group)group.open=true;
+ document.querySelector('.browse-navigation').open=false;
+ const activeButton=document.querySelector('[data-view="'+view+'"]');const group=activeButton?.closest('details');if(group&&!group.classList.contains('browse-navigation'))group.open=true;
  if(previous!==view){const title=options.restore?$('#view-'+view):$('#view-'+view).querySelector('h1,h2');if(title){title.tabIndex=-1;title.focus({preventScroll:true});}window.scrollTo({top:options.restore?(viewScroll.get(view)||0):0,behavior:'instant'});}
  if(view==='ethanol'){
   const selected=caseId;
@@ -338,7 +342,7 @@ $('#connection-retry').addEventListener('click',()=>location.reload());
 window.addEventListener('tamsood:connection',event=>{
  const mode=event.detail.state,banner=$('#connection-banner');banner.dataset.state=mode;
  const failed=(event.detail.failedDatasets||[]).map(path=>({'/api/nso':'สถิติประเทศ','/api/nso-comparison':'ผลเทียบแหล่งข้อมูล','/api/eppo':'โรงกลั่น','/api/reference':'ข้อมูลบริษัท'}[path]||'ข้อมูลบางชุด'));
- $('#connection-message').textContent=mode==='error'&&failed.length?'โหลดไม่สำเร็จ: '+[...new Set(failed)].join(', ')+' · ชุดอื่นยังเปิดดูได้':mode==='unauthorized'?'เข้าสู่ระบบด้วยบัญชีทดสอบของทีมเพื่อดูข้อมูล':mode==='error'?'บางรายการโหลดไม่ได้ ตรวจการเชื่อมต่อแล้วลองใหม่':mode==='connected'?'เชื่อมต่อระบบแล้ว · เปิดแต่ละชุดเพื่อดูผลตรวจ':'กำลังโหลดข้อมูล…';
+ $('#connection-message').textContent=mode==='restricted'?'ปิดการโหลดข้อมูลจากฐานข้อมูลชั่วคราวระหว่างตรวจสอบสิทธิ์เผยแพร่':mode==='error'&&failed.length?'โหลดไม่สำเร็จ: '+[...new Set(failed)].join(', ')+' · ชุดอื่นยังเปิดดูได้':mode==='unauthorized'?'เข้าสู่ระบบด้วยบัญชีทดสอบของทีมเพื่อดูข้อมูล':mode==='error'?'บางรายการโหลดไม่ได้ ตรวจการเชื่อมต่อแล้วลองใหม่':mode==='connected'?'เชื่อมต่อระบบแล้ว · พร้อมใช้งาน':'กำลังโหลดข้อมูล…';
  $('#connection-login').hidden=mode!=='unauthorized';
  $('#connection-retry').hidden=mode!=='error';
 });
@@ -356,13 +360,13 @@ const SOURCE_REFERENCE_CODES=Object.freeze({
 async function loadSourceCrosswalk(){
  const target=$('#crosswalk-sources');target.replaceChildren();
  try{const data=await get('/api/source-crosswalk');
- $('#crosswalk-status').textContent=`ทะเบียน ${data.sources.length} source snapshots · SRC-xx คือรหัสอ้างอิงใน SRS; source_id ใช้ตามรอยชุดข้อมูล · รหัสไม่ใช่สิทธิแจกจ่าย`;
+ $('#crosswalk-status').textContent=`ทะเบียน ${data.sources.length} สำเนาต้นทาง · SRC-xx ใช้เปิดหาแหล่งอ้างอิงในเอกสารโครงการ · สิทธิ์ใช้ข้อมูลระบุแยกในแต่ละแหล่ง`;
  for(const source of data.sources){const card=el('article',undefined,'source-card'),code=SOURCE_REFERENCE_CODES[source.source_id];if(code)card.append(el('span',code,'source-reference-code'));card.append(el('h3',source.source_id),el('p',source.layers.join(' / ')+' · '+number(source.observations)+' observations'),el('p',source.registry_rights_status,'muted'),el('div',source.source_sha256,'hash'));const link=el('a','เปิดแหล่งในทะเบียน ↗');link.href=source.registry_url;link.target='_blank';link.rel='noopener noreferrer';card.append(link);target.append(card);}
  }catch(error){target.replaceChildren();$('#crosswalk-status').textContent=error.message;return false;}
 }
 
 const loadedViews=new Map();
-const viewLoaders={explore:()=>ensureSummary().then(load),quality:ensureSummary,sources:()=>Promise.all([ensureSummary(),loadSourceCrosswalk()]),reference:loadReference,reports:loadReports,nso:()=>Promise.all([loadNso(),loadNsoComparison()]),inventory:loadInventory,'case-study':()=>window.TamsoodCaseStudy.load(),eppo:loadEppo};
+const viewLoaders={catalog:()=>ensureSummary().then(renderCatalogCoverage),explore:()=>ensureSummary().then(load),quality:ensureSummary,sources:()=>Promise.all([ensureSummary(),loadSourceCrosswalk()]),reference:loadReference,reports:loadReports,nso:()=>Promise.all([loadNso(),loadNsoComparison()]),inventory:loadInventory,'case-study':()=>window.TamsoodCaseStudy.load(),eppo:loadEppo};
 function ensureLoaded(view){
  if(!viewLoaders[view])return Promise.resolve();
  if(loadedViews.has(view))return loadedViews.get(view);
@@ -542,3 +546,139 @@ populateEppoChoices();
   if(button&&!button.disabled)play(button,[{transform:'scale(1)'},{transform:'scale(.96)',offset:.3},{transform:'scale(1)'}],{duration:230,easing:'ease-out'});
  });
 })(typeof window==='undefined'?globalThis:window);
+
+function setupDataGuides() {
+ const player = document.querySelector('.flow-player');
+ if (!player) return; // the guide markup is optional; never block the rest of the page
+ const caption = player.querySelector('.flow-caption');
+ const art = player.querySelector('.record-art');
+ const steps = [
+  ['CSV','34,905','แถวดิบจากไฟล์ต้นทาง','เก็บสำเนาไฟล์ทั้งสามผลิตภัณฑ์ พร้อมรหัสตรวจไฟล์และเลขบรรทัด','ต้นทาง'],
+  ['TABLE','34,899','แถวผ่านการตรวจโครงสร้าง','แยก 6 แถวที่ข้อมูลจำเป็นขาดออกก่อนนำเข้า','−6 แถว'],
+  ['ROWS','34,671','แถวเหลือให้พิจารณา','ตัดสำเนา 42 แถว และพักค่าที่ขัดกัน 186 แถว','−228 แถว'],
+  ['AR-2','34,667','แถวที่ทีมรับ','พักอีก 4 แถว เพราะหน่วยน่าสงสัย 3 แถว และขนาดค่าผิดปกติ 1 แถว','−4 แถว'],
+  ['CSV','11,394','เลขบรรทัดต้นทางของแถวตัวอย่าง','ตัวอย่างแหล่งไพลินเหนือ เปิดหลักฐานรายแถวเพื่อเทียบค่าบนเว็บกับ CSV','ไพลินเหนือ']
+ ];
+ let current = 0;
+ function selectStep(index) {
+  current = index;
+  const [type, count, label, note, change] = steps[index];
+  player.dataset.stage = String(index);
+  art.querySelector('b').textContent = type;
+  art.querySelector('em').textContent = change;
+  caption.querySelector('strong').textContent = count;
+  caption.querySelector('h3').textContent = label;
+  caption.querySelector('p').textContent = note;
+  for (const button of player.querySelectorAll('[data-step]')) button.setAttribute('aria-pressed',String(Number(button.dataset.step) === index));
+  player.querySelector('#flow-back').disabled = index === 0;
+  player.querySelector('#flow-next').disabled = index === steps.length - 1;
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+   art.animate([{transform:'translateY(9px)',opacity:.55},{transform:'translateY(0)',opacity:1}],{duration:350});
+  }
+ }
+ player.querySelectorAll('[data-step]').forEach(button => button.addEventListener('click',() => selectStep(Number(button.dataset.step))));
+ player.querySelector('#flow-next').addEventListener('click',() => selectStep(current+1));
+ player.querySelector('#flow-back').addEventListener('click',() => selectStep(current-1));
+ player.hidden = false;
+ document.querySelector('.flow-transcript').open = false;
+ selectStep(0);
+
+ const lab = document.querySelector('.rule-lab');
+ const examples = [
+  ['ต้นฉบับ','100 บาร์เรล','=','ค่าที่บันทึก','100 บาร์เรล','รับ 1 รายการ','เมื่อผ่านเกณฑ์อีกสี่ข้อครบ'],
+  ['แถวตัวแทน','100 บาร์เรล','=','แถวที่ซ้ำทุกช่อง','100 บาร์เรล','นับเพียง 1 ครั้ง','เก็บสำเนาไว้ให้ย้อนตรวจ'],
+  ['แถวแรก','100 บาร์เรล','≠','รายการเดียวกัน','120 บาร์เรล','พักทั้งสองแถว','ยังไม่มีหลักฐานให้เลือกค่าที่ถูก'],
+  ['หน่วยของไฟล์','บาร์เรล','≠','หน่วยในชื่อแหล่ง','กิโลกรัม','พักเพื่อตรวจหน่วย','ขอหลักฐานยืนยันก่อนนำค่าไปใช้']
+ ];
+ function selectExample(index) {
+  const [left,a,sign,right,b,outcome,note] = examples[index];
+  const pair = lab.querySelector('.sample-pair');
+  const cards = pair.querySelectorAll('div');
+  for (const [card,label,value] of [[cards[0],left,a],[cards[1],right,b]]) {
+   card.querySelector('small').textContent = label;
+   card.querySelector('strong').textContent = value;
+  }
+  pair.querySelector('b').textContent = sign;
+  lab.dataset.held = String(index >= 2);
+  lab.querySelector('.rule-result p strong').textContent = outcome;
+  lab.querySelector('.rule-result p span').textContent = note;
+  lab.querySelectorAll('[data-example]').forEach(button => button.setAttribute('aria-pressed',String(Number(button.dataset.example) === index)));
+ }
+ lab.querySelectorAll('[data-example]').forEach(button => button.addEventListener('click',() => selectExample(Number(button.dataset.example))));
+ lab.hidden = false;
+ selectExample(0);
+}
+setupDataGuides();
+
+function renderCatalogCoverage(data) {
+ const chart = document.querySelector('#catalog-coverage');
+ if (chart.childElementCount) return;
+ const rows = data.coverage;
+ const max = Math.max(...rows.map(row => row.n));
+ for (const row of rows) {
+  const bar = document.createElement('span');
+  bar.style.height = (row.n / max * 100) + '%';
+  bar.title = row.year_ce + ': ' + number(row.n) + ' แถว';
+  chart.append(bar);
+ }
+ const years = rows.map(row => row.year_ce);
+ const first = Math.min(...years), last = Math.max(...years);
+ chart.setAttribute('aria-label','จำนวนแถว DMF ตามปี ' + first + ' ถึง ' + last + ' ดูค่ารายปีได้ที่หน้าตรวจคุณภาพ');
+ document.querySelector('#catalog-coverage-caption').textContent = first + '–' + last + ' · ปีล่าสุดอาจมีข้อมูลบางเดือน';
+}
+
+const assistantLauncher = document.querySelector('#assistant-launcher');
+const assistantPanel = document.querySelector('#assistant-panel');
+const assistantFrame = document.querySelector('#assistant-frame');
+let assistantReturnFocus = assistantLauncher;
+function openAssistant(trigger = assistantLauncher) {
+ assistantReturnFocus = trigger;
+ if (!assistantFrame.hasAttribute('src')) assistantFrame.src = '/ask.html?embedded=1';
+ assistantPanel.hidden = false;
+ assistantLauncher.setAttribute('aria-expanded', 'true');
+ document.querySelector('#assistant-close').focus();
+}
+function closeAssistant() {
+ assistantPanel.hidden = true;
+ assistantLauncher.setAttribute('aria-expanded', 'false');
+ assistantReturnFocus?.focus();
+}
+// The assistant panel is optional markup; wire it only when it is on the page.
+if (assistantLauncher && assistantPanel && assistantFrame) {
+assistantLauncher.addEventListener('click', () => assistantPanel.hidden ? openAssistant() : closeAssistant());
+document.querySelector('#assistant-close').addEventListener('click', closeAssistant);
+document.querySelector('#assistant-clear').addEventListener('click', () => {
+ assistantFrame.contentDocument?.querySelector('#clear-thread')?.click();
+});
+document.querySelectorAll('a[href="/ask.html"]').forEach(link => {
+ link.addEventListener('click', event => {
+  if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  closeNavigation();
+  openAssistant(link);
+ });
+});
+document.addEventListener('keydown', event => {
+ if (event.key === 'Escape' && !assistantPanel.hidden) closeAssistant();
+});
+assistantFrame.addEventListener('load', () => {
+ document.querySelector('#assistant-clear').disabled = !assistantFrame.contentDocument?.querySelector('#clear-thread');
+ assistantFrame.contentDocument?.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeAssistant();
+ });
+});
+}
+
+// Dataset dropdown in the top bar: close it on an outside click or Escape.
+const browseNavigation = document.querySelector('.browse-navigation');
+if (browseNavigation) {
+ document.addEventListener('click', event => {
+  if (browseNavigation.open && !browseNavigation.contains(event.target)) browseNavigation.open = false;
+ });
+ document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && browseNavigation.open) {
+   browseNavigation.open = false;
+   browseNavigation.querySelector('summary').focus();
+  }
+ });
+}

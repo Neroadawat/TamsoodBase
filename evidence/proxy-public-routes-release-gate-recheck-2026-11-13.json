@@ -1,0 +1,30 @@
+{
+  "checked_at_local": "2026-11-13T07:10:00+07:00",
+  "scope": "Local static review of checked-out proxy code and release manifest; no network or production access",
+  "head": "bc1ff5d9fd70e3ae2129b6fb043f15951edb0821",
+  "working_tree_proxy_changed": false,
+  "public_safe_routes_added_in_code": [
+    "summary",
+    "source-crosswalk",
+    "records",
+    "record",
+    "export",
+    "nso",
+    "nso-comparison",
+    "eppo",
+    "product-inventory"
+  ],
+  "withheld_routes": ["reports", "report-pilot", "reference.csv", "login"],
+  "manifest": {
+    "status": "OWNER_APPROVED_PUBLIC_DEMO",
+    "public_release_allowed": true,
+    "decision_note_says_gates_remain_false": true,
+    "release_gates_passed": 0,
+    "release_gates_total": 9
+  },
+  "code_observation": "The proxy passes rows through for the listed public endpoints; only the reference JSON routes and the NSO explorer profile receive an explicit field projection in this handler. Public exports are streamed from the backend.",
+  "risk": "Local repository configuration permits these endpoints when a backend is configured, while all nine readiness gates are false. This does not establish whether the deployed site currently exposes them or what its backend returns.",
+  "production_api_checked": false,
+  "deployment_or_push": false,
+  "recommended_status": "HOLD; owner should reconcile public-route policy and release-gate manifest before enabling or relying on public data routes. Do not infer deployed state from this local review."
+}

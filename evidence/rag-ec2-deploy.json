@@ -1,0 +1,90 @@
+{
+  "checked_at_utc": "2026-11-08T15:13:11Z",
+  "status": "DEPLOYED_PRIVATE_EC2",
+  "release": "1c49e9d40b4b3936",
+  "image": "tamsoodbase-rag:1c49e9d40b4b3936",
+  "image_id": "sha256:ed7d7b8e87db81df63205b7fee62f3338516b2fc9ec6992c6c3fd877e2f1a8fd",
+  "image_archive_sha256": "b4be20e1bd93a4586e5339a5e6f7fc1a0fc460b70b700d670a5f65139d960b94",
+  "image_archive_bytes": 350621696,
+  "package_manifest_files": 16,
+  "package_payload_bytes": 252213297,
+  "package_zip_sha256": "9941d6344f98c79c75e0735e98fd464c9640e224aea7d0da645100b125d7a5bf",
+  "ec2_preflight": {
+    "owner_label": "TamsoodBase",
+    "api_image_before_and_after": "tamsoodbase-api:dea667bbd79dc1d9",
+    "api_ready_http": 200,
+    "previous_rag_release": "bbbe648cba3fc42b",
+    "ginder_state_unchanged": true,
+    "ram_available_before_update_kib": 560884,
+    "rollback_precondition": "previous container and image owner/release labels verified"
+  },
+  "deployment": {
+    "container": "tamsoodbase-rag",
+    "owner_label": "TamsoodBase",
+    "service_label": "RAG",
+    "release_label": "1c49e9d40b4b3936",
+    "container_state": "running",
+    "docker_health": "healthy",
+    "docker_image_id_matches_tested_image": true,
+    "network": "tamsoodbase-rag-private",
+    "network_internal": true,
+    "network_subnet": "10.253.77.0/29",
+    "container_ip": "10.253.77.2",
+    "published_host_ports": {},
+    "user": "10001:10001",
+    "read_only_rootfs": true,
+    "capabilities_dropped": ["ALL"],
+    "no_new_privileges": true,
+    "memory_limit_bytes": 536870912,
+    "memory_plus_swap_limit_bytes": 1073741824,
+    "cpu_limit": 0.5,
+    "pids_limit": 64,
+    "runtime_gemini_key_present": false,
+    "public_route_created": false
+  },
+  "ssh_forward_http_smoke": {
+    "forward": "127.0.0.1:8877 -> 10.253.77.2:8767",
+    "local_url": "http://127.0.0.1:8877/",
+    "get_readyz": 200,
+    "get_healthz": 200,
+    "get_demo_page": 200,
+    "method_question": "CO2e มาจากไหน ต้องคำนวณเองไหม",
+    "method_answer_source_ids": [
+      "co2e-calculation-method",
+      "ipcc-co2-equivalent-definition"
+    ],
+    "method_citations_have_url_and_locator": true,
+    "method_answer_has_no_unrelated_tsm_project_estimate": true,
+    "current_capacity_source_id": "tsm-current-capacity",
+    "whole_lifecycle_gap_source_id": "ethanol-full-lifecycle-co2e-per-litre-null",
+    "actual_methane_gap_source_id": "tsm-actual-methane-null",
+    "out_of_domain_question_abstained": true,
+    "wrong_origin_status": 403
+  },
+  "rollback": {
+    "previous_container": "tamsoodbase-rag-rollback-bbbe648cba3fc42b",
+    "previous_image": "tamsoodbase-rag:bbbe648cba3fc42b",
+    "previous_container_stopped_and_retained": true,
+    "automatic_rollback_path_exercised": true,
+    "description": "A first update attempt stopped at a preflight port-binding representation check without changing services. A later candidate passed readiness and question smoke but was automatically rolled back when Docker health was still in its start period. The health gate was corrected to wait; the subsequent update became healthy and passed the final smoke."
+  },
+  "unchanged_services": {
+    "api_image_and_health_unchanged": true,
+    "ginder_container_states_unchanged": true,
+    "https_gateway": "pre-existing unhealthy state; not modified by this deployment"
+  },
+  "resource_observation": {
+    "host_mem_available_mib_after_deploy": 587,
+    "host_swap_used_mib_observed_after_deploy": 1054,
+    "swap_baseline_before_rag_recorded": false,
+    "note": "Memory headroom is limited; the RAG process is capped at 512 MiB and the API readiness remained healthy. The observed host swap use cannot be attributed to this deployment because no pre-deployment swap baseline was recorded."
+  },
+  "data_and_rights": {
+    "raw_pdf_csv_in_image": false,
+    "credentials_in_image": false,
+    "runtime_external_llm": false,
+    "evidence_rights_all_cleared": false,
+    "rationale": "This is an SSH-only private prototype. Hosting or citing evidence does not clear redistribution rights or make the corpus a complete normalized LCI."
+  },
+  "visual_browser_review": "Not captured: CUA browser kernel could not start in this environment. HTTP page and API responses were verified through the active SSH forward."
+}

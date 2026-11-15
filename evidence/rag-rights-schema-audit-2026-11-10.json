@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-10",
+  "scope": "Static review of repository MySQL DDL and current RAG release manifest; no live database queried.",
+  "ddl_reviewed": [
+    "sql/mysql/full-schema.sql",
+    "sql/mysql/supplemental-schema.sql",
+    "sql/mysql/eppo-schema.sql",
+    "sql/mysql/reusable-schema.sql"
+  ],
+  "layers": [
+    {
+      "id": "DMF",
+      "schema": "tamsood_research",
+      "tables": ["source_resource", "resource_snapshot", "source_record", "production_context", "observation", "duplicate_disposition", "rejected_record"],
+      "rights_column": null,
+      "descriptive_license_field": "resource_snapshot.license_label",
+      "review_field": "observation.review_status",
+      "current_review_value": "PENDING",
+      "public_clearance_enforceable_in_current_schema": false
+    },
+    {
+      "id": "COMPANY",
+      "schema": "tamsood_reusable",
+      "tables": ["document", "context", "metric", "observation", "quality_issue", "issue_observation", "review", "data_release", "release_observation"],
+      "rights_column": "document.rights_status",
+      "review_field": "review.decision",
+      "review_values": ["ACCEPTED_REFERENCE", "HOLD_CONTEXT"],
+      "caveat": "ACCEPTED_REFERENCE controls data quality/use as an internal reference and is not publication or external-LLM clearance.",
+      "public_clearance_enforceable_in_current_schema": false
+    },
+    {
+      "id": "NSO",
+      "schema": "tamsood_supplemental",
+      "tables": ["dataset_snapshot", "observation", "national_statistic"],
+      "rights_column": null,
+      "review_field": "observation.status",
+      "current_review_value": "STAGED_SOURCE_VERIFIED",
+      "public_clearance_enforceable_in_current_schema": false
+    },
+    {
+      "id": "RESEARCH",
+      "schema": "tamsood_supplemental",
+      "tables": ["dataset_snapshot", "observation", "process", "inventory_exchange"],
+      "rights_column": null,
+      "review_field": "observation.status",
+      "current_review_value": "SOURCE_REPORTED_PRODUCT_INVENTORY",
+      "public_clearance_enforceable_in_current_schema": false
+    },
+    {
+      "id": "EPPO",
+      "schema": "tamsood_eppo",
+      "tables": ["source_snapshot", "observation"],
+      "rights_column": null,
+      "descriptive_metadata": "source_snapshot.metadata",
+      "review_field": "observation.status",
+      "current_review_value": "STAGED_SOURCE_VERIFIED",
+      "public_clearance_enforceable_in_current_schema": false
+    }
+  ],
+  "global_manifest": {
+    "status": "HOLD_RIGHTS_REVIEW",
+    "public_release_allowed": false,
+    "external_llm_allowed": false,
+    "public_cleared_index_records": 0
+  },
+  "decision": "Do not implement a public numeric aggregate over these schemas until source- and record-level rights are normalized and joined into the read API. Review status values must never be treated as redistribution permissions.",
+  "verification": {
+    "command": "python -X utf8 -m unittest discover -s tests -v",
+    "passed": 296,
+    "skipped": 10,
+    "failed": 0
+  }
+}

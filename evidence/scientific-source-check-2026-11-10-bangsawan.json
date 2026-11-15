@@ -1,0 +1,100 @@
+{
+  "review_date": "2026-11-10",
+  "source": {
+    "publisher": "UNFCCC Clean Development Mechanism registry",
+    "project_id": "4589",
+    "project_title": "Wastewater Treatment with Biogas System in Palm Oil Mill at Bangsawan, Surat Thani, Thailand",
+    "project_participant": "Thai Tallow and Oil Co., Ltd.",
+    "location": "Bangsawan branch, Surat Thani, Thailand",
+    "project_url": "https://cdm.unfccc.int/Projects/DB/SGS-UKL1300274895.63/view",
+    "monitoring_report_url": "https://cdm.unfccc.int/UserManagement/FileStorage/K7NJL6RIBGQHEASY0P9CMZVTFODX41",
+    "report_version": "revised 2022 monitoring report",
+    "monitoring_periods": [
+      {"year": 2013, "start": "2013-01-01", "end": "2013-12-31"},
+      {"year": 2014, "start": "2014-01-01", "end": "2014-12-31"},
+      {"year": 2015, "start": "2015-01-01", "end": "2015-12-31"},
+      {"year": 2016, "start": "2016-01-01", "end": "2016-12-31"},
+      {"year": 2017, "start": "2017-01-01", "end": "2017-12-31"},
+      {"year": 2018, "start": "2018-01-01", "end": "2018-12-31"},
+      {"year": 2019, "start": "2019-01-01", "end": "2019-12-31"},
+      {"year": 2020, "start": "2020-01-01", "end": "2020-12-31"},
+      {"year": 2021, "start": "2021-01-01", "end": "2021-03-22", "period_is_partial_year": true}
+    ],
+    "locators": [
+      {"claim": "site identity, process, maximum FFB capacity 90 t/h", "report_pdf_page": 3, "section": "A.1"},
+      {"claim": "monitoring process and parameters", "report_pdf_page": 7, "section": "C"},
+      {"claim": "biogas flow, methane fraction and methane captured/use", "report_pdf_page": 26, "section": "E.1, Table 2"},
+      {"claim": "methane equation, density, GWP", "report_pdf_page": 25, "section": "E.1.1"},
+      {"claim": "actual CPO/FFB production quantity absent from reviewed report text", "review_scope": "bounded searches for CPO production and FFB processed returned no match; report states installed capacity only"}
+    ],
+    "local_file": null,
+    "local_sha256": null,
+    "redistribution_rights": "NOT_CLEARED"
+  },
+  "reported_table_2": {
+    "units": {
+      "biogas_volume": "Nm3",
+      "methane_content": "percent by volume",
+      "methane_captured_and_gainfully_used": "tCO2e",
+      "methane_density": "tonnes per Nm3",
+      "gwp_ch4": "unitless"
+    },
+    "equation_as_reported": "BGfuelling,y * WCH4,y * density_CH4 * flare_efficiency * GWP_CH4",
+    "density_ch4_t_per_nm3": 0.000716,
+    "flare_efficiency_fraction": 1,
+    "gwp_ch4": 21,
+    "rows": [
+      {"year": 2013, "biogas_nm3": 2751458, "ch4_percent": 29.77, "reported_methane_captured_tco2e": 12318},
+      {"year": 2014, "biogas_nm3": 1615687, "ch4_percent": 51.47, "reported_methane_captured_tco2e": 12503},
+      {"year": 2015, "biogas_nm3": 1685121, "ch4_percent": 56.93, "reported_methane_captured_tco2e": 14424},
+      {"year": 2016, "biogas_nm3": 2384008, "ch4_percent": 61.50, "reported_methane_captured_tco2e": 22045},
+      {"year": 2017, "biogas_nm3": 2326737, "ch4_percent": 62.01, "reported_methane_captured_tco2e": 21695},
+      {"year": 2018, "biogas_nm3": 2372819, "ch4_percent": 61.75, "reported_methane_captured_tco2e": 22032},
+      {"year": 2019, "biogas_nm3": 2161027, "ch4_percent": 60.78, "reported_methane_captured_tco2e": 19749},
+      {"year": 2020, "biogas_nm3": 1746792, "ch4_percent": 56.32, "reported_methane_captured_tco2e": 14793},
+      {"year": 2021, "biogas_nm3": 353820, "ch4_percent": 58.38, "reported_methane_captured_tco2e": 3106, "period_is_partial_year": true}
+    ]
+  },
+  "team_recalculation_from_displayed_rounded_values": {
+    "calculation": "biogas_nm3 * (ch4_percent / 100) * 0.000716 tonnes_per_Nm3 * 1 * 21",
+    "scope": "arithmetic reproduction only; not an independent emission measurement",
+    "rows": [
+      {"year": 2013, "calculated_tco2e": 12316.1236, "source_reported_tco2e": 12318, "difference_tco2e": -1.8764},
+      {"year": 2014, "calculated_tco2e": 12503.8489, "source_reported_tco2e": 12503, "difference_tco2e": 0.8489},
+      {"year": 2015, "calculated_tco2e": 14424.6270, "source_reported_tco2e": 14424, "difference_tco2e": 0.6270},
+      {"year": 2016, "calculated_tco2e": 22045.2557, "source_reported_tco2e": 22045, "difference_tco2e": 0.2557},
+      {"year": 2017, "calculated_tco2e": 21694.0854, "source_reported_tco2e": 21695, "difference_tco2e": -0.9146},
+      {"year": 2018, "calculated_tco2e": 22030.9838, "source_reported_tco2e": 22032, "difference_tco2e": -1.0162},
+      {"year": 2019, "calculated_tco2e": 19749.3682, "source_reported_tco2e": 19749, "difference_tco2e": 0.3682},
+      {"year": 2020, "calculated_tco2e": 14792.3154, "source_reported_tco2e": 14793, "difference_tco2e": -0.6846},
+      {"year": 2021, "calculated_tco2e": 3105.8379, "source_reported_tco2e": 3106, "difference_tco2e": -0.1621}
+    ],
+    "result": "displayed rounded percentages do not exactly reproduce all source outputs; do not overwrite either source values or infer undocumented precision"
+  },
+  "product_compatibility": {
+    "actual_ffb_processed_by_year": null,
+    "actual_cpo_output_by_year": null,
+    "ch4_per_kg_cpo": null,
+    "ch4_per_t_ffb": null,
+    "product_co2e_per_liter": null,
+    "compatibility_findings": [
+      "The report provides maximum capacity, not actual FFB throughput or CPO output in the reviewed material.",
+      "Methane captured and gainfully used under the CDM methodology is not methane emitted to air and is not a product LCI result.",
+      "The Bangsawan/TTO mill is not established as the foreground mill for the project's FAME/H-FAME dataset or the separate TSM ethanol facility.",
+      "The report uses GWP_CH4=21; do not silently substitute a contemporary characterization factor or interpret its CDM tCO2e as current product CO2e."
+    ],
+    "classification": "HOLD_CONTEXT",
+    "imported_into_inventory": false,
+    "added_to_model": false,
+    "published": false,
+    "added_to_rag": false
+  },
+  "review_quality": {
+    "text_extraction_reviewed": true,
+    "pdf_screenshot_attempted": true,
+    "pdf_screenshot_result": "timeout; visual table verification not completed",
+    "independent_human_review": false,
+    "source_cells_promoted_to_core_inventory": 0,
+    "status": "screened reference only; pending visual verification and product-output linkage"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "checked_at_local": "2026-11-13T09:12:00+07:00",
+  "scope": "Bounded review of official catalog/license metadata for the government datasets already present in the release manifest; no data files downloaded, no rights status changed",
+  "sources": [
+    {
+      "dataset": "DMF production-oil",
+      "official_source": "https://catalog.dmf.go.th/dataset/production-oil",
+      "observed": {
+        "license_label": "Open Data Common",
+        "data_category": "ข้อมูลสาธารณะ",
+        "access_condition": "ไม่มีการจำกัดการเข้าถึงข้อมูล",
+        "format": "CSV",
+        "source": "รายงานการผลิตประจำเดือน",
+        "last_catalog_update": "2026-06-26"
+      },
+      "assessment": "Official dataset metadata supports recording the displayed Open Data Common license label. This review does not verify the full license text or every downstream reproduction condition."
+    },
+    {
+      "dataset": "EPPO dataset_11_13",
+      "official_source": "https://catalog.eppo.go.th/ro/dataset/changes/62a2d00d-3fc3-4bf3-b44b-3be68bbd1729",
+      "observed": {
+        "dataset_name": "การใช้น้ำมันในการกลั่น",
+        "license_label": "Open Data Common",
+        "change_log_also_shows": "isopen=false"
+      },
+      "assessment": "The official catalog change page shows the license label, but the metadata also contains an isopen=false field; its meaning and current value need clarification before treating this as an unambiguous downstream redistribution authorization."
+    },
+    {
+      "dataset": "EPPO dataset_11_14",
+      "official_source": "https://catalog.eppo.go.th/sr_Latn/dataset/changes/2decf14e-cd37-4bae-8675-122455274cff",
+      "observed": {
+        "license_label": "Open Data Common",
+        "change_log_also_shows": "isopen=false"
+      },
+      "assessment": "The official catalog change page shows the license label, but the metadata also contains an isopen=false field; its meaning and current value need clarification before treating this as an unambiguous downstream redistribution authorization."
+    },
+    {
+      "dataset": "NSO Statistical Yearbook 2026 energy CSVs",
+      "official_source": "https://www.nso.go.th/nsoweb/category/C",
+      "official_terms_and_conditions": "https://www.nso.go.th/nsoweb/category/C",
+      "observed": {
+        "website_terms": "Permit use/copying under the stated website terms; state that third-party linked content may carry further redistribution restrictions and users should contact the rightsholder.",
+        "dataset_specific_license_on_csv_page": "not verified in this review"
+      },
+      "assessment": "General website terms are relevant but do not establish that each linked CSV carries a dataset-specific license; preserve the current rights hold pending a clear per-resource license statement."
+    }
+  ],
+  "overall_result": "PARTIAL_METADATA_EVIDENCE_ONLY_NOT_RIGHTS_CLEARANCE",
+  "manifest_changes": false,
+  "public_rights_status_changed": false,
+  "production_api_checked": false,
+  "deployment_or_push": false,
+  "next_safe_step": "Keep the source license labels verbatim and linked in provenance. Ask the dataset owner/agency about EPPO's isopen flag and confirm NSO CSV-specific terms; do not mark rights cleared based only on this screening."
+}

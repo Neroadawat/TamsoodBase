@@ -1,0 +1,69 @@
+{
+  "review_date": "2026-11-08",
+  "source_class": "CURRENT_COMPANY_REPORTED_QUALITATIVE_DISCLOSURE",
+  "sources": [
+    {
+      "source_id": "TSM-WATER-WW-CORPORATE-WEB",
+      "title": "การจัดการน้ำและน้ำเสีย / Water & Waste Water Managements",
+      "url": "https://tsmgroup.co.th/sustainability/environmental/water-waste-water-managements/",
+      "locator": "Sections Resource, Wastewater treatment, and monitoring / accessed 2026-11-08",
+      "reported_claims": [
+        "The corporate page describes a central wastewater treatment system with Activated Sludge and Modified Covered Lagoon (MCL).",
+        "It says the group monitors process wastewater, surface water, and groundwater using standard methods and accredited laboratories under legal requirements and EIA reports.",
+        "A separate paragraph says the biological system receives wastewater from sugar factories and biomass power plants."
+      ],
+      "site_linkage_to_thai_sugar_ethanol": "NOT_CONFIRMED_BY_THIS_PAGE",
+      "reporting_period": null,
+      "numeric_effluent_or_gas_results": null,
+      "rights_status": "NOT_CLEARED",
+      "local_snapshot_or_hash": null
+    },
+    {
+      "source_id": "TSM-BIOGAS-CORPORATE-WEB",
+      "title": "ไฟฟ้า / Biogas Energy",
+      "url": "https://tsmgroup.co.th/our-product/electricity/",
+      "locator": "Biogas Energy section / accessed 2026-11-08",
+      "reported_claims": [
+        "The company says biogas containing methane is produced from spent wash from ethanol production and used to generate electricity for sale to PEA.",
+        "It states that 1 tonne of methane is equivalent to 28 tonnes of carbon dioxide avoided."
+      ],
+      "methane_quantity_or_fraction": null,
+      "electricity_quantity_and_period": null,
+      "characterization_method_gwp_horizon_baseline_and_leakage_boundary": null,
+      "claim_role": "CORPORATE_REPORTED_AVOIDED_EMISSION_STATEMENT_NOT_A_MEASURED_LCI_FLOW_OR_PROJECT_FACTOR",
+      "rights_status": "NOT_CLEARED",
+      "local_snapshot_or_hash": null
+    }
+  ],
+  "compatibility_decision": {
+    "usable_as": "Qualitative lead for treatment train, monitoring categories, and potential co-treatment boundary",
+    "not_usable_as": [
+      "TSM site-specific measured methane flow",
+      "methane capture efficiency or leakage rate",
+      "same-period ethanol production denominator",
+      "numeric CO2e factor for the project",
+      "proof that the corporate wastewater-treatment train applies to the ethanol plant alone"
+    ],
+    "possible_co_treatment_issue": "The page describes a corporate central treatment system and mentions sugar-mill and biomass-power wastewater. Confirm whether ethanol spent wash shares this train and how emissions/energy are allocated before using a site-specific ethanol inventory.",
+    "ethanol_production_l_per_period": null,
+    "methane_emitted_kg_per_period": null,
+    "methane_recovered_kg_per_period": null,
+    "project_co2e_total": null,
+    "production_or_public_release_changed": false
+  },
+  "data_request_for_a_matched_lci_period": [
+    "Actual ethanol output in litres for the same dated operating period",
+    "Spent-wash volume, COD/BOD mass load, sample points, and treatment stages for that period",
+    "Biogas volume with CH4 fraction and declared dry/wet, temperature, and pressure basis",
+    "CH4 sent to engines, flare, vent, dissolved pathway, and measured/estimated slip or leakage by the same period",
+    "Electricity generated, parasitic use, exports, and any steam input/output for that period",
+    "Wastewater and energy allocation records if the central system receives streams from other plants"
+  ],
+  "review": {
+    "pages_checked": 2,
+    "numeric_observations_accepted": 0,
+    "source_claims_kept_separate_from_measurements": true,
+    "reviewer": "AUTOMATED_TEAM_POLICY_V1",
+    "independent_human_review": false
+  }
+}

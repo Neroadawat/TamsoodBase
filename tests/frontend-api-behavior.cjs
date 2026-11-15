@@ -23,6 +23,9 @@ function setup(base='',fetcher=async()=>({ok:true,headers:{get:()=> 'application
  await assert.rejects(timeout.api.get('/api/nso',5),/ตอบช้าเกินไป/);
  const offline=setup('',async()=>{throw TypeError('Network failed');});
  await assert.rejects(offline.api.get('/api/nso'),/เชื่อมต่อ backend ไม่ได้/);
+ const restricted=setup('',async()=>({status:403,ok:false,headers:{get:()=> 'application/json'},json:async()=>({error:'ข้อมูลชุดนี้ยังไม่เปิดผ่านเว็บไซต์ระหว่างตรวจสอบสิทธิ์เผยแพร่'})}));
+ await assert.rejects(restricted.api.get('/api/nso'),/พักการแสดงข้อมูลชุดนี้/);
+ assert.deepEqual(restricted.events,['loading','restricted']);
  const login=setup('',async()=>({status:401}),{loginUrl:'/api/login'});
  await assert.rejects(login.api.get('/api/reference'),/เข้าสู่ระบบ/);
  assert.deepEqual(login.events,['loading','unauthorized']);

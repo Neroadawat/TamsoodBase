@@ -1,0 +1,172 @@
+{
+  "input": "C:\\Users\\HP\\Downloads\\S2-G05_W12_A4_M2 (1).docx",
+  "fonts_by_char_count": {
+    "TH SarabunPSK": 29261,
+    "Browallia New": 476,
+    "Aptos": 2
+  },
+  "direct_run_formatting_runs": 1018,
+  "direct_paragraph_formatting_paragraphs": 6,
+  "heading_like_paragraphs_not_heading_style": [
+    {
+      "para_index": 1,
+      "text": "SOFTWARE REQUIREMENTS SPECIFICATION (SRS)",
+      "style": "Normal"
+    },
+    {
+      "para_index": 2,
+      "text": "\u0e15\u0e32\u0e21\u0e2a\u0e39\u0e15\u0e23\u0e40\u0e1a\u0e2a / TamsoodBase",
+      "style": "Normal"
+    },
+    {
+      "para_index": 4,
+      "text": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e17\u0e35\u0e21",
+      "style": "Normal"
+    },
+    {
+      "para_index": 7,
+      "text": "\u0e1a\u0e17\u0e1a\u0e32\u0e17\u0e43\u0e19\u0e17\u0e35\u0e21 (Roles)",
+      "style": "Normal"
+    },
+    {
+      "para_index": 10,
+      "text": "Revision History \u2014 \u0e1b\u0e23\u0e30\u0e27\u0e31\u0e15\u0e34\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23",
+      "style": "Normal"
+    },
+    {
+      "para_index": 12,
+      "text": "\u0e2a\u0e32\u0e23\u0e1a\u0e31\u0e0d (Table of Contents) \u2013 M1",
+      "style": "Normal"
+    },
+    {
+      "para_index": 19,
+      "text": "1. Introduction",
+      "style": "Normal"
+    },
+    {
+      "para_index": 20,
+      "text": "1.1 Purpose \u00b7 \u0e27\u0e31\u0e15\u0e16\u0e38\u0e1b\u0e23\u0e30\u0e2a\u0e07\u0e04\u0e4c",
+      "style": "Normal"
+    },
+    {
+      "para_index": 24,
+      "text": "1.2 Scope \u00b7 \u0e02\u0e2d\u0e1a\u0e40\u0e02\u0e15",
+      "style": "Normal"
+    },
+    {
+      "para_index": 27,
+      "text": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e43\u0e19\u0e02\u0e2d\u0e1a\u0e40\u0e02\u0e15. \u0e23\u0e30\u0e1a\u0e1a\u0e04\u0e23\u0e2d\u0e1a\u0e04\u0e25\u0e38\u0e21\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25 5 \u0e01\u0e25\u0e38\u0e48\u0e21 \u0e44\u0e14\u0e49\u0e41\u0e01\u0e48",
+      "style": "Normal"
+    },
+    {
+      "para_index": 45,
+      "text": "1.3 Definitions \u00b7 \u0e04\u0e33\u0e19\u0e34\u0e22\u0e32\u0e21",
+      "style": "Normal"
+    },
+    {
+      "para_index": 51,
+      "text": "1.4 References \u00b7 \u0e41\u0e2b\u0e25\u0e48\u0e07\u0e2d\u0e49\u0e32\u0e07\u0e2d\u0e34\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25",
+      "style": "Normal"
+    },
+    {
+      "para_index": 54,
+      "text": "2. Overall Description",
+      "style": "Normal"
+    },
+    {
+      "para_index": 55,
+      "text": "2.1 Product Perspective \u00b7 \u0e21\u0e38\u0e21\u0e21\u0e2d\u0e07\u0e1c\u0e25\u0e34\u0e15\u0e20\u0e31\u0e13\u0e11\u0e4c",
+      "style": "Normal"
+    },
+    {
+      "para_index": 59,
+      "text": "2.2 Source Analysis \u00b7 \u0e27\u0e34\u0e40\u0e04\u0e23\u0e32\u0e30\u0e2b\u0e4c\u0e41\u0e2b\u0e25\u0e48\u0e07\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25",
+      "style": "Normal"
+    },
+    {
+      "para_index": 66,
+      "text": "2.3 Users & Stakeholders \u00b7 \u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e41\u0e25\u0e30\u0e1c\u0e39\u0e49\u0e21\u0e35\u0e2a\u0e48\u0e27\u0e19\u0e44\u0e14\u0e49\u0e2a\u0e48\u0e27\u0e19\u0e40\u0e2a\u0e35\u0e22",
+      "style": "Normal"
+    },
+    {
+      "para_index": 73,
+      "text": "2.4 Constraints \u00b7 \u0e02\u0e49\u0e2d\u0e08\u0e33\u0e01\u0e31\u0e14",
+      "style": "Normal"
+    },
+    {
+      "para_index": 87,
+      "text": "2.5 Assumptions \u00b7 \u0e2a\u0e21\u0e21\u0e15\u0e34\u0e10\u0e32\u0e19",
+      "style": "Normal"
+    },
+    {
+      "para_index": 108,
+      "text": "3. Requirements",
+      "style": "Normal"
+    },
+    {
+      "para_index": 109,
+      "text": "3.1 Data Requirements \u00b7 \u0e02\u0e49\u0e2d\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e14\u0e49\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25",
+      "style": "Normal"
+    }
+  ],
+  "examples": {
+    "direct_run_formatting": [
+      {
+        "para_index": 1,
+        "run_text": "S",
+        "style": "Normal"
+      },
+      {
+        "para_index": 1,
+        "run_text": "OFTWARE",
+        "style": "Normal"
+      },
+      {
+        "para_index": 1,
+        "run_text": " REQUIREMENTS SPECIFICATION (SRS)",
+        "style": "Normal"
+      },
+      {
+        "para_index": 2,
+        "run_text": "\u0e15\u0e32\u0e21\u0e2a\u0e39\u0e15\u0e23\u0e40\u0e1a\u0e2a / ",
+        "style": "Normal"
+      },
+      {
+        "para_index": 2,
+        "run_text": "TamsoodBase",
+        "style": "Normal"
+      }
+    ],
+    "direct_paragraph_formatting": [
+      {
+        "para_index": 5,
+        "text": "",
+        "style": "Normal"
+      },
+      {
+        "para_index": 6,
+        "text": "",
+        "style": "Normal"
+      },
+      {
+        "para_index": 21,
+        "text": "\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e19\u0e35\u0e49\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e02\u0e49\u0e2d\u0e01\u0e33\u0e2b\u0e19\u0e14\u0e02\u0e2d\u0e07 TamsoodBase \u0e0b\u0e36\u0e48\u0e07\u0e40\u0e1b\u0e47\u0e19\u0e23\u0e30\u0e1a\u0e1a\u0e08\u0e31\u0e14\u0e40\u0e01\u0e47\u0e1a\u0e41\u0e25\u0e30\u0e04\u0e49\u0e19\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e14\u0e49\u0e32\u0e19\u0e1b\u0e34\u0e42\u0e15\u0e23\u0e40\u0e25\u0e35\u0e22\u0e21 \u0e01\u0e4a\u0e32\u0e0b\u0e18\u0e23\u0e23\u0e21\u0e0a\u0e32\u0e15\u0e34 \u0e41\u0e25\u0e30\u0e40\u0e0a\u0e37\u0e49\u0e2d\u0e40\u0e1e\u0e25\u0e34\u0e07\u0e17\u0e35\u0e48\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e02",
+        "style": "Normal"
+      },
+      {
+        "para_index": 22,
+        "text": "\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e19\u0e35\u0e49\u0e08\u0e31\u0e14\u0e17\u0e33\u0e02\u0e36\u0e49\u0e19\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e2a\u0e21\u0e32\u0e0a\u0e34\u0e01\u0e17\u0e35\u0e21 \u0e1c\u0e39\u0e49\u0e2a\u0e2d\u0e19 \u0e41\u0e25\u0e30\u0e1c\u0e39\u0e49\u0e17\u0e1a\u0e17\u0e27\u0e19\u0e23\u0e30\u0e1a\u0e1a \u0e42\u0e14\u0e22\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22\u0e27\u0e48\u0e32\u0e23\u0e30\u0e1a\u0e1a\u0e23\u0e2d\u0e07\u0e23\u0e31\u0e1a\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e43\u0e14 \u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e17\u0e33\u0e2d\u0e30\u0e44\u0e23\u0e44\u0e14\u0e49 \u0e41\u0e25\u0e30\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e15",
+        "style": "Normal"
+      },
+      {
+        "para_index": 23,
+        "text": "",
+        "style": "Normal"
+      }
+    ]
+  },
+  "notes": [
+    "Direct formatting is not always wrong, but it often causes inconsistent output when templates change.",
+    "Heading-like paragraphs not using Heading styles can break TOC and accessibility."
+  ]
+}
