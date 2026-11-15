@@ -17,7 +17,7 @@ const semanticCorpus = require('../../docs/rag/semantic-corpus.json');
 // Semantic retrieval is an optional, flag-gated candidate generator. It only
 // suggests which explanatory notes / datasets look related; the planner decides
 // what to use and every figure still comes from runQuery over the bundled pack.
-const SEMANTIC_TIMEOUT_MS = 2500;
+const SEMANTIC_TIMEOUT_MS = 1500; // tunnel p95 measured ~1.2 s; slower calls fall back to the structured route
 const SEMANTIC_K = 5;
 const SEMANTIC_CANDIDATE_FLOOR = 0.4; // noise cut on the hybrid score, not a relevance claim
 const SEMANTIC_MAX_RESPONSE_BYTES = 8 * 1024;

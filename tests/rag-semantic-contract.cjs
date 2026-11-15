@@ -69,7 +69,7 @@ const FAME_HITS = [{ id: 'note:fame-wtw-boundary', score: 0.71 }, { id: 'catalog
   const timeoutWorld = world({ semantic: options => new Promise((_, reject) => options.signal.addEventListener('abort', () => { const e = new Error('aborted'); e.name = 'AbortError'; reject(e); })) });
   const started = Date.now();
   assert.equal((await semanticSearch('q', ON, timeoutWorld.fetchImpl)).reason, 'timeout');
-  assert.ok(Date.now() - started < 4000, 'a hung service must not hold the visitor for long');
+  assert.ok(Date.now() - started < 2500,'a hung service must not hold the visitor for long');
 
   // ---------------------------------------------------- flag off: unchanged output
   const notePlan = { mode: 'notes', note_ids: ['fame-wtw-boundary'], queries: [] };
