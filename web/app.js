@@ -357,11 +357,65 @@ const SOURCE_REFERENCE_CODES=Object.freeze({
  'EPPO-11_13':'SRC-07','EPPO-11_14':'SRC-08',
  'MDPI-SU12229415-T4':'SRC-09'
 });
+const SOURCE_RIGHTS_LABELS = new Map([
+ ['reuse_supported_metadata_anomaly', 'ต้นทางระบุว่าเป็นข้อมูลเปิด แต่รายละเอียดสิทธิ์บางช่องไม่ตรงกัน ทีมจึงยังไม่แจกไฟล์ต้นฉบับ'],
+ ['Open Data Common label observed; specific redistribution terms not verified', 'ต้นทางระบุว่าเป็นข้อมูลเปิด ทีมยังไม่ได้ยืนยันเงื่อนไขการเผยแพร่ต่อ'],
+ ['public_readable_reuse_not_confirmed', 'เปิดอ่านรายงานได้ ทีมยังไม่ได้ยืนยันสิทธิ์นำไปใช้ซ้ำ'],
+ ['public_download_reuse_scope_unconfirmed', 'ดาวน์โหลดจากต้นทางได้ ทีมยังไม่ได้ยืนยันว่านำไปใช้ซ้ำหรือเผยแพร่ต่อได้แค่ไหน'],
+ ['CC_BY_4_0_ARTICLE_NOTICE', 'บทความใช้สัญญาอนุญาต CC BY 4.0 นำไปใช้ต่อได้โดยให้เครดิต ระบุสัญญาอนุญาต และแจ้งหากดัดแปลง'],
+ ['public_readable_redistribution_not_cleared', 'เปิดอ่านได้ ทีมยังไม่ได้ยืนยันสิทธิ์เผยแพร่ต่อ'],
+ ['NOT_CLEARED', 'ทีมยังไม่ได้ยืนยันสิทธิ์เผยแพร่ต่อ'],
+ ['not_reviewed', 'ทีมยังไม่ได้ตรวจเงื่อนไขการใช้ข้อมูล']
+]);
+
+function sourceLink(source, label){
+ const link = el('a', label);
+ link.href = source.registry_url;
+ link.target = '_blank';
+ link.rel = 'noopener noreferrer';
+ return link;
+}
+
 async function loadSourceCrosswalk(){
- const target=$('#crosswalk-sources');target.replaceChildren();
- try{const data=await get('/api/source-crosswalk');
- $('#crosswalk-status').textContent=`ทะเบียน ${data.sources.length} สำเนาต้นทาง · SRC-xx ใช้เปิดหาแหล่งอ้างอิงในเอกสารโครงการ · สิทธิ์ใช้ข้อมูลระบุแยกในแต่ละแหล่ง`;
- for(const source of data.sources){const card=el('article',undefined,'source-card'),code=SOURCE_REFERENCE_CODES[source.source_id];if(code)card.append(el('span',code,'source-reference-code'));card.append(el('h3',source.source_id),el('p',source.layers.join(' / ')+' · '+number(source.observations)+' observations'),el('p',source.registry_rights_status,'muted'),el('div',source.source_sha256,'hash'));const link=el('a','เปิดแหล่งในทะเบียน ↗');link.href=source.registry_url;link.target='_blank';link.rel='noopener noreferrer';card.append(link);target.append(card);}
+ const target = $('#crosswalk-sources');
+ target.replaceChildren();
+ try {
+  const {sources} = await get('/api/source-crosswalk');
+  const groups = new Map();
+  const codeOf = source => SOURCE_REFERENCE_CODES[source.source_id];
+  const ordered = [...sources].sort((a,b) =>
+   (codeOf(a) || 'ZZZ').localeCompare(codeOf(b) || 'ZZZ', 'en', {numeric:true, ignorePunctuation:false}) ||
+   a.source_id.localeCompare(b.source_id, 'en', {numeric:true}));
+  for(const source of ordered){
+   const key = codeOf(source) || source.source_id;
+   if(!groups.has(key)) groups.set(key, []);
+   groups.get(key).push(source);
+  }
+  $('#crosswalk-status').textContent = `ทะเบียน ${sources.length} สำเนาต้นทาง · รหัส SRC ใช้ค้นแหล่งอ้างอิงในรายงาน`;
+  for(const members of groups.values()){
+   const first = members[0];
+   const grouped = members.length > 1;
+   const card = el('article', undefined, 'source-card');
+   if(codeOf(first)) card.append(el('span', codeOf(first), 'source-reference-code'));
+   const title = grouped ? 'รายงานสถิติรายปี 2569 · ' + members.length + ' ตาราง' : first.source_id;
+   const total = members.reduce((sum, source) => sum + Number(source.observations), 0);
+   const layers = [...new Set(members.flatMap(s => s.layers))].join(' / ');
+   const rights = [...new Set(members.map(s => SOURCE_RIGHTS_LABELS.get(s.registry_rights_status) || 'ตรวจเงื่อนไขการใช้ข้อมูลที่แหล่งต้นทาง'))];
+   card.append(el('h3', title), el('p', layers + ' · ' + number(total) + ' รายการ'), el('p', rights.join(' / '), 'muted'));
+   if(grouped){
+    const details = el('details');
+    details.append(el('summary', 'ดูทั้ง ' + members.length + ' ตาราง'));
+    for(const source of members){
+     const row = el('div', undefined, 'source-subrow');
+     row.append(sourceLink(source, source.source_id + ' ↗'), el('p', number(source.observations) + ' รายการ'), el('div', source.source_sha256, 'hash'));
+     details.append(row);
+    }
+    card.append(details);
+   }else{
+    card.append(el('div', first.source_sha256, 'hash'), sourceLink(first, 'เปิดแหล่งในทะเบียน ↗'));
+   }
+   target.append(card);
+  }
  }catch(error){target.replaceChildren();$('#crosswalk-status').textContent=error.message;return false;}
 }
 
